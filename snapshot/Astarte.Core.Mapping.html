@@ -5,11 +5,16 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.17.1">
-    <title>Astarte.Core.Mapping – Astarte vdev</title>
+    <title>Astarte.Core.Mapping – Astarte v0.9-snapshot</title>
     <link rel="stylesheet" href="dist/app-110d9134a6.css" />
     
     
-    <script src="dist/sidebar_items-473f4b210f.js"></script>
+      
+        <link rel="icon" type="image/png" href="assets/logo.png" />
+      
+      
+    
+    <script src="dist/sidebar_items-033b543894.js"></script>
     
   </head>
   <body data-type="modules">
@@ -29,9 +34,11 @@
         Astarte
       </h1>
       <h2 class="sidebar-projectVersion">
-        vdev
+        v0.9-snapshot
       </h2>
     </div>
+    
+      <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
     
   </a>
 
@@ -65,7 +72,7 @@
 
 
       <h1>
-        <small class="visible-xs">Astarte vdev</small>
+        <small class="visible-xs">Astarte v0.9-snapshot</small>
         Astarte.Core.Mapping
         
           <a href="https://git.ispirata.com/Astarte-NG/apps/astarte_core/lib/astarte_core/mapping.ex#L19" title="View Source" class="view-source" rel="help">
@@ -95,6 +102,16 @@
     </h2>
     <div class="summary-row">
   <div class="summary-signature">
+    <a href="#from_db_result!/1">from_db_result!(db_result)</a>
+  </div>
+  
+    <div class="summary-synopsis"><p>Deserializes a <code class="inline">%Mapping{}</code> from <code class="inline">db_result</code>.
+<code class="inline">db_result</code> can be a keyword list or a map</p>
+</div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#is_valid?/1">is_valid?(mapping)</a>
   </div>
   
@@ -119,7 +136,33 @@
             </a>
             Functions
           </h1>
-          <div class="detail" id="is_valid?/1">
+          <div class="detail" id="from_db_result!/1">
+  
+  
+  <div class="detail-header">
+    <a href="#from_db_result!/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">from_db_result!(db_result)</span>
+    
+      <a href="https://git.ispirata.com/Astarte-NG/apps/astarte_core/lib/astarte_core/mapping.ex#L57" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    <p>Deserializes a <code class="inline">%Mapping{}</code> from <code class="inline">db_result</code>.
+<code class="inline">db_result</code> can be a keyword list or a map.</p>
+<p>Returns the <code class="inline">%Mapping{}</code> on success,
+raises on failure</p>
+
+  </section>
+</div>
+<div class="detail" id="is_valid?/1">
   
   
   <div class="detail-header">
@@ -129,7 +172,7 @@
     </a>
     <span class="signature">is_valid?(mapping)</span>
     
-      <a href="https://git.ispirata.com/Astarte-NG/apps/astarte_core/lib/astarte_core/mapping.ex#L27" class="view-source" rel="help" title="View Source">
+      <a href="https://git.ispirata.com/Astarte-NG/apps/astarte_core/lib/astarte_core/mapping.ex#L34" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>

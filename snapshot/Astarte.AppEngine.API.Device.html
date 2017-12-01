@@ -5,11 +5,16 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.17.1">
-    <title>Astarte.AppEngine.API.Device – Astarte vdev</title>
+    <title>Astarte.AppEngine.API.Device – Astarte v0.9-snapshot</title>
     <link rel="stylesheet" href="dist/app-110d9134a6.css" />
     
     
-    <script src="dist/sidebar_items-473f4b210f.js"></script>
+      
+        <link rel="icon" type="image/png" href="assets/logo.png" />
+      
+      
+    
+    <script src="dist/sidebar_items-033b543894.js"></script>
     
   </head>
   <body data-type="modules">
@@ -29,9 +34,11 @@
         Astarte
       </h1>
       <h2 class="sidebar-projectVersion">
-        vdev
+        v0.9-snapshot
       </h2>
     </div>
+    
+      <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
     
   </a>
 
@@ -65,7 +72,7 @@
 
 
       <h1>
-        <small class="visible-xs">Astarte vdev</small>
+        <small class="visible-xs">Astarte v0.9-snapshot</small>
         Astarte.AppEngine.API.Device
         
           <a href="https://git.ispirata.com/Astarte-NG/apps/astarte_appengine_api/lib/astarte_appengine_api/device/device.ex#L20" title="View Source" class="view-source" rel="help">
@@ -110,7 +117,7 @@ Device status returns information such as connected, last_connection and last_di
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#get_interface_values!/3">get_interface_values!(realm_name, encoded_device_id, interface)</a>
+    <a href="#get_interface_values!/4">get_interface_values!(realm_name, encoded_device_id, interface, params)</a>
   </div>
   
     <div class="summary-synopsis"><p>Gets all values set on a certain interface.
@@ -120,7 +127,7 @@ This function handles all GET requests on /{realm_name}/devices/{device_id}/inte
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#get_interface_values!/4">get_interface_values!(realm_name, encoded_device_id, interface, no_prefix_path)</a>
+    <a href="#get_interface_values!/5">get_interface_values!(realm_name, encoded_device_id, interface, no_prefix_path, params)</a>
   </div>
   
     <div class="summary-synopsis"><p>Gets a single interface_values</p>
@@ -143,6 +150,12 @@ This function handles all GET requests on /{realm_name}/devices/{device_id}/inte
   
     <div class="summary-synopsis"><p>Returns the list of interfaces</p>
 </div>
+  
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_interface_values!/6">update_interface_values!(realm_name, encoded_device_id, interface, no_prefix_path, value, params)</a>
+  </div>
   
 </div>
 
@@ -175,7 +188,7 @@ This function handles all GET requests on /{realm_name}/devices/{device_id}/inte
     </a>
     <span class="signature">get_device_status!(realm_name, encoded_device_id)</span>
     
-      <a href="https://git.ispirata.com/Astarte-NG/apps/astarte_appengine_api/lib/astarte_appengine_api/device/device.ex#L52" class="view-source" rel="help" title="View Source">
+      <a href="https://git.ispirata.com/Astarte-NG/apps/astarte_appengine_api/lib/astarte_appengine_api/device/device.ex#L59" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -189,17 +202,17 @@ Device status returns information such as connected, last_connection and last_di
 
   </section>
 </div>
-<div class="detail" id="get_interface_values!/3">
+<div class="detail" id="get_interface_values!/4">
   
   
   <div class="detail-header">
-    <a href="#get_interface_values!/3" class="detail-link" title="Link to this function">
+    <a href="#get_interface_values!/4" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">get_interface_values!(realm_name, encoded_device_id, interface)</span>
+    <span class="signature">get_interface_values!(realm_name, encoded_device_id, interface, params)</span>
     
-      <a href="https://git.ispirata.com/Astarte-NG/apps/astarte_appengine_api/lib/astarte_appengine_api/device/device.ex#L94" class="view-source" rel="help" title="View Source">
+      <a href="https://git.ispirata.com/Astarte-NG/apps/astarte_appengine_api/lib/astarte_appengine_api/device/device.ex#L101" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -213,17 +226,17 @@ This function handles all GET requests on /{realm_name}/devices/{device_id}/inte
 
   </section>
 </div>
-<div class="detail" id="get_interface_values!/4">
+<div class="detail" id="get_interface_values!/5">
   
   
   <div class="detail-header">
-    <a href="#get_interface_values!/4" class="detail-link" title="Link to this function">
+    <a href="#get_interface_values!/5" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">get_interface_values!(realm_name, encoded_device_id, interface, no_prefix_path)</span>
+    <span class="signature">get_interface_values!(realm_name, encoded_device_id, interface, no_prefix_path, params)</span>
     
-      <a href="https://git.ispirata.com/Astarte-NG/apps/astarte_appengine_api/lib/astarte_appengine_api/device/device.ex#L126" class="view-source" rel="help" title="View Source">
+      <a href="https://git.ispirata.com/Astarte-NG/apps/astarte_appengine_api/lib/astarte_appengine_api/device/device.ex#L122" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -247,7 +260,7 @@ This function handles all GET requests on /{realm_name}/devices/{device_id}/inte
     </a>
     <span class="signature">list_devices!(realm_name)</span>
     
-      <a href="https://git.ispirata.com/Astarte-NG/apps/astarte_appengine_api/lib/astarte_appengine_api/device/device.ex#L42" class="view-source" rel="help" title="View Source">
+      <a href="https://git.ispirata.com/Astarte-NG/apps/astarte_appengine_api/lib/astarte_appengine_api/device/device.ex#L49" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -270,7 +283,7 @@ This function handles all GET requests on /{realm_name}/devices/{device_id}/inte
     </a>
     <span class="signature">list_interfaces!(realm_name, encoded_device_id)</span>
     
-      <a href="https://git.ispirata.com/Astarte-NG/apps/astarte_appengine_api/lib/astarte_appengine_api/device/device.ex#L82" class="view-source" rel="help" title="View Source">
+      <a href="https://git.ispirata.com/Astarte-NG/apps/astarte_appengine_api/lib/astarte_appengine_api/device/device.ex#L89" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
@@ -281,6 +294,28 @@ This function handles all GET requests on /{realm_name}/devices/{device_id}/inte
   <section class="docstring">
     <p>Returns the list of interfaces.</p>
 
+  </section>
+</div>
+<div class="detail" id="update_interface_values!/6">
+  
+  
+  <div class="detail-header">
+    <a href="#update_interface_values!/6" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <span class="signature">update_interface_values!(realm_name, encoded_device_id, interface, no_prefix_path, value, params)</span>
+    
+      <a href="https://git.ispirata.com/Astarte-NG/apps/astarte_appengine_api/lib/astarte_appengine_api/device/device.ex#L149" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+    
+    
+    
+  </div>
+  <section class="docstring">
+    
   </section>
 </div>
 
