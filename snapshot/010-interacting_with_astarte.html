@@ -14,7 +14,7 @@
       
       
     
-    <script src="dist/sidebar_items-af323d4e08.js"></script>
+    <script src="dist/sidebar_items-7ba4d02f16.js"></script>
     
   </head>
   <body data-type="extras">
@@ -72,6 +72,61 @@
 
 
 <h1>Interacting with Astarte</h1>
+<p>Astarte’s interaction is logically divided amongst two main entities.</p>
+<p><em>Devices</em> are the bottom end, and represent your IoT fleet. They can access Astarte only through a Transport, they are defined by a set of <a href="030-interface.html">Interfaces</a> which, in turn, also define on a very granular level which kind of data they can exchange. By design, they can’t access any resource which isn’t their own: such a behavior can be configured using Astarte as a middleman to act as a secure Gateway.</p>
+<p><em>Users</em> are actual users, applications or anything else which needs to interact directly with Astarte. They are bound to a realm, and can virtually access any resource in that realm given they’re authorized to do so. Users can also manage triggers and perform maintenance activity on the Realm.</p>
+<h2 id="interacting-with-a-device" class="section-heading">
+  <a href="#interacting-with-a-device" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Interacting with a Device
+</h2>
+
+<p>Devices interact with Astarte through their associated Transport. In this guide, we’ll assume the Transport is MQTT/VerneMQ as per Astarte’s defaults.</p>
+<p>However, rather than implementing the whole Astarte protocol over MQTT, it is usually a better idea to rely on one of <a href="https://github.com/search?q=org%253Aastarte-platform+sdk">Astarte’s SDKs</a>.</p>
+<h3 id="authentication-pairing" class="section-heading">
+  <a href="#authentication-pairing" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Authentication/Pairing
+</h3>
+
+<p>Depending on how you plan on implementing <a href="050-pairing_mechanism.html">Astarte’s pairing mechanism</a>, your devices might need an Agent for their first authentication or not. However, once they retrieve their API key, they can implement Astarte’s standard pairing routine to rotate their SSL certificate for accessing the transport.</p>
+<p>In the most likely scenario in which you are using one of Astarte’s SDKs, the SDK takes care of the whole pairing routine under the hood and, depending on your agent implementation, you just need to feed the SDK with either the API key or the Agent Key.</p>
+<h3 id="exchanging-data" class="section-heading">
+  <a href="#exchanging-data" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Exchanging data
+</h3>
+
+<p>As per Astarte’s protocol specification, data is exchanged based on the device’s introspection. The device will be able to publish data on the transport on <code class="inline">thing</code> interfaces, and receive data on <code class="inline">server</code> interfaces. In the MQTT case, the device will subscribe to its <code class="inline">server</code> interfaces’ topics, and publish on its <code class="inline">thing</code> interfaces topics.</p>
+<p>Isolation and RBAC are guaranteed by the transport’s ACL, which are usually orchestrated though a dedicated Astarte extension (as in the VerneMQ/MQTT case).</p>
+<p>Again, Astarte’s SDK allows you to interact with your device interfaces directly without caring about the underlying protocol and exchange details.</p>
+<h2 id="interacting-as-a-user" class="section-heading">
+  <a href="#interacting-as-a-user" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Interacting as a User
+</h2>
+
+<p>Astarte is mainly accessed through its APIs. Astarte’s APIs are exposed through dedicated microservices (see <a href="020-components.html">Components</a>) and are meant both for configuration and for accessing data. There are two main sets of APIs we’ll be using frequently:</p>
+<ul>
+<li><strong>AppEngine API</strong>: This API is meant for querying/pushing data from/to devices.
+</li>
+<li><strong>Realm Management API</strong>: This API is meant for configuring a target realm, and most notably for managing triggers.
+</li>
+</ul>
+<h3 id="authentication" class="section-heading">
+  <a href="#authentication" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Authentication
+</h3>
+
+<p>Authenticating against Astarte is out of the scope of this guide, especially due to the fact that <a href="070-auth.md">Astarte does not manage authentication directly</a>. We’ll assume either the authentication isn’t enabled, or that the user is always interacting with the APIs with a token with the following claims</p>
+<pre><code class="json">{
+    &quot;a_aea&quot;: &quot;^.*$:^.*$&quot;,
+    &quot;a_rma&quot;: &quot;^.*$:^.*$&quot;
+}</code></pre>
+<p>Which represents a realm administrator. In real life use cases, you should always make sure to <a href="070-auth.html#granular-claims">give out more granular permissions</a> and to obtain the token in the right way from your authentication server.</p>
+<h3 id="accessing-the-apis" class="section-heading">
+  <a href="#accessing-the-apis" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Accessing the APIs
+</h3>
+
+<p>In a standard Astarte installation, AppEngine API and Realm Management API are usually accessible at <code class="inline">app.api.&lt;your astarte domain&gt;</code> and <code class="inline">realm.api.&lt;your astarte domain&gt;</code> respectively, or at <code class="inline">api.&lt;your astarte domain&gt;/app</code> and <code class="inline">api.&lt;your astarte domain&gt;/realm</code>.</p>
+<p>If your Astarte installation has Swagger UI enabled, you can use the <code class="inline">/swagger</code> endpoint to access it, and to issue API calls straight from your browser to follow this guide.</p>
 
       <footer class="footer">
         <p>
