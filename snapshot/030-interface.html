@@ -14,7 +14,7 @@
       
       
     
-    <script src="dist/sidebar_items-7ba4d02f16.js"></script>
+    <script src="dist/sidebar_items-81fad690ec.js"></script>
     
   </head>
   <body data-type="extras">
@@ -76,7 +76,7 @@
 <blockquote><p>In computing, an interface is a shared boundary across which two or more separate components of a computer system exchange information.</p>
 </blockquote>
 <p>In Astarte each interface has an owner, can represent either a continuous data stream or a snapshot of a set of properties, and can be either aggregated into an object or be an independent set of individual members.</p>
-<p>If you are already familiar with interface’s basic concepts, you might want to jump directly to the <a href="interface_schema.html">Interface Schema</a>.</p>
+<p>If you are already familiar with interface’s basic concepts, you might want to jump directly to the <a href="040-interface_schema.html">Interface Schema</a>.</p>
 <h2 id="versioning" class="section-heading">
   <a href="#versioning" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Versioning
@@ -97,7 +97,7 @@
    &quot;version_minor&quot;: 0,
    [...]
 }</code></pre>
-<p>Valid values and variables are listed in the <a href="interface_schema.html">Interface Schema</a>.</p>
+<p>Valid values and variables are listed in the <a href="040-interface_schema.html">Interface Schema</a>.</p>
 <h2 id="interface-type" class="section-heading">
   <a href="#interface-type" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Interface Type
@@ -116,8 +116,8 @@
   Properties
 </h3>
 
-<p><code class="inline">properties</code> represent a persistent, stateful, synchronized state with no concept of history or timestamping. <code class="inline">properties</code> are useful, for example, when dealing with settings, states or policies/rules. <code class="inline">properties</code> are stored in a key-value fashion, and grouped according to their interface, and they are idempotent in the REST API semantics. Rather than being able to act on a stream like in the <code class="inline">datastream</code> case, <code class="inline">properties</code> can be retrieved, or can be used as a <a href="trigger.html">trigger</a> whenever they change.</p>
-<p>Values in a <code class="inline">properties</code> interface can be unset (or deleted according to the http jargon): to allow such a thing, the interface must have its <code class="inline">allow_unset</code> property set to <code class="inline">true</code>. Please <a href="interface_schema.html">refer to the JSON Schema</a> for further details.</p>
+<p><code class="inline">properties</code> represent a persistent, stateful, synchronized state with no concept of history or timestamping. <code class="inline">properties</code> are useful, for example, when dealing with settings, states or policies/rules. <code class="inline">properties</code> are stored in a key-value fashion, and grouped according to their interface, and they are idempotent in the REST API semantics. Rather than being able to act on a stream like in the <code class="inline">datastream</code> case, <code class="inline">properties</code> can be retrieved, or can be used as a <a href="060-triggers.html">trigger</a> whenever they change.</p>
+<p>Values in a <code class="inline">properties</code> interface can be unset (or deleted according to the http jargon): to allow such a thing, the interface must have its <code class="inline">allow_unset</code> property set to <code class="inline">true</code>. Please <a href="040-interface_schema.html">refer to the JSON Schema</a> for further details.</p>
 <h2 id="ownership" class="section-heading">
   <a href="#ownership" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Ownership

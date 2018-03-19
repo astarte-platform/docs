@@ -14,7 +14,7 @@
       
       
     
-    <script src="dist/sidebar_items-7ba4d02f16.js"></script>
+    <script src="dist/sidebar_items-81fad690ec.js"></script>
     
   </head>
   <body data-type="extras">
@@ -79,7 +79,7 @@
 </h2>
 
 <p>Astarte does not allow exchanging raw data - it rather forces the user to describe data <em>before</em> it is sent into the platform.</p>
-<p>Data is described with a mechanism named <a href="010-interface.html">Interfaces, explained in detail in the user guide</a>. Through Interfaces, Astarte creates and maintains a data model autonomously, sparing the user from the complexity of dealing with Databases and Data Management in general.</p>
+<p>Data is described with a mechanism named <a href="030-interface.html">Interfaces, explained in detail in the user guide</a>. Through Interfaces, Astarte creates and maintains a data model autonomously, sparing the user from the complexity of dealing with Databases and Data Management in general.</p>
 <h2 id="amqp-as-internal-api-mechanism" class="section-heading">
   <a href="#amqp-as-internal-api-mechanism" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   AMQP as internal API mechanism
@@ -92,7 +92,7 @@
 </h2>
 
 <p>Astarte identifies each device with a 128 bit Device ID which has to be unique within its Realm. As a best practice, it is advised to generate such an ID from hardware unique IDs or using dedicated hardware modules, to make it consistent across device reflashes. It is advised to use a cryptographic hash function (such as sha256) when generating it using a software module. Astarte will use URL encoded base64 (without padding) strings like <code class="inline">V_zv6ThCCtXWveQ8mPjsKg</code> in its representation.</p>
-<p>This detail is relevant not only for identifying and querying the device, but also for the <a href="030-pairing_mechanism.html">Pairing mechanism</a>, as a device’s credentials are associated to its Device ID.</p>
+<p>This detail is relevant not only for identifying and querying the device, but also for the <a href="050-pairing_mechanism.html">Pairing mechanism</a>, as a device’s credentials are associated to its Device ID.</p>
 <p><em>Note: currently, Astarte accepts Device IDs longer than 128 bit, which are then truncated to 128 bit internally. This behaviour exists for compatibility reasons but it’s not supported and will likely change in future releases - hence, refrain from using anything which is not a 128-bit Device ID.</em></p>
 <p><em>Note: As much as Device IDs should effectively be unique per-realm and this configuration will always be supported, some future optional optimizations might be available on top of the assumption that Device IDs are globally unique to an Astarte installation. Given the Device ID format has a 2<sup>-128</sup> chance of collision, it is safe to assume that as long as best practices for Device ID generation are followed, Device IDs will always be globally unique.</em></p>
 <h2 id="device-thing-interaction" class="section-heading">
@@ -147,7 +147,7 @@
 </h2>
 
 <p>Triggers are rules which are “triggered” whenever one or more conditions are satisfied. Every satisfied condition generates an ordered event for the <a href="020-components.html#trigger-engine">Trigger Engine</a> to be processed. They are one of the core concepts in Astarte and are the preferred way to handle push interactions between Astarte and connected applications.</p>
-<p>More details about triggers can be found in the <a href="040-triggers.html">dedicated section</a>.</p>
+<p>More details about triggers can be found in the <a href="060-triggers.html">dedicated section</a>.</p>
 
       <footer class="footer">
         <p>
