@@ -4,37 +4,38 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.17.1">
-    <title>Interface Schema – Astarte v0.9-snapshot</title>
-    <link rel="stylesheet" href="dist/app-110d9134a6.css" />
+    <meta name="generator" content="ExDoc v0.18.3">
+    <title>Interface Schema – Astarte v0.9.0</title>
+    <link rel="stylesheet" href="dist/app-480ffdc169.css" />
+    
+    <script src="dist/sidebar_items-50d016e11e.js"></script>
     
     
-      
-        <link rel="icon" type="image/png" href="assets/logo.png" />
-      
-      
     
-    <script src="dist/sidebar_items-81fad690ec.js"></script>
     
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
 
 <div class="main">
-<button class="sidebar-toggle">
+<button class="sidebar-button sidebar-toggle">
   <span class="icon-menu" aria-hidden="true"></span>
   <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
 </button>
 <section class="sidebar">
 
   
-  <a href="https://astarte.cloud" class="sidebar-projectLink">
+  <a href="http://astarte-platform.org" class="sidebar-projectLink">
     <div class="sidebar-projectDetails">
       <h1 class="sidebar-projectName">
         Astarte
       </h1>
       <h2 class="sidebar-projectVersion">
-        v0.9-snapshot
+        v0.9.0
       </h2>
     </div>
     
@@ -46,18 +47,14 @@
     <button type="submit" class="search-button">
       <span class="icon-search" aria-hidden="true"></span>
     </button>
-    <input name="q" type="text" id="search-list" class="search-input" placeholder="search" aria-label="Search" autocomplete="off" />
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
   </form>
 
   <ul class="sidebar-listNav">
     <li><a id="extras-list" href="#full-list">Pages</a></li>
 
     
-      <li><a id="modules-list" href="#full-list">Modules</a></li>
-    
 
-    
-      <li><a id="exceptions-list" href="#full-list">Exceptions</a></li>
     
 
     
@@ -113,7 +110,7 @@
 <td style="text-align: left"><strong>type</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Identifies the type of this Interface. Currently two types are supported: datastream and properties. datastream should be used when dealing with streams of non-persistent data, where a single path receives updates and there’s no concept of state. properties, instead, are meant to be an actual state and as such they have only a change history, and are retained.</td><td style="text-align: left">:white_check_mark: Yes</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>ownership</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Identifies the quality of the interface. Interfaces are meant to be unidirectional, and this property defines who’s sending or receiving data. thing means the device/gateway is sending data to Astarte, consumer means the device/gateway is receiving data from Astarte. Bidirectional mode is not supported, you should instantiate another interface for that.</td><td style="text-align: left">:white_check_mark: Yes</td>
+<td style="text-align: left"><strong>ownership</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Identifies the quality of the interface. Interfaces are meant to be unidirectional, and this property defines who’s sending or receiving data. device means the device/gateway is sending data to Astarte, consumer means the device/gateway is receiving data from Astarte. Bidirectional mode is not supported, you should instantiate another interface for that.</td><td style="text-align: left">:white_check_mark: Yes</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>aggregation</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Identifies the aggregation of the mappings of the interface. Individual means every mapping changes state or streams data independently, whereas an object aggregation treats the interface as an object, making all the mappings changes interdependent. Choosing the right aggregation might drastically improve performances.</td><td style="text-align: left">No, default: <code class="inline">&quot;individual&quot;</code></td>
@@ -198,7 +195,7 @@
   astarte.interface.schema.ownership :white_check_mark:
 </h3>
 
-<p>Identifies the quality of the interface. Interfaces are meant to be unidirectional, and this property defines who’s sending or receiving data. thing means the device/gateway is sending data to Astarte, consumer means the device/gateway is receiving data from Astarte. Bidirectional mode is not supported, you should instantiate another interface for that.</p>
+<p>Identifies the quality of the interface. Interfaces are meant to be unidirectional, and this property defines who’s sending or receiving data. device means the device/gateway is sending data to Astarte, consumer means the device/gateway is receiving data from Astarte. Bidirectional mode is not supported, you should instantiate another interface for that.</p>
 <ul>
 <li><strong>Type</strong>: <code class="inline">string</code>
 </li>
@@ -206,7 +203,7 @@
 </li>
 <li><p><strong>Allowed values</strong>:</p>
 <ul>
-<li><code class="inline">&quot;thing&quot;</code>
+<li><code class="inline">&quot;device&quot;</code>
 </li>
 <li><code class="inline">&quot;server&quot;</code>
 </li>
@@ -499,20 +496,22 @@
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.17.1),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.3),
           </span>
           <span class="line">
             designed by
             <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
             </span>
         </p>
-        <button class="night-mode-toggle"><span class="sr-only">Switch theme</span></button>
       </footer>
     </div>
   </div>
 </section>
 </div>
-  <script src="dist/app-4cfb39be16.js"></script>
+  <script src="dist/app-9bd040e5e5.js"></script>
+  
+  
+  
   
   </body>
 </html>
