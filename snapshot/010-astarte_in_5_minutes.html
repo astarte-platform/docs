@@ -175,7 +175,7 @@ $ make</code></pre>
 </h2>
 
 <p>Congratulations! Your devices or fake devices are now communicating with Astarte, and your tea should be ready by now. You can check if everything is working out by invoking AppEngine APIs to get some values. In case you are using <code class="inline">stream-test</code>, you can get the last sent value via cURL:</p>
-<pre><code class="sh">$ curl -X GET &quot;http://localhost:4002/v1/devices/&lt;your device id&gt;/interfaces/org.astarteplatform.Values/realValue?limit=1&quot; -H &quot;Authorization: Bearer $(./generate-astarte-credentials -t appengine -p test_realm.key)&quot;</code></pre>
+<pre><code class="sh">$ curl -X GET &quot;http://localhost:4002/v1/test/devices/&lt;your device id&gt;/interfaces/org.astarteplatform.Values/realValue?limit=1&quot; -H &quot;Authorization: Bearer $(./generate-astarte-credentials -t appengine -p test_realm.key)&quot;</code></pre>
 <p>If you get a meaningful value, congratulations - you have a working Astarte installation with your first <code class="inline">datastream</code> coming in!</p>
 <p>From here on, you can use all of Astarte’s APIs and features from your own installations. You can add devices, experiment with interfaces, or develop your own applications on top of Astarte’s triggers or AppEngine’s APIs. And have a lot of fun!</p>
 <h2 id="cleaning-up" class="section-heading">
