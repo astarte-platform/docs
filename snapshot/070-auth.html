@@ -8,7 +8,7 @@
     <title>Authentication and Authorization – Astarte v0.9.0</title>
     <link rel="stylesheet" href="dist/app-480ffdc169.css" />
     
-    <script src="dist/sidebar_items-50d016e11e.js"></script>
+    <script src="dist/sidebar_items-40779c5782.js"></script>
     
     
     
@@ -134,6 +134,10 @@
 </li>
 <li><code class="inline">a_hka</code>: Defines the regular expressions for Housekeeping API
 </li>
+<li><code class="inline">a_pa</code>: Defines the regular expressions for Pairing API
+</li>
+<li><code class="inline">a_ch</code>: Defines the regular expressions for Channels
+</li>
 </ul>
 <p>Of course, claims are considered only after a successful token verification. This means that the claim will be processed only if the caller is authenticated against the correct authentication realm  - this is especially the case for what concerns Housekeeping, which has a dedicated Authentication realm not tied to any Astarte realms.</p>
 <p>An example of a valid token claim is:</p>
@@ -183,6 +187,13 @@
 </h3>
 
 <p>Every API call <strong>must</strong> have an <code class="inline">Authorization: Bearer &lt;token&gt;</code> header. Not providing the token or providing a token which can’t be validated for the authentication realm of the context results in a 401 reply.</p>
+<h2 id="authorization-for-channels" class="section-heading">
+  <a href="#authorization-for-channels" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Authorization for Channels
+</h2>
+
+<p>A valid token should be supplied when opening the WebSocket, in the very same fashion to what happens with REST APIs. However, the claims in this token will support different verbs compared to the REST APIs, namely <code class="inline">JOIN</code> and <code class="inline">WATCH</code>. These have very specific meanings and are well explained in <a href="052-using_channels.html#authorization">Channels’ User Guide</a>.</p>
+<p>The behavior and supported tokens are equivalent to REST APIs.</p>
 <h2 id="supported-integrations" class="section-heading">
   <a href="#supported-integrations" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Supported integrations

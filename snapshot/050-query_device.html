@@ -8,7 +8,7 @@
     <title>Querying a Device – Astarte v0.9.0</title>
     <link rel="stylesheet" href="dist/app-480ffdc169.css" />
     
-    <script src="dist/sidebar_items-50d016e11e.js"></script>
+    <script src="dist/sidebar_items-40779c5782.js"></script>
     
     
     
@@ -164,13 +164,6 @@
 <p>Also, the hard cap has a very different meaning in downsampling. In this case, the hard cap applies to <code class="inline">downsample_to</code> instead of <code class="inline">limit</code>. <code class="inline">limit</code> can be an arbitrarly large amount of samples taken out of the DB, and can be used mainly to alleviate pressure in case of <em>extremely</em> large datasets which would require a lot of time for being processed by LTTB - even though, most of the time, you might want to define a time window to downsample instead.</p>
 <p>Astarte is also capable of downsampling aggregated interfaces, as long as a <code class="inline">downsample_key</code> is specified, which has to match the last token of an <code class="inline">endpoint</code> of the queried <code class="inline">interface</code> (i.e. in case the interface has a <code class="inline">/%{id}/myValue</code> mapping which should be used as the <code class="inline">downsample_key</code>, you should specify <code class="inline">downsample_key=myValue</code> in the query). When doing so, the aggregate will be downsampled using the chosen <code class="inline">endpoint</code> value as the <code class="inline">y</code> axis value, whereas its other <code class="inline">endpoints</code> will be disregarded when applying the algorithm. Please note that, no matter what <code class="inline">downsample_key</code> is used, a sample will be composed by the whole aggregation.</p>
 <p>If there is no way an interface can be downsampled (this is true, for example, if no <code class="inline">downsample_key</code> has been specified for <code class="inline">aggregations</code>, or for types such as <code class="inline">strings</code>), AppEngine API will return a <code class="inline">4xx</code> error. In general, downsampling is a powerful mechanism with a lot of limitations which really shines when plotting. Once again, this is a fundamental factor to consider when <a href="029-interface_design_guide.html">designing your interfaces</a>.</p>
-<h2 id="using-astarte-channels" class="section-heading">
-  <a href="#using-astarte-channels" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Using Astarte Channels
-</h2>
-
-<p>Especially when building Frontend applications, it is useful to receive real-time updates about data sent from Devices. Astarte leverages <a href="https://hexdocs.pm/phoenix/channels.html">Phoenix Channels</a> to provide such a thing over <a href="https://en.wikipedia.org/wiki/WebSocket">WebSockets</a>. WebSockets can be used natively from a Web Browser and follow the same authentication pattern as a standard HTTP call.</p>
-<p>Astarte Channels define a semantic on top of Phoenix Channels which allows read-only monitoring of <code class="inline">device</code> Interfaces. Authentication and Authorization over Channels happens in the very same way as <code class="inline">AppEngine</code>, and the <code class="inline">a_aea</code> claim in the token is respected when requesting interfaces and mappings to monitor.</p>
 
       <footer class="footer">
         <p>
