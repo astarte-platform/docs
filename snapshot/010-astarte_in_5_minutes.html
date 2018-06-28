@@ -8,7 +8,7 @@
     <title>Astarte in 5 minutes – Astarte v0.9.0</title>
     <link rel="stylesheet" href="dist/app-480ffdc169.css" />
     
-    <script src="dist/sidebar_items-40779c5782.js"></script>
+    <script src="dist/sidebar_items-b21f921a84.js"></script>
     
     
     
@@ -76,7 +76,7 @@
 </h2>
 
 <p>First of all, please keep in mind that <strong>this setup is not meant to be used in production</strong>: by default, no persistence is involved, the installation does not have any recovery mechanism, and you will have to restart services manually in case something goes awry. This guide is great if you want to take Astarte for a spin, or if you want to use an isolated instance for development.</p>
-<p>You will need a machine with at least 4GB of RAM (mainly due to Cassandra), with <a href="https://www.docker.com/">Docker</a>, <a href="https://github.com/cloudflare/cfssl">cfssl</a>, Python 3 and OpenSSL installed. You will need the <code class="inline">jwt</code> Python module for generating JWT tokens for Astarte, which you can install either via <code class="inline">pip</code> (<code class="inline">pip install jwt</code>) or using your distribution’s packages.</p>
+<p>You will need a machine with at least 4GB of RAM (mainly due to Cassandra), with <a href="https://www.docker.com/">Docker</a>, <a href="https://github.com/cloudflare/cfssl">cfssl</a>, Python 3 and OpenSSL installed. You will need the PyJWT Python module for generating JWT tokens for Astarte, which you can install either via <code class="inline">pip3</code> (<code class="inline">pip3 install pyjwt</code>) or using your distribution’s packages (e.g. <code class="inline">apt-get install python3-jwt</code> on Debian based distributions).</p>
 <p>Also, on the machine(s) or device(s) you will use as a client, you will need either Docker, or a <a href="https://www.qt.io/">Qt5</a> installation with development components if you wish to build and run components locally.</p>
 <h2 id="install-astarte" class="section-heading">
   <a href="#install-astarte" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
