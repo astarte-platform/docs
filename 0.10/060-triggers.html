@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.19.1">
+    <title>Triggers – Astarte v0.10.0-beta.1</title>
+    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
+    <script src="dist/sidebar_items-08e521ec09.js"></script>
+    
+  </head>
+  <body data-type="extras">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
+
+  <a href="http://astarte-platform.org" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+Astarte      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.10.0-beta.1
+      </h2>
+    </div>
+      <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Triggers</h1>
+<p>Triggers in Astarte are the go-to mechanism for generating push events. In contrast with AppEngine’s REST APIs, Triggers allow users to specify conditions upon which a custom payload is delivered to a recipient, using a specific <code class="inline">action</code>, which usually maps to a specific transport/protocol, such as HTTP.</p>
+<p>Each trigger is defined by two main components: <code class="inline">condition</code> and <code class="inline">action</code>.</p>
+<h2 id="condition" class="section-heading">
+  <a href="#condition" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Condition
+</h2>
+
+<p>A condition defines the event (or chain of events) upon which an action is triggered. Astarte monitors incoming events and triggers a corresponding action whenever there is a match.</p>
+<h2 id="action" class="section-heading">
+  <a href="#action" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Action
+</h2>
+
+<p>Actions are triggered by a matching condition. An Action defines how the event should be sent to the outer world (e.g. an http POST on a certain URL). In addition, most actions have a Payload, which carries the body of the event.</p>
+<p>Payloads are most of the time plain-text, and Astarte provides several ways to generate them. By default Astarte generates a JSON payload with all the relevant information of the event. This is also the format used when delivering payloads in Astarte Channels. The format for each payload can be found in the <a href="https://github.com/astarte-platform/astarte_core/blob/master/lib/astarte_core/triggers/simple_events/encoder.ex">simple events encoder</a>. In the foreseeable future, more user friendly documentation about <code class="inline">json</code> payloads will be provided.</p>
+<p>Astarte also provides a powerful templating mechanism for plain-text payloads based on top of <a href="https://mustache.github.io/">Mustache</a>. This is especially useful for integrating with third-party actors which require custom payload formats.</p>
+<p>Given this kind of flexibility, triggers are the most powerful way to push data to an external service, potentially without any additional customization.</p>
+<h2 id="relationship-with-channels" class="section-heading">
+  <a href="#relationship-with-channels" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Relationship with Channels
+</h2>
+
+<p>Channels are part of AppEngine, and allow users to monitor device events through WebSockets, on top of <a href="https://hexdocs.pm/phoenix/channels.html">Phoenix Channels</a>. Under the hood, Channels use transient triggers to define which kind of events will flow through a specific room.</p>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-a0c90688fa.js"></script>
+  
+  </body>
+</html>
+

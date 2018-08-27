@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.19.1">
+    <title>Introduction – Astarte v0.10.0-beta.1</title>
+    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
+    <script src="dist/sidebar_items-08e521ec09.js"></script>
+    
+  </head>
+  <body data-type="extras">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Sidebar</span>
+</button>
+<button class="sidebar-button night-mode-toggle">
+  <span class="icon-theme" aria-hidden="true"></span>
+  <span class="sr-only">Toggle Theme</span>
+</button>
+<section class="sidebar">
+
+  <a href="http://astarte-platform.org" class="sidebar-projectLink">
+    <div class="sidebar-projectDetails">
+      <h1 class="sidebar-projectName">
+Astarte      </h1>
+      <h2 class="sidebar-projectVersion">
+        v0.10.0-beta.1
+      </h2>
+    </div>
+      <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+  </a>
+
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+  </form>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Introduction</h1>
+<img align="right" src="assets/mascot_architecture.svg" style="border:20px solid transparent" alt="Join Puppy Lion and have some fun with Astarte!" width="40%" /><p>Astarte is a collection of components written in <a href="http://elixir-lang.org/">Elixir</a> meant to orchestrate and pilot a number of 3rd party components. These components include:</p>
+<ul>
+<li>One or more ingresses (the most popular implementation being an MQTT broker)
+</li>
+<li>An AMQP broker for handling messages and queues between Astarte’s services
+</li>
+<li>A Cassandra-like Database for ingesting and retrieving data (currently <a href="http://cassandra.apache.org/">Cassandra</a> and <a href="http://scylladb.com">ScyllaDB</a> are both supported)
+</li>
+</ul>
+<p>These components are never directly exposed to Astarte’s end user, who requires no knowledge whatsoever of the mentioned frameworks - they are rather orchestrated and managed directly by Astarte’s services. It is, however, responsability of Astarte’s administrators to make sure these services are made available the way they are meant to.</p>
+<p>For more details on this topic and, in general, on how to deal with Astarte’s installation and maintenance, please refer to the <a href="001-intro_administrator.html">Administrator Guide</a>.</p>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            </span>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  <script src="dist/app-a0c90688fa.js"></script>
+  
+  </body>
+</html>
+
