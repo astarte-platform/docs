@@ -4,19 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.18.3">
-    <title>Authentication and Authorization – Astarte v0.9.0</title>
-    <link rel="stylesheet" href="dist/app-480ffdc169.css" />
-    
-    <script src="dist/sidebar_items-40779c5782.js"></script>
-    
-    
-    
+    <meta name="generator" content="ExDoc v0.19.1">
+    <title>Authentication and Authorization – Astarte v0.10.0-dev</title>
+    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
+    <script src="dist/sidebar_items-08e521ec09.js"></script>
     
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
-
 <div class="main">
 <button class="sidebar-button sidebar-toggle">
   <span class="icon-menu" aria-hidden="true"></span>
@@ -28,19 +23,15 @@
 </button>
 <section class="sidebar">
 
-  
   <a href="http://astarte-platform.org" class="sidebar-projectLink">
     <div class="sidebar-projectDetails">
       <h1 class="sidebar-projectName">
-        Astarte
-      </h1>
+Astarte      </h1>
       <h2 class="sidebar-projectVersion">
-        v0.9.0
+        v0.10.0-dev
       </h2>
     </div>
-    
       <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
-    
   </a>
 
   <form class="sidebar-search" action="search.html">
@@ -53,11 +44,8 @@
   <ul class="sidebar-listNav">
     <li><a id="extras-list" href="#full-list">Pages</a></li>
 
-    
 
-    
 
-    
   </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
@@ -240,16 +228,15 @@
 <p>Over the lifetime of a cluster, it might be necessary to change a realm’s validation mean for the most diverse reasons. By design, validation means are meant to be long lived, and changing them is supposed to be an extraordinary operation.</p>
 <p>Astarte supports only one validation mean at a time. When the validation mean is changed, all tokens emitted which could be validated with the previous mean become invalid.</p>
 <p>It is also possible that there might be a delay between the request of a validation mean change and its actuation. This means during this grace period tokens will be validated against the previously configured mean. As such, it is advised to treat a validation mean change as a maintenance operation for the realm. More details can be found in the Administrator Guide.</p>
-
       <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.3),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
           </span>
           <span class="line">
             designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
             </span>
         </p>
       </footer>
@@ -257,10 +244,7 @@
   </div>
 </section>
 </div>
-  <script src="dist/app-9bd040e5e5.js"></script>
-  
-  
-  
+  <script src="dist/app-a0c90688fa.js"></script>
   
   </body>
 </html>

@@ -4,19 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.18.3">
-    <title>Astarte in 5 minutes – Astarte v0.9.0</title>
-    <link rel="stylesheet" href="dist/app-480ffdc169.css" />
-    
-    <script src="dist/sidebar_items-40779c5782.js"></script>
-    
-    
-    
+    <meta name="generator" content="ExDoc v0.19.1">
+    <title>Astarte in 5 minutes – Astarte v0.10.0-dev</title>
+    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
+    <script src="dist/sidebar_items-08e521ec09.js"></script>
     
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
-
 <div class="main">
 <button class="sidebar-button sidebar-toggle">
   <span class="icon-menu" aria-hidden="true"></span>
@@ -28,19 +23,15 @@
 </button>
 <section class="sidebar">
 
-  
   <a href="http://astarte-platform.org" class="sidebar-projectLink">
     <div class="sidebar-projectDetails">
       <h1 class="sidebar-projectName">
-        Astarte
-      </h1>
+Astarte      </h1>
       <h2 class="sidebar-projectVersion">
-        v0.9.0
+        v0.10.0-dev
       </h2>
     </div>
-    
       <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
-    
   </a>
 
   <form class="sidebar-search" action="search.html">
@@ -53,11 +44,8 @@
   <ul class="sidebar-listNav">
     <li><a id="extras-list" href="#full-list">Pages</a></li>
 
-    
 
-    
 
-    
   </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
@@ -148,17 +136,17 @@ $ curl -X POST http://localhost:4000/v1/test/triggers -H &quot;Authorization: Be
   Stream data
 </h2>
 
-<p>If you already have an Astarte compliant device, you can configure it and connect it straight away, and it will just work with your new installation - provided you skip SSL checks on the broker’s certificate. If you don’t, you can use Astarte’s <code class="inline">stream-test</code> to emulate an Astarte device and generate a <code class="inline">datastream</code>. You can do this either on the same machine where you are running Astarte, or from another machine or device on the same network.</p>
+<p>If you already have an Astarte compliant device, you can configure it and connect it straight away, and it will just work with your new installation - provided you skip SSL checks on the broker’s certificate. If you don’t, you can use Astarte’s <code class="inline">stream-qt5-test</code> to emulate an Astarte device and generate a <code class="inline">datastream</code>. You can do this either on the same machine where you are running Astarte, or from another machine or device on the same network.</p>
 <p>Depending on what your client supports, you can either compile <code class="inline">stream-qt5-test</code> (this will take some more time), or you can use a ready to use Docker container to launch it. Docker is the easiest and painless way, but this guide will cover both methods.</p>
-<h3 id="using-a-container-for-stream-test" class="section-heading">
-  <a href="#using-a-container-for-stream-test" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Using a container for stream-test
+<h3 id="using-a-container-for-stream-qt5-test" class="section-heading">
+  <a href="#using-a-container-for-stream-qt5-test" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Using a container for stream-qt5-test
 </h3>
 
-<p>Astarte’s <code class="inline">stream-test</code> can be pulled from Docker Hub with:</p>
-<pre><code class="sh">$ docker pull astarte/stream-test:snapshot</code></pre>
+<p>Astarte’s <code class="inline">stream-qt5-test</code> can be pulled from Docker Hub with:</p>
+<pre><code class="sh">$ docker pull astarte/astarte-stream-qt5-test:snapshot</code></pre>
 <p>Its most basic invocation (from your <code class="inline">astarte</code> repository tree) is:</p>
-<pre><code class="sh">$ docker run --net=&quot;host&quot; -e &quot;DEVICE_ID=$(./generate-astarte-device-id)&quot; -e &quot;PAIRING_HOST=http://localhost:4003&quot; -e &quot;REALM=test&quot; -e &quot;AGENT_KEY=$(./generate-astarte-credentials -t pairing -p test_realm.key)&quot; -e &quot;IGNORE_SSL_ERRORS=true&quot; astarte/stream-test:snapshot</code></pre>
+<pre><code class="sh">$ docker run --net=&quot;host&quot; -e &quot;DEVICE_ID=$(./generate-astarte-device-id)&quot; -e &quot;PAIRING_HOST=http://localhost:4003&quot; -e &quot;REALM=test&quot; -e &quot;AGENT_KEY=$(./generate-astarte-credentials -t pairing -p test_realm.key)&quot; -e &quot;IGNORE_SSL_ERRORS=true&quot; astarte/astarte-stream-qt5-test:snapshot</code></pre>
 <p>This will generate a random datastream from a brand new, random Device ID. You can tweak those parameters to whatever suits you better by having a look at the Dockerfile. You can spawn any number of instances you like, or you can have the same Device ID send longer streams of data by saving the container’s persistency through a Docker Volume. If you wish to do so, simply add <code class="inline">-v /persistency:&lt;your persistency path&gt;</code> to your <code class="inline">docker run</code> invocation.</p>
 <p>Refer to <code class="inline">stream-qt5-test</code> <a href="https://github.com/astarte-platform/stream-qt5-test/blob/master/README.md">README</a> for more details on which variables can be passed to the container.</p>
 <p>Also, please note that the <code class="inline">--net=&quot;host&quot;</code> parameter is required to make <code class="inline">localhost</code> work. If this is not desirable, you can change <code class="inline">PAIRING_HOST</code> to an host reachable from within the container network. Obviously, that parameter isn’t required if you’re running the container on a different machine and <code class="inline">PAIRING_HOST</code> is pointing to a different URL.</p>
@@ -188,7 +176,7 @@ $ make</code></pre>
   Grab your tea
 </h2>
 
-<p>Congratulations! Your devices or fake devices are now communicating with Astarte, and your tea should be ready by now. You can check if everything is working out by invoking AppEngine APIs to get some values. In case you are using <code class="inline">stream-test</code>, you can get the last sent value via cURL:</p>
+<p>Congratulations! Your devices or fake devices are now communicating with Astarte, and your tea should be ready by now. You can check if everything is working out by invoking AppEngine APIs to get some values. In case you are using <code class="inline">stream-qt5-test</code>, you can get the last sent value via cURL:</p>
 <pre><code class="sh">$ curl -X GET &quot;http://localhost:4002/v1/test/devices/&lt;your device id&gt;/interfaces/org.astarteplatform.Values/realValue?limit=1&quot; -H &quot;Authorization: Bearer $(./generate-astarte-credentials -t appengine -p test_realm.key)&quot;</code></pre>
 <p>If you get a meaningful value, congratulations - you have a working Astarte installation with your first <code class="inline">datastream</code> coming in!</p>
 <p>From here on, you can use all of Astarte’s APIs and features from your own installations. You can add devices, experiment with interfaces, or develop your own applications on top of Astarte’s triggers or AppEngine’s APIs. And have a lot of fun!</p>
@@ -207,16 +195,15 @@ $ make</code></pre>
 
 <p>Running Astarte through <code class="inline">docker-compose</code> is the fastest way for going from zero to hero. However, <strong>please keep in mind this setup is unlikely to hold for long in production, and is by design broken for large installations</strong>. We can’t stop you from running such a thing in production, but do so as long as you know you voided your warranty by doing so.</p>
 <p>This method is great for development and for trying out the system. If you wish to deploy Astarte in a more robust environment, have a look at <a href="https://astarte.cloud/">Astarte Enterprise</a> or, if you want to go the DIY way, make sure that <strong>at least</strong> every service which requires persistency has reliable storage and adequate redundancy beneath it.</p>
-
       <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.3),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
           </span>
           <span class="line">
             designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
             </span>
         </p>
       </footer>
@@ -224,10 +211,7 @@ $ make</code></pre>
   </div>
 </section>
 </div>
-  <script src="dist/app-9bd040e5e5.js"></script>
-  
-  
-  
+  <script src="dist/app-a0c90688fa.js"></script>
   
   </body>
 </html>

@@ -4,19 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.18.3">
-    <title>Connect a Device – Astarte v0.9.0</title>
-    <link rel="stylesheet" href="dist/app-480ffdc169.css" />
-    
-    <script src="dist/sidebar_items-40779c5782.js"></script>
-    
-    
-    
+    <meta name="generator" content="ExDoc v0.19.1">
+    <title>Connecting a Device – Astarte v0.10.0-dev</title>
+    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
+    <script src="dist/sidebar_items-08e521ec09.js"></script>
     
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
-
 <div class="main">
 <button class="sidebar-button sidebar-toggle">
   <span class="icon-menu" aria-hidden="true"></span>
@@ -28,19 +23,15 @@
 </button>
 <section class="sidebar">
 
-  
   <a href="http://astarte-platform.org" class="sidebar-projectLink">
     <div class="sidebar-projectDetails">
       <h1 class="sidebar-projectName">
-        Astarte
-      </h1>
+Astarte      </h1>
       <h2 class="sidebar-projectVersion">
-        v0.9.0
+        v0.10.0-dev
       </h2>
     </div>
-    
       <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
-    
   </a>
 
   <form class="sidebar-search" action="search.html">
@@ -53,11 +44,8 @@
   <ul class="sidebar-listNav">
     <li><a id="extras-list" href="#full-list">Pages</a></li>
 
-    
 
-    
 
-    
   </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
@@ -68,96 +56,82 @@
     <div id="content" class="content-inner">
 
 
-<h1>Connect a Device</h1>
-<p>Devices connect to Astarte through their designated Transport. </p>
-<h2 id="choosing-an-agent-mode" class="section-heading">
-  <a href="#choosing-an-agent-mode" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Choosing an Agent mode
+<h1>Connecting a Device</h1>
+<p>Once a Device has been Registered in Astarte, it is capable of connecting to it.</p>
+<p>Devices connect to Astarte through the use of <em>Transports</em>. A Transport is an arbitrary protocol implementation which maps Astarte’s concepts (mainly Interfaces) to a communication channel. Astarte’s main supported Transport is Astarte/MQTT, implemented on top of <a href="https://github.com/erlio/vernemq">VerneMQ</a> through <a href="https://github.com/astarte-platform/astarte_vmq_plugin">an additional plugin</a>, and it is used by Astarte’s SDKs for communication. However, virtually any protocol can be integrated in Astarte by creating a corresponding Transport.</p>
+<p>Transports also define the authentication/authorization mechanism of their Devices. For instance, Astarte/MQTT uses <a href="https://en.wikipedia.org/wiki/Mutual_authentication">mutual SSL Authentication</a> with Certificate Rotation for securing its Ingress and identifying its clients. To manage their Transport(s) and Credentials, Devices have to interact with Pairing.</p>
+<h2 id="credentials-secret-pairing-and-transports" class="section-heading">
+  <a href="#credentials-secret-pairing-and-transports" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Credentials Secret, Pairing and Transports
 </h2>
 
-<p>Before you begin connecting, you have to choose a Pairing mode for your realm. This will define how your devices will perform the first Pairing routine against your Realm.</p>
-<p>Please also note that you might choose to have a mixture of both mechanisms, even though this is definitely not a good idea in production.</p>
-<h3 id="on-board-agent" class="section-heading">
-  <a href="#on-board-agent" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  On Board Agent
-</h3>
-
-<p><em>Please keep in mind that the On Board Agent mechanism is not advised in production, as a single compromised device/token might compromise the Pairing routine for your entire fleet. It should be used only in non-critical use cases or during testing and development.</em></p>
-<p>When using a On Board Agent, you’re assuming you’re either unable or not willing to use a 3rd party for delivering the API Key to each one of your devices. Although this is a big compromise on security, it allows to deliver a shared secret among all devices.</p>
-<p>To create a On Board Agent, you simply need to emit a long-enough lived token from your SSO with Agent access to your realm (note: this part is in development and might be changed soon). This token should then be delivered to your devices.</p>
-<p>Once your device is knowledgeable about your token, you can use Astarte SDK to start the On Board Agent Pairing. This is done and managed automatically by the SDK, as long as you set the <code class="inline">agentKey</code> configuration key to a meaningful value, and no API Key has been set.</p>
-<h3 id="3rd-party-agent" class="section-heading">
-  <a href="#3rd-party-agent" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  3rd Party Agent
-</h3>
-
-<p>If you plan on getting your devices ready for production, you need a 3rd party agent to perform the first steps of the pairing routine. This is to prevent your devices from carrying any secret which could be used to authenticate and identify anything if not themselves.</p>
-<p>There are no strict requirements on how an Agent should be built. In Astarte’s terminology, an Agent is capable of authenticating against Pairing API with an <a href="https://hexdocs.pm/elixir/Agent.html"><code class="inline">Agent</code></a> role. As such, it can be implemented in the most suitable way for one’s use case: in its simplest form, it is an authenticated REST call to Astarte’s APIs and a subsequent manual insertion of the returned API Key in the device. Please refer to the API documentation for further details.</p>
-<h2 id="api-key-and-pairing" class="section-heading">
-  <a href="#api-key-and-pairing" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  API Key and Pairing
+<p>Once a Device has performed its first registration through an Agent, it holds its <em>Credentials Secret</em>. This <em>Credentials Secret</em> is the token the device uses for performing the actual Pairing routine, which results in the device obtaining its Credentials for accessing its designated Transport.</p>
+<p>A Device’s <em>Credentials Secret</em> allows access to <a href="https://docs.astarte-platform.org/snapshot/api/?urls.primaryName=Pairing%2520API#/device">Pairing API’s Device REST API</a>, which is then used for obtaining information about which Transports the Device can use for communicating, and for obtaining Credentials for its assigned Transports.</p>
+<p>As, from a user’s standpoint, the way a Device communicates with Astarte is entirely Transport-specific, this guide will cover using Astarte/MQTT through one of Astarte’s SDKs. If you are using a different Transport, please refer to its User Guide, or if you wish to implement your own, head over to <a href="">Transport Developer Documentation</a>.</p>
+<h2 id="using-astarte-mqtt-through-astarte-sdk" class="section-heading">
+  <a href="#using-astarte-mqtt-through-astarte-sdk" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Using Astarte/MQTT through Astarte SDK
 </h2>
 
-<p>Once a Device has performed its first registration through an Agent, it holds an API Key. This API Key is the token the device uses for performing the actual Pairing routine, which results in the device obtaining its Certificate. The API Key doesn’t rotate, it can’t be changed if not manually and identifies univocally a Device in a Realm.</p>
-<p>In the SDK, make sure your API Key is passed as the <code class="inline">apiKey</code> configuration key, to allow the SDK to perform automatically the Pairing routine when needed.</p>
+<p>If you are using one of Astarte’s SDK, the Pairing routine is entirely managed, and you won’t need to do any of the aforementioned steps. Just make sure your <em>Credentials Secret</em> is passed as the <code class="inline">apiKey</code> configuration key, to allow the SDK to perform automatically the Pairing routine when needed.</p>
 <p>The SDK does a number of automated things under the hood. Its flow is:</p>
 <ol>
-<li>The SDK verifies if a SSL certificate is present.
+<li>The SDK verifies if a SSL certificate for connecting to the broker is present.
 </li>
-<li>If it is, it attempts connecting to the transport.
+<li>If it is, it attempts connecting to the Transport.
 </li>
-<li>If the transport doesn’t accept the connection due to an SSL error, it queries Pairing API about its certificate status.
+<li>If the Transport doesn’t accept the connection due to an SSL error, it queries Pairing API about its certificate status.
 </li>
 <li>If Pairing API returns a problem with the certificate or, in general, the certificate isn’t valid, the certificate is erased and the Pairing procedure begins.
 </li>
-<li>The SDK invokes Pairing API until it manages to obtain a valid Certificate for its Transport.
+<li>The SDK invokes Pairing API until it manages to obtain a valid Certificate for the Transport.
 </li>
 </ol>
 <p>The SDK considers a Device successfully paired when it has a valid certificate and manages to connect to the Transport. Once in this state, the Device can start exchanging data.</p>
-<p><em>Note: the Pairing procedure is secure as long as Pairing API is queried using HTTPS. Plain HTTP installations are vulnerable to a number of different attacks and are not supported.</em></p>
-<h2 id="interfaces" class="section-heading">
-  <a href="#interfaces" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Interfaces
-</h2>
+<p><em>Note: the Pairing procedure is secure as long as Pairing API is queried using HTTPS. Plain HTTP installations are vulnerable to a number of different attacks and should NEVER be used in production.</em></p>
+<h3 id="interfaces-and-introspection" class="section-heading">
+  <a href="#interfaces-and-introspection" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Interfaces and Introspection
+</h3>
 
 <p>A Device <strong>must</strong> have some installed interfaces to be capable of exchanging data. These interfaces must be made known to the SDK and <a href="030-manage_interfaces.html#realm-vs-device-interface-relationship">installed in the Device’s Realm, as previously explained</a>.</p>
 <p>The SDK expects the user to provide a directory containing a set of valid interfaces. It then takes care of making Astarte aware of its registered interfaces through a process called Introspection. Introspection is a special control message in Astarte’s protocol which makes Astarte aware of a list of Interfaces and relative versions which are installed on the Device.</p>
-<p>Again, Astarte’s SDK, given a directory, is capable of performing the correct procedures for keeping Introspecting in sync correctly.</p>
-<h2 id="exchanging-data" class="section-heading">
+<p>Again, Astarte’s SDK, given a directory, is capable of performing the correct procedures for keeping Introspecting in sync correctly without any kind of user intervention. Astarte’s SDK also takes care of updating a Device’s Introspection if its interfaces change.</p>
+<h3 id="exchanging-data" class="section-heading">
   <a href="#exchanging-data" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Exchanging data
-</h2>
+</h3>
 
-<p>When a Device connects successfully, it <strong>must</strong> subscribe to its <code class="inline">server</code> Interfaces. The SDK takes care of this detail and exposes a higher level interface. For example, using the Qt5 SDK:</p>
-<pre><code class="elixir">{
-    m_sdk = new AstarteDeviceSDK(QStringLiteral(&quot;/path/to/transport-astarte.conf&quot;), QStringLiteral(&quot;/path/to/interfaces&quot;), deviceId);
-    connect(m_sdk-&gt;init(), &amp;Hemera::Operation::finished, this, &amp;AstarteStreamQt5Test::checkInitResult);
-    connect(m_sdk, &amp;AstarteDeviceSDK::dataReceived, this, &amp;AstarteStreamQt5Test::handleIncomingData);
-}
+<p>When a Device connects successfully, it <strong>must</strong> then subscribe to its <code class="inline">server</code> Interfaces. The SDK takes care of this detail and exposes a higher level interface. For example, using the Qt5 SDK:</p>
+<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="9910344421-1">{</span><span class="w">
+    </span><span class="n">m_sdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="nc">AstarteDeviceSDK</span><span class="p" data-group-id="9910344421-2">(</span><span class="nc">QStringLiteral</span><span class="p" data-group-id="9910344421-3">(</span><span class="s">&quot;/path/to/transport-astarte.conf&quot;</span><span class="p" data-group-id="9910344421-3">)</span><span class="p">,</span><span class="w"> </span><span class="nc">QStringLiteral</span><span class="p" data-group-id="9910344421-4">(</span><span class="s">&quot;/path/to/interfaces&quot;</span><span class="p" data-group-id="9910344421-4">)</span><span class="p">,</span><span class="w"> </span><span class="n">deviceId</span><span class="p" data-group-id="9910344421-2">)</span><span class="p">;</span><span class="w">
+    </span><span class="n">connect</span><span class="p" data-group-id="9910344421-5">(</span><span class="n">m_sdk</span><span class="o">-&gt;</span><span class="n">init</span><span class="p" data-group-id="9910344421-6">(</span><span class="p" data-group-id="9910344421-6">)</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">Hemera</span><span class="o">::</span><span class="nc">Operation</span><span class="o">::</span><span class="n">finished</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">AstarteStreamQt5Test</span><span class="o">::</span><span class="n">checkInitResult</span><span class="p" data-group-id="9910344421-5">)</span><span class="p">;</span><span class="w">
+    </span><span class="n">connect</span><span class="p" data-group-id="9910344421-7">(</span><span class="n">m_sdk</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">AstarteDeviceSDK</span><span class="o">::</span><span class="n">dataReceived</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">AstarteStreamQt5Test</span><span class="o">::</span><span class="n">handleIncomingData</span><span class="p" data-group-id="9910344421-7">)</span><span class="p">;</span><span class="w">
+</span><span class="p" data-group-id="9910344421-1">}</span><span class="w">
 
-void AstarteStreamQt5Test::handleIncomingData(const QByteArray &amp;interface, const QByteArray &amp;path, const QVariant &amp;value)
-{
-    qDebug() &lt;&lt; &quot;Received data, interface: &quot; &lt;&lt; interface &lt;&lt; &quot;path: &quot; &lt;&lt; path &lt;&lt; &quot;, value: &quot; &lt;&lt; value &lt;&lt; &quot;, Qt type name: &quot; &lt;&lt; value.typeName();
-}</code></pre>
-<p>Applications can simply connect to the <code class="inline">handleIncomingData</code> signal and have the data correctly formatted and delivered as it runs through the transport. On the other hand, for sending data:</p>
-<pre><code class="elixir">m_sdk-&gt;sendData(interface, path, value);</code></pre>
+</span><span class="n">void</span><span class="w"> </span><span class="nc">AstarteStreamQt5Test</span><span class="o">::</span><span class="n">handleIncomingData</span><span class="p" data-group-id="9910344421-8">(</span><span class="n">const</span><span class="w"> </span><span class="nc">QByteArray</span><span class="w"> </span><span class="o">&amp;</span><span class="n">interface</span><span class="p">,</span><span class="w"> </span><span class="n">const</span><span class="w"> </span><span class="nc">QByteArray</span><span class="w"> </span><span class="o">&amp;</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">const</span><span class="w"> </span><span class="nc">QVariant</span><span class="w"> </span><span class="o">&amp;</span><span class="n">value</span><span class="p" data-group-id="9910344421-8">)</span><span class="w">
+</span><span class="p" data-group-id="9910344421-9">{</span><span class="w">
+    </span><span class="n">qDebug</span><span class="p" data-group-id="9910344421-10">(</span><span class="p" data-group-id="9910344421-10">)</span><span class="w"> </span><span class="p" data-group-id="9910344421-11">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Received data, interface: &quot;</span><span class="w"> </span><span class="p" data-group-id="9910344421-12">&lt;&lt;</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="p" data-group-id="9910344421-13">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;path: &quot;</span><span class="w"> </span><span class="p" data-group-id="9910344421-14">&lt;&lt;</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="p" data-group-id="9910344421-15">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, value: &quot;</span><span class="w"> </span><span class="p" data-group-id="9910344421-16">&lt;&lt;</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p" data-group-id="9910344421-17">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, Qt type name: &quot;</span><span class="w"> </span><span class="p" data-group-id="9910344421-18">&lt;&lt;</span><span class="w"> </span><span class="n">value</span><span class="o">.</span><span class="n">typeName</span><span class="p" data-group-id="9910344421-19">(</span><span class="p" data-group-id="9910344421-19">)</span><span class="p">;</span><span class="w">
+</span><span class="p">}</span></code></pre>
+<p>Applications can simply connect to the <code class="inline">handleIncomingData</code> signal and have data correctly formatted and delivered as it runs through the transport. On the other hand, for sending data:</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">m_sdk</span><span class="o">-&gt;</span><span class="n">sendData</span><span class="p" data-group-id="6811019149-1">(</span><span class="n">interface</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="6811019149-1">)</span><span class="p">;</span></code></pre>
 <p>The SDK will check if data is coherent with its introspection, and send data onto the transport in the correct way.</p>
-<h2 id="reliability-retention-and-persistency-in-the-sdk" class="section-heading">
+<h3 id="reliability-retention-and-persistency-in-the-sdk" class="section-heading">
   <a href="#reliability-retention-and-persistency-in-the-sdk" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Reliability, retention and persistency in the SDK
-</h2>
+</h3>
 
 <p>Astarte’s SDK has an internal concept of persistency, depending on the behaviour defined in its installed Interfaces. The <code class="inline">retention</code> parameter, specifically, tells Astarte’s SDK how hard it should try to send a specific message. In case the Transport is unreachable, the SDK might try to persist, either in memory or on disk, and send the message when the connection is available again.</p>
-
+<p>Please note that these parameters declared in Interfaces are to be considered on a best effort basis. In case your SDK does not support persistency or has persistency disabled, a number of warranties requested by an Interface might not be satisfied. Make sure your SDK is configured correctly before moving to production.</p>
       <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.3),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
           </span>
           <span class="line">
             designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
             </span>
         </p>
       </footer>
@@ -165,10 +139,7 @@ void AstarteStreamQt5Test::handleIncomingData(const QByteArray &amp;interface, c
   </div>
 </section>
 </div>
-  <script src="dist/app-9bd040e5e5.js"></script>
-  
-  
-  
+  <script src="dist/app-a0c90688fa.js"></script>
   
   </body>
 </html>

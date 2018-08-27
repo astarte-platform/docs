@@ -4,19 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.18.3">
-    <title>Interfaces – Astarte v0.9.0</title>
-    <link rel="stylesheet" href="dist/app-480ffdc169.css" />
-    
-    <script src="dist/sidebar_items-40779c5782.js"></script>
-    
-    
-    
+    <meta name="generator" content="ExDoc v0.19.1">
+    <title>Interfaces – Astarte v0.10.0-dev</title>
+    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
+    <script src="dist/sidebar_items-08e521ec09.js"></script>
     
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
-
 <div class="main">
 <button class="sidebar-button sidebar-toggle">
   <span class="icon-menu" aria-hidden="true"></span>
@@ -28,19 +23,15 @@
 </button>
 <section class="sidebar">
 
-  
   <a href="http://astarte-platform.org" class="sidebar-projectLink">
     <div class="sidebar-projectDetails">
       <h1 class="sidebar-projectName">
-        Astarte
-      </h1>
+Astarte      </h1>
       <h2 class="sidebar-projectVersion">
-        v0.9.0
+        v0.10.0-dev
       </h2>
     </div>
-    
       <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
-    
   </a>
 
   <form class="sidebar-search" action="search.html">
@@ -53,11 +44,8 @@
   <ul class="sidebar-listNav">
     <li><a id="extras-list" href="#full-list">Pages</a></li>
 
-    
 
-    
 
-    
   </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
@@ -88,12 +76,12 @@
 
 <p>Interfaces are described using a JSON document. Each interface is identified by an unique interface name of maximum 128 characters, which must be a <a href="https://en.wikipedia.org/wiki/Reverse_domain_name_notation">Reverse Domain Name</a>. As a convention, the interface name usually contains its author’s URI Reverse Internet Domain Name.</p>
 <p>An example skeleton looks like this:</p>
-<pre><code class="elixir">{
-   &quot;interface_name&quot;: &quot;com.test.MyInterfaceName&quot;,
-   &quot;version_major&quot;: 1,
-   &quot;version_minor&quot;: 0,
-   [...]
-}</code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="5065162551-1">{</span><span class="w">
+   </span><span class="ss">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;com.test.MyInterfaceName&quot;</span><span class="p">,</span><span class="w">
+   </span><span class="ss">&quot;version_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+   </span><span class="ss">&quot;version_minor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+   </span><span class="p" data-group-id="5065162551-2">[</span><span class="n">...</span><span class="p" data-group-id="5065162551-2">]</span><span class="w">
+</span><span class="p" data-group-id="5065162551-1">}</span></code></pre>
 <p>Valid values and variables are listed in the <a href="040-interface_schema.html">Interface Schema</a>.</p>
 <h2 id="interface-type" class="section-heading">
   <a href="#interface-type" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -128,15 +116,15 @@
 
 <p>Every interface must have an array of mappings. Mappings are designed around REST controller semantics: each mapping describes an endpoint which is resolved to a path, it is strongly typed, and can have additional options. Just like in REST controllers, Endpoints can be parametrized to build REST-like collection and trees. Parameters are identified by <code class="inline">%{parameterName}</code>, with each endpoint supporting any number of parameters (see <a href="#limitations">Limitations</a>).</p>
 <p>This is how a parametrized mapping looks like:</p>
-<pre><code class="elixir">   [...]
-   &quot;mappings&quot;: [
-       {
-           &quot;endpoint&quot;: &quot;/%{itemIndex}/value&quot;,
-           &quot;type&quot;: &quot;integer&quot;,
-           &quot;reliability&quot;: &quot;unique&quot;,
-           &quot;retention&quot;: &quot;discard&quot;
-       },
-   [...]</code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="w">   </span><span class="p" data-group-id="7394108258-1">[</span><span class="n">...</span><span class="p" data-group-id="7394108258-1">]</span><span class="w">
+   </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7394108258-2">[</span><span class="w">
+       </span><span class="p" data-group-id="7394108258-3">{</span><span class="w">
+           </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
+           </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="p">,</span><span class="w">
+           </span><span class="ss">&quot;reliability&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;unique&quot;</span><span class="p">,</span><span class="w">
+           </span><span class="ss">&quot;retention&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;discard&quot;</span><span class="w">
+       </span><span class="p" data-group-id="7394108258-3">}</span><span class="p">,</span><span class="w">
+   </span><span class="p" data-group-id="7394108258-4">[</span><span class="n">...</span><span class="p" data-group-id="7394108258-4">]</span></code></pre>
 <p>In this example, <code class="inline">/0/value</code>, <code class="inline">/1/value</code> or <code class="inline">/test/value</code> all map to a valid endpoint, while <code class="inline">/te/st/value</code> can’t be resolved by any endpoint.</p>
 <h3 id="supported-data-types" class="section-heading">
   <a href="#supported-data-types" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -168,30 +156,30 @@
 </h3>
 
 <p>A valid interface must resolve a path univocally to a single endpoint. Take the following example:</p>
-<pre><code class="elixir">   [...]
-   &quot;mappings&quot;: [
-       {
-           &quot;endpoint&quot;: &quot;/%{itemIndex}/value&quot;,
-           &quot;type&quot;: &quot;integer&quot;
-       },
-       {
-           &quot;endpoint&quot;: &quot;/myPath/value&quot;,
-           &quot;type&quot;: &quot;integer&quot;
-       },
-   [...]</code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="w">   </span><span class="p" data-group-id="4056483515-1">[</span><span class="n">...</span><span class="p" data-group-id="4056483515-1">]</span><span class="w">
+   </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4056483515-2">[</span><span class="w">
+       </span><span class="p" data-group-id="4056483515-3">{</span><span class="w">
+           </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
+           </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="w">
+       </span><span class="p" data-group-id="4056483515-3">}</span><span class="p">,</span><span class="w">
+       </span><span class="p" data-group-id="4056483515-4">{</span><span class="w">
+           </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/myPath/value&quot;</span><span class="p">,</span><span class="w">
+           </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="w">
+       </span><span class="p" data-group-id="4056483515-4">}</span><span class="p">,</span><span class="w">
+   </span><span class="p" data-group-id="4056483515-5">[</span><span class="n">...</span><span class="p" data-group-id="4056483515-5">]</span></code></pre>
 <p>In such a case, the interface isn’t valid and is rejected, due to the fact that path <code class="inline">/myPath/value</code> is ambiguous and could be resolved to two different endpoints.</p>
 <p>In case the interface’s aggregation is <code class="inline">object</code>, additional restrictions apply. Endpoints in the same interface must all have the same depth, and the same number of parameters. If the interface is parametrized, every endpoint must have the same parameter name at the same level. This is an example of a valid aggregated interface mapping:</p>
-<pre><code class="elixir">   [...]
-   &quot;mappings&quot;: [
-       {
-           &quot;endpoint&quot;: &quot;/%{itemIndex}/value&quot;,
-           &quot;type&quot;: &quot;integer&quot;
-       },
-       {
-           &quot;endpoint&quot;: &quot;/%{itemIndex}/otherValue&quot;,
-           &quot;type&quot;: &quot;string&quot;
-       },
-   [...]</code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="w">   </span><span class="p" data-group-id="3318307073-1">[</span><span class="n">...</span><span class="p" data-group-id="3318307073-1">]</span><span class="w">
+   </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3318307073-2">[</span><span class="w">
+       </span><span class="p" data-group-id="3318307073-3">{</span><span class="w">
+           </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
+           </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="w">
+       </span><span class="p" data-group-id="3318307073-3">}</span><span class="p">,</span><span class="w">
+       </span><span class="p" data-group-id="3318307073-4">{</span><span class="w">
+           </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/%{itemIndex}/otherValue&quot;</span><span class="p">,</span><span class="w">
+           </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="w">
+       </span><span class="p" data-group-id="3318307073-4">}</span><span class="p">,</span><span class="w">
+   </span><span class="p" data-group-id="3318307073-5">[</span><span class="n">...</span><span class="p" data-group-id="3318307073-5">]</span></code></pre>
 <h2 id="aggregation" class="section-heading">
   <a href="#aggregation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Aggregation
@@ -236,16 +224,15 @@
 <li>When sending real time commands in <code class="inline">datastream</code> interfaces, <code class="inline">discard</code> is usually the best option. Even though it does not guarantee delivery, it prevents users from unwillingly sending the same command over and over if the recipient isn’t available, causing a queue of commands to be sent to the recipient when it gets back online. In general, <a href="#datastream-specific-features"><code class="inline">retention</code></a> should be used to keep track of low traffic/important events
 </li>
 </ul>
-
       <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.3),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
           </span>
           <span class="line">
             designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
             </span>
         </p>
       </footer>
@@ -253,10 +240,7 @@
   </div>
 </section>
 </div>
-  <script src="dist/app-9bd040e5e5.js"></script>
-  
-  
-  
+  <script src="dist/app-a0c90688fa.js"></script>
   
   </body>
 </html>
