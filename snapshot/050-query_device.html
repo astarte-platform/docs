@@ -4,14 +4,19 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.19.1">
-    <title>Querying a Device – Astarte v0.10.0-dev</title>
-    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
-    <script src="dist/sidebar_items-08e521ec09.js"></script>
+    <meta name="generator" content="ExDoc v0.18.3">
+    <title>Querying a Device – Astarte v0.11.0-dev</title>
+    <link rel="stylesheet" href="dist/app-480ffdc169.css" />
+    
+    <script src="dist/sidebar_items-3c79eaf123.js"></script>
+    
+    
+    
     
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+
 <div class="main">
 <button class="sidebar-button sidebar-toggle">
   <span class="icon-menu" aria-hidden="true"></span>
@@ -23,15 +28,19 @@
 </button>
 <section class="sidebar">
 
+  
   <a href="http://astarte-platform.org" class="sidebar-projectLink">
     <div class="sidebar-projectDetails">
       <h1 class="sidebar-projectName">
-Astarte      </h1>
+        Astarte
+      </h1>
       <h2 class="sidebar-projectVersion">
-        v0.10.0-dev
+        v0.11.0-dev
       </h2>
     </div>
+    
       <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+    
   </a>
 
   <form class="sidebar-search" action="search.html">
@@ -44,8 +53,11 @@ Astarte      </h1>
   <ul class="sidebar-listNav">
     <li><a id="extras-list" href="#full-list">Pages</a></li>
 
+    
 
+    
 
+    
   </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
@@ -65,43 +77,49 @@ Astarte      </h1>
 
 <p>First things first, you can check if your device is correctly registered in Astarte, and its current status. Let’s assume our Device has <code class="inline">f0VMRgIBAQAAAAAAAAAAAA</code> as its id.</p>
 <p><em>Sample Request</em></p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">GET</span><span class="w"> </span><span class="n">app</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span></code></pre>
+<pre><code class="elixir">GET appengine.api.&lt;your astarte domain&gt;/v1/test/devices/f0VMRgIBAQAAAAAAAAAAAA</code></pre>
 <p><em>Sample Response</em></p>
 <pre><code class="json">{
     &quot;data&quot;: {
         &quot;total_received_msgs&quot;: 221,
         &quot;total_received_bytes&quot;: 11660,
-        &quot;last_seen_ip&quot;: &quot;1.2.3.4&quot;,
-        &quot;last_pairing_ip&quot;: &quot;4.3.2.1&quot;,
+        &quot;last_seen_ip&quot;: &quot;203.0.113.89&quot;,
+        &quot;last_credentials_request_ip&quot;: &quot;203.0.113.201&quot;,
         &quot;last_disconnection&quot;: &quot;2018-02-07T18:38:57.266Z&quot;,
         &quot;last_connection&quot;: &quot;2018-02-08T09:49:26.556Z&quot;,
         &quot;id&quot;: &quot;f0VMRgIBAQAAAAAAAAAAAA&quot;,
-        &quot;first_pairing&quot;: &quot;2018-01-31T17:10:59.270Z&quot;,
-        &quot;connected&quot;: true
+        &quot;first_registration&quot;: &quot;2018-01-31T17:10:59.270Z&quot;,
+        &quot;connected&quot;: true,
+        &quot;introspection&quot; : {
+            &quot;com.example.ExampleInterface&quot; : {
+                &quot;major&quot; : 1,
+                &quot;minor&quot; : 0
+            },
+            &quot;org.example.TestInterface&quot; : {
+                &quot;major&quot; : 0,
+                &quot;minor&quot; : 2
+            }
+        }
     }
 }</code></pre>
 <p>A Device’s status includes a number of useful information, among which whether it is connected or not to its Transport. From there on, we can check on its Introspection.</p>
 <p><em>Sample Request</em></p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">GET</span><span class="w"> </span><span class="n">app</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span><span class="o">/</span><span class="n">interfaces</span></code></pre>
+<pre><code class="elixir">GET appengine.api.&lt;your astarte domain&gt;/v1/test/devices/f0VMRgIBAQAAAAAAAAAAAA/interfaces</code></pre>
 <p><em>Sample Response</em></p>
 <pre><code class="json">{
     &quot;data&quot;: [
-        &quot;com.my.Interface1&quot;,
-        &quot;com.my.Interface2&quot;,
-        &quot;com.my.Interface3&quot;,
-        &quot;com.my.Interface4&quot;
+        &quot;com.example.ExampleInterface&quot;,
+        &quot;com.example.TestInterface&quot;
     ]
 }</code></pre>
 <p>This returns the Interfaces which the device reported in its Introspection <em>and</em> which are known to the Realm.</p>
 <p>Depending on the aggregation and ownership of the Interface, you can <code class="inline">GET</code>/<code class="inline">PUT</code>/<code class="inline">POST</code> on the interface itself or one of its mappings. Some examples are:</p>
 <p>Get data from an <code class="inline">aggregate</code> <code class="inline">device</code> <code class="inline">properties</code> interface:</p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">GET</span><span class="w"> </span><span class="n">app</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span><span class="o">/</span><span class="n">interfaces</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">my</span><span class="o">.</span><span class="nc">Interface1</span></code></pre>
+<pre><code class="elixir">GET appengine.api.&lt;your astarte domain&gt;/v1/test/devices/f0VMRgIBAQAAAAAAAAAAAA/interfaces/com.example.ExampleInterface</code></pre>
 <p>Get last sent value from an <code class="inline">individual</code> <code class="inline">device</code> <code class="inline">datastream</code> interface:</p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">GET</span><span class="w"> </span><span class="n">app</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span><span class="o">/</span><span class="n">interfaces</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">my</span><span class="o">.</span><span class="nc">Interface2</span><span class="o">/</span><span class="n">myValue?</span><span class="n">limit</span><span class="o">=</span><span class="mi">1</span></code></pre>
-<p>Set values in an <code class="inline">aggregate</code> <code class="inline">server</code> <code class="inline">properties</code> interface:</p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">PUT</span><span class="w"> </span><span class="n">app</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span><span class="o">/</span><span class="n">interfaces</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">my</span><span class="o">.</span><span class="nc">Interface3</span></code></pre>
+<pre><code class="elixir">GET appengine.api.&lt;your astarte domain&gt;/v1/test/devices/f0VMRgIBAQAAAAAAAAAAAA/interfaces/com.example.TestInterface/myValue?limit=1</code></pre>
 <p>Set values in an <code class="inline">individual</code> <code class="inline">server</code> <code class="inline">datastream</code> interface:</p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">POST</span><span class="w"> </span><span class="n">app</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span><span class="o">/</span><span class="n">interfaces</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">my</span><span class="o">.</span><span class="nc">Interface4</span><span class="o">/</span><span class="n">myOtherValue</span></code></pre>
+<pre><code class="elixir">POST appengine.api.&lt;your astarte domain&gt;/v1/test/devices/f0VMRgIBAQAAAAAAAAAAAA/interfaces/com.example.OtherTestInterface/myOtherValue</code></pre>
 <p>In general, to query AppEngine, the following things must be kept in mind</p>
 <ul>
 <li>When sending data, use <code class="inline">PUT</code> if dealing with <code class="inline">properties</code>, <code class="inline">POST</code> if dealing with <code class="inline">datastream</code>.
@@ -152,15 +170,16 @@ Astarte      </h1>
 <p>Also, the hard cap has a very different meaning in downsampling. In this case, the hard cap applies to <code class="inline">downsample_to</code> instead of <code class="inline">limit</code>. <code class="inline">limit</code> can be an arbitrarly large amount of samples taken out of the DB, and can be used mainly to alleviate pressure in case of <em>extremely</em> large datasets which would require a lot of time for being processed by LTTB - even though, most of the time, you might want to define a time window to downsample instead.</p>
 <p>Astarte is also capable of downsampling aggregated interfaces, as long as a <code class="inline">downsample_key</code> is specified, which has to match the last token of an <code class="inline">endpoint</code> of the queried <code class="inline">interface</code> (i.e. in case the interface has a <code class="inline">/%{id}/myValue</code> mapping which should be used as the <code class="inline">downsample_key</code>, you should specify <code class="inline">downsample_key=myValue</code> in the query). When doing so, the aggregate will be downsampled using the chosen <code class="inline">endpoint</code> value as the <code class="inline">y</code> axis value, whereas its other <code class="inline">endpoints</code> will be disregarded when applying the algorithm. Please note that, no matter what <code class="inline">downsample_key</code> is used, a sample will be composed by the whole aggregation.</p>
 <p>If there is no way an interface can be downsampled (this is true, for example, if no <code class="inline">downsample_key</code> has been specified for <code class="inline">aggregations</code>, or for types such as <code class="inline">strings</code>), AppEngine API will return a <code class="inline">4xx</code> error. In general, downsampling is a powerful mechanism with a lot of limitations which really shines when plotting. Once again, this is a fundamental factor to consider when <a href="029-interface_design_guide.html">designing your interfaces</a>.</p>
+
       <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.3),
           </span>
           <span class="line">
             designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
             </span>
         </p>
       </footer>
@@ -168,7 +187,10 @@ Astarte      </h1>
   </div>
 </section>
 </div>
-  <script src="dist/app-a0c90688fa.js"></script>
+  <script src="dist/app-9bd040e5e5.js"></script>
+  
+  
+  
   
   </body>
 </html>
