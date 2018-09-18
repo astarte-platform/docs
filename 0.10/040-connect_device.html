@@ -4,14 +4,19 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.19.1">
-    <title>Connecting a Device – Astarte v0.10.0-beta.1</title>
-    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
-    <script src="dist/sidebar_items-08e521ec09.js"></script>
+    <meta name="generator" content="ExDoc v0.18.3">
+    <title>Connecting a Device – Astarte v0.10.0-beta.2</title>
+    <link rel="stylesheet" href="dist/app-480ffdc169.css" />
+    
+    <script src="dist/sidebar_items-3c79eaf123.js"></script>
+    
+    
+    
     
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+
 <div class="main">
 <button class="sidebar-button sidebar-toggle">
   <span class="icon-menu" aria-hidden="true"></span>
@@ -23,15 +28,19 @@
 </button>
 <section class="sidebar">
 
+  
   <a href="http://astarte-platform.org" class="sidebar-projectLink">
     <div class="sidebar-projectDetails">
       <h1 class="sidebar-projectName">
-Astarte      </h1>
+        Astarte
+      </h1>
       <h2 class="sidebar-projectVersion">
-        v0.10.0-beta.1
+        v0.10.0-beta.2
       </h2>
     </div>
+    
       <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+    
   </a>
 
   <form class="sidebar-search" action="search.html">
@@ -44,8 +53,11 @@ Astarte      </h1>
   <ul class="sidebar-listNav">
     <li><a id="extras-list" href="#full-list">Pages</a></li>
 
+    
 
+    
 
+    
   </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
@@ -103,18 +115,18 @@ Astarte      </h1>
 </h3>
 
 <p>When a Device connects successfully, it <strong>must</strong> then subscribe to its <code class="inline">server</code> Interfaces. The SDK takes care of this detail and exposes a higher level interface. For example, using the Qt5 SDK:</p>
-<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="3010943398-1">{</span><span class="w">
-    </span><span class="n">m_sdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="nc">AstarteDeviceSDK</span><span class="p" data-group-id="3010943398-2">(</span><span class="nc">QStringLiteral</span><span class="p" data-group-id="3010943398-3">(</span><span class="s">&quot;/path/to/transport-astarte.conf&quot;</span><span class="p" data-group-id="3010943398-3">)</span><span class="p">,</span><span class="w"> </span><span class="nc">QStringLiteral</span><span class="p" data-group-id="3010943398-4">(</span><span class="s">&quot;/path/to/interfaces&quot;</span><span class="p" data-group-id="3010943398-4">)</span><span class="p">,</span><span class="w"> </span><span class="n">deviceId</span><span class="p" data-group-id="3010943398-2">)</span><span class="p">;</span><span class="w">
-    </span><span class="n">connect</span><span class="p" data-group-id="3010943398-5">(</span><span class="n">m_sdk</span><span class="o">-&gt;</span><span class="n">init</span><span class="p" data-group-id="3010943398-6">(</span><span class="p" data-group-id="3010943398-6">)</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">Hemera</span><span class="o">::</span><span class="nc">Operation</span><span class="o">::</span><span class="n">finished</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">AstarteStreamQt5Test</span><span class="o">::</span><span class="n">checkInitResult</span><span class="p" data-group-id="3010943398-5">)</span><span class="p">;</span><span class="w">
-    </span><span class="n">connect</span><span class="p" data-group-id="3010943398-7">(</span><span class="n">m_sdk</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">AstarteDeviceSDK</span><span class="o">::</span><span class="n">dataReceived</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">AstarteStreamQt5Test</span><span class="o">::</span><span class="n">handleIncomingData</span><span class="p" data-group-id="3010943398-7">)</span><span class="p">;</span><span class="w">
-</span><span class="p" data-group-id="3010943398-1">}</span><span class="w">
+<pre><code class="elixir">{
+    m_sdk = new AstarteDeviceSDK(QStringLiteral(&quot;/path/to/transport-astarte.conf&quot;), QStringLiteral(&quot;/path/to/interfaces&quot;), deviceId);
+    connect(m_sdk-&gt;init(), &amp;Hemera::Operation::finished, this, &amp;AstarteStreamQt5Test::checkInitResult);
+    connect(m_sdk, &amp;AstarteDeviceSDK::dataReceived, this, &amp;AstarteStreamQt5Test::handleIncomingData);
+}
 
-</span><span class="n">void</span><span class="w"> </span><span class="nc">AstarteStreamQt5Test</span><span class="o">::</span><span class="n">handleIncomingData</span><span class="p" data-group-id="3010943398-8">(</span><span class="n">const</span><span class="w"> </span><span class="nc">QByteArray</span><span class="w"> </span><span class="o">&amp;</span><span class="n">interface</span><span class="p">,</span><span class="w"> </span><span class="n">const</span><span class="w"> </span><span class="nc">QByteArray</span><span class="w"> </span><span class="o">&amp;</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">const</span><span class="w"> </span><span class="nc">QVariant</span><span class="w"> </span><span class="o">&amp;</span><span class="n">value</span><span class="p" data-group-id="3010943398-8">)</span><span class="w">
-</span><span class="p" data-group-id="3010943398-9">{</span><span class="w">
-    </span><span class="n">qDebug</span><span class="p" data-group-id="3010943398-10">(</span><span class="p" data-group-id="3010943398-10">)</span><span class="w"> </span><span class="p" data-group-id="3010943398-11">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Received data, interface: &quot;</span><span class="w"> </span><span class="p" data-group-id="3010943398-12">&lt;&lt;</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="p" data-group-id="3010943398-13">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;path: &quot;</span><span class="w"> </span><span class="p" data-group-id="3010943398-14">&lt;&lt;</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="p" data-group-id="3010943398-15">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, value: &quot;</span><span class="w"> </span><span class="p" data-group-id="3010943398-16">&lt;&lt;</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p" data-group-id="3010943398-17">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, Qt type name: &quot;</span><span class="w"> </span><span class="p" data-group-id="3010943398-18">&lt;&lt;</span><span class="w"> </span><span class="n">value</span><span class="o">.</span><span class="n">typeName</span><span class="p" data-group-id="3010943398-19">(</span><span class="p" data-group-id="3010943398-19">)</span><span class="p">;</span><span class="w">
-</span><span class="p">}</span></code></pre>
+void AstarteStreamQt5Test::handleIncomingData(const QByteArray &amp;interface, const QByteArray &amp;path, const QVariant &amp;value)
+{
+    qDebug() &lt;&lt; &quot;Received data, interface: &quot; &lt;&lt; interface &lt;&lt; &quot;path: &quot; &lt;&lt; path &lt;&lt; &quot;, value: &quot; &lt;&lt; value &lt;&lt; &quot;, Qt type name: &quot; &lt;&lt; value.typeName();
+}</code></pre>
 <p>Applications can simply connect to the <code class="inline">handleIncomingData</code> signal and have data correctly formatted and delivered as it runs through the transport. On the other hand, for sending data:</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">m_sdk</span><span class="o">-&gt;</span><span class="n">sendData</span><span class="p" data-group-id="1218086230-1">(</span><span class="n">interface</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="1218086230-1">)</span><span class="p">;</span></code></pre>
+<pre><code class="elixir">m_sdk-&gt;sendData(interface, path, value);</code></pre>
 <p>The SDK will check if data is coherent with its introspection, and send data onto the transport in the correct way.</p>
 <h3 id="reliability-retention-and-persistency-in-the-sdk" class="section-heading">
   <a href="#reliability-retention-and-persistency-in-the-sdk" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -123,15 +135,16 @@ Astarte      </h1>
 
 <p>Astarte’s SDK has an internal concept of persistency, depending on the behaviour defined in its installed Interfaces. The <code class="inline">retention</code> parameter, specifically, tells Astarte’s SDK how hard it should try to send a specific message. In case the Transport is unreachable, the SDK might try to persist, either in memory or on disk, and send the message when the connection is available again.</p>
 <p>Please note that these parameters declared in Interfaces are to be considered on a best effort basis. In case your SDK does not support persistency or has persistency disabled, a number of warranties requested by an Interface might not be satisfied. Make sure your SDK is configured correctly before moving to production.</p>
+
       <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.3),
           </span>
           <span class="line">
             designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
             </span>
         </p>
       </footer>
@@ -139,7 +152,10 @@ Astarte      </h1>
   </div>
 </section>
 </div>
-  <script src="dist/app-a0c90688fa.js"></script>
+  <script src="dist/app-9bd040e5e5.js"></script>
+  
+  
+  
   
   </body>
 </html>
