@@ -8,7 +8,7 @@
     <title>Authentication and Authorization – Astarte v0.11.0-dev</title>
     <link rel="stylesheet" href="dist/app-480ffdc169.css" />
     
-    <script src="dist/sidebar_items-3c79eaf123.js"></script>
+    <script src="dist/sidebar_items-42e18a3185.js"></script>
     
     
     
@@ -97,29 +97,30 @@
 <p><em>Note: given Astarte’s interface are either read only or write only, HTTP verb fine-graining in AppEngine API is mostly useful for preventing a user from deleting a consumer Datastream even though it has write access to it. Most of the time, using only a single regular expression with no verb fine-graining works.</em></p>
 <p>Examples of valid regular expressions on AppEngine API are:</p>
 <ul>
-<li><code class="inline">^POST$::^devices/.*/interfaces/com\\.my\\.interface/.*$</code>: Allows to set individual values on the <code class="inline">com.my.interface</code> interface on any individual device in the realm.
+<li><code class="inline">POST::devices/.*/interfaces/com\\.my\\.interface/.*</code>: Allows to set individual values on the <code class="inline">com.my.interface</code> interface on any individual device in the realm.
 </li>
-<li><code class="inline">^.*$::^.*/interfaces/com\\.my\\.monitoring\\.interface.*$</code>: Allows to get/set/delete either the aggregate or the individual values of the <code class="inline">com.my.monitoring.interface$</code> interface on any device or device aggregation in the realm.
+<li><code class="inline">.*::.*/interfaces/com\\.my\\.monitoring\\.interface.*</code>: Allows to get/set/delete either the aggregate or the individual values of the <code class="inline">com.my.monitoring.interface</code> interface on any device or device aggregation in the realm.
 </li>
-<li><code class="inline">^.*$::^devices/j0zbvbQp9ZNnanwvh4uOCw.*$</code>: Allows every operation on device <code class="inline">j0zbvbQp9ZNnanwvh4uOCw</code>
+<li><code class="inline">.*::devices/j0zbvbQp9ZNnanwvh4uOCw.*</code>: Allows every operation on device <code class="inline">j0zbvbQp9ZNnanwvh4uOCw</code>
 </li>
-<li><code class="inline">^GET$::^devices/[a-zA-Z0-9-_]*$</code>: Allows to get every individual device’s status, but denies access to any additional information/operation on them.
+<li><code class="inline">GET::devices/[a-zA-Z0-9-_]*</code>: Allows to get every individual device’s status, but denies access to any additional information/operation on them.
 </li>
 </ul>
 <p>Examples of valid regular expressions on Realm Management API are:</p>
 <ul>
-<li><code class="inline">^POST$::^interfaces\/.*$</code>: Allows installing new interfaces in the realm.
+<li><code class="inline">POST::interfaces\/.*</code>: Allows installing new interfaces in the realm.
 </li>
-<li><code class="inline">^GET$::^interfaces\/.*$</code>: Allows listing all interfaces in the realm.
+<li><code class="inline">GET::interfaces\/.*</code>: Allows inspecting every interface in the realm.
 </li>
-<li><code class="inline">^PUT$::^interfaces\/.*\/0$</code>: Allows updating all draft interfaces in the realm.
+<li><code class="inline">PUT::interfaces\/.*\/0</code>: Allows updating all draft interfaces in the realm.
 </li>
 </ul>
 <p>Other valid examples are:</p>
 <ul>
-<li><code class="inline">^.*$::^.*$</code>: Allows any operation on the given API.
+<li><code class="inline">.*::.*</code>: Allows any operation on the given API.
 </li>
 </ul>
+<p>Both verb and path regular expressions are implicitly delimited by adding <code class="inline">^</code> before and <code class="inline">$</code> after the regular expression string. For example, if you use <code class="inline">GET::interfaces</code> as regular expression in Realm Management API, the path will be matched against <code class="inline">^GET$</code> and the path will be matched against <code class="inline">^interfaces$</code>. This way the only operation allowed will be listing all the interfaces, while all operation on <code class="inline">interfaces/</code> subpaths will be denied.</p>
 <h3 id="token-claims-and-formats" class="section-heading">
   <a href="#token-claims-and-formats" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Token claims and formats
@@ -142,10 +143,10 @@
 <p>Of course, claims are considered only after a successful token verification. This means that the claim will be processed only if the caller is authenticated against the correct authentication realm  - this is especially the case for what concerns Housekeeping, which has a dedicated Authentication realm not tied to any Astarte realms.</p>
 <p>An example of a valid token claim is:</p>
 <pre><code class="json">{
-    &quot;a_aea&quot;: [&quot;^GET$::^devices/[a-zA-Z0-9-_]*$&quot;,
-             &quot;^.*$::^.*/interfaces/com\\.my\\.monitoring\\.interface.*$&quot;,
-             &quot;^.*$::^devices/j0zbvbQp9ZNnanwvh4uOCw.*$&quot;],
-    &quot;a_rma&quot;: [&quot;^GET$::^.*$&quot;]
+    &quot;a_aea&quot;: [&quot;GET::devices/[a-zA-Z0-9-_]*&quot;,
+             &quot;.*::.*/interfaces/com\\.my\\.monitoring\\.interface.*&quot;,
+             &quot;.*::devices/j0zbvbQp9ZNnanwvh4uOCw.*&quot;],
+    &quot;a_rma&quot;: [&quot;GET::.*&quot;]
 }</code></pre>
 <p>Which allows very specific permissions on AppEngine API, and a “read all” on Realm Management API.</p>
 <p>The client by default has no permission to do anything: as such, if a token is missing a claim it is simply assumed that the client isn’t authorized to access that specific API. However, keeping in mind that Astarte has no concept of User, it is also true that your authentication backend might choose to emit a different token with only a subset of its real permissions to keep claims and regular expressions as pragmatic as possible. See <a href="#granular-claims">Granular Claims in Best Practices</a> for more details on this.</p>

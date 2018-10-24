@@ -5,10 +5,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.18.3">
-    <title>Interacting with Astarte – Astarte v0.10.0-beta.2</title>
+    <title>Interacting with Astarte – Astarte v0.10.0-beta.3</title>
     <link rel="stylesheet" href="dist/app-480ffdc169.css" />
     
-    <script src="dist/sidebar_items-3c79eaf123.js"></script>
+    <script src="dist/sidebar_items-42e18a3185.js"></script>
     
     
     
@@ -35,7 +35,7 @@
         Astarte
       </h1>
       <h2 class="sidebar-projectVersion">
-        v0.10.0-beta.2
+        v0.10.0-beta.3
       </h2>
     </div>
     
@@ -113,8 +113,8 @@
 
 <p>Authenticating against Astarte is out of the scope of this guide, especially due to the fact that <a href="070-auth.html">Astarte does not manage authentication directly</a>. We’ll assume either the authentication isn’t enabled, or that the user is always interacting with the APIs with a token with the following claims</p>
 <pre><code class="json">{
-    &quot;a_aea&quot;: &quot;^.*$:^.*$&quot;,
-    &quot;a_rma&quot;: &quot;^.*$:^.*$&quot;
+    &quot;a_aea&quot;: &quot;.*:.*&quot;,
+    &quot;a_rma&quot;: &quot;.*:.*&quot;
 }</code></pre>
 <p>Which represents a realm administrator. In real life use cases, you should always make sure to <a href="070-auth.html#granular-claims">give out more granular permissions</a> and to obtain the token in the right way from your authentication server.</p>
 <h3 id="accessing-the-apis" class="section-heading">
