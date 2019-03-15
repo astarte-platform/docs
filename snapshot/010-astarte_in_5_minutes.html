@@ -8,7 +8,7 @@
     <title>Astarte in 5 minutes – Astarte v0.11.0-dev</title>
     <link rel="stylesheet" href="dist/app-480ffdc169.css" />
     
-    <script src="dist/sidebar_items-42e18a3185.js"></script>
+    <script src="dist/sidebar_items-35684f1ccf.js"></script>
     
     
     
@@ -76,7 +76,7 @@
 </h2>
 
 <p>First of all, please keep in mind that <strong>this setup is not meant to be used in production</strong>: by default, no persistence is involved, the installation does not have any recovery mechanism, and you will have to restart services manually in case something goes awry. This guide is great if you want to take Astarte for a spin, or if you want to use an isolated instance for development.</p>
-<p>You will need a machine with at least 4GB of RAM (mainly due to Cassandra), with <a href="https://www.docker.com/">Docker</a>, <a href="https://github.com/cloudflare/cfssl">cfssl</a>, Python 3 and OpenSSL installed. You will need the PyJWT Python module for generating JWT tokens for Astarte, which you can install either via <code class="inline">pip3</code> (<code class="inline">pip3 install pyjwt</code>) or using your distribution’s packages (e.g. <code class="inline">apt-get install python3-jwt</code> on Debian based distributions).</p>
+<p>You will need a machine with at least 4GB of RAM (mainly due to Cassandra), with <a href="https://www.docker.com/">Docker</a>, <a href="https://github.com/cloudflare/cfssl">cfssl</a>, Python 3 and OpenSSL installed. You will need the PyJWT Python module for generating JWT tokens for Astarte, which you can install either via <code class="inline">pip3</code> (<code class="inline">pip3 install PyJWT</code>) or using your distribution’s packages (e.g. <code class="inline">apt-get install python3-jwt</code> on Debian based distributions).</p>
 <p>Also, on the machine(s) or device(s) you will use as a client, you will need either Docker, or a <a href="https://www.qt.io/">Qt5</a> installation with development components if you wish to build and run components locally.</p>
 <h2 id="install-astarte" class="section-heading">
   <a href="#install-astarte" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -113,7 +113,7 @@ $ docker-compose up -d</code></pre>
 </h2>
 
 <p>Now that we have our instance up and running, we can start setting up a Realm for our device. We’ll call our Realm <code class="inline">test</code>. Given we have no SSO or Authentication mechanism set up, we’re just going to generate a public key to sign our JWTs with. You can create one with OpenSSL:</p>
-<pre><code class="sh">$ ssh-keygen -t rsa -b 4096 -f test_realm.key -N &#39;&#39;
+<pre><code class="sh">$ openssl genrsa -out test_realm.key 4096
 $ openssl rsa -in test_realm.key -pubout -outform PEM -out test_realm.key.pub
 $ awk &#39;{printf &quot;%s\\n&quot;, $0}&#39; test_realm.key.pub &gt; test_realm.key.pub.api</code></pre>
 <p>Also, we will need a JWT token to authenticate against Housekeeping. <code class="inline">generate-compose-files.sh</code> created a public key automatically, which is in <code class="inline">compose/astarte-keys/housekeeping.pub</code>. To generate a JWT token for authorizing our calls, we will use the handy <code class="inline">generate-astarte-credentials</code> utility in Astarte’s repository, which can also be easily inlined into cURL.</p>
@@ -201,6 +201,22 @@ $ make</code></pre>
 <p>When you’re done with your tests and developments, you can use <code class="inline">docker-compose</code> again to tear down your Astarte instance simply by issuing:</p>
 <pre><code class="sh">$ docker-compose down</code></pre>
 <p>Unless you add the <code class="inline">-v</code> option, persistencies will be kept and next time you will <code class="inline">docker-compose up</code> the cluster will come back in the very same state you left it last time. <code class="inline">docker-compose down -v</code> is extremely useful during development, especially if you want a clean slate for testing your applications or your routines every time.</p>
+<h2 id="troubleshooting" class="section-heading">
+  <a href="#troubleshooting" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Troubleshooting
+</h2>
+
+<h3 id="could-not-generate-credentials" class="section-heading">
+  <a href="#could-not-generate-credentials" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Could not generate credentials
+</h3>
+
+<p>If <code class="inline">astarte-generate-credentials</code> fails with this error</p>
+<pre><code class="elixir">Traceback (most recent call last):
+  File &quot;./generate-astarte-credentials&quot;, line 37, in &lt;module&gt;
+    encoded = jwt.encode(claims, private_key_pem, algorithm=&quot;RS256&quot;)
+AttributeError: module &#39;jwt&#39; has no attribute &#39;encode&#39;</code></pre>
+<p>you have to remove the conflicting <code class="inline">jwt</code> pip package by uninstalling it with <code class="inline">pip3 uninstall jwt</code>.</p>
 <h2 id="final-notes" class="section-heading">
   <a href="#final-notes" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Final notes

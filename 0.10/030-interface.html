@@ -5,10 +5,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.18.3">
-    <title>Interfaces – Astarte v0.10.0-beta.3</title>
+    <title>Interfaces – Astarte v0.10.0-rc.0</title>
     <link rel="stylesheet" href="dist/app-480ffdc169.css" />
     
-    <script src="dist/sidebar_items-42e18a3185.js"></script>
+    <script src="dist/sidebar_items-35684f1ccf.js"></script>
     
     
     
@@ -35,7 +35,7 @@
         Astarte
       </h1>
       <h2 class="sidebar-projectVersion">
-        v0.10.0-beta.3
+        v0.10.0-rc.0
       </h2>
     </div>
     
@@ -180,6 +180,19 @@
        },
    [...]</code></pre>
 <p>In such a case, the interface isn’t valid and is rejected, due to the fact that path <code class="inline">/myPath/value</code> is ambiguous and could be resolved to two different endpoints.</p>
+<p>Any endpoint configuration must not generate paths that are prefix of other paths, for this reason the following example is also invalid:</p>
+<pre><code class="elixir">   [...]
+   &quot;mappings&quot;: [
+       {
+           &quot;endpoint&quot;: &quot;/some/thing&quot;,
+           &quot;type&quot;: &quot;integer&quot;
+       },
+       {
+           &quot;endpoint&quot;: &quot;/some/%{param}/value&quot;,
+           &quot;type&quot;: &quot;integer&quot;
+       },
+   [...]
+</code></pre>
 <p>In case the interface’s aggregation is <code class="inline">object</code>, additional restrictions apply. Endpoints in the same interface must all have the same depth, and the same number of parameters. If the interface is parametrized, every endpoint must have the same parameter name at the same level. This is an example of a valid aggregated interface mapping:</p>
 <pre><code class="elixir">   [...]
    &quot;mappings&quot;: [
