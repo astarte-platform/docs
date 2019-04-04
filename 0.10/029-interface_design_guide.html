@@ -4,60 +4,59 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.18.3">
-    <title>Interface Design Guide – Astarte v0.10.0-rc.0</title>
-    <link rel="stylesheet" href="dist/app-480ffdc169.css" />
-    
-    <script src="dist/sidebar_items-35684f1ccf.js"></script>
-    
-    
-    
+    <meta name="generator" content="ExDoc v0.20.0">
+    <meta name="project" content="Astarte v0.10.0-rc.0">
+    <title>Interface Design Guide — Astarte v0.10.0-rc.0</title>
+    <link rel="stylesheet" href="dist/html-11fdd9cd6b7c7c3981df.css" />
+    <script src="dist/sidebar_items-4965de0ca6.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-11fdd9cd6b7c7c3981df.js"></script>
     
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
-
 <div class="main">
+
 <button class="sidebar-button sidebar-toggle">
-  <span class="icon-menu" aria-hidden="true"></span>
-  <span class="sr-only">Toggle Sidebar</span>
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
 </button>
-<button class="sidebar-button night-mode-toggle">
-  <span class="icon-theme" aria-hidden="true"></span>
-  <span class="sr-only">Toggle Theme</span>
-</button>
+
 <section class="sidebar">
-
-  
-  <a href="http://astarte-platform.org" class="sidebar-projectLink">
-    <div class="sidebar-projectDetails">
-      <h1 class="sidebar-projectName">
-        Astarte
-      </h1>
-      <h2 class="sidebar-projectVersion">
-        v0.10.0-rc.0
-      </h2>
-    </div>
-    
-      <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
-    
-  </a>
-
   <form class="sidebar-search" action="search.html">
     <button type="submit" class="search-button">
       <span class="icon-search" aria-hidden="true"></span>
     </button>
-    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
   </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte      </a>
+      <h2 class="sidebar-projectVersion">
+        v0.10.0-rc.0
+      </h2>
+    </div>
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+  </div>
 
   <ul class="sidebar-listNav">
     <li><a id="extras-list" href="#full-list">Pages</a></li>
 
-    
 
-    
 
-    
   </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
@@ -69,7 +68,7 @@
 
 
 <h1>Interface Design Guide</h1>
-<p>Before we begin, let’s get this straight:</p>
+<p>Before we begin, let&#39;s get this straight:</p>
 <blockquote><p><strong>The way you design your interfaces will determine the overall performance and efficiency of your cluster</strong></p>
 </blockquote>
 <p>This is because interfaces define not only the way data is exchanged between Astarte and Devices/Applications, but also <strong>how it will be stored, managed and queried</strong>. As such, it is fundamental to spend enough time on finding the most correct Interface design for your use case, keeping in mind how your users will consume your data, what might change in the future, what is fundamental and what is optional, and more.</p>
@@ -78,13 +77,13 @@
   Rationale
 </h2>
 
-<p>Without going into deeper details on what concerns Astarte’s DB internals, there are some considerations one should always keep in mind when designing interfaces.</p>
+<p>Without going into deeper details on what concerns Astarte&#39;s DB internals, there are some considerations one should always keep in mind when designing interfaces.</p>
 <h3 id="querying-an-interface-is-fast-querying-across-interfaces-is-painful" class="section-heading">
   <a href="#querying-an-interface-is-fast-querying-across-interfaces-is-painful" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Querying an Interface is fast, querying across Interfaces is painful
 </h3>
 
-<p>Astarte’s data modeling is designed to optimize queries within a single interface. Querying across interfaces is supported, but might affect performances significantly, especially if done frequently and with complex queries. This is especially true for triggers, as they could be evaluated very frequently.</p>
+<p>Astarte&#39;s data modeling is designed to optimize queries within a single interface. Querying across interfaces is supported, but might affect performances significantly, especially if done frequently and with complex queries. This is especially true for triggers, as they could be evaluated very frequently.</p>
 <p>In general, if you plan on having different mappings which are frequently queried altogether, or dependent on each other for several triggers, you might be better off in having them all in the same Interface.</p>
 <h3 id="aggregation-makes-a-difference" class="section-heading">
   <a href="#aggregation-makes-a-difference" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -101,27 +100,30 @@
 <p>Rule of thumb:</p>
 <blockquote><p>Favor extreme atomicity in case you expect your interfaces to change often, be as atomic as reasonably possible in case you want to favor performance and flexibility in querying data.</p>
 </blockquote>
-
       <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.3),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.20.0),
           </span>
           <span class="line">
             designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
-            </span>
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
         </p>
       </footer>
     </div>
   </div>
 </section>
 </div>
-  <script src="dist/app-9bd040e5e5.js"></script>
-  
-  
-  
   
   </body>
 </html>
