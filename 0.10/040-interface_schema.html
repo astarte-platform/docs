@@ -4,60 +4,59 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.18.3">
-    <title>Interface Schema – Astarte v0.10.0-rc.0</title>
-    <link rel="stylesheet" href="dist/app-480ffdc169.css" />
-    
-    <script src="dist/sidebar_items-35684f1ccf.js"></script>
-    
-    
-    
+    <meta name="generator" content="ExDoc v0.20.0">
+    <meta name="project" content="Astarte v0.10.0-rc.0">
+    <title>Interface Schema — Astarte v0.10.0-rc.0</title>
+    <link rel="stylesheet" href="dist/html-11fdd9cd6b7c7c3981df.css" />
+    <script src="dist/sidebar_items-4965de0ca6.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-11fdd9cd6b7c7c3981df.js"></script>
     
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
-
 <div class="main">
+
 <button class="sidebar-button sidebar-toggle">
-  <span class="icon-menu" aria-hidden="true"></span>
-  <span class="sr-only">Toggle Sidebar</span>
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
 </button>
-<button class="sidebar-button night-mode-toggle">
-  <span class="icon-theme" aria-hidden="true"></span>
-  <span class="sr-only">Toggle Theme</span>
-</button>
+
 <section class="sidebar">
-
-  
-  <a href="http://astarte-platform.org" class="sidebar-projectLink">
-    <div class="sidebar-projectDetails">
-      <h1 class="sidebar-projectName">
-        Astarte
-      </h1>
-      <h2 class="sidebar-projectVersion">
-        v0.10.0-rc.0
-      </h2>
-    </div>
-    
-      <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
-    
-  </a>
-
   <form class="sidebar-search" action="search.html">
     <button type="submit" class="search-button">
       <span class="icon-search" aria-hidden="true"></span>
     </button>
-    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
   </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte      </a>
+      <h2 class="sidebar-projectVersion">
+        v0.10.0-rc.0
+      </h2>
+    </div>
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+  </div>
 
   <ul class="sidebar-listNav">
     <li><a id="extras-list" href="#full-list">Pages</a></li>
 
-    
 
-    
 
-    
   </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
@@ -107,10 +106,10 @@
 <td style="text-align: left"><strong>version_minor</strong></td><td style="text-align: left"><code class="inline">integer</code></td><td style="text-align: left">A Minor version qualifier for this interface. Interfaces with the same id and major version number and different version_minor number are deemed compatible between each other. When changing the minor number, it is then only possible to insert further mappings. Any other modification might lead to incompatibilities and undefined behavior.</td><td style="text-align: left">:white_check_mark: Yes</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>type</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Identifies the type of this Interface. Currently two types are supported: datastream and properties. datastream should be used when dealing with streams of non-persistent data, where a single path receives updates and there’s no concept of state. properties, instead, are meant to be an actual state and as such they have only a change history, and are retained.</td><td style="text-align: left">:white_check_mark: Yes</td>
+<td style="text-align: left"><strong>type</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Identifies the type of this Interface. Currently two types are supported: datastream and properties. datastream should be used when dealing with streams of non-persistent data, where a single path receives updates and there&#39;s no concept of state. properties, instead, are meant to be an actual state and as such they have only a change history, and are retained.</td><td style="text-align: left">:white_check_mark: Yes</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>ownership</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Identifies the quality of the interface. Interfaces are meant to be unidirectional, and this property defines who’s sending or receiving data. device means the device/gateway is sending data to Astarte, consumer means the device/gateway is receiving data from Astarte. Bidirectional mode is not supported, you should instantiate another interface for that.</td><td style="text-align: left">:white_check_mark: Yes</td>
+<td style="text-align: left"><strong>ownership</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Identifies the quality of the interface. Interfaces are meant to be unidirectional, and this property defines who&#39;s sending or receiving data. device means the device/gateway is sending data to Astarte, consumer means the device/gateway is receiving data from Astarte. Bidirectional mode is not supported, you should instantiate another interface for that.</td><td style="text-align: left">:white_check_mark: Yes</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>aggregation</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Identifies the aggregation of the mappings of the interface. Individual means every mapping changes state or streams data independently, whereas an object aggregation treats the interface as an object, making all the mappings changes interdependent. Choosing the right aggregation might drastically improve performances.</td><td style="text-align: left">No, default: <code class="inline">&quot;individual&quot;</code></td>
@@ -175,7 +174,7 @@
   astarte.interface.schema.type :white_check_mark:
 </h3>
 
-<p>Identifies the type of this Interface. Currently two types are supported: datastream and properties. datastream should be used when dealing with streams of non-persistent data, where a single path receives updates and there’s no concept of state. properties, instead, are meant to be an actual state and as such they have only a change history, and are retained.</p>
+<p>Identifies the type of this Interface. Currently two types are supported: datastream and properties. datastream should be used when dealing with streams of non-persistent data, where a single path receives updates and there&#39;s no concept of state. properties, instead, are meant to be an actual state and as such they have only a change history, and are retained.</p>
 <ul>
 <li><strong>Type</strong>: <code class="inline">string</code>
 </li>
@@ -195,7 +194,7 @@
   astarte.interface.schema.ownership :white_check_mark:
 </h3>
 
-<p>Identifies the quality of the interface. Interfaces are meant to be unidirectional, and this property defines who’s sending or receiving data. device means the device/gateway is sending data to Astarte, consumer means the device/gateway is receiving data from Astarte. Bidirectional mode is not supported, you should instantiate another interface for that.</p>
+<p>Identifies the quality of the interface. Interfaces are meant to be unidirectional, and this property defines who&#39;s sending or receiving data. device means the device/gateway is sending data to Astarte, consumer means the device/gateway is receiving data from Astarte. Bidirectional mode is not supported, you should instantiate another interface for that.</p>
 <ul>
 <li><strong>Type</strong>: <code class="inline">string</code>
 </li>
@@ -322,7 +321,7 @@
 <td style="text-align: left"><strong>type</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Defines the type of the mapping.</td><td style="text-align: left">:white_check_mark: Yes</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>reliability</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Useful only with datastream. Defines whether the sent data should be considered delivered when the transport successfully sends the data (unreliable), when we know that the data has been received at least once (guaranteed) or when we know that the data has been received exactly once (unique). unreliable by default. When using reliable data, consider you might incur in additional resource usage on both the transport and the device’s end.</td><td style="text-align: left">No, default: <code class="inline">&quot;unreliable&quot;</code></td>
+<td style="text-align: left"><strong>reliability</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Useful only with datastream. Defines whether the sent data should be considered delivered when the transport successfully sends the data (unreliable), when we know that the data has been received at least once (guaranteed) or when we know that the data has been received exactly once (unique). unreliable by default. When using reliable data, consider you might incur in additional resource usage on both the transport and the device&#39;s end.</td><td style="text-align: left">No, default: <code class="inline">&quot;unreliable&quot;</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>retention</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Useful only with datastream. Defines whether the sent data should be discarded if the transport is temporarily uncapable of delivering it (discard) or should be kept in a cache in memory (volatile) or on disk (stored), and guaranteed to be delivered in the timeframe defined by the expiry. discard by default.</td><td style="text-align: left">No, default: <code class="inline">&quot;discard&quot;</code></td>
@@ -404,7 +403,7 @@
   astarte.mapping.schema.reliability
 </h3>
 
-<p>Useful only with datastream. Defines whether the sent data should be considered delivered when the transport successfully sends the data (unreliable), when we know that the data has been received at least once (guaranteed) or when we know that the data has been received exactly once (unique). unreliable by default. When using reliable data, consider you might incur in additional resource usage on both the transport and the device’s end.</p>
+<p>Useful only with datastream. Defines whether the sent data should be considered delivered when the transport successfully sends the data (unreliable), when we know that the data has been received at least once (guaranteed) or when we know that the data has been received exactly once (unique). unreliable by default. When using reliable data, consider you might incur in additional resource usage on both the transport and the device&#39;s end.</p>
 <ul>
 <li><strong>Type</strong>: <code class="inline">string</code>
 </li>
@@ -491,27 +490,30 @@
 <li><strong>Required</strong>: No
 </li>
 </ul>
-
       <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.3),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.20.0),
           </span>
           <span class="line">
             designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
-            </span>
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
         </p>
       </footer>
     </div>
   </div>
 </section>
 </div>
-  <script src="dist/app-9bd040e5e5.js"></script>
-  
-  
-  
   
   </body>
 </html>

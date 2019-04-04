@@ -4,60 +4,59 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.18.3">
-    <title>Astarte MQTT v1 Protocol – Astarte v0.10.0-rc.0</title>
-    <link rel="stylesheet" href="dist/app-480ffdc169.css" />
-    
-    <script src="dist/sidebar_items-35684f1ccf.js"></script>
-    
-    
-    
+    <meta name="generator" content="ExDoc v0.20.0">
+    <meta name="project" content="Astarte v0.10.0-rc.0">
+    <title>Astarte MQTT v1 Protocol — Astarte v0.10.0-rc.0</title>
+    <link rel="stylesheet" href="dist/html-11fdd9cd6b7c7c3981df.css" />
+    <script src="dist/sidebar_items-4965de0ca6.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-11fdd9cd6b7c7c3981df.js"></script>
     
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
-
 <div class="main">
+
 <button class="sidebar-button sidebar-toggle">
-  <span class="icon-menu" aria-hidden="true"></span>
-  <span class="sr-only">Toggle Sidebar</span>
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
 </button>
-<button class="sidebar-button night-mode-toggle">
-  <span class="icon-theme" aria-hidden="true"></span>
-  <span class="sr-only">Toggle Theme</span>
-</button>
+
 <section class="sidebar">
-
-  
-  <a href="http://astarte-platform.org" class="sidebar-projectLink">
-    <div class="sidebar-projectDetails">
-      <h1 class="sidebar-projectName">
-        Astarte
-      </h1>
-      <h2 class="sidebar-projectVersion">
-        v0.10.0-rc.0
-      </h2>
-    </div>
-    
-      <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
-    
-  </a>
-
   <form class="sidebar-search" action="search.html">
     <button type="submit" class="search-button">
       <span class="icon-search" aria-hidden="true"></span>
     </button>
-    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
   </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte      </a>
+      <h2 class="sidebar-projectVersion">
+        v0.10.0-rc.0
+      </h2>
+    </div>
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+  </div>
 
   <ul class="sidebar-listNav">
     <li><a id="extras-list" href="#full-list">Pages</a></li>
 
-    
 
-    
 
-    
   </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
@@ -69,10 +68,10 @@
 
 
 <h1>Astarte MQTT v1 Protocol</h1>
-<p>Astarte MQTT v1 Protocol allows communication between Astarte and devices. It is the first protocol that has been implemented in Astarte, and it exploits every feature provided by Astarte itself. Astarte MQTT v1 doesn’t mandate a specific Transport Credentials format: the broker must handle Authentication, Authorization and <a href="050-pairing_mechanism.html">Pairing integration</a> the way it sees fit. Astarte MQTT v1 is implemented by Astarte’s Reference Transport, <a href="https://github.com/astarte-platform/astarte_vmq_plugin">Astarte/VerneMQ</a> - a client wishing to interact with it must implement MQTT v3.1.1 and all needed features for Pairing to work.</p>
-<p>MQTT doesn’t mandate the data serialization format, so any application might implement its own format. Data serialization might be a tricky task and protocols might be hard to design, Astarte MQTT takes care of this and provides a higher level protocol which abstracts this detail from the end user.</p>
+<p>Astarte MQTT v1 Protocol allows communication between Astarte and devices. It is the first protocol that has been implemented in Astarte, and it exploits every feature provided by Astarte itself. Astarte MQTT v1 doesn&#39;t mandate a specific Transport Credentials format: the broker must handle Authentication, Authorization and <a href="050-pairing_mechanism.html">Pairing integration</a> the way it sees fit. Astarte MQTT v1 is implemented by Astarte&#39;s Reference Transport, <a href="https://github.com/astarte-platform/astarte_vmq_plugin">Astarte/VerneMQ</a> - a client wishing to interact with it must implement MQTT v3.1.1 and all needed features for Pairing to work.</p>
+<p>MQTT doesn&#39;t mandate the data serialization format, so any application might implement its own format. Data serialization might be a tricky task and protocols might be hard to design, Astarte MQTT takes care of this and provides a higher level protocol which abstracts this detail from the end user.</p>
 <p>Astarte MQTT v1 Protocol builds upon MQTT v3.1.1 itself, <a href="http://bsonspec.org/spec.html">BSON</a> (Binary JSON, version 1.1) serialized payloads and on optional zlib deflate. All communications are ordered and asynchronous.</p>
-<p>A protocol reference implementation is provided with an Astarte SDK, however developers might implement it from scratch using 3rd party libraries with their favourite languages: all formats and protocols described here are open and well documented. Last but not least Astarte doesn’t mandate this protocol, and a different one can be used with a different transport.</p>
+<p>A protocol reference implementation is provided with an Astarte SDK, however developers might implement it from scratch using 3rd party libraries with their favourite languages: all formats and protocols described here are open and well documented. Last but not least Astarte doesn&#39;t mandate this protocol, and a different one can be used with a different transport.</p>
 <h2 id="mqtt-topics-overview" class="section-heading">
   <a href="#mqtt-topics-overview" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   MQTT Topics Overview
@@ -93,10 +92,10 @@
 </tr>
 </thead>
 <tr>
-<td style="text-align: left"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;</code></td><td style="text-align: left">Introspection</td><td style="text-align: left">Device</td><td style="text-align: left">2</td><td style="text-align: left">ASCII plain text, ‘:’ and ‘;’ delimited</td>
+<td style="text-align: left"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;</code></td><td style="text-align: left">Introspection</td><td style="text-align: left">Device</td><td style="text-align: left">2</td><td style="text-align: left">ASCII plain text, &#39;:&#39; and &#39;;&#39; delimited</td>
 </tr>
 <tr>
-<td style="text-align: left"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;/control/emptyCache</code></td><td style="text-align: left">Empty Cache</td><td style="text-align: left">Device</td><td style="text-align: left">2</td><td style="text-align: left">ASCII plain text (always “1”)</td>
+<td style="text-align: left"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;/control/emptyCache</code></td><td style="text-align: left">Empty Cache</td><td style="text-align: left">Device</td><td style="text-align: left">2</td><td style="text-align: left">ASCII plain text (always &quot;1&quot;)</td>
 </tr>
 <tr>
 <td style="text-align: left"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;/control/consumer/properties</code></td><td style="text-align: left">Purge Properties</td><td style="text-align: left">Astarte</td><td style="text-align: left">2</td><td style="text-align: left">deflated plain text</td>
@@ -118,15 +117,15 @@ Topics are not bidirectional, devices must not publish data for server owned top
 <p>BSON allows saving precious bytes compared to JSON, while offering the advantages of a schema-less protocol.
 Consider, for example, a simple value and timestamp payload. The encoded JSON version, <code class="inline">{&quot;v&quot;:25.367812,&quot;t&quot;:1537346756844}</code> counts 33 bytes.</p>
 <p>The hexdump of the same message encoded with BSON is:</p>
-<pre><code class="elixir">0000000 1b 00 00 00 12 74 00 ec e0 01 f1 65 01 00 00 01
-0000020 76 00 8c 13 5f ed 28 5e 39 40 00</code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">0000000</span><span class="w"> </span><span class="mi">1</span><span class="n">b</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="mi">74</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="n">ec</span><span class="w"> </span><span class="n">e0</span><span class="w"> </span><span class="mi">01</span><span class="w"> </span><span class="n">f1</span><span class="w"> </span><span class="mi">65</span><span class="w"> </span><span class="mi">01</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">01</span><span class="w">
+</span><span class="mi">0000020</span><span class="w"> </span><span class="mi">76</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">8</span><span class="n">c</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="mi">5</span><span class="n">f</span><span class="w"> </span><span class="n">ed</span><span class="w"> </span><span class="mi">28</span><span class="w"> </span><span class="mi">5</span><span class="n">e</span><span class="w"> </span><span class="mi">39</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="mi">00</span></code></pre>
 <p>that fits just in 27 bytes.</p>
 <h3 id="bson-format" class="section-heading">
   <a href="#bson-format" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   BSON format
 </h3>
 
-<p>BSON is a really simple binary format, breaking down the previous example is very easy thanks to BSON simplicity: the first 4 bytes (<code class="inline">1b 00 00 00</code>) are the document size header, follows the timestamp marker (<code class="inline">09</code>), the timestamp key name (<code class="inline">74 00</code>, that is “t”), the timestamp value (<code class="inline">5f 48 06 f1 65 01 00 00</code> as int64), the double value marker (<code class="inline">01</code>),  the value key name (<code class="inline">76 00</code>, that is “v”), the actual value (<code class="inline">cd cc cc cc cc 4c 39 40</code> as 64-bit IEEE 754-2008 floating point) and the end of document marker (<code class="inline">00</code>).</p>
+<p>BSON is a really simple binary format, breaking down the previous example is very easy thanks to BSON simplicity: the first 4 bytes (<code class="inline">1b 00 00 00</code>) are the document size header, follows the timestamp marker (<code class="inline">09</code>), the timestamp key name (<code class="inline">74 00</code>, that is &quot;t&quot;), the timestamp value (<code class="inline">5f 48 06 f1 65 01 00 00</code> as int64), the double value marker (<code class="inline">01</code>),  the value key name (<code class="inline">76 00</code>, that is &quot;v&quot;), the actual value (<code class="inline">cd cc cc cc cc 4c 39 40</code> as 64-bit IEEE 754-2008 floating point) and the end of document marker (<code class="inline">00</code>).</p>
 <h3 id="astarte-payload-standard-fields" class="section-heading">
   <a href="#astarte-payload-standard-fields" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Astarte payload standard fields
@@ -207,7 +206,7 @@ Consider, for example, a simple value and timestamp payload. The encoded JSON ve
 <td style="text-align: left">binaryblobarray</td><td style="text-align: left">Array (0x4)</td><td style="text-align: left">depends on count, keys length and length</td>
 </tr>
 </table>
-<p><code class="inline">integer</code> and <code class="inline">long</code> integer are signed integer values, double must be a valid number (<code class="inline">+inf</code>, <code class="inline">NaN</code>, etc… are not supported), variable data types might be subject to size limitations and object aggregations are encoded as embedded documents.</p>
+<p><code class="inline">integer</code> and <code class="inline">long</code> integer are signed integer values, double must be a valid number (<code class="inline">+inf</code>, <code class="inline">NaN</code>, etc... are not supported), variable data types might be subject to size limitations and object aggregations are encoded as embedded documents.</p>
 <h2 id="connection-and-disconnection" class="section-heading">
   <a href="#connection-and-disconnection" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Connection and Disconnection
@@ -230,27 +229,27 @@ When connecting, before publishing any data message, a device should check MQTT 
 </h2>
 
 <p>Each device must declare the set of supported interfaces and their version. Astarte needs to know which interfaces the device advertises before processing any further data publish.
-This message in Astarte jargon is called <em>introspection</em> and it’s performed by publishing on the device root topic the list of interfaces that are installed on the device.</p>
+This message in Astarte jargon is called <em>introspection</em> and it&#39;s performed by publishing on the device root topic the list of interfaces that are installed on the device.</p>
 <p>Introspection payload is a simple plain text string, and it has the following format (in BNF like syntax):</p>
-<pre><code class="elixir">introspection ::= introspection_list
-introspection_list ::= introspection_entry &quot;;&quot; introspection_list | introspection_entry
-introspection_entry ::= interface_name &quot;:&quot; interface_major_version &quot;:&quot; interface_minor_version</code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">introspection</span><span class="w"> </span><span class="o">::</span><span class="o">=</span><span class="w"> </span><span class="n">introspection_list</span><span class="w">
+</span><span class="n">introspection_list</span><span class="w"> </span><span class="o">::</span><span class="o">=</span><span class="w"> </span><span class="n">introspection_entry</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="w"> </span><span class="n">introspection_list</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">introspection_entry</span><span class="w">
+</span><span class="n">introspection_entry</span><span class="w"> </span><span class="o">::</span><span class="o">=</span><span class="w"> </span><span class="n">interface_name</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="w"> </span><span class="n">interface_major_version</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="w"> </span><span class="n">interface_minor_version</span></code></pre>
 <p>The following example is a valid introspection payload:</p>
-<pre><code class="elixir">com.example.MyInterface:1:0;org.example.DraftInterface:0:3</code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">com</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="nc">MyInterface</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">0</span><span class="p">;</span><span class="n">org</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="nc">DraftInterface</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span></code></pre>
 <h2 id="empty-cache" class="section-heading">
   <a href="#empty-cache" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Empty Cache
 </h2>
 
-<p>Astarte MQTT v1 strives to save bandwidth upon reconnections, to make sure even frequent reconnections don’t affect bandwidth consumption. As such, upon connecting and if MQTT advertises a session present, both sides assume that data flow is ordered and consistent. However, there might be cases where this guarantee isn’t respected by the device for a number of reasons (e.g.: new device, factory reset, cache lost…). In this case, a device might declare that it has no confidence about its status and its known properties, and can request to resynchronise entirely with Astarte.
-In Astarte jargon this message is called <em>empty cache</em> and it is performed by publising “1” on the device <code class="inline">/control/emptyCache</code> topic.</p>
+<p>Astarte MQTT v1 strives to save bandwidth upon reconnections, to make sure even frequent reconnections don&#39;t affect bandwidth consumption. As such, upon connecting and if MQTT advertises a session present, both sides assume that data flow is ordered and consistent. However, there might be cases where this guarantee isn&#39;t respected by the device for a number of reasons (e.g.: new device, factory reset, cache lost...). In this case, a device might declare that it has no confidence about its status and its known properties, and can request to resynchronise entirely with Astarte.
+In Astarte jargon this message is called <em>empty cache</em> and it is performed by publising &quot;1&quot; on the device <code class="inline">/control/emptyCache</code> topic.</p>
 <p>After an empty cache message properties might be purged and Astarte might publish all the server owned properties again.</p>
 <h2 id="session-present" class="section-heading">
   <a href="#session-present" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Session Present
 </h2>
 
-<p>In the very same fashion as the device, Astarte (or the broker) might be inconsistent with a Device’s known status and its known properties. Although unlikely, as Astarte should always keep knowledge about remote device status, this might happen, for example, after an internal error.
+<p>In the very same fashion as the device, Astarte (or the broker) might be inconsistent with a Device&#39;s known status and its known properties. Although unlikely, as Astarte should always keep knowledge about remote device status, this might happen, for example, after an internal error.
 Astarte performs this task by telling the broker to disconnect the device and clear its session. After this, when the device will attempt reconnection, session present will be false.</p>
 <p>After a clean session properties might be purged.</p>
 <h2 id="purge-properties" class="section-heading">
@@ -263,17 +262,17 @@ This task is called <em>purge properties</em> in Astarte jargon, and it is perfo
 <p>Purge Properties payload is a zlib deflated plain text, with an additional 4 bytes header.
 The additional 4 bytes header is the size of the uncompressed payload, encoded as big endian uint32.</p>
 <p>The following example is a payload compressed using zlib default compression, with the additional 4 bytes header:</p>
-<pre><code class="elixir">0000000 00 00 00 46 78 9c 4b ce cf d5 4b ad 48 cc 2d c8
-0000020 49 d5 f3 ad f4 cc 2b 49 2d 4a 4b 4c 4e d5 2f ce
-0000040 cf 4d d5 2f 48 2c c9 b0 ce 2f 4a 87 ab 70 29 4a
-0000060 4c 2b 41 28 ca 2f c9 48 2d 0a 00 2a 02 00 b2 0c
-0000100 1a c9</code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">0000000</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">46</span><span class="w"> </span><span class="mi">78</span><span class="w"> </span><span class="mi">9</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="n">b</span><span class="w"> </span><span class="n">ce</span><span class="w"> </span><span class="n">cf</span><span class="w"> </span><span class="n">d5</span><span class="w"> </span><span class="mi">4</span><span class="n">b</span><span class="w"> </span><span class="n">ad</span><span class="w"> </span><span class="mi">48</span><span class="w"> </span><span class="n">cc</span><span class="w"> </span><span class="mi">2</span><span class="n">d</span><span class="w"> </span><span class="n">c8</span><span class="w">
+</span><span class="mi">0000020</span><span class="w"> </span><span class="mi">49</span><span class="w"> </span><span class="n">d5</span><span class="w"> </span><span class="n">f3</span><span class="w"> </span><span class="n">ad</span><span class="w"> </span><span class="n">f4</span><span class="w"> </span><span class="n">cc</span><span class="w"> </span><span class="mi">2</span><span class="n">b</span><span class="w"> </span><span class="mi">49</span><span class="w"> </span><span class="mi">2</span><span class="n">d</span><span class="w"> </span><span class="mi">4</span><span class="n">a</span><span class="w"> </span><span class="mi">4</span><span class="n">b</span><span class="w"> </span><span class="mi">4</span><span class="n">c</span><span class="w"> </span><span class="mi">4</span><span class="n">e</span><span class="w"> </span><span class="n">d5</span><span class="w"> </span><span class="mi">2</span><span class="n">f</span><span class="w"> </span><span class="n">ce</span><span class="w">
+</span><span class="mi">0000040</span><span class="w"> </span><span class="n">cf</span><span class="w"> </span><span class="mi">4</span><span class="n">d</span><span class="w"> </span><span class="n">d5</span><span class="w"> </span><span class="mi">2</span><span class="n">f</span><span class="w"> </span><span class="mi">48</span><span class="w"> </span><span class="mi">2</span><span class="n">c</span><span class="w"> </span><span class="n">c9</span><span class="w"> </span><span class="n">b0</span><span class="w"> </span><span class="n">ce</span><span class="w"> </span><span class="mi">2</span><span class="n">f</span><span class="w"> </span><span class="mi">4</span><span class="n">a</span><span class="w"> </span><span class="mi">87</span><span class="w"> </span><span class="n">ab</span><span class="w"> </span><span class="mi">70</span><span class="w"> </span><span class="mi">29</span><span class="w"> </span><span class="mi">4</span><span class="n">a</span><span class="w">
+</span><span class="mi">0000060</span><span class="w"> </span><span class="mi">4</span><span class="n">c</span><span class="w"> </span><span class="mi">2</span><span class="n">b</span><span class="w"> </span><span class="mi">41</span><span class="w"> </span><span class="mi">28</span><span class="w"> </span><span class="n">ca</span><span class="w"> </span><span class="mi">2</span><span class="n">f</span><span class="w"> </span><span class="n">c9</span><span class="w"> </span><span class="mi">48</span><span class="w"> </span><span class="mi">2</span><span class="n">d</span><span class="w"> </span><span class="mi">0</span><span class="n">a</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">2</span><span class="n">a</span><span class="w"> </span><span class="mi">02</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="n">b2</span><span class="w"> </span><span class="mi">0</span><span class="n">c</span><span class="w">
+</span><span class="mi">0000100</span><span class="w"> </span><span class="mi">1</span><span class="n">a</span><span class="w"> </span><span class="n">c9</span></code></pre>
 <p>The uncompressed plain text payload has the following format (in BNF like syntax):</p>
-<pre><code class="elixir">properties ::= properties_list
-properties_list ::= properties_entry &quot;;&quot; properties_list | properties_entry
-properties_entry ::= interface_name path</code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">properties</span><span class="w"> </span><span class="o">::</span><span class="o">=</span><span class="w"> </span><span class="n">properties_list</span><span class="w">
+</span><span class="n">properties_list</span><span class="w"> </span><span class="o">::</span><span class="o">=</span><span class="w"> </span><span class="n">properties_entry</span><span class="w"> </span><span class="s">&quot;;&quot;</span><span class="w"> </span><span class="n">properties_list</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">properties_entry</span><span class="w">
+</span><span class="n">properties_entry</span><span class="w"> </span><span class="o">::</span><span class="o">=</span><span class="w"> </span><span class="n">interface_name</span><span class="w"> </span><span class="n">path</span></code></pre>
 <p>The following example is the inflated previous payload:</p>
-<pre><code class="elixir">com.example.MyInterface/some/path;org.example.DraftInterface/otherPath</code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">com</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="nc">MyInterface</span><span class="o">/</span><span class="n">some</span><span class="o">/</span><span class="n">path</span><span class="p">;</span><span class="n">org</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="nc">DraftInterface</span><span class="o">/</span><span class="n">otherPath</span></code></pre>
 <p>This protocol feature is fundamental when a device has any interface with an <em>allow_unset</em> mapping, <em>purge properties</em> allows to correct any error due to unhandled unset messages.</p>
 <h2 id="publishing-data" class="section-heading">
   <a href="#publishing-data" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -324,7 +323,7 @@ The topic is built using <code class="inline">/&lt;interface name&gt;/&lt;path&g
 
 <p>Payload format might change according to the message type. Payloads are always BSON encoded, except for unset messages that are empty.</p>
 <h4>Property Message</h4>
-<p>Property messages have a <a href="#astarte-payload-standard-fields">“v” key</a> (which means value). Valid examples are:</p>
+<p>Property messages have a <a href="#astarte-payload-standard-fields">&quot;v&quot; key</a> (which means value). Valid examples are:</p>
 <ul>
 <li><code class="inline">{&quot;v&quot;: &quot;string property value&quot;}</code>
 </li>
@@ -334,17 +333,17 @@ The topic is built using <code class="inline">/&lt;interface name&gt;/&lt;path&g
 </li>
 </ul>
 <p>Previous payloads are BSON encoded as the following hex dumps:</p>
-<pre><code class="elixir">0000000 22 00 00 00 02 76 00 16 00 00 00 73 74 72 69 6e
-0000020 67 20 70 72 6f 70 65 72 74 79 20 76 61 6c 75 65
-0000040 00 00</code></pre>
-<pre><code class="elixir">0000000 0c 00 00 00 10 76 00 0a 00 00 00 00</code></pre>
-<pre><code class="elixir">0000000 09 00 00 00 08 76 00 01 00</code></pre>
-<p>Property messages order must be preserved and they must be consumed in order. The same property with the same value can be sent several times, this behavior is allowed but discouraged: it’s up to the device to avoid useless messages.
+<pre><code class="nohighlight makeup elixir"><span class="mi">0000000</span><span class="w"> </span><span class="mi">22</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">02</span><span class="w"> </span><span class="mi">76</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">73</span><span class="w"> </span><span class="mi">74</span><span class="w"> </span><span class="mi">72</span><span class="w"> </span><span class="mi">69</span><span class="w"> </span><span class="mi">6</span><span class="n">e</span><span class="w">
+</span><span class="mi">0000020</span><span class="w"> </span><span class="mi">67</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">70</span><span class="w"> </span><span class="mi">72</span><span class="w"> </span><span class="mi">6</span><span class="n">f</span><span class="w"> </span><span class="mi">70</span><span class="w"> </span><span class="mi">65</span><span class="w"> </span><span class="mi">72</span><span class="w"> </span><span class="mi">74</span><span class="w"> </span><span class="mi">79</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">76</span><span class="w"> </span><span class="mi">61</span><span class="w"> </span><span class="mi">6</span><span class="n">c</span><span class="w"> </span><span class="mi">75</span><span class="w"> </span><span class="mi">65</span><span class="w">
+</span><span class="mi">0000040</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">0000000</span><span class="w"> </span><span class="mi">0</span><span class="n">c</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">76</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">0</span><span class="n">a</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">0000000</span><span class="w"> </span><span class="mi">09</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">08</span><span class="w"> </span><span class="mi">76</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">01</span><span class="w"> </span><span class="mi">00</span></code></pre>
+<p>Property messages order must be preserved and they must be consumed in order. The same property with the same value can be sent several times, this behavior is allowed but discouraged: it&#39;s up to the device to avoid useless messages.
 A device must also make sure to publish all the properties that have been changed while the device was offline.</p>
 <h4>Unset Property Message</h4>
 <p>Properties can be unset with an unset message. An unset message is just an empty 0 bytes payload.</p>
 <h4>Datastream Message (individual aggregation)</h4>
-<p>Datastream messages for interfaces with individual aggregation have a <a href="#astarte-payload-standard-fields">“v” key</a> and an optional <a href="#astarte-payload-standard-fields">“t” key</a> (which means timestamp). Valid examples are:</p>
+<p>Datastream messages for interfaces with individual aggregation have a <a href="#astarte-payload-standard-fields">&quot;v&quot; key</a> and an optional <a href="#astarte-payload-standard-fields">&quot;t&quot; key</a> (which means timestamp). Valid examples are:</p>
 <ul>
 <li><p><code class="inline">{&quot;v&quot;: false}</code></p>
 </li>
@@ -355,12 +354,12 @@ A device must also make sure to publish all the properties that have been change
 </ul>
 <p>Timestamps are UTC timestamps (BSON 0x09 type), when not provided reception timestamp is used.</p>
 <p>Previous payloads are BSON encoded as the following hex dumps:</p>
-<pre><code class="elixir">0000000 09 00 00 00 08 76 00 00 00</code></pre>
-<pre><code class="elixir">0000000 10 00 00 00 01 76 00 7b 14 ae 47 e1 ba 30 40 00</code></pre>
-<pre><code class="elixir">0000000 1b 00 00 00 09 74 00 2a 70 20 f7 65 01 00 00 01
-0000020 76 00 7b 14 ae 47 e1 ba 30 40 00</code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">0000000</span><span class="w"> </span><span class="mi">09</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">08</span><span class="w"> </span><span class="mi">76</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">0000000</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">01</span><span class="w"> </span><span class="mi">76</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">7</span><span class="n">b</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="n">ae</span><span class="w"> </span><span class="mi">47</span><span class="w"> </span><span class="n">e1</span><span class="w"> </span><span class="n">ba</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="mi">00</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">0000000</span><span class="w"> </span><span class="mi">1</span><span class="n">b</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">09</span><span class="w"> </span><span class="mi">74</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">2</span><span class="n">a</span><span class="w"> </span><span class="mi">70</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="n">f7</span><span class="w"> </span><span class="mi">65</span><span class="w"> </span><span class="mi">01</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">01</span><span class="w">
+</span><span class="mi">0000020</span><span class="w"> </span><span class="mi">76</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">7</span><span class="n">b</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="n">ae</span><span class="w"> </span><span class="mi">47</span><span class="w"> </span><span class="n">e1</span><span class="w"> </span><span class="n">ba</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="mi">00</span></code></pre>
 <h4>Datastream Message (object aggregation)</h4>
-<p>Datastream messages for interfaces with object aggregation support every Astarte payload standard field (such as “t”), but in this case <em>value</em> is a BSON subdocument, in which each key represent a mapping of the aggregation. Valid examples are:</p>
+<p>Datastream messages for interfaces with object aggregation support every Astarte payload standard field (such as &quot;t&quot;), but in this case <em>value</em> is a BSON subdocument, in which each key represent a mapping of the aggregation. Valid examples are:</p>
 <ul>
 <li><p><code class="inline">{&quot;v&quot;: {&quot;temp&quot;: 25.3123, &quot;hum&quot;: 67.112}}</code></p>
 </li>
@@ -369,13 +368,13 @@ A device must also make sure to publish all the properties that have been change
 </ul>
 <p>Timestamps are UTC timestamps (BSON 0x09 type), when not provided reception timestamp is used.</p>
 <p>Previous payloads are BSON encoded as following hex dumps:</p>
-<pre><code class="elixir">0000000 28 00 00 00 03 76 00 20 00 00 00 01 68 75 6d 00
-0000020 ba 49 0c 02 2b c7 50 40 01 74 65 6d 70 00 72 8a
-0000040 8e e4 f2 4f 39 40 00 00</code></pre>
-<pre><code class="elixir">0000000 33 00 00 00 09 74 00 fb 9d 4f f7 65 01 00 00 03
-0000020 76 00 20 00 00 00 01 68 75 6d 00 ba 49 0c 02 2b
-0000040 c7 50 40 01 74 65 6d 70 00 72 8a 8e e4 f2 4f 39
-0000060 40 00 00</code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">0000000</span><span class="w"> </span><span class="mi">28</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">03</span><span class="w"> </span><span class="mi">76</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">01</span><span class="w"> </span><span class="mi">68</span><span class="w"> </span><span class="mi">75</span><span class="w"> </span><span class="mi">6</span><span class="n">d</span><span class="w"> </span><span class="mi">00</span><span class="w">
+</span><span class="mi">0000020</span><span class="w"> </span><span class="n">ba</span><span class="w"> </span><span class="mi">49</span><span class="w"> </span><span class="mi">0</span><span class="n">c</span><span class="w"> </span><span class="mi">02</span><span class="w"> </span><span class="mi">2</span><span class="n">b</span><span class="w"> </span><span class="n">c7</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="mi">01</span><span class="w"> </span><span class="mi">74</span><span class="w"> </span><span class="mi">65</span><span class="w"> </span><span class="mi">6</span><span class="n">d</span><span class="w"> </span><span class="mi">70</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">72</span><span class="w"> </span><span class="mi">8</span><span class="n">a</span><span class="w">
+</span><span class="mi">0000040</span><span class="w"> </span><span class="mi">8</span><span class="n">e</span><span class="w"> </span><span class="n">e4</span><span class="w"> </span><span class="n">f2</span><span class="w"> </span><span class="mi">4</span><span class="n">f</span><span class="w"> </span><span class="mi">39</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="mi">0000000</span><span class="w"> </span><span class="mi">33</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">09</span><span class="w"> </span><span class="mi">74</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="n">fb</span><span class="w"> </span><span class="mi">9</span><span class="n">d</span><span class="w"> </span><span class="mi">4</span><span class="n">f</span><span class="w"> </span><span class="n">f7</span><span class="w"> </span><span class="mi">65</span><span class="w"> </span><span class="mi">01</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">03</span><span class="w">
+</span><span class="mi">0000020</span><span class="w"> </span><span class="mi">76</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">01</span><span class="w"> </span><span class="mi">68</span><span class="w"> </span><span class="mi">75</span><span class="w"> </span><span class="mi">6</span><span class="n">d</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="n">ba</span><span class="w"> </span><span class="mi">49</span><span class="w"> </span><span class="mi">0</span><span class="n">c</span><span class="w"> </span><span class="mi">02</span><span class="w"> </span><span class="mi">2</span><span class="n">b</span><span class="w">
+</span><span class="mi">0000040</span><span class="w"> </span><span class="n">c7</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="mi">01</span><span class="w"> </span><span class="mi">74</span><span class="w"> </span><span class="mi">65</span><span class="w"> </span><span class="mi">6</span><span class="n">d</span><span class="w"> </span><span class="mi">70</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">72</span><span class="w"> </span><span class="mi">8</span><span class="n">a</span><span class="w"> </span><span class="mi">8</span><span class="n">e</span><span class="w"> </span><span class="n">e4</span><span class="w"> </span><span class="n">f2</span><span class="w"> </span><span class="mi">4</span><span class="n">f</span><span class="w"> </span><span class="mi">39</span><span class="w">
+</span><span class="mi">0000060</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="mi">00</span><span class="w"> </span><span class="mi">00</span></code></pre>
 <h2 id="minimal-protocol" class="section-heading">
   <a href="#minimal-protocol" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Minimal Protocol
@@ -408,39 +407,42 @@ A further simplification might remove any requirement for any introspection mess
   Connecting to the Broker
 </h2>
 
-<p>In the same fashion as Authentication, Pairing provides the client with information about how to connect to the MQTT broker. When invoking relevant Pairing API’s method to gather information about available transports for a device, if Astarte advertises Astarte MQTT v1, a similar reply will be returned:</p>
-<pre><code class="elixir">{
-  &quot;data&quot;: {
-    &quot;version&quot;: &quot;&lt;version string&gt;&quot;,
-    &quot;status&quot;: &quot;&lt;status string&gt;&quot;,
-    &quot;protocols&quot;: {
-      &quot;astarte_mqtt_v1&quot;: {
-        &quot;broker_url&quot;: &quot;mqtts://broker.astarte.example.com:8883&quot;
-      }
-    }
-  }
-}</code></pre>
-
+<p>In the same fashion as Authentication, Pairing provides the client with information about how to connect to the MQTT broker. When invoking relevant Pairing API&#39;s method to gather information about available transports for a device, if Astarte advertises Astarte MQTT v1, a similar reply will be returned:</p>
+<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="4671202956-1">{</span><span class="w">
+  </span><span class="ss">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4671202956-2">{</span><span class="w">
+    </span><span class="ss">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;version string&gt;&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;status string&gt;&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">&quot;protocols&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4671202956-3">{</span><span class="w">
+      </span><span class="ss">&quot;astarte_mqtt_v1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4671202956-4">{</span><span class="w">
+        </span><span class="ss">&quot;broker_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mqtts://broker.astarte.example.com:8883&quot;</span><span class="w">
+      </span><span class="p" data-group-id="4671202956-4">}</span><span class="w">
+    </span><span class="p" data-group-id="4671202956-3">}</span><span class="w">
+  </span><span class="p" data-group-id="4671202956-2">}</span><span class="w">
+</span><span class="p" data-group-id="4671202956-1">}</span></code></pre>
       <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" rel="help" target="_blank">ExDoc</a> (v0.18.3),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.20.0),
           </span>
           <span class="line">
             designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" title="@dignifiedquire">Friedel Ziegelmayer</a>.
-            </span>
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
         </p>
       </footer>
     </div>
   </div>
 </section>
 </div>
-  <script src="dist/app-9bd040e5e5.js"></script>
-  
-  
-  
   
   </body>
 </html>
