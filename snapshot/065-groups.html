@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.20.1">
     <meta name="project" content="Astarte v0.11.0-dev">
-    <title>Introduction — Astarte v0.11.0-dev</title>
+    <title>Groups — Astarte v0.11.0-dev</title>
     <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
     <script src="dist/sidebar_items-add37b2b6f.js"></script>
       <script src="docs_config.js"></script>
@@ -67,9 +67,18 @@ Astarte      </a>
     <div id="content" class="content-inner">
 
 
-<h1>Introduction</h1>
-<img align="right" src="assets/mascot_developer.svg" style="border:20px solid transparent" alt="Join Puppy Lion and have some fun with Astarte!" width="40%" /><p>Astarte&#39;s APIs are documented through <a href="https://swagger.io/">Swagger</a>. Your Astarte installation probably already has Swagger UI support, which serves as the reference for your installed APIs.</p>
-<p>To browse API documentation online, <a href="api/index.html">follow this link</a>.</p>
+<h1>Groups</h1>
+<p>Astarte supports creating groups of devices in a realm.</p>
+<p>Groups are currently useful mainly to provide access control, combining Astarte&#39;s <a href="070-auth.html#authorization">path based
+authorization</a> with the fact that devices can be queried with a group
+URL. This makes it possible to emit tokens allowing a user to operate only on devices that belong to
+a specific group.</p>
+<p>Groups can be managed using <a href="https://github.com/astarte-platform/astartectl"><code class="inline">astartectl</code></a> or using
+<a href="/api/index.html?urls.primaryName=AppEngine%20API">AppEngine API</a>. See the <a href="065-managing-groups.html">Managing Groups
+page</a> in the User Guide for some usage examples.</p>
+<p>Keep in mind a group is existing as long as there&#39;s at least one device in it. Once the last device
+is removed from the group, the group does not exist anymore, since groups are a tag (or label) of
+devices.</p>
       <footer class="footer">
         <p>
           <span class="line">
