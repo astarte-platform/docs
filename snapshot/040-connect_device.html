@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v0.11.0-dev">
     <title>Connecting a Device — Astarte v0.11.0-dev</title>
     <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
-    <script src="dist/sidebar_items-add37b2b6f.js"></script>
+    <script src="dist/sidebar_items-ed7c83a8be.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
     
@@ -69,71 +69,121 @@ Astarte      </a>
 
 <h1>Connecting a Device</h1>
 <p>Once a Device has been Registered in Astarte, it is capable of connecting to it.</p>
-<p>Devices connect to Astarte through the use of <em>Transports</em>. A Transport is an arbitrary protocol implementation which maps Astarte&#39;s concepts (mainly Interfaces) to a communication channel. Astarte&#39;s main supported Transport is Astarte/MQTT, implemented on top of <a href="https://github.com/erlio/vernemq">VerneMQ</a> through <a href="https://github.com/astarte-platform/astarte_vmq_plugin">an additional plugin</a>, and it is used by Astarte&#39;s SDKs for communication. However, virtually any protocol can be integrated in Astarte by creating a corresponding Transport.</p>
-<p>Transports also define the authentication/authorization mechanism of their Devices. For instance, Astarte/MQTT uses <a href="https://en.wikipedia.org/wiki/Mutual_authentication">mutual SSL Authentication</a> with Certificate Rotation for securing its Ingress and identifying its clients. To manage their Transport(s) and Credentials, Devices have to interact with Pairing.</p>
+<p>Devices connect to Astarte through the use of <em>Transports</em>. A Transport is an arbitrary protocol
+implementation which maps Astarte&#39;s concepts (mainly Interfaces) to a communication channel.
+Astarte&#39;s main supported Transport is Astarte/MQTT, implemented on top of
+<a href="https://github.com/erlio/vernemq">VerneMQ</a> through <a href="https://github.com/astarte-platform/astarte_vmq_plugin">an additional
+plugin</a>, and it is used by Astarte&#39;s SDKs
+for communication. However, virtually any protocol can be integrated in Astarte by creating a
+corresponding Transport.</p>
+<p>Transports also define the authentication/authorization mechanism of their Devices. For instance,
+Astarte/MQTT uses <a href="https://en.wikipedia.org/wiki/Mutual_authentication">mutual SSL Authentication</a>
+with Certificate Rotation for securing its Ingress and identifying its clients. To manage their
+Transport(s) and Credentials, Devices have to interact with Pairing.</p>
 <h2 id="credentials-secret-pairing-and-transports" class="section-heading">
   <a href="#credentials-secret-pairing-and-transports" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Credentials Secret, Pairing and Transports
 </h2>
 
-<p>Once a Device has performed its first registration through an Agent, it holds its <em>Credentials Secret</em>. This <em>Credentials Secret</em> is the token the device uses for performing the actual Pairing routine, which results in the device obtaining its Credentials for accessing its designated Transport.</p>
-<p>A Device&#39;s <em>Credentials Secret</em> allows access to <a href="https://docs.astarte-platform.org/snapshot/api/?urls.primaryName=Pairing%2520API#/device">Pairing API&#39;s Device REST API</a>, which is then used for obtaining information about which Transports the Device can use for communicating, and for obtaining Credentials for its assigned Transports.</p>
-<p>As, from a user&#39;s standpoint, the way a Device communicates with Astarte is entirely Transport-specific, this guide will cover using Astarte/MQTT through one of Astarte&#39;s SDKs. If you are using a different Transport, please refer to its User Guide, or if you wish to implement your own, head over to <a href="">Transport Developer Documentation</a>.</p>
+<p>Once a Device has performed its first registration through an Agent, it holds its <em>Credentials
+Secret</em>. This <em>Credentials Secret</em> is the token the device uses for performing the actual Pairing
+routine, which results in the device obtaining its Credentials for accessing its designated
+Transport.</p>
+<p>A Device&#39;s <em>Credentials Secret</em> allows access to <a href="https://docs.astarte-platform.org/snapshot/api/?urls.primaryName=Pairing%2520API#/device">Pairing API&#39;s Device REST
+API</a>, which
+is then used for obtaining information about which Transports the Device can use for communicating,
+and for obtaining Credentials for its assigned Transports.</p>
+<p>The ability to request Credentials of a Device can be inhibited with <a href="/api/#/device/updateDeviceStatus">AppEngine
+API</a> or using
+<a href="https://github.com/astarte-platform/astartectl"><code class="inline">astartectl</code></a> with this command:</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">astartectl</span><span class="w"> </span><span class="n">appengine</span><span class="w"> </span><span class="n">devices</span><span class="w"> </span><span class="n">credentials</span><span class="w"> </span><span class="n">inhibit</span><span class="w"> </span><span class="o">&lt;</span><span class="n">device_id_or_alias</span><span class="o">&gt;</span><span class="w"> </span><span class="no">true</span><span class="w"> </span><span class="err">\</span><span class="w">
+  </span><span class="o">-</span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="n">appengine</span><span class="o">-</span><span class="n">key</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="o">&lt;</span><span class="n">astarte</span><span class="o">-</span><span class="n">api</span><span class="o">-</span><span class="n">url</span><span class="o">&gt;</span></code></pre>
+<p>Once its <code class="inline">credentials_inhibited</code> field is set to <code class="inline">true</code>, a Device is not able to request new
+Credentials. Note that Credentials that were already emitted will still be valid until their
+expiration.</p>
+<p>As, from a user&#39;s standpoint, the way a Device communicates with Astarte is entirely
+Transport-specific, this guide will cover using Astarte/MQTT through one of Astarte&#39;s SDKs. If you
+are using a different Transport, please refer to its User Guide, or if you wish to implement your
+own, head over to <a href="">Transport Developer Documentation</a>.</p>
 <h2 id="using-astarte-mqtt-through-astarte-sdk" class="section-heading">
   <a href="#using-astarte-mqtt-through-astarte-sdk" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Using Astarte/MQTT through Astarte SDK
 </h2>
 
-<p>If you are using one of Astarte&#39;s SDK, the Pairing routine is entirely managed, and you won&#39;t need to do any of the aforementioned steps. Just make sure your <em>Credentials Secret</em> is passed as the <code class="inline">apiKey</code> configuration key, to allow the SDK to perform automatically the Pairing routine when needed.</p>
+<p>If you are using one of Astarte&#39;s SDK, the Pairing routine is entirely managed, and you won&#39;t need
+to do any of the aforementioned steps. Just make sure your <em>Credentials Secret</em> is passed as the
+<code class="inline">apiKey</code> configuration key, to allow the SDK to perform automatically the Pairing routine when
+needed.</p>
 <p>The SDK does a number of automated things under the hood. Its flow is:</p>
 <ol>
 <li>The SDK verifies if a SSL certificate for connecting to the broker is present.
 </li>
 <li>If it is, it attempts connecting to the Transport.
 </li>
-<li>If the Transport doesn&#39;t accept the connection due to an SSL error, it queries Pairing API about its certificate status.
+<li>If the Transport doesn&#39;t accept the connection due to an SSL error, it queries Pairing API about
+   its certificate status.
 </li>
-<li>If Pairing API returns a problem with the certificate or, in general, the certificate isn&#39;t valid, the certificate is erased and the Pairing procedure begins.
+<li>If Pairing API returns a problem with the certificate or, in general, the certificate isn&#39;t
+   valid, the certificate is erased and the Pairing procedure begins.
 </li>
 <li>The SDK invokes Pairing API until it manages to obtain a valid Certificate for the Transport.
 </li>
 </ol>
-<p>The SDK considers a Device successfully paired when it has a valid certificate and manages to connect to the Transport. Once in this state, the Device can start exchanging data.</p>
-<p><em>Note: the Pairing procedure is secure as long as Pairing API is queried using HTTPS. Plain HTTP installations are vulnerable to a number of different attacks and should NEVER be used in production.</em></p>
+<p>The SDK considers a Device successfully paired when it has a valid certificate and manages to
+connect to the Transport. Once in this state, the Device can start exchanging data.</p>
+<p><em>Note: the Pairing procedure is secure as long as Pairing API is queried using HTTPS. Plain HTTP
+installations are vulnerable to a number of different attacks and should NEVER be used in
+production.</em></p>
 <h3 id="interfaces-and-introspection" class="section-heading">
   <a href="#interfaces-and-introspection" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Interfaces and Introspection
 </h3>
 
-<p>A Device <strong>must</strong> have some installed interfaces to be capable of exchanging data. These interfaces must be made known to the SDK and <a href="030-manage_interfaces.html#realm-vs-device-interface-relationship">installed in the Device&#39;s Realm, as previously explained</a>.</p>
-<p>The SDK expects the user to provide a directory containing a set of valid interfaces. It then takes care of making Astarte aware of its registered interfaces through a process called Introspection. Introspection is a special control message in Astarte&#39;s protocol which makes Astarte aware of a list of Interfaces and relative versions which are installed on the Device.</p>
-<p>Again, Astarte&#39;s SDK, given a directory, is capable of performing the correct procedures for keeping Introspecting in sync correctly without any kind of user intervention. Astarte&#39;s SDK also takes care of updating a Device&#39;s Introspection if its interfaces change.</p>
+<p>A Device <strong>must</strong> have some installed interfaces to be capable of exchanging data. These interfaces
+must be made known to the SDK and <a href="030-manage_interfaces.html#realm-vs-device-interface-relationship">installed in the Device&#39;s Realm, as previously
+explained</a>.</p>
+<p>The SDK expects the user to provide a directory containing a set of valid interfaces. It then takes
+care of making Astarte aware of its registered interfaces through a process called Introspection.
+Introspection is a special control message in Astarte&#39;s protocol which makes Astarte aware of a list
+of Interfaces and relative versions which are installed on the Device.</p>
+<p>Again, Astarte&#39;s SDK, given a directory, is capable of performing the correct procedures for keeping
+Introspecting in sync correctly without any kind of user intervention. Astarte&#39;s SDK also takes care
+of updating a Device&#39;s Introspection if its interfaces change.</p>
 <h3 id="exchanging-data" class="section-heading">
   <a href="#exchanging-data" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Exchanging data
 </h3>
 
-<p>When a Device connects successfully, it <strong>must</strong> then subscribe to its <code class="inline">server</code> Interfaces. The SDK takes care of this detail and exposes a higher level interface. For example, using the Qt5 SDK:</p>
-<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="9930216245-1">{</span><span class="w">
-    </span><span class="n">m_sdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="nc">AstarteDeviceSDK</span><span class="p" data-group-id="9930216245-2">(</span><span class="nc">QStringLiteral</span><span class="p" data-group-id="9930216245-3">(</span><span class="s">&quot;/path/to/transport-astarte.conf&quot;</span><span class="p" data-group-id="9930216245-3">)</span><span class="p">,</span><span class="w"> </span><span class="nc">QStringLiteral</span><span class="p" data-group-id="9930216245-4">(</span><span class="s">&quot;/path/to/interfaces&quot;</span><span class="p" data-group-id="9930216245-4">)</span><span class="p">,</span><span class="w"> </span><span class="n">deviceId</span><span class="p" data-group-id="9930216245-2">)</span><span class="p">;</span><span class="w">
-    </span><span class="n">connect</span><span class="p" data-group-id="9930216245-5">(</span><span class="n">m_sdk</span><span class="o">-&gt;</span><span class="n">init</span><span class="p" data-group-id="9930216245-6">(</span><span class="p" data-group-id="9930216245-6">)</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">Hemera</span><span class="o">::</span><span class="nc">Operation</span><span class="o">::</span><span class="n">finished</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">AstarteStreamQt5Test</span><span class="o">::</span><span class="n">checkInitResult</span><span class="p" data-group-id="9930216245-5">)</span><span class="p">;</span><span class="w">
-    </span><span class="n">connect</span><span class="p" data-group-id="9930216245-7">(</span><span class="n">m_sdk</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">AstarteDeviceSDK</span><span class="o">::</span><span class="n">dataReceived</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">AstarteStreamQt5Test</span><span class="o">::</span><span class="n">handleIncomingData</span><span class="p" data-group-id="9930216245-7">)</span><span class="p">;</span><span class="w">
-</span><span class="p" data-group-id="9930216245-1">}</span><span class="w">
+<p>When a Device connects successfully, it <strong>must</strong> then subscribe to its <code class="inline">server</code> Interfaces. The SDK
+takes care of this detail and exposes a higher level interface. For example, using the Qt5 SDK:</p>
+<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="4422685834-1">{</span><span class="w">
+    </span><span class="n">m_sdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="nc">AstarteDeviceSDK</span><span class="p" data-group-id="4422685834-2">(</span><span class="nc">QStringLiteral</span><span class="p" data-group-id="4422685834-3">(</span><span class="s">&quot;/path/to/transport-astarte.conf&quot;</span><span class="p" data-group-id="4422685834-3">)</span><span class="p">,</span><span class="w"> </span><span class="nc">QStringLiteral</span><span class="p" data-group-id="4422685834-4">(</span><span class="s">&quot;/path/to/interfaces&quot;</span><span class="p" data-group-id="4422685834-4">)</span><span class="p">,</span><span class="w"> </span><span class="n">deviceId</span><span class="p" data-group-id="4422685834-2">)</span><span class="p">;</span><span class="w">
+    </span><span class="n">connect</span><span class="p" data-group-id="4422685834-5">(</span><span class="n">m_sdk</span><span class="o">-&gt;</span><span class="n">init</span><span class="p" data-group-id="4422685834-6">(</span><span class="p" data-group-id="4422685834-6">)</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">Hemera</span><span class="o">::</span><span class="nc">Operation</span><span class="o">::</span><span class="n">finished</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">AstarteStreamQt5Test</span><span class="o">::</span><span class="n">checkInitResult</span><span class="p" data-group-id="4422685834-5">)</span><span class="p">;</span><span class="w">
+    </span><span class="n">connect</span><span class="p" data-group-id="4422685834-7">(</span><span class="n">m_sdk</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">AstarteDeviceSDK</span><span class="o">::</span><span class="n">dataReceived</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nc">AstarteStreamQt5Test</span><span class="o">::</span><span class="n">handleIncomingData</span><span class="p" data-group-id="4422685834-7">)</span><span class="p">;</span><span class="w">
+</span><span class="p" data-group-id="4422685834-1">}</span><span class="w">
 
-</span><span class="n">void</span><span class="w"> </span><span class="nc">AstarteStreamQt5Test</span><span class="o">::</span><span class="n">handleIncomingData</span><span class="p" data-group-id="9930216245-8">(</span><span class="n">const</span><span class="w"> </span><span class="nc">QByteArray</span><span class="w"> </span><span class="o">&amp;</span><span class="n">interface</span><span class="p">,</span><span class="w"> </span><span class="n">const</span><span class="w"> </span><span class="nc">QByteArray</span><span class="w"> </span><span class="o">&amp;</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">const</span><span class="w"> </span><span class="nc">QVariant</span><span class="w"> </span><span class="o">&amp;</span><span class="n">value</span><span class="p" data-group-id="9930216245-8">)</span><span class="w">
-</span><span class="p" data-group-id="9930216245-9">{</span><span class="w">
-    </span><span class="n">qDebug</span><span class="p" data-group-id="9930216245-10">(</span><span class="p" data-group-id="9930216245-10">)</span><span class="w"> </span><span class="p" data-group-id="9930216245-11">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Received data, interface: &quot;</span><span class="w"> </span><span class="p" data-group-id="9930216245-12">&lt;&lt;</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="p" data-group-id="9930216245-13">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;path: &quot;</span><span class="w"> </span><span class="p" data-group-id="9930216245-14">&lt;&lt;</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="p" data-group-id="9930216245-15">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, value: &quot;</span><span class="w"> </span><span class="p" data-group-id="9930216245-16">&lt;&lt;</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p" data-group-id="9930216245-17">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, Qt type name: &quot;</span><span class="w"> </span><span class="p" data-group-id="9930216245-18">&lt;&lt;</span><span class="w"> </span><span class="n">value</span><span class="o">.</span><span class="n">typeName</span><span class="p" data-group-id="9930216245-19">(</span><span class="p" data-group-id="9930216245-19">)</span><span class="p">;</span><span class="w">
+</span><span class="n">void</span><span class="w"> </span><span class="nc">AstarteStreamQt5Test</span><span class="o">::</span><span class="n">handleIncomingData</span><span class="p" data-group-id="4422685834-8">(</span><span class="n">const</span><span class="w"> </span><span class="nc">QByteArray</span><span class="w"> </span><span class="o">&amp;</span><span class="n">interface</span><span class="p">,</span><span class="w"> </span><span class="n">const</span><span class="w"> </span><span class="nc">QByteArray</span><span class="w"> </span><span class="o">&amp;</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">const</span><span class="w"> </span><span class="nc">QVariant</span><span class="w"> </span><span class="o">&amp;</span><span class="n">value</span><span class="p" data-group-id="4422685834-8">)</span><span class="w">
+</span><span class="p" data-group-id="4422685834-9">{</span><span class="w">
+    </span><span class="n">qDebug</span><span class="p" data-group-id="4422685834-10">(</span><span class="p" data-group-id="4422685834-10">)</span><span class="w"> </span><span class="p" data-group-id="4422685834-11">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Received data, interface: &quot;</span><span class="w"> </span><span class="p" data-group-id="4422685834-12">&lt;&lt;</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="p" data-group-id="4422685834-13">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;path: &quot;</span><span class="w"> </span><span class="p" data-group-id="4422685834-14">&lt;&lt;</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="p" data-group-id="4422685834-15">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, value: &quot;</span><span class="w"> </span><span class="p" data-group-id="4422685834-16">&lt;&lt;</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="p" data-group-id="4422685834-17">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;, Qt type name: &quot;</span><span class="w"> </span><span class="p" data-group-id="4422685834-18">&lt;&lt;</span><span class="w"> </span><span class="n">value</span><span class="o">.</span><span class="n">typeName</span><span class="p" data-group-id="4422685834-19">(</span><span class="p" data-group-id="4422685834-19">)</span><span class="p">;</span><span class="w">
 </span><span class="p">}</span></code></pre>
-<p>Applications can simply connect to the <code class="inline">handleIncomingData</code> signal and have data correctly formatted and delivered as it runs through the transport. On the other hand, for sending data:</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">m_sdk</span><span class="o">-&gt;</span><span class="n">sendData</span><span class="p" data-group-id="2572255953-1">(</span><span class="n">interface</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="2572255953-1">)</span><span class="p">;</span></code></pre>
-<p>The SDK will check if data is coherent with its introspection, and send data onto the transport in the correct way.</p>
+<p>Applications can simply connect to the <code class="inline">handleIncomingData</code> signal and have data correctly formatted
+and delivered as it runs through the transport. On the other hand, for sending data:</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">m_sdk</span><span class="o">-&gt;</span><span class="n">sendData</span><span class="p" data-group-id="8340992796-1">(</span><span class="n">interface</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p" data-group-id="8340992796-1">)</span><span class="p">;</span></code></pre>
+<p>The SDK will check if data is coherent with its introspection, and send data onto the transport in
+the correct way.</p>
 <h3 id="reliability-retention-and-persistency-in-the-sdk" class="section-heading">
   <a href="#reliability-retention-and-persistency-in-the-sdk" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Reliability, retention and persistency in the SDK
 </h3>
 
-<p>Astarte&#39;s SDK has an internal concept of persistency, depending on the behaviour defined in its installed Interfaces. The <code class="inline">retention</code> parameter, specifically, tells Astarte&#39;s SDK how hard it should try to send a specific message. In case the Transport is unreachable, the SDK might try to persist, either in memory or on disk, and send the message when the connection is available again.</p>
-<p>Please note that these parameters declared in Interfaces are to be considered on a best effort basis. In case your SDK does not support persistency or has persistency disabled, a number of warranties requested by an Interface might not be satisfied. Make sure your SDK is configured correctly before moving to production.</p>
+<p>Astarte&#39;s SDK has an internal concept of persistency, depending on the behaviour defined in its
+installed Interfaces. The <code class="inline">retention</code> parameter, specifically, tells Astarte&#39;s SDK how hard it
+should try to send a specific message. In case the Transport is unreachable, the SDK might try to
+persist, either in memory or on disk, and send the message when the connection is available again.</p>
+<p>Please note that these parameters declared in Interfaces are to be considered on a best effort
+basis. In case your SDK does not support persistency or has persistency disabled, a number of
+warranties requested by an Interface might not be satisfied. Make sure your SDK is configured
+correctly before moving to production.</p>
       <footer class="footer">
         <p>
           <span class="line">
