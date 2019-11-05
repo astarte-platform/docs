@@ -89,16 +89,35 @@ Astarte      </a>
         &quot;id&quot;: &quot;f0VMRgIBAQAAAAAAAAAAAA&quot;,
         &quot;first_registration&quot;: &quot;2018-01-31T17:10:59.270Z&quot;,
         &quot;connected&quot;: true,
-        &quot;introspection&quot; : {
+        &quot;introspection&quot;: {
             &quot;com.example.ExampleInterface&quot; : {
                 &quot;major&quot; : 1,
-                &quot;minor&quot; : 0
+                &quot;minor&quot; : 0,
+                &quot;exchanged_msgs&quot;: 20,
+                &quot;exchanged_bytes&quot;: 200
             },
             &quot;org.example.TestInterface&quot; : {
                 &quot;major&quot; : 0,
-                &quot;minor&quot; : 2
+                &quot;minor&quot; : 2,
+                &quot;exchanged_msgs&quot;: 8,
+                &quot;exchanged_bytes&quot;: 147
             }
-        }
+        },
+        &quot;aliases&quot;: {
+            &quot;name&quot;: &quot;device_a&quot;
+        },
+        &quot;groups&quot;: [
+            &quot;my_group&quot;,
+        ],
+        &quot;previous_interfaces&quot;: [
+            {
+                &quot;name&quot;: &quot;com.example.ExampleInterface&quot;,
+                &quot;major&quot; : 0,
+                &quot;minor&quot; : 2,
+                &quot;exchanged_msgs&quot;: 3,
+                &quot;exchanged_bytes&quot;: 120 
+            }
+        ]
     }
 }</code></pre>
 <p>A Device&#39;s status includes a number of useful information, among which whether it is connected or not to its Transport. From there on, we can check on its Introspection.</p>
