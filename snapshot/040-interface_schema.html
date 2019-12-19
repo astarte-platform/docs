@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v0.11.0-dev">
     <title>Interface Schema — Astarte v0.11.0-dev</title>
     <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
-    <script src="dist/sidebar_items-ed7c83a8be.js"></script>
+    <script src="dist/sidebar_items-04b19dc669.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
     
@@ -116,9 +116,6 @@ Astarte      </a>
 </tr>
 <tr>
 <td style="text-align: left"><strong>explicit_timestamp</strong></td><td style="text-align: left"><code class="inline">boolean</code></td><td style="text-align: left">Allow to set a custom timestamp, otherwise a timestamp is added when the message is received. If true explicit timestamp will also be used for sorting. This feature is only supported on datastreams.</td><td style="text-align: left">No, default: <code class="inline">false</code></td>
-</tr>
-<tr>
-<td style="text-align: left"><strong>has_metadata</strong></td><td style="text-align: left"><code class="inline">boolean</code></td><td style="text-align: left">If true it will be possible to decorate the value with additional metadata. This feature is only supported on non aggregate interfaces.</td><td style="text-align: left">No, default: <code class="inline">false</code></td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>description</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">An optional description of the interface.</td><td style="text-align: left">No</td>
@@ -235,18 +232,6 @@ Astarte      </a>
 </h3>
 
 <p>Allow to set a custom timestamp, otherwise a timestamp is added when the message is received. If true explicit timestamp will also be used for sorting. This feature is only supported on datastreams.</p>
-<ul>
-<li><strong>Type</strong>: <code class="inline">boolean</code>
-</li>
-<li><strong>Required</strong>: No, default: <code class="inline">false</code>
-</li>
-</ul>
-<h3 id="astarte-interface-schema-has_metadata" class="section-heading">
-  <a href="#astarte-interface-schema-has_metadata" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  astarte.interface.schema.has_metadata
-</h3>
-
-<p>If true it will be possible to decorate the value with additional metadata. This feature is only supported on non aggregate interfaces.</p>
 <ul>
 <li><strong>Type</strong>: <code class="inline">boolean</code>
 </li>
