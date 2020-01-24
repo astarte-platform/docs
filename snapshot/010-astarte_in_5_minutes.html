@@ -83,7 +83,7 @@ Astarte      </a>
 </h2>
 
 <p>To get our Astarte instance running as fast as possible, we will install Astarte&#39;s standalone distribution. It includes a tunable Docker Compose which brings up Astarte and every companion service needed for it to work. To do so, simply clone Astarte&#39;s main repository and use its scripts to bring it up:</p>
-<pre><code class="sh">$ git clone https://github.com/astarte-platform/astarte.git &amp;&amp; cd astarte
+<pre><code class="sh">$ git clone https://github.com/astarte-platform/astarte.git -b v0.11.0-beta.2 &amp;&amp; cd astarte
 $ ./generate-compose-files.sh
 $ docker-compose up -d</code></pre>
 <p><code class="inline">generate-compose-files.sh</code> will generate a root CA for devices, a key pair for Housekeeping, and a self-signed certificate for the broker (note: this is a <em>really</em> bad idea in production). You can tune the compose file further to use legitimate certificates and custom keys, but this is out of the scope of this tutorial.</p>
@@ -170,9 +170,9 @@ $ docker-compose up -d</code></pre>
 </h3>
 
 <p>Astarte&#39;s <code class="inline">stream-qt5-test</code> can be pulled from Docker Hub with:</p>
-<pre><code class="sh">$ docker pull astarte/astarte-stream-qt5-test:snapshot</code></pre>
+<pre><code class="sh">$ docker pull astarte/astarte-stream-qt5-test:0.11.0-beta.2</code></pre>
 <p>Its most basic invocation (from your <code class="inline">astarte</code> repository tree) is:</p>
-<pre><code class="sh">$ docker run --net=&quot;host&quot; -e &quot;DEVICE_ID=$(astartectl utils device-id generate-random)&quot; -e &quot;PAIRING_HOST=http://localhost:4003&quot; -e &quot;REALM=test&quot; -e &quot;AGENT_KEY=$(astartectl utils gen-jwt pairing -k test_private.pem)&quot; -e &quot;IGNORE_SSL_ERRORS=true&quot; astarte/astarte-stream-qt5-test:snapshot</code></pre>
+<pre><code class="sh">$ docker run --net=&quot;host&quot; -e &quot;DEVICE_ID=$(astartectl utils device-id generate-random)&quot; -e &quot;PAIRING_HOST=http://localhost:4003&quot; -e &quot;REALM=test&quot; -e &quot;AGENT_KEY=$(astartectl utils gen-jwt pairing -k test_private.pem)&quot; -e &quot;IGNORE_SSL_ERRORS=true&quot; astarte/astarte-stream-qt5-test:0.11.0-beta.2</code></pre>
 <p>This will generate a random datastream from a brand new, random Device ID. You can tweak those parameters to whatever suits you better by having a look at the Dockerfile. You can spawn any number of instances you like, or you can have the same Device ID send longer streams of data by saving the container&#39;s persistency through a Docker Volume. If you wish to do so, simply add <code class="inline">-v /persistency:&lt;your persistency path&gt;</code> to your <code class="inline">docker run</code> invocation.</p>
 <p>Refer to <code class="inline">stream-qt5-test</code> <a href="https://github.com/astarte-platform/stream-qt5-test/blob/master/README.md">README</a> for more details on which variables can be passed to the container.</p>
 <p>Also, please note that the <code class="inline">--net=&quot;host&quot;</code> parameter is required to make <code class="inline">localhost</code> work. If this is not desirable, you can change <code class="inline">PAIRING_HOST</code> to an host reachable from within the container network. Obviously, that parameter isn&#39;t required if you&#39;re running the container on a different machine and <code class="inline">PAIRING_HOST</code> is pointing to a different URL.</p>
@@ -184,7 +184,7 @@ $ docker-compose up -d</code></pre>
 <p>If your target platform does not support running containers, you can build <code class="inline">stream-qt5-test</code> from source. To do so, you will have to compile both Astarte Qt5 SDK and Astarte Qt5 Stream Test. Their main dependencies are <code class="inline">cmake</code>, <code class="inline">qtbase</code>, <code class="inline">mosquitto</code> and <code class="inline">openssl</code>. If you&#39;re on a Debian derivative, you can install them all with:</p>
 <pre><code class="sh"># apt-get install qt5-default qtbase5-dev libqt5sql5-sqlite libssl-dev libmosquittopp-dev cmake git build-essential</code></pre>
 <p>Once your dependencies are installed, compile your components:</p>
-<pre><code class="sh">$ git clone https://github.com/astarte-platform/astarte-device-sdk-qt5.git
+<pre><code class="sh">$ git clone https://github.com/astarte-platform/astarte-device-sdk-qt5.git -b v0.11.0-beta.2
 $ cd astarte-device-sdk-qt5
 $ mkdir build
 $ cd build
@@ -192,7 +192,7 @@ $ cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 $ make
 $ make install
 $ cd -
-$ git clone https://github.com/astarte-platform/stream-qt5-test.git
+$ git clone https://github.com/astarte-platform/stream-qt5-test.git -b v0.11.0-beta.2
 $ cd stream-qt5-test
 $ qmake .
 $ make</code></pre>
