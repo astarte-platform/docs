@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v0.11.0-beta.2">
     <title>Managing Realms — Astarte v0.11.0-beta.2</title>
     <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
-    <script src="dist/sidebar_items-2423aef7f1.js"></script>
+    <script src="dist/sidebar_items-b30ef0ef27.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
     
@@ -68,6 +68,23 @@ Astarte      </a>
 
 
 <h1>Managing Realms</h1>
+<p>Once the Cluster is set up, you can start managing it by creating Realms.</p>
+<h2 id="accessing-housekeeping-key" class="section-heading">
+  <a href="#accessing-housekeeping-key" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Accessing Housekeeping key
+</h2>
+
+<p>When creating a new Cluster, Astarte Operator also creates a brand new keypair and stores it in
+the cluster. To retrieve it (assuming you deployed an instance named <code class="inline">astarte</code> in namespace <code class="inline">astarte</code>):</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">kubectl</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="n">secret</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">astarte</span><span class="o">-</span><span class="n">housekeeping</span><span class="o">-</span><span class="n">private</span><span class="o">-</span><span class="n">key</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="o">=</span><span class="n">jsonpath</span><span class="o">=</span><span class="p" data-group-id="3517823463-1">{</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">private</span><span class="o">-</span><span class="n">key</span><span class="p" data-group-id="3517823463-1">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">base64</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">housekeeping</span><span class="o">.</span><span class="n">key</span></code></pre>
+<p>You can then use <code class="inline">housekeeping.key</code> to authenticate against Housekeeping API.</p>
+<h2 id="work-in-progress" class="section-heading">
+  <a href="#work-in-progress" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Work in progress!
+</h2>
+
+<p>This guide is not yet complete, as this part is a moving target within <code class="inline">astartectl</code>. Please refer to the
+<a href="api/">API Documentation</a> to manage Realms manually once here.</p>
       <footer class="footer">
         <p>
           <span class="line">

@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.20.1">
     <meta name="project" content="Astarte v0.11.0-beta.2">
-    <title>Installation in a Kubernetes Cluster — Astarte v0.11.0-beta.2</title>
+    <title>Installing Astarte Operator — Astarte v0.11.0-beta.2</title>
     <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
-    <script src="dist/sidebar_items-2423aef7f1.js"></script>
+    <script src="dist/sidebar_items-b30ef0ef27.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
     
@@ -67,7 +67,40 @@ Astarte      </a>
     <div id="content" class="content-inner">
 
 
-<h1>Installation in a Kubernetes Cluster</h1>
+<h1>Installing Astarte Operator</h1>
+<p>Operator installation is usually intermediated by <a href="https://github.com/astarte-platform/astartectl"><code class="inline">astartectl</code></a>,
+through the <code class="inline">astartectl cluster</code> subcommand. <code class="inline">astartectl cluster</code> manages the entire lifecycle of Astarte within
+a single Kubernetes Cluster, with regards of both the Operator and the Astarte instance(s) that will be deployed
+in the Cluster.</p>
+<h2 id="installation" class="section-heading">
+  <a href="#installation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Installation
+</h2>
+
+<p>Installing the Operator is as simple as</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">astartectl</span><span class="w"> </span><span class="n">cluster</span><span class="w"> </span><span class="n">install</span><span class="o">-</span><span class="n">operator</span></code></pre>
+<p>This command will take care of installing all needed components for the Operator to run. This includes all the
+RBAC roles, Custom Resource Definitions, and the Operator itself. The <code class="inline">--version</code> switch allows to specify a
+version to install - when not specified, the latest version will be installed instead.</p>
+<h2 id="upgrading-the-operator" class="section-heading">
+  <a href="#upgrading-the-operator" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Upgrading the Operator
+</h2>
+
+<p>To upgrade the Operator, use the dedicated <code class="inline">upgrade-operator</code> command.</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">astartectl</span><span class="w"> </span><span class="n">cluster</span><span class="w"> </span><span class="n">upgrade</span><span class="o">-</span><span class="n">operator</span></code></pre>
+<p>Just like the <code class="inline">install-operator</code> command, the <code class="inline">--version</code> switch allows to specify the version to upgrade to -
+when not specified, the latest version will be fetched and used.</p>
+<h2 id="uninstalling-the-operator" class="section-heading">
+  <a href="#uninstalling-the-operator" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Uninstalling the Operator
+</h2>
+
+<p>To uninstall the Operator, use the dedicated <code class="inline">uninstall-operator</code> command.</p>
+<pre><code class="nohighlight makeup elixir"><span class="n">astartectl</span><span class="w"> </span><span class="n">cluster</span><span class="w"> </span><span class="n">uninstall</span><span class="o">-</span><span class="n">operator</span></code></pre>
+<p>This command will refuse to execute if any Astarte instances are active in the Cluster. Uninstalling the Operator
+is possible only after all managed instances have been deleted too.
+When uninstalling the Operator, all resources installed with <code class="inline">install-operator</code> will be erased completely.</p>
       <footer class="footer">
         <p>
           <span class="line">
