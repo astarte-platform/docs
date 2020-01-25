@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v0.11.0-beta.2">
     <title>Astarte in 5 minutes — Astarte v0.11.0-beta.2</title>
     <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
-    <script src="dist/sidebar_items-2423aef7f1.js"></script>
+    <script src="dist/sidebar_items-b30ef0ef27.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
     
@@ -75,7 +75,7 @@ Astarte      </a>
 </h2>
 
 <p>First of all, please keep in mind that <strong>this setup is not meant to be used in production</strong>: by default, no persistence is involved, the installation does not have any recovery mechanism, and you will have to restart services manually in case something goes awry. This guide is great if you want to take Astarte for a spin, or if you want to use an isolated instance for development.</p>
-<p>You will need a machine with at least 4GB of RAM (mainly due to Cassandra), with <a href="https://www.docker.com/">Docker</a>, <a href="https://github.com/cloudflare/cfssl">cfssl</a>, <a href="https://github.com/astarte-platform/astartectl">astartectl</a> and OpenSSL installed.</p>
+<p>You will need a machine with at least 4GB of RAM, with <a href="https://www.docker.com/">Docker</a> and <a href="https://github.com/astarte-platform/astartectl">astartectl</a> installed.</p>
 <p>Also, on the machine(s) or device(s) you will use as a client, you will need either Docker, or a <a href="https://www.qt.io/">Qt5</a> installation with development components if you wish to build and run components locally.</p>
 <h2 id="install-astarte" class="section-heading">
   <a href="#install-astarte" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -84,9 +84,9 @@ Astarte      </a>
 
 <p>To get our Astarte instance running as fast as possible, we will install Astarte&#39;s standalone distribution. It includes a tunable Docker Compose which brings up Astarte and every companion service needed for it to work. To do so, simply clone Astarte&#39;s main repository and use its scripts to bring it up:</p>
 <pre><code class="sh">$ git clone https://github.com/astarte-platform/astarte.git -b v0.11.0-beta.2 &amp;&amp; cd astarte
-$ ./generate-compose-files.sh
+$ docker run -v $(pwd)/compose:/compose astarte/docker-compose-initializer
 $ docker-compose up -d</code></pre>
-<p><code class="inline">generate-compose-files.sh</code> will generate a root CA for devices, a key pair for Housekeeping, and a self-signed certificate for the broker (note: this is a <em>really</em> bad idea in production). You can tune the compose file further to use legitimate certificates and custom keys, but this is out of the scope of this tutorial.</p>
+<p><code class="inline">docker-compose-initializer</code> will generate a root CA for devices, a key pair for Housekeeping, and a self-signed certificate for the broker (note: this is a <em>really</em> bad idea in production). You can tune the compose file further to use legitimate certificates and custom keys, but this is out of the scope of this tutorial.</p>
 <p>Compose might take some time to bring everything up, but usually within a minute from the containers creation Astarte will be ready. Compose will forward the following ports to your machine:</p>
 <ul>
 <li><code class="inline">4000</code>: Realm Management API

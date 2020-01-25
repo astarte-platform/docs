@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.20.1">
+    <meta name="project" content="Astarte v0.11.0-beta.2">
+    <title>Setting up the Ingress — Astarte v0.11.0-beta.2</title>
+    <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
+    <script src="dist/sidebar_items-b30ef0ef27.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
+    
+  </head>
+  <body data-type="extras">
+    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte      </a>
+      <h2 class="sidebar-projectVersion">
+        v0.11.0-beta.2
+      </h2>
+    </div>
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Setting up the Ingress</h1>
+<p>Once your Cluster <a href="060-setup_cluster.html">is up and running</a>, to expose it to the outer world you
+need to set up an Ingress. Currently, the only managed and supported Ingress is based upon
+<a href="https://github.com/appscode/voyager">Voyager</a>, and this guide will cover only this specific case.</p>
+<p>Of course, ensure you have installed <a href="https://appscode.com/products/voyager/latest/setup/install/">Voyager Operator</a>
+before you begin.</p>
+<h2 id="creating-an-astartevoyageringress" class="section-heading">
+  <a href="#creating-an-astartevoyageringress" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Creating an AstarteVoyagerIngress
+</h2>
+
+<p>Most information needed for exposing your Ingress have already been given in your main Astarte
+resource. If your Kubernetes installation supports LoadBalancer ingresses (most managed ones do),
+you should be able to get away with the most standard CR:</p>
+<pre><code class="nohighlight makeup elixir"><span class="ss">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="n">api</span><span class="o">.</span><span class="n">astarte</span><span class="o">-</span><span class="n">platform</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">v1alpha1</span><span class="w">
+</span><span class="ss">kind</span><span class="p">:</span><span class="w"> </span><span class="nc">AstarteVoyagerIngress</span><span class="w">
+</span><span class="ss">metadata</span><span class="p">:</span><span class="w">
+  </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="n">example</span><span class="o">-</span><span class="n">minimal</span><span class="w">
+  </span><span class="ss">namespace</span><span class="p">:</span><span class="w"> </span><span class="n">astarte</span><span class="w">
+</span><span class="ss">spec</span><span class="p">:</span><span class="w">
+  </span><span class="c1"># The Astarte Instance the Ingress will be attached to</span><span class="w">
+  </span><span class="ss">astarte</span><span class="p">:</span><span class="w"> </span><span class="n">example</span><span class="o">-</span><span class="n">minimal</span><span class="w">
+  </span><span class="ss">api</span><span class="p">:</span><span class="w">
+    </span><span class="ss">exposeHousekeeping</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+  </span><span class="ss">dashboard</span><span class="p">:</span><span class="w">
+    </span><span class="ss">ssl</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+    </span><span class="ss">host</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dashboard.astarte.yourdomain.com&quot;</span><span class="w"> </span><span class="c1"># When not specified, dashboard will be deployed in /dashboard in the API host.</span><span class="w">
+  </span><span class="ss">letsencrypt</span><span class="p">:</span><span class="w">
+    </span><span class="ss">use</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
+    </span><span class="ss">acmeEmail</span><span class="p">:</span><span class="w"> </span><span class="n">info</span><span class="na">@yourdomain</span><span class="o">.</span><span class="n">com</span><span class="w">
+    </span><span class="ss">challengeProvider</span><span class="p">:</span><span class="w">
+      </span><span class="ss">dns</span><span class="p">:</span><span class="w">
+        </span><span class="ss">provider</span><span class="p">:</span><span class="w"> </span><span class="n">digitalocean</span><span class="w">
+        </span><span class="ss">credentialSecretName</span><span class="p">:</span><span class="w"> </span><span class="n">voyager</span><span class="o">-</span><span class="n">digitalocean</span></code></pre>
+<p>As you might see, there&#39;s only one very important thing to be noted: the <code class="inline">astarte</code> field must reference the name of an
+existing Astarte installation in the same namespace, and the Ingress will be configured and attached to that instance.</p>
+<h2 id="ssl-and-certificates" class="section-heading">
+  <a href="#ssl-and-certificates" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  SSL and Certificates
+</h2>
+
+<p>Astarte heavily requires SSL in a number of interactions, even though this can be bypassed with <code class="inline">ssl: false</code>. If you
+do not have any SSL Certificates for your domains, you can leverage Voyager&#39;s Let&#39;s Encrypt integration.
+AstarteVoyagerIngress integrates directly with Voyager&#39;s native types, and you can follow along
+<a href="https://github.com/appscode/voyager/tree/master/docs/guides/certificate">Voyager&#39;s Let&#39;s Encrypt guide</a>.
+Simply set <code class="inline">letsencrypt.use</code> to <code class="inline">true</code>, and fill the <code class="inline">challengeProvider</code> with the right parameters.</p>
+<h2 id="api-paths" class="section-heading">
+  <a href="#api-paths" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  API Paths
+</h2>
+
+<p><code class="inline">AstarteVoyagerIngress</code> deploys a well-known tree of APIs to the <code class="inline">host</code> you specified in the main <code class="inline">Astarte</code> resource.
+In particular, assuming your API host was <code class="inline">api.astarte.yourdomain.com</code>:</p>
+<ul>
+<li>Housekeeping API base URL will be https://api.astarte.yourdomain.com/housekeeping/v1
+</li>
+<li>Realm Management API base URL will be https://api.astarte.yourdomain.com/realmmanagement/v1
+</li>
+<li>Pairing API base URL will be https://api.astarte.yourdomain.com/pairing/v1
+</li>
+<li>AppEngine API base URL will be https://api.astarte.yourdomain.com/appengine/v1
+</li>
+</ul>
+<h2 id="further-customization" class="section-heading">
+  <a href="#further-customization" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Further customization
+</h2>
+
+<p><code class="inline">AstarteVoyagerIngress</code> has a number of advanced options that can be used to accommodate needs of the most diverse
+deployments. Consult the
+<a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/master/deploy/crds/api.astarte-platform.org_astartevoyageringresses_crd.yaml">CRD Documentation</a>
+to learn more.</p>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.20.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  
+  </body>
+</html>
+

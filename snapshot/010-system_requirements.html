@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v0.11.0-beta.2">
     <title>System Requirements — Astarte v0.11.0-beta.2</title>
     <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
-    <script src="dist/sidebar_items-2423aef7f1.js"></script>
+    <script src="dist/sidebar_items-b30ef0ef27.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
     
@@ -68,6 +68,28 @@ Astarte      </a>
 
 
 <h1>System Requirements</h1>
+<p>Astarte is a Native Kubernetes application, and as such Kubernetes is a hard requirement. It is possible to
+run Astarte outside Kubernetes, although a number of features won&#39;t be available - these setups are outside
+the scope of this document.</p>
+<h2 id="kubernetes-requirements" class="section-heading">
+  <a href="#kubernetes-requirements" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Kubernetes Requirements
+</h2>
+
+<p>Astarte requires at least Kubernetes 1.12 - however, it currently targets Kubernetes 1.16+. It is advised
+to consult Astarte Operator&#39;s compatibility matrix in the README to ensure a specific Kubernetes setup is
+supported.</p>
+<p>The Astarte Operator does not require any unstable feature gate in Kubernetes 1.16, and is actively tested
+against KinD and major Managed Kubernetes installations on various Cloud Providers.</p>
+<h2 id="resource-requirements" class="section-heading">
+  <a href="#resource-requirements" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Resource Requirements
+</h2>
+
+<p>Depending on the kind of setup, Astarte might require different resource configurations when it comes to
+nodes. <code class="inline">astartectl</code> takes care of this with the <code class="inline">profiles</code> features, which inspects the Cluster and provides
+a set of ready made configurations for the Cluster. Besides this, Astarte requires a minimum of 3 physical
+nodes in case one is planning on a redundant setup.</p>
       <footer class="footer">
         <p>
           <span class="line">
