@@ -105,7 +105,7 @@ $ docker-compose up -d</code></pre>
 </li>
 </ul>
 <p>This example won&#39;t use Let&#39;s Encrypt with VerneMQ - in case binding to port 80 is a problem to you, you can comment it out in <code class="inline">docker-compose.yml</code> without affecting any functionality.</p>
-<p>To check everything went fine, use <code class="inline">docker ps</code> to verify relevant containers are up: Astarte itself, VerneMQ, PostgreSQL (used by CFSSL), CFSSL, RabbitMQ and Cassandra should be now running on your system. If any of them isn&#39;t up and running, <code class="inline">docker ps -a</code> should show it stopped or failed. In those cases, it is advised to issue <code class="inline">docker-compose up -d</code> again to fix potential temporary failures.</p>
+<p>To check everything went fine, use <code class="inline">docker ps</code> to verify relevant containers are up: Astarte itself, VerneMQ, PostgreSQL (used by CFSSL), CFSSL, RabbitMQ and ScyllaDB should be now running on your system. If any of them isn&#39;t up and running, <code class="inline">docker ps -a</code> should show it stopped or failed. In those cases, it is advised to issue <code class="inline">docker-compose up -d</code> again to fix potential temporary failures.</p>
 <h2 id="create-a-realm" class="section-heading">
   <a href="#create-a-realm" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Create a Realm

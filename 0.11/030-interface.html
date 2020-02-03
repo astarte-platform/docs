@@ -102,12 +102,12 @@ interface name of maximum 128 characters, which must be a <a href="https://en.wi
 Name</a>. As a convention, the interface
 name usually contains its author&#39;s URI Reverse Internet Domain Name.</p>
 <p>An example skeleton looks like this:</p>
-<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="5695640745-1">{</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="3461119408-1">{</span><span class="w">
     </span><span class="ss">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;com.test.MyInterfaceName&quot;</span><span class="p">,</span><span class="w">
     </span><span class="ss">&quot;version_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="ss">&quot;version_minor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="5695640745-2">[</span><span class="n">...</span><span class="p" data-group-id="5695640745-2">]</span><span class="w">
-</span><span class="p" data-group-id="5695640745-1">}</span></code></pre>
+    </span><span class="p" data-group-id="3461119408-2">[</span><span class="n">...</span><span class="p" data-group-id="3461119408-2">]</span><span class="w">
+</span><span class="p" data-group-id="3461119408-1">}</span></code></pre>
 <p>Valid values and variables are listed in the <a href="040-interface_schema.html">Interface Schema</a>.</p>
 <h3 id="name-limitations" class="section-heading">
   <a href="#name-limitations" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -172,15 +172,15 @@ typed, and can have additional options. Just like in REST controllers, Endpoints
 to build REST-like collection and trees. Parameters are identified by <code class="inline">%{parameterName}</code>, with each
 endpoint supporting any number of parameters (see <a href="#limitations">Limitations</a>).</p>
 <p>This is how a parametrized mapping looks like:</p>
-<pre><code class="nohighlight makeup elixir"><span class="w">    </span><span class="p" data-group-id="1679517181-1">[</span><span class="n">...</span><span class="p" data-group-id="1679517181-1">]</span><span class="w">
-    </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1679517181-2">[</span><span class="w">
-        </span><span class="p" data-group-id="1679517181-3">{</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="w">    </span><span class="p" data-group-id="8059683453-1">[</span><span class="n">...</span><span class="p" data-group-id="8059683453-1">]</span><span class="w">
+    </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8059683453-2">[</span><span class="w">
+        </span><span class="p" data-group-id="8059683453-3">{</span><span class="w">
             </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
             </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="p">,</span><span class="w">
             </span><span class="ss">&quot;reliability&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;unique&quot;</span><span class="p">,</span><span class="w">
             </span><span class="ss">&quot;retention&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;discard&quot;</span><span class="w">
-        </span><span class="p" data-group-id="1679517181-3">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="1679517181-4">[</span><span class="n">...</span><span class="p" data-group-id="1679517181-4">]</span></code></pre>
+        </span><span class="p" data-group-id="8059683453-3">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="8059683453-4">[</span><span class="n">...</span><span class="p" data-group-id="8059683453-4">]</span></code></pre>
 <p>In this example, <code class="inline">/0/value</code>, <code class="inline">/1/value</code> or <code class="inline">/test/value</code> all map to a valid endpoint, while
 <code class="inline">/te/st/value</code> can&#39;t be resolved by any endpoint.</p>
 <h3 id="supported-data-types" class="section-heading">
@@ -219,49 +219,49 @@ endpoint supporting any number of parameters (see <a href="#limitations">Limitat
 the presence of hyphens. This situation leads to a collision in the interface names which brings to
 an error in the interface installation process.</p>
 <p>A valid interface must resolve a path univocally to a single endpoint. Take the following example:</p>
-<pre><code class="nohighlight makeup elixir"><span class="w">    </span><span class="p" data-group-id="7788606729-1">[</span><span class="n">...</span><span class="p" data-group-id="7788606729-1">]</span><span class="w">
-    </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7788606729-2">[</span><span class="w">
-        </span><span class="p" data-group-id="7788606729-3">{</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="w">    </span><span class="p" data-group-id="2008451989-1">[</span><span class="n">...</span><span class="p" data-group-id="2008451989-1">]</span><span class="w">
+    </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2008451989-2">[</span><span class="w">
+        </span><span class="p" data-group-id="2008451989-3">{</span><span class="w">
             </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
             </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="7788606729-3">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="7788606729-4">{</span><span class="w">
+        </span><span class="p" data-group-id="2008451989-3">}</span><span class="p">,</span><span class="w">
+        </span><span class="p" data-group-id="2008451989-4">{</span><span class="w">
             </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/myPath/value&quot;</span><span class="p">,</span><span class="w">
             </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="7788606729-4">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="7788606729-5">[</span><span class="n">...</span><span class="p" data-group-id="7788606729-5">]</span></code></pre>
+        </span><span class="p" data-group-id="2008451989-4">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="2008451989-5">[</span><span class="n">...</span><span class="p" data-group-id="2008451989-5">]</span></code></pre>
 <p>In such a case, the interface isn&#39;t valid and is
 rejected, due to the fact that path <code class="inline">/myPath/value</code> is ambiguous and could be resolved to two
 different endpoints.</p>
 <p>Any endpoint configuration must not generate paths that are prefix of other paths, for this reason
 the following example is also invalid:</p>
-<pre><code class="nohighlight makeup elixir"><span class="w">    </span><span class="p" data-group-id="5649836015-1">[</span><span class="n">...</span><span class="p" data-group-id="5649836015-1">]</span><span class="w">
-    </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5649836015-2">[</span><span class="w">
-        </span><span class="p" data-group-id="5649836015-3">{</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="w">    </span><span class="p" data-group-id="2748917130-1">[</span><span class="n">...</span><span class="p" data-group-id="2748917130-1">]</span><span class="w">
+    </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2748917130-2">[</span><span class="w">
+        </span><span class="p" data-group-id="2748917130-3">{</span><span class="w">
             </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/some/thing&quot;</span><span class="p">,</span><span class="w">
             </span><span class="s">&quot;type&quot;</span><span class="ss">:&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="5649836015-3">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="5649836015-4">{</span><span class="w">
+        </span><span class="p" data-group-id="2748917130-3">}</span><span class="p">,</span><span class="w">
+        </span><span class="p" data-group-id="2748917130-4">{</span><span class="w">
             </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/some/%{param}/value&quot;</span><span class="p">,</span><span class="w">
             </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="5649836015-4">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="5649836015-5">[</span><span class="n">...</span><span class="p" data-group-id="5649836015-5">]</span><span class="w">
+        </span><span class="p" data-group-id="2748917130-4">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="2748917130-5">[</span><span class="n">...</span><span class="p" data-group-id="2748917130-5">]</span><span class="w">
 </span></code></pre>
 <p>In case the interface&#39;s aggregation is <code class="inline">object</code>, additional restrictions apply. Endpoints in the
 same interface must all have the same depth, and the same number of parameters. If the interface is
 parametrized, every endpoint must have the same parameter name at the same level. This is an example
 of a valid aggregated interface mapping:</p>
-<pre><code class="nohighlight makeup elixir"><span class="w">    </span><span class="p" data-group-id="6928666318-1">[</span><span class="n">...</span><span class="p" data-group-id="6928666318-1">]</span><span class="w">
-    </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6928666318-2">[</span><span class="w">
-        </span><span class="p" data-group-id="6928666318-3">{</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="w">    </span><span class="p" data-group-id="1847993536-1">[</span><span class="n">...</span><span class="p" data-group-id="1847993536-1">]</span><span class="w">
+    </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1847993536-2">[</span><span class="w">
+        </span><span class="p" data-group-id="1847993536-3">{</span><span class="w">
             </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
             </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="6928666318-3">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="6928666318-4">{</span><span class="w">
+        </span><span class="p" data-group-id="1847993536-3">}</span><span class="p">,</span><span class="w">
+        </span><span class="p" data-group-id="1847993536-4">{</span><span class="w">
             </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/%{itemIndex}/otherValue&quot;</span><span class="p">,</span><span class="w">
             </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="w">
-        </span><span class="p" data-group-id="6928666318-4">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="6928666318-5">[</span><span class="n">...</span><span class="p" data-group-id="6928666318-5">]</span></code></pre>
+        </span><span class="p" data-group-id="1847993536-4">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="1847993536-5">[</span><span class="n">...</span><span class="p" data-group-id="1847993536-5">]</span></code></pre>
 <h2 id="aggregation" class="section-heading">
   <a href="#aggregation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Aggregation
