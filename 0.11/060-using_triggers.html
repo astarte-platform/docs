@@ -115,7 +115,7 @@ using astartectl:</p>
 </h2>
 
 <p>This trigger will send a <code class="inline">POST</code> request to <code class="inline">&lt;post-url&gt;</code> every time a device sends data to the
-<code class="inline">org.astarteplatform.Values</code> major version <code class="inline">0</code> interface on the <code class="inline">/realValue</code> path.</p>
+<code class="inline">org.astarte-platform.genericsensors.Values</code> major version <code class="inline">0</code> interface on the <code class="inline">/streamTest/value</code> path.</p>
 <p>This is the JSON representation of the trigger</p>
 <pre><code class="json">{
     &quot;name&quot;: &quot;my_data_trigger&quot;,
@@ -126,9 +126,9 @@ using astartectl:</p>
         {
             &quot;type&quot;: &quot;data_trigger&quot;,
             &quot;on&quot;: &quot;incoming_data&quot;,
-            &quot;interface_name&quot;: &quot;org.astarteplatform.Values&quot;,
+            &quot;interface_name&quot;: &quot;org.astarte-platform.genericsensors.Values&quot;,
             &quot;interface_major&quot;: 0,
-            &quot;match_path&quot;: &quot;/realValue&quot;,
+            &quot;match_path&quot;: &quot;/streamTest/value&quot;,
             &quot;value_match_operator&quot;: &quot;*&quot;
         }
     ]
@@ -144,8 +144,8 @@ following JSON payload:</p>
   &quot;device_id&quot;: &quot;&lt;device_id&gt;&quot;,
   &quot;event&quot;: {
     &quot;type&quot;: &quot;incoming_data&quot;,
-    &quot;interface&quot;: &quot;org.astarteplatform.Values&quot;,
-    &quot;path&quot;: &quot;/realValue&quot;,
+    &quot;interface&quot;: &quot;org.astarte-platform.genericsensors.Values&quot;,
+    &quot;path&quot;: &quot;/streamTest/value&quot;,
     &quot;value&quot;: &lt;value&gt;
   }
 }</code></pre>

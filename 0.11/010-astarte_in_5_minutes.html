@@ -123,9 +123,9 @@ $ docker-compose up -d</code></pre>
   Install an interface
 </h2>
 
-<p>We will use <a href="https://github.com/astarte-platform/stream-qt5-test">Astarte&#39;s Qt5 Stream Generator</a> to feed data into Astarte. Clone the repository, as we will have to install its <code class="inline">org.astarteplatform.Values</code> interface into our new realm. To do that, we can use <code class="inline">astartectl</code> again:</p>
-<pre><code class="sh">$ astartectl realm-management interfaces install ../stream-qt5-test/interfaces/org.astarteplatform.Values.json --realm-management-url http://localhost:4000/ -r test -k test_private.pem</code></pre>
-<p>Now <code class="inline">org.astarteplatform.Values</code> should show up among our available interfaces:</p>
+<p>We will use <a href="https://github.com/astarte-platform/stream-qt5-test">Astarte&#39;s Qt5 Stream Generator</a> to feed data into Astarte. However before starting, we will have to install <code class="inline">org.astarte-platform.genericsensors.Values</code> interface into our new realm. To do that, we can use <code class="inline">astartectl</code> again:</p>
+<pre><code class="sh">$ astartectl realm-management interfaces install standard-interfaces/org.astarte-platform.genericsensors.Values.json --realm-management-url http://localhost:4000/ -r test -k test_private.pem</code></pre>
+<p>Now <code class="inline">org.astarte-platform.genericsensors.Values</code> should show up among our available interfaces:</p>
 <pre><code class="sh">$ astartectl realm-management interfaces ls --realm-management-url http://localhost:4000/ -r test -k test_private.pem</code></pre>
 <p>Our Astarte instance is now ready for our devices.</p>
 <h2 id="install-a-trigger" class="section-heading">
@@ -145,9 +145,9 @@ $ docker-compose up -d</code></pre>
     {
       &quot;type&quot;: &quot;data_trigger&quot;,
       &quot;on&quot;: &quot;incoming_data&quot;,
-      &quot;interface_name&quot;: &quot;org.astarteplatform.Values&quot;,
+      &quot;interface_name&quot;: &quot;org.astarte-platform.genericsensors.Values&quot;,
       &quot;interface_major&quot;: 0,
-      &quot;match_path&quot;: &quot;/realValue&quot;,
+      &quot;match_path&quot;: &quot;/streamTest/value&quot;,
       &quot;value_match_operator&quot;: &quot;&gt;&quot;,
       &quot;known_value&quot;: 0.6
     }
@@ -203,7 +203,7 @@ $ make</code></pre>
 </h2>
 
 <p>Congratulations! Your devices or fake devices are now communicating with Astarte, and your tea should be ready by now. You can check if everything is working out by invoking AppEngine APIs to get some values. In case you are using <code class="inline">stream-qt5-test</code>, you can get the last sent value with <code class="inline">astartectl</code>:</p>
-<pre><code class="sh">$ astartectl appengine devices get-samples &lt;your device id&gt; org.astarteplatform.Values /realValue --count 1 --appengine-url http://localhost:4002 -r test -k test_private.pem</code></pre>
+<pre><code class="sh">$ astartectl appengine devices get-samples &lt;your device id&gt; org.astarte-platform.genericsensors.Values /streamTest/value --count 1 --appengine-url http://localhost:4002 -r test -k test_private.pem</code></pre>
 <p>If you get a meaningful value, congratulations - you have a working Astarte installation with your first <code class="inline">datastream</code> coming in!</p>
 <p>Moreover, Astarte&#39;s Docker Compose also installs <a href="https://github.com/astarte-platform/astarte-dashboard">Astarte Dashboard</a>, from which you can manage your Realms and install Triggers, Interfaces and more from a Web UI. It is accessible by default at <code class="inline">http://localhost:4040/</code> - remember that if you are not exposing Astarte from <code class="inline">localhost</code>, you have to change Realm Management API&#39;s URL in Dashboard&#39;s configuration file, to be found in <code class="inline">compose/astarte-dashboard/config.json</code> in Astarte&#39;s repository. You can generate a token for Astarte Dashboard, as usual, through <code class="inline">astartectl utils gen-jwt realm-management -k test_private.pem</code>. Grant a longer expiration by using the <code class="inline">-e</code> parameter to avoid being logged out too quickly.</p>
 <p>From here on, you can use all of Astarte&#39;s APIs and features from your own installation. You can add devices, experiment with interfaces, or develop your own applications on top of Astarte&#39;s triggers or AppEngine&#39;s APIs. And have a lot of fun!</p>
