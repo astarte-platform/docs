@@ -110,14 +110,14 @@ Astarte      </a>
     &quot;simple_trigger&quot;: {
         &quot;type&quot;: &quot;data_trigger&quot;,
         &quot;on&quot;: &quot;incoming_data&quot;,
-        &quot;interface_name&quot;: &quot;org.astarteplatform.Values&quot;,
+        &quot;interface_name&quot;: &quot;org.astarte-platform.genericsensors.Values&quot;,
         &quot;interface_major&quot;: 0,
-        &quot;match_path&quot;: &quot;/realValue&quot;,
+        &quot;match_path&quot;: &quot;/streamTest/value&quot;,
         &quot;value_match_operator&quot;: &quot;&gt;&quot;,
         &quot;known_value&quot;: 0.6
     }
 }</code></pre>
-<p>This installs in the Room a Transient Trigger which will trigger an event everytime a value higher than <code class="inline">0.6</code> is sent on the path <code class="inline">/realValue</code> of the <code class="inline">datastream</code> interface <code class="inline">org.astarteplatform.Values</code> by the device <code class="inline">f0VMRgIBAQAAAAAAAAAAAA</code>, and will be received by every user currently in the room. If a user isn&#39;t in the room at the time of the event, he will not get it, and there&#39;s no way he can retrieve it if he joined at a later time.</p>
+<p>This installs in the Room a Transient Trigger which will trigger an event everytime a value higher than <code class="inline">0.6</code> is sent on the path <code class="inline">/streamTest/value</code> of the <code class="inline">datastream</code> interface <code class="inline">org.astarte-platform.genericsensors.Values</code> by the device <code class="inline">f0VMRgIBAQAAAAAAAAAAAA</code>, and will be received by every user currently in the room. If a user isn&#39;t in the room at the time of the event, he will not get it, and there&#39;s no way he can retrieve it if he joined at a later time.</p>
 <p>Triggers can be uninstalled by issuing an <code class="inline">unwatch</code> event in the Channel. The payload of the event should be the name of the trigger which should be uninstalled.</p>
 <h2 id="authorization" class="section-heading">
   <a href="#authorization" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -138,7 +138,7 @@ Astarte      </a>
 </h3>
 
 <p>The <code class="inline">WATCH</code> verb allows a user to install a Trigger within a room. Its semantics define which kind of trigger, and upon which entities the user is allowed to act. Watch semantics are <code class="inline">WATCH::&lt;regex&gt;</code>, where <code class="inline">regex</code> is a regular expression which matches a device, path or interface (or a mixture of them) in almost very same fashion as the <code class="inline">a_aea</code> claim (which is used in AppEngine).</p>
-<p>Given different kind of triggers impact different Astarte entities, the Authorization claim implicitly defines which kind of triggers a user will be able to install. For example, <code class="inline">f0VMRgIBAQAAAAAAAAAAAA/org.astarteplatform.Values.*</code> will allow installing data triggers such as the one shown in the previous example, but won&#39;t let the user install device-wide triggers (such as connect/disconnect events). A claim such as <code class="inline">f0VMRgIBAQAAAAAAAAAAAA</code> or <code class="inline">f0VMRgIBAQAAAAAAAAAAAA.*</code>, instead, will allow device-level triggers to be installed.</p>
+<p>Given different kind of triggers impact different Astarte entities, the Authorization claim implicitly defines which kind of triggers a user will be able to install. For example, <code class="inline">f0VMRgIBAQAAAAAAAAAAAA/org.astarte-platform.genericsensors.Values.*</code> will allow installing data triggers such as the one shown in the previous example, but won&#39;t let the user install device-wide triggers (such as connect/disconnect events). A claim such as <code class="inline">f0VMRgIBAQAAAAAAAAAAAA</code> or <code class="inline">f0VMRgIBAQAAAAAAAAAAAA.*</code>, instead, will allow device-level triggers to be installed.</p>
       <footer class="footer">
         <p>
           <span class="line">

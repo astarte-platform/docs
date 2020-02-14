@@ -93,9 +93,9 @@ and <code class="inline">action</code>.</p>
     {
       &quot;type&quot;: &quot;data_trigger&quot;,
       &quot;on&quot;: &quot;incoming_data&quot;,
-      &quot;interface_name&quot;: &quot;org.astarteplatform.Values&quot;,
+      &quot;interface_name&quot;: &quot;org.astarte-platform.genericsensors.Values&quot;,
       &quot;interface_major&quot;: 0,
-      &quot;match_path&quot;: &quot;/realValue&quot;,
+      &quot;match_path&quot;: &quot;/streamTest/value&quot;,
       &quot;value_match_operator&quot;: &quot;&gt;&quot;,
       &quot;known_value&quot;: 0.4
     }
@@ -105,7 +105,7 @@ and <code class="inline">action</code>.</p>
 only a single entry in the <code class="inline">simple_triggers</code> array, but support for multiple simple triggers (and
 different ways to combine them) is planned for future releases.</p>
 <p>The <code class="inline">condition</code> in the example specifies that when data is received on the
-<code class="inline">org.astarteplatform.Values</code> interface on <code class="inline">/realValue</code> path, if the value of said data is <code class="inline">&gt; 0.4</code>,
+<code class="inline">org.astarte-platform.genericsensors.Values</code> interface on <code class="inline">/streamTest/value</code> path, if the value of said data is <code class="inline">&gt; 0.4</code>,
 then the trigger is activated. For more information about all the possible conditions, check out the
 <a href="#conditions">Conditions section</a></p>
 <p>The <code class="inline">action</code> object describes what the result of the trigger will be. In this specific case, an HTTP
@@ -115,8 +115,8 @@ then the trigger is activated. For more information about all the possible condi
   &quot;device_id&quot;: &quot;&lt;device_id&gt;&quot;,
   &quot;event&quot;: {
     &quot;type&quot;: &quot;incoming_data&quot;,
-    &quot;interface&quot;: &quot;org.astarteplatform.Values&quot;,
-    &quot;path&quot;: &quot;/realValue&quot;,
+    &quot;interface&quot;: &quot;org.astarte-platform.genericsensors.Values&quot;,
+    &quot;path&quot;: &quot;/streamTest/value&quot;,
     &quot;value&quot;: &lt;some_value&gt;
   }
 }</code></pre>
