@@ -5,8 +5,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.20.1">
-    <meta name="project" content="Astarte v0.11.0-beta.3">
-    <title>Managing Interfaces — Astarte v0.11.0-beta.3</title>
+    <meta name="project" content="Astarte v1.0.0-dev">
+    <title>Managing Interfaces — Astarte v1.0.0-dev</title>
     <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
     <script src="dist/sidebar_items-b30ef0ef27.js"></script>
       <script src="docs_config.js"></script>
@@ -44,7 +44,7 @@
       <a href="http://astarte-platform.org" class="sidebar-projectName">
 Astarte      </a>
       <h2 class="sidebar-projectVersion">
-        v0.11.0-beta.3
+        v1.0.0-dev
       </h2>
     </div>
       <a href="http://astarte-platform.org">
@@ -90,33 +90,33 @@ Astarte      </a>
 <p><em>Sample Request</em></p>
 <pre><code class="nohighlight makeup elixir"><span class="nc">GET</span><span class="w"> </span><span class="n">realm</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">interfaces</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">my</span><span class="o">.</span><span class="nc">Interface1</span><span class="o">/</span><span class="mi">0</span></code></pre>
 <p><em>Sample Response</em></p>
-<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="4957181418-1">{</span><span class="w">
-  </span><span class="ss">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4957181418-2">{</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="4031742692-1">{</span><span class="w">
+  </span><span class="ss">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4031742692-2">{</span><span class="w">
     </span><span class="ss">&quot;version_minor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="ss">&quot;version_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;properties&quot;</span><span class="p">,</span><span class="w">
     </span><span class="ss">&quot;ownership&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;device&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4957181418-3">[</span><span class="w">
-      </span><span class="p" data-group-id="4957181418-4">{</span><span class="w">
+    </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4031742692-3">[</span><span class="w">
+      </span><span class="p" data-group-id="4031742692-4">{</span><span class="w">
         </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="p">,</span><span class="w">
         </span><span class="ss">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/myValue&quot;</span><span class="p">,</span><span class="w">
         </span><span class="ss">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;This is quite an important value.&quot;</span><span class="w">
-      </span><span class="p" data-group-id="4957181418-4">}</span><span class="p">,</span><span class="w">
-      </span><span class="p" data-group-id="4957181418-5">{</span><span class="w">
+      </span><span class="p" data-group-id="4031742692-4">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="4031742692-5">{</span><span class="w">
         </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="p">,</span><span class="w">
         </span><span class="ss">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/myBetterValue&quot;</span><span class="p">,</span><span class="w">
         </span><span class="ss">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;A better revision, introduced in minor 2, supported only by some devices&quot;</span><span class="w">
-      </span><span class="p" data-group-id="4957181418-5">}</span><span class="p">,</span><span class="w">
-      </span><span class="p" data-group-id="4957181418-6">{</span><span class="w">
+      </span><span class="p" data-group-id="4031742692-5">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="4031742692-6">{</span><span class="w">
         </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;boolean&quot;</span><span class="p">,</span><span class="w">
         </span><span class="ss">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/awesome&quot;</span><span class="p">,</span><span class="w">
         </span><span class="ss">&quot;allow_unset&quot;</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
         </span><span class="ss">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Introduced in minor 1, tells you if the device is awesome. Optional.&quot;</span><span class="w">
-      </span><span class="p" data-group-id="4957181418-6">}</span><span class="w">
-    </span><span class="p" data-group-id="4957181418-3">]</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="4031742692-6">}</span><span class="w">
+    </span><span class="p" data-group-id="4031742692-3">]</span><span class="p">,</span><span class="w">
     </span><span class="ss">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;com.my.Interface1&quot;</span><span class="w">
-  </span><span class="p" data-group-id="4957181418-2">}</span><span class="w">
-</span><span class="p" data-group-id="4957181418-1">}</span></code></pre>
+  </span><span class="p" data-group-id="4031742692-2">}</span><span class="w">
+</span><span class="p" data-group-id="4031742692-1">}</span></code></pre>
 <h2 id="installing-updating-an-interface" class="section-heading">
   <a href="#installing-updating-an-interface" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Installing/Updating an interface
@@ -129,33 +129,33 @@ Astarte      </a>
 </h3>
 
 <p>To install a new interface, <code class="inline">POST</code> its JSON body to the <code class="inline">/interfaces</code> endpoint of the Realm encapsulated in a <code class="inline">data</code> object, like in the following example:</p>
-<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="1774526082-1">{</span><span class="w">
-    </span><span class="ss">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1774526082-2">{</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="8880456768-1">{</span><span class="w">
+    </span><span class="ss">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8880456768-2">{</span><span class="w">
       </span><span class="ss">&quot;version_minor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="ss">&quot;version_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;properties&quot;</span><span class="p">,</span><span class="w">
       </span><span class="ss">&quot;ownership&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;device&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1774526082-3">[</span><span class="w">
-        </span><span class="p" data-group-id="1774526082-4">{</span><span class="w">
+      </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8880456768-3">[</span><span class="w">
+        </span><span class="p" data-group-id="8880456768-4">{</span><span class="w">
           </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="p">,</span><span class="w">
           </span><span class="ss">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/myValue&quot;</span><span class="p">,</span><span class="w">
           </span><span class="ss">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;This is quite an important value.&quot;</span><span class="w">
-        </span><span class="p" data-group-id="1774526082-4">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="1774526082-5">{</span><span class="w">
+        </span><span class="p" data-group-id="8880456768-4">}</span><span class="p">,</span><span class="w">
+        </span><span class="p" data-group-id="8880456768-5">{</span><span class="w">
           </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="p">,</span><span class="w">
           </span><span class="ss">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/myBetterValue&quot;</span><span class="p">,</span><span class="w">
           </span><span class="ss">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;A better revision, introduced in minor 2, supported only by some devices&quot;</span><span class="w">
-        </span><span class="p" data-group-id="1774526082-5">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="1774526082-6">{</span><span class="w">
+        </span><span class="p" data-group-id="8880456768-5">}</span><span class="p">,</span><span class="w">
+        </span><span class="p" data-group-id="8880456768-6">{</span><span class="w">
           </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;boolean&quot;</span><span class="p">,</span><span class="w">
           </span><span class="ss">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/awesome&quot;</span><span class="p">,</span><span class="w">
           </span><span class="ss">&quot;allow_unset&quot;</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
           </span><span class="ss">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Introduced in minor 1, tells you if the device is awesome. Optional.&quot;</span><span class="w">
-        </span><span class="p" data-group-id="1774526082-6">}</span><span class="w">
-      </span><span class="p" data-group-id="1774526082-3">]</span><span class="p">,</span><span class="w">
+        </span><span class="p" data-group-id="8880456768-6">}</span><span class="w">
+      </span><span class="p" data-group-id="8880456768-3">]</span><span class="p">,</span><span class="w">
       </span><span class="ss">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;com.my.Interface1&quot;</span><span class="w">
-    </span><span class="p" data-group-id="1774526082-2">}</span><span class="w">
-</span><span class="p" data-group-id="1774526082-1">}</span></code></pre>
+    </span><span class="p" data-group-id="8880456768-2">}</span><span class="w">
+</span><span class="p" data-group-id="8880456768-1">}</span></code></pre>
 <p>The call will return either <code class="inline">201 Created</code> or an error. Most common failure cases are:</p>
 <ul>
 <li>The interface/major combination already exists in the Realm
