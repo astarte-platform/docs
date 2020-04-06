@@ -4,17 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.20.1">
-    <meta name="project" content="Astarte v0.11.0-rc.1">
-    <title>Interface Schema — Astarte v0.11.0-rc.1</title>
-    <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
-    <script src="dist/sidebar_items-b30ef0ef27.js"></script>
+    <meta name="generator" content="ExDoc v0.21.3">
+    <meta name="project" content="Astarte v0.11.0">
+    <title>Interface Schema — Astarte v0.11.0</title>
+    <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
+    <script src="dist/sidebar_items-9e4342c542.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
-    
+    <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
   <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -44,7 +43,7 @@
       <a href="http://astarte-platform.org" class="sidebar-projectName">
 Astarte      </a>
       <h2 class="sidebar-projectVersion">
-        v0.11.0-rc.1
+        v0.11.0
       </h2>
     </div>
       <a href="http://astarte-platform.org">
@@ -54,7 +53,6 @@ Astarte      </a>
 
   <ul class="sidebar-listNav">
     <li><a id="extras-list" href="#full-list">Pages</a></li>
-
 
 
   </ul>
@@ -75,7 +73,7 @@ Astarte      </a>
 <li><a href="#reference-astarte-mapping-schema"><code class="inline">Mapping</code></a>
 </li>
 </ul>
-<hr class="thin"/>
+<hr class="thin" />
 <p><a name="reference-astarte-interface-schema"></a></p>
 <h2 id="interface" class="section-heading">
   <a href="#interface" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -85,17 +83,12 @@ Astarte      </a>
 <p>This schema describes how an Astarte interface should be declared</p>
 <p><strong>Properties</strong></p>
 <table>
-<colgroup>
-<col>
-<col>
-<col>
-<col>
-</colgroup>
 <thead>
 <tr>
 <th style="text-align: left"></th><th style="text-align: left">Type</th><th style="text-align: left">Description</th><th style="text-align: left">Required</th>
 </tr>
 </thead>
+<tbody>
 <tr>
 <td style="text-align: left"><strong>interface_name</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">The name of the interface. This has to be an unique, alphanumeric reverse internet domain name, shorther than 128 characters.</td><td style="text-align: left">:white_check_mark: Yes</td>
 </tr>
@@ -126,6 +119,7 @@ Astarte      </a>
 <tr>
 <td style="text-align: left"><strong>mappings</strong></td><td style="text-align: left"><a href="#reference-astarte-mapping-schema"><code class="inline">Astarte Mapping Schema</code></a> <code class="inline">[1-1024]</code></td><td style="text-align: left">Mappings define the endpoint of the interface, where actual data is stored/streamed. They are defined as relative URLs (e.g. /my/path) and can be parametrized (e.g.: /%{myparam}/path). A valid interface must have no mappings clash, which means that every mapping must resolve to a unique path or collection of paths (including parametrization). Every mapping acquires type, quality and aggregation of the interface.</td><td style="text-align: left">:white_check_mark: Yes</td>
 </tr>
+</tbody>
 </table>
 <p>Additional properties are allowed.</p>
 <h3 id="astarte-interface-schema-interface_name-white_check_mark" class="section-heading">
@@ -278,7 +272,7 @@ Astarte      </a>
 <li><strong>Required</strong>: Yes
 </li>
 </ul>
-<hr class="thin"/>
+<hr class="thin" />
 <p><a name="reference-astarte-mapping-schema"></a></p>
 <h2 id="mapping" class="section-heading">
   <a href="#mapping" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -288,17 +282,12 @@ Astarte      </a>
 <p>Identifies a mapping for an interface. A mapping must consist at least of an endpoint and a type.</p>
 <p><strong>Properties</strong></p>
 <table>
-<colgroup>
-<col>
-<col>
-<col>
-<col>
-</colgroup>
 <thead>
 <tr>
 <th style="text-align: left"></th><th style="text-align: left">Type</th><th style="text-align: left">Description</th><th style="text-align: left">Required</th>
 </tr>
 </thead>
+<tbody>
 <tr>
 <td style="text-align: left"><strong>endpoint</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">The template of the path. This is a UNIX-like path (e.g. /my/path) and can be parametrized. Parameters are in the %{name} form, and can be used to create interfaces which represent dictionaries of mappings. When the interface aggregation is object, an object is composed by all the mappings for one specific parameter combination.</td><td style="text-align: left">:white_check_mark: Yes</td>
 </tr>
@@ -323,6 +312,7 @@ Astarte      </a>
 <tr>
 <td style="text-align: left"><strong>doc</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">A string containing documentation that will be injected in the generated client code.</td><td style="text-align: left">No</td>
 </tr>
+</tbody>
 </table>
 <p>Additional properties are allowed.</p>
 <h3 id="astarte-mapping-schema-endpoint-white_check_mark" class="section-heading">
@@ -479,7 +469,7 @@ Astarte      </a>
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.20.1),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.3),
           </span>
           <span class="line">
             designed by
@@ -487,11 +477,18 @@ Astarte      </a>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
           </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
           </button>
         </p>
       </footer>
@@ -499,7 +496,6 @@ Astarte      </a>
   </div>
 </section>
 </div>
-  
   </body>
 </html>
 
