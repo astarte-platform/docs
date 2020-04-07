@@ -304,6 +304,12 @@ Astarte      </a>
 <td style="text-align: left"><strong>expiry</strong></td><td style="text-align: left"><code class="inline">integer</code></td><td style="text-align: left">Useful when retention is stored. Defines after how many seconds a specific data entry should be kept before giving up and erasing it from the persistent cache. A value &lt;= 0 means the persistent cache never expires, and is the default.</td><td style="text-align: left">No, default: <code class="inline">0</code></td>
 </tr>
 <tr>
+<td style="text-align: left"><strong>database_retention_policy</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Useful only with datastream. Defines whether data is expired from the database after a given time to live interval.</td><td style="text-align: left">No, default: <code class="inline">&quot;no_ttl&quot;</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>database_retention_ttl</strong></td><td style="text-align: left"><code class="inline">integer</code></td><td style="text-align: left">Useful when database_retention_policy is <code class="inline">&quot;use_ttl&quot;</code>. Defines how many seconds a specific data entry should be kept before erasing it from the database.</td><td style="text-align: left">No</td>
+</tr>
+<tr>
 <td style="text-align: left"><strong>allow_unset</strong></td><td style="text-align: left"><code class="inline">boolean</code></td><td style="text-align: left">Used only with properties. Used with producers, it generates a method to unset the property. Used with consumers, it generates code to call an unset method when an empty payload is received.</td><td style="text-align: left">No, default: <code class="inline">false</code></td>
 </tr>
 <tr>
@@ -427,6 +433,30 @@ Astarte      </a>
 <li><strong>Type</strong>: <code class="inline">integer</code>
 </li>
 <li><strong>Required</strong>: No, default: <code class="inline">0</code>
+</li>
+</ul>
+<h3 id="astarte-mapping-schema-database_retention_policy" class="section-heading">
+  <a href="#astarte-mapping-schema-database_retention_policy" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.mapping.schema.database_retention_policy
+</h3>
+
+<p>Useful only with datastream. Defines whether data is expired from the database after a given time to live interval. When <code class="inline">&quot;no_ttl&quot;</code> is used data are not expired.</p>
+<ul>
+<li><strong>Type</strong>: <code class="inline">string</code>
+</li>
+<li><strong>Required</strong>: No
+</li>
+</ul>
+<h3 id="astarte-mapping-schema-database_retention_ttl" class="section-heading">
+  <a href="#astarte-mapping-schema-database_retention_ttl" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.mapping.schema.database_retention_ttl
+</h3>
+
+<p>Useful when database_retention_policy is <code class="inline">&quot;use_ttl&quot;</code>. Defines how many seconds a specific data entry should be kept before erasing it from the database.</p>
+<ul>
+<li><strong>Type</strong>: <code class="inline">integer</code>
+</li>
+<li><strong>Required</strong>: No
 </li>
 </ul>
 <h3 id="astarte-mapping-schema-allow_unset" class="section-heading">
