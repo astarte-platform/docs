@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v0.11.0">
     <title>Managing Realms — Astarte v0.11.0</title>
     <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
-    <script src="dist/sidebar_items-35b5602d18.js"></script>
+    <script src="dist/sidebar_items-ac74c0c783.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
@@ -74,7 +74,7 @@ Astarte      </a>
 
 <p>When creating a new Cluster, Astarte Operator also creates a brand new keypair and stores it in
 the cluster. To retrieve it (assuming you deployed an instance named <code class="inline">astarte</code> in namespace <code class="inline">astarte</code>):</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">kubectl</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="n">secret</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">astarte</span><span class="o">-</span><span class="n">housekeeping</span><span class="o">-</span><span class="n">private</span><span class="o">-</span><span class="n">key</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="o">=</span><span class="n">jsonpath</span><span class="o">=</span><span class="p" data-group-id="2575058211-1">{</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">private</span><span class="o">-</span><span class="n">key</span><span class="p" data-group-id="2575058211-1">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">base64</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">housekeeping</span><span class="o">.</span><span class="n">key</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="n">kubectl</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="n">secret</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">astarte</span><span class="o">-</span><span class="n">housekeeping</span><span class="o">-</span><span class="n">private</span><span class="o">-</span><span class="n">key</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="o">=</span><span class="n">jsonpath</span><span class="o">=</span><span class="p" data-group-id="1975970083-1">{</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">private</span><span class="o">-</span><span class="n">key</span><span class="p" data-group-id="1975970083-1">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">base64</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">housekeeping</span><span class="o">.</span><span class="n">key</span></code></pre>
 <p>You can then use <code class="inline">housekeeping.key</code> to authenticate against Housekeeping API.</p>
 <h2 id="work-in-progress" class="section-heading">
   <a href="#work-in-progress" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
