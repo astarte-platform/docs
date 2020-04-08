@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.3">
+    <meta name="project" content="Astarte v0.11.0">
+    <title>Astarte Database — Astarte v0.11.0</title>
+    <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
+    <script src="dist/sidebar_items-35b5602d18.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-a225d03098e64fef431a.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte      </a>
+      <h2 class="sidebar-projectVersion">
+        v0.11.0
+      </h2>
+    </div>
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Astarte Database</h1>
+<p>Astarte leverages <a href="http://cassandra.apache.org/">Cassandra</a> to store all of its data, including data ingested from devices (which might scale to insane amounts). Cassandra offers scalability and high availability with <a href="https://www.datastax.com/apache-cassandra-leads-nosql-benchmark">good performances</a>.
+Cassandra offers linear scalability and can span from really small clusters to hundreds of nodes, without compromising on reliability.
+<a href="https://www.scylladb.com/">ScyllaDB</a> &gt;= 3.3 is also supported as a drop-in replacement when a <a href="https://www.scylladb.com/product/benchmarks/">performance boost</a> is needed.</p>
+<p>Cassandra is also the ideal storage for large-scale data processing with <a href="http://spark.apache.org/">Apache Spark</a>.</p>
+<p>Astarte is multi-tenant by design, with each tenant mapping to an Astarte Realm. Each Realm has its own Cassandra keyspace, which can be tuned according to Realm-specific needs (e.g.: Realms might have different replication levels). For this reason, in the scope of this section, realm and keyspace can be used as synonyms, except for the <code class="inline">astarte</code> keyspace.</p>
+<h2 id="schema-and-keyspace-creation" class="section-heading">
+  <a href="#schema-and-keyspace-creation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Schema and Keyspace Creation
+</h2>
+
+<p>Astarte automatically takes care of keyspaces, tables creation and intra-version migrations (those tasks are performed by <code class="inline">astarte_housekeeping</code> or <code class="inline">astarte_realm_management</code>, depending on the context). The following documentation is just a reference about Astarte&#39;s internal statements, and is related to the release series referenced by the documentation.</p>
+<h3 id="astarte-keyspace" class="section-heading">
+  <a href="#astarte-keyspace" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Astarte Keyspace
+</h3>
+
+<p>Astarte needs an <code class="inline">astarte</code> keyspace to store its own data.</p>
+<p><code class="inline">astarte</code> keyspace and tables are created with following <a href="https://docs.datastax.com/en/cql/3.3/index.html">CQL</a> statements:</p>
+<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">KEYSPACE</span><span class="w"> </span><span class="n">astarte</span><span class="w">
+  </span><span class="nc">WITH</span><span class="w"> </span><span class="n">replication</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="6533271703-1">{</span><span class="ss">&#39;class&#39;</span><span class="p">:</span><span class="w"> </span><span class="sc">&#39;SimpleStrategy&#39;</span><span class="p">,</span><span class="w"> </span><span class="ss">&#39;replication_factor&#39;</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">replication</span><span class="w"> </span><span class="n">factor</span><span class="o">&gt;</span><span class="p" data-group-id="6533271703-1">}</span><span class="w">  </span><span class="nc">AND</span><span class="w">
+    </span><span class="n">durable_writes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="p">;</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="n">astarte</span><span class="o">.</span><span class="n">realms</span><span class="w"> </span><span class="p" data-group-id="4095991416-1">(</span><span class="w">
+  </span><span class="n">realm_name</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
+
+  </span><span class="nc">PRIMARY</span><span class="w"> </span><span class="nc">KEY</span><span class="w"> </span><span class="p" data-group-id="4095991416-2">(</span><span class="n">realm_name</span><span class="p" data-group-id="4095991416-2">)</span><span class="w">
+</span><span class="p" data-group-id="4095991416-1">)</span><span class="p">;</span></code></pre>
+<h3 id="realm-creation" class="section-heading">
+  <a href="#realm-creation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Realm Creation
+</h3>
+
+<p>Each realm needs several tables to store data for all the functionalities.
+Realm tables can be grouped in the following functionalities:</p>
+<ul>
+<li>Configuration &amp; key-value store
+</li>
+<li>Interfaces schema
+</li>
+<li>Device management
+</li>
+<li>Groups management
+</li>
+<li>Triggers storage
+</li>
+<li>Data storage
+</li>
+</ul>
+<p>Some data storage tables might be created when required, whereas all other tables are created when a keyspace is created, using the following statements:</p>
+<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">KEYSPACE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm</span><span class="w"> </span><span class="n">name</span><span class="o">&gt;</span><span class="w">
+  </span><span class="nc">WITH</span><span class="w"> </span><span class="n">replication</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5543894846-1">{</span><span class="ss">&#39;class&#39;</span><span class="p">:</span><span class="w"> </span><span class="sc">&#39;SimpleStrategy&#39;</span><span class="p">,</span><span class="w"> </span><span class="ss">&#39;replication_factor&#39;</span><span class="p">:</span><span class="w"> </span><span class="ss">:replication_factor</span><span class="p" data-group-id="5543894846-1">}</span><span class="w"> </span><span class="nc">AND</span><span class="w">
+    </span><span class="n">durable_writes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="p">;</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm</span><span class="w"> </span><span class="n">name</span><span class="o">&gt;</span><span class="o">.</span><span class="n">kv_store</span><span class="w"> </span><span class="p" data-group-id="5683270760-1">(</span><span class="w">
+  </span><span class="n">group</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
+  </span><span class="n">key</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
+  </span><span class="n">value</span><span class="w"> </span><span class="n">blob</span><span class="p">,</span><span class="w">
+
+  </span><span class="nc">PRIMARY</span><span class="w"> </span><span class="nc">KEY</span><span class="w"> </span><span class="p" data-group-id="5683270760-2">(</span><span class="p" data-group-id="5683270760-3">(</span><span class="n">group</span><span class="p" data-group-id="5683270760-3">)</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p" data-group-id="5683270760-2">)</span><span class="w">
+</span><span class="p" data-group-id="5683270760-1">)</span><span class="p">;</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm</span><span class="w"> </span><span class="n">name</span><span class="o">&gt;</span><span class="o">.</span><span class="n">names</span><span class="w"> </span><span class="p" data-group-id="1612809590-1">(</span><span class="w">
+  </span><span class="n">object_name</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
+  </span><span class="n">object_type</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
+  </span><span class="n">object_uuid</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
+
+  </span><span class="nc">PRIMARY</span><span class="w"> </span><span class="nc">KEY</span><span class="w"> </span><span class="p" data-group-id="1612809590-2">(</span><span class="p" data-group-id="1612809590-3">(</span><span class="n">object_name</span><span class="p" data-group-id="1612809590-3">)</span><span class="p">,</span><span class="w"> </span><span class="n">object_type</span><span class="p" data-group-id="1612809590-2">)</span><span class="w">
+</span><span class="p" data-group-id="1612809590-1">)</span><span class="p">;</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm_name</span><span class="o">&gt;</span><span class="o">.</span><span class="n">devices</span><span class="w"> </span><span class="p" data-group-id="0016556291-1">(</span><span class="w">
+  </span><span class="n">device_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
+  </span><span class="n">aliases</span><span class="w"> </span><span class="n">map</span><span class="o">&lt;</span><span class="n">ascii</span><span class="p">,</span><span class="w"> </span><span class="n">varchar</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+  </span><span class="n">introspection</span><span class="w"> </span><span class="n">map</span><span class="o">&lt;</span><span class="n">ascii</span><span class="p">,</span><span class="w"> </span><span class="n">int</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+  </span><span class="n">introspection_minor</span><span class="w"> </span><span class="n">map</span><span class="o">&lt;</span><span class="n">ascii</span><span class="p">,</span><span class="w"> </span><span class="n">int</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+  </span><span class="n">old_introspection</span><span class="w"> </span><span class="n">map</span><span class="o">&lt;</span><span class="n">frozen</span><span class="o">&lt;</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">ascii</span><span class="p">,</span><span class="w"> </span><span class="n">int</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">int</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+  </span><span class="n">protocol_revision</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
+  </span><span class="n">first_registration</span><span class="w"> </span><span class="n">timestamp</span><span class="p">,</span><span class="w">
+  </span><span class="n">credentials_secret</span><span class="w"> </span><span class="n">ascii</span><span class="p">,</span><span class="w">
+  </span><span class="n">inhibit_credentials_request</span><span class="w"> </span><span class="n">boolean</span><span class="p">,</span><span class="w">
+  </span><span class="n">cert_serial</span><span class="w"> </span><span class="n">ascii</span><span class="p">,</span><span class="w">
+  </span><span class="n">cert_aki</span><span class="w"> </span><span class="n">ascii</span><span class="p">,</span><span class="w">
+  </span><span class="n">first_credentials_request</span><span class="w"> </span><span class="n">timestamp</span><span class="p">,</span><span class="w">
+  </span><span class="n">last_connection</span><span class="w"> </span><span class="n">timestamp</span><span class="p">,</span><span class="w">
+  </span><span class="n">last_disconnection</span><span class="w"> </span><span class="n">timestamp</span><span class="p">,</span><span class="w">
+  </span><span class="n">connected</span><span class="w"> </span><span class="n">boolean</span><span class="p">,</span><span class="w">
+  </span><span class="n">pending_empty_cache</span><span class="w"> </span><span class="n">boolean</span><span class="p">,</span><span class="w">
+  </span><span class="n">total_received_msgs</span><span class="w"> </span><span class="n">bigint</span><span class="p">,</span><span class="w">
+  </span><span class="n">total_received_bytes</span><span class="w"> </span><span class="n">bigint</span><span class="p">,</span><span class="w">
+  </span><span class="n">exchanged_bytes_by_interface</span><span class="w"> </span><span class="n">map</span><span class="o">&lt;</span><span class="n">frozen</span><span class="o">&lt;</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">ascii</span><span class="p">,</span><span class="w"> </span><span class="n">int</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">bigint</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+  </span><span class="n">exchanged_msgs_by_interface</span><span class="w"> </span><span class="n">map</span><span class="o">&lt;</span><span class="n">frozen</span><span class="o">&lt;</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">ascii</span><span class="p">,</span><span class="w"> </span><span class="n">int</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">bigint</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+  </span><span class="n">last_credentials_request_ip</span><span class="w"> </span><span class="n">inet</span><span class="p">,</span><span class="w">
+  </span><span class="n">last_seen_ip</span><span class="w"> </span><span class="n">inet</span><span class="p">,</span><span class="w">
+
+  </span><span class="n">groups</span><span class="w"> </span><span class="n">map</span><span class="o">&lt;</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">timeuuid</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+
+  </span><span class="nc">PRIMARY</span><span class="w"> </span><span class="nc">KEY</span><span class="w"> </span><span class="p" data-group-id="0016556291-2">(</span><span class="n">device_id</span><span class="p" data-group-id="0016556291-2">)</span><span class="w">
+</span><span class="p" data-group-id="0016556291-1">)</span><span class="p">;</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm</span><span class="w"> </span><span class="n">name</span><span class="o">&gt;</span><span class="o">.</span><span class="n">grouped_devices</span><span class="w"> </span><span class="p" data-group-id="1701782278-1">(</span><span class="w">
+  </span><span class="n">group_name</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
+  </span><span class="n">insertion_uuid</span><span class="w"> </span><span class="n">timeuuid</span><span class="p">,</span><span class="w">
+  </span><span class="n">device_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
+  </span><span class="nc">PRIMARY</span><span class="w"> </span><span class="nc">KEY</span><span class="w"> </span><span class="p" data-group-id="1701782278-2">(</span><span class="p" data-group-id="1701782278-3">(</span><span class="n">group_name</span><span class="p" data-group-id="1701782278-3">)</span><span class="p">,</span><span class="w"> </span><span class="n">insertion_uuid</span><span class="p">,</span><span class="w"> </span><span class="n">device_id</span><span class="p" data-group-id="1701782278-2">)</span><span class="w">
+</span><span class="p" data-group-id="1701782278-1">)</span><span class="p">;</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm</span><span class="w"> </span><span class="n">name</span><span class="o">&gt;</span><span class="o">.</span><span class="n">endpoints</span><span class="w"> </span><span class="p" data-group-id="8163567224-1">(</span><span class="w">
+  </span><span class="n">interface_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
+  </span><span class="n">endpoint_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
+  </span><span class="n">interface_name</span><span class="w"> </span><span class="n">ascii</span><span class="p">,</span><span class="w">
+  </span><span class="n">interface_major_version</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
+  </span><span class="n">interface_minor_version</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
+  </span><span class="n">interface_type</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
+  </span><span class="n">endpoint</span><span class="w"> </span><span class="n">ascii</span><span class="p">,</span><span class="w">
+  </span><span class="n">value_type</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
+  </span><span class="n">reliability</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
+  </span><span class="n">retention</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
+  </span><span class="n">expiry</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
+  </span><span class="n">database_retention_ttl</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
+  </span><span class="n">database_retention_policy</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
+  </span><span class="n">allow_unset</span><span class="w"> </span><span class="n">boolean</span><span class="p">,</span><span class="w">
+  </span><span class="n">explicit_timestamp</span><span class="w"> </span><span class="n">boolean</span><span class="p">,</span><span class="w">
+  </span><span class="n">description</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
+  </span><span class="n">doc</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
+
+  </span><span class="nc">PRIMARY</span><span class="w"> </span><span class="nc">KEY</span><span class="w"> </span><span class="p" data-group-id="8163567224-2">(</span><span class="p" data-group-id="8163567224-3">(</span><span class="n">interface_id</span><span class="p" data-group-id="8163567224-3">)</span><span class="p">,</span><span class="w"> </span><span class="n">endpoint_id</span><span class="p" data-group-id="8163567224-2">)</span><span class="w">
+</span><span class="p" data-group-id="8163567224-1">)</span><span class="p">;</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm</span><span class="w"> </span><span class="n">name</span><span class="o">&gt;</span><span class="o">.</span><span class="n">interfaces</span><span class="w"> </span><span class="p" data-group-id="5775297559-1">(</span><span class="w">
+  </span><span class="n">name</span><span class="w"> </span><span class="n">ascii</span><span class="p">,</span><span class="w">
+  </span><span class="n">major_version</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
+  </span><span class="n">minor_version</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
+  </span><span class="n">interface_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
+  </span><span class="n">storage_type</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
+  </span><span class="n">storage</span><span class="w"> </span><span class="n">ascii</span><span class="p">,</span><span class="w">
+  </span><span class="n">type</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
+  </span><span class="n">ownership</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
+  </span><span class="n">aggregation</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
+  </span><span class="n">automaton_transitions</span><span class="w"> </span><span class="n">blob</span><span class="p">,</span><span class="w">
+  </span><span class="n">automaton_accepting_states</span><span class="w"> </span><span class="n">blob</span><span class="p">,</span><span class="w">
+  </span><span class="n">description</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
+  </span><span class="n">doc</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
+
+  </span><span class="nc">PRIMARY</span><span class="w"> </span><span class="nc">KEY</span><span class="w"> </span><span class="p" data-group-id="5775297559-2">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">major_version</span><span class="p" data-group-id="5775297559-2">)</span><span class="w">
+</span><span class="p" data-group-id="5775297559-1">)</span><span class="p">;</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm</span><span class="w"> </span><span class="n">name</span><span class="o">&gt;</span><span class="o">.</span><span class="n">individual_properties</span><span class="w"> </span><span class="p" data-group-id="0493330033-1">(</span><span class="w">
+  </span><span class="n">device_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
+  </span><span class="n">interface_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
+  </span><span class="n">endpoint_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
+  </span><span class="n">path</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
+  </span><span class="n">reception_timestamp</span><span class="w"> </span><span class="n">timestamp</span><span class="p">,</span><span class="w">
+  </span><span class="n">reception_timestamp_submillis</span><span class="w"> </span><span class="n">smallint</span><span class="p">,</span><span class="w">
+
+  </span><span class="n">double_value</span><span class="w"> </span><span class="n">double</span><span class="p">,</span><span class="w">
+  </span><span class="n">integer_value</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
+  </span><span class="n">boolean_value</span><span class="w"> </span><span class="n">boolean</span><span class="p">,</span><span class="w">
+  </span><span class="n">longinteger_value</span><span class="w"> </span><span class="n">bigint</span><span class="p">,</span><span class="w">
+  </span><span class="n">string_value</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
+  </span><span class="n">binaryblob_value</span><span class="w"> </span><span class="n">blob</span><span class="p">,</span><span class="w">
+  </span><span class="n">datetime_value</span><span class="w"> </span><span class="n">timestamp</span><span class="p">,</span><span class="w">
+  </span><span class="n">doublearray_value</span><span class="w"> </span><span class="n">list</span><span class="o">&lt;</span><span class="n">double</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+  </span><span class="n">integerarray_value</span><span class="w"> </span><span class="n">list</span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+  </span><span class="n">booleanarray_value</span><span class="w"> </span><span class="n">list</span><span class="o">&lt;</span><span class="n">boolean</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+  </span><span class="n">longintegerarray_value</span><span class="w"> </span><span class="n">list</span><span class="o">&lt;</span><span class="n">bigint</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+  </span><span class="n">stringarray_value</span><span class="w"> </span><span class="n">list</span><span class="o">&lt;</span><span class="n">varchar</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+  </span><span class="n">binaryblobarray_value</span><span class="w"> </span><span class="n">list</span><span class="o">&lt;</span><span class="n">blob</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+  </span><span class="n">datetimearray_value</span><span class="w"> </span><span class="n">list</span><span class="o">&lt;</span><span class="n">timestamp</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+
+  </span><span class="nc">PRIMARY</span><span class="w"> </span><span class="nc">KEY</span><span class="p" data-group-id="0493330033-2">(</span><span class="p" data-group-id="0493330033-3">(</span><span class="n">device_id</span><span class="p">,</span><span class="w"> </span><span class="n">interface_id</span><span class="p" data-group-id="0493330033-3">)</span><span class="p">,</span><span class="w"> </span><span class="n">endpoint_id</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p" data-group-id="0493330033-2">)</span><span class="w">
+</span><span class="p" data-group-id="0493330033-1">)</span><span class="p">;</span></code></pre>
+<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm</span><span class="w"> </span><span class="n">name</span><span class="o">&gt;</span><span class="o">.</span><span class="n">simple_triggers</span><span class="w"> </span><span class="p" data-group-id="9853342726-1">(</span><span class="w">
+  </span><span class="n">object_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
+  </span><span class="n">object_type</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
+  </span><span class="n">parent_trigger_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
+  </span><span class="n">simple_trigger_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
+  </span><span class="n">trigger_data</span><span class="w"> </span><span class="n">blob</span><span class="p">,</span><span class="w">
+  </span><span class="n">trigger_target</span><span class="w"> </span><span class="n">blob</span><span class="p">,</span><span class="w">
+
+  </span><span class="nc">PRIMARY</span><span class="w"> </span><span class="nc">KEY</span><span class="w"> </span><span class="p" data-group-id="9853342726-2">(</span><span class="p" data-group-id="9853342726-3">(</span><span class="n">object_id</span><span class="p">,</span><span class="w"> </span><span class="n">object_type</span><span class="p" data-group-id="9853342726-3">)</span><span class="p">,</span><span class="w"> </span><span class="n">parent_trigger_id</span><span class="p">,</span><span class="w"> </span><span class="n">simple_trigger_id</span><span class="p" data-group-id="9853342726-2">)</span><span class="w">
+</span><span class="p" data-group-id="9853342726-1">)</span><span class="p">;</span></code></pre>
+<h2 id="tables" class="section-heading">
+  <a href="#tables" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Tables
+</h2>
+
+<h3 id="devices" class="section-heading">
+  <a href="#devices" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Devices
+</h3>
+
+<p>Devices table stores the list of all the devices for a certain realm and all their metadata, including the introspection, the device status and credentials information.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left">Column Name</th><th style="text-align: left">Column Type</th><th style="text-align: left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left"><code class="inline">device_id</code></td><td style="text-align: left"><code class="inline">uuid</code></td><td style="text-align: left">Device unique 128 bits ID.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">aliases</code></td><td style="text-align: left"><code class="inline">map&lt;ascii, varchar&gt;</code></td><td style="text-align: left">Alias purpose and alias map.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">introspection</code></td><td style="text-align: left"><code class="inline">map&lt;ascii, int&gt;</code></td><td style="text-align: left">Device interface name to interface major version map based on most recent device introspection.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">introspection_minor</code></td><td style="text-align: left"><code class="inline">map&lt;ascii, int&gt;</code></td><td style="text-align: left">Device interface name to interface minor version map based on most recent device introspection.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">old_introspection</code></td><td style="text-align: left"><code class="inline">map&lt;frozen&lt;tuple&lt;ascii, int&gt;&gt;, int&gt;</code></td><td style="text-align: left">All previous device interfaces. This column is used to keep track of all interfaces that have been used and might still have some recorded data. The column maps interface (name, major) to minor.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">protocol_revision</code></td><td style="text-align: left"><code class="inline">int</code></td><td style="text-align: left">Spoken Astarte MQTT v1 protocol revision.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">first_registration</code></td><td style="text-align: left"><code class="inline">timestamp</code></td><td style="text-align: left">First registration attempt timestamp.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">credentials_secret</code></td><td style="text-align: left"><code class="inline">ascii</code></td><td style="text-align: left">The bcrypt hash of the credential secret, that the device uses to obtain new credentials.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">inhibit_credentials_request</code></td><td style="text-align: left"><code class="inline">boolean</code></td><td style="text-align: left">Ban device credentials renewal, device will be able to connect to the transport up to  the credential expiry.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">cert_serial</code></td><td style="text-align: left"><code class="inline">ascii</code></td><td style="text-align: left">Device certificate serial used by the CA.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">cert_aki</code></td><td style="text-align: left"><code class="inline">ascii</code></td><td style="text-align: left">Device certificate Authority Key Identifier.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">first_credentials_request</code></td><td style="text-align: left"><code class="inline">timestamp</code></td><td style="text-align: left">First credentials request timestamp.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">last_connection</code></td><td style="text-align: left"><code class="inline">timestamp</code></td><td style="text-align: left">Most recent device connection event timestamp.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">last_disconnection</code></td><td style="text-align: left"><code class="inline">timestamp</code></td><td style="text-align: left">Most recent device disconnection event timestamp.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">connected</code></td><td style="text-align: left"><code class="inline">boolean</code></td><td style="text-align: left">True if the device is connected, otherwise is false.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">pending_empty_cache</code></td><td style="text-align: left"><code class="inline">boolean</code></td><td style="text-align: left">Device is in an unclean state and an empty cache message is being waited.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">total_received_msgs</code></td><td style="text-align: left"><code class="inline">bigint</code></td><td style="text-align: left">Count of received messages since the device registration.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">total_received_bytes</code></td><td style="text-align: left"><code class="inline">bigint</code></td><td style="text-align: left">Amount of received messages bytes since the device registration.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">exchanged_msgs_by_interface</code></td><td style="text-align: left"><code class="inline">bigint</code></td><td style="text-align: left">Count of exchanged messages since the device registration.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">exchanged_bytes_by_interface</code></td><td style="text-align: left"><code class="inline">bigint</code></td><td style="text-align: left">Amount of exchanged messages bytes since the device registration.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">last_credentials_request_ip</code></td><td style="text-align: left"><code class="inline">inet</code></td><td style="text-align: left">Device IP address used during the last credential request.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">last_seen_ip</code></td><td style="text-align: left"><code class="inline">inet</code></td><td style="text-align: left">Most recent device IP address.</td>
+</tr>
+<tr>
+<td style="text-align: left"><code class="inline">groups</code></td><td style="text-align: left"><code class="inline">map&lt;text, timeuuid&gt;</code></td><td style="text-align: left">Groups which the device belongs to, the key is the group name, and the value is its insertion timeuuid, which is used as part of the key on grouped_devices table.</td>
+</tr>
+</tbody>
+</table>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.3),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>
+
