@@ -88,7 +88,7 @@ series without any action on behalf of the user. They&#39;re the way to go if yo
 managed installation.</p>
 <p><code class="inline">astartectl</code> comes packed with a set of default profiles, but you can write your own ones. Profiles can
 be either written as Go resources, or (in a much easier fashion) as <code class="inline">yaml</code> resources. You can have a look
-at the <a href="https://github.com/astarte-platform/astartectl/blob/master/cmd/cluster/deployment/astarte_cluster_profile.go">Profiles schema here</a>.</p>
+at the <a href="https://github.com/astarte-platform/astartectl/blob/v0.11.0/cmd/cluster/deployment/astarte_cluster_profile.go">Profiles schema here</a>.</p>
 <h3 id="writing-your-own-profile" class="section-heading">
   <a href="#writing-your-own-profile" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Writing your own profile
@@ -104,7 +104,7 @@ profiles.</p>
 <p>If you do not want to use <code class="inline">astartectl</code> or Profiles, you can create your own Astarte Custom Resource. This gives you
 a higher degree of customization, allowing you to tweak any single parameter in the Astarte setup. The main
 Astarte CRD contains
-<a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/master/deploy/crds/api.astarte-platform.org_astartes_crd.yaml">extensive documentation</a>
+<a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/v0.11.0/deploy/crds/api.astarte-platform.org_astartes_crd.yaml">extensive documentation</a>
 on the available fields in OpenAPIv3 format. Just create your Astarte Custom Resource, which will look something
 like this:</p>
 <pre><code class="yaml">apiVersion: api.astarte-platform.org/v1alpha1
@@ -115,7 +115,7 @@ metadata:
 spec:
   # This is the most minimal set of reasonable configuration to spin up an Astarte
   # instance with reasonable defaults and enough control over the deployment.
-  version: 0.11.0-rc.1
+  version: 0.11.0
   api:
     host: &quot;api.astarte.yourdomain.com&quot; # MANDATORY
   rabbitmq:
