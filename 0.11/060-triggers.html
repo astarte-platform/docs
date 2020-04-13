@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v0.11.0">
     <title>Triggers — Astarte v0.11.0</title>
     <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
-    <script src="dist/sidebar_items-fb811dc742.js"></script>
+    <script src="dist/sidebar_items-c1ca6b8f5d.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
@@ -73,11 +73,22 @@ HTTP.</p>
 <p>Given this kind of flexibility, triggers are the most powerful way to push data to an external
 service, potentially without any additional customization.</p>
 <p>Triggers can be managed from <a href="api/index.html?urls.primaryName=Realm%20Management%20API#/trigger">Realm Management
-API</a>.</p>
-<h2 id="format" class="section-heading">
+API</a>, <code class="inline">astartectl</code> with the
+<code class="inline">astartectl realm-management triggers</code> subcommand, or Astarte Dashboard in the <code class="inline">Triggers</code> page.</p>
+<h2 id="building-triggers" class="section-heading">
+  <a href="#building-triggers" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Building Triggers
+</h2>
+
+<p>Triggers can be either built manually or using Astarte Dashboard&#39;s Trigger Editor. Trigger Editor
+dynamically loads installed Interfaces in the Realm and eases trigger creation by providing not
+only linting and validation, but also dynamic resolution of Interface names.</p>
+<p>Trigger Editor works in a very similar fashion to Interfaces Editor, and shares the same User
+Interface.</p>
+<h3 id="format" class="section-heading">
   <a href="#format" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Format
-</h2>
+</h3>
 
 <p>A trigger is described using a JSON document. Each trigger is defined by two main parts: <code class="inline">condition</code>
 and <code class="inline">action</code>.</p>

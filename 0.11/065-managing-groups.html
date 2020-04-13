@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v0.11.0">
     <title>Managing Groups — Astarte v0.11.0</title>
     <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
-    <script src="dist/sidebar_items-fb811dc742.js"></script>
+    <script src="dist/sidebar_items-c1ca6b8f5d.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
@@ -81,12 +81,11 @@ with the <code class="inline">~</code> and <code class="inline">@</code> charact
 </h2>
 
 <p>You can create a group with astartectl with this command</p>
-<pre><code class="bash">astartectl appengine groups create mygroup &lt;device_identifier&gt;,&lt;device_identifier&gt; \
-  -k &lt;appengine-key&gt; -r &lt;realm-name&gt; -u &lt;astarte-api-url&gt;</code></pre>
+<pre><code class="bash">astartectl appengine groups create mygroup &lt;device_identifier&gt;,&lt;device_identifier&gt;</code></pre>
 <p><code class="inline">device_identifier</code> can be a Device ID or an Alias, and you can put multiple devices by separating
 them with a comma.</p>
 <p>You can check the group was created by listing groups in your realm</p>
-<pre><code class="bash">astartectl appengine groups list -k &lt;appengine-key&gt; -r &lt;realm-name&gt; -u &lt;astarte-api-url&gt;</code></pre>
+<pre><code class="bash">astartectl appengine groups list</code></pre>
 <h2 id="adding-or-removing-a-device-to-from-a-group" class="section-heading">
   <a href="#adding-or-removing-a-device-to-from-a-group" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Adding or removing a device to/from a group
@@ -94,15 +93,13 @@ them with a comma.</p>
 
 <p>Once you created a group, you can add or remove devices from it.</p>
 <p>To add a device, use:</p>
-<pre><code class="bash">astartectl appengine groups devices add &lt;device_identifier&gt; \
-  -k &lt;appengine-key&gt; -r &lt;realm-name&gt; -u &lt;astarte-api-url&gt;</code></pre>
+<pre><code class="bash">astartectl appengine groups devices add &lt;device_identifier&gt;</code></pre>
 <p>To remove a device, use:</p>
-<pre><code class="bash">astartectl appengine groups devices remove &lt;device_identifier&gt; \
-  -k &lt;appengine-key&gt; -r &lt;realm-name&gt; -u &lt;astarte-api-url&gt;</code></pre>
+<pre><code class="bash">astartectl appengine groups devices remove &lt;device_identifier&gt;</code></pre>
 <p>Keep in mind that a group exists as long as it has at least one device in it, so if you remove the
 last device from a group, the group will cease to exist.</p>
 <p>You can always check which devices are in a group with:</p>
-<pre><code class="bash">astartectl appengine groups devices list -k &lt;appengine-key&gt; -r &lt;realm-name&gt; -u &lt;astarte-api-url&gt;</code></pre>
+<pre><code class="bash">astartectl appengine groups devices list</code></pre>
 <h2 id="accessing-devices-in-a-group-with-astarte-appengine-api" class="section-heading">
   <a href="#accessing-devices-in-a-group-with-astarte-appengine-api" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Accessing Devices in a group with Astarte AppEngine API
