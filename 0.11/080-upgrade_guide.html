@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v0.11.0">
     <title>Upgrading the Cluster — Astarte v0.11.0</title>
     <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
-    <script src="dist/sidebar_items-ac74c0c783.js"></script>
+    <script src="dist/sidebar_items-fb811dc742.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
@@ -81,7 +81,7 @@ and non-<code class="inline">astartectl</code> Managed Installations alike. When
 also script any changes to the CR the profile carries over among versions (if needed), ensuring that the
 process is smooth enough.</p>
 <p>To upgrade, run</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">astartectl</span><span class="w"> </span><span class="n">cluster</span><span class="w"> </span><span class="n">instances</span><span class="w"> </span><span class="n">upgrade</span><span class="w"> </span><span class="o">&lt;</span><span class="n">instance</span><span class="w"> </span><span class="n">name</span><span class="o">&gt;</span></code></pre>
+<pre><code class="bash">astartectl cluster instances upgrade &lt;instance name&gt;</code></pre>
 <p>You can optionally add an Astarte version as the second parameter - otherwise, <code class="inline">astartectl</code> will try to
 upgrade to the latest stable release.</p>
 <p><code class="inline">astartectl</code> will interactively prompt you a number of questions depending on the operation, and will start

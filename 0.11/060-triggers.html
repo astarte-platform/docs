@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v0.11.0">
     <title>Triggers — Astarte v0.11.0</title>
     <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
-    <script src="dist/sidebar_items-ac74c0c783.js"></script>
+    <script src="dist/sidebar_items-fb811dc742.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
@@ -168,7 +168,7 @@ devices in a Realm.</p>
   &quot;known_value&quot;: &lt;known_value&gt;
 }</code></pre>
 <p>Data triggers are installed for all devices in a Realm.</p>
-<h4>Parameters</h4>
+<h4>Data Triggers Parameters</h4>
 <p><code class="inline">data_trigger_type</code> can be one of the following:</p>
 <ul>
 <li><code class="inline">incoming_data</code>: verifies the condition whenever new data arrives.
@@ -241,26 +241,17 @@ that generated it. Event objects are detailed below.</p>
 <p>Additionally, the realm that originated the trigger is available in the request in the
 <code class="inline">Astarte-Realm</code> header.</p>
 <h4>Event objects</h4>
-<ul>
-<li><code class="inline">DeviceConnectedEvent</code>
-</li>
-</ul>
+<h5>DeviceConnectedEvent</h5>
 <pre><code class="json">{
   &quot;type&quot;: &quot;device_connected&quot;,
   &quot;device_ip_address&quot;: &quot;&lt;device_ip_address&gt;&quot;
 }</code></pre>
 <p><code class="inline">device_ip_address</code> is the IP address of the device.</p>
-<ul>
-<li><code class="inline">DeviceDisconnectedEvent</code>
-</li>
-</ul>
+<h5>DeviceDisconnectedEvent</h5>
 <pre><code class="json">{
   &quot;type&quot;: &quot;device_disconnected&quot;
 }</code></pre>
-<ul>
-<li><code class="inline">IncomingDataEvent</code>
-</li>
-</ul>
+<h5>IncomingDataEvent</h5>
 <pre><code class="json">{
   &quot;type&quot;: &quot;incoming_data&quot;,
   &quot;interface&quot;: &quot;&lt;interface&gt;&quot;,
@@ -271,10 +262,7 @@ that generated it. Event objects are detailed below.</p>
 <p><code class="inline">path</code> is the path on which data was received.</p>
 <p><code class="inline">value</code> is the received value. Its type depends on the type of the mapping it&#39;s coming from.
 <code class="inline">binaryblob</code> and <code class="inline">binaryblobarray</code> type values are encoded with Base64.</p>
-<ul>
-<li><code class="inline">ValueStoredEvent</code>
-</li>
-</ul>
+<h5>ValueStoredEvent</h5>
 <pre><code class="json">{
   &quot;type&quot;: &quot;value_stored&quot;,
   &quot;interface&quot;: &quot;&lt;interface&gt;&quot;,
@@ -285,10 +273,7 @@ that generated it. Event objects are detailed below.</p>
 <p><code class="inline">path</code> is the path on which data was received.</p>
 <p><code class="inline">value</code> is the received value. Its type depends on the type of the mapping it&#39;s coming from.
 <code class="inline">binaryblob</code> and <code class="inline">binaryblobarray</code> type values are encoded with Base64.</p>
-<ul>
-<li><code class="inline">ValueChangeEvent</code>
-</li>
-</ul>
+<h5>ValueChangeEvent</h5>
 <pre><code class="json">{
   &quot;type&quot;: &quot;value_change&quot;,
   &quot;interface&quot;: &quot;&lt;interface&gt;&quot;,
@@ -302,10 +287,7 @@ that generated it. Event objects are detailed below.</p>
 <code class="inline">binaryblob</code> and <code class="inline">binaryblobarray</code> type values are encoded with Base64.</p>
 <p><code class="inline">new_value</code> is the received value. Its type depends on the type of the mapping it&#39;s coming from.
 <code class="inline">binaryblob</code> and <code class="inline">binaryblobarray</code> type values are encoded with Base64.</p>
-<ul>
-<li><code class="inline">ValueChangeAppliedEvent</code>
-</li>
-</ul>
+<h5>ValueChangeAppliedEvent</h5>
 <pre><code class="json">{
   &quot;type&quot;: &quot;value_change_applied&quot;,
   &quot;interface&quot;: &quot;&lt;interface&gt;&quot;,
@@ -319,10 +301,7 @@ that generated it. Event objects are detailed below.</p>
 <code class="inline">binaryblob</code> and <code class="inline">binaryblobarray</code> type values are encoded with Base64.</p>
 <p><code class="inline">new_value</code> is the received value. Its type depends on the type of the mapping it&#39;s coming from.
 <code class="inline">binaryblob</code> and <code class="inline">binaryblobarray</code> type values are encoded with Base64.</p>
-<ul>
-<li><code class="inline">PathCreatedEvent</code>
-</li>
-</ul>
+<h5>PathCreatedEvent</h5>
 <pre><code class="json">{
   &quot;type&quot;: &quot;path_created&quot;,
   &quot;interface&quot;: &quot;&lt;interface&gt;&quot;,
@@ -333,10 +312,7 @@ that generated it. Event objects are detailed below.</p>
 <p><code class="inline">path</code> is the path that has been created.</p>
 <p><code class="inline">value</code> is the received value. Its type depends on the type of the mapping it&#39;s coming from.
 <code class="inline">binaryblob</code> and <code class="inline">binaryblobarray</code> type values are encoded with Base64.</p>
-<ul>
-<li><code class="inline">PathRemovedEvent</code>
-</li>
-</ul>
+<h5>PathRemovedEvent</h5>
 <pre><code class="json">{
   &quot;type&quot;: &quot;path_removed&quot;,
   &quot;interface&quot;: &quot;&lt;interface&gt;&quot;,
@@ -390,14 +366,14 @@ previous section</a> are available, always by wrapping them in <code class="inli
 }</code></pre>
 <p>When a device is connected, the following request will be received by
 <code class="inline">https://example.com/my_mustache_hook</code>:</p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">POST</span><span class="w"> </span><span class="o">/</span><span class="n">my_mustache_hook</span><span class="w"> </span><span class="nc">HTTP</span><span class="o">/</span><span class="mf">1.1</span><span class="w">
-</span><span class="nc">Astarte</span><span class="o">-</span><span class="ss">Realm</span><span class="p">:</span><span class="w"> </span><span class="n">test</span><span class="w">
-</span><span class="nc">Content</span><span class="o">-</span><span class="ss">Length</span><span class="p">:</span><span class="w"> </span><span class="mi">63</span><span class="w">
-</span><span class="nc">Content</span><span class="o">-</span><span class="ss">Type</span><span class="p">:</span><span class="w"> </span><span class="n">text</span><span class="o">/</span><span class="n">plain</span><span class="w">
-</span><span class="ss">Host</span><span class="p">:</span><span class="w"> </span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="w">
-</span><span class="nc">User</span><span class="o">-</span><span class="ss">Agent</span><span class="p">:</span><span class="w"> </span><span class="n">hackney</span><span class="o">/</span><span class="mf">1.13</span><span class="o">.</span><span class="mi">0</span><span class="w">
+<pre><code class="http">POST /my_mustache_hook HTTP/1.1
+Astarte-Realm: test
+Content-Length: 63
+Content-Type: text/plain
+Host: example.com
+User-Agent: hackney/1.13.0
 
-</span><span class="nc">Device</span><span class="w"> </span><span class="n">ydqBlFsGQ</span><span class="o">--</span><span class="n">xZ</span><span class="o">-</span><span class="c">_efQxuLw</span><span class="w"> </span><span class="n">just</span><span class="w"> </span><span class="n">connected</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="nc">IP</span><span class="w"> </span><span class="mf">172.18</span><span class="o">.</span><span class="mf">0.1</span></code></pre>
+Device ydqBlFsGQ--xZ-_efQxuLw just connected from IP 172.18.0.1</code></pre>
 <h2 id="relationship-with-channels" class="section-heading">
   <a href="#relationship-with-channels" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Relationship with Channels

@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v0.11.0">
     <title>Using Triggers — Astarte v0.11.0</title>
     <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
-    <script src="dist/sidebar_items-ac74c0c783.js"></script>
+    <script src="dist/sidebar_items-fb811dc742.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
@@ -96,8 +96,8 @@ transport.</p>
 }</code></pre>
 <p>Assuming the above JSON is contained in <code class="inline">my_connection_trigger.json</code>, you can install the trigger
 using astartectl:</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">astartectl</span><span class="w"> </span><span class="n">realm</span><span class="o">-</span><span class="n">management</span><span class="w"> </span><span class="n">triggers</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">my_connection_trigger</span><span class="o">.</span><span class="n">json</span><span class="w"> </span><span class="err">\</span><span class="w">
-  </span><span class="o">-</span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm</span><span class="o">-</span><span class="n">key</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm_name</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="o">&lt;</span><span class="n">astarte</span><span class="o">-</span><span class="n">api</span><span class="o">-</span><span class="n">url</span><span class="o">&gt;</span></code></pre>
+<pre><code class="bash">astartectl realm-management triggers install my_connection_trigger.json \
+  -k &lt;realm-key&gt; -r &lt;realm_name&gt; -u &lt;astarte-api-url&gt;</code></pre>
 <p>Now, when a device connects, <code class="inline">&lt;post-url&gt;</code> will receive the following JSON payload:</p>
 <pre><code class="json">{
   &quot;timestamp&quot;: &quot;&lt;timestamp&gt;&quot;,
@@ -133,8 +133,8 @@ using astartectl:</p>
 }</code></pre>
 <p>Assuming the above JSON is contained in <code class="inline">my_data_trigger.json</code>, you can install the trigger
 using astartectl:</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">astartectl</span><span class="w"> </span><span class="n">realm</span><span class="o">-</span><span class="n">management</span><span class="w"> </span><span class="n">triggers</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">my_data_trigger</span><span class="o">.</span><span class="n">json</span><span class="w"> </span><span class="err">\</span><span class="w">
-  </span><span class="o">-</span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm</span><span class="o">-</span><span class="n">key</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm_name</span><span class="o">&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="o">&lt;</span><span class="n">astarte</span><span class="o">-</span><span class="n">api</span><span class="o">-</span><span class="n">url</span><span class="o">&gt;</span></code></pre>
+<pre><code class="bash">astartectl realm-management triggers install my_data_trigger.json \
+  -k &lt;realm-key&gt; -r &lt;realm_name&gt; -u &lt;astarte-api-url&gt;</code></pre>
 <p>When a device sends data to the interface/path defined above, <code class="inline">&lt;post-url&gt;</code> will receive the
 following JSON payload:</p>
 <pre><code class="json">{

@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v0.11.0">
     <title>Astarte Database — Astarte v0.11.0</title>
     <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
-    <script src="dist/sidebar_items-ac74c0c783.js"></script>
+    <script src="dist/sidebar_items-fb811dc742.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
@@ -84,14 +84,14 @@ Cassandra offers linear scalability and can span from really small clusters to h
 
 <p>Astarte needs an <code class="inline">astarte</code> keyspace to store its own data.</p>
 <p><code class="inline">astarte</code> keyspace and tables are created with following <a href="https://docs.datastax.com/en/cql/3.3/index.html">CQL</a> statements:</p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">KEYSPACE</span><span class="w"> </span><span class="n">astarte</span><span class="w">
-  </span><span class="nc">WITH</span><span class="w"> </span><span class="n">replication</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0601251404-1">{</span><span class="ss">&#39;class&#39;</span><span class="p">:</span><span class="w"> </span><span class="sc">&#39;SimpleStrategy&#39;</span><span class="p">,</span><span class="w"> </span><span class="ss">&#39;replication_factor&#39;</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;</span><span class="n">replication</span><span class="w"> </span><span class="n">factor</span><span class="o">&gt;</span><span class="p" data-group-id="0601251404-1">}</span><span class="w">  </span><span class="nc">AND</span><span class="w">
-    </span><span class="n">durable_writes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="p">;</span></code></pre>
-<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="n">astarte</span><span class="o">.</span><span class="n">realms</span><span class="w"> </span><span class="p" data-group-id="0317149438-1">(</span><span class="w">
-  </span><span class="n">realm_name</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
+<pre><code class="sql">CREATE KEYSPACE astarte
+  WITH replication = {&#39;class&#39;: &#39;SimpleStrategy&#39;, &#39;replication_factor&#39;: &lt;replication factor&gt;}  AND
+    durable_writes = true;</code></pre>
+<pre><code class="sql">CREATE TABLE astarte.realms (
+  realm_name varchar,
 
-  </span><span class="nc">PRIMARY</span><span class="w"> </span><span class="nc">KEY</span><span class="w"> </span><span class="p" data-group-id="0317149438-2">(</span><span class="n">realm_name</span><span class="p" data-group-id="0317149438-2">)</span><span class="w">
-</span><span class="p" data-group-id="0317149438-1">)</span><span class="p">;</span></code></pre>
+  PRIMARY KEY (realm_name)
+);</code></pre>
 <h3 id="realm-creation" class="section-heading">
   <a href="#realm-creation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Realm Creation
@@ -114,130 +114,130 @@ Realm tables can be grouped in the following functionalities:</p>
 </li>
 </ul>
 <p>Some data storage tables might be created when required, whereas all other tables are created when a keyspace is created, using the following statements:</p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">KEYSPACE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm</span><span class="w"> </span><span class="n">name</span><span class="o">&gt;</span><span class="w">
-  </span><span class="nc">WITH</span><span class="w"> </span><span class="n">replication</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="4577971122-1">{</span><span class="ss">&#39;class&#39;</span><span class="p">:</span><span class="w"> </span><span class="sc">&#39;SimpleStrategy&#39;</span><span class="p">,</span><span class="w"> </span><span class="ss">&#39;replication_factor&#39;</span><span class="p">:</span><span class="w"> </span><span class="ss">:replication_factor</span><span class="p" data-group-id="4577971122-1">}</span><span class="w"> </span><span class="nc">AND</span><span class="w">
-    </span><span class="n">durable_writes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="p">;</span></code></pre>
-<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm</span><span class="w"> </span><span class="n">name</span><span class="o">&gt;</span><span class="o">.</span><span class="n">kv_store</span><span class="w"> </span><span class="p" data-group-id="6818268904-1">(</span><span class="w">
-  </span><span class="n">group</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
-  </span><span class="n">key</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
-  </span><span class="n">value</span><span class="w"> </span><span class="n">blob</span><span class="p">,</span><span class="w">
+<pre><code class="sql">CREATE KEYSPACE &lt;realm name&gt;
+  WITH replication = {&#39;class&#39;: &#39;SimpleStrategy&#39;, &#39;replication_factor&#39;: :replication_factor} AND
+    durable_writes = true;</code></pre>
+<pre><code class="sql">CREATE TABLE &lt;realm name&gt;.kv_store (
+  group varchar,
+  key varchar,
+  value blob,
 
-  </span><span class="nc">PRIMARY</span><span class="w"> </span><span class="nc">KEY</span><span class="w"> </span><span class="p" data-group-id="6818268904-2">(</span><span class="p" data-group-id="6818268904-3">(</span><span class="n">group</span><span class="p" data-group-id="6818268904-3">)</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p" data-group-id="6818268904-2">)</span><span class="w">
-</span><span class="p" data-group-id="6818268904-1">)</span><span class="p">;</span></code></pre>
-<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm</span><span class="w"> </span><span class="n">name</span><span class="o">&gt;</span><span class="o">.</span><span class="n">names</span><span class="w"> </span><span class="p" data-group-id="8986502238-1">(</span><span class="w">
-  </span><span class="n">object_name</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
-  </span><span class="n">object_type</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
-  </span><span class="n">object_uuid</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
+  PRIMARY KEY ((group), key)
+);</code></pre>
+<pre><code class="sql">CREATE TABLE &lt;realm name&gt;.names (
+  object_name varchar,
+  object_type int,
+  object_uuid uuid,
 
-  </span><span class="nc">PRIMARY</span><span class="w"> </span><span class="nc">KEY</span><span class="w"> </span><span class="p" data-group-id="8986502238-2">(</span><span class="p" data-group-id="8986502238-3">(</span><span class="n">object_name</span><span class="p" data-group-id="8986502238-3">)</span><span class="p">,</span><span class="w"> </span><span class="n">object_type</span><span class="p" data-group-id="8986502238-2">)</span><span class="w">
-</span><span class="p" data-group-id="8986502238-1">)</span><span class="p">;</span></code></pre>
-<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm_name</span><span class="o">&gt;</span><span class="o">.</span><span class="n">devices</span><span class="w"> </span><span class="p" data-group-id="2411163687-1">(</span><span class="w">
-  </span><span class="n">device_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
-  </span><span class="n">aliases</span><span class="w"> </span><span class="n">map</span><span class="o">&lt;</span><span class="n">ascii</span><span class="p">,</span><span class="w"> </span><span class="n">varchar</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
-  </span><span class="n">introspection</span><span class="w"> </span><span class="n">map</span><span class="o">&lt;</span><span class="n">ascii</span><span class="p">,</span><span class="w"> </span><span class="n">int</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
-  </span><span class="n">introspection_minor</span><span class="w"> </span><span class="n">map</span><span class="o">&lt;</span><span class="n">ascii</span><span class="p">,</span><span class="w"> </span><span class="n">int</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
-  </span><span class="n">old_introspection</span><span class="w"> </span><span class="n">map</span><span class="o">&lt;</span><span class="n">frozen</span><span class="o">&lt;</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">ascii</span><span class="p">,</span><span class="w"> </span><span class="n">int</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">int</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
-  </span><span class="n">protocol_revision</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
-  </span><span class="n">first_registration</span><span class="w"> </span><span class="n">timestamp</span><span class="p">,</span><span class="w">
-  </span><span class="n">credentials_secret</span><span class="w"> </span><span class="n">ascii</span><span class="p">,</span><span class="w">
-  </span><span class="n">inhibit_credentials_request</span><span class="w"> </span><span class="n">boolean</span><span class="p">,</span><span class="w">
-  </span><span class="n">cert_serial</span><span class="w"> </span><span class="n">ascii</span><span class="p">,</span><span class="w">
-  </span><span class="n">cert_aki</span><span class="w"> </span><span class="n">ascii</span><span class="p">,</span><span class="w">
-  </span><span class="n">first_credentials_request</span><span class="w"> </span><span class="n">timestamp</span><span class="p">,</span><span class="w">
-  </span><span class="n">last_connection</span><span class="w"> </span><span class="n">timestamp</span><span class="p">,</span><span class="w">
-  </span><span class="n">last_disconnection</span><span class="w"> </span><span class="n">timestamp</span><span class="p">,</span><span class="w">
-  </span><span class="n">connected</span><span class="w"> </span><span class="n">boolean</span><span class="p">,</span><span class="w">
-  </span><span class="n">pending_empty_cache</span><span class="w"> </span><span class="n">boolean</span><span class="p">,</span><span class="w">
-  </span><span class="n">total_received_msgs</span><span class="w"> </span><span class="n">bigint</span><span class="p">,</span><span class="w">
-  </span><span class="n">total_received_bytes</span><span class="w"> </span><span class="n">bigint</span><span class="p">,</span><span class="w">
-  </span><span class="n">exchanged_bytes_by_interface</span><span class="w"> </span><span class="n">map</span><span class="o">&lt;</span><span class="n">frozen</span><span class="o">&lt;</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">ascii</span><span class="p">,</span><span class="w"> </span><span class="n">int</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">bigint</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
-  </span><span class="n">exchanged_msgs_by_interface</span><span class="w"> </span><span class="n">map</span><span class="o">&lt;</span><span class="n">frozen</span><span class="o">&lt;</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">ascii</span><span class="p">,</span><span class="w"> </span><span class="n">int</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">bigint</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
-  </span><span class="n">last_credentials_request_ip</span><span class="w"> </span><span class="n">inet</span><span class="p">,</span><span class="w">
-  </span><span class="n">last_seen_ip</span><span class="w"> </span><span class="n">inet</span><span class="p">,</span><span class="w">
+  PRIMARY KEY ((object_name), object_type)
+);</code></pre>
+<pre><code class="sql">CREATE TABLE &lt;realm_name&gt;.devices (
+  device_id uuid,
+  aliases map&lt;ascii, varchar&gt;,
+  introspection map&lt;ascii, int&gt;,
+  introspection_minor map&lt;ascii, int&gt;,
+  old_introspection map&lt;frozen&lt;tuple&lt;ascii, int&gt;&gt;, int&gt;,
+  protocol_revision int,
+  first_registration timestamp,
+  credentials_secret ascii,
+  inhibit_credentials_request boolean,
+  cert_serial ascii,
+  cert_aki ascii,
+  first_credentials_request timestamp,
+  last_connection timestamp,
+  last_disconnection timestamp,
+  connected boolean,
+  pending_empty_cache boolean,
+  total_received_msgs bigint,
+  total_received_bytes bigint,
+  exchanged_bytes_by_interface map&lt;frozen&lt;tuple&lt;ascii, int&gt;&gt;, bigint&gt;,
+  exchanged_msgs_by_interface map&lt;frozen&lt;tuple&lt;ascii, int&gt;&gt;, bigint&gt;,
+  last_credentials_request_ip inet,
+  last_seen_ip inet,
 
-  </span><span class="n">groups</span><span class="w"> </span><span class="n">map</span><span class="o">&lt;</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">timeuuid</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+  groups map&lt;text, timeuuid&gt;,
 
-  </span><span class="nc">PRIMARY</span><span class="w"> </span><span class="nc">KEY</span><span class="w"> </span><span class="p" data-group-id="2411163687-2">(</span><span class="n">device_id</span><span class="p" data-group-id="2411163687-2">)</span><span class="w">
-</span><span class="p" data-group-id="2411163687-1">)</span><span class="p">;</span></code></pre>
-<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm</span><span class="w"> </span><span class="n">name</span><span class="o">&gt;</span><span class="o">.</span><span class="n">grouped_devices</span><span class="w"> </span><span class="p" data-group-id="8924739821-1">(</span><span class="w">
-  </span><span class="n">group_name</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
-  </span><span class="n">insertion_uuid</span><span class="w"> </span><span class="n">timeuuid</span><span class="p">,</span><span class="w">
-  </span><span class="n">device_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
-  </span><span class="nc">PRIMARY</span><span class="w"> </span><span class="nc">KEY</span><span class="w"> </span><span class="p" data-group-id="8924739821-2">(</span><span class="p" data-group-id="8924739821-3">(</span><span class="n">group_name</span><span class="p" data-group-id="8924739821-3">)</span><span class="p">,</span><span class="w"> </span><span class="n">insertion_uuid</span><span class="p">,</span><span class="w"> </span><span class="n">device_id</span><span class="p" data-group-id="8924739821-2">)</span><span class="w">
-</span><span class="p" data-group-id="8924739821-1">)</span><span class="p">;</span></code></pre>
-<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm</span><span class="w"> </span><span class="n">name</span><span class="o">&gt;</span><span class="o">.</span><span class="n">endpoints</span><span class="w"> </span><span class="p" data-group-id="6633927203-1">(</span><span class="w">
-  </span><span class="n">interface_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
-  </span><span class="n">endpoint_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
-  </span><span class="n">interface_name</span><span class="w"> </span><span class="n">ascii</span><span class="p">,</span><span class="w">
-  </span><span class="n">interface_major_version</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
-  </span><span class="n">interface_minor_version</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
-  </span><span class="n">interface_type</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
-  </span><span class="n">endpoint</span><span class="w"> </span><span class="n">ascii</span><span class="p">,</span><span class="w">
-  </span><span class="n">value_type</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
-  </span><span class="n">reliability</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
-  </span><span class="n">retention</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
-  </span><span class="n">expiry</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
-  </span><span class="n">database_retention_ttl</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
-  </span><span class="n">database_retention_policy</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
-  </span><span class="n">allow_unset</span><span class="w"> </span><span class="n">boolean</span><span class="p">,</span><span class="w">
-  </span><span class="n">explicit_timestamp</span><span class="w"> </span><span class="n">boolean</span><span class="p">,</span><span class="w">
-  </span><span class="n">description</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
-  </span><span class="n">doc</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
+  PRIMARY KEY (device_id)
+);</code></pre>
+<pre><code class="sql">CREATE TABLE &lt;realm name&gt;.grouped_devices (
+  group_name varchar,
+  insertion_uuid timeuuid,
+  device_id uuid,
+  PRIMARY KEY ((group_name), insertion_uuid, device_id)
+);</code></pre>
+<pre><code class="sql">CREATE TABLE &lt;realm name&gt;.endpoints (
+  interface_id uuid,
+  endpoint_id uuid,
+  interface_name ascii,
+  interface_major_version int,
+  interface_minor_version int,
+  interface_type int,
+  endpoint ascii,
+  value_type int,
+  reliability int,
+  retention int,
+  expiry int,
+  database_retention_ttl int,
+  database_retention_policy int,
+  allow_unset boolean,
+  explicit_timestamp boolean,
+  description varchar,
+  doc varchar,
 
-  </span><span class="nc">PRIMARY</span><span class="w"> </span><span class="nc">KEY</span><span class="w"> </span><span class="p" data-group-id="6633927203-2">(</span><span class="p" data-group-id="6633927203-3">(</span><span class="n">interface_id</span><span class="p" data-group-id="6633927203-3">)</span><span class="p">,</span><span class="w"> </span><span class="n">endpoint_id</span><span class="p" data-group-id="6633927203-2">)</span><span class="w">
-</span><span class="p" data-group-id="6633927203-1">)</span><span class="p">;</span></code></pre>
-<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm</span><span class="w"> </span><span class="n">name</span><span class="o">&gt;</span><span class="o">.</span><span class="n">interfaces</span><span class="w"> </span><span class="p" data-group-id="3899186658-1">(</span><span class="w">
-  </span><span class="n">name</span><span class="w"> </span><span class="n">ascii</span><span class="p">,</span><span class="w">
-  </span><span class="n">major_version</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
-  </span><span class="n">minor_version</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
-  </span><span class="n">interface_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
-  </span><span class="n">storage_type</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
-  </span><span class="n">storage</span><span class="w"> </span><span class="n">ascii</span><span class="p">,</span><span class="w">
-  </span><span class="n">type</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
-  </span><span class="n">ownership</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
-  </span><span class="n">aggregation</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
-  </span><span class="n">automaton_transitions</span><span class="w"> </span><span class="n">blob</span><span class="p">,</span><span class="w">
-  </span><span class="n">automaton_accepting_states</span><span class="w"> </span><span class="n">blob</span><span class="p">,</span><span class="w">
-  </span><span class="n">description</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
-  </span><span class="n">doc</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
+  PRIMARY KEY ((interface_id), endpoint_id)
+);</code></pre>
+<pre><code class="sql">CREATE TABLE &lt;realm name&gt;.interfaces (
+  name ascii,
+  major_version int,
+  minor_version int,
+  interface_id uuid,
+  storage_type int,
+  storage ascii,
+  type int,
+  ownership int,
+  aggregation int,
+  automaton_transitions blob,
+  automaton_accepting_states blob,
+  description varchar,
+  doc varchar,
 
-  </span><span class="nc">PRIMARY</span><span class="w"> </span><span class="nc">KEY</span><span class="w"> </span><span class="p" data-group-id="3899186658-2">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">major_version</span><span class="p" data-group-id="3899186658-2">)</span><span class="w">
-</span><span class="p" data-group-id="3899186658-1">)</span><span class="p">;</span></code></pre>
-<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm</span><span class="w"> </span><span class="n">name</span><span class="o">&gt;</span><span class="o">.</span><span class="n">individual_properties</span><span class="w"> </span><span class="p" data-group-id="2759739722-1">(</span><span class="w">
-  </span><span class="n">device_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
-  </span><span class="n">interface_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
-  </span><span class="n">endpoint_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
-  </span><span class="n">path</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
-  </span><span class="n">reception_timestamp</span><span class="w"> </span><span class="n">timestamp</span><span class="p">,</span><span class="w">
-  </span><span class="n">reception_timestamp_submillis</span><span class="w"> </span><span class="n">smallint</span><span class="p">,</span><span class="w">
+  PRIMARY KEY (name, major_version)
+);</code></pre>
+<pre><code class="sql">CREATE TABLE &lt;realm name&gt;.individual_properties (
+  device_id uuid,
+  interface_id uuid,
+  endpoint_id uuid,
+  path varchar,
+  reception_timestamp timestamp,
+  reception_timestamp_submillis smallint,
 
-  </span><span class="n">double_value</span><span class="w"> </span><span class="n">double</span><span class="p">,</span><span class="w">
-  </span><span class="n">integer_value</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
-  </span><span class="n">boolean_value</span><span class="w"> </span><span class="n">boolean</span><span class="p">,</span><span class="w">
-  </span><span class="n">longinteger_value</span><span class="w"> </span><span class="n">bigint</span><span class="p">,</span><span class="w">
-  </span><span class="n">string_value</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
-  </span><span class="n">binaryblob_value</span><span class="w"> </span><span class="n">blob</span><span class="p">,</span><span class="w">
-  </span><span class="n">datetime_value</span><span class="w"> </span><span class="n">timestamp</span><span class="p">,</span><span class="w">
-  </span><span class="n">doublearray_value</span><span class="w"> </span><span class="n">list</span><span class="o">&lt;</span><span class="n">double</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
-  </span><span class="n">integerarray_value</span><span class="w"> </span><span class="n">list</span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
-  </span><span class="n">booleanarray_value</span><span class="w"> </span><span class="n">list</span><span class="o">&lt;</span><span class="n">boolean</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
-  </span><span class="n">longintegerarray_value</span><span class="w"> </span><span class="n">list</span><span class="o">&lt;</span><span class="n">bigint</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
-  </span><span class="n">stringarray_value</span><span class="w"> </span><span class="n">list</span><span class="o">&lt;</span><span class="n">varchar</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
-  </span><span class="n">binaryblobarray_value</span><span class="w"> </span><span class="n">list</span><span class="o">&lt;</span><span class="n">blob</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
-  </span><span class="n">datetimearray_value</span><span class="w"> </span><span class="n">list</span><span class="o">&lt;</span><span class="n">timestamp</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+  double_value double,
+  integer_value int,
+  boolean_value boolean,
+  longinteger_value bigint,
+  string_value varchar,
+  binaryblob_value blob,
+  datetime_value timestamp,
+  doublearray_value list&lt;double&gt;,
+  integerarray_value list&lt;int&gt;,
+  booleanarray_value list&lt;boolean&gt;,
+  longintegerarray_value list&lt;bigint&gt;,
+  stringarray_value list&lt;varchar&gt;,
+  binaryblobarray_value list&lt;blob&gt;,
+  datetimearray_value list&lt;timestamp&gt;,
 
-  </span><span class="nc">PRIMARY</span><span class="w"> </span><span class="nc">KEY</span><span class="p" data-group-id="2759739722-2">(</span><span class="p" data-group-id="2759739722-3">(</span><span class="n">device_id</span><span class="p">,</span><span class="w"> </span><span class="n">interface_id</span><span class="p" data-group-id="2759739722-3">)</span><span class="p">,</span><span class="w"> </span><span class="n">endpoint_id</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p" data-group-id="2759739722-2">)</span><span class="w">
-</span><span class="p" data-group-id="2759739722-1">)</span><span class="p">;</span></code></pre>
-<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm</span><span class="w"> </span><span class="n">name</span><span class="o">&gt;</span><span class="o">.</span><span class="n">simple_triggers</span><span class="w"> </span><span class="p" data-group-id="7111143093-1">(</span><span class="w">
-  </span><span class="n">object_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
-  </span><span class="n">object_type</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
-  </span><span class="n">parent_trigger_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
-  </span><span class="n">simple_trigger_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
-  </span><span class="n">trigger_data</span><span class="w"> </span><span class="n">blob</span><span class="p">,</span><span class="w">
-  </span><span class="n">trigger_target</span><span class="w"> </span><span class="n">blob</span><span class="p">,</span><span class="w">
+  PRIMARY KEY((device_id, interface_id), endpoint_id, path)
+);</code></pre>
+<pre><code class="sql">CREATE TABLE &lt;realm name&gt;.simple_triggers (
+  object_id uuid,
+  object_type int,
+  parent_trigger_id uuid,
+  simple_trigger_id uuid,
+  trigger_data blob,
+  trigger_target blob,
 
-  </span><span class="nc">PRIMARY</span><span class="w"> </span><span class="nc">KEY</span><span class="w"> </span><span class="p" data-group-id="7111143093-2">(</span><span class="p" data-group-id="7111143093-3">(</span><span class="n">object_id</span><span class="p">,</span><span class="w"> </span><span class="n">object_type</span><span class="p" data-group-id="7111143093-3">)</span><span class="p">,</span><span class="w"> </span><span class="n">parent_trigger_id</span><span class="p">,</span><span class="w"> </span><span class="n">simple_trigger_id</span><span class="p" data-group-id="7111143093-2">)</span><span class="w">
-</span><span class="p" data-group-id="7111143093-1">)</span><span class="p">;</span></code></pre>
+  PRIMARY KEY ((object_id, object_type), parent_trigger_id, simple_trigger_id)
+);</code></pre>
 <h2 id="tables" class="section-heading">
   <a href="#tables" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Tables
@@ -341,47 +341,47 @@ Keyspaces (changes that affect all realm keyspaces).</p>
   From v0.10 to v0.11
 </h3>
 
-<h4>Astarte Keyspace</h4>
+<h4>Astarte Keyspace v0.11 Changes</h4>
 <ul>
 <li>Remove <code class="inline">astarte_schema</code> table
 </li>
 </ul>
-<pre><code class="nohighlight makeup elixir"><span class="nc">DROP</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="n">astarte_schema</span><span class="p">;</span></code></pre>
+<pre><code class="sql">DROP TABLE astarte_schema;</code></pre>
 <ul>
 <li>Remove <code class="inline">replication_factor</code> column from the <code class="inline">realms</code> table
 </li>
 </ul>
-<pre><code class="nohighlight makeup elixir"><span class="nc">ALTER</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="n">realms</span><span class="w">
-</span><span class="nc">DROP</span><span class="w"> </span><span class="n">replication_factor</span><span class="p">;</span></code></pre>
-<h4>Realm Keyspaces</h4>
+<pre><code class="sql">ALTER TABLE realms
+DROP replication_factor;</code></pre>
+<h4>Realm Keyspaces v0.11 Changes</h4>
 <ul>
 <li>Add <code class="inline">grouped_devices</code> table
 </li>
 </ul>
-<pre><code class="nohighlight makeup elixir"><span class="nc">CREATE</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm_name</span><span class="o">&gt;</span><span class="o">.</span><span class="n">grouped_devices</span><span class="w"> </span><span class="p" data-group-id="1058988832-1">(</span><span class="w">
-   </span><span class="n">group_name</span><span class="w"> </span><span class="n">varchar</span><span class="p">,</span><span class="w">
-   </span><span class="n">insertion_uuid</span><span class="w"> </span><span class="n">timeuuid</span><span class="p">,</span><span class="w">
-   </span><span class="n">device_id</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span><span class="w">
-   </span><span class="nc">PRIMARY</span><span class="w"> </span><span class="nc">KEY</span><span class="w"> </span><span class="p" data-group-id="1058988832-2">(</span><span class="p" data-group-id="1058988832-3">(</span><span class="n">group_name</span><span class="p" data-group-id="1058988832-3">)</span><span class="p">,</span><span class="w"> </span><span class="n">insertion_uuid</span><span class="p">,</span><span class="w"> </span><span class="n">device_id</span><span class="p" data-group-id="1058988832-2">)</span><span class="w">
-</span><span class="p" data-group-id="1058988832-1">)</span><span class="p">;</span></code></pre>
+<pre><code class="sql">CREATE TABLE &lt;realm_name&gt;.grouped_devices (
+   group_name varchar,
+   insertion_uuid timeuuid,
+   device_id uuid,
+   PRIMARY KEY ((group_name), insertion_uuid, device_id)
+);</code></pre>
 <ul>
 <li>Add <code class="inline">groups</code>, <code class="inline">exchanged_bytes_by_interface</code> and <code class="inline">exchanged_msgs_by_interface</code> columns to the
 <code class="inline">devices</code> table
 </li>
 </ul>
-<pre><code class="nohighlight makeup elixir"><span class="nc">ALTER</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm_name</span><span class="o">&gt;</span><span class="o">.</span><span class="n">devices</span><span class="w">
-</span><span class="nc">ADD</span><span class="w"> </span><span class="p" data-group-id="0187240969-1">(</span><span class="n">groups</span><span class="w"> </span><span class="n">map</span><span class="o">&lt;</span><span class="n">text</span><span class="p">,</span><span class="w"> </span><span class="n">timeuuid</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
-    </span><span class="n">exchanged_bytes_by_interface</span><span class="w"> </span><span class="n">map</span><span class="o">&lt;</span><span class="n">frozen</span><span class="o">&lt;</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">ascii</span><span class="p">,</span><span class="w"> </span><span class="n">int</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">bigint</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
-    </span><span class="n">exchanged_msgs_by_interface</span><span class="w"> </span><span class="n">map</span><span class="o">&lt;</span><span class="n">frozen</span><span class="o">&lt;</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">ascii</span><span class="p">,</span><span class="w"> </span><span class="n">int</span><span class="p">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">bigint</span><span class="o">&gt;</span><span class="p" data-group-id="0187240969-1">)</span><span class="p">;</span></code></pre>
+<pre><code class="sql">ALTER TABLE &lt;realm_name&gt;.devices
+ADD (groups map&lt;text, timeuuid&gt;,
+    exchanged_bytes_by_interface map&lt;frozen&lt;tuple&lt;ascii, int&gt;&gt;, bigint&gt;,
+    exchanged_msgs_by_interface map&lt;frozen&lt;tuple&lt;ascii, int&gt;&gt;, bigint&gt;);</code></pre>
 <ul>
 <li>Add <code class="inline">database_retention_ttl</code> and <code class="inline">database_retention_policy</code> columns to the <code class="inline">endpoints</code> table
 </li>
 </ul>
-<pre><code class="nohighlight makeup elixir"><span class="nc">ALTER</span><span class="w"> </span><span class="nc">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">realm_name</span><span class="o">&gt;</span><span class="o">.</span><span class="n">endpoints</span><span class="w">
-</span><span class="nc">ADD</span><span class="w"> </span><span class="p" data-group-id="1135869556-1">(</span><span class="w">
-  </span><span class="n">database_retention_ttl</span><span class="w"> </span><span class="n">int</span><span class="p">,</span><span class="w">
-  </span><span class="n">database_retention_policy</span><span class="w"> </span><span class="n">int</span><span class="w">
-</span><span class="p" data-group-id="1135869556-1">)</span><span class="p">;</span></code></pre>
+<pre><code class="sql">ALTER TABLE &lt;realm_name&gt;.endpoints
+ADD (
+  database_retention_ttl int,
+  database_retention_policy int
+);</code></pre>
       <footer class="footer">
         <p>
           <span class="line">

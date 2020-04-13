@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v0.11.0">
     <title>Installing Astarte Operator — Astarte v0.11.0</title>
     <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
-    <script src="dist/sidebar_items-ac74c0c783.js"></script>
+    <script src="dist/sidebar_items-fb811dc742.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
@@ -76,7 +76,7 @@ in the Cluster.</p>
 </h2>
 
 <p>Installing the Operator is as simple as</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">astartectl</span><span class="w"> </span><span class="n">cluster</span><span class="w"> </span><span class="n">install</span><span class="o">-</span><span class="n">operator</span></code></pre>
+<pre><code class="bash">astartectl cluster install-operator</code></pre>
 <p>This command will take care of installing all needed components for the Operator to run. This includes all the
 RBAC roles, Custom Resource Definitions, and the Operator itself. The <code class="inline">--version</code> switch allows to specify a
 version to install - when not specified, the latest version will be installed instead.</p>
@@ -86,7 +86,7 @@ version to install - when not specified, the latest version will be installed in
 </h2>
 
 <p>To upgrade the Operator, use the dedicated <code class="inline">upgrade-operator</code> command.</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">astartectl</span><span class="w"> </span><span class="n">cluster</span><span class="w"> </span><span class="n">upgrade</span><span class="o">-</span><span class="n">operator</span></code></pre>
+<pre><code class="bash">astartectl cluster upgrade-operator</code></pre>
 <p>Just like the <code class="inline">install-operator</code> command, the <code class="inline">--version</code> switch allows to specify the version to upgrade to -
 when not specified, the latest version will be fetched and used.</p>
 <h2 id="uninstalling-the-operator" class="section-heading">
@@ -95,7 +95,7 @@ when not specified, the latest version will be fetched and used.</p>
 </h2>
 
 <p>To uninstall the Operator, use the dedicated <code class="inline">uninstall-operator</code> command.</p>
-<pre><code class="nohighlight makeup elixir"><span class="n">astartectl</span><span class="w"> </span><span class="n">cluster</span><span class="w"> </span><span class="n">uninstall</span><span class="o">-</span><span class="n">operator</span></code></pre>
+<pre><code class="bash">astartectl cluster uninstall-operator</code></pre>
 <p>This command will refuse to execute if any Astarte instances are active in the Cluster. Uninstalling the Operator
 is possible only after all managed instances have been deleted too.
 When uninstalling the Operator, all resources installed with <code class="inline">install-operator</code> will be erased completely.</p>

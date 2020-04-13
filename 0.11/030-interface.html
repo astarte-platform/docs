@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v0.11.0">
     <title>Interfaces — Astarte v0.11.0</title>
     <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
-    <script src="dist/sidebar_items-ac74c0c783.js"></script>
+    <script src="dist/sidebar_items-fb811dc742.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
@@ -100,12 +100,12 @@ interface name of maximum 128 characters, which must be a <a href="https://en.wi
 Name</a>. As a convention, the interface
 name usually contains its author&#39;s URI Reverse Internet Domain Name.</p>
 <p>An example skeleton looks like this:</p>
-<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="0694488620-1">{</span><span class="w">
-    </span><span class="ss">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;com.test.MyInterfaceName&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="ss">&quot;version_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="ss">&quot;version_minor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="0694488620-2">[</span><span class="n">...</span><span class="p" data-group-id="0694488620-2">]</span><span class="w">
-</span><span class="p" data-group-id="0694488620-1">}</span></code></pre>
+<pre><code class="json">{
+    &quot;interface_name&quot;: &quot;com.test.MyInterfaceName&quot;,
+    &quot;version_major&quot;: 1,
+    &quot;version_minor&quot;: 0,
+    [...]
+}</code></pre>
 <p>Valid values and variables are listed in the <a href="040-interface_schema.html">Interface Schema</a>.</p>
 <h3 id="name-limitations" class="section-heading">
   <a href="#name-limitations" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -113,10 +113,35 @@ name usually contains its author&#39;s URI Reverse Internet Domain Name.</p>
 </h3>
 
 <p>A valid interface name consists of a Reverse Domain Name containing alphanumeric characters, hyphens
-and dots. By design, both the top level domain and last domain component can not contain hyphens.</p>
-<p>Make sure that the differences between two distinct interface names are not limited to the casing
-or the presence of hyphens. This situation leads to a collision in the interface names which brings
-to an error in the interface installation process.</p>
+and dots. By design, both the top level domain and last domain component can not contain hyphens,
+although hypens are allowed in other parts of the interface name (e.g.: <code class="inline">org.astarte-platform.Values</code>
+is a valid interface name).</p>
+<p>Interface names have to be fully-defined Reverse Domain Names. <code class="inline">Values</code> will not be accepted as an
+Astarte interface name, whereas <code class="inline">org.astarte-platform.Values</code> is a valid one.</p>
+<p>Interface&#39;s uniqueness is case insensitive - this means you cannot install two interfaces with the
+same name and different casing (e.g.: <code class="inline">org.astarte-platform.MyValues</code> and <code class="inline">org.astarte-platform.Myvalues</code>).
+This also applies to Major versioning: interfaces sharing the same name with a different major
+version cannot have different casing.</p>
+<p>Although not enforced, naming conventions for Astarte Interfaces require lowercasing for anything but
+the last part of the Interface name, which should be CamelCase.</p>
+<p>Valid examples are:</p>
+<ul>
+<li><code class="inline">org.astarte-platform.conventions.ValidInterfaceName</code>
+</li>
+<li><code class="inline">org.astarte-platform.ValidInterfaceName</code>
+</li>
+<li><code class="inline">org.astarte-platform.conventions.satisfied.ValidInterfaceName</code>
+</li>
+</ul>
+<p>Non-valid examples are:</p>
+<ul>
+<li><code class="inline">org.astarte-platform.Conventions.ValidInterfaceName</code>
+</li>
+<li><code class="inline">org.astarte-platform.validInterfaceName</code>
+</li>
+<li><code class="inline">org.astarte-platform.Conventions.satisfied.ValidInterfaceName</code>
+</li>
+</ul>
 <h2 id="interface-type" class="section-heading">
   <a href="#interface-type" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Interface Type
@@ -170,15 +195,15 @@ typed, and can have additional options. Just like in REST controllers, Endpoints
 to build REST-like collection and trees. Parameters are identified by <code class="inline">%{parameterName}</code>, with each
 endpoint supporting any number of parameters (see <a href="#limitations">Limitations</a>).</p>
 <p>This is how a parametrized mapping looks like:</p>
-<pre><code class="nohighlight makeup elixir"><span class="w">    </span><span class="p" data-group-id="3196199874-1">[</span><span class="n">...</span><span class="p" data-group-id="3196199874-1">]</span><span class="w">
-    </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3196199874-2">[</span><span class="w">
-        </span><span class="p" data-group-id="3196199874-3">{</span><span class="w">
-            </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="ss">&quot;reliability&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;unique&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="ss">&quot;retention&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;discard&quot;</span><span class="w">
-        </span><span class="p" data-group-id="3196199874-3">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="3196199874-4">[</span><span class="n">...</span><span class="p" data-group-id="3196199874-4">]</span></code></pre>
+<pre><code class="json">    [...]
+    &quot;mappings&quot;: [
+        {
+            &quot;endpoint&quot;: &quot;/%{itemIndex}/value&quot;,
+            &quot;type&quot;: &quot;integer&quot;,
+            &quot;reliability&quot;: &quot;unique&quot;,
+            &quot;retention&quot;: &quot;discard&quot;
+        },
+    [...]</code></pre>
 <p>In this example, <code class="inline">/0/value</code>, <code class="inline">/1/value</code> or <code class="inline">/test/value</code> all map to a valid endpoint, while
 <code class="inline">/te/st/value</code> can&#39;t be resolved by any endpoint.</p>
 <h3 id="supported-data-types" class="section-heading">
@@ -188,8 +213,8 @@ endpoint supporting any number of parameters (see <a href="#limitations">Limitat
 
 <p>The following types are supported:</p>
 <ul>
-<li><code class="inline">double</code>: A double-precision floating-point format as specified by binary64, by the IEEE 754
-standard
+<li><code class="inline">double</code>: A double-precision floating-point number as specified by binary64, by the IEEE 754
+standard (NaNs and other non numerical values are not supported).
 </li>
 <li><code class="inline">integer</code>: A signed 32 bit integer.
 </li>
@@ -217,49 +242,49 @@ particular, text fields must be shorter than 32000 characters.
 the presence of hyphens. This situation leads to a collision in the interface names which brings to
 an error in the interface installation process.</p>
 <p>A valid interface must resolve a path univocally to a single endpoint. Take the following example:</p>
-<pre><code class="nohighlight makeup elixir"><span class="w">    </span><span class="p" data-group-id="3906980746-1">[</span><span class="n">...</span><span class="p" data-group-id="3906980746-1">]</span><span class="w">
-    </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3906980746-2">[</span><span class="w">
-        </span><span class="p" data-group-id="3906980746-3">{</span><span class="w">
-            </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="3906980746-3">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="3906980746-4">{</span><span class="w">
-            </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/myPath/value&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="3906980746-4">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="3906980746-5">[</span><span class="n">...</span><span class="p" data-group-id="3906980746-5">]</span></code></pre>
+<pre><code class="json">    [...]
+    &quot;mappings&quot;: [
+        {
+            &quot;endpoint&quot;: &quot;/%{itemIndex}/value&quot;,
+            &quot;type&quot;: &quot;integer&quot;
+        },
+        {
+            &quot;endpoint&quot;: &quot;/myPath/value&quot;,
+            &quot;type&quot;: &quot;integer&quot;
+        },
+    [...]</code></pre>
 <p>In such a case, the interface isn&#39;t valid and is
 rejected, due to the fact that path <code class="inline">/myPath/value</code> is ambiguous and could be resolved to two
 different endpoints.</p>
 <p>Any endpoint configuration must not generate paths that are prefix of other paths, for this reason
 the following example is also invalid:</p>
-<pre><code class="nohighlight makeup elixir"><span class="w">    </span><span class="p" data-group-id="3751393469-1">[</span><span class="n">...</span><span class="p" data-group-id="3751393469-1">]</span><span class="w">
-    </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3751393469-2">[</span><span class="w">
-        </span><span class="p" data-group-id="3751393469-3">{</span><span class="w">
-            </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/some/thing&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="s">&quot;type&quot;</span><span class="ss">:&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="3751393469-3">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="3751393469-4">{</span><span class="w">
-            </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/some/%{param}/value&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="3751393469-4">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="3751393469-5">[</span><span class="n">...</span><span class="p" data-group-id="3751393469-5">]</span><span class="w">
-</span></code></pre>
+<pre><code class="json">    [...]
+    &quot;mappings&quot;: [
+        {
+            &quot;endpoint&quot;: &quot;/some/thing&quot;,
+            &quot;type&quot;:&quot;integer&quot;
+        },
+        {
+            &quot;endpoint&quot;: &quot;/some/%{param}/value&quot;,
+            &quot;type&quot;: &quot;integer&quot;
+        },
+    [...]
+</code></pre>
 <p>In case the interface&#39;s aggregation is <code class="inline">object</code>, additional restrictions apply. Endpoints in the
 same interface must all have the same depth, and the same number of parameters. If the interface is
 parametrized, every endpoint must have the same parameter name at the same level. This is an example
 of a valid aggregated interface mapping:</p>
-<pre><code class="nohighlight makeup elixir"><span class="w">    </span><span class="p" data-group-id="1564668117-1">[</span><span class="n">...</span><span class="p" data-group-id="1564668117-1">]</span><span class="w">
-    </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1564668117-2">[</span><span class="w">
-        </span><span class="p" data-group-id="1564668117-3">{</span><span class="w">
-            </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="1564668117-3">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="1564668117-4">{</span><span class="w">
-            </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/%{itemIndex}/otherValue&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="w">
-        </span><span class="p" data-group-id="1564668117-4">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="1564668117-5">[</span><span class="n">...</span><span class="p" data-group-id="1564668117-5">]</span></code></pre>
+<pre><code class="json">    [...]
+    &quot;mappings&quot;: [
+        {
+            &quot;endpoint&quot;: &quot;/%{itemIndex}/value&quot;,
+            &quot;type&quot;: &quot;integer&quot;
+        },
+        {
+            &quot;endpoint&quot;: &quot;/%{itemIndex}/otherValue&quot;,
+            &quot;type&quot;: &quot;string&quot;
+        },
+    [...]</code></pre>
 <h2 id="aggregation" class="section-heading">
   <a href="#aggregation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Aggregation
@@ -277,6 +302,40 @@ timestamp.</p>
 <p>Aggregation is a powerful mechanism that can be used to map interfaces to real world <em>&quot;objects&quot;</em>.
 Moreover, aggregated interfaces can also be parametrized, although with <a href="#limitations">some
 limitations</a>.</p>
+<h3 id="endpoints-and-aggregation" class="section-heading">
+  <a href="#endpoints-and-aggregation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Endpoints and aggregation
+</h3>
+
+<p>Since Astarte 0.11, Aggregations cannot have endpoints with depth 1. This was an erroneously allowed
+behavior in Astarte 0.10 which is kept for retrocompatibility - however, new interfaces should ensure
+each endpoint in an aggreate has at least depth 2, as support for depth 1 will be removed in a future
+release. This change has been done to be consistent with AppEngine API design, and to ensure that
+path <code class="inline">/</code> is not ambiguous.</p>
+<p>This is the correct way to set up a valid endpoint structure for an aggregate:</p>
+<pre><code class="json">    [...]
+    &quot;mappings&quot;: [
+        {
+            &quot;endpoint&quot;: &quot;/objects/value&quot;,
+            &quot;type&quot;: &quot;integer&quot;
+        },
+        {
+            &quot;endpoint&quot;: &quot;/objects/otherValue&quot;,
+            &quot;type&quot;: &quot;string&quot;
+        },
+    [...]</code></pre>
+<p>The following structure, instead, is deprecated:</p>
+<pre><code class="json">    [...]
+    &quot;mappings&quot;: [
+        {
+            &quot;endpoint&quot;: &quot;/value&quot;,
+            &quot;type&quot;: &quot;integer&quot;
+        },
+        {
+            &quot;endpoint&quot;: &quot;/otherValue&quot;,
+            &quot;type&quot;: &quot;string&quot;
+        },
+    [...]</code></pre>
 <h2 id="datastream-specific-features" class="section-heading">
   <a href="#datastream-specific-features" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Datastream-specific features

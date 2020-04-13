@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v0.11.0">
     <title>Interface Schema — Astarte v0.11.0</title>
     <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
-    <script src="dist/sidebar_items-ac74c0c783.js"></script>
+    <script src="dist/sidebar_items-fb811dc742.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
@@ -90,19 +90,19 @@ Astarte      </a>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left"><strong>interface_name</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">The name of the interface. This has to be an unique, alphanumeric reverse internet domain name, shorther than 128 characters.</td><td style="text-align: left">:white_check_mark: Yes</td>
+<td style="text-align: left"><strong>interface_name</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">The name of the interface. This has to be an unique, alphanumeric reverse internet domain name, shorther than 128 characters.</td><td style="text-align: left">&#x2714; Yes</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>version_major</strong></td><td style="text-align: left"><code class="inline">integer</code></td><td style="text-align: left">A Major version qualifier for this interface. Interfaces with the same id and different version_major number are deemed incompatible. It is then acceptable to redefine any property of the interface when changing the major version number.</td><td style="text-align: left">:white_check_mark: Yes</td>
+<td style="text-align: left"><strong>version_major</strong></td><td style="text-align: left"><code class="inline">integer</code></td><td style="text-align: left">A Major version qualifier for this interface. Interfaces with the same id and different version_major number are deemed incompatible. It is then acceptable to redefine any property of the interface when changing the major version number.</td><td style="text-align: left">&#x2714; Yes</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>version_minor</strong></td><td style="text-align: left"><code class="inline">integer</code></td><td style="text-align: left">A Minor version qualifier for this interface. Interfaces with the same id and major version number and different version_minor number are deemed compatible between each other. When changing the minor number, it is then only possible to insert further mappings. Any other modification might lead to incompatibilities and undefined behavior.</td><td style="text-align: left">:white_check_mark: Yes</td>
+<td style="text-align: left"><strong>version_minor</strong></td><td style="text-align: left"><code class="inline">integer</code></td><td style="text-align: left">A Minor version qualifier for this interface. Interfaces with the same id and major version number and different version_minor number are deemed compatible between each other. When changing the minor number, it is then only possible to insert further mappings. Any other modification might lead to incompatibilities and undefined behavior.</td><td style="text-align: left">&#x2714; Yes</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>type</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Identifies the type of this Interface. Currently two types are supported: datastream and properties. datastream should be used when dealing with streams of non-persistent data, where a single path receives updates and there&#39;s no concept of state. properties, instead, are meant to be an actual state and as such they have only a change history, and are retained.</td><td style="text-align: left">:white_check_mark: Yes</td>
+<td style="text-align: left"><strong>type</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Identifies the type of this Interface. Currently two types are supported: datastream and properties. datastream should be used when dealing with streams of non-persistent data, where a single path receives updates and there&#39;s no concept of state. properties, instead, are meant to be an actual state and as such they have only a change history, and are retained.</td><td style="text-align: left">&#x2714; Yes</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>ownership</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Identifies the quality of the interface. Interfaces are meant to be unidirectional, and this property defines who&#39;s sending or receiving data. device means the device/gateway is sending data to Astarte, consumer means the device/gateway is receiving data from Astarte. Bidirectional mode is not supported, you should instantiate another interface for that.</td><td style="text-align: left">:white_check_mark: Yes</td>
+<td style="text-align: left"><strong>ownership</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Identifies the quality of the interface. Interfaces are meant to be unidirectional, and this property defines who&#39;s sending or receiving data. device means the device/gateway is sending data to Astarte, consumer means the device/gateway is receiving data from Astarte. Bidirectional mode is not supported, you should instantiate another interface for that.</td><td style="text-align: left">&#x2714; Yes</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>aggregation</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Identifies the aggregation of the mappings of the interface. Individual means every mapping changes state or streams data independently, whereas an object aggregation treats the interface as an object, making all the mappings changes interdependent. Choosing the right aggregation might drastically improve performances.</td><td style="text-align: left">No, default: <code class="inline">&quot;individual&quot;</code></td>
@@ -117,14 +117,14 @@ Astarte      </a>
 <td style="text-align: left"><strong>doc</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">A string containing documentation that will be injected in the generated client code.</td><td style="text-align: left">No</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>mappings</strong></td><td style="text-align: left"><a href="#reference-astarte-mapping-schema"><code class="inline">Astarte Mapping Schema</code></a> <code class="inline">[1-1024]</code></td><td style="text-align: left">Mappings define the endpoint of the interface, where actual data is stored/streamed. They are defined as relative URLs (e.g. /my/path) and can be parametrized (e.g.: /%{myparam}/path). A valid interface must have no mappings clash, which means that every mapping must resolve to a unique path or collection of paths (including parametrization). Every mapping acquires type, quality and aggregation of the interface.</td><td style="text-align: left">:white_check_mark: Yes</td>
+<td style="text-align: left"><strong>mappings</strong></td><td style="text-align: left"><a href="#reference-astarte-mapping-schema"><code class="inline">Astarte Mapping Schema</code></a> <code class="inline">[1-1024]</code></td><td style="text-align: left">Mappings define the endpoint of the interface, where actual data is stored/streamed. They are defined as relative URLs (e.g. /my/path) and can be parametrized (e.g.: /%{myparam}/path). A valid interface must have no mappings clash, which means that every mapping must resolve to a unique path or collection of paths (including parametrization). Every mapping acquires type, quality and aggregation of the interface.</td><td style="text-align: left">&#x2714; Yes</td>
 </tr>
 </tbody>
 </table>
 <p>Additional properties are allowed.</p>
-<h3 id="astarte-interface-schema-interface_name-white_check_mark" class="section-heading">
-  <a href="#astarte-interface-schema-interface_name-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  astarte.interface.schema.interface_name :white_check_mark:
+<h3 id="astarte-interface-schema-interface_name-x2714" class="section-heading">
+  <a href="#astarte-interface-schema-interface_name-x2714" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.interface_name &#x2714;
 </h3>
 
 <p>The name of the interface. This has to be an unique, alphanumeric reverse internet domain name, shorther than 128 characters.</p>
@@ -136,9 +136,9 @@ Astarte      </a>
 <li><strong>Minimum Length</strong><code class="inline">: &gt;= 1</code>
 </li>
 </ul>
-<h3 id="astarte-interface-schema-version_major-white_check_mark" class="section-heading">
-  <a href="#astarte-interface-schema-version_major-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  astarte.interface.schema.version_major :white_check_mark:
+<h3 id="astarte-interface-schema-version_major-x2714" class="section-heading">
+  <a href="#astarte-interface-schema-version_major-x2714" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.version_major &#x2714;
 </h3>
 
 <p>A Major version qualifier for this interface. Interfaces with the same id and different version_major number are deemed incompatible. It is then acceptable to redefine any property of the interface when changing the major version number.</p>
@@ -148,9 +148,9 @@ Astarte      </a>
 <li><strong>Required</strong>: Yes
 </li>
 </ul>
-<h3 id="astarte-interface-schema-version_minor-white_check_mark" class="section-heading">
-  <a href="#astarte-interface-schema-version_minor-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  astarte.interface.schema.version_minor :white_check_mark:
+<h3 id="astarte-interface-schema-version_minor-x2714" class="section-heading">
+  <a href="#astarte-interface-schema-version_minor-x2714" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.version_minor &#x2714;
 </h3>
 
 <p>A Minor version qualifier for this interface. Interfaces with the same id and major version number and different version_minor number are deemed compatible between each other. When changing the minor number, it is then only possible to insert further mappings. Any other modification might lead to incompatibilities and undefined behavior.</p>
@@ -160,9 +160,9 @@ Astarte      </a>
 <li><strong>Required</strong>: Yes
 </li>
 </ul>
-<h3 id="astarte-interface-schema-type-white_check_mark" class="section-heading">
-  <a href="#astarte-interface-schema-type-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  astarte.interface.schema.type :white_check_mark:
+<h3 id="astarte-interface-schema-type-x2714" class="section-heading">
+  <a href="#astarte-interface-schema-type-x2714" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.type &#x2714;
 </h3>
 
 <p>Identifies the type of this Interface. Currently two types are supported: datastream and properties. datastream should be used when dealing with streams of non-persistent data, where a single path receives updates and there&#39;s no concept of state. properties, instead, are meant to be an actual state and as such they have only a change history, and are retained.</p>
@@ -180,9 +180,9 @@ Astarte      </a>
 </ul>
 </li>
 </ul>
-<h3 id="astarte-interface-schema-ownership-white_check_mark" class="section-heading">
-  <a href="#astarte-interface-schema-ownership-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  astarte.interface.schema.ownership :white_check_mark:
+<h3 id="astarte-interface-schema-ownership-x2714" class="section-heading">
+  <a href="#astarte-interface-schema-ownership-x2714" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.ownership &#x2714;
 </h3>
 
 <p>Identifies the quality of the interface. Interfaces are meant to be unidirectional, and this property defines who&#39;s sending or receiving data. device means the device/gateway is sending data to Astarte, consumer means the device/gateway is receiving data from Astarte. Bidirectional mode is not supported, you should instantiate another interface for that.</p>
@@ -256,9 +256,9 @@ Astarte      </a>
 <li><strong>Required</strong>: No
 </li>
 </ul>
-<h3 id="astarte-interface-schema-mappings-white_check_mark" class="section-heading">
-  <a href="#astarte-interface-schema-mappings-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  astarte.interface.schema.mappings :white_check_mark:
+<h3 id="astarte-interface-schema-mappings-x2714" class="section-heading">
+  <a href="#astarte-interface-schema-mappings-x2714" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.mappings &#x2714;
 </h3>
 
 <p>Mappings define the endpoint of the interface, where actual data is stored/streamed. They are defined as relative URLs (e.g. /my/path) and can be parametrized (e.g.: /%{myparam}/path). A valid interface must have no mappings clash, which means that every mapping must resolve to a unique path or collection of paths (including parametrization). Every mapping acquires type, quality and aggregation of the interface.</p>
@@ -289,10 +289,10 @@ Astarte      </a>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left"><strong>endpoint</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">The template of the path. This is a UNIX-like path (e.g. /my/path) and can be parametrized. Parameters are in the %{name} form, and can be used to create interfaces which represent dictionaries of mappings. When the interface aggregation is object, an object is composed by all the mappings for one specific parameter combination.</td><td style="text-align: left">:white_check_mark: Yes</td>
+<td style="text-align: left"><strong>endpoint</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">The template of the path. This is a UNIX-like path (e.g. /my/path) and can be parametrized. Parameters are in the %{name} form, and can be used to create interfaces which represent dictionaries of mappings. When the interface aggregation is object, an object is composed by all the mappings for one specific parameter combination.</td><td style="text-align: left">&#x2714; Yes</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>type</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Defines the type of the mapping.</td><td style="text-align: left">:white_check_mark: Yes</td>
+<td style="text-align: left"><strong>type</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Defines the type of the mapping.</td><td style="text-align: left">&#x2714; Yes</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>reliability</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Useful only with datastream. Defines whether the sent data should be considered delivered when the transport successfully sends the data (unreliable), when we know that the data has been received at least once (guaranteed) or when we know that the data has been received exactly once (unique). unreliable by default. When using reliable data, consider you might incur in additional resource usage on both the transport and the device&#39;s end.</td><td style="text-align: left">No, default: <code class="inline">&quot;unreliable&quot;</code></td>
@@ -321,9 +321,9 @@ Astarte      </a>
 </tbody>
 </table>
 <p>Additional properties are allowed.</p>
-<h3 id="astarte-mapping-schema-endpoint-white_check_mark" class="section-heading">
-  <a href="#astarte-mapping-schema-endpoint-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  astarte.mapping.schema.endpoint :white_check_mark:
+<h3 id="astarte-mapping-schema-endpoint-x2714" class="section-heading">
+  <a href="#astarte-mapping-schema-endpoint-x2714" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.mapping.schema.endpoint &#x2714;
 </h3>
 
 <p>The template of the path. This is a UNIX-like path (e.g. /my/path) and can be parametrized. Parameters are in the %{name} form, and can be used to create interfaces which represent dictionaries of mappings. When the interface aggregation is object, an object is composed by all the mappings for one specific parameter combination.</p>
@@ -335,9 +335,9 @@ Astarte      </a>
 <li><strong>Minimum Length</strong><code class="inline">: &gt;= 2</code>
 </li>
 </ul>
-<h3 id="astarte-mapping-schema-type-white_check_mark" class="section-heading">
-  <a href="#astarte-mapping-schema-type-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  astarte.mapping.schema.type :white_check_mark:
+<h3 id="astarte-mapping-schema-type-x2714" class="section-heading">
+  <a href="#astarte-mapping-schema-type-x2714" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.mapping.schema.type &#x2714;
 </h3>
 
 <p>Defines the type of the mapping.</p>

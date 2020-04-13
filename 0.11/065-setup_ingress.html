@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v0.11.0">
     <title>Setting up the Ingress — Astarte v0.11.0</title>
     <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
-    <script src="dist/sidebar_items-ac74c0c783.js"></script>
+    <script src="dist/sidebar_items-fb811dc742.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
@@ -79,26 +79,26 @@ before you begin.</p>
 <p>Most information needed for exposing your Ingress have already been given in your main Astarte
 resource. If your Kubernetes installation supports LoadBalancer ingresses (most managed ones do),
 you should be able to get away with the most standard CR:</p>
-<pre><code class="nohighlight makeup elixir"><span class="ss">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="n">api</span><span class="o">.</span><span class="n">astarte</span><span class="o">-</span><span class="n">platform</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">v1alpha1</span><span class="w">
-</span><span class="ss">kind</span><span class="p">:</span><span class="w"> </span><span class="nc">AstarteVoyagerIngress</span><span class="w">
-</span><span class="ss">metadata</span><span class="p">:</span><span class="w">
-  </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="n">example</span><span class="o">-</span><span class="n">minimal</span><span class="w">
-  </span><span class="ss">namespace</span><span class="p">:</span><span class="w"> </span><span class="n">astarte</span><span class="w">
-</span><span class="ss">spec</span><span class="p">:</span><span class="w">
-  </span><span class="c1"># The Astarte Instance the Ingress will be attached to</span><span class="w">
-  </span><span class="ss">astarte</span><span class="p">:</span><span class="w"> </span><span class="n">example</span><span class="o">-</span><span class="n">minimal</span><span class="w">
-  </span><span class="ss">api</span><span class="p">:</span><span class="w">
-    </span><span class="ss">exposeHousekeeping</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
-  </span><span class="ss">dashboard</span><span class="p">:</span><span class="w">
-    </span><span class="ss">ssl</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
-    </span><span class="ss">host</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dashboard.astarte.yourdomain.com&quot;</span><span class="w"> </span><span class="c1"># When not specified, dashboard will be deployed in /dashboard in the API host.</span><span class="w">
-  </span><span class="ss">letsencrypt</span><span class="p">:</span><span class="w">
-    </span><span class="ss">use</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="w">
-    </span><span class="ss">acmeEmail</span><span class="p">:</span><span class="w"> </span><span class="n">info</span><span class="na">@yourdomain</span><span class="o">.</span><span class="n">com</span><span class="w">
-    </span><span class="ss">challengeProvider</span><span class="p">:</span><span class="w">
-      </span><span class="ss">dns</span><span class="p">:</span><span class="w">
-        </span><span class="ss">provider</span><span class="p">:</span><span class="w"> </span><span class="n">digitalocean</span><span class="w">
-        </span><span class="ss">credentialSecretName</span><span class="p">:</span><span class="w"> </span><span class="n">voyager</span><span class="o">-</span><span class="n">digitalocean</span></code></pre>
+<pre><code class="yaml">apiVersion: api.astarte-platform.org/v1alpha1
+kind: AstarteVoyagerIngress
+metadata:
+  name: example-minimal
+  namespace: astarte
+spec:
+  # The Astarte Instance the Ingress will be attached to
+  astarte: example-minimal
+  api:
+    exposeHousekeeping: true
+  dashboard:
+    ssl: true
+    host: &quot;dashboard.astarte.yourdomain.com&quot; # When not specified, dashboard will be deployed in /dashboard in the API host.
+  letsencrypt:
+    use: true
+    acmeEmail: info@yourdomain.com
+    challengeProvider:
+      dns:
+        provider: digitalocean
+        credentialSecretName: voyager-digitalocean</code></pre>
 <p>As you might see, there&#39;s only one very important thing to be noted: the <code class="inline">astarte</code> field must reference the name of an
 existing Astarte installation in the same namespace, and the Ingress will be configured and attached to that instance.</p>
 <h2 id="ssl-and-certificates" class="section-heading">

@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v0.11.0">
     <title>Interface Design Guide — Astarte v0.11.0</title>
     <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
-    <script src="dist/sidebar_items-ac74c0c783.js"></script>
+    <script src="dist/sidebar_items-fb811dc742.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
@@ -70,6 +70,12 @@ Astarte      </a>
 <blockquote><p><strong>The way you design your interfaces will determine the overall performance and efficiency of your cluster</strong></p>
 </blockquote>
 <p>This is because interfaces define not only the way data is exchanged between Astarte and Devices/Applications, but also <strong>how it will be stored, managed and queried</strong>. As such, it is fundamental to spend enough time on finding the most correct Interface design for your use case, keeping in mind how your users will consume your data, what might change in the future, what is fundamental and what is optional, and more.</p>
+<h2 id="use-the-right-tools" class="section-heading">
+  <a href="#use-the-right-tools" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Use the right tools
+</h2>
+
+<p>Before you begin, you might want to take a look at <a href="https://interfaces-editor.astarte-platform.org">Astarte Interfaces Editor</a>, which is also available in any Astarte Dashboard installation. Astarte Interfaces Editor gives you automated validation and linting for Astarte Interfaces, and also gives you a declarative editor with automatic JSON generation. It is well maintained and used as a reference for Interface design. Consider using it for building your interfaces.</p>
 <h2 id="rationale" class="section-heading">
   <a href="#rationale" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Rationale
