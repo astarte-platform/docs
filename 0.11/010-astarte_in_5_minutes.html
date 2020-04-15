@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v0.11.0">
     <title>Astarte in 5 minutes — Astarte v0.11.0</title>
     <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
-    <script src="dist/sidebar_items-c1ca6b8f5d.js"></script>
+    <script src="dist/sidebar_items-54204e6401.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
@@ -73,8 +73,24 @@ Astarte      </a>
 </h2>
 
 <p>First of all, please keep in mind that <strong>this setup is not meant to be used in production</strong>: by default, no persistence is involved, the installation does not have any recovery mechanism, and you will have to restart services manually in case something goes awry. This guide is great if you want to take Astarte for a spin, or if you want to use an isolated instance for development.</p>
-<p>You will need a machine with at least 4GB of RAM, with <a href="https://www.docker.com/">Docker</a> and <a href="https://github.com/astarte-platform/astartectl">astartectl</a> installed. If you don&#39;t have <code class="inline">astartectl</code> installed on your machine yet, you should install it by following the instructions in <a href="https://github.com/astarte-platform/astartectl#installation">astartectl&#39;s README</a></p>
+<p>You will need a machine with at least 4GB of RAM, a recent 64-bit operating system with <a href="https://www.docker.com/">Docker</a>, <a href="https://docs.docker.com/compose/install/">Docker Compose</a> and <a href="https://github.com/astarte-platform/astartectl">astartectl</a> installed. If you don&#39;t have <code class="inline">astartectl</code> installed on your machine yet, you should install it by following the instructions in <a href="https://github.com/astarte-platform/astartectl#installation">astartectl&#39;s README</a></p>
 <p>Also, on the machine(s) or device(s) you will use as a client, you will need either Docker, or a <a href="https://www.qt.io/">Qt5</a> installation with development components if you wish to build and run components locally.</p>
+<h2 id="checking-prerequistes" class="section-heading">
+  <a href="#checking-prerequistes" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Checking prerequistes
+</h2>
+
+<p>Docker version &gt;= 19 is recommended:</p>
+<pre><code class="sh">$ docker -v
+Docker version 19.03.8</code></pre>
+<p>Docker compose version &gt;= 1.17 is recommended:</p>
+<pre><code class="sh">$ docker-compose -v
+docker compose version 1.17.1, build unknown</code></pre>
+<p>astartectl 0.11.x is recommended:</p>
+<pre><code class="sh">$ astartectl version
+astartectl 0.11.0</code></pre>
+<p>This procedure has been tested on several systems, and is validated and maintained against
+Ubuntu 18.04 and macOS 10.15 Catalina, but any other modern operating system should work.</p>
 <h2 id="install-astarte" class="section-heading">
   <a href="#install-astarte" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Install Astarte
