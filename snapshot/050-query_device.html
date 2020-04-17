@@ -4,17 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.20.1">
+    <meta name="generator" content="ExDoc v0.21.3">
     <meta name="project" content="Astarte v1.0.0-dev">
     <title>Querying a Device — Astarte v1.0.0-dev</title>
-    <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
-    <script src="dist/sidebar_items-b30ef0ef27.js"></script>
+    <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
+    <script src="dist/sidebar_items-2629822f45.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
-    
+    <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
   <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -56,7 +55,6 @@ Astarte      </a>
     <li><a id="extras-list" href="#full-list">Pages</a></li>
 
 
-
   </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
@@ -69,15 +67,48 @@ Astarte      </a>
 
 <h1>Querying a Device</h1>
 <p>Once you have your devices connected, up and running in Astarte, you can start interacting with them.</p>
-<h2 id="using-appengine-api" class="section-heading">
-  <a href="#using-appengine-api" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Using AppEngine API
+<h2 id="device-status" class="section-heading">
+  <a href="#device-status" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Device status
 </h2>
 
-<p>First things first, you can check if your device is correctly registered in Astarte, and its current status. Let&#39;s assume our Device has <code class="inline">f0VMRgIBAQAAAAAAAAAAAA</code> as its id.</p>
-<p><em>Sample Request</em></p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">GET</span><span class="w"> </span><span class="n">appengine</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span></code></pre>
-<p><em>Sample Response</em></p>
+<p>First things first, you can check if your device is correctly registered in Astarte, and its current status.
+Let&#39;s assume our Device has <code class="inline">f0VMRgIBAQAAAAAAAAAAAA</code> as its id.
+A Device&#39;s status includes a number of useful information, among which whether it is connected or not to its Transport,
+its introspection, the amount of exchanged data and more.</p>
+<h3 id="query-device-status-using-astartectl" class="section-heading">
+  <a href="#query-device-status-using-astartectl" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Query Device status using astartectl
+</h3>
+
+<pre><code class="bash">$ astartectl appengine devices show f0VMRgIBAQAAAAAAAAAAAA
+Device ID:                      f0VMRgIBAQAAAAAAAAAAAA
+Connected:                      false
+Last Connection:                2018-02-07 18:38:57.266 +0000 UTC
+Last Disconnection:             2018-02-08 09:49:26.566 +0000 UTC
+Introspection:                  com.example.ExampleInterface v1.0 exchanged messages: 20 exchanged bytes: 200B
+                                org.example.TestInterface v0.2 exchanged messages: 8 exchanged bytes: 147B
+Received Messages:              221
+Data Received:                  11.7K
+Last Seen IP:                   203.0.113.89
+Last Credentials Request IP:    203.0.113.201
+First Registration:             2018-01-31 17:10:59.270 +0000 UTC
+First Credentials Request:      2018-01-31 17:10:59.270 +0000 UTC</code></pre>
+<h3 id="query-device-status-using-astarte-dashboard" class="section-heading">
+  <a href="#query-device-status-using-astarte-dashboard" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Query Device status using Astarte Dashboard
+</h3>
+
+<p>After logging in to Astarte dashboard, go to the &quot;Devices&quot; page clicking on the menu on your left. A list of
+available Device IDs will appear. If you do not see your device at a glance, use the search bar on the top right
+to find it.
+Clicking on the Device ID will take you to its details page.</p>
+<h3 id="query-device-status-using-appengine-api" class="section-heading">
+  <a href="#query-device-status-using-appengine-api" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Query Device status using AppEngine API
+</h3>
+
+<p><code class="inline">GET api.&lt;your astarte domain&gt;/appengine/v1/test/devices/f0VMRgIBAQAAAAAAAAAAAA</code></p>
 <pre><code class="json">{
     &quot;data&quot;: {
         &quot;total_received_msgs&quot;: 221,
@@ -118,15 +149,13 @@ Astarte      </a>
                 &quot;major&quot; : 0,
                 &quot;minor&quot; : 2,
                 &quot;exchanged_msgs&quot;: 3,
-                &quot;exchanged_bytes&quot;: 120 
+                &quot;exchanged_bytes&quot;: 120
             }
         ]
     }
 }</code></pre>
-<p>A Device&#39;s status includes a number of useful information, among which whether it is connected or not to its Transport. From there on, we can check on its Introspection.</p>
-<p><em>Sample Request</em></p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">GET</span><span class="w"> </span><span class="n">appengine</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span><span class="o">/</span><span class="n">interfaces</span></code></pre>
-<p><em>Sample Response</em></p>
+<p>Through the API, it is also possible to get the Introspection of the device only:</p>
+<p><code class="inline">GET api.&lt;your astarte domain&gt;/appengine/v1/test/devices/f0VMRgIBAQAAAAAAAAAAAA/interfaces</code></p>
 <pre><code class="json">{
     &quot;data&quot;: [
         &quot;com.example.ExampleInterface&quot;,
@@ -138,13 +167,35 @@ Astarte      </a>
 To set, modify and delete <code class="inline">metadata</code>, a <code class="inline">PATCH</code> on the device endpoint is required:</p>
 <pre><code class="nohighlight makeup elixir"><span class="nc">PATCH</span><span class="w"> </span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">appengine</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span></code></pre>
 <p>In the request body, the <code class="inline">data</code> JSON object should have a <code class="inline">metadata</code> key which bears a dictionary of strings. A valid request body which changes only device metadata, for example, is <code class="inline">{&quot;data&quot;:{&quot;metadata&quot;: {&quot;&lt;key&gt;&quot;: &quot;&lt;value&gt;&quot;}}}</code>. To delete a metadata entry, set the value of the corresponding key to <code class="inline">null</code>. For example, POSTing <code class="inline">{&quot;data&quot;:{&quot;metadata&quot;: {&quot;my_key&quot;: null}}}</code> will remove the <code class="inline">my_key</code> metadata entry from the device.</p>
-<p>Depending on the aggregation and ownership of the Interface, you can <code class="inline">GET</code>/<code class="inline">PUT</code>/<code class="inline">POST</code> on the interface itself or one of its mappings. Some examples are:</p>
-<p>Get data from an <code class="inline">aggregate</code> <code class="inline">device</code> <code class="inline">properties</code> interface:</p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">GET</span><span class="w"> </span><span class="n">appengine</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span><span class="o">/</span><span class="n">interfaces</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="nc">ExampleInterface</span></code></pre>
-<p>Get last sent value from an <code class="inline">individual</code> <code class="inline">device</code> <code class="inline">datastream</code> interface:</p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">GET</span><span class="w"> </span><span class="n">appengine</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span><span class="o">/</span><span class="n">interfaces</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="nc">TestInterface</span><span class="o">/</span><span class="n">myValue?</span><span class="n">limit</span><span class="o">=</span><span class="mi">1</span></code></pre>
-<p>Set values in an <code class="inline">individual</code> <code class="inline">server</code> <code class="inline">datastream</code> interface:</p>
-<pre><code class="nohighlight makeup elixir"><span class="nc">POST</span><span class="w"> </span><span class="n">appengine</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span><span class="o">/</span><span class="n">interfaces</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="nc">OtherTestInterface</span><span class="o">/</span><span class="n">myOtherValue</span></code></pre>
+<p>Depending on the aggregation and ownership of the Interface, you can <code class="inline">GET</code>/<code class="inline">PUT</code>/<code class="inline">POST</code> on the interface itself or one of its mappings,
+or use <code class="inline">astartectl</code> to perform the same operation on the command line. Some examples are:</p>
+<h3 id="get-data-from-an-aggregate-device-properties-interface" class="section-heading">
+  <a href="#get-data-from-an-aggregate-device-properties-interface" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Get data from an <code class="inline">aggregate</code> <code class="inline">device</code> <code class="inline">properties</code> interface
+</h3>
+
+<p><code class="inline">astartectl</code> invocation: <code class="inline">astartectl appengine devices data-snapshot f0VMRgIBAQAAAAAAAAAAAA com.example.ExampleInterface</code></p>
+<p>AppEngine API invocation: <code class="inline">GET api.&lt;your astarte domain&gt;/appengine/v1/test/devices/f0VMRgIBAQAAAAAAAAAAAA/interfaces/com.example.ExampleInterface</code></p>
+<h3 id="get-last-sent-value-from-an-individual-device-datastream-interface" class="section-heading">
+  <a href="#get-last-sent-value-from-an-individual-device-datastream-interface" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Get last sent value from an <code class="inline">individual</code> <code class="inline">device</code> <code class="inline">datastream</code> interface
+</h3>
+
+<p><code class="inline">astartectl</code> invocation: <code class="inline">astartectl appengine devices data-snapshot f0VMRgIBAQAAAAAAAAAAAA com.example.TestInterface</code></p>
+<p>AppEngine API invocation: <code class="inline">GET api.&lt;your astarte domain&gt;/appengine/v1/test/devices/f0VMRgIBAQAAAAAAAAAAAA/interfaces/com.example.TestInterface/myValue?limit=1</code></p>
+<h3 id="set-values-in-an-individual-server-datastream-interface" class="section-heading">
+  <a href="#set-values-in-an-individual-server-datastream-interface" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Set values in an <code class="inline">individual</code> <code class="inline">server</code> <code class="inline">datastream</code> interface
+</h3>
+
+<p><code class="inline">astartectl</code> invocation: <code class="inline">astartectl appengine devices send-data f0VMRgIBAQAAAAAAAAAAAA com.example.OtherTestInterface /myOtherValue &lt;value&gt;</code></p>
+<p>AppEngine API invocation: <code class="inline">POST api.&lt;your astarte domain&gt;/appengine/v1/test/devices/f0VMRgIBAQAAAAAAAAAAAA/interfaces/com.example.OtherTestInterface/myOtherValue</code>
+Request body: <code class="inline">{&quot;data&quot;: &lt;value&gt;}</code></p>
+<h3 id="api-query-semantics" class="section-heading">
+  <a href="#api-query-semantics" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  API Query semantics
+</h3>
+
 <p>In general, to query AppEngine, the following things must be kept in mind</p>
 <ul>
 <li>When sending data, use <code class="inline">PUT</code> if dealing with <code class="inline">properties</code>, <code class="inline">POST</code> if dealing with <code class="inline">datastream</code>.
@@ -154,9 +205,9 @@ To set, modify and delete <code class="inline">metadata</code>, a <code class="i
 <li>When <code class="inline">GET</code>ting <code class="inline">datastream</code>, keep in mind that AppEngine&#39;s default behavior is to return a large as possible timeseries.
 </li>
 </ul>
-<h2 id="navigating-and-retrieving-datastream-results" class="section-heading">
-  <a href="#navigating-and-retrieving-datastream-results" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Navigating and retrieving Datastream results
+<h2 id="navigating-and-retrieving-datastream-results-through-apis" class="section-heading">
+  <a href="#navigating-and-retrieving-datastream-results-through-apis" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Navigating and retrieving Datastream results through APIs
 </h2>
 
 <p>The Datastream case is significant, as it might be common to have <em>a lot</em> of values for each endpoint/interface. As such, returning all of them in a single API call is most of the times not desirable nor recommended.</p>
@@ -195,11 +246,35 @@ To set, modify and delete <code class="inline">metadata</code>, a <code class="i
 <p>Also, the hard cap has a very different meaning in downsampling. In this case, the hard cap applies to <code class="inline">downsample_to</code> instead of <code class="inline">limit</code>. <code class="inline">limit</code> can be an arbitrarly large amount of samples taken out of the DB, and can be used mainly to alleviate pressure in case of <em>extremely</em> large datasets which would require a lot of time for being processed by LTTB - even though, most of the time, you might want to define a time window to downsample instead.</p>
 <p>Astarte is also capable of downsampling aggregated interfaces, as long as a <code class="inline">downsample_key</code> is specified, which has to match the last token of an <code class="inline">endpoint</code> of the queried <code class="inline">interface</code> (i.e. in case the interface has a <code class="inline">/%{id}/myValue</code> mapping which should be used as the <code class="inline">downsample_key</code>, you should specify <code class="inline">downsample_key=myValue</code> in the query). When doing so, the aggregate will be downsampled using the chosen <code class="inline">endpoint</code> value as the <code class="inline">y</code> axis value, whereas its other <code class="inline">endpoints</code> will be disregarded when applying the algorithm. Please note that, no matter what <code class="inline">downsample_key</code> is used, a sample will be composed by the whole aggregation.</p>
 <p>If there is no way an interface can be downsampled (this is true, for example, if no <code class="inline">downsample_key</code> has been specified for <code class="inline">aggregations</code>, or for types such as <code class="inline">strings</code>), AppEngine API will return a <code class="inline">4xx</code> error. In general, downsampling is a powerful mechanism with a lot of limitations which really shines when plotting. Once again, this is a fundamental factor to consider when <a href="029-interface_design_guide.html">designing your interfaces</a>.</p>
+<h2 id="astartectl-specific-features" class="section-heading">
+  <a href="#astartectl-specific-features" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astartectl-specific features
+</h2>
+
+<p><code class="inline">astartectl</code> implements some convenience methods that make navigation easier. In particular, <code class="inline">astartectl</code> allows for any of the AppEngine API query parameters/mechanisms, but also implements automated pagination, snapshots and more.</p>
+<h3 id="data-snapshot" class="section-heading">
+  <a href="#data-snapshot" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Data Snapshot
+</h3>
+
+<p><code class="inline">astartectl</code> has a unique feature that allows to retrieve a &quot;Data Snapshot&quot; of a device, namely the last known value for every interface available in the Device&#39;s introspection. This is extremely useful to have an at-a-glance view of the Device status with regards to data. Simply invoke <code class="inline">astartectl appengine devices data-snapshot &lt;device ID&gt;</code>, or <code class="inline">astartectl appengine devices data-snapshot &lt;device ID&gt; &lt;interface name&gt;</code> to get a snapshot for a single interface.</p>
+<h3 id="advanced-querying" class="section-heading">
+  <a href="#advanced-querying" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Advanced querying
+</h3>
+
+<p><code class="inline">astartectl appengine devices get-samples</code> is <code class="inline">astartectl</code>&#39;s frontend to advanced query. Refer to the command line documentation to learn about all available parameters, which match all of the parameters found in AppEngine API. The main difference is that, in case a query would break the boundaries of the page limit, <code class="inline">astartectl</code> will automatically paginate the request, and return all of the samples.</p>
+<h3 id="exporting-devices-data-with-astartectl" class="section-heading">
+  <a href="#exporting-devices-data-with-astartectl" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Exporting Devices Data with astartectl
+</h3>
+
+<p>The previous feature makes <code class="inline">astartectl</code> extremely useful when it comes to export or dump data. Moreover, <code class="inline">get-samples</code> features a <code class="inline">--output</code> option, which allows to print the results in different formats, such as <code class="inline">json</code> or <code class="inline">CSV</code>. This way, exporting values becomes extremely easy, as <code class="inline">get-samples</code> can easily tap into an Interface&#39;s entire data set and print it into a CSV file.</p>
       <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.20.1),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.3),
           </span>
           <span class="line">
             designed by
@@ -207,11 +282,18 @@ To set, modify and delete <code class="inline">metadata</code>, a <code class="i
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
           </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
           </button>
         </p>
       </footer>
@@ -219,7 +301,6 @@ To set, modify and delete <code class="inline">metadata</code>, a <code class="i
   </div>
 </section>
 </div>
-  
   </body>
 </html>
 

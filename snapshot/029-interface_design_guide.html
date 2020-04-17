@@ -4,17 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.20.1">
+    <meta name="generator" content="ExDoc v0.21.3">
     <meta name="project" content="Astarte v1.0.0-dev">
     <title>Interface Design Guide — Astarte v1.0.0-dev</title>
-    <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
-    <script src="dist/sidebar_items-b30ef0ef27.js"></script>
+    <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
+    <script src="dist/sidebar_items-2629822f45.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
-    
+    <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
   <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -56,7 +55,6 @@ Astarte      </a>
     <li><a id="extras-list" href="#full-list">Pages</a></li>
 
 
-
   </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
@@ -72,6 +70,12 @@ Astarte      </a>
 <blockquote><p><strong>The way you design your interfaces will determine the overall performance and efficiency of your cluster</strong></p>
 </blockquote>
 <p>This is because interfaces define not only the way data is exchanged between Astarte and Devices/Applications, but also <strong>how it will be stored, managed and queried</strong>. As such, it is fundamental to spend enough time on finding the most correct Interface design for your use case, keeping in mind how your users will consume your data, what might change in the future, what is fundamental and what is optional, and more.</p>
+<h2 id="use-the-right-tools" class="section-heading">
+  <a href="#use-the-right-tools" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Use the right tools
+</h2>
+
+<p>Before you begin, you might want to take a look at <a href="https://interfaces-editor.astarte-platform.org">Astarte Interfaces Editor</a>, which is also available in any Astarte Dashboard installation. Astarte Interfaces Editor gives you automated validation and linting for Astarte Interfaces, and also gives you a declarative editor with automatic JSON generation. It is well maintained and used as a reference for Interface design. Consider using it for building your interfaces.</p>
 <h2 id="rationale" class="section-heading">
   <a href="#rationale" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Rationale
@@ -104,7 +108,7 @@ Astarte      </a>
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.20.1),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.3),
           </span>
           <span class="line">
             designed by
@@ -112,11 +116,18 @@ Astarte      </a>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
           </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
           </button>
         </p>
       </footer>
@@ -124,7 +135,6 @@ Astarte      </a>
   </div>
 </section>
 </div>
-  
   </body>
 </html>
 

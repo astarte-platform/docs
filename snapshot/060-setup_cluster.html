@@ -4,17 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.20.1">
+    <meta name="generator" content="ExDoc v0.21.3">
     <meta name="project" content="Astarte v1.0.0-dev">
     <title>Setting up the Cluster — Astarte v1.0.0-dev</title>
-    <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
-    <script src="dist/sidebar_items-b30ef0ef27.js"></script>
+    <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
+    <script src="dist/sidebar_items-2629822f45.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
-    
+    <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
   <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -54,7 +53,6 @@ Astarte      </a>
 
   <ul class="sidebar-listNav">
     <li><a id="extras-list" href="#full-list">Pages</a></li>
-
 
 
   </ul>
@@ -109,73 +107,73 @@ Astarte CRD contains
 <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/master/deploy/crds/api.astarte-platform.org_astartes_crd.yaml">extensive documentation</a>
 on the available fields in OpenAPIv3 format. Just create your Astarte Custom Resource, which will look something
 like this:</p>
-<pre><code class="nohighlight makeup elixir"><span class="ss">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="n">api</span><span class="o">.</span><span class="n">astarte</span><span class="o">-</span><span class="n">platform</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">v1alpha1</span><span class="w">
-</span><span class="ss">kind</span><span class="p">:</span><span class="w"> </span><span class="nc">Astarte</span><span class="w">
-</span><span class="ss">metadata</span><span class="p">:</span><span class="w">
-  </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="n">example</span><span class="o">-</span><span class="n">minimal</span><span class="w">
-  </span><span class="ss">namespace</span><span class="p">:</span><span class="w"> </span><span class="n">astarte</span><span class="w">
-</span><span class="ss">spec</span><span class="p">:</span><span class="w">
-  </span><span class="c1"># This is the most minimal set of reasonable configuration to spin up an Astarte</span><span class="w">
-  </span><span class="c1"># instance with reasonable defaults and enough control over the deployment.</span><span class="w">
-  </span><span class="ss">version</span><span class="p">:</span><span class="w"> </span><span class="n">snapshot</span><span class="w">
-  </span><span class="ss">api</span><span class="p">:</span><span class="w">
-    </span><span class="ss">host</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;api.astarte.yourdomain.com&quot;</span><span class="w"> </span><span class="c1"># MANDATORY</span><span class="w">
-  </span><span class="ss">rabbitmq</span><span class="p">:</span><span class="w">
-    </span><span class="ss">resources</span><span class="p">:</span><span class="w">
-      </span><span class="ss">requests</span><span class="p">:</span><span class="w">
-        </span><span class="ss">cpu</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="n">m</span><span class="w">
-        </span><span class="ss">memory</span><span class="p">:</span><span class="w"> </span><span class="mi">512</span><span class="nc">M</span><span class="w">
-      </span><span class="ss">limits</span><span class="p">:</span><span class="w">
-        </span><span class="ss">cpu</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="ss">memory</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="nc">M</span><span class="w">
-  </span><span class="ss">cassandra</span><span class="p">:</span><span class="w">
-    </span><span class="ss">maxHeapSize</span><span class="p">:</span><span class="w"> </span><span class="mi">1024</span><span class="nc">M</span><span class="w">
-    </span><span class="ss">heapNewSize</span><span class="p">:</span><span class="w"> </span><span class="mi">256</span><span class="nc">M</span><span class="w">
-    </span><span class="ss">storage</span><span class="p">:</span><span class="w">
-      </span><span class="ss">size</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="nc">Gi</span><span class="w">
-    </span><span class="ss">resources</span><span class="p">:</span><span class="w">
-      </span><span class="ss">requests</span><span class="p">:</span><span class="w">
-        </span><span class="ss">cpu</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="ss">memory</span><span class="p">:</span><span class="w"> </span><span class="mi">1024</span><span class="nc">M</span><span class="w">
-      </span><span class="ss">limits</span><span class="p">:</span><span class="w">
-        </span><span class="ss">cpu</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-        </span><span class="ss">memory</span><span class="p">:</span><span class="w"> </span><span class="mi">2048</span><span class="nc">M</span><span class="w">
-  </span><span class="ss">vernemq</span><span class="p">:</span><span class="w">
-    </span><span class="ss">host</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;broker.astarte.yourdomain.com&quot;</span><span class="w">
-    </span><span class="ss">resources</span><span class="p">:</span><span class="w">
-      </span><span class="ss">requests</span><span class="p">:</span><span class="w">
-        </span><span class="ss">cpu</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="n">m</span><span class="w">
-        </span><span class="ss">memory</span><span class="p">:</span><span class="w"> </span><span class="mi">1024</span><span class="nc">M</span><span class="w">
-      </span><span class="ss">limits</span><span class="p">:</span><span class="w">
-        </span><span class="ss">cpu</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="n">m</span><span class="w">
-        </span><span class="ss">memory</span><span class="p">:</span><span class="w"> </span><span class="mi">2048</span><span class="nc">M</span><span class="w">
-  </span><span class="ss">cfssl</span><span class="p">:</span><span class="w">
-    </span><span class="ss">resources</span><span class="p">:</span><span class="w">
-      </span><span class="ss">requests</span><span class="p">:</span><span class="w">
-        </span><span class="ss">cpu</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="n">m</span><span class="w">
-        </span><span class="ss">memory</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="nc">M</span><span class="w">
-      </span><span class="ss">limits</span><span class="p">:</span><span class="w">
-        </span><span class="ss">cpu</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="n">m</span><span class="w">
-        </span><span class="ss">memory</span><span class="p">:</span><span class="w"> </span><span class="mi">256</span><span class="nc">M</span><span class="w">
-    </span><span class="ss">storage</span><span class="p">:</span><span class="w">
-      </span><span class="ss">size</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="nc">Gi</span><span class="w">
-  </span><span class="ss">components</span><span class="p">:</span><span class="w">
-    </span><span class="c1"># Global resource allocation. Automatically allocates resources to components weighted in a</span><span class="w">
-    </span><span class="c1"># reasonable way.</span><span class="w">
-    </span><span class="ss">resources</span><span class="p">:</span><span class="w">
-      </span><span class="ss">requests</span><span class="p">:</span><span class="w">
-        </span><span class="ss">cpu</span><span class="p">:</span><span class="w"> </span><span class="mi">1200</span><span class="n">m</span><span class="w">
-        </span><span class="ss">memory</span><span class="p">:</span><span class="w"> </span><span class="mi">3072</span><span class="nc">M</span><span class="w">
-      </span><span class="ss">limits</span><span class="p">:</span><span class="w">
-        </span><span class="ss">cpu</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="n">m</span><span class="w">
-        </span><span class="ss">memory</span><span class="p">:</span><span class="w"> </span><span class="mi">6144</span><span class="nc">M</span></code></pre>
+<pre><code class="yaml">apiVersion: api.astarte-platform.org/v1alpha1
+kind: Astarte
+metadata:
+  name: example-minimal
+  namespace: astarte
+spec:
+  # This is the most minimal set of reasonable configuration to spin up an Astarte
+  # instance with reasonable defaults and enough control over the deployment.
+  version: snapshot
+  api:
+    host: &quot;api.astarte.yourdomain.com&quot; # MANDATORY
+  rabbitmq:
+    resources:
+      requests:
+        cpu: 300m
+        memory: 512M
+      limits:
+        cpu: 1
+        memory: 1000M
+  cassandra:
+    maxHeapSize: 1024M
+    heapNewSize: 256M
+    storage:
+      size: 30Gi
+    resources:
+      requests:
+        cpu: 1
+        memory: 1024M
+      limits:
+        cpu: 2
+        memory: 2048M
+  vernemq:
+    host: &quot;broker.astarte.yourdomain.com&quot;
+    resources:
+      requests:
+        cpu: 200m
+        memory: 1024M
+      limits:
+        cpu: 1000m
+        memory: 2048M
+  cfssl:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128M
+      limits:
+        cpu: 200m
+        memory: 256M
+    storage:
+      size: 2Gi
+  components:
+    # Global resource allocation. Automatically allocates resources to components weighted in a
+    # reasonable way.
+    resources:
+      requests:
+        cpu: 1200m
+        memory: 3072M
+      limits:
+        cpu: 3000m
+        memory: 6144M</code></pre>
 <p>You can simply apply this resource in your Kubernetes cluster with <code class="inline">kubectl apply -f</code>. The Operator will take
 over from there.</p>
       <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.20.1),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.3),
           </span>
           <span class="line">
             designed by
@@ -183,11 +181,18 @@ over from there.</p>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
           </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
           </button>
         </p>
       </footer>
@@ -195,7 +200,6 @@ over from there.</p>
   </div>
 </section>
 </div>
-  
   </body>
 </html>
 

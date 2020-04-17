@@ -4,17 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.20.1">
+    <meta name="generator" content="ExDoc v0.21.3">
     <meta name="project" content="Astarte v1.0.0-dev">
     <title>Design Principles — Astarte v1.0.0-dev</title>
-    <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
-    <script src="dist/sidebar_items-b30ef0ef27.js"></script>
+    <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
+    <script src="dist/sidebar_items-2629822f45.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
-    
+    <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
   <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -56,7 +55,6 @@ Astarte      </a>
     <li><a id="extras-list" href="#full-list">Pages</a></li>
 
 
-
   </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
@@ -88,6 +86,8 @@ Astarte      </a>
 </h2>
 
 <p>Astarte identifies each device with a 128 bit Device ID which has to be unique within its Realm. As a best practice, it is advised to generate such an ID from hardware unique IDs or using dedicated hardware modules, to make it consistent across device reflashes. It is advised to use a cryptographic hash function (such as sha256) when generating it using a software module. Astarte will use URL encoded base64 (without padding) strings like <code class="inline">V_zv6ThCCtXWveQ8mPjsKg</code> in its representation.</p>
+<p>Although not required, it is strongly advised to use <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">UUIDs</a> as Astarte Device IDs. In fact, Astarte Device ID&#39;s specification is 100% compatible with UUIDs Base64 encoded adhering to RFC 7515. In the same fashion, UUIDv5 can be used to generate a deterministic Device ID from any kind of input data.</p>
+<p>Astarte Clients which generate Astarte Device IDs (such as <code class="inline">astartectl</code> or Astarte Dashboard) will always generate a Device ID out of UUIDv4 (random ID) or UUIDv5 (deterministic ID).</p>
 <p>This detail is relevant not only for identifying and querying the device, but also for the <a href="050-pairing_mechanism.html">Pairing mechanism</a>, as a device&#39;s credentials are associated to its Device ID.</p>
 <p><em>Note: currently, Astarte accepts Device IDs longer than 128 bit, which are then truncated to 128 bit internally. This behaviour exists for compatibility reasons but it&#39;s not supported and will likely change in future releases - hence, refrain from using anything which is not a 128-bit Device ID.</em></p>
 <p><em>Note: As much as Device IDs should effectively be unique per-realm and this configuration will always be supported, some future optional optimizations might be available on top of the assumption that Device IDs are globally unique to an Astarte installation. Given the Device ID format has a 2<sup>-128</sup> chance of collision, it is safe to assume that as long as best practices for Device ID generation are followed, Device IDs will always be globally unique.</em></p>
@@ -148,7 +148,7 @@ Astarte      </a>
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.20.1),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.3),
           </span>
           <span class="line">
             designed by
@@ -156,11 +156,18 @@ Astarte      </a>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
           </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
           </button>
         </p>
       </footer>
@@ -168,7 +175,6 @@ Astarte      </a>
   </div>
 </section>
 </div>
-  
   </body>
 </html>
 

@@ -4,17 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.20.1">
+    <meta name="generator" content="ExDoc v0.21.3">
     <meta name="project" content="Astarte v1.0.0-dev">
     <title>Interface Schema — Astarte v1.0.0-dev</title>
-    <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
-    <script src="dist/sidebar_items-b30ef0ef27.js"></script>
+    <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
+    <script src="dist/sidebar_items-2629822f45.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
-    
+    <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
   <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -56,7 +55,6 @@ Astarte      </a>
     <li><a id="extras-list" href="#full-list">Pages</a></li>
 
 
-
   </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
@@ -75,7 +73,7 @@ Astarte      </a>
 <li><a href="#reference-astarte-mapping-schema"><code class="inline">Mapping</code></a>
 </li>
 </ul>
-<hr class="thin"/>
+<hr class="thin" />
 <p><a name="reference-astarte-interface-schema"></a></p>
 <h2 id="interface" class="section-heading">
   <a href="#interface" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -85,31 +83,26 @@ Astarte      </a>
 <p>This schema describes how an Astarte interface should be declared</p>
 <p><strong>Properties</strong></p>
 <table>
-<colgroup>
-<col>
-<col>
-<col>
-<col>
-</colgroup>
 <thead>
 <tr>
 <th style="text-align: left"></th><th style="text-align: left">Type</th><th style="text-align: left">Description</th><th style="text-align: left">Required</th>
 </tr>
 </thead>
+<tbody>
 <tr>
-<td style="text-align: left"><strong>interface_name</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">The name of the interface. This has to be an unique, alphanumeric reverse internet domain name, shorther than 128 characters.</td><td style="text-align: left">:white_check_mark: Yes</td>
+<td style="text-align: left"><strong>interface_name</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">The name of the interface. This has to be an unique, alphanumeric reverse internet domain name, shorther than 128 characters.</td><td style="text-align: left">&#x2714; Yes</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>version_major</strong></td><td style="text-align: left"><code class="inline">integer</code></td><td style="text-align: left">A Major version qualifier for this interface. Interfaces with the same id and different version_major number are deemed incompatible. It is then acceptable to redefine any property of the interface when changing the major version number.</td><td style="text-align: left">:white_check_mark: Yes</td>
+<td style="text-align: left"><strong>version_major</strong></td><td style="text-align: left"><code class="inline">integer</code></td><td style="text-align: left">A Major version qualifier for this interface. Interfaces with the same id and different version_major number are deemed incompatible. It is then acceptable to redefine any property of the interface when changing the major version number.</td><td style="text-align: left">&#x2714; Yes</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>version_minor</strong></td><td style="text-align: left"><code class="inline">integer</code></td><td style="text-align: left">A Minor version qualifier for this interface. Interfaces with the same id and major version number and different version_minor number are deemed compatible between each other. When changing the minor number, it is then only possible to insert further mappings. Any other modification might lead to incompatibilities and undefined behavior.</td><td style="text-align: left">:white_check_mark: Yes</td>
+<td style="text-align: left"><strong>version_minor</strong></td><td style="text-align: left"><code class="inline">integer</code></td><td style="text-align: left">A Minor version qualifier for this interface. Interfaces with the same id and major version number and different version_minor number are deemed compatible between each other. When changing the minor number, it is then only possible to insert further mappings. Any other modification might lead to incompatibilities and undefined behavior.</td><td style="text-align: left">&#x2714; Yes</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>type</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Identifies the type of this Interface. Currently two types are supported: datastream and properties. datastream should be used when dealing with streams of non-persistent data, where a single path receives updates and there&#39;s no concept of state. properties, instead, are meant to be an actual state and as such they have only a change history, and are retained.</td><td style="text-align: left">:white_check_mark: Yes</td>
+<td style="text-align: left"><strong>type</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Identifies the type of this Interface. Currently two types are supported: datastream and properties. datastream should be used when dealing with streams of non-persistent data, where a single path receives updates and there&#39;s no concept of state. properties, instead, are meant to be an actual state and as such they have only a change history, and are retained.</td><td style="text-align: left">&#x2714; Yes</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>ownership</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Identifies the quality of the interface. Interfaces are meant to be unidirectional, and this property defines who&#39;s sending or receiving data. device means the device/gateway is sending data to Astarte, consumer means the device/gateway is receiving data from Astarte. Bidirectional mode is not supported, you should instantiate another interface for that.</td><td style="text-align: left">:white_check_mark: Yes</td>
+<td style="text-align: left"><strong>ownership</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Identifies the quality of the interface. Interfaces are meant to be unidirectional, and this property defines who&#39;s sending or receiving data. device means the device/gateway is sending data to Astarte, consumer means the device/gateway is receiving data from Astarte. Bidirectional mode is not supported, you should instantiate another interface for that.</td><td style="text-align: left">&#x2714; Yes</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>aggregation</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Identifies the aggregation of the mappings of the interface. Individual means every mapping changes state or streams data independently, whereas an object aggregation treats the interface as an object, making all the mappings changes interdependent. Choosing the right aggregation might drastically improve performances.</td><td style="text-align: left">No, default: <code class="inline">&quot;individual&quot;</code></td>
@@ -124,13 +117,14 @@ Astarte      </a>
 <td style="text-align: left"><strong>doc</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">A string containing documentation that will be injected in the generated client code.</td><td style="text-align: left">No</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>mappings</strong></td><td style="text-align: left"><a href="#reference-astarte-mapping-schema"><code class="inline">Astarte Mapping Schema</code></a> <code class="inline">[1-1024]</code></td><td style="text-align: left">Mappings define the endpoint of the interface, where actual data is stored/streamed. They are defined as relative URLs (e.g. /my/path) and can be parametrized (e.g.: /%{myparam}/path). A valid interface must have no mappings clash, which means that every mapping must resolve to a unique path or collection of paths (including parametrization). Every mapping acquires type, quality and aggregation of the interface.</td><td style="text-align: left">:white_check_mark: Yes</td>
+<td style="text-align: left"><strong>mappings</strong></td><td style="text-align: left"><a href="#reference-astarte-mapping-schema"><code class="inline">Astarte Mapping Schema</code></a> <code class="inline">[1-1024]</code></td><td style="text-align: left">Mappings define the endpoint of the interface, where actual data is stored/streamed. They are defined as relative URLs (e.g. /my/path) and can be parametrized (e.g.: /%{myparam}/path). A valid interface must have no mappings clash, which means that every mapping must resolve to a unique path or collection of paths (including parametrization). Every mapping acquires type, quality and aggregation of the interface.</td><td style="text-align: left">&#x2714; Yes</td>
 </tr>
+</tbody>
 </table>
 <p>Additional properties are allowed.</p>
-<h3 id="astarte-interface-schema-interface_name-white_check_mark" class="section-heading">
-  <a href="#astarte-interface-schema-interface_name-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  astarte.interface.schema.interface_name :white_check_mark:
+<h3 id="astarte-interface-schema-interface_name-x2714" class="section-heading">
+  <a href="#astarte-interface-schema-interface_name-x2714" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.interface_name &#x2714;
 </h3>
 
 <p>The name of the interface. This has to be an unique, alphanumeric reverse internet domain name, shorther than 128 characters.</p>
@@ -142,9 +136,9 @@ Astarte      </a>
 <li><strong>Minimum Length</strong><code class="inline">: &gt;= 1</code>
 </li>
 </ul>
-<h3 id="astarte-interface-schema-version_major-white_check_mark" class="section-heading">
-  <a href="#astarte-interface-schema-version_major-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  astarte.interface.schema.version_major :white_check_mark:
+<h3 id="astarte-interface-schema-version_major-x2714" class="section-heading">
+  <a href="#astarte-interface-schema-version_major-x2714" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.version_major &#x2714;
 </h3>
 
 <p>A Major version qualifier for this interface. Interfaces with the same id and different version_major number are deemed incompatible. It is then acceptable to redefine any property of the interface when changing the major version number.</p>
@@ -154,9 +148,9 @@ Astarte      </a>
 <li><strong>Required</strong>: Yes
 </li>
 </ul>
-<h3 id="astarte-interface-schema-version_minor-white_check_mark" class="section-heading">
-  <a href="#astarte-interface-schema-version_minor-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  astarte.interface.schema.version_minor :white_check_mark:
+<h3 id="astarte-interface-schema-version_minor-x2714" class="section-heading">
+  <a href="#astarte-interface-schema-version_minor-x2714" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.version_minor &#x2714;
 </h3>
 
 <p>A Minor version qualifier for this interface. Interfaces with the same id and major version number and different version_minor number are deemed compatible between each other. When changing the minor number, it is then only possible to insert further mappings. Any other modification might lead to incompatibilities and undefined behavior.</p>
@@ -166,9 +160,9 @@ Astarte      </a>
 <li><strong>Required</strong>: Yes
 </li>
 </ul>
-<h3 id="astarte-interface-schema-type-white_check_mark" class="section-heading">
-  <a href="#astarte-interface-schema-type-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  astarte.interface.schema.type :white_check_mark:
+<h3 id="astarte-interface-schema-type-x2714" class="section-heading">
+  <a href="#astarte-interface-schema-type-x2714" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.type &#x2714;
 </h3>
 
 <p>Identifies the type of this Interface. Currently two types are supported: datastream and properties. datastream should be used when dealing with streams of non-persistent data, where a single path receives updates and there&#39;s no concept of state. properties, instead, are meant to be an actual state and as such they have only a change history, and are retained.</p>
@@ -186,9 +180,9 @@ Astarte      </a>
 </ul>
 </li>
 </ul>
-<h3 id="astarte-interface-schema-ownership-white_check_mark" class="section-heading">
-  <a href="#astarte-interface-schema-ownership-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  astarte.interface.schema.ownership :white_check_mark:
+<h3 id="astarte-interface-schema-ownership-x2714" class="section-heading">
+  <a href="#astarte-interface-schema-ownership-x2714" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.ownership &#x2714;
 </h3>
 
 <p>Identifies the quality of the interface. Interfaces are meant to be unidirectional, and this property defines who&#39;s sending or receiving data. device means the device/gateway is sending data to Astarte, consumer means the device/gateway is receiving data from Astarte. Bidirectional mode is not supported, you should instantiate another interface for that.</p>
@@ -262,9 +256,9 @@ Astarte      </a>
 <li><strong>Required</strong>: No
 </li>
 </ul>
-<h3 id="astarte-interface-schema-mappings-white_check_mark" class="section-heading">
-  <a href="#astarte-interface-schema-mappings-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  astarte.interface.schema.mappings :white_check_mark:
+<h3 id="astarte-interface-schema-mappings-x2714" class="section-heading">
+  <a href="#astarte-interface-schema-mappings-x2714" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.mappings &#x2714;
 </h3>
 
 <p>Mappings define the endpoint of the interface, where actual data is stored/streamed. They are defined as relative URLs (e.g. /my/path) and can be parametrized (e.g.: /%{myparam}/path). A valid interface must have no mappings clash, which means that every mapping must resolve to a unique path or collection of paths (including parametrization). Every mapping acquires type, quality and aggregation of the interface.</p>
@@ -278,7 +272,7 @@ Astarte      </a>
 <li><strong>Required</strong>: Yes
 </li>
 </ul>
-<hr class="thin"/>
+<hr class="thin" />
 <p><a name="reference-astarte-mapping-schema"></a></p>
 <h2 id="mapping" class="section-heading">
   <a href="#mapping" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -288,22 +282,17 @@ Astarte      </a>
 <p>Identifies a mapping for an interface. A mapping must consist at least of an endpoint and a type.</p>
 <p><strong>Properties</strong></p>
 <table>
-<colgroup>
-<col>
-<col>
-<col>
-<col>
-</colgroup>
 <thead>
 <tr>
 <th style="text-align: left"></th><th style="text-align: left">Type</th><th style="text-align: left">Description</th><th style="text-align: left">Required</th>
 </tr>
 </thead>
+<tbody>
 <tr>
-<td style="text-align: left"><strong>endpoint</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">The template of the path. This is a UNIX-like path (e.g. /my/path) and can be parametrized. Parameters are in the %{name} form, and can be used to create interfaces which represent dictionaries of mappings. When the interface aggregation is object, an object is composed by all the mappings for one specific parameter combination.</td><td style="text-align: left">:white_check_mark: Yes</td>
+<td style="text-align: left"><strong>endpoint</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">The template of the path. This is a UNIX-like path (e.g. /my/path) and can be parametrized. Parameters are in the %{name} form, and can be used to create interfaces which represent dictionaries of mappings. When the interface aggregation is object, an object is composed by all the mappings for one specific parameter combination.</td><td style="text-align: left">&#x2714; Yes</td>
 </tr>
 <tr>
-<td style="text-align: left"><strong>type</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Defines the type of the mapping.</td><td style="text-align: left">:white_check_mark: Yes</td>
+<td style="text-align: left"><strong>type</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Defines the type of the mapping.</td><td style="text-align: left">&#x2714; Yes</td>
 </tr>
 <tr>
 <td style="text-align: left"><strong>reliability</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Useful only with datastream. Defines whether the sent data should be considered delivered when the transport successfully sends the data (unreliable), when we know that the data has been received at least once (guaranteed) or when we know that the data has been received exactly once (unique). unreliable by default. When using reliable data, consider you might incur in additional resource usage on both the transport and the device&#39;s end.</td><td style="text-align: left">No, default: <code class="inline">&quot;unreliable&quot;</code></td>
@@ -315,6 +304,12 @@ Astarte      </a>
 <td style="text-align: left"><strong>expiry</strong></td><td style="text-align: left"><code class="inline">integer</code></td><td style="text-align: left">Useful when retention is stored. Defines after how many seconds a specific data entry should be kept before giving up and erasing it from the persistent cache. A value &lt;= 0 means the persistent cache never expires, and is the default.</td><td style="text-align: left">No, default: <code class="inline">0</code></td>
 </tr>
 <tr>
+<td style="text-align: left"><strong>database_retention_policy</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">Useful only with datastream. Defines whether data should expire from the database after a given interval. Valid values are: no_ttl and use_ttl.</td><td style="text-align: left">No, default: <code class="inline">&quot;no_ttl&quot;</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><strong>database_retention_ttl</strong></td><td style="text-align: left"><code class="inline">integer</code></td><td style="text-align: left">Useful when database_retention_policy is <code class="inline">&quot;use_ttl&quot;</code>. Defines how many seconds a specific data entry should be kept before erasing it from the database.</td><td style="text-align: left">No</td>
+</tr>
+<tr>
 <td style="text-align: left"><strong>allow_unset</strong></td><td style="text-align: left"><code class="inline">boolean</code></td><td style="text-align: left">Used only with properties. Used with producers, it generates a method to unset the property. Used with consumers, it generates code to call an unset method when an empty payload is received.</td><td style="text-align: left">No, default: <code class="inline">false</code></td>
 </tr>
 <tr>
@@ -323,11 +318,12 @@ Astarte      </a>
 <tr>
 <td style="text-align: left"><strong>doc</strong></td><td style="text-align: left"><code class="inline">string</code></td><td style="text-align: left">A string containing documentation that will be injected in the generated client code.</td><td style="text-align: left">No</td>
 </tr>
+</tbody>
 </table>
 <p>Additional properties are allowed.</p>
-<h3 id="astarte-mapping-schema-endpoint-white_check_mark" class="section-heading">
-  <a href="#astarte-mapping-schema-endpoint-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  astarte.mapping.schema.endpoint :white_check_mark:
+<h3 id="astarte-mapping-schema-endpoint-x2714" class="section-heading">
+  <a href="#astarte-mapping-schema-endpoint-x2714" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.mapping.schema.endpoint &#x2714;
 </h3>
 
 <p>The template of the path. This is a UNIX-like path (e.g. /my/path) and can be parametrized. Parameters are in the %{name} form, and can be used to create interfaces which represent dictionaries of mappings. When the interface aggregation is object, an object is composed by all the mappings for one specific parameter combination.</p>
@@ -339,9 +335,9 @@ Astarte      </a>
 <li><strong>Minimum Length</strong><code class="inline">: &gt;= 2</code>
 </li>
 </ul>
-<h3 id="astarte-mapping-schema-type-white_check_mark" class="section-heading">
-  <a href="#astarte-mapping-schema-type-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  astarte.mapping.schema.type :white_check_mark:
+<h3 id="astarte-mapping-schema-type-x2714" class="section-heading">
+  <a href="#astarte-mapping-schema-type-x2714" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.mapping.schema.type &#x2714;
 </h3>
 
 <p>Defines the type of the mapping.</p>
@@ -439,6 +435,30 @@ Astarte      </a>
 <li><strong>Required</strong>: No, default: <code class="inline">0</code>
 </li>
 </ul>
+<h3 id="astarte-mapping-schema-database_retention_policy" class="section-heading">
+  <a href="#astarte-mapping-schema-database_retention_policy" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.mapping.schema.database_retention_policy
+</h3>
+
+<p>Useful only with datastream. Defines whether data is expired from the database after a given time to live interval. When <code class="inline">&quot;no_ttl&quot;</code> is used data are not expired.</p>
+<ul>
+<li><strong>Type</strong>: <code class="inline">string</code>
+</li>
+<li><strong>Required</strong>: No
+</li>
+</ul>
+<h3 id="astarte-mapping-schema-database_retention_ttl" class="section-heading">
+  <a href="#astarte-mapping-schema-database_retention_ttl" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.mapping.schema.database_retention_ttl
+</h3>
+
+<p>Useful when database_retention_policy is <code class="inline">&quot;use_ttl&quot;</code>. Defines how many seconds a specific data entry should be kept before erasing it from the database.</p>
+<ul>
+<li><strong>Type</strong>: <code class="inline">integer</code>
+</li>
+<li><strong>Required</strong>: No
+</li>
+</ul>
 <h3 id="astarte-mapping-schema-allow_unset" class="section-heading">
   <a href="#astarte-mapping-schema-allow_unset" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   astarte.mapping.schema.allow_unset
@@ -479,7 +499,7 @@ Astarte      </a>
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.20.1),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.3),
           </span>
           <span class="line">
             designed by
@@ -487,11 +507,18 @@ Astarte      </a>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
           </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
           </button>
         </p>
       </footer>
@@ -499,7 +526,6 @@ Astarte      </a>
   </div>
 </section>
 </div>
-  
   </body>
 </html>
 

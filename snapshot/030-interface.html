@@ -4,17 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.20.1">
+    <meta name="generator" content="ExDoc v0.21.3">
     <meta name="project" content="Astarte v1.0.0-dev">
     <title>Interfaces — Astarte v1.0.0-dev</title>
-    <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
-    <script src="dist/sidebar_items-b30ef0ef27.js"></script>
+    <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
+    <script src="dist/sidebar_items-2629822f45.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
-    
+    <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
   <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -54,7 +53,6 @@ Astarte      </a>
 
   <ul class="sidebar-listNav">
     <li><a id="extras-list" href="#full-list">Pages</a></li>
-
 
 
   </ul>
@@ -102,12 +100,12 @@ interface name of maximum 128 characters, which must be a <a href="https://en.wi
 Name</a>. As a convention, the interface
 name usually contains its author&#39;s URI Reverse Internet Domain Name.</p>
 <p>An example skeleton looks like this:</p>
-<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="1050681086-1">{</span><span class="w">
-    </span><span class="ss">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;com.test.MyInterfaceName&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="ss">&quot;version_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="ss">&quot;version_minor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="1050681086-2">[</span><span class="n">...</span><span class="p" data-group-id="1050681086-2">]</span><span class="w">
-</span><span class="p" data-group-id="1050681086-1">}</span></code></pre>
+<pre><code class="json">{
+    &quot;interface_name&quot;: &quot;com.test.MyInterfaceName&quot;,
+    &quot;version_major&quot;: 1,
+    &quot;version_minor&quot;: 0,
+    [...]
+}</code></pre>
 <p>Valid values and variables are listed in the <a href="040-interface_schema.html">Interface Schema</a>.</p>
 <h3 id="name-limitations" class="section-heading">
   <a href="#name-limitations" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -115,10 +113,35 @@ name usually contains its author&#39;s URI Reverse Internet Domain Name.</p>
 </h3>
 
 <p>A valid interface name consists of a Reverse Domain Name containing alphanumeric characters, hyphens
-and dots. By design, both the top level domain and last domain component can not contain hyphens.</p>
-<p>Make sure that the differences between two distinct interface names are not limited to the casing
-or the presence of hyphens. This situation leads to a collision in the interface names which brings
-to an error in the interface installation process.</p>
+and dots. By design, both the top level domain and last domain component can not contain hyphens,
+although hypens are allowed in other parts of the interface name (e.g.: <code class="inline">org.astarte-platform.Values</code>
+is a valid interface name).</p>
+<p>Interface names have to be fully-defined Reverse Domain Names. <code class="inline">Values</code> will not be accepted as an
+Astarte interface name, whereas <code class="inline">org.astarte-platform.Values</code> is a valid one.</p>
+<p>Interface&#39;s uniqueness is case insensitive - this means you cannot install two interfaces with the
+same name and different casing (e.g.: <code class="inline">org.astarte-platform.MyValues</code> and <code class="inline">org.astarte-platform.Myvalues</code>).
+This also applies to Major versioning: interfaces sharing the same name with a different major
+version cannot have different casing.</p>
+<p>Although not enforced, naming conventions for Astarte Interfaces require lowercasing for anything but
+the last part of the Interface name, which should be CamelCase.</p>
+<p>Valid examples are:</p>
+<ul>
+<li><code class="inline">org.astarte-platform.conventions.ValidInterfaceName</code>
+</li>
+<li><code class="inline">org.astarte-platform.ValidInterfaceName</code>
+</li>
+<li><code class="inline">org.astarte-platform.conventions.satisfied.ValidInterfaceName</code>
+</li>
+</ul>
+<p>Non-valid examples are:</p>
+<ul>
+<li><code class="inline">org.astarte-platform.Conventions.ValidInterfaceName</code>
+</li>
+<li><code class="inline">org.astarte-platform.validInterfaceName</code>
+</li>
+<li><code class="inline">org.astarte-platform.Conventions.satisfied.ValidInterfaceName</code>
+</li>
+</ul>
 <h2 id="interface-type" class="section-heading">
   <a href="#interface-type" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Interface Type
@@ -136,7 +159,7 @@ persistent state or synchronization. As a rule of thumb, <code class="inline">da
 dealing with values such as sensor samples, commands and events. <code class="inline">datastream</code> are stored as time
 series in the database, making them suitable for time span filtering and any other common time
 series operation, and they are not idempotent in the REST API semantics.</p>
-<p>Due to their nature, <code class="inline">datastream</code> interfaces have a number of <a href="#datastream-specific%20features">additional
+<p>Due to their nature, <code class="inline">datastream</code> interfaces have a number of <a href="#datastream-specific features">additional
 properties</a> which fine tune their behavior.</p>
 <h3 id="properties" class="section-heading">
   <a href="#properties" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -172,15 +195,15 @@ typed, and can have additional options. Just like in REST controllers, Endpoints
 to build REST-like collection and trees. Parameters are identified by <code class="inline">%{parameterName}</code>, with each
 endpoint supporting any number of parameters (see <a href="#limitations">Limitations</a>).</p>
 <p>This is how a parametrized mapping looks like:</p>
-<pre><code class="nohighlight makeup elixir"><span class="w">    </span><span class="p" data-group-id="3768397339-1">[</span><span class="n">...</span><span class="p" data-group-id="3768397339-1">]</span><span class="w">
-    </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3768397339-2">[</span><span class="w">
-        </span><span class="p" data-group-id="3768397339-3">{</span><span class="w">
-            </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="ss">&quot;reliability&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;unique&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="ss">&quot;retention&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;discard&quot;</span><span class="w">
-        </span><span class="p" data-group-id="3768397339-3">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="3768397339-4">[</span><span class="n">...</span><span class="p" data-group-id="3768397339-4">]</span></code></pre>
+<pre><code class="json">    [...]
+    &quot;mappings&quot;: [
+        {
+            &quot;endpoint&quot;: &quot;/%{itemIndex}/value&quot;,
+            &quot;type&quot;: &quot;integer&quot;,
+            &quot;reliability&quot;: &quot;unique&quot;,
+            &quot;retention&quot;: &quot;discard&quot;
+        },
+    [...]</code></pre>
 <p>In this example, <code class="inline">/0/value</code>, <code class="inline">/1/value</code> or <code class="inline">/test/value</code> all map to a valid endpoint, while
 <code class="inline">/te/st/value</code> can&#39;t be resolved by any endpoint.</p>
 <h3 id="supported-data-types" class="section-heading">
@@ -190,78 +213,78 @@ endpoint supporting any number of parameters (see <a href="#limitations">Limitat
 
 <p>The following types are supported:</p>
 <ul>
-<li><code class="inline">double</code>: A double-precision floating-point format as specified by binary64, by the IEEE 754
-  standard
+<li><code class="inline">double</code>: A double-precision floating-point number as specified by binary64, by the IEEE 754
+standard (NaNs and other non numerical values are not supported).
 </li>
 <li><code class="inline">integer</code>: A signed 32 bit integer.
 </li>
 <li><code class="inline">boolean</code>: Either <code class="inline">true</code> or <code class="inline">false</code>, adhering to JSON boolean type.
 </li>
 <li><code class="inline">longinteger</code>: A signed 64 bit integer (please note that <code class="inline">longinteger</code> is represented as a string
-  by default in JSON-based APIs.).
+by default in JSON-based APIs.).
 </li>
 <li><code class="inline">string</code>: An UTF-8 string.
 </li>
 <li><code class="inline">binaryblob</code>: An arbitrary sequence of any byte that should be shorter than 1 MiB. (<code class="inline">binaryblob</code>
-  is represented as a base64 string by default in JSON-based APIs.).
+is represented as a base64 string by default in JSON-based APIs.).
 </li>
 <li><code class="inline">datetime</code>: A UTC timestamp, internally represented as milliseconds since 1st Jan 1970 using a
-  signed 64 bits integer. (<code class="inline">datetime</code> is represented as an ISO 8601 string by default in JSON based
-  APIs.)
+signed 64 bits integer. (<code class="inline">datetime</code> is represented as an ISO 8601 string by default in JSON based
+APIs.)
 </li>
 <li><code class="inline">doublearray</code>, <code class="inline">integerarray</code>, <code class="inline">booleanarray</code>, <code class="inline">longintegerarray</code>, <code class="inline">stringarray</code>,
-  <code class="inline">binaryblobarray</code>, <code class="inline">datetimearray</code>: A list of values, represented as a JSON Array. Arrays can have
-  up to 32768 items, must be shorter than 1MiB, and each item must be shorter than 64KiB. In
-  particular, text fields must be shorter than 32000 characters.
+<code class="inline">binaryblobarray</code>, <code class="inline">datetimearray</code>: A list of values, represented as a JSON Array. Arrays can have
+up to 32768 items, must be shorter than 1MiB, and each item must be shorter than 64KiB. In
+particular, text fields must be shorter than 32000 characters.
 </li>
 </ul>
 <p>Make sure that the differences between two distinct interface names are not limited to the casing or
 the presence of hyphens. This situation leads to a collision in the interface names which brings to
 an error in the interface installation process.</p>
 <p>A valid interface must resolve a path univocally to a single endpoint. Take the following example:</p>
-<pre><code class="nohighlight makeup elixir"><span class="w">    </span><span class="p" data-group-id="3888898253-1">[</span><span class="n">...</span><span class="p" data-group-id="3888898253-1">]</span><span class="w">
-    </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3888898253-2">[</span><span class="w">
-        </span><span class="p" data-group-id="3888898253-3">{</span><span class="w">
-            </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="3888898253-3">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="3888898253-4">{</span><span class="w">
-            </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/myPath/value&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="3888898253-4">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="3888898253-5">[</span><span class="n">...</span><span class="p" data-group-id="3888898253-5">]</span></code></pre>
+<pre><code class="json">    [...]
+    &quot;mappings&quot;: [
+        {
+            &quot;endpoint&quot;: &quot;/%{itemIndex}/value&quot;,
+            &quot;type&quot;: &quot;integer&quot;
+        },
+        {
+            &quot;endpoint&quot;: &quot;/myPath/value&quot;,
+            &quot;type&quot;: &quot;integer&quot;
+        },
+    [...]</code></pre>
 <p>In such a case, the interface isn&#39;t valid and is
 rejected, due to the fact that path <code class="inline">/myPath/value</code> is ambiguous and could be resolved to two
 different endpoints.</p>
 <p>Any endpoint configuration must not generate paths that are prefix of other paths, for this reason
 the following example is also invalid:</p>
-<pre><code class="nohighlight makeup elixir"><span class="w">    </span><span class="p" data-group-id="7174562562-1">[</span><span class="n">...</span><span class="p" data-group-id="7174562562-1">]</span><span class="w">
-    </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7174562562-2">[</span><span class="w">
-        </span><span class="p" data-group-id="7174562562-3">{</span><span class="w">
-            </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/some/thing&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="s">&quot;type&quot;</span><span class="ss">:&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="7174562562-3">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="7174562562-4">{</span><span class="w">
-            </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/some/%{param}/value&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="7174562562-4">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="7174562562-5">[</span><span class="n">...</span><span class="p" data-group-id="7174562562-5">]</span><span class="w">
-</span></code></pre>
+<pre><code class="json">    [...]
+    &quot;mappings&quot;: [
+        {
+            &quot;endpoint&quot;: &quot;/some/thing&quot;,
+            &quot;type&quot;:&quot;integer&quot;
+        },
+        {
+            &quot;endpoint&quot;: &quot;/some/%{param}/value&quot;,
+            &quot;type&quot;: &quot;integer&quot;
+        },
+    [...]
+</code></pre>
 <p>In case the interface&#39;s aggregation is <code class="inline">object</code>, additional restrictions apply. Endpoints in the
 same interface must all have the same depth, and the same number of parameters. If the interface is
 parametrized, every endpoint must have the same parameter name at the same level. This is an example
 of a valid aggregated interface mapping:</p>
-<pre><code class="nohighlight makeup elixir"><span class="w">    </span><span class="p" data-group-id="8704727368-1">[</span><span class="n">...</span><span class="p" data-group-id="8704727368-1">]</span><span class="w">
-    </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8704727368-2">[</span><span class="w">
-        </span><span class="p" data-group-id="8704727368-3">{</span><span class="w">
-            </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="8704727368-3">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="8704727368-4">{</span><span class="w">
-            </span><span class="ss">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/%{itemIndex}/otherValue&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;string&quot;</span><span class="w">
-        </span><span class="p" data-group-id="8704727368-4">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="8704727368-5">[</span><span class="n">...</span><span class="p" data-group-id="8704727368-5">]</span></code></pre>
+<pre><code class="json">    [...]
+    &quot;mappings&quot;: [
+        {
+            &quot;endpoint&quot;: &quot;/%{itemIndex}/value&quot;,
+            &quot;type&quot;: &quot;integer&quot;
+        },
+        {
+            &quot;endpoint&quot;: &quot;/%{itemIndex}/otherValue&quot;,
+            &quot;type&quot;: &quot;string&quot;
+        },
+    [...]</code></pre>
 <h2 id="aggregation" class="section-heading">
   <a href="#aggregation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Aggregation
@@ -279,6 +302,40 @@ timestamp.</p>
 <p>Aggregation is a powerful mechanism that can be used to map interfaces to real world <em>&quot;objects&quot;</em>.
 Moreover, aggregated interfaces can also be parametrized, although with <a href="#limitations">some
 limitations</a>.</p>
+<h3 id="endpoints-and-aggregation" class="section-heading">
+  <a href="#endpoints-and-aggregation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Endpoints and aggregation
+</h3>
+
+<p>Since Astarte 0.11, Aggregations cannot have endpoints with depth 1. This was an erroneously allowed
+behavior in Astarte 0.10 which is kept for retrocompatibility - however, new interfaces should ensure
+each endpoint in an aggreate has at least depth 2, as support for depth 1 will be removed in a future
+release. This change has been done to be consistent with AppEngine API design, and to ensure that
+path <code class="inline">/</code> is not ambiguous.</p>
+<p>This is the correct way to set up a valid endpoint structure for an aggregate:</p>
+<pre><code class="json">    [...]
+    &quot;mappings&quot;: [
+        {
+            &quot;endpoint&quot;: &quot;/objects/value&quot;,
+            &quot;type&quot;: &quot;integer&quot;
+        },
+        {
+            &quot;endpoint&quot;: &quot;/objects/otherValue&quot;,
+            &quot;type&quot;: &quot;string&quot;
+        },
+    [...]</code></pre>
+<p>The following structure, instead, is deprecated:</p>
+<pre><code class="json">    [...]
+    &quot;mappings&quot;: [
+        {
+            &quot;endpoint&quot;: &quot;/value&quot;,
+            &quot;type&quot;: &quot;integer&quot;
+        },
+        {
+            &quot;endpoint&quot;: &quot;/otherValue&quot;,
+            &quot;type&quot;: &quot;string&quot;
+        },
+    [...]</code></pre>
 <h2 id="datastream-specific-features" class="section-heading">
   <a href="#datastream-specific-features" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Datastream-specific features
@@ -293,25 +350,31 @@ does not have any effect, and might cause a validation error.</p>
 </blockquote>
 <ul>
 <li><code class="inline">explicit_timestamp</code>: By default, Astarte associates a timestamp to data whenever it is collected
-  (or - when the message hits the data collection stage). However, when setting this property to
-  <code class="inline">true</code>, Astarte expects the owner to attach a valid timestamp each time it produces data. In that
-  case, the provided timestamp is used for indexing.
+(or - when the message hits the data collection stage). However, when setting this property to
+<code class="inline">true</code>, Astarte expects the owner to attach a valid timestamp each time it produces data. In that
+case, the provided timestamp is used for indexing.
 </li>
 <li><code class="inline">reliability</code>: Each mapping can be <code class="inline">unreliable</code> (default), <code class="inline">guaranteed</code>, <code class="inline">unique</code>. This defines
-  whether data should be considered delivered when the transport successfully sends the data
-  regardless of the outcome (<code class="inline">unreliable</code>), when data has been received at least once by the
-  recipient (<code class="inline">guaranteed</code>) or when data has been received exactly once by the recipient (<code class="inline">unique</code>).
-  When using <code class="inline">reliable</code> data, consider you might incur in additional resource usage on both the
-  transport and the device&#39;s end.
+whether data should be considered delivered when the transport successfully sends the data
+regardless of the outcome (<code class="inline">unreliable</code>), when data has been received at least once by the
+recipient (<code class="inline">guaranteed</code>) or when data has been received exactly once by the recipient (<code class="inline">unique</code>).
+When using <code class="inline">reliable</code> data, consider you might incur in additional resource usage on both the
+transport and the device&#39;s end.
 </li>
 <li><code class="inline">retention</code>: Each mapping can have a <code class="inline">discard</code> (default), <code class="inline">volatile</code>, <code class="inline">stored</code> retention. This
-  defines whether data should be discarded if the transport is temporarily uncapable of delivering
-  it (<code class="inline">discard</code>), should be kept in a cache in memory (<code class="inline">volatile</code>) or on disk (<code class="inline">stored</code>), and
-  guaranteed to be delivered in the timeframe defined by the <code class="inline">expiry</code>.
+defines whether data should be discarded if the transport is temporarily uncapable of delivering
+it (<code class="inline">discard</code>), should be kept in a cache in memory (<code class="inline">volatile</code>) or on disk (<code class="inline">stored</code>), and
+guaranteed to be delivered in the timeframe defined by the <code class="inline">expiry</code>.
 </li>
 <li><code class="inline">expiry</code>: Meaningful only when <code class="inline">retention</code> is <code class="inline">stored</code>. Defines how many seconds a specific data
-  entry should be kept before giving up and erasing it from the persistent cache. A value &lt;= 0 means
-  the persistent cache never expires, and is the default.
+entry should be kept before giving up and erasing it from the persistent cache. A value &lt;= 0 means
+the persistent cache never expires, and is the default.
+</li>
+<li><code class="inline">database_retention_policy</code>: Useful only with datastream. Defines whether data should expire
+ from the database after a given interval. Valid values are: no_ttl and use_ttl.
+</li>
+<li><code class="inline">database_retention_ttl</code>: Useful when database_retention_policy is <code class="inline">&quot;use_ttl&quot;</code>. Defines how many
+seconds a specific data entry should be kept before erasing it from the database.
 </li>
 </ul>
 <h2 id="best-practices" class="section-heading">
@@ -321,22 +384,22 @@ does not have any effect, and might cause a validation error.</p>
 
 <ul>
 <li>When creating interface drafts, or for testing purposes in general, it is recommended to use 0 as
-  the major version, to make maintenance and testing easier. Currently, Astarte allows only
-  interfaces with <code class="inline">major_version</code> == 0 to be deleted, and this limitation will probably be never
-  lifted to prevent data loss.
+the major version, to make maintenance and testing easier. Currently, Astarte allows only
+interfaces with <code class="inline">major_version</code> == 0 to be deleted, and this limitation will probably be never
+lifted to prevent data loss.
 </li>
 <li>When sending real time commands in <code class="inline">datastream</code> interfaces, <code class="inline">discard</code> is usually the best option.
-  Even though it does not guarantee delivery, it prevents users from unwillingly sending the same
-  command over and over if the recipient isn&#39;t available, causing a queue of commands to be sent to
-  the recipient when it gets back online. In general, <a href="#datastream-specific-features"><code class="inline">retention</code></a>
-  should be used to keep track of low traffic/important events
+Even though it does not guarantee delivery, it prevents users from unwillingly sending the same
+command over and over if the recipient isn&#39;t available, causing a queue of commands to be sent to
+the recipient when it gets back online. In general, <a href="#datastream-specific-features"><code class="inline">retention</code></a>
+should be used to keep track of low traffic/important events
 </li>
 </ul>
       <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.20.1),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.3),
           </span>
           <span class="line">
             designed by
@@ -344,11 +407,18 @@ does not have any effect, and might cause a validation error.</p>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
           </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
           </button>
         </p>
       </footer>
@@ -356,7 +426,6 @@ does not have any effect, and might cause a validation error.</p>
   </div>
 </section>
 </div>
-  
   </body>
 </html>
 

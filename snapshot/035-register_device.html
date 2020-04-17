@@ -4,17 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.20.1">
+    <meta name="generator" content="ExDoc v0.21.3">
     <meta name="project" content="Astarte v1.0.0-dev">
     <title>Registering a Device — Astarte v1.0.0-dev</title>
-    <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
-    <script src="dist/sidebar_items-b30ef0ef27.js"></script>
+    <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
+    <script src="dist/sidebar_items-2629822f45.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
-    
+    <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
   <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -56,7 +55,6 @@ Astarte      </a>
     <li><a id="extras-list" href="#full-list">Pages</a></li>
 
 
-
   </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
@@ -90,7 +88,7 @@ over (in production scenarios) through an <em>Agent</em>.</p>
 </h2>
 
 <p>An <em>Agent</em>&#39;s purpose is to perform Registration on behalf of a Device. <em>Agents</em> should be the only
-components in your infrastructure with enough credentials to access <a href="api/index.html?urls.primaryName=Pairing%2520API#/agent">Pairing&#39;s Agent
+components in your infrastructure with enough credentials to access <a href="api/index.html?urls.primaryName=Pairing%20API#/agent">Pairing&#39;s Agent
 APIs</a> (as a rule of thumb, it is a bad idea to
 give access to Pairing API to anything which isn&#39;t an Agent).</p>
 <p>When setting up an Astarte project, it is fundamental to define beforehand how your Devices will be
@@ -112,7 +110,7 @@ failure in the whole fleet&#39;s security, as Credentials aren&#39;t tied to a s
 compromised, they might allow an attacker to register an arbitrary device into a Realm, unless other
 policies prevent him from doing so.</p>
 <p>To create a On Board Agent, you simply need to emit a long-enough lived token from your Realm&#39;s
-private key with access to <a href="api/index.html?urls.primaryName=Pairing%2520API#/agent">Pairing&#39;s Agent
+private key with access to <a href="api/index.html?urls.primaryName=Pairing%20API#/agent">Pairing&#39;s Agent
 APIs</a>. This token should then be delivered to
 your devices and provided to the SDK in order to carry over the Registration. The SDK will do this
 automatically and without any need for additional code, as long as you set the <code class="inline">agentKey</code>
@@ -175,14 +173,14 @@ time.</p>
 Astarte prevents further registration of the same Device again.</p>
 <p>If there&#39;s the need of registering the device again (e.g.: a Device has been tampered and got back
 to its plant with its previous <em>Credentials Secret</em> compromised), it is possible to explicitly
-unregister the device to obtain a new <em>Credentials Secret</em> using <a href="api/index.html?urls.primaryName=Pairing%2520API#/agent/unregisterDevice">Pairing&#39;s Agent
+unregister the device to obtain a new <em>Credentials Secret</em> using <a href="api/index.html?urls.primaryName=Pairing%20API#/agent/unregisterDevice">Pairing&#39;s Agent
 APIs</a> or with <code class="inline">astartectl</code>
 (see the output of <code class="inline">astartectl pairing agent unregister -h</code> for more documentation).</p>
       <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.20.1),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.3),
           </span>
           <span class="line">
             designed by
@@ -190,11 +188,18 @@ APIs</a> or with <code class="inline">astartectl</code>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
           </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
           </button>
         </p>
       </footer>
@@ -202,7 +207,6 @@ APIs</a> or with <code class="inline">astartectl</code>
   </div>
 </section>
 </div>
-  
   </body>
 </html>
 

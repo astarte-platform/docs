@@ -4,17 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.20.1">
+    <meta name="generator" content="ExDoc v0.21.3">
     <meta name="project" content="Astarte v1.0.0-dev">
     <title>Interacting with Astarte — Astarte v1.0.0-dev</title>
-    <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
-    <script src="dist/sidebar_items-b30ef0ef27.js"></script>
+    <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
+    <script src="dist/sidebar_items-2629822f45.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
-    
+    <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
   <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -56,7 +55,6 @@ Astarte      </a>
     <li><a id="extras-list" href="#full-list">Pages</a></li>
 
 
-
   </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
@@ -71,13 +69,42 @@ Astarte      </a>
 <p>Astarte&#39;s interaction is logically divided amongst two main entities.</p>
 <p><em>Devices</em> are the bottom end, and represent your IoT fleet. They can access Astarte only through a Transport, they are defined by a set of <a href="030-interface.html">Interfaces</a> which, in turn, also define on a very granular level which kind of data they can exchange. By design, they can&#39;t access any resource which isn&#39;t their own: such a behavior can be configured using Astarte as a middleman to act as a secure Gateway.</p>
 <p><em>Users</em> are actual users, applications or anything else which needs to interact directly with Astarte. They are bound to a realm, and can virtually access any resource in that realm given they&#39;re authorized to do so. Users can also manage triggers and perform maintenance activity on the Realm.</p>
+<h2 id="user-side-tools" class="section-heading">
+  <a href="#user-side-tools" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  User-side Tools
+</h2>
+
+<p>When interacting with Astarte as a User, you have several options to choose from:</p>
+<ul>
+<li><a href="https://github.com/astarte-platform/astartectl">astartectl</a>: <code class="inline">astartectl</code> is the main command-line tool to interact with Astarte clusters, which packs
+in a number of subcommands to interact with Astarte API sets. It is a swiss army knife to perform daily operations on Astarte Clusters, and it abstracts
+most Astarte API interactions in a user-friendly way.
+</li>
+<li>Astarte Dashboard: Astarte provides a built-in UI that can be used for managing Interfaces, Devices and Triggers. If your cluster has the dashboard enabled, it can
+be usually found at <code class="inline">dashboard.&lt;base Astarte URL&gt;</code>. It is meant to be a graphical, user-friendly tool to perform daily operations in the Cluster.
+</li>
+<li>Astarte API Clients: API Clients are provided for a variety of languages. These clients abstract API interaction with language-friendly paradigms, and provide
+API automations for several operations. Currently, the main API client available is <a href="https://github.com/astarte-platform/astarte-go">astarte-go</a>.
+</li>
+<li>Astarte APIs: The base APIs are the lower level interaction layer. They are accessible, in standard installations, at <code class="inline">api.&lt;base Astarte URL&gt;/&lt;apiset&gt;</code>, and are
+the main mean of interaction upon which all other clients are based upon.
+</li>
+</ul>
+<p>Depending on the context, you might want to choose what suits you best. Over the course of the documentation, several examples will be provided with
+interaction means.</p>
+<h3 id="setting-up-astartectl" class="section-heading">
+  <a href="#setting-up-astartectl" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Setting up astartectl
+</h3>
+
+<p>In the documentation, it is assumed that astartectl is <a href="https://github.com/astarte-platform/astartectl/tree/release-0.11#configuration">properly configured</a> to interact with your Realm or your Cluster. Please refer to its documentation to make sure all needed configurations are in place.</p>
 <h2 id="interacting-with-a-device" class="section-heading">
   <a href="#interacting-with-a-device" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Interacting with a Device
 </h2>
 
 <p>Devices interact with Astarte through their associated Transport. In this guide, we&#39;ll assume the Transport is MQTT/VerneMQ as per Astarte&#39;s defaults.</p>
-<p>However, rather than implementing the whole Astarte protocol over MQTT, it is usually a better idea to rely on one of <a href="https://github.com/search?q=org%253Aastarte-platform+sdk">Astarte&#39;s SDKs</a>.</p>
+<p>However, rather than implementing the whole Astarte protocol over MQTT, it is usually a better idea to rely on one of <a href="https://github.com/search?q=org%3Aastarte-platform+sdk">Astarte&#39;s SDKs</a>.</p>
 <h3 id="authentication-pairing" class="section-heading">
   <a href="#authentication-pairing" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Authentication/Pairing
@@ -100,9 +127,9 @@ Astarte      </a>
 
 <p>Astarte is mainly accessed through its APIs. Astarte&#39;s APIs are exposed through dedicated microservices (see <a href="020-components.html">Components</a>) and are meant both for configuration and for accessing data. There are two main sets of APIs we&#39;ll be using frequently:</p>
 <ul>
-<li><strong>AppEngine API</strong>: This API is meant for querying/pushing data from/to devices.
+<li><strong>AppEngine API</strong>: This API is meant for querying/pushing data from/to devices. This maps to <code class="inline">astartectl</code>&#39;s <code class="inline">astartectl appengine</code> subcommand.
 </li>
-<li><strong>Realm Management API</strong>: This API is meant for configuring a target realm, and most notably for managing triggers.
+<li><strong>Realm Management API</strong>: This API is meant for configuring a target realm, and most notably for managing triggers. This maps to <code class="inline">astartectl</code>&#39;s <code class="inline">astartectl realm-management</code> subcommand.
 </li>
 </ul>
 <h3 id="authentication" class="section-heading">
@@ -116,18 +143,19 @@ Astarte      </a>
     &quot;a_rma&quot;: &quot;.*:.*&quot;
 }</code></pre>
 <p>Which represents a realm administrator. In real life use cases, you should always make sure to <a href="070-auth.html#granular-claims">give out more granular permissions</a> and to obtain the token in the right way from your authentication server.</p>
+<p>When using <code class="inline">astartectl</code> or any other client, you can also pass a Realm Private Key as an authentication mean, and have the token be automatically generated for you.</p>
 <h3 id="accessing-the-apis" class="section-heading">
   <a href="#accessing-the-apis" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Accessing the APIs
 </h3>
 
-<p>In a standard Astarte installation, AppEngine API and Realm Management API are usually accessible at <code class="inline">app.api.&lt;your astarte domain&gt;</code> and <code class="inline">realm.api.&lt;your astarte domain&gt;</code> respectively, or at <code class="inline">api.&lt;your astarte domain&gt;/app</code> and <code class="inline">api.&lt;your astarte domain&gt;/realm</code>.</p>
+<p>In a standard Astarte installation, AppEngine API and Realm Management API are usually accessible at <code class="inline">api.&lt;your astarte domain&gt;/appengine</code> and <code class="inline">api.&lt;your astarte domain&gt;/realmmanagement</code>.</p>
 <p>If your Astarte installation has Swagger UI enabled, you can use the <code class="inline">/swagger</code> endpoint to access it, and to issue API calls straight from your browser to follow this guide.</p>
       <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.20.1),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.3),
           </span>
           <span class="line">
             designed by
@@ -135,11 +163,18 @@ Astarte      </a>
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
           </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
           </button>
         </p>
       </footer>
@@ -147,7 +182,6 @@ Astarte      </a>
   </div>
 </section>
 </div>
-  
   </body>
 </html>
 

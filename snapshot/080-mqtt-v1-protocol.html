@@ -4,17 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.20.1">
+    <meta name="generator" content="ExDoc v0.21.3">
     <meta name="project" content="Astarte v1.0.0-dev">
     <title>Astarte MQTT v1 Protocol — Astarte v1.0.0-dev</title>
-    <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
-    <script src="dist/sidebar_items-b30ef0ef27.js"></script>
+    <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
+    <script src="dist/sidebar_items-2629822f45.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
-    
+    <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
   <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -56,7 +55,6 @@ Astarte      </a>
     <li><a id="extras-list" href="#full-list">Pages</a></li>
 
 
-
   </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
@@ -79,18 +77,12 @@ Astarte      </a>
 
 <p>Astarte MQTT v1 Protocol relies on few well known reserved topics.</p>
 <table>
-<colgroup>
-<col>
-<col>
-<col>
-<col>
-<col>
-</colgroup>
 <thead>
 <tr>
 <th style="text-align: left">Topic</th><th style="text-align: left">Purpose</th><th style="text-align: left">Published By</th><th style="text-align: left">QoS</th><th style="text-align: left">Payload Format</th>
 </tr>
 </thead>
+<tbody>
 <tr>
 <td style="text-align: left"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;</code></td><td style="text-align: left">Introspection</td><td style="text-align: left">Device</td><td style="text-align: left">2</td><td style="text-align: left">ASCII plain text, &#39;:&#39; and &#39;;&#39; delimited</td>
 </tr>
@@ -106,6 +98,7 @@ Astarte      </a>
 <tr>
 <td style="text-align: left"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;/&lt;interface name&gt;/&lt;path&gt;</code></td><td style="text-align: left">Publish Data</td><td style="text-align: left">Both</td><td style="text-align: left">0, 1, 2</td><td style="text-align: left">BSON (or empty)</td>
 </tr>
+</tbody>
 </table>
 <p>For clarity reasons all <code class="inline">&lt;realm name&gt;/&lt;device id&gt;</code> prefixes will be omitted on the following paragraphs, those topics will be called device topics.
 Topics are not bidirectional, devices must not publish data for server owned topics and viceversa, onwership is explicitly stated in interfaces files.</p>
@@ -132,23 +125,19 @@ Consider, for example, a simple value and timestamp payload. The encoded JSON ve
 </h3>
 
 <table>
-<colgroup>
-<col>
-<col>
-<col>
-<col>
-</colgroup>
 <thead>
 <tr>
 <th style="text-align: left">Key</th><th style="text-align: left">Type</th><th style="text-align: left">Mandatory</th><th style="text-align: left">Description</th>
 </tr>
 </thead>
+<tbody>
 <tr>
 <td style="text-align: left">v</td><td style="text-align: left">Any Astarte type</td><td style="text-align: left">Yes</td><td style="text-align: left">The value being sent (both properties and datastream)</td>
 </tr>
 <tr>
 <td style="text-align: left">t</td><td style="text-align: left">UTC datetime</td><td style="text-align: left">No</td><td style="text-align: left">Explicit timestamp, if present (optional, datastream only)</td>
 </tr>
+</tbody>
 </table>
 <h3 id="astarte-data-types-to-bson-types" class="section-heading">
   <a href="#astarte-data-types-to-bson-types" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -156,16 +145,12 @@ Consider, for example, a simple value and timestamp payload. The encoded JSON ve
 </h3>
 
 <table>
-<colgroup>
-<col>
-<col>
-<col>
-</colgroup>
 <thead>
 <tr>
 <th style="text-align: left">Astarte Data Type</th><th style="text-align: left">BSON Type</th><th style="text-align: left">Size in Bytes</th>
 </tr>
 </thead>
+<tbody>
 <tr>
 <td style="text-align: left">double</td><td style="text-align: left">double (0x01)</td><td style="text-align: left">8</td>
 </tr>
@@ -205,6 +190,7 @@ Consider, for example, a simple value and timestamp payload. The encoded JSON ve
 <tr>
 <td style="text-align: left">binaryblobarray</td><td style="text-align: left">Array (0x4)</td><td style="text-align: left">depends on count, keys length and length</td>
 </tr>
+</tbody>
 </table>
 <p><code class="inline">integer</code> and <code class="inline">long</code> integer are signed integer values, double must be a valid number (<code class="inline">+inf</code>, <code class="inline">NaN</code>, etc... are not supported), variable data types might be subject to size limitations and object aggregations are encoded as embedded documents.</p>
 <h2 id="connection-and-disconnection" class="section-heading">
@@ -293,16 +279,12 @@ The topic is built using <code class="inline">/&lt;interface name&gt;/&lt;path&g
 </ul>
 <p>Data messages QoS is chosen according to mapping settings, such as reliability. Properties are always published using QoS 2.</p>
 <table>
-<colgroup>
-<col>
-<col>
-<col>
-</colgroup>
 <thead>
 <tr>
 <th style="text-align: left">Interface Type</th><th style="text-align: left">Reliability</th><th style="text-align: left">QoS</th>
 </tr>
 </thead>
+<tbody>
 <tr>
 <td style="text-align: left">properties</td><td style="text-align: left">always unique</td><td style="text-align: left">2</td>
 </tr>
@@ -315,6 +297,7 @@ The topic is built using <code class="inline">/&lt;interface name&gt;/&lt;path&g
 <tr>
 <td style="text-align: left">datastream</td><td style="text-align: left">unique</td><td style="text-align: left">2</td>
 </tr>
+</tbody>
 </table>
 <h3 id="payload-format" class="section-heading">
   <a href="#payload-format" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
@@ -408,22 +391,22 @@ A further simplification might remove any requirement for any introspection mess
 </h2>
 
 <p>In the same fashion as Authentication, Pairing provides the client with information about how to connect to the MQTT broker. When invoking relevant Pairing API&#39;s method to gather information about available transports for a device, if Astarte advertises Astarte MQTT v1, a similar reply will be returned:</p>
-<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="7261726358-1">{</span><span class="w">
-  </span><span class="ss">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7261726358-2">{</span><span class="w">
-    </span><span class="ss">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;version string&gt;&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="ss">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;status string&gt;&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="ss">&quot;protocols&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7261726358-3">{</span><span class="w">
-      </span><span class="ss">&quot;astarte_mqtt_v1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7261726358-4">{</span><span class="w">
-        </span><span class="ss">&quot;broker_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mqtts://broker.astarte.example.com:8883&quot;</span><span class="w">
-      </span><span class="p" data-group-id="7261726358-4">}</span><span class="w">
-    </span><span class="p" data-group-id="7261726358-3">}</span><span class="w">
-  </span><span class="p" data-group-id="7261726358-2">}</span><span class="w">
-</span><span class="p" data-group-id="7261726358-1">}</span></code></pre>
+<pre><code class="json">{
+  &quot;data&quot;: {
+    &quot;version&quot;: &quot;&lt;version string&gt;&quot;,
+    &quot;status&quot;: &quot;&lt;status string&gt;&quot;,
+    &quot;protocols&quot;: {
+      &quot;astarte_mqtt_v1&quot;: {
+        &quot;broker_url&quot;: &quot;mqtts://broker.astarte.example.com:8883&quot;
+      }
+    }
+  }
+}</code></pre>
       <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.20.1),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.3),
           </span>
           <span class="line">
             designed by
@@ -431,11 +414,18 @@ A further simplification might remove any requirement for any introspection mess
           </span>
         </p>
         <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
           <button class="line footer-button night-mode-toggle">
             Toggle night mode
           </button>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
           </button>
         </p>
       </footer>
@@ -443,7 +433,6 @@ A further simplification might remove any requirement for any introspection mess
   </div>
 </section>
 </div>
-  
   </body>
 </html>
 
