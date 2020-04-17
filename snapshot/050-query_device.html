@@ -106,6 +106,9 @@ Astarte      </a>
         &quot;aliases&quot;: {
             &quot;name&quot;: &quot;device_a&quot;
         },
+        &quot;metadata&quot;: {
+            &quot;metadata_key&quot;: &quot;metadata_value&quot;
+        },
         &quot;groups&quot;: [
             &quot;my_group&quot;,
         ],
@@ -131,6 +134,10 @@ Astarte      </a>
     ]
 }</code></pre>
 <p>This returns the Interfaces which the device reported in its Introspection <em>and</em> which are known to the Realm.</p>
+<p>Arbitrary information can be added to the device by means of <code class="inline">metadata</code>: they allow to store any number of string values associated to a corresponding string key.
+To set, modify and delete <code class="inline">metadata</code>, a <code class="inline">PATCH</code> on the device endpoint is required:</p>
+<pre><code class="nohighlight makeup elixir"><span class="nc">PATCH</span><span class="w"> </span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">appengine</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span></code></pre>
+<p>In the request body, the <code class="inline">data</code> JSON object should have a <code class="inline">metadata</code> key which bears a dictionary of strings. A valid request body which changes only device metadata, for example, is <code class="inline">{&quot;data&quot;:{&quot;metadata&quot;: {&quot;&lt;key&gt;&quot;: &quot;&lt;value&gt;&quot;}}}</code>. To delete a metadata entry, set the value of the corresponding key to <code class="inline">null</code>. For example, POSTing <code class="inline">{&quot;data&quot;:{&quot;metadata&quot;: {&quot;my_key&quot;: null}}}</code> will remove the <code class="inline">my_key</code> metadata entry from the device.</p>
 <p>Depending on the aggregation and ownership of the Interface, you can <code class="inline">GET</code>/<code class="inline">PUT</code>/<code class="inline">POST</code> on the interface itself or one of its mappings. Some examples are:</p>
 <p>Get data from an <code class="inline">aggregate</code> <code class="inline">device</code> <code class="inline">properties</code> interface:</p>
 <pre><code class="nohighlight makeup elixir"><span class="nc">GET</span><span class="w"> </span><span class="n">appengine</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span><span class="o">/</span><span class="n">interfaces</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="nc">ExampleInterface</span></code></pre>
