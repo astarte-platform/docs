@@ -382,6 +382,18 @@ ADD (
   database_retention_ttl int,
   database_retention_policy int
 );</code></pre>
+<h3 id="from-v0-11-to-1-0" class="section-heading">
+  <a href="#from-v0-11-to-1-0" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  From v0.11 to 1.0
+</h3>
+
+<h4>Realm Keyspace v0.11 Changes</h4>
+<ul>
+<li>The <code class="inline">connected</code> field of the <code class="inline">devices</code> table is now saved with a TTL, so it automatically expires
+if it doesn&#39;t gets refreshed by the hearbeat sent by the broker. This behaviour was added to
+avoid stale connected devices if they disconnect while the broker is down.
+</li>
+</ul>
       <footer class="footer">
         <p>
           <span class="line">
