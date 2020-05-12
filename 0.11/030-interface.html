@@ -223,9 +223,9 @@ standard (NaNs and other non numerical values are not supported).
 <li><code class="inline">longinteger</code>: A signed 64 bit integer (please note that <code class="inline">longinteger</code> is represented as a string
 by default in JSON-based APIs.).
 </li>
-<li><code class="inline">string</code>: An UTF-8 string.
+<li><code class="inline">string</code>: An UTF-8 string, at most 65536 bytes long.
 </li>
-<li><code class="inline">binaryblob</code>: An arbitrary sequence of any byte that should be shorter than 1 MiB. (<code class="inline">binaryblob</code>
+<li><code class="inline">binaryblob</code>: An arbitrary sequence of any byte that should be shorter than 64 KiB. (<code class="inline">binaryblob</code>
 is represented as a base64 string by default in JSON-based APIs.).
 </li>
 <li><code class="inline">datetime</code>: A UTC timestamp, internally represented as milliseconds since 1st Jan 1970 using a
@@ -234,8 +234,9 @@ APIs.)
 </li>
 <li><code class="inline">doublearray</code>, <code class="inline">integerarray</code>, <code class="inline">booleanarray</code>, <code class="inline">longintegerarray</code>, <code class="inline">stringarray</code>,
 <code class="inline">binaryblobarray</code>, <code class="inline">datetimearray</code>: A list of values, represented as a JSON Array. Arrays can have
-up to 32768 items, must be shorter than 1MiB, and each item must be shorter than 64KiB. In
-particular, text fields must be shorter than 32000 characters.
+up to 1024 items and each item must respect the limits of its scalar type (<em>i.e.</em> each string in a
+<code class="inline">stringarray</code> must be at most 65535 bytes long, each binary blob in a <code class="inline">binaryblobarray</code> must be
+shorter than 64 KiB.
 </li>
 </ul>
 <p>Make sure that the differences between two distinct interface names are not limited to the casing or
