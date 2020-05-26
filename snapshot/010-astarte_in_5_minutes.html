@@ -153,7 +153,8 @@ $ docker-compose up -d</code></pre>
 <pre><code class="json">{
   &quot;name&quot;: &quot;my_trigger&quot;,
   &quot;action&quot;: {
-    &quot;http_post_url&quot;: &quot;$TRIGGER_TARGET_URL&quot;
+    &quot;http_url&quot;: &quot;$TRIGGER_TARGET_URL&quot;,
+    &quot;http_method&quot;: &quot;post&quot;
   },
   &quot;simple_triggers&quot;: [
     {
