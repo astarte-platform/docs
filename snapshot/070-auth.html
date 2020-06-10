@@ -88,7 +88,7 @@ Astarte      </a>
   Authorization
 </h2>
 
-<p>Currently, Astarte supports a URL-based authorization for the API. Given that Astarte&#39;s data access APIs match the devices&#39; topology like a tree, declaring the authorization in terms of path whitelisting gives enough flexibility to give each user the correct permissions without limitations.</p>
+<p>Currently, Astarte supports a URL-based authorization for the API. Given that Astarte&#39;s data access APIs match the devices&#39; topology like a tree, declaring the authorization in terms of path allow-listing gives enough flexibility to give each user the correct permissions without limitations.</p>
 <p>As said, Astarte does not have the concept of user, and neither has a durable storage which tracks permissions. As such, it expects the authorization information to be inside the token, which is the only entity Astarte can trust - given it has been verified and authenticated through its signature.</p>
 <p>Paths are given in form of a set of <a href="https://perldoc.perl.org/perlre.html">Perl-like Regular Expressions</a>, and on a per-API basis. This means that each API endpoint (app, realm, etc...) has its own regular expression which defines what the user can do. Moreover, each HTTP verb in an API endpoint (e.g.: GET, POST, PUT, DELETE) can have its own regular expression, to fine-grain permissions on each path.</p>
 <p><em>Note: given Astarte&#39;s interface are either read only or write only, HTTP verb fine-graining in AppEngine API is mostly useful for preventing a user from deleting a consumer Datastream even though it has write access to it. Most of the time, using only a single regular expression with no verb fine-graining works.</em></p>
