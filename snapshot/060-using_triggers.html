@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v1.0.0-dev">
     <title>Using Triggers — Astarte v1.0.0-dev</title>
     <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
-    <script src="dist/sidebar_items-2629822f45.js"></script>
+    <script src="dist/sidebar_items-41bd12e6f3.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
@@ -70,7 +70,8 @@ Astarte      </a>
 data. More details on Triggers can be found in the <a href="060-triggers.html">Architecture Documentation</a>.</p>
 <p>Astarte allows you to install and delete Triggers dynamically through its clients. Upon installation
 or deletion, changes to the Trigger infrastructure might take some time to propagate, and some devices
-might pick up changes at a later time. If a Trigger shows as installed, it will eventually be loaded.</p>
+might pick up changes at a later time. If a Trigger shows as installed, it will eventually be
+loaded. This propagation can take up to 10 minutes.</p>
 <h2 id="listing-triggers" class="section-heading">
   <a href="#listing-triggers" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Listing Triggers
@@ -297,6 +298,18 @@ transport.</p>
     &quot;value&quot;: &lt;value&gt;
   }
 }</code></pre>
+<h2 id="restricting-triggers-to-a-single-device-or-group" class="section-heading">
+  <a href="#restricting-triggers-to-a-single-device-or-group" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Restricting triggers to a single device or group
+</h2>
+
+<p>Both device and data triggers accept the <code class="inline">device_id</code> and <code class="inline">group_name</code> keys to restrict a trigger to
+a single device or a single group.</p>
+<p>Triggers containing the <code class="inline">device_id</code> key will be triggered only for the specified device, while
+triggers containing the <code class="inline">group_name</code> key will be triggered only if the device is member of the group
+that is indicated in the <code class="inline">group_name</code> key. Note that when devices in a group are added or removed,
+the changes are not reflected immediately in group triggers. It can take up to 10 minutes to see the
+propagation of said changes.</p>
       <footer class="footer">
         <p>
           <span class="line">

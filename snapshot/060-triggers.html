@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v1.0.0-dev">
     <title>Triggers — Astarte v1.0.0-dev</title>
     <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
-    <script src="dist/sidebar_items-2629822f45.js"></script>
+    <script src="dist/sidebar_items-41bd12e6f3.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-a225d03098e64fef431a.js"></script>
   </head>
@@ -151,7 +151,8 @@ Triggers</a>.</p>
 <pre><code class="json">{
   &quot;type&quot;: &quot;device_trigger&quot;,
   &quot;on&quot;: &quot;&lt;device_trigger_type&gt;&quot;,
-  &quot;device_id&quot;: &quot;&lt;device_id&gt;&quot;
+  &quot;device_id&quot;: &quot;&lt;device_id&gt;&quot;,
+  &quot;group_name&quot;: &quot;&lt;group_name&gt;&quot;
 }</code></pre>
 <h4>Parameters</h4>
 <p><code class="inline">device_trigger_type</code> can be one of the following:</p>
@@ -161,8 +162,12 @@ Triggers</a>.</p>
 <li><code class="inline">device_disconnected</code>: triggered when a device disconnects from its transport.
 </li>
 </ul>
-<p><code class="inline">device_id</code> can be a specific Device ID or <code class="inline">*</code>, meaning the trigger will be installed for all
-devices in a Realm.</p>
+<p><code class="inline">device_id</code> can be used to pass a specific Device ID to restrict the trigger to a single device. <code class="inline">*</code>
+is also accepted as <code class="inline">device_id</code> to maintain backwards compatibility and it is considered equivalent
+to no <code class="inline">device_id</code> specified.</p>
+<p><code class="inline">group_name</code> can be used to restrict the trigger to all devices that are member of the group.</p>
+<p><code class="inline">device_id</code> and <code class="inline">group_name</code> are mutually exclusive and if neither of them is specified in the
+simple trigger, the simple trigger will be installed for all devices in a realm.</p>
 <h3 id="data-triggers" class="section-heading">
   <a href="#data-triggers" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Data Triggers
@@ -172,6 +177,8 @@ devices in a Realm.</p>
 <p>This is the generic representation of a Device Trigger:</p>
 <pre><code class="json">{
   &quot;type&quot;: &quot;data_trigger&quot;,
+  &quot;device_id&quot;: &quot;&lt;device_id&gt;&quot;,
+  &quot;group_name&quot;: &quot;&lt;group_name&gt;&quot;,
   &quot;on&quot;: &quot;&lt;data_trigger_type&gt;&quot;,
   &quot;interface_name&quot;: &quot;&lt;interface_name&gt;&quot;,
   &quot;interface_major&quot;: &quot;&lt;interface_major&gt;&quot;,
@@ -181,6 +188,12 @@ devices in a Realm.</p>
 }</code></pre>
 <p>Data triggers are installed for all devices in a Realm.</p>
 <h4>Data Triggers Parameters</h4>
+<p><code class="inline">device_id</code> can be used to pass a specific Device ID to restrict the trigger to a single device. <code class="inline">*</code>
+is also accepted as <code class="inline">device_id</code> to maintain backwards compatibility and it is considered equivalent
+to no <code class="inline">device_id</code> specified.</p>
+<p><code class="inline">group_name</code> can be used to restrict the trigger to all devices that are member of the group.</p>
+<p><code class="inline">device_id</code> and <code class="inline">group_name</code> are mutually exclusive and if neither of them is specified in the
+simple trigger, the simple trigger will be installed for all devices in a realm.</p>
 <p><code class="inline">data_trigger_type</code> can be one of the following:</p>
 <ul>
 <li><code class="inline">incoming_data</code>: verifies the condition whenever new data arrives.
