@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.21.3">
+    <meta name="generator" content="ExDoc v0.22.1">
     <meta name="project" content="Astarte v1.0.0-dev">
     <title>Managing Realms — Astarte v1.0.0-dev</title>
-    <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
-    <script src="dist/sidebar_items-41bd12e6f3.js"></script>
+    <link rel="stylesheet" href="dist/elixir-e589b8fad3dab6230c65.css" />
+    <script src="dist/sidebar_items-a167f62e11.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/app-a225d03098e64fef431a.js"></script>
+    <script async src="dist/app-5c0c23dfec2d63ae33a2.js"></script>
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -64,30 +64,21 @@ Astarte      </a>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
-
-<h1>Managing Realms</h1>
-<p>Once the Cluster is set up, you can start managing it by creating Realms.</p>
-<h2 id="accessing-housekeeping-key" class="section-heading">
+<h1>Managing Realms</h1><p>Once the Cluster is set up, you can start managing it by creating Realms.</p><h2 id="accessing-housekeeping-key" class="section-heading">
   <a href="#accessing-housekeeping-key" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Accessing Housekeeping key
 </h2>
-
 <p>When creating a new Cluster, Astarte Operator also creates a brand new keypair and stores it in
-the cluster. To retrieve it (assuming you deployed an instance named <code class="inline">astarte</code> in namespace <code class="inline">astarte</code>):</p>
-<pre><code class="bash">kubectl get secret -n astarte astarte-housekeeping-private-key -o=jsonpath={.data.private-key} | base64 -d &gt; housekeeping.key</code></pre>
-<p>You can then use <code class="inline">housekeeping.key</code> to authenticate against Housekeeping API.</p>
-<h2 id="work-in-progress" class="section-heading">
+the cluster. To retrieve it (assuming you deployed an instance named <code class="inline">astarte</code> in namespace <code class="inline">astarte</code>):</p><pre><code class="bash">kubectl get secret -n astarte astarte-housekeeping-private-key -o=jsonpath={.data.private-key} | base64 -d &gt; housekeeping.key</code></pre><p>You can then use <code class="inline">housekeeping.key</code> to authenticate against Housekeeping API.</p><h2 id="work-in-progress" class="section-heading">
   <a href="#work-in-progress" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Work in progress
 </h2>
-
 <p>This guide is not yet complete, as this part is a moving target within <code class="inline">astartectl</code>. Please refer to the
-<a href="api/">API Documentation</a> to manage Realms manually once here.</p>
-      <footer class="footer">
+<a href="api/">API Documentation</a> to manage Realms manually once here.</p>      <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.3),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.22.1),
           </span>
           <span class="line">
             designed by
@@ -116,4 +107,3 @@ the cluster. To retrieve it (assuming you deployed an instance named <code class
 </div>
   </body>
 </html>
-
