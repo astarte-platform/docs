@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v1.0.0-dev">
     <title>Triggers — Astarte v1.0.0-dev</title>
     <link rel="stylesheet" href="dist/elixir-e589b8fad3dab6230c65.css" />
-    <script src="dist/sidebar_items-a167f62e11.js"></script>
+    <script src="dist/sidebar_items-3b66cbdfb4.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-5c0c23dfec2d63ae33a2.js"></script>
   </head>
@@ -130,7 +130,7 @@ Triggers</a>.</p><h3 id="device-triggers" class="section-heading">
   &quot;on&quot;: &quot;&lt;device_trigger_type&gt;&quot;,
   &quot;device_id&quot;: &quot;&lt;device_id&gt;&quot;,
   &quot;group_name&quot;: &quot;&lt;group_name&gt;&quot;
-}</code></pre><h4>Parameters</h4><p><code class="inline">device_trigger_type</code> can be one of the following:</p><ul><li><code class="inline">device_connected</code>: triggered when a device connects to its transport.</li><li><code class="inline">device_disconnected</code>: triggered when a device disconnects from its transport.</li></ul><p><code class="inline">device_id</code> can be used to pass a specific Device ID to restrict the trigger to a single device. <code class="inline">*</code>
+}</code></pre><h4>Parameters</h4><p><code class="inline">device_trigger_type</code> can be one of the following:</p><ul><li><code class="inline">device_connected</code>: triggered when a device connects to its transport.</li><li><code class="inline">device_disconnected</code>: triggered when a device disconnects from its transport.</li><li><code class="inline">device_error</code>: triggered when data from a device causes an error.</li></ul><p><code class="inline">device_id</code> can be used to pass a specific Device ID to restrict the trigger to a single device. <code class="inline">*</code>
 is also accepted as <code class="inline">device_id</code> to maintain backwards compatibility and it is considered equivalent
 to no <code class="inline">device_id</code> specified.</p><p><code class="inline">group_name</code> can be used to restrict the trigger to all devices that are member of the group.</p><p><code class="inline">device_id</code> and <code class="inline">group_name</code> are mutually exclusive and if neither of them is specified in the
 simple trigger, the simple trigger will be installed for all devices in a realm.</p><h3 id="data-triggers" class="section-heading">
@@ -188,7 +188,12 @@ to produce <code class="inline">text/plain</code> payloads, not valid JSON.</p><
   &quot;http_headers&quot;: {
     &quot;Authorization&quot;: &quot;Bearer &lt;token&gt;&quot;
   }
-}</code></pre><p>Please, beware that some http headers might be not allowed or reserved for http connection signaling.</p><p>The payload of the request is JSON document with this format:</p><pre><code class="json">{
+}</code></pre><p>Please, beware that some http headers might be not allowed or reserved for http connection signaling.</p><h3 id="simpleevent-payloads" class="section-heading">
+  <a href="#simpleevent-payloads" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  SimpleEvent payloads
+</h3>
+<p>The payload delivered in a default HTTP action or in <a href="052-using_channels.html">Astarte Channels</a> is
+a JSON document with this format:</p><pre><code class="json">{
   &quot;timestamp&quot;: &quot;&lt;timestamp&gt;&quot;,
   &quot;device_id&quot;: &quot;&lt;device_id&gt;&quot;,
   &quot;event&quot;: &lt;event&gt;
@@ -200,7 +205,16 @@ that generated it. Event objects are detailed below.</p><p>Additionally, the rea
   &quot;device_ip_address&quot;: &quot;&lt;device_ip_address&gt;&quot;
 }</code></pre><p><code class="inline">device_ip_address</code> is the IP address of the device.</p><h6>DeviceDisconnectedEvent</h6><pre><code class="json">{
   &quot;type&quot;: &quot;device_disconnected&quot;
-}</code></pre><h6>IncomingDataEvent</h6><pre><code class="json">{
+}</code></pre><h6>DeviceErrorEvent</h6><pre><code class="json">{
+  &quot;type&quot;: &quot;device_error&quot;,
+  &quot;error_name&quot;: &quot;&lt;error_name&gt;&quot;,
+  &quot;metadata&quot;: {
+    &quot;&lt;key&gt;&quot;: &quot;&lt;value&gt;&quot;
+  }
+}</code></pre><p><code class="inline">error_name</code> is a string identifying the error. More details can be found in the <a href="045-device_errors.html">device errors
+documentation</a></p><p><code class="inline">metadata</code> is a map with string key and string values that may contain additional information about
+the error. Some metadata (<em>e.g.</em> binary payloads) might be encoded in base64 if they cannot be
+represented as string. In that case, the key is prepended with the <code class="inline">base64_</code> prefix.</p><h6>IncomingDataEvent</h6><pre><code class="json">{
   &quot;type&quot;: &quot;incoming_data&quot;,
   &quot;interface&quot;: &quot;&lt;interface&gt;&quot;,
   &quot;path&quot;: &quot;&lt;path&gt;&quot;,
