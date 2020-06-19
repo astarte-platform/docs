@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.22.1">
+    <meta name="project" content="Astarte v1.0.0-dev">
+    <title>Setting up the Cluster — Astarte v1.0.0-dev</title>
+    <link rel="stylesheet" href="dist/elixir-e589b8fad3dab6230c65.css" />
+    <script src="dist/sidebar_items-3b66cbdfb4.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-5c0c23dfec2d63ae33a2.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte      </a>
+      <h2 class="sidebar-projectVersion">
+        v1.0.0-dev
+      </h2>
+    </div>
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>Setting up the Cluster</h1><p>Once the Astarte Operator <a href="030-installation_kubernetes.html">has been installed</a>, and any prerequisite
+<a href="020-prerequisites.html">has been fulfilled</a>, you can move forward and deploy an Astarte Cluster.</p><h2 id="using-astartectl" class="section-heading">
+  <a href="#using-astartectl" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Using astartectl
+</h2>
+<p>You can use <code class="inline">astartectl</code> to deploy an instance through the <code class="inline">astartectl cluster instances deploy</code> command.
+This is an interactive command that will inspect your cluster and provide you with a set of profiles that
+can be deployed. When you choose a Profile, you will be prompted with a number of questions that will
+be needed to configure your instance correctly. Upon completion, <code class="inline">astartectl</code> will prepare and execute the
+deployment automatically.</p><h2 id="astartectl-profiles" class="section-heading">
+  <a href="#astartectl-profiles" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astartectl Profiles
+</h2>
+<p>In <code class="inline">astartectl</code>, profiles allow for easy scaling, enhanced management, and automated upgrade upon release
+series without any action on behalf of the user. They're the way to go if you plan on having a standard,
+managed installation.</p><p><code class="inline">astartectl</code> comes packed with a set of default profiles, but you can write your own ones. Profiles can
+be either written as Go resources, or (in a much easier fashion) as <code class="inline">yaml</code> resources. You can have a look
+at the <a href="https://github.com/astarte-platform/astartectl/blob/master/cmd/cluster/deployment/astarte_cluster_profile.go">Profiles schema here</a>.</p><h3 id="writing-your-own-profile" class="section-heading">
+  <a href="#writing-your-own-profile" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Writing your own profile
+</h3>
+<p>This guide will be extended in the future, as more recent versions of <code class="inline">astartectl</code> will support loading yaml
+profiles.</p><h2 id="using-a-standard-astarte-cr" class="section-heading">
+  <a href="#using-a-standard-astarte-cr" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Using a standard Astarte CR
+</h2>
+<p>If you do not want to use <code class="inline">astartectl</code> or Profiles, you can create your own Astarte Custom Resource. This gives you
+a higher degree of customization, allowing you to tweak any single parameter in the Astarte setup. The main
+Astarte CRD contains
+<a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/master/deploy/crds/api.astarte-platform.org_astartes_crd.yaml">extensive documentation</a>
+on the available fields in OpenAPIv3 format. Just create your Astarte Custom Resource, which will look something
+like this:</p><pre><code class="yaml">apiVersion: api.astarte-platform.org/v1alpha1
+kind: Astarte
+metadata:
+  name: example-minimal
+  namespace: astarte
+spec:
+  # This is the most minimal set of reasonable configuration to spin up an Astarte
+  # instance with reasonable defaults and enough control over the deployment.
+  version: snapshot
+  api:
+    host: &quot;api.astarte.yourdomain.com&quot; # MANDATORY
+  rabbitmq:
+    resources:
+      requests:
+        cpu: 300m
+        memory: 512M
+      limits:
+        cpu: 1
+        memory: 1000M
+  cassandra:
+    maxHeapSize: 1024M
+    heapNewSize: 256M
+    storage:
+      size: 30Gi
+    resources:
+      requests:
+        cpu: 1
+        memory: 1024M
+      limits:
+        cpu: 2
+        memory: 2048M
+  vernemq:
+    host: &quot;broker.astarte.yourdomain.com&quot;
+    resources:
+      requests:
+        cpu: 200m
+        memory: 1024M
+      limits:
+        cpu: 1000m
+        memory: 2048M
+  cfssl:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128M
+      limits:
+        cpu: 200m
+        memory: 256M
+    storage:
+      size: 2Gi
+  components:
+    # Global resource allocation. Automatically allocates resources to components weighted in a
+    # reasonable way.
+    resources:
+      requests:
+        cpu: 1200m
+        memory: 3072M
+      limits:
+        cpu: 3000m
+        memory: 6144M</code></pre><p>You can simply apply this resource in your Kubernetes cluster with <code class="inline">kubectl apply -f</code>. The Operator will take
+over from there.</p>      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.22.1),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>
