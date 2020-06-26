@@ -182,10 +182,10 @@ actors which require custom plain-text payloads. Keep in mind that Mustache temp
 to produce <code class="inline">text/plain</code> payloads, not valid JSON.</p><h4>Default action</h4><p>This is the configuration object representing a minimal default action:</p><pre><code class="json">{
   &quot;http_url&quot;: &quot;&lt;http_url&gt;&quot;,
   &quot;http_method&quot;: &quot;&lt;method&gt;&quot;
-}</code></pre><p>The default action sends an HTTP request to the specified <code class="inline">http_url</code> using <code class="inline">http_method</code> method (e.g. <code class="inline">POST</code>).</p><p>Further options might be used, such as &quot;http_headers&quot;, enabling auth to remote services:</p><pre><code class="json">{
+}</code></pre><p>The default action sends an HTTP request to the specified <code class="inline">http_url</code> using <code class="inline">http_method</code> method (e.g. <code class="inline">POST</code>).</p><p>Further options might be used, such as &quot;http_static_headers&quot;, enabling auth to remote services:</p><pre><code class="json">{
   &quot;http_url&quot;: &quot;&lt;http_url&gt;&quot;,
   &quot;http_method&quot;: &quot;&lt;method&gt;&quot;,
-  &quot;http_headers&quot;: {
+  &quot;http_static_headers&quot;: {
     &quot;Authorization&quot;: &quot;Bearer &lt;token&gt;&quot;
   }
 }</code></pre><p>Please, beware that some http headers might be not allowed or reserved for http connection signaling.</p><h3 id="simpleevent-payloads" class="section-heading">
