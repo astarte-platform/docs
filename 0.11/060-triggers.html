@@ -235,9 +235,13 @@ to produce <code class="inline">text/plain</code> payloads, not valid JSON.</p>
 
 <p>This is the configuration object representing the default action:</p>
 <pre><code class="json">{
-  &quot;http_post_url&quot;: &quot;&lt;http_post_url&gt;&quot;
+  &quot;http_post_url&quot;: &quot;&lt;http_post_url&gt;&quot;,
+  &quot;ignore_ssl_errors&quot;: &lt;true|false&gt;
 }</code></pre>
 <p>The default action sends an HTTP <code class="inline">POST</code> request to the specified <code class="inline">http_post_url</code>.</p>
+<p>The <code class="inline">ignore_ssl_errors</code> key is optional and defaults to <code class="inline">false</code>. If set to <code class="inline">true</code>, any SSL error
+encountered while doing the HTTP request will be ignored. This can be useful if the trigger must
+ignore self-signed or expired certificates.</p>
 <p>The payload of the request is JSON document with this format:</p>
 <pre><code class="json">{
   &quot;timestamp&quot;: &quot;&lt;timestamp&gt;&quot;,
@@ -341,6 +345,7 @@ that generated it. Event objects are detailed below.</p>
   &quot;http_post_url&quot;: &quot;&lt;http_post_url&gt;&quot;,
   &quot;template_type&quot;: &quot;mustache&quot;,
   &quot;template&quot;: &quot;&lt;template&gt;&quot;
+  &quot;ignore_ssl_errors&quot;: &lt;true|false&gt;
 }</code></pre>
 <p>The Mustache action sends an HTTP <code class="inline">POST</code> request to the specified <code class="inline">http_post_url</code>, with the payload
 built with the <a href="https://mustache.github.io/">Mustache</a> template specified in <code class="inline">template</code>. If the
@@ -355,6 +360,9 @@ with the actual value of that key in the event.</p>
 <li><code class="inline">{{ event_type }}</code>: the type of the received event.
 </li>
 </ul>
+<p>The <code class="inline">ignore_ssl_errors</code> key is optional and defaults to <code class="inline">false</code>. If set to <code class="inline">true</code>, any SSL error
+encountered while doing the HTTP request will be ignored. This can be useful if the trigger must
+ignore self-signed or expired certificates.</p>
 <p>Moreover, depending on the event type, all keys that are contained in the events <a href="#event-objects">described in the
 previous section</a> are available, always by wrapping them in <code class="inline">{{ }}</code>.</p>
 <p>The realm is also sent in the <code class="inline">Astarte-Realm</code> header.</p>
