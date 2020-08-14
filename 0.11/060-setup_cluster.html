@@ -5,8 +5,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.21.3">
-    <meta name="project" content="Astarte v0.11.1">
-    <title>Setting up the Cluster — Astarte v0.11.1</title>
+    <meta name="project" content="Astarte v0.11.2">
+    <title>Setting up the Cluster — Astarte v0.11.2</title>
     <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
     <script src="dist/sidebar_items-54204e6401.js"></script>
       <script src="docs_config.js"></script>
@@ -43,7 +43,7 @@
       <a href="http://astarte-platform.org" class="sidebar-projectName">
 Astarte      </a>
       <h2 class="sidebar-projectVersion">
-        v0.11.1
+        v0.11.2
       </h2>
     </div>
       <a href="http://astarte-platform.org">
@@ -88,7 +88,7 @@ series without any action on behalf of the user. They&#39;re the way to go if yo
 managed installation.</p>
 <p><code class="inline">astartectl</code> comes packed with a set of default profiles, but you can write your own ones. Profiles can
 be either written as Go resources, or (in a much easier fashion) as <code class="inline">yaml</code> resources. You can have a look
-at the <a href="https://github.com/astarte-platform/astartectl/blob/v0.11.1/cmd/cluster/deployment/astarte_cluster_profile.go">Profiles schema here</a>.</p>
+at the <a href="https://github.com/astarte-platform/astartectl/blob/v0.11.2/cmd/cluster/deployment/astarte_cluster_profile.go">Profiles schema here</a>.</p>
 <h3 id="writing-your-own-profile" class="section-heading">
   <a href="#writing-your-own-profile" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Writing your own profile
@@ -104,7 +104,7 @@ profiles.</p>
 <p>If you do not want to use <code class="inline">astartectl</code> or Profiles, you can create your own Astarte Custom Resource. This gives you
 a higher degree of customization, allowing you to tweak any single parameter in the Astarte setup. The main
 Astarte CRD contains
-<a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/v0.11.1/deploy/crds/api.astarte-platform.org_astartes_crd.yaml">extensive documentation</a>
+<a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/v0.11.2/deploy/crds/api.astarte-platform.org_astartes_crd.yaml">extensive documentation</a>
 on the available fields in OpenAPIv3 format. Just create your Astarte Custom Resource, which will look something
 like this:</p>
 <pre><code class="yaml">apiVersion: api.astarte-platform.org/v1alpha1
@@ -115,7 +115,7 @@ metadata:
 spec:
   # This is the most minimal set of reasonable configuration to spin up an Astarte
   # instance with reasonable defaults and enough control over the deployment.
-  version: 0.11.1
+  version: 0.11.2
   api:
     host: &quot;api.astarte.yourdomain.com&quot; # MANDATORY
   rabbitmq:
