@@ -5,8 +5,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.22.1">
-    <meta name="project" content="Astarte v1.0.0-dev">
-    <title>Triggers — Astarte v1.0.0-dev</title>
+    <meta name="project" content="Astarte v1.0.0-alpha.1">
+    <title>Triggers — Astarte v1.0.0-alpha.1</title>
     <link rel="stylesheet" href="dist/elixir-e589b8fad3dab6230c65.css" />
     <script src="dist/sidebar_items-3b66cbdfb4.js"></script>
       <script src="docs_config.js"></script>
@@ -43,7 +43,7 @@
       <a href="http://astarte-platform.org" class="sidebar-projectName">
 Astarte      </a>
       <h2 class="sidebar-projectVersion">
-        v1.0.0-dev
+        v1.0.0-alpha.1
       </h2>
     </div>
       <a href="http://astarte-platform.org">
@@ -182,13 +182,16 @@ actors which require custom plain-text payloads. Keep in mind that Mustache temp
 to produce <code class="inline">text/plain</code> payloads, not valid JSON.</p><h4>Default action</h4><p>This is the configuration object representing a minimal default action:</p><pre><code class="json">{
   &quot;http_url&quot;: &quot;&lt;http_url&gt;&quot;,
   &quot;http_method&quot;: &quot;&lt;method&gt;&quot;
-}</code></pre><p>The default action sends an HTTP request to the specified <code class="inline">http_url</code> using <code class="inline">http_method</code> method (e.g. <code class="inline">POST</code>).</p><p>Further options might be used, such as &quot;http_headers&quot;, enabling auth to remote services:</p><pre><code class="json">{
+}</code></pre><p>The default action sends an HTTP request to the specified <code class="inline">http_url</code> using <code class="inline">http_method</code> method (e.g. <code class="inline">POST</code>).</p><p>Further options might be used, such as &quot;http_static_headers&quot;, enabling auth to remote services:</p><pre><code class="json">{
   &quot;http_url&quot;: &quot;&lt;http_url&gt;&quot;,
   &quot;http_method&quot;: &quot;&lt;method&gt;&quot;,
-  &quot;http_headers&quot;: {
+  &quot;http_static_headers&quot;: {
     &quot;Authorization&quot;: &quot;Bearer &lt;token&gt;&quot;
-  }
-}</code></pre><p>Please, beware that some http headers might be not allowed or reserved for http connection signaling.</p><h3 id="simpleevent-payloads" class="section-heading">
+  },
+  &quot;ignore_ssl_errors&quot;: &lt;true|false&gt;
+}</code></pre><p>The <code class="inline">ignore_ssl_errors</code> key is optional and defaults to <code class="inline">false</code>. If set to <code class="inline">true</code>, any SSL error
+encountered while doing the HTTP request will be ignored. This can be useful if the trigger must
+ignore self-signed or expired certificates.</p><p>Please, beware that some http headers might be not allowed or reserved for http connection signaling.</p><h3 id="simpleevent-payloads" class="section-heading">
   <a href="#simpleevent-payloads" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   SimpleEvent payloads
 </h3>
@@ -257,10 +260,13 @@ represented as string. In that case, the key is prepended with the <code class="
   &quot;http_method&quot;: &quot;&lt;http_method&gt;&quot;,
   &quot;template_type&quot;: &quot;mustache&quot;,
   &quot;template&quot;: &quot;&lt;template&gt;&quot;
+  &quot;ignore_ssl_errors&quot;: &lt;true|false&gt;
 }</code></pre><p>The Mustache action sends an HTTP request to the specified <code class="inline">http_url</code>, with the payload
 built with the <a href="https://mustache.github.io/">Mustache</a> template specified in <code class="inline">template</code>. If the
 template contains a key inside a double curly bracket (like so: <code class="inline">{{ key }}</code>), it will be substituted
-with the actual value of that key in the event.</p><p>The basic keys that can be use to populate the template are:</p><ul><li><code class="inline">{{ realm }}</code>: the realm the trigger belongs to.</li><li><code class="inline">{{ device_id }}</code>: the device that originated the trigger.</li><li><code class="inline">{{ event_type }}</code>: the type of the received event.</li></ul><p>Moreover, depending on the event type, all keys that are contained in the events <a href="#event-objects">described in the
+with the actual value of that key in the event.</p><p>The basic keys that can be use to populate the template are:</p><ul><li><code class="inline">{{ realm }}</code>: the realm the trigger belongs to.</li><li><code class="inline">{{ device_id }}</code>: the device that originated the trigger.</li><li><code class="inline">{{ event_type }}</code>: the type of the received event.</li></ul><p>The <code class="inline">ignore_ssl_errors</code> key is optional and defaults to <code class="inline">false</code>. If set to <code class="inline">true</code>, any SSL error
+encountered while doing the HTTP request will be ignored. This can be useful if the trigger must
+ignore self-signed or expired certificates.</p><p>Moreover, depending on the event type, all keys that are contained in the events <a href="#event-objects">described in the
 previous section</a> are available, always by wrapping them in <code class="inline">{{ }}</code>.</p><p>The realm is also sent in the <code class="inline">Astarte-Realm</code> header.</p><h5>Example</h5><p>This is an example of a trigger that uses Mustache action.</p><pre><code class="json">{
   &quot;name&quot;: &quot;example_mustache_trigger&quot;,
   &quot;action&quot;: {
