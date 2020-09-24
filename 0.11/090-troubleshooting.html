@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.21.3">
-    <meta name="project" content="Astarte v0.11.2">
-    <title>Troubleshooting — Astarte v0.11.2</title>
-    <link rel="stylesheet" href="dist/elixir-0ab8a6a80ebaaa287431.css" />
-    <script src="dist/sidebar_items-54204e6401.js"></script>
+    <meta name="generator" content="ExDoc v0.22.6">
+    <meta name="project" content="Astarte v0.11.3">
+    <title>Troubleshooting — Astarte v0.11.3</title>
+    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
+    <script src="dist/sidebar_items-e069903e2c.js"></script>
       <script src="docs_config.js"></script>
-    <script async src="dist/app-a225d03098e64fef431a.js"></script>
+    <script async src="dist/app-aaa6eb1824b11a32f32d.js"></script>
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
@@ -22,14 +22,14 @@
 
 <section class="sidebar">
   <form class="sidebar-search" action="search.html">
-    <button type="submit" class="search-button">
-      <span class="icon-search" aria-hidden="true"></span>
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
     </button>
-    <button type="button" tabindex="-1" class="search-close-button">
-      <span class="icon-cross" title="Cancel search"></span>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
     </button>
     <label class="search-label">
-      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
     </label>
   </form>
 
@@ -42,9 +42,9 @@
     <div class="sidebar-projectDetails">
       <a href="http://astarte-platform.org" class="sidebar-projectName">
 Astarte      </a>
-      <h2 class="sidebar-projectVersion">
-        v0.11.2
-      </h2>
+      <strong class="sidebar-projectVersion">
+        v0.11.3
+      </strong>
     </div>
       <a href="http://astarte-platform.org">
         <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
@@ -65,51 +65,36 @@ Astarte      </a>
     <div id="content" class="content-inner">
 
 
-<h1>Troubleshooting</h1>
-<h2 id="devices" class="section-heading">
+<h1>Troubleshooting</h1><h2 id="devices" class="section-heading">
   <a href="#devices" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Devices
 </h2>
-
 <h3 id="devices-cannot-connect-to-astarte" class="section-heading">
   <a href="#devices-cannot-connect-to-astarte" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Devices cannot connect to Astarte
 </h3>
-
-<h4>There might be some network issues or network misconfiguration</h4>
-<p>Devices need a working network connection in order to communicate with Astarte. There might be some temporary network issues, or any network setting or appliance might not be properly configured. Make sure that devices are allowed to make outbound connections on ports 443 (https) and any port the transport needs for accepting connections from devices. For Astarte/VerneMQ, this defaults to 8883 (MQTT over SSL), but might also be configured otherwise.</p>
-<h4>SSL issues</h4>
-<p>Devices need to be able to connect to Astarte using SSL. Make sure that the clock has been synched to avoid certificate issue/expiry date errors, make also sure to have all the root CAs up to date.</p>
-<h3 id="device-gets-disconnected-from-astarte" class="section-heading">
+<h4>There might be some network issues or network misconfiguration</h4><p>Devices need a working network connection in order to communicate with Astarte. There might be some temporary network issues, or any network setting or appliance might not be properly configured. Make sure that devices are allowed to make outbound connections on ports 443 (https) and any port the transport needs for accepting connections from devices. For Astarte/VerneMQ, this defaults to 8883 (MQTT over SSL), but might also be configured otherwise.</p><h4>SSL issues</h4><p>Devices need to be able to connect to Astarte using SSL. Make sure that the clock has been synched to avoid certificate issue/expiry date errors, make also sure to have all the root CAs up to date.</p><h3 id="device-gets-disconnected-from-astarte" class="section-heading">
   <a href="#device-gets-disconnected-from-astarte" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Device gets disconnected from Astarte
 </h3>
-
-<h4>Some interfaces might be missing</h4>
-<p>When a device reports an interface that Astarte doesn&#39;t have, it gets disconnected when the introspection is published. Make sure that all device interfaces have been previously installed on Astarte. Make also sure that interface name and major exactly matches installed version.</p>
-<h4>Device is publishing unexpected or malformed data</h4>
-<p>When a device sends invalid, malformed or unexpected data it gets disconnected, make sure that the device is sending valid data. An interface mismatch might be the most common reason for this kind of issues. e.g. the interface has been declared device owned on the device, and astarte owned on astarte. Make sure to use exactly the same JSON file on both ends.</p>
-<h2 id="triggers" class="section-heading">
+<h4>Some interfaces might be missing</h4><p>When a device reports an interface that Astarte doesn't have, it gets disconnected when the introspection is published. Make sure that all device interfaces have been previously installed on Astarte. Make also sure that interface name and major exactly matches installed version.</p><h4>Device is publishing unexpected or malformed data</h4><p>When a device sends invalid, malformed or unexpected data it gets disconnected, make sure that the device is sending valid data. An interface mismatch might be the most common reason for this kind of issues. e.g. the interface has been declared device owned on the device, and astarte owned on astarte. Make sure to use exactly the same JSON file on both ends.</p><h2 id="triggers" class="section-heading">
   <a href="#triggers" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Triggers
 </h2>
-
 <h3 id="triggers-are-not-executed" class="section-heading">
   <a href="#triggers-are-not-executed" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Triggers are not executed
 </h3>
-
-<h4>Triggers have not been loaded yet</h4>
-<p>Triggers might take some time before being loaded for devices that have been recently connected, make sure to wait some time before the triggers cache is populated again.
-If you are on a hurry make sure to test a trigger on a device that has not been recently connected yet.</p>
-      <footer class="footer">
+<h4>Triggers have not been loaded yet</h4><p>Triggers might take some time before being loaded for devices that have been recently connected, make sure to wait some time before the triggers cache is populated again.
+If you are on a hurry make sure to test a trigger on a device that has not been recently connected yet.</p>      <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.3),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.22.6) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
           </span>
           <span class="line">
-            designed by
+            Designed by
             <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
           </span>
         </p>
