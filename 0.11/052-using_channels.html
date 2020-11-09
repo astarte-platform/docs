@@ -5,8 +5,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.22.6">
-    <meta name="project" content="Astarte v0.11.3">
-    <title>Using Astarte Channels — Astarte v0.11.3</title>
+    <meta name="project" content="Astarte v0.11.4">
+    <title>Using Astarte Channels — Astarte v0.11.4</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
     <script src="dist/sidebar_items-e069903e2c.js"></script>
       <script src="docs_config.js"></script>
@@ -43,7 +43,7 @@
       <a href="http://astarte-platform.org" class="sidebar-projectName">
 Astarte      </a>
       <strong class="sidebar-projectVersion">
-        v0.11.3
+        v0.11.4
       </strong>
     </div>
       <a href="http://astarte-platform.org">
@@ -84,7 +84,7 @@ way. Once a connection is established, the user can join any number of rooms, gi
 Triggers, which can be installed by any authorized user. Transient Triggers are actual
 <a href="060-triggers.html">Triggers</a>, with the difference that they exist within a Channels Room rather than
 within a Realm - this mostly affects their timespan - and that the <code class="inline">action</code> can't be configured -
-every time a Condition is triggered a message is delivered to users in the Room, <a href="https://github.com/astarte-platform/astarte_core/blob/v0.11.3/lib/astarte_core/triggers/simple_events/encoder.ex">in a well-known
+every time a Condition is triggered a message is delivered to users in the Room, <a href="https://github.com/astarte-platform/astarte_core/blob/release-0.11/lib/astarte_core/triggers/simple_events/encoder.ex">in a well-known
 format</a>.</p><h3 id="events" class="section-heading">
   <a href="#events" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Events
@@ -99,10 +99,10 @@ with a similar payload:</p><pre><code class="json">{
 }</code></pre><p><code class="inline">device_id</code> is always present (as long as the trigger matches a device) and identifies the device
 emitting the event. <code class="inline">event</code>, instead, depends on the kind of installed trigger. It always carries a
 <code class="inline">type</code> string, which identifies the content of the object. Currently, the documentation of every
-event's payload can be found in <a href="https://github.com/astarte-platform/astarte_core/tree/v0.11.3/lib/astarte_core/triggers/simple_events">Astarte's protobuf
+event's payload can be found in <a href="https://github.com/astarte-platform/astarte_core/tree/release-0.11/lib/astarte_core/triggers/simple_events">Astarte's protobuf
 files</a>.
 However, there are some discrepancies in mapping (e.g.). It is advised also to have a look at the
-<a href="https://github.com/astarte-platform/astarte_core/blob/v0.11.3/lib/astarte_core/triggers/simple_events/encoder.ex">encoder</a>.
+<a href="https://github.com/astarte-platform/astarte_core/blob/release-0.11/lib/astarte_core/triggers/simple_events/encoder.ex">encoder</a>.
 In the foreseeable future, more user friendly documentation will be provided.</p><h3 id="lifecycle" class="section-heading">
   <a href="#lifecycle" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Lifecycle

@@ -5,8 +5,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.22.6">
-    <meta name="project" content="Astarte v0.11.3">
-    <title>Setting up the Cluster — Astarte v0.11.3</title>
+    <meta name="project" content="Astarte v0.11.4">
+    <title>Setting up the Cluster — Astarte v0.11.4</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
     <script src="dist/sidebar_items-e069903e2c.js"></script>
       <script src="docs_config.js"></script>
@@ -43,7 +43,7 @@
       <a href="http://astarte-platform.org" class="sidebar-projectName">
 Astarte      </a>
       <strong class="sidebar-projectVersion">
-        v0.11.3
+        v0.11.4
       </strong>
     </div>
       <a href="http://astarte-platform.org">
@@ -94,7 +94,7 @@ profiles.</p><h2 id="using-a-standard-astarte-cr" class="section-heading">
 <p>If you do not want to use <code class="inline">astartectl</code> or Profiles, you can create your own Astarte Custom Resource. This gives you
 a higher degree of customization, allowing you to tweak any single parameter in the Astarte setup. The main
 Astarte CRD contains
-<a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/v0.11.3/deploy/crds/api.astarte-platform.org_astartes_crd.yaml">extensive documentation</a>
+<a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/release-0.11/deploy/crds/api.astarte-platform.org_astartes_crd.yaml">extensive documentation</a>
 on the available fields in OpenAPIv3 format. Just create your Astarte Custom Resource, which will look something
 like this:</p><pre><code class="yaml">apiVersion: api.astarte-platform.org/v1alpha1
 kind: Astarte
@@ -104,7 +104,7 @@ metadata:
 spec:
   # This is the most minimal set of reasonable configuration to spin up an Astarte
   # instance with reasonable defaults and enough control over the deployment.
-  version: 0.11.3
+  version: 0.11-snapshot
   api:
     host: &quot;api.astarte.yourdomain.com&quot; # MANDATORY
   rabbitmq:
