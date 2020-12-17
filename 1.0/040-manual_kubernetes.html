@@ -64,57 +64,45 @@ Astarte      </a>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
-<h1>Manual Operator Installation</h1><p>In case you do not want to use <code class="inline">astartectl</code> to manage the Operator, this guide will run you through
-all the steps needed to set up Astarte Kubernetes without any external tool but <code class="inline">kubectl</code>.</p><p><em>Note: Please be aware that this method is to be used only if you have very specific reasons why not to
-use <code class="inline">astartectl</code>, for example: you're running a fork of the Operator, you're running the Operator
+<h1>Manual Operator Installation</h1><p>In case you do not want to use <code class="inline">helm</code> to manage the Operator, this guide will run you through
+all the steps needed to set up Astarte Kubernetes.</p><p>To come along with this guide, the following components are required:</p><ul><li><a href="https://sdk.operatorframework.io/docs/installation/install-operator-sdk/"><code class="inline">operator-sdk</code></a></li><li><a href="https://kubectl.docs.kubernetes.io/installation/kustomize/"><code class="inline">kustomize</code></a></li></ul><p>Please make sure that the version of <code class="inline">operator-sdk</code> matches or is compatible with the version
+of the <code class="inline">operator-sdk</code> module in the Operator's <code class="inline">go.mod</code> file.</p><p>Moreover, please make sure that the cluster kubectl is pointing to is the one you want to target
+with the installation.</p><p><em>Note: Please be aware that this method is to be used only if you have very specific reasons why not
+to use <code class="inline">helm</code>, for example: you're running a fork of the Operator, you're running the Operator
 outside of the cluster, or you're on the very bleeding edge.
-<code class="inline">astartectl</code> automates internally all of this guide and should be your main choice in production.</em></p><h2 id="clone-the-operator-repository" class="section-heading">
+<code class="inline">helm</code> automates internally all of this guide and should be your main choice in production.</em></p><h2 id="clone-the-operator-repository" class="section-heading">
   <a href="#clone-the-operator-repository" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Clone the Operator Repository
 </h2>
-<p>First of all, you will need to clone the Operator repository, as this is where some of the needed resources
-for the Operator are. Ensure you're cloning the right branch for the Operator Version you'd like to install.
-For example, if you want to Deploy an Operator in the 0.11 series, you would</p><pre><code class="bash">git clone https://github.com/astarte-platform/astarte-kubernetes-operator.git</code></pre><h2 id="install-rbacs-and-crds" class="section-heading">
+<p>First of all, you will need to clone the Operator repository, as this is where some of the needed
+resources for the Operator are. Ensure you're cloning the right branch for the Operator Version
+you'd like to install, in this case v1.0:</p><pre><code class="bash">git clone https://github.com/astarte-platform/astarte-kubernetes-operator.git
+cd astarte-kubernetes-operator
+git checkout release-1.0</code></pre><h2 id="install-rbacs-and-crds" class="section-heading">
   <a href="#install-rbacs-and-crds" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Install RBACs and CRDs
 </h2>
-<p>The Operator requires a number of RBAC roles to run, and will also require Astarte CRDs to be installed.</p><p>Navigate into the <code class="inline">deploy</code> directory of your local clone, and install the service account:</p><pre><code class="bash">kubectl apply -f service_account.yaml
-kubectl get ServiceAccount -n kube-system astarte-operator</code></pre><p>Then, install the Cluster Role</p><pre><code class="bash">kubectl apply -f role.yaml
-kubectl get ClusterRole astarte-operator</code></pre><p>Last but not least, install the Cluster Role Binding:</p><pre><code class="bash">kubectl apply -f role_binding.yaml
-kubectl get ClusterRoleBinding astarte-operator</code></pre><p>Once done, navigate into the <code class="inline">deploy/crds</code> directory of your local clone, and install all Astarte Custom
-Resource Definitions:</p><pre><code class="bash">kubectl create -f api.astarte-platform.org_astartes_crd.yaml
-kubectl create -f api.astarte-platform.org_astartevoyageringresses_crd.yaml
-kubectl get CustomResourceDefinition</code></pre><h3 id="caveats-for-astarte-crds" class="section-heading">
-  <a href="#caveats-for-astarte-crds" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Caveats for Astarte CRDs
-</h3>
-<p>Astarte CRDs are automatically generated and embed the OpenAPIv3 schema of the Custom Resource. For this reason, they're
-quite big in size. For this reason, using <code class="inline">kubectl apply</code> on these resources will always fail, as the annotations
-generated by <code class="inline">kubectl</code> would be beyond Kubernetes' character limit for annotations.
-To work around this, you should always install CRDs with <code class="inline">kubectl create</code> and update them with <code class="inline">kubectl replace</code>.</p><h2 id="running-the-operator-inside-the-cluster" class="section-heading">
+<p>The Operator requires a number of RBAC roles to run, and will also require Astarte CRDs to be
+installed.</p><p>To install all the required components, simply run:</p><pre><code class="bash">make install</code></pre><h2 id="running-the-operator-inside-the-cluster" class="section-heading">
   <a href="#running-the-operator-inside-the-cluster" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Running the Operator inside the Cluster
 </h2>
-<p>Navigate into the <code class="inline">deploy</code> directory of your local clone. The Operator Deployment template can be found in
-<code class="inline">operator.yaml</code>. At this time, you might want to tweak the Deployment - especially for what concerns the
-image tag. Once you're ready to go, apply the Deployment to your Kubernetes cluster, and wait until it
-becomes ready.</p><pre><code class="nohighlight makeup elixir"><span class="n">kubectl</span><span class="w"> </span><span class="n">apply</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="n">operator</span><span class="o">.</span><span class="n">yaml</span><span class="w">
-</span><span class="n">kubectl</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="n">deployment</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="n">kube</span><span class="o">-</span><span class="n">system</span><span class="w"> </span><span class="n">astarte</span><span class="o">-</span><span class="n">operator</span></code></pre><h2 id="running-the-operator-outside-the-cluster" class="section-heading">
+<p>Running the Operator inside the cluster is as simple as executing the following:</p><pre><code class="bash">make deploy</code></pre><p>Actually, the above command does more than just deploying the Operator, as it also install RBACs,
+CRDs. The deployment therefore can be performed in just one command.</p><p>To check if the deployment is successful:</p><pre><code class="bash">kubectl get deployment -n kube-system astarte-operator</code></pre><h2 id="running-the-operator-outside-the-cluster" class="section-heading">
   <a href="#running-the-operator-outside-the-cluster" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Running the Operator outside the Cluster
 </h2>
-<p><em>Note: Running the operator outside the cluster is not advised in production. Usually, you need such a deployment
-if you plan on developing the Operator itself. However, this scenario is tested in the e2e tests, and as such
-provides the very same features of the in-cluster Deployment, which remains the go-to scenario for production.</em></p><p>To run the Operator outside the cluster, you will need the <code class="inline">operator-sdk</code> command line. Please refer to
-<a href="https://github.com/operator-framework/operator-sdk/blob/master/doc/user/install-operator-sdk.md"><code class="inline">operator-sdk</code> installation guide</a>
-to install it. Also, please make sure that the version of <code class="inline">operator-sdk</code> matches or is compatible with the version
-of the <code class="inline">operator-sdk</code> module in the Operator's <code class="inline">go.mod</code> file.</p><p>Navigate to the root directory of your clone, and run</p><pre><code class="bash">operator-sdk run --local</code></pre><p>This will bring up the Operator and connect it to your current Kubernetes context.</p><h3 id="caveats" class="section-heading">
+<p><em>Note: Running the operator outside the cluster is not advised in production. Usually, you need such
+a deployment if you plan on developing the Operator itself. However, this scenario is tested in the
+e2e tests, and as such provides the very same features of the in-cluster Deployment, which remains
+the go-to scenario for production.</em></p><p>From the root directory of your clone, run:</p><pre><code class="bash">make run</code></pre><p>This will bring up the Operator and connect it to your current Kubernetes context.</p><h3 id="caveats" class="section-heading">
   <a href="#caveats" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Caveats
 </h3>
-<p>When running the Operator locally, you're bound to a single namespace, and to all limitations of <code class="inline">operator-sdk run</code>. This is
-out of the scope of this guide, and you should be confident with
-<a href="https://github.com/operator-framework/operator-sdk/blob/master/doc/user-guide.md"><code class="inline">operator-sdk</code>'s User Guide</a> if you plan
+<p>When running the Operator locally, you're bound to a single namespace, and to all limitations of
+<code class="inline">operator-sdk run</code>. This is out of the scope of this guide, and you should be confident with
+<a href="https://github.com/operator-framework/operator-sdk/blob/master/doc/user-guide.md"><code class="inline">operator-sdk</code>'s User
+Guide</a> if you plan
 on running the Operator outside the Cluster.</p>      <footer class="footer">
         <p>
           <span class="line">
