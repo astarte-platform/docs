@@ -8,8 +8,8 @@
     <meta name="project" content="Astarte v1.0.0-beta.1">
     <title>Installing Astarte Operator — Astarte v1.0.0-beta.1</title>
     <link rel="stylesheet" href="dist/elixir-e589b8fad3dab6230c65.css" />
-    <script src="dist/sidebar_items-4404b4bb06.js"></script>
-      <script src="docs_config.js"></script>
+    <script src="dist/sidebar_items-95b84cad95.js"></script>
+      <script src="../common_vars.js"></script>
     <script async src="dist/app-5c0c23dfec2d63ae33a2.js"></script>
   </head>
   <body data-type="extras">
@@ -64,27 +64,57 @@ Astarte      </a>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
-<h1>Installing Astarte Operator</h1><p>Operator installation is usually intermediated by <a href="https://github.com/astarte-platform/astartectl"><code class="inline">astartectl</code></a>,
-through the <code class="inline">astartectl cluster</code> subcommand. <code class="inline">astartectl cluster</code> manages the entire lifecycle of Astarte within
-a single Kubernetes Cluster, with regards of both the Operator and the Astarte instance(s) that will be deployed
-in the Cluster.</p><h2 id="installation" class="section-heading">
+<h1>Installing Astarte Operator</h1><p>The most simple and common installation procedure exploits the Astarte Operator's
+<a href="https://artifacthub.io/packages/helm/astarte/astarte-operator"><code class="inline">Helm chart</code></a>.</p><p>Helm is intended to be used as the operator's lifecycle management tool, thus make sure you are
+ready with a working <a href="https://helm.sh/docs/intro/install/"><code class="inline">Helm installation</code></a>.</p><h2 id="installation" class="section-heading">
   <a href="#installation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Installation
 </h2>
-<p>Installing the Operator is as simple as</p><pre><code class="bash">astartectl cluster install-operator</code></pre><p>This command will take care of installing all needed components for the Operator to run. This includes all the
-RBAC roles, Custom Resource Definitions, and the Operator itself. The <code class="inline">--version</code> switch allows to specify a
-version to install - when not specified, the latest version will be installed instead.</p><h2 id="upgrading-the-operator" class="section-heading">
+<p>Installing the Operator is as simple as</p><pre><code class="bash">helm repo add astarte https://helm.astarte-platform.org
+helm repo update
+helm install astarte-operator astarte/astarte-operator</code></pre><p>This command will take care of installing all needed components for the Operator to run. This
+includes all the RBAC roles, Custom Resource Definitions, and the Operator itself.</p><p>You can use the <code class="inline">--version</code> switch to specify a version to install. When not specified, the latest
+stable version will be installed instead.</p><h2 id="upgrading-the-operator" class="section-heading">
   <a href="#upgrading-the-operator" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Upgrading the Operator
 </h2>
-<p>To upgrade the Operator, use the dedicated <code class="inline">upgrade-operator</code> command.</p><pre><code class="bash">astartectl cluster upgrade-operator</code></pre><p>Just like the <code class="inline">install-operator</code> command, the <code class="inline">--version</code> switch allows to specify the version to upgrade to -
-when not specified, the latest version will be fetched and used.</p><h2 id="uninstalling-the-operator" class="section-heading">
+<p>The procedure for upgrading the Operator depends on the version of the Operator you want to
+upgrade from.</p><h3 id="upgrading-the-operator-v1-0" class="section-heading">
+  <a href="#upgrading-the-operator-v1-0" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Upgrading the Operator (&gt;= v1.0)
+</h3>
+<p>Astarte Operator's Helm chart is available since v1.0 and therefore the current upgrade procedure
+applies only if you are dealing with at least v1.0.</p><p>To upgrade the Helm chart, use the dedicated <code class="inline">helm upgrade</code> command:</p><pre><code class="bash">helm upgrade astarte-operator astarte/astarte-operator</code></pre><p>The optional <code class="inline">--version</code> switch allows to specify the version to upgrade to - when not specified,
+the latest version will be fetched and used.</p><p>By design, Astarte Operator's Helm charts cannot univocally be mapped to Operator's releases in a
+one-to-one relationship. However each chart is tied to a specific Operator's version, which is user
+configurable.</p><p>Therefore, upgrading a chart lead to an Operator's upgrade if and only if the Operator's tag
+referenced by the chart is changed. You can check the Operator's tag binded to the chart simply
+running:</p><pre><code class="bash">helm show values astarte/astarte-operator</code></pre><p>As usual, you can use the usual <code class="inline">--version</code> flag to point to a specific chart version.</p><p>Usually upgrading a chart is sufficient to upgrade the Operator to its last available stable
+version. However in custom use cases you may want to deploy a specific version of the operator. To
+do so, simply set the <code class="inline">tag</code> value while upgrading the chart:</p><pre><code class="bash">helm upgrade astarte-operator astarte/astarte-operator --set tag=&lt;the-required-tag&gt;</code></pre><h3 id="upgrading-the-operator-from-v0-11-to-v1-0" class="section-heading">
+  <a href="#upgrading-the-operator-from-v0-11-to-v1-0" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Upgrading the Operator (from v0.11 to v1.0)
+</h3>
+<p>The upgrade procedure from v0.11 to v1.0 requires some manual intervention as the deployment and
+handling of the Operator's lifecylcle has changed: if v0.11 is entirely handled with <code class="inline">astartectl</code>,
+v1.0 employs Helm charts.</p><p>To ensure a consistent upgrade procedure, the following steps are required:</p><ul><li><p>Remove the Operator's Service Account, Cluster Roles and Cluster Role Bindings:</p><pre><code class="bash">kubectl delete serviceaccounts -n kube-system astarte-operator
+kubectl delete clusterroles.rbac.authorization.k8s.io astarte-operator
+kubectl delete clusterrolebindings.rbac.authorization.k8s.io astarte-operator</code></pre></li><li><p>Delete the Operator's deployment:</p><pre><code class="bash">kubectl delete deployments.app -n kube-system astarte-operator</code></pre></li></ul><p><strong>DO NOT</strong> delete Astarte's CRDs! This will lead to the deletion of the entire Astarte deployment
+with a consequent data loss.</p><p>To restore the Operator's functionalities with v1.0, all you have to do is following the install
+instructions, i.e.:</p><pre><code class="bash">helm repo add astarte https://helm.astarte-platform.org
+helm repo update
+helm install astarte-operator astarte/astarte-operator --version 1.0.0-alpha.1</code></pre><p>Please note that version <code class="inline">1.0.0-alpha1</code> is a safe landing version to perform the upgrade. After
+the successful installation, please upgrade to a more recent version following the instructions
+outlined in the <a href="#upgrading-the-operator-v1-0">previous section</a>.</p><h2 id="uninstalling-the-operator" class="section-heading">
   <a href="#uninstalling-the-operator" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Uninstalling the Operator
 </h2>
-<p>To uninstall the Operator, use the dedicated <code class="inline">uninstall-operator</code> command.</p><pre><code class="bash">astartectl cluster uninstall-operator</code></pre><p>This command will refuse to execute if any Astarte instances are active in the Cluster. Uninstalling the Operator
-is possible only after all managed instances have been deleted too.
-When uninstalling the Operator, all resources installed with <code class="inline">install-operator</code> will be erased completely.</p>      <footer class="footer">
+<p>To uninstall the Operator, use the dedicated <code class="inline">helm uninstall</code> command.</p><pre><code class="bash">helm uninstall astarte-operator</code></pre><p>Uninstalling the Operator can be performed even if an Astarte instance is still active in the
+cluster. The result of this operation consists in the deletion of RBACs and of the operator's
+deployment itself.</p><p><em>Note: CRDs are not affected by the uninstall procedure as, according to Helm's choices, forcing
+their removal may lead to unwanted and (in some cases) catastrophic aftermaths. In case you want to
+remove any of the CRDs, you will be responsible for their handling: be sure you know what you are
+doing and act very carefully as you may end up with a broken cluster.</em></p>      <footer class="footer">
         <p>
           <span class="line">
             Built using

@@ -8,8 +8,8 @@
     <meta name="project" content="Astarte v1.0.0-beta.1">
     <title>Prerequisites — Astarte v1.0.0-beta.1</title>
     <link rel="stylesheet" href="dist/elixir-e589b8fad3dab6230c65.css" />
-    <script src="dist/sidebar_items-4404b4bb06.js"></script>
-      <script src="docs_config.js"></script>
+    <script src="dist/sidebar_items-95b84cad95.js"></script>
+      <script src="../common_vars.js"></script>
     <script async src="dist/app-5c0c23dfec2d63ae33a2.js"></script>
   </head>
   <body data-type="extras">
@@ -80,7 +80,23 @@ version.</p><h2 id="voyager" class="section-heading">
 Voyager provides routing, SSL termination and more, and as of today is the preferred/advised way to run Astarte
 in production.</p><p>Astarte Operator is capable of interacting with Voyager through its dedicated <code class="inline">AstarteVoyagerIngress</code> resource,
 as long as the Voyager Operator is installed. Installing Voyager Operator is outside the scope of this guide, and
-you should refer to <a href="https://appscode.com/products/voyager/latest/setup/install/">Voyager's documentation</a>.</p><p>You don't need to create Voyager ingresses yourself - just the Operator itself is enough.</p><h2 id="external-cassandra" class="section-heading">
+you should refer to <a href="https://appscode.com/products/voyager/latest/setup/install/">Voyager's documentation</a>.</p><p>You don't need to create Voyager ingresses yourself - just the Operator itself is enough.</p><h2 id="cert-manager" class="section-heading">
+  <a href="#cert-manager" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  cert-manager
+</h2>
+<p>Astarte requires <a href="https://cert-manager.io/"><code class="inline">cert-manager</code></a> to be installed in the cluster in its default
+configuration (installed in namespace <code class="inline">cert-manager</code> as <code class="inline">cert-manager</code>). If you are using <code class="inline">cert-manager</code> in your
+cluster already you don't need to take any action - otherwise, you will need to install it.</p><p>Astarte is actively tested with <code class="inline">cert-manager</code> 1.1, but should work with any 1.0+ releases of <code class="inline">cert-manager</code>.</p><p><a href="https://cert-manager.io/docs/installation/"><code class="inline">cert-manager</code> documentation</a> details all needed steps to have
+a working instance on your cluster - however, in case you won't be using <code class="inline">cert-manager</code> for other components beyond
+Astarte or, in general, if you don't have very specific requirements, it is advised to install it through its Helm
+chart. To do so, run the following commands:</p><pre><code class="bash">$ helm repo add jetstack https://charts.jetstack.io
+$ helm repo update
+$ kubectl create namespace cert-manager
+$ helm install \
+  cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --version v1.1.0 \
+  --set installCRDs=true</code></pre><p>This will install <code class="inline">cert-manager</code> 1.1.0 and its CRDs in the cluster.</p><h2 id="external-cassandra" class="section-heading">
   <a href="#external-cassandra" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   External Cassandra
 </h2>
