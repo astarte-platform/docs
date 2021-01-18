@@ -5,16 +5,21 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.20.1">
-    <meta name="project" content="Astarte v0.10.1">
-    <title>Astarte MQTT v1 Protocol — Astarte v0.10.1</title>
+    <meta name="project" content="Astarte v0.10.2">
+    <title>Astarte MQTT v1 Protocol — Astarte v0.10.2</title>
     <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
-    <script src="dist/sidebar_items-56cd1bf9dd.js"></script>
-      <script src="docs_config.js"></script>
+
+    <script src="dist/sidebar_items-b198c11d00.js"></script>
+
+      <script src="/common_vars.js"></script>
+
     <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
-    
+
+
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -42,14 +47,17 @@
   <div class="sidebar-header">
     <div class="sidebar-projectDetails">
       <a href="http://astarte-platform.org" class="sidebar-projectName">
-Astarte      </a>
+Astarte
+      </a>
       <h2 class="sidebar-projectVersion">
-        v0.10.1
+        v0.10.2
       </h2>
     </div>
+
       <a href="http://astarte-platform.org">
         <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
       </a>
+
   </div>
 
   <ul class="sidebar-listNav">
@@ -65,7 +73,6 @@ Astarte      </a>
 <section class="content">
   <div class="content-outer">
     <div id="content" class="content-inner">
-
 
 <h1>Astarte MQTT v1 Protocol</h1>
 <p>Astarte MQTT v1 Protocol allows communication between Astarte and devices. It is the first protocol that has been implemented in Astarte, and it exploits every feature provided by Astarte itself. Astarte MQTT v1 doesn&#39;t mandate a specific Transport Credentials format: the broker must handle Authentication, Authorization and <a href="050-pairing_mechanism.html">Pairing integration</a> the way it sees fit. Astarte MQTT v1 is implemented by Astarte&#39;s Reference Transport, <a href="https://github.com/astarte-platform/astarte_vmq_plugin">Astarte/VerneMQ</a> - a client wishing to interact with it must implement MQTT v3.1.1 and all needed features for Pairing to work.</p>
@@ -408,17 +415,18 @@ A further simplification might remove any requirement for any introspection mess
 </h2>
 
 <p>In the same fashion as Authentication, Pairing provides the client with information about how to connect to the MQTT broker. When invoking relevant Pairing API&#39;s method to gather information about available transports for a device, if Astarte advertises Astarte MQTT v1, a similar reply will be returned:</p>
-<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="6392169676-1">{</span><span class="w">
-  </span><span class="ss">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6392169676-2">{</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="4749602776-1">{</span><span class="w">
+  </span><span class="ss">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4749602776-2">{</span><span class="w">
     </span><span class="ss">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;version string&gt;&quot;</span><span class="p">,</span><span class="w">
     </span><span class="ss">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;status string&gt;&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="ss">&quot;protocols&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6392169676-3">{</span><span class="w">
-      </span><span class="ss">&quot;astarte_mqtt_v1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6392169676-4">{</span><span class="w">
+    </span><span class="ss">&quot;protocols&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4749602776-3">{</span><span class="w">
+      </span><span class="ss">&quot;astarte_mqtt_v1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4749602776-4">{</span><span class="w">
         </span><span class="ss">&quot;broker_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mqtts://broker.astarte.example.com:8883&quot;</span><span class="w">
-      </span><span class="p" data-group-id="6392169676-4">}</span><span class="w">
-    </span><span class="p" data-group-id="6392169676-3">}</span><span class="w">
-  </span><span class="p" data-group-id="6392169676-2">}</span><span class="w">
-</span><span class="p" data-group-id="6392169676-1">}</span></code></pre>
+      </span><span class="p" data-group-id="4749602776-4">}</span><span class="w">
+    </span><span class="p" data-group-id="4749602776-3">}</span><span class="w">
+  </span><span class="p" data-group-id="4749602776-2">}</span><span class="w">
+</span><span class="p" data-group-id="4749602776-1">}</span></code></pre>
+
       <footer class="footer">
         <p>
           <span class="line">
@@ -443,7 +451,7 @@ A further simplification might remove any requirement for any introspection mess
   </div>
 </section>
 </div>
-  
+
+
   </body>
 </html>
-

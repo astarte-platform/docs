@@ -5,16 +5,21 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.20.1">
-    <meta name="project" content="Astarte v0.10.1">
-    <title>Authentication and Authorization — Astarte v0.10.1</title>
+    <meta name="project" content="Astarte v0.10.2">
+    <title>Authentication and Authorization — Astarte v0.10.2</title>
     <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
-    <script src="dist/sidebar_items-56cd1bf9dd.js"></script>
-      <script src="docs_config.js"></script>
+
+    <script src="dist/sidebar_items-b198c11d00.js"></script>
+
+      <script src="/common_vars.js"></script>
+
     <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
-    
+
+
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -42,14 +47,17 @@
   <div class="sidebar-header">
     <div class="sidebar-projectDetails">
       <a href="http://astarte-platform.org" class="sidebar-projectName">
-Astarte      </a>
+Astarte
+      </a>
       <h2 class="sidebar-projectVersion">
-        v0.10.1
+        v0.10.2
       </h2>
     </div>
+
       <a href="http://astarte-platform.org">
         <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
       </a>
+
   </div>
 
   <ul class="sidebar-listNav">
@@ -65,7 +73,6 @@ Astarte      </a>
 <section class="content">
   <div class="content-outer">
     <div id="content" class="content-inner">
-
 
 <h1>Authentication and Authorization</h1>
 <p>Authentication and authorization are crucial, as Astarte likely holds sensitive resources and is capable to send mass commands to a device fleet.</p>
@@ -240,6 +247,7 @@ Astarte      </a>
 <p>Over the lifetime of a cluster, it might be necessary to change a realm&#39;s validation mean for the most diverse reasons. By design, validation means are meant to be long lived, and changing them is supposed to be an extraordinary operation.</p>
 <p>Astarte supports only one validation mean at a time. When the validation mean is changed, all tokens emitted which could be validated with the previous mean become invalid.</p>
 <p>It is also possible that there might be a delay between the request of a validation mean change and its actuation. This means during this grace period tokens will be validated against the previously configured mean. As such, it is advised to treat a validation mean change as a maintenance operation for the realm. More details can be found in the Administrator Guide.</p>
+
       <footer class="footer">
         <p>
           <span class="line">
@@ -264,7 +272,7 @@ Astarte      </a>
   </div>
 </section>
 </div>
-  
+
+
   </body>
 </html>
-

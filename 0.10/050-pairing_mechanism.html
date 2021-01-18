@@ -5,16 +5,21 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.20.1">
-    <meta name="project" content="Astarte v0.10.1">
-    <title>Pairing Mechanism — Astarte v0.10.1</title>
+    <meta name="project" content="Astarte v0.10.2">
+    <title>Pairing Mechanism — Astarte v0.10.2</title>
     <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
-    <script src="dist/sidebar_items-56cd1bf9dd.js"></script>
-      <script src="docs_config.js"></script>
+
+    <script src="dist/sidebar_items-b198c11d00.js"></script>
+
+      <script src="/common_vars.js"></script>
+
     <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
-    
+
+
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -42,14 +47,17 @@
   <div class="sidebar-header">
     <div class="sidebar-projectDetails">
       <a href="http://astarte-platform.org" class="sidebar-projectName">
-Astarte      </a>
+Astarte
+      </a>
       <h2 class="sidebar-projectVersion">
-        v0.10.1
+        v0.10.2
       </h2>
     </div>
+
       <a href="http://astarte-platform.org">
         <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
       </a>
+
   </div>
 
   <ul class="sidebar-listNav">
@@ -65,7 +73,6 @@ Astarte      </a>
 <section class="content">
   <div class="content-outer">
     <div id="content" class="content-inner">
-
 
 <h1>Pairing Mechanism</h1>
 <p>Astarte&#39;s Pairing is a unified mechanism for <a href="035-register_device.html">Registering Devices</a> and obtaining <em>Transport Credentials</em>. Even though in Astarte each Transport is free to choose its own Authentication mechanisms and Credentials autonomously, Pairing defines a well-known mechanism for Registering Devices and for orchestrating the exchange of <em>Transport Credentials</em>. Pairing is the main endpoint which orchestrates Device Authentication in Astarte, abstracting all details.</p>
@@ -156,6 +163,7 @@ Astarte      </a>
 
 <p>Pairing&#39;s Device API exposes two additional facilities: first and foremost an endpoint which bears a set of information about both Pairing itself and Transports the device should use or choose from. This endpoint is Device and Realm specific and can be found at <a href="api/index.html?urls.primaryName=Pairing%2520API#/device/getInfo"><code class="inline">/{realm_name}/devices/{hw_id}</code></a>. This allows granting each Device a specific Transport configuration, which can be useful in installations with more than a single Transport, and automates the configuration on the Device&#39;s end, which knows in advance what is supported and how to access its Transport(s).</p>
 <p>Moreover, each Transport implementation has a <code class="inline">/verify</code> endpoint where a client, authenticating with its <em>Credentials Secret</em>, can verify whether its <em>Transport Credentials</em> are valid or not. This, in case SSL is used, is especially useful for checking against revocation lists.</p>
+
       <footer class="footer">
         <p>
           <span class="line">
@@ -180,7 +188,7 @@ Astarte      </a>
   </div>
 </section>
 </div>
-  
+
+
   </body>
 </html>
-

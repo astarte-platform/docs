@@ -5,16 +5,21 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.20.1">
-    <meta name="project" content="Astarte v0.10.1">
-    <title>Querying a Device — Astarte v0.10.1</title>
+    <meta name="project" content="Astarte v0.10.2">
+    <title>Querying a Device — Astarte v0.10.2</title>
     <link rel="stylesheet" href="dist/html-75c73d59b7f14fe4fa4e.css" />
-    <script src="dist/sidebar_items-56cd1bf9dd.js"></script>
-      <script src="docs_config.js"></script>
+
+    <script src="dist/sidebar_items-b198c11d00.js"></script>
+
+      <script src="/common_vars.js"></script>
+
     <script async src="dist/html-75c73d59b7f14fe4fa4e.js"></script>
-    
+
+
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -42,14 +47,17 @@
   <div class="sidebar-header">
     <div class="sidebar-projectDetails">
       <a href="http://astarte-platform.org" class="sidebar-projectName">
-Astarte      </a>
+Astarte
+      </a>
       <h2 class="sidebar-projectVersion">
-        v0.10.1
+        v0.10.2
       </h2>
     </div>
+
       <a href="http://astarte-platform.org">
         <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
       </a>
+
   </div>
 
   <ul class="sidebar-listNav">
@@ -65,7 +73,6 @@ Astarte      </a>
 <section class="content">
   <div class="content-outer">
     <div id="content" class="content-inner">
-
 
 <h1>Querying a Device</h1>
 <p>Once you have your devices connected, up and running in Astarte, you can start interacting with them.</p>
@@ -169,6 +176,7 @@ Astarte      </a>
 <p>Also, the hard cap has a very different meaning in downsampling. In this case, the hard cap applies to <code class="inline">downsample_to</code> instead of <code class="inline">limit</code>. <code class="inline">limit</code> can be an arbitrarly large amount of samples taken out of the DB, and can be used mainly to alleviate pressure in case of <em>extremely</em> large datasets which would require a lot of time for being processed by LTTB - even though, most of the time, you might want to define a time window to downsample instead.</p>
 <p>Astarte is also capable of downsampling aggregated interfaces, as long as a <code class="inline">downsample_key</code> is specified, which has to match the last token of an <code class="inline">endpoint</code> of the queried <code class="inline">interface</code> (i.e. in case the interface has a <code class="inline">/%{id}/myValue</code> mapping which should be used as the <code class="inline">downsample_key</code>, you should specify <code class="inline">downsample_key=myValue</code> in the query). When doing so, the aggregate will be downsampled using the chosen <code class="inline">endpoint</code> value as the <code class="inline">y</code> axis value, whereas its other <code class="inline">endpoints</code> will be disregarded when applying the algorithm. Please note that, no matter what <code class="inline">downsample_key</code> is used, a sample will be composed by the whole aggregation.</p>
 <p>If there is no way an interface can be downsampled (this is true, for example, if no <code class="inline">downsample_key</code> has been specified for <code class="inline">aggregations</code>, or for types such as <code class="inline">strings</code>), AppEngine API will return a <code class="inline">4xx</code> error. In general, downsampling is a powerful mechanism with a lot of limitations which really shines when plotting. Once again, this is a fundamental factor to consider when <a href="029-interface_design_guide.html">designing your interfaces</a>.</p>
+
       <footer class="footer">
         <p>
           <span class="line">
@@ -193,7 +201,7 @@ Astarte      </a>
   </div>
 </section>
 </div>
-  
+
+
   </body>
 </html>
-
