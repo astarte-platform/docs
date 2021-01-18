@@ -8,7 +8,7 @@
     <meta name="project" content="Astarte v1.0.0-beta.1">
     <title>System Requirements — Astarte v1.0.0-beta.1</title>
     <link rel="stylesheet" href="dist/elixir-e589b8fad3dab6230c65.css" />
-    <script src="dist/sidebar_items-4404b4bb06.js"></script>
+    <script src="dist/sidebar_items-28cbdfe7c5.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-5c0c23dfec2d63ae33a2.js"></script>
   </head>
@@ -70,10 +70,15 @@ the scope of this document.</p><h2 id="kubernetes-requirements" class="section-h
   <a href="#kubernetes-requirements" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Kubernetes Requirements
 </h2>
-<p>Astarte requires at least Kubernetes 1.12 - however, it currently targets Kubernetes 1.16+. It is advised
-to consult Astarte Operator's compatibility matrix in the README to ensure a specific Kubernetes setup is
-supported.</p><p>The Astarte Operator does not require any unstable feature gate in Kubernetes 1.16, and is actively tested
-against KinD and major Managed Kubernetes installations on various Cloud Providers.</p><h2 id="resource-requirements" class="section-heading">
+<p>Astarte requires at least Kubernetes 1.16, and strives to be compatible with all newer Kubernetes versions.
+It is advised to consult Astarte Operator's compatibility matrix in the README to ensure a specific Kubernetes
+setup is supported.</p><p>The Astarte Operator does not require any unstable feature gate in Kubernetes 1.16, and is actively tested
+against KinD and major Managed Kubernetes installations on various Cloud Providers.</p><h2 id="dependencies" class="section-heading">
+  <a href="#dependencies" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Dependencies
+</h2>
+<p>Astarte Operator requires <a href="https://cert-manager.io/"><code class="inline">cert-manager</code></a> to enable Webhooks. This documentation will
+detail all needed steps for installing <code class="inline">cert-manager</code> in the cluster in case it's not installed yet.</p><h2 id="resource-requirements" class="section-heading">
   <a href="#resource-requirements" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Resource Requirements
 </h2>
