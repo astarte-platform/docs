@@ -151,10 +151,12 @@ simple trigger, the simple trigger will be installed for all devices in a realm.
 is also accepted as <code class="inline">device_id</code> to maintain backwards compatibility and it is considered equivalent
 to no <code class="inline">device_id</code> specified.</p><p><code class="inline">group_name</code> can be used to restrict the trigger to all devices that are member of the group.</p><p><code class="inline">device_id</code> and <code class="inline">group_name</code> are mutually exclusive and if neither of them is specified in the
 simple trigger, the simple trigger will be installed for all devices in a realm.</p><p><code class="inline">data_trigger_type</code> can be one of the following:</p><ul><li><code class="inline">incoming_data</code>: verifies the condition whenever new data arrives.</li><li><code class="inline">value_stored</code>: verifies the condition whenever new data arrives, after it is saved to the
-database.</li><li><code class="inline">value_change</code>: verifies the condition whenever the last value received is different from the
-last one previously received.</li><li><code class="inline">value_change_applied</code>: verifies the condition whenever the last value received is different from
-the last one previously received, after it is saved to the database.</li><li><code class="inline">path_created</code>: verifies the condition whenever a new path in a property interface is set or the
-first value is streamed on a datastream interface.</li><li><code class="inline">path_removed</code>: verifies the condition whenever a property path is unset.</li></ul><p><code class="inline">interface_name</code> and <code class="inline">interface_major</code> represent, respectively, the Interface name and major version
+database.</li><li><code class="inline">value_change</code>: works only with properties interface; verifies the condition whenever the
+received value is different from the previous one.</li><li><code class="inline">value_change_applied</code>: works only with properties interface; verifies the condition whenever the
+last value received is different from the last one previously received, after it is saved to the
+database.</li><li><code class="inline">path_created</code>: verifies the condition whenever a new path in a property interface is set or the
+first value is streamed on a datastream interface.</li><li><code class="inline">path_removed</code>: works only with properties interface; verifies the condition whenever a property
+path is unset.</li></ul><p><code class="inline">interface_name</code> and <code class="inline">interface_major</code> represent, respectively, the Interface name and major version
 that uniquely identify an Astarte Interface. <code class="inline">interface_name</code> can be <code class="inline">*</code> to match all interfaces; in
 that case <code class="inline">interface_major</code> is ignored and all major numbers are matched.</p><p><code class="inline">match_path</code> is the path that will be used to match the condition. It can be <code class="inline">/*</code> to match all the
 paths of an interface.</p><p><code class="inline">value_match_operator</code> is the operator used to match the incoming data against a known value. It can
