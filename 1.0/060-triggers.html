@@ -297,8 +297,9 @@ Device ydqBlFsGQ--xZ-_efQxuLw just connected from IP 172.18.0.1</code></pre><h3 
   AMQP 0-9-1 Actions
 </h3>
 <p>AMQP 0-9-1 actions might be configured as an alternative to HTTP actions for advanced use cases.
-AMQP 0-9-1 is the right choice for a number of scenarios, including Astarte Flow integration, high
-performance ingestion, integration with an existing AMQP infrasturcture, etc...</p><p>Payloads are always encoded using <a href="https://developers.google.com/protocol-buffers">protobuf</a>,
+AMQP 0-9-1 is the right choice for a number of scenarios, including
+<a href="https://docs.astarte-platform.org/flow/snapshot">Astarte Flow</a> integration, high performance
+ingestion, integration with an existing AMQP infrastructure, etc...</p><p>Payloads are always encoded using <a href="https://developers.google.com/protocol-buffers">protobuf</a>,
 therefore if any other format is required Astarte Flow should be employed as a format converter.</p><p>This is a minimal configuration object representing an
 <a href="https://www.rabbitmq.com/tutorials/amqp-concepts.html">AMQP 0-9-1</a> action:</p><pre><code class="json">{
   &quot;amqp_exchange&quot;: &quot;astarte_events_&lt;realm-name&gt;_&lt;exchange-suffix&gt;&quot;,
