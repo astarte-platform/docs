@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.23.0">
     <meta name="project" content="astarte_flow v0.1.0">
-    <title>Astarte.FlowWeb.Plug.VerifyHeader — astarte_flow v0.1.0</title>
+    <title>http_sink — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
     <script src="dist/sidebar_items-df208de5dc.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
   </head>
-  <body data-type="modules">
+  <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
-    <div class="main">
+<div class="main">
 
 <button class="sidebar-button sidebar-toggle">
   <span class="icon-menu" title="Collapse/expand sidebar"></span>
@@ -63,85 +63,21 @@ astarte_flow      </a>
     <div id="content" class="content-inner">
 
 
-      <h1>
-        Astarte.FlowWeb.Plug.VerifyHeader <small class="app-vsn">(astarte_flow v0.1.0)</small>
-      </h1>
-
-
-        <section id="moduledoc">
-<p>This is a wrapper around <a href="https://hexdocs.pm/guardian/2.1.1/Guardian.Plug.VerifyHeader.html"><code class="inline">Guardian.Plug.VerifyHeader</code></a> that allows to recover
-the JWT public key dynamically using informations contained in the connection</p>        </section>
-
-        <section id="summary" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#summary">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-            Summary
-          </h1>
-  <div class="summary-functions summary">
-    <h2>
-      <a href="#functions">Functions</a>
-    </h2>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#call/2">call(conn, opts)</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#init/1">init(opts)</a>
-  </div>
-</div>
-  </div>
-        </section>
-
-        <section id="functions" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#functions">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-Functions          </h1>
-          <div class="functions-list">
-<section class="detail" id="call/2">
-  <div class="detail-header">
-    <a href="#call/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">call(conn, opts)</h1>
-      </div>
-
-  <section class="docstring">
-      <h2>Specs</h2>
-      <div class="specs">
-          <pre>call(conn :: <a href="https://hexdocs.pm/plug/1.10.3/Plug.Conn.html#t:t/0">Plug.Conn.t</a>(), opts :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: <a href="https://hexdocs.pm/plug/1.10.3/Plug.Conn.html#t:t/0">Plug.Conn.t</a>()</pre>
-      </div>
-
-  </section>
-</section>
-<section class="detail" id="init/1">
-  <div class="detail-header">
-    <a href="#init/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">init(opts)</h1>
-      </div>
-
-  <section class="docstring">
-      <h2>Specs</h2>
-      <div class="specs">
-          <pre>init(opts :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
-      </div>
-
-  </section>
-</section>
-          </div>
-        </section>
-          <footer class="footer">
+<h1>http_sink</h1><ul><li>type: consumer</li><li>input: binary messages</li></ul><p>This is a consumer block that takes data from an incoming message and makes a POST request
+to the configured URL.</p><p>This block supports only incoming messages with type <code class="inline">binary</code>, so serialization
+of different message types must be handled in a preceding block.</p><p>For the time being, the delivery is best-effort (i.e. if a message is not delivered, it is discarded).</p><h1>Properties</h1><ul><li><code class="inline">url</code>: The URL of the HTTP request. (required, string)</li><li><code class="inline">headers</code>: Http request headers. (optional, object with string values)</li><li><code class="inline">ignore_ssl_errors</code>: If <code class="inline">true</code>, ignore SSL errors that happen while performing the request.
+(optional, boolean)</li></ul><h2 id="url" class="section-heading">
+  <a href="#url" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">url</code>
+</h2>
+<p>The HTTP request URL such as <code class="inline">&quot;http://www.example.com/test&quot;</code>.</p><h2 id="headers" class="section-heading">
+  <a href="#headers" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">headers</code>
+</h2>
+<p>An optional object with additional headers such as <code class="inline">{authorization: &quot;Bearer &lt;token&gt;&quot;}</code>.</p><h1>Accepted input message</h1><p>The HTTP request built by the <code class="inline">http_sink</code> can be customized by the input message with the following properties:</p><ul><li><code class="inline">data</code>: the body of the request.</li><li><code class="inline">type</code>: is always <code class="inline">binary</code>.</li><li><code class="inline">subtype</code>: if present, it will be the value of the <code class="inline">content-type</code> HTTP header.</li></ul><h1>Examples</h1><p>The following example uses <code class="inline">http_sink</code> block to send HTTP POST requests to <code class="inline">http://www.example.com/test</code>
+whenever a valid message is received.</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="2607111599-1">[</span><span class="n">...</span><span class="p" data-group-id="2607111599-1">]</span><span class="w">
+</span><span class="o">|</span><span class="w"> </span><span class="n">http_sink</span><span class="w">
+  </span><span class="o">.</span><span class="n">url</span><span class="p" data-group-id="2607111599-2">(</span><span class="s">&quot;http://www.example.com/test&quot;</span><span class="p" data-group-id="2607111599-2">)</span></code></pre>      <footer class="footer">
         <p>
           <span class="line">
             Built using

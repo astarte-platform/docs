@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.23.0">
     <meta name="project" content="astarte_flow v0.1.0">
-    <title>Astarte.FlowWeb.Plug.VerifyHeader — astarte_flow v0.1.0</title>
+    <title>to_json — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
     <script src="dist/sidebar_items-df208de5dc.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
   </head>
-  <body data-type="modules">
+  <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
-    <div class="main">
+<div class="main">
 
 <button class="sidebar-button sidebar-toggle">
   <span class="icon-menu" title="Collapse/expand sidebar"></span>
@@ -63,85 +63,16 @@ astarte_flow      </a>
     <div id="content" class="content-inner">
 
 
-      <h1>
-        Astarte.FlowWeb.Plug.VerifyHeader <small class="app-vsn">(astarte_flow v0.1.0)</small>
-      </h1>
-
-
-        <section id="moduledoc">
-<p>This is a wrapper around <a href="https://hexdocs.pm/guardian/2.1.1/Guardian.Plug.VerifyHeader.html"><code class="inline">Guardian.Plug.VerifyHeader</code></a> that allows to recover
-the JWT public key dynamically using informations contained in the connection</p>        </section>
-
-        <section id="summary" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#summary">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-            Summary
-          </h1>
-  <div class="summary-functions summary">
-    <h2>
-      <a href="#functions">Functions</a>
-    </h2>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#call/2">call(conn, opts)</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#init/1">init(opts)</a>
-  </div>
-</div>
-  </div>
-        </section>
-
-        <section id="functions" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#functions">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-Functions          </h1>
-          <div class="functions-list">
-<section class="detail" id="call/2">
-  <div class="detail-header">
-    <a href="#call/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">call(conn, opts)</h1>
-      </div>
-
-  <section class="docstring">
-      <h2>Specs</h2>
-      <div class="specs">
-          <pre>call(conn :: <a href="https://hexdocs.pm/plug/1.10.3/Plug.Conn.html#t:t/0">Plug.Conn.t</a>(), opts :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: <a href="https://hexdocs.pm/plug/1.10.3/Plug.Conn.html#t:t/0">Plug.Conn.t</a>()</pre>
-      </div>
-
-  </section>
-</section>
-<section class="detail" id="init/1">
-  <div class="detail-header">
-    <a href="#init/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">init(opts)</h1>
-      </div>
-
-  <section class="docstring">
-      <h2>Specs</h2>
-      <div class="specs">
-          <pre>init(opts :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
-      </div>
-
-  </section>
-</section>
-          </div>
-        </section>
-          <footer class="footer">
+<h1>to_json</h1><ul><li>type: producer_consumer</li><li>input: any message</li><li>output: binary messages</li></ul><p>This is a producer and consumer block that takes <code class="inline">data</code> from incoming message
+and produces a message having a JSON serialized payload.</p><h1>Properties</h1><ul><li><code class="inline">pretty</code>: serialize the output to pretty format that is easier to read for humans. (optional, boolean)</li></ul><h2 id="pretty" class="section-heading">
+  <a href="#pretty" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">pretty</code>
+</h2>
+<p>Specifies if the JSON binary should be pretty formatted.</p><h1>Output message</h1><ul><li><code class="inline">key</code>: contains the same <code class="inline">key</code> specified in the input message.</li><li><code class="inline">data</code>: the incoming data formatted as a JSON binary</li><li><code class="inline">type</code>: is always <code class="inline">binary</code></li><li><code class="inline">subtype</code>: is always <code class="inline">application/json</code></li><li><code class="inline">timestamp</code>: the same <code class="inline">timestamp</code> specified in the input message.</li></ul><h1>Examples</h1><p>The following example uses <code class="inline">to_json</code> block to format incoming messages to human readable JSON binary
+before letting them through.</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="9667109258-1">[</span><span class="n">...</span><span class="p" data-group-id="9667109258-1">]</span><span class="w">
+</span><span class="o">|</span><span class="w"> </span><span class="n">to_json</span><span class="w">
+  </span><span class="o">.</span><span class="n">pretty</span><span class="p" data-group-id="9667109258-2">(</span><span class="no">true</span><span class="p" data-group-id="9667109258-2">)</span><span class="w">
+</span><span class="p" data-group-id="9667109258-3">[</span><span class="n">...</span><span class="p" data-group-id="9667109258-3">]</span></code></pre>      <footer class="footer">
         <p>
           <span class="line">
             Built using

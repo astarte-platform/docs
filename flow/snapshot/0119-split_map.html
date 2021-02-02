@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="astarte_flow v0.1.0">
+    <title>split_map — astarte_flow v0.1.0</title>
+    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
+    <script src="dist/sidebar_items-df208de5dc.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="0001-overview.html" class="sidebar-projectName">
+astarte_flow      </a>
+      <strong class="sidebar-projectVersion">
+        v0.1.0
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Guides</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>split_map</h1><p><strong>This block API will likely change in future versions, see also
+<a href="https://github.com/astarte-platform/astarte_flow/issues/108">GH issue #108</a>.</strong></p><ul><li>type: producer_consumer</li><li>accepted input: a map message having <code class="inline">n</code> keys</li><li>output: <code class="inline">n</code> messages with different message keys</li></ul><p>This block breaks a map message into several messages, one for each map item.</p><h1>Properties</h1><ul><li><code class="inline">key_action</code>: Input map and output message key handling policy. (optional, string, default:
+ <code class="inline">&quot;replace&quot;</code>)</li><li><code class="inline">delimiter</code>: Key delimiter string. (optional, string, default: <code class="inline">&quot;&quot;</code>)</li><li><code class="inline">fallback_action</code>: Unsplittable messages policy. (optional, string, default: <code class="inline">&quot;pass_through&quot;</code>)</li><li><code class="inline">fallback_key</code>: Message key used when <code class="inline">&quot;replace_key&quot;</code> <code class="inline">&quot;fallback_action&quot;</code> is used. (optional, string)</li></ul><h2 id="key_action" class="section-heading">
+  <a href="#key_action" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">key_action</code>
+</h2>
+<p>Output message key building policy, it can be either one of the following:</p><ul><li><code class="inline">&quot;none&quot;</code>: output message key is input message key (no changes)</li><li><code class="inline">&quot;replace&quot;</code>: output message key is replaced with keys used in input message map.</li><li><code class="inline">&quot;append&quot;</code>: input message map key is appended to the input message key</li><li><code class="inline">&quot;prepend&quot;</code>: input message map key is prepended to the input message key</li></ul><p>Let's assume the input message looks like the following:</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="2790417032-1">{</span><span class="w">
+  </span><span class="ss">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;inputkey&quot;</span><span class="w">
+  </span><span class="ss">data</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2790417032-2">{</span><span class="w">
+    </span><span class="ss">one</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="ss">truthy</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+    </span><span class="ss">hello</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;world&quot;</span><span class="w">
+  </span><span class="p" data-group-id="2790417032-2">}</span><span class="w">
+</span><span class="p" data-group-id="2790417032-1">}</span></code></pre><p>When using <code class="inline">&quot;none&quot;</code> the following 3 messages will be produced:</p><ul><li><code class="inline">{ key: &quot;inputkey&quot;, data: 1, type: integer }</code></li><li><code class="inline">{ key: &quot;inputkey&quot;, data: true, type: boolean }</code></li><li><code class="inline">{ key: &quot;inputkey&quot;, data: &quot;world&quot;, type: string }</code></li></ul><p>When using <code class="inline">&quot;replace&quot;</code> the following 3 messages will be produced:</p><ul><li><code class="inline">{ key: &quot;one&quot;, data: 1, type: integer }</code></li><li><code class="inline">{ key: &quot;truthy&quot;, data: true, type: boolean }</code></li><li><code class="inline">{ key: &quot;hello&quot;, data: &quot;world&quot;, type: string }</code></li></ul><p>When using <code class="inline">&quot;append&quot;</code> the following 3 messages will be produced:</p><ul><li><code class="inline">{ key: &quot;inputkeyone&quot;, data: 1, type: integer }</code></li><li><code class="inline">{ key: &quot;inputkeytruthy&quot;, data: true, type: boolean }</code></li><li><code class="inline">{ key: &quot;inputkeyhello&quot;, data: &quot;world&quot;, type: string }</code></li></ul><p>When using <code class="inline">&quot;prepend&quot;</code> the following 3 messages will be produced:</p><ul><li><code class="inline">{ key: &quot;oneinputkey&quot;, data: 1, type: integer }</code></li><li><code class="inline">{ key: &quot;truthyinputkey&quot;, data: true, type: boolean }</code></li><li><code class="inline">{ key: &quot;helloinputkey&quot;, data: &quot;world&quot;, type: string }</code></li></ul><h2 id="delimiter" class="section-heading">
+  <a href="#delimiter" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">delimiter</code>
+</h2>
+<p>String delimiter that is used when <code class="inline">key_action</code> is set to <code class="inline">&quot;append&quot;</code> or <code class="inline">&quot;prepend&quot;</code>, which is used
+to separate the input message key and the appended/prepended map key.</p><h2 id="fallback_action" class="section-heading">
+  <a href="#fallback_action" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">fallback_action</code>
+</h2>
+<p>Fallback action is used when input message has no map type.</p><p>The following fallback actions are available:</p><ul><li><code class="inline">&quot;discard&quot;</code>: input message is always discarded when it cannot be splitted</li><li><code class="inline">&quot;replace_key&quot;</code>: input message is kept but key is replaced with specified replace key</li><li><code class="inline">&quot;pass_through&quot;: input message is passed through without any change ##</code>fallback_key<code class="inline"></code>fallback_key<code class="inline">is used when</code>&quot;replace_key&quot;<code class="inline"></code>&quot;fallback_action&quot;<code class="inline">is used. # Output message For each message having a map with</code>n<code class="inline">keys,</code>n<code class="inline">messages are produced. # Examples The following example uses</code>map_split` to split messages having type map into messages that make
+use of base or array types, the output message key is built by appending the key of each map item
+to the input message key.
+
+<code class="inline">[...] | map_split .key_action(&quot;append&quot;) .delimiter(&quot;/&quot;) [...]</code></li></ul>      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>
+
