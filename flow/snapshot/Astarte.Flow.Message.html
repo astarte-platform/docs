@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="astarte_flow v0.1.0">
+    <title>Astarte.Flow.Message — astarte_flow v0.1.0</title>
+    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
+    <script src="dist/sidebar_items-61b46d7af7.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+    <div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="0001-overview.html" class="sidebar-projectName">
+astarte_flow      </a>
+      <strong class="sidebar-projectVersion">
+        v0.1.0
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Guides</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+      <h1>
+        Astarte.Flow.Message <small class="app-vsn">(astarte_flow v0.1.0)</small>
+      </h1>
+
+
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:basic_data/0">basic_data()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:basic_data_type/0">basic_data_type()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:data/0">data()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:data_type/0">data_type()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:data_type_with_array/0">data_type_with_array()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:data_with_array/0">data_with_array()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:message_metadata/0">message_metadata()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:message_timestamp/0">message_timestamp()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:subtype/0">subtype()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:t/0">t()</a>
+  </div>
+    <div class="summary-synopsis"><p>An Astarte Flow message.</p></div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#deserialize_type/1">deserialize_type(message_type)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#from_map/1">from_map(map)</a>
+  </div>
+    <div class="summary-synopsis"><p>Converts a message map to a Message struct, this function is useful for handling JSON decoded messages.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#serialize_type/1">serialize_type(data_type)</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#to_map/1">to_map(message)</a>
+  </div>
+    <div class="summary-synopsis"><p>Converts a Message struct to a serialization friendly map, so it can be used with a JSON serializer.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#unwrap_data/2">unwrap_data(wrapped_data, type_map)</a>
+  </div>
+    <div class="summary-synopsis"><p>Converts a &quot;wrapped&quot; value to a value that can be used as a Message data.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#wrap_data/2">wrap_data(data, types_map)</a>
+  </div>
+    <div class="summary-synopsis"><p>Converts a value to a &quot;wrapped&quot; value that can be easily serialized.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:basic_data/0">
+  <div class="detail-header">
+    <a href="#t:basic_data/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">basic_data()</h1>
+      </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>basic_data() ::
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>() | <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>() | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:basic_data_type/0">
+  <div class="detail-header">
+    <a href="#t:basic_data_type/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">basic_data_type()</h1>
+      </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>basic_data_type() :: :integer | :real | :boolean | :datetime | :binary | :string</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:data/0">
+  <div class="detail-header">
+    <a href="#t:data/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">data()</h1>
+      </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>data() :: <a href="#t:data_with_array/0">data_with_array</a>() | %{optional(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) =&gt; <a href="#t:data_with_array/0">data_with_array</a>()}</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:data_type/0">
+  <div class="detail-header">
+    <a href="#t:data_type/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">data_type()</h1>
+      </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>data_type() ::
+  %{optional(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) =&gt; <a href="#t:data_type_with_array/0">data_type_with_array</a>()} | <a href="#t:data_type_with_array/0">data_type_with_array</a>()</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:data_type_with_array/0">
+  <div class="detail-header">
+    <a href="#t:data_type_with_array/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">data_type_with_array()</h1>
+      </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>data_type_with_array() :: <a href="#t:basic_data_type/0">basic_data_type</a>() | {:array, <a href="#t:basic_data_type/0">basic_data_type</a>()}</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:data_with_array/0">
+  <div class="detail-header">
+    <a href="#t:data_with_array/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">data_with_array()</h1>
+      </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>data_with_array() :: <a href="#t:basic_data/0">basic_data</a>() | [<a href="#t:basic_data/0">basic_data</a>()]</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:message_metadata/0">
+  <div class="detail-header">
+    <a href="#t:message_metadata/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">message_metadata()</h1>
+      </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>message_metadata() :: %{optional(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) =&gt; <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:message_timestamp/0">
+  <div class="detail-header">
+    <a href="#t:message_timestamp/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">message_timestamp()</h1>
+      </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>message_timestamp() :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:subtype/0">
+  <div class="detail-header">
+    <a href="#t:subtype/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">subtype()</h1>
+      </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>subtype() :: nil | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | %{optional(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) =&gt; <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:t/0">
+  <div class="detail-header">
+    <a href="#t:t/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">t()</h1>
+      </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>t() :: %Astarte.Flow.Message{
+  data: <a href="#t:data/0">data</a>(),
+  key: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  metadata: <a href="#t:message_metadata/0">message_metadata</a>(),
+  subtype: <a href="#t:subtype/0">subtype</a>(),
+  timestamp: <a href="#t:message_timestamp/0">message_timestamp</a>(),
+  type: <a href="#t:data_type/0">data_type</a>()
+}</pre>
+      </div>
+
+<p>An Astarte Flow message.</p><ul><li><code class="inline">:key</code>: a unicode string that identifies the stream the message belongs to.</li><li><code class="inline">:metadata</code>: additional message metadata.</li><li><code class="inline">:type': message data type (e.g. integer, real, boolean, etc...). *</code>:subtype<code class="inline">: a string that represents the subtype, that is a mimetype for binaries. *</code>:timestamp<code class="inline">: timestamp in microseconds. *</code>:data`: the message payload.</li></ul>  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="deserialize_type/1">
+  <div class="detail-header">
+    <a href="#deserialize_type/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">deserialize_type(message_type)</h1>
+      </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>deserialize_type(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | %{optional(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) =&gt; <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}) ::
+  {:ok, <a href="#t:data_type/0">data_type</a>()} | {:error, :invalid_message_type}</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="from_map/1">
+  <div class="detail-header">
+    <a href="#from_map/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">from_map(map)</h1>
+      </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>from_map(%{required(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) =&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}) ::
+  {:ok, <a href="#t:t/0">Astarte.Flow.Message.t</a>()} | {:error, :invalid_message}</pre>
+      </div>
+
+<p>Converts a message map to a Message struct, this function is useful for handling JSON decoded messages.</p><h2 id="from_map/1-examples" class="section-heading">
+  <a href="#from_map/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="9677456967-1">%{</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="s">&quot;schema&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;astarte_flow/message/v0.1&quot;</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="s">&quot;data&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="s">&quot;key&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;meaning-of-life&quot;</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="s">&quot;metadata&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="9677456967-2">%{</span><span class="p" data-group-id="9677456967-2">}</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="s">&quot;timestamp&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1551884045074</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="s">&quot;timestamp_us&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">181</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="s">&quot;type&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="9677456967-1">}</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Message</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="9677456967-3">(</span><span class="p" data-group-id="9677456967-3">)</span><span class="w">
+</span><span class="p" data-group-id="9677456967-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w">
+  </span><span class="p" data-group-id="9677456967-5">%</span><span class="nc" data-group-id="9677456967-5">Message</span><span class="p" data-group-id="9677456967-5">{</span><span class="w">
+  </span><span class="ss">data</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+  </span><span class="ss">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;meaning-of-life&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">metadata</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9677456967-6">%{</span><span class="p" data-group-id="9677456967-6">}</span><span class="p">,</span><span class="w">
+  </span><span class="ss">timestamp</span><span class="p">:</span><span class="w"> </span><span class="mi">1551884045074181</span><span class="p">,</span><span class="w">
+  </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:integer</span><span class="w">
+</span><span class="p" data-group-id="9677456967-5">}</span><span class="p" data-group-id="9677456967-4">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="9677456967-7">%{</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="s">&quot;schema&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;astarte_flow/message/v0.1&quot;</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="9677456967-7">}</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Message</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="9677456967-8">(</span><span class="p" data-group-id="9677456967-8">)</span><span class="w">
+</span><span class="p" data-group-id="9677456967-9">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="ss">:invalid_message</span><span class="p" data-group-id="9677456967-9">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Message</span><span class="o">.</span><span class="n">from_map</span><span class="p" data-group-id="9677456967-10">(</span><span class="p" data-group-id="9677456967-11">%{</span><span class="p" data-group-id="9677456967-11">}</span><span class="p" data-group-id="9677456967-10">)</span><span class="w">
+</span><span class="p" data-group-id="9677456967-12">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="ss">:invalid_message</span><span class="p" data-group-id="9677456967-12">}</span></code></pre>  </section>
+</section>
+<section class="detail" id="serialize_type/1">
+  <div class="detail-header">
+    <a href="#serialize_type/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">serialize_type(data_type)</h1>
+      </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>serialize_type(<a href="#t:basic_data_type/0">basic_data_type</a>()) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="to_map/1">
+  <div class="detail-header">
+    <a href="#to_map/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">to_map(message)</h1>
+      </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>to_map(<a href="#t:t/0">Astarte.Flow.Message.t</a>()) :: %{required(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) =&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+
+<p>Converts a Message struct to a serialization friendly map, so it can be used with a JSON serializer.</p><h2 id="to_map/1-examples" class="section-heading">
+  <a href="#to_map/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="8798655054-1">%</span><span class="nc" data-group-id="8798655054-1">Message</span><span class="p" data-group-id="8798655054-1">{</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">data</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;meaning-of-life&quot;</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">metadata</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8798655054-2">%{</span><span class="p" data-group-id="8798655054-2">}</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">timestamp</span><span class="p">:</span><span class="w"> </span><span class="mi">1551884045074181</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:integer</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="8798655054-1">}</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Message</span><span class="o">.</span><span class="n">to_map</span><span class="p" data-group-id="8798655054-3">(</span><span class="p" data-group-id="8798655054-3">)</span><span class="w">
+</span><span class="p" data-group-id="8798655054-4">%{</span><span class="w">
+  </span><span class="s">&quot;schema&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;astarte_flow/message/v0.1&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;data&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;key&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;meaning-of-life&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;metadata&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="8798655054-5">%{</span><span class="p" data-group-id="8798655054-5">}</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;timestamp&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1551884045074</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;timestamp_us&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">181</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;type&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="w">
+</span><span class="p" data-group-id="8798655054-4">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="8798655054-6">%</span><span class="nc" data-group-id="8798655054-6">Message</span><span class="p" data-group-id="8798655054-6">{</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">data</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8798655054-7">&lt;&lt;</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="8798655054-7">&gt;&gt;</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;binaries_stream&quot;</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">metadata</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8798655054-8">%{</span><span class="p" data-group-id="8798655054-8">}</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">timestamp</span><span class="p">:</span><span class="w"> </span><span class="mi">1551884045074181</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="ss">:binary</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">subtype</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;application/octet-stream&quot;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="8798655054-6">}</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Message</span><span class="o">.</span><span class="n">to_map</span><span class="p" data-group-id="8798655054-9">(</span><span class="p" data-group-id="8798655054-9">)</span><span class="w">
+</span><span class="p" data-group-id="8798655054-10">%{</span><span class="w">
+  </span><span class="s">&quot;schema&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;astarte_flow/message/v0.1&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;data&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;AAECAA==&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;key&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;binaries_stream&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;metadata&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="8798655054-11">%{</span><span class="p" data-group-id="8798655054-11">}</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;timestamp&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1551884045074</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;timestamp_us&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">181</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;type&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;binary&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;subtype&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;application/octet-stream&quot;</span><span class="w">
+</span><span class="p" data-group-id="8798655054-10">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="8798655054-12">%</span><span class="nc" data-group-id="8798655054-12">Message</span><span class="p" data-group-id="8798655054-12">{</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">data</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8798655054-13">%{</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="s">&quot;b&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;Ciao</span><span class="se">\n</span><span class="s">&quot;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="p" data-group-id="8798655054-13">}</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;binaries_stream&quot;</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">metadata</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8798655054-14">%{</span><span class="p" data-group-id="8798655054-14">}</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">timestamp</span><span class="p">:</span><span class="w"> </span><span class="mi">1551884045074181</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8798655054-15">%{</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">:real</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="s">&quot;b&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">:binary</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="p" data-group-id="8798655054-15">}</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="ss">subtype</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8798655054-16">%{</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">    </span><span class="s">&quot;b&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;text/plain&quot;</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="p" data-group-id="8798655054-16">}</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="8798655054-12">}</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Message</span><span class="o">.</span><span class="n">to_map</span><span class="p" data-group-id="8798655054-17">(</span><span class="p" data-group-id="8798655054-17">)</span><span class="w">
+</span><span class="p" data-group-id="8798655054-18">%{</span><span class="w">
+  </span><span class="s">&quot;schema&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;astarte_flow/message/v0.1&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;data&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="8798655054-19">%{</span><span class="w">
+    </span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s">&quot;b&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;Q2lhbwo=&quot;</span><span class="w">
+  </span><span class="p" data-group-id="8798655054-19">}</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;key&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;binaries_stream&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;metadata&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="8798655054-20">%{</span><span class="p" data-group-id="8798655054-20">}</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;timestamp&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">1551884045074</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;timestamp_us&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="mi">181</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;type&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="8798655054-21">%{</span><span class="w">
+    </span><span class="s">&quot;a&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;real&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s">&quot;b&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;binary&quot;</span><span class="w">
+  </span><span class="p" data-group-id="8798655054-21">}</span><span class="p">,</span><span class="w">
+  </span><span class="s">&quot;subtype&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="8798655054-22">%{</span><span class="w">
+    </span><span class="s">&quot;b&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;text/plain&quot;</span><span class="w">
+  </span><span class="p" data-group-id="8798655054-22">}</span><span class="w">
+</span><span class="p" data-group-id="8798655054-18">}</span></code></pre>  </section>
+</section>
+<section class="detail" id="unwrap_data/2">
+  <div class="detail-header">
+    <a href="#unwrap_data/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">unwrap_data(wrapped_data, type_map)</h1>
+      </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>unwrap_data(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), :integer) :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()} | {:error, :invalid_data}</pre>
+          <pre>unwrap_data(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>(), :real) :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()} | {:error, :invalid_data}</pre>
+          <pre>unwrap_data(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(), :boolean) :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()} | {:error, :invalid_data}</pre>
+          <pre>unwrap_data(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), :datetime) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>()} | {:error, :invalid_data}</pre>
+          <pre>unwrap_data(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), :binary) :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()} | {:error, :invalid_data}</pre>
+          <pre>unwrap_data(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), :string) :: {:ok, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()} | {:error, :invalid_data}</pre>
+          <pre>unwrap_data(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>(), {:array, <a href="#t:basic_data_type/0">basic_data_type</a>()}) ::
+  {:ok, [<a href="#t:basic_data_type/0">basic_data_type</a>()]} | {:error, :invalid_data}</pre>
+          <pre>unwrap_data(%{optional(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) =&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}, :map) ::
+  {:ok, <a href="#t:data/0">data</a>()} | {:error, :invalid_data}</pre>
+      </div>
+
+<p>Converts a &quot;wrapped&quot; value to a value that can be used as a Message data.</p><h2 id="unwrap_data/2-examples" class="section-heading">
+  <a href="#unwrap_data/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Message</span><span class="o">.</span><span class="n">unwrap_data</span><span class="p" data-group-id="4202327814-1">(</span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="ss">:integer</span><span class="p" data-group-id="4202327814-1">)</span><span class="w">
+</span><span class="p" data-group-id="4202327814-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="4202327814-2">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Message</span><span class="o">.</span><span class="n">unwrap_data</span><span class="p" data-group-id="4202327814-3">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="ss">:real</span><span class="p" data-group-id="4202327814-3">)</span><span class="w">
+</span><span class="p" data-group-id="4202327814-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p" data-group-id="4202327814-4">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Message</span><span class="o">.</span><span class="n">unwrap_data</span><span class="p" data-group-id="4202327814-5">(</span><span class="no">true</span><span class="p">,</span><span class="w"> </span><span class="ss">:boolean</span><span class="p" data-group-id="4202327814-5">)</span><span class="w">
+</span><span class="p" data-group-id="4202327814-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="4202327814-6">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Message</span><span class="o">.</span><span class="n">unwrap_data</span><span class="p" data-group-id="4202327814-7">(</span><span class="s">&quot;dGVzdA==&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">:binary</span><span class="p" data-group-id="4202327814-7">)</span><span class="w">
+</span><span class="p" data-group-id="4202327814-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;test&quot;</span><span class="p" data-group-id="4202327814-8">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Message</span><span class="o">.</span><span class="n">unwrap_data</span><span class="p" data-group-id="4202327814-9">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p" data-group-id="4202327814-9">)</span><span class="w">
+</span><span class="p" data-group-id="4202327814-10">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello World&quot;</span><span class="p" data-group-id="4202327814-10">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Message</span><span class="o">.</span><span class="n">unwrap_data</span><span class="p" data-group-id="4202327814-11">(</span><span class="p" data-group-id="4202327814-12">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="4202327814-12">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4202327814-13">{</span><span class="ss">:array</span><span class="p">,</span><span class="w"> </span><span class="ss">:integer</span><span class="p" data-group-id="4202327814-13">}</span><span class="p" data-group-id="4202327814-11">)</span><span class="w">
+</span><span class="p" data-group-id="4202327814-14">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4202327814-15">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="4202327814-15">]</span><span class="p" data-group-id="4202327814-14">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Message</span><span class="o">.</span><span class="n">unwrap_data</span><span class="p" data-group-id="4202327814-16">(</span><span class="p" data-group-id="4202327814-17">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2.5</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="4202327814-17">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4202327814-18">{</span><span class="ss">:array</span><span class="p">,</span><span class="w"> </span><span class="ss">:integer</span><span class="p" data-group-id="4202327814-18">}</span><span class="p" data-group-id="4202327814-16">)</span><span class="w">
+</span><span class="p" data-group-id="4202327814-19">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="ss">:invalid_data</span><span class="p" data-group-id="4202327814-19">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="4202327814-20">%{</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="s">&quot;key1&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;AAECAQA=&quot;</span><span class="p">,</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="w">  </span><span class="s">&quot;key2&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="4202327814-21">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="4202327814-21">]</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="p" data-group-id="4202327814-20">}</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Message</span><span class="o">.</span><span class="n">unwrap_data</span><span class="p" data-group-id="4202327814-22">(</span><span class="p" data-group-id="4202327814-23">%{</span><span class="s">&quot;key1&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">:binary</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;key2&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="4202327814-24">{</span><span class="ss">:array</span><span class="p">,</span><span class="w"> </span><span class="ss">:real</span><span class="p" data-group-id="4202327814-24">}</span><span class="p" data-group-id="4202327814-23">}</span><span class="p" data-group-id="4202327814-22">)</span><span class="w">
+</span><span class="p" data-group-id="4202327814-25">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w">
+  </span><span class="p" data-group-id="4202327814-26">%{</span><span class="w">
+    </span><span class="s">&quot;key1&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="4202327814-27">&lt;&lt;</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="4202327814-27">&gt;&gt;</span><span class="p">,</span><span class="w">
+    </span><span class="s">&quot;key2&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="4202327814-28">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="4202327814-28">]</span><span class="w">
+  </span><span class="p" data-group-id="4202327814-26">}</span><span class="w">
+</span><span class="p" data-group-id="4202327814-25">}</span></code></pre>  </section>
+</section>
+<section class="detail" id="wrap_data/2">
+  <div class="detail-header">
+    <a href="#wrap_data/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">wrap_data(data, types_map)</h1>
+      </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>wrap_data(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), :integer) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()</pre>
+          <pre>wrap_data(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>(), :real) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>()</pre>
+          <pre>wrap_data(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>(), :boolean) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()</pre>
+          <pre>wrap_data(<a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>(), :datetime) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+          <pre>wrap_data(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), :binary) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+          <pre>wrap_data(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), :string) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+          <pre>wrap_data([<a href="#t:basic_data/0">basic_data</a>()], {:array, <a href="#t:basic_data_type/0">basic_data_type</a>()}) :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>()</pre>
+          <pre>wrap_data(
+  %{optional(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) =&gt; {<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="#t:data_with_array/0">data_with_array</a>()}},
+  :map
+) :: %{optional(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) =&gt; %{optional(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) =&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}}</pre>
+      </div>
+
+<p>Converts a value to a &quot;wrapped&quot; value that can be easily serialized.</p><h2 id="wrap_data/2-examples" class="section-heading">
+  <a href="#wrap_data/2-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="nc">Message</span><span class="o">.</span><span class="n">wrap_data</span><span class="p" data-group-id="7548829795-1">(</span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="ss">:integer</span><span class="p" data-group-id="7548829795-1">)</span><span class="w">
+</span><span class="mi">42</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Message</span><span class="o">.</span><span class="n">wrap_data</span><span class="p" data-group-id="7548829795-2">(</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="ss">:real</span><span class="p" data-group-id="7548829795-2">)</span><span class="w">
+</span><span class="mf">0.5</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Message</span><span class="o">.</span><span class="n">wrap_data</span><span class="p" data-group-id="7548829795-3">(</span><span class="no">false</span><span class="p">,</span><span class="w"> </span><span class="ss">:boolean</span><span class="p" data-group-id="7548829795-3">)</span><span class="w">
+</span><span class="no">false</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Message</span><span class="o">.</span><span class="n">wrap_data</span><span class="p" data-group-id="7548829795-4">(</span><span class="p" data-group-id="7548829795-5">&lt;&lt;</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="7548829795-5">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="ss">:binary</span><span class="p" data-group-id="7548829795-4">)</span><span class="w">
+</span><span class="s">&quot;AAECAw==&quot;</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Message</span><span class="o">.</span><span class="n">wrap_data</span><span class="p" data-group-id="7548829795-6">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">:string</span><span class="p" data-group-id="7548829795-6">)</span><span class="w">
+</span><span class="s">&quot;Hello World&quot;</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Message</span><span class="o">.</span><span class="n">wrap_data</span><span class="p" data-group-id="7548829795-7">(</span><span class="p" data-group-id="7548829795-8">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="7548829795-8">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7548829795-9">{</span><span class="ss">:array</span><span class="p">,</span><span class="w"> </span><span class="ss">:integer</span><span class="p" data-group-id="7548829795-9">}</span><span class="p" data-group-id="7548829795-7">)</span><span class="w">
+</span><span class="p" data-group-id="7548829795-10">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="7548829795-10">]</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="7548829795-11">%{</span><span class="s">&quot;my_key&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="7548829795-12">&lt;&lt;</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="7548829795-12">&gt;&gt;</span><span class="p" data-group-id="7548829795-11">}</span><span class="w">
+</span><span class="gp unselectable">...&gt; </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Message</span><span class="o">.</span><span class="n">wrap_data</span><span class="p" data-group-id="7548829795-13">(</span><span class="p" data-group-id="7548829795-14">%{</span><span class="s">&quot;my_key&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ss">:binary</span><span class="p" data-group-id="7548829795-14">}</span><span class="p" data-group-id="7548829795-13">)</span><span class="w">
+</span><span class="p" data-group-id="7548829795-15">%{</span><span class="s">&quot;my_key&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s">&quot;AAE=&quot;</span><span class="p" data-group-id="7548829795-15">}</span></code></pre>  </section>
+</section>
+          </div>
+        </section>
+          <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>
+

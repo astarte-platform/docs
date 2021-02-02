@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="astarte_flow v0.1.0">
+    <title>Defining a Pipeline — astarte_flow v0.1.0</title>
+    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
+    <script src="dist/sidebar_items-61b46d7af7.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="0001-overview.html" class="sidebar-projectName">
+astarte_flow      </a>
+      <strong class="sidebar-projectVersion">
+        v0.1.0
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Guides</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Defining a Pipeline</h1><p>Astarte Flow has its own DSL for pipeline definition.</p><h1>Pipe Operator</h1><p>The core construct behind Astarte Flow pipelines is the pipe operator <code class="inline">|</code> which connects two
+blocks.</p><p>In the following example messages flowing out from block1 (the source) will be processed from
+block2 and they will be processes from block3 (the sink):</p><pre><code class="nohighlight makeup elixir"><span class="w">    </span><span class="n">block1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">block2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">block3</span></code></pre><p>New lines are allowed (and suggested) for readabilty reasons.</p><h1>With Operator</h1><p>Most of the times blocks are not usable alone without any kind of configuration.</p><p>Astarte Flow DSL defines a <code class="inline">.</code> operator that can be read as &quot;with&quot;. Several <code class="inline">.</code> can be chained
+together.</p><p>Syntax for <code class="inline">.</code> operator is <code class="inline">block.property1(value1).property2(value2)</code>.</p><p>The following example can be read as: &quot;Pipe messages from <code class="inline">astarte_devices_source</code> block with
+<code class="inline">realm</code> <code class="inline">&quot;test&quot;</code> to <code class="inline">filter</code> block with script <code class="inline">&quot;return message.value &gt; 0&quot;</code>.</p><pre><code class="nohighlight makeup elixir"><span class="n">astarte_devices_source</span><span class="w">
+  </span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="1738108307-1">(</span><span class="s">&quot;test&quot;</span><span class="p" data-group-id="1738108307-1">)</span><span class="w">
+</span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w">
+  </span><span class="o">.</span><span class="n">script</span><span class="p" data-group-id="1738108307-2">(</span><span class="s">&quot;return message.value &gt; 0&quot;</span><span class="p" data-group-id="1738108307-2">)</span></code></pre><h1>Literals</h1><p>In Astarte Flow DSL literals are meant to be used with <code class="inline">.</code> operator.</p><h2 id="integers" class="section-heading">
+  <a href="#integers" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Integers
+</h2>
+<p>Base 10 integers are allowed, such as <code class="inline">-1</code>, <code class="inline">0</code> and <code class="inline">89</code>.</p><h2 id="booleans" class="section-heading">
+  <a href="#booleans" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Booleans
+</h2>
+<p><code class="inline">true</code> and <code class="inline">false</code> boolean values are allowed.</p><h2 id="strings" class="section-heading">
+  <a href="#strings" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Strings
+</h2>
+<p>Strings are marked with <code class="inline">&quot;&quot;</code>, such as <code class="inline">&quot;a string&quot;</code>.
+In some situations it might be convenient using multi-line strings such as:</p><pre><code class="nohighlight makeup elixir"><span class="s">&quot;&quot;&quot;
+A
+&quot;multi-line&quot;
+string
+&quot;&quot;&quot;</span></code></pre><p>Multi-line strings are convenient for Lua scripting.</p><h2 id="objects" class="section-heading">
+  <a href="#objects" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Objects
+</h2>
+<p>JSON like objects are allowed, however there is a major difference: <code class="inline">&quot;&quot;</code> around keys are not
+required (and should not be used).</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="1638721262-1">{</span><span class="w">
+  </span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="ss">c</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span><span class="p" data-group-id="1638721262-1">}</span></code></pre><h2 id="jsonpath" class="section-heading">
+  <a href="#jsonpath" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  JSONPath
+</h2>
+<p><a href="https://goessner.net/articles/JsonPath/">JSONPath</a> expressions such as <code class="inline">${ $.config.something }</code> play
+a special role in Astarte Flow DSL, since they allow queries to any configuration object.</p><p>Following example uses a JSON Path expressions instead of harcoding the realm name.</p><pre><code class="nohighlight makeup elixir"><span class="n">astarte_devices_source</span><span class="w">
+    </span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="3555403656-1">(</span><span class="err">$</span><span class="p" data-group-id="3555403656-2">{</span><span class="err">$</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="3555403656-2">}</span><span class="p" data-group-id="3555403656-1">)</span></code></pre><h1>Pipeline Example</h1><pre><code class="nohighlight makeup elixir"><span class="n">astarte_devices_source</span><span class="w">
+    </span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="9064304463-1">(</span><span class="err">$</span><span class="p" data-group-id="9064304463-2">{</span><span class="err">$</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="9064304463-2">}</span><span class="p" data-group-id="9064304463-1">)</span><span class="w">
+</span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w">
+    </span><span class="o">.</span><span class="n">script</span><span class="p" data-group-id="9064304463-3">(</span><span class="s">&quot;&quot;&quot;
+            return string.find(message.key, &quot;org.astarte%-platform.genericsensors.Values&quot;) ~= nil;
+            &quot;&quot;&quot;</span><span class="p" data-group-id="9064304463-3">)</span><span class="w">
+</span><span class="o">|</span><span class="w"> </span><span class="n">lua_map</span><span class="w">
+    </span><span class="o">.</span><span class="n">script</span><span class="p" data-group-id="9064304463-4">(</span><span class="s">&quot;&quot;&quot;
+            tokens = string_utils.split(message.key, &quot;/&quot;);
+            sensor_id = tokens[4];
+            new_device_id = uuid.get_v5_base64(&quot;b25aa4c6-a55b-4231-a080-a5af629d05a3&quot;, sensor_id);
+            new_message = {};
+            new_message.key = config.realm .. &quot;/&quot; .. new_device_id .. &quot;/org.astarte-platform.ComputedValues/value&quot;;
+            new_message.data = (message.data - 32) / 1.8;
+            return new_message;
+            &quot;&quot;&quot;</span><span class="p" data-group-id="9064304463-4">)</span><span class="w">
+    </span><span class="o">.</span><span class="n">config</span><span class="p" data-group-id="9064304463-5">(</span><span class="err">$</span><span class="p" data-group-id="9064304463-6">{</span><span class="n">config</span><span class="p" data-group-id="9064304463-6">}</span><span class="p" data-group-id="9064304463-5">)</span><span class="w">
+</span><span class="o">|</span><span class="w"> </span><span class="n">virtual_device_pool</span><span class="w">
+    </span><span class="o">.</span><span class="n">pairing_url</span><span class="p" data-group-id="9064304463-7">(</span><span class="s">&quot;https://example.com/pairing/v1&quot;</span><span class="p" data-group-id="9064304463-7">)</span><span class="w">
+    </span><span class="o">.</span><span class="n">realms</span><span class="p" data-group-id="9064304463-8">(</span><span class="p" data-group-id="9064304463-9">[</span><span class="p" data-group-id="9064304463-10">{</span><span class="ss">realm</span><span class="p">:</span><span class="w"> </span><span class="err">$</span><span class="p" data-group-id="9064304463-11">{</span><span class="err">$</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="9064304463-11">}</span><span class="p">,</span><span class="w"> </span><span class="ss">jwt</span><span class="p">:</span><span class="w"> </span><span class="err">$</span><span class="p" data-group-id="9064304463-12">{</span><span class="err">$</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">pairing_jwt</span><span class="p" data-group-id="9064304463-12">}</span><span class="p" data-group-id="9064304463-10">}</span><span class="p" data-group-id="9064304463-9">]</span><span class="p" data-group-id="9064304463-8">)</span><span class="w">
+    </span><span class="o">.</span><span class="n">interfaces</span><span class="p" data-group-id="9064304463-13">(</span><span class="err">$</span><span class="p" data-group-id="9064304463-14">{</span><span class="err">$</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">interfaces</span><span class="p" data-group-id="9064304463-14">}</span><span class="p" data-group-id="9064304463-13">)</span></code></pre>      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>
+

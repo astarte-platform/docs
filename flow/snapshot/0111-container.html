@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="astarte_flow v0.1.0">
+    <title>container — astarte_flow v0.1.0</title>
+    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
+    <script src="dist/sidebar_items-61b46d7af7.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="0001-overview.html" class="sidebar-projectName">
+astarte_flow      </a>
+      <strong class="sidebar-projectVersion">
+        v0.1.0
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Guides</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>container</h1><p><strong>This block API will likely change in future versions.</strong></p><p>This is a special block which allows to offload computation to a
+<a href="https://www.docker.com/resources/what-container">Docker container</a>.</p><p>Messages are sent and received to/from the container via
+<a href="https://www.rabbitmq.com/tutorials/amqp-concepts.html">AMQP</a>.</p><p>The block will manage the creation of the Container in a <a href="https://kubernetes.io/">Kubernetes</a>
+cluster using the
+<a href="https://github.com/astarte-platform/astarte-kubernetes-operator">Astarte Kubernetes Operator</a>.</p><p>Containers allow implementing and deploying algorithms with a language-agnostic approach. However a
+<a href="https://github.com/astarte-platform/astarte_flow_sdk_python">Python SDK</a> is available as a
+replacement to AMQP connection and JSON SerDes code.</p><p>Most of the times containers can be avoided and simple messages transformation and filtering can
+be achieved using <a href="https://www.lua.org/manual/5.2/">Lua 5.2</a> scripting blocks.</p><h1>Properties</h1><ul><li><code class="inline">image</code>: Docker container image (required, string)</li><li><code class="inline">type</code>: Container type, either <code class="inline">&quot;producer&quot;</code>, <code class="inline">&quot;consumer&quot;</code> or <code class="inline">&quot;producer_consumer&quot;</code> (required)</li></ul><h2 id="image" class="section-heading">
+  <a href="#image" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">image</code>
+</h2>
+<p>Docker container image.</p><h2 id="type" class="section-heading">
+  <a href="#type" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">type</code>
+</h2>
+<p><strong>This block property is going to be removed in favor of implicit configuration.</strong></p><p>According to container type a container is used as an AMQP producer, cosumer or as a middle
+processing block.</p><h1>Accepted Input Messages</h1><p>Input messages are consumed only from <code class="inline">consumer</code> and <code class="inline">producer_consumer</code> containers.</p><p>For those types of containers accepted input messages type and format depends on their
+implementation.</p><h1>Output message</h1><p>An output message is produced only from <code class="inline">producer</code> and <code class="inline">producer_consumer</code> containers.</p><p>For those types of containers the output message format depends on their implementation.</p><h1>Examples</h1><p>The following example uses a container (pulled from <code class="inline">&quot;example/test&quot;</code>) and declares it as producer
+and consumer, wich consumes messages produced by any_producer_block and feeds into
+any_consumer_block:</p><pre><code class="nohighlight makeup elixir"><span class="n">any_producer_block</span><span class="w">
+</span><span class="o">|</span><span class="w"> </span><span class="n">container</span><span class="w">
+  </span><span class="o">.</span><span class="n">image</span><span class="p" data-group-id="7523449875-1">(</span><span class="s">&quot;example/test&quot;</span><span class="p" data-group-id="7523449875-1">)</span><span class="w">
+  </span><span class="o">.</span><span class="n">type</span><span class="p" data-group-id="7523449875-2">(</span><span class="s">&quot;producer_consumer&quot;</span><span class="p" data-group-id="7523449875-2">)</span><span class="w">
+</span><span class="o">|</span><span class="w"> </span><span class="n">any_consumer_block</span></code></pre>      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>
+
