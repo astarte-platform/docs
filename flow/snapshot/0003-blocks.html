@@ -72,10 +72,11 @@ human readable (pretty) or not).</p><h2 id="validation" class="section-heading">
   Validation
 </h2>
 <p>Blocks configuration is validated against its <a href="https://json-schema.org/">JSON Schema</a>, therefore a
-new block implementation requires writing a JSON Schema for it.</p><h1>Implementing a Block</h1><p>Blocks can be implemented using different technologies:</p><ul><li>As a Docker container using any language suitable for Docker (e.g. Python), which is the best
-option for implementing custom complex algorithms</li><li>As a chain of existing blocks (a pipeline), that is the go-to solution when a block can be
-implemented by just chaining blocks together</li><li>As a Lua 5.2 script, that is the idea solution for small adjustments and simple data
-transformations, such as applying a conversion formula</li><li>As an Elixir module, that is how built-in blocks are implemented</li></ul>      <footer class="footer">
+new block implementation requires writing a JSON Schema for it.</p><h1>Implementing a Block</h1><p>Blocks can be implemented using different technologies:</p><ul><li>As a Docker container using any language suitable for <a href="https://docs.docker.com/">Docker</a> (e.g.
+<a href="https://github.com/astarte-platform/astarte_flow_sdk_python">Python</a>), which is the best option
+for implementing custom complex algorithms</li><li>As a chain of existing blocks (a pipeline), that is the go-to solution when a block can be
+implemented by just chaining blocks together</li><li>As a <a href="(https://www.lua.org/manual/5.2/)">Lua 5.2</a> script, that is the idea solution for small
+adjustments and simple data transformations, such as applying a conversion formula</li><li>As an <a href="https://elixir-lang.org/">Elixir</a> module, that is how built-in blocks are implemented</li></ul>      <footer class="footer">
         <p>
           <span class="line">
             Built using

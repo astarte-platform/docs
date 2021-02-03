@@ -67,7 +67,7 @@ astarte_flow      </a>
   <a href="#message-structure" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Message Structure
 </h2>
-<ul><li><code class="inline">:key</code>: a unicode string that identifies the stream the message belongs to.</li><li><code class="inline">:metadata</code>: additional message metadata as a map with string key and string value.</li><li><code class="inline">:type</code>: message <a href="#data-and-types">data type</a> (e.g. integer, real, boolean, etc...).</li><li><code class="inline">:subtype</code>: a string that represents the subtype, that is a mimetype for binaries.</li><li><code class="inline">:timestamp</code>: timestamp in microseconds from <a href="https://en.wikipedia.org/wiki/Unix_time">Epoch</a> UTC.</li><li><code class="inline">:data</code>: the message payload.</li></ul><h2 id="data-and-types" class="section-heading">
+<ul><li><code class="inline">:key</code>: a unicode string that identifies the <a href="0006-streams.html">stream</a> the message belongs to.</li><li><code class="inline">:metadata</code>: additional message metadata as a map with string key and string value.</li><li><code class="inline">:type</code>: message <a href="#data-and-types">data type</a> (e.g. integer, real, boolean, etc...).</li><li><code class="inline">:subtype</code>: a string that represents the subtype, that is a mimetype for binaries.</li><li><code class="inline">:timestamp</code>: timestamp in microseconds from <a href="https://en.wikipedia.org/wiki/Unix_time">Epoch</a> UTC.</li><li><code class="inline">:data</code>: the message payload.</li></ul><h2 id="data-and-types" class="section-heading">
   <a href="#data-and-types" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Data and Types
 </h2>
@@ -76,11 +76,11 @@ or string array (e.g. <code class="inline">[&quot;hello&quot;, &quot;world]</cod
 However array of arrays are not allowed, therefore <code class="inline">[[1, 2], [3, 4]]</code> is invalid. Heterogeneous
 arrays are not supported as well, hence <code class="inline">[1, &quot;hello&quot;, true]</code> is invalid.</p><p>Map type, with any number of keys, is supported. Keys can be any arbitrary string, while
 any base type or array type is supported as values (hence nested maps are not allowed, e.g.
-<code class="inline">{&quot;a&quot;: {&quot;b&quot;: true}}</code> is invalid). Astarte Flow typing system disallow any kind of recursive type.</p><p>The following is a valid map:</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="1929329569-1">{</span><span class="w">
+<code class="inline">{&quot;a&quot;: {&quot;b&quot;: true}}</code> is invalid). Astarte Flow typing system disallow any kind of recursive type.</p><p>The following is a valid map:</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="7877539195-1">{</span><span class="w">
   </span><span class="ss">&quot;one&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="ss">&quot;sky is blue&quot;</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
   </span><span class="ss">&quot;green&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;緑&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="ss">&quot;coords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1929329569-2">[</span><span class="mf">1.1</span><span class="p">,</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w"> </span><span class="mf">1.3</span><span class="p" data-group-id="1929329569-2">]</span><span class="p" data-group-id="1929329569-1">}</span><span class="w">
+  </span><span class="ss">&quot;coords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7877539195-2">[</span><span class="mf">1.1</span><span class="p">,</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w"> </span><span class="mf">1.3</span><span class="p" data-group-id="7877539195-2">]</span><span class="p" data-group-id="7877539195-1">}</span><span class="w">
 </span><span class="err">}</span></code></pre><h2 id="key" class="section-heading">
   <a href="#key" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Key
