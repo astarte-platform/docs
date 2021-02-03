@@ -8,7 +8,7 @@
     <meta name="project" content="astarte_flow v0.1.0">
     <title>json_path_map — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-df208de5dc.js"></script>
+    <script src="dist/sidebar_items-727aa1f195.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
   </head>
@@ -69,22 +69,22 @@ JSONPath to extract data from the incoming message.</p><h1>Properties</h1><ul><l
   <code class="inline">template</code>
 </h2>
 <p>output message template. It must be a valid JSON that makes use of JSONPath.</p><h1>Output message</h1><p>If the template rendering succeeds, <code class="inline">json_path_map</code> produces a message as described by <code class="inline">template</code>.</p><h1>Examples</h1><p>Extracts data from JSON using JSONPath expressions, and it populates a map having keys <code class="inline">a</code>, <code class="inline">b</code>,
-<code class="inline">c</code>:</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="2980375222-1">[</span><span class="n">...</span><span class="p" data-group-id="2980375222-1">]</span><span class="w">
+<code class="inline">c</code>:</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="6597021885-1">[</span><span class="n">...</span><span class="p" data-group-id="6597021885-1">]</span><span class="w">
 </span><span class="o">|</span><span class="w"> </span><span class="n">json_path_template</span><span class="w">
-  </span><span class="o">.</span><span class="n">template</span><span class="p" data-group-id="2980375222-2">(</span><span class="s">&quot;&quot;</span><span class="s">&quot;
+  </span><span class="o">.</span><span class="n">template</span><span class="p" data-group-id="6597021885-2">(</span><span class="s">&quot;&quot;</span><span class="s">&quot;
     {
       &quot;</span><span class="n">data</span><span class="s">&quot;: {
-        &quot;</span><span class="n">a</span><span class="s">&quot;: &quot;</span><span class="p" data-group-id="2980375222-3">{</span><span class="p" data-group-id="2980375222-4">{</span><span class="err">$</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p" data-group-id="2980375222-5">[</span><span class="mi">0</span><span class="p" data-group-id="2980375222-5">]</span><span class="o">.</span><span class="n">values</span><span class="p" data-group-id="2980375222-6">[</span><span class="sc">?(</span><span class="err">@</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="err">\</span><span class="s">&quot;a</span><span class="se">\&quot;</span><span class="s">)].value}}&quot;</span><span class="p">,</span><span class="w">
+        &quot;</span><span class="n">a</span><span class="s">&quot;: &quot;</span><span class="p" data-group-id="6597021885-3">{</span><span class="p" data-group-id="6597021885-4">{</span><span class="err">$</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p" data-group-id="6597021885-5">[</span><span class="mi">0</span><span class="p" data-group-id="6597021885-5">]</span><span class="o">.</span><span class="n">values</span><span class="p" data-group-id="6597021885-6">[</span><span class="sc">?(</span><span class="err">@</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="err">\</span><span class="s">&quot;a</span><span class="se">\&quot;</span><span class="s">)].value}}&quot;</span><span class="p">,</span><span class="w">
         </span><span class="ss">&quot;b&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{$.data.data[0].values[?(@.name == </span><span class="se">\&quot;</span><span class="s">b</span><span class="se">\&quot;</span><span class="s">)].value}}&quot;</span><span class="p">,</span><span class="w">
         </span><span class="ss">&quot;c&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{$.data.data[0].values[?(@.name == </span><span class="se">\&quot;</span><span class="s">c</span><span class="se">\&quot;</span><span class="s">)].value}}&quot;</span><span class="w">
       </span><span class="p">}</span><span class="p">,</span><span class="w">
-      </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2980375222-7">{</span><span class="w">
+      </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6597021885-7">{</span><span class="w">
         </span><span class="ss">&quot;a&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;real&quot;</span><span class="p">,</span><span class="w">
         </span><span class="ss">&quot;b&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;real&quot;</span><span class="p">,</span><span class="w">
         </span><span class="ss">&quot;c&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;real&quot;</span><span class="w">
-      </span><span class="p" data-group-id="2980375222-7">}</span><span class="w">
+      </span><span class="p" data-group-id="6597021885-7">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
-</span><span class="p" data-group-id="2980375222-8">[</span><span class="n">...</span><span class="p" data-group-id="2980375222-8">]</span></code></pre>      <footer class="footer">
+</span><span class="p" data-group-id="6597021885-8">[</span><span class="n">...</span><span class="p" data-group-id="6597021885-8">]</span></code></pre>      <footer class="footer">
         <p>
           <span class="line">
             Built using

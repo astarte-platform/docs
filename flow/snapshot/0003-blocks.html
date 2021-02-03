@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.23.0">
     <meta name="project" content="astarte_flow v0.1.0">
-    <title>Astarte.Flow.Auth.AstartePublicKeyProvider — astarte_flow v0.1.0</title>
+    <title>Blocks — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
     <script src="dist/sidebar_items-727aa1f195.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
   </head>
-  <body data-type="modules">
+  <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
-    <div class="main">
+<div class="main">
 
 <button class="sidebar-button sidebar-toggle">
   <span class="icon-menu" title="Collapse/expand sidebar"></span>
@@ -63,14 +63,19 @@ astarte_flow      </a>
     <div id="content" class="content-inner">
 
 
-      <h1>
-        Astarte.Flow.Auth.AstartePublicKeyProvider <small class="app-vsn">(astarte_flow v0.1.0)</small>
-      </h1>
-
-
-
-
-          <footer class="footer">
+<h1>Blocks</h1><p>Astarte Flow base computation unit is a block and their purpose is consuming, producing and
+processing messages.</p><p>Blocks are used as pipelines building blocks by chaining them together, in order to define a
+logical computation topology.</p><p>There are 3 kinds of blocks that play different roles in a pipeline:</p><ul><li>Producer (Source): they produce messages from events coming from the outside world</li><li>Consumer (Sink): they output data from Astarte Flow to the outside world</li><li>Producer &amp; Consumer (Transform / Process): they transform messages</li></ul><h1>Blocks Configuration</h1><p>Blocks behavior depends on their configuration, that can be changed by setting some properties (
+e.g. <code class="inline">to_json</code> block has a <code class="inline">pretty</code> boolean property which allows deciding wether JSON output is
+human readable (pretty) or not).</p><h2 id="validation" class="section-heading">
+  <a href="#validation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Validation
+</h2>
+<p>Blocks configuration is validated against its <a href="https://json-schema.org/">JSON Schema</a>, therefore a
+new block implementation requires writing a JSON Schema for it.</p><h1>Implementing a Block</h1><p>Blocks can be implemented using different technologies:</p><ul><li>As a Docker container using any language suitable for Docker (e.g. Python), which is the best
+option for implementing custom complex algorithms</li><li>As a chain of existing blocks (a pipeline), that is the go-to solution when a block can be
+implemented by just chaining blocks together</li><li>As a Lua 5.2 script, that is the idea solution for small adjustments and simple data
+transformations, such as applying a conversion formula</li><li>As an Elixir module, that is how built-in blocks are implemented</li></ul>      <footer class="footer">
         <p>
           <span class="line">
             Built using

@@ -8,7 +8,7 @@
     <meta name="project" content="astarte_flow v0.1.0">
     <title>Astarte.Flow.Blocks.HttpSource — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-df208de5dc.js"></script>
+    <script src="dist/sidebar_items-727aa1f195.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
   </head>
@@ -125,7 +125,8 @@ when options: [option],
        {:base_url, url :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}
        | {:target_paths, target_paths :: [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), ...]}
        | {:polling_interval_ms, polling_interval_ms :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>()}
-       | {:headers, headers :: [{<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}]}</pre>
+       | {:headers, headers},
+     headers: [{<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}] | %{optional(<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) =&gt; <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}</pre>
       </div>
 
 <p>Starts the <code class="inline">HttpSource</code>.</p><h2 id="start_link/1-options" class="section-heading">
@@ -134,7 +135,7 @@ when options: [option],
 </h2>
 <ul><li><code class="inline">:base_url</code> (required) - The base URL for the GET requests. This gets prepended to the <code class="inline">target_path</code> when
 performing a request.</li><li><code class="inline">:target_paths</code> (required) - A non-empty list of target paths for GET requests.</li><li><code class="inline">:polling_interval_ms</code> - The interval between two consecutive GET requests, in milliseconds. Defaults to 1000 ms.</li><li><code class="inline">:headers</code> - A list of <code class="inline">{key, value}</code> tuples where <code class="inline">key</code> and <code class="inline">value</code> are <a href="https://hexdocs.pm/elixir/String.html"><code class="inline">String</code></a> and represent
-headers to be set in the GET request.</li><li><code class="inline">:ignore_ssl_errors</code> - If <code class="inline">true</code>, ignore SSL errors that happen while performing the request.
+headers to be set in the GET request. Headers can also be passed as a <code class="inline">String =&gt; String</code> map.</li><li><code class="inline">:ignore_ssl_errors</code> - If <code class="inline">true</code>, ignore SSL errors that happen while performing the request.
 Defaults to <code class="inline">false</code>.</li></ul>  </section>
 </section>
           </div>
