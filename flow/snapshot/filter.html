@@ -8,7 +8,7 @@
     <meta name="project" content="astarte_flow v0.1.0">
     <title>filter — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-7d1d6feee2.js"></script>
+    <script src="dist/sidebar_items-0f40eb93f7.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
   </head>
@@ -78,12 +78,12 @@ If the return value is invalid or if an error occurs, the message is also droppe
 return message.data &gt; 0;
 &quot;&quot;&quot;</code></pre><p>If the message data is greater than zero, the returned value will be <code class="inline">true</code> allowing the message
 to preceed onward.</p><p>See also <a href="https://github.com/rvirding/luerl/wiki">luerl documentation</a>.</p><h1>Examples</h1><p>The following example uses <code class="inline">filter</code> to drop any message that does not contain <code class="inline">test</code>
-as message key</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="0745585058-1">[</span><span class="n">...</span><span class="p" data-group-id="0745585058-1">]</span><span class="w">
+as message key</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="8327005755-1">[</span><span class="n">...</span><span class="p" data-group-id="8327005755-1">]</span><span class="w">
 </span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w">
-    </span><span class="o">.</span><span class="n">script</span><span class="p" data-group-id="0745585058-2">(</span><span class="s">&quot;&quot;&quot;
+    </span><span class="o">.</span><span class="n">script</span><span class="p" data-group-id="8327005755-2">(</span><span class="s">&quot;&quot;&quot;
             return string.find(message.key, &quot;test&quot;) ~= nil;
-            &quot;&quot;&quot;</span><span class="p" data-group-id="0745585058-2">)</span><span class="w">
-</span><span class="p" data-group-id="0745585058-3">[</span><span class="n">...</span><span class="p" data-group-id="0745585058-3">]</span></code></pre>      <footer class="footer">
+            &quot;&quot;&quot;</span><span class="p" data-group-id="8327005755-2">)</span><span class="w">
+</span><span class="p" data-group-id="8327005755-3">[</span><span class="n">...</span><span class="p" data-group-id="8327005755-3">]</span></code></pre>      <footer class="footer">
         <p>
           <span class="line">
             Built using
