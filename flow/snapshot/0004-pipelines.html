@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.23.0">
     <meta name="project" content="astarte_flow v0.1.0">
-    <title>Astarte.FlowWeb.Router — astarte_flow v0.1.0</title>
+    <title>Pipelines — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
     <script src="dist/sidebar_items-1183a2478f.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
   </head>
-  <body data-type="modules">
+  <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
-    <div class="main">
+<div class="main">
 
 <button class="sidebar-button sidebar-toggle">
   <span class="icon-menu" title="Collapse/expand sidebar"></span>
@@ -63,96 +63,15 @@ astarte_flow      </a>
     <div id="content" class="content-inner">
 
 
-      <h1>
-        Astarte.FlowWeb.Router <small class="app-vsn">(astarte_flow v0.1.0)</small>
-      </h1>
-
-
-
-        <section id="summary" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#summary">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-            Summary
-          </h1>
-  <div class="summary-functions summary">
-    <h2>
-      <a href="#functions">Functions</a>
-    </h2>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#api/2">api(conn, _)</a>
-  </div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#call/2">call(conn, opts)</a>
-  </div>
-    <div class="summary-synopsis"><p>Callback invoked by Plug on every request.</p></div>
-</div>
-<div class="summary-row">
-  <div class="summary-signature">
-    <a href="#init/1">init(opts)</a>
-  </div>
-    <div class="summary-synopsis"><p>Callback required by Plug that initializes the router
-for serving web requests.</p></div>
-</div>
-  </div>
-        </section>
-
-        <section id="functions" class="details-list">
-          <h1 class="section-heading">
-            <a class="hover-link" href="#functions">
-              <span class="icon-link" aria-hidden="true"></span>
-              <span class="sr-only">Link to this section</span>
-            </a>
-Functions          </h1>
-          <div class="functions-list">
-<section class="detail" id="api/2">
-  <div class="detail-header">
-    <a href="#api/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">api(conn, _)</h1>
-      </div>
-
-  <section class="docstring">
-
-  </section>
-</section>
-<section class="detail" id="call/2">
-  <div class="detail-header">
-    <a href="#call/2" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">call(conn, opts)</h1>
-      </div>
-
-  <section class="docstring">
-
-<p>Callback invoked by Plug on every request.</p>  </section>
-</section>
-<section class="detail" id="init/1">
-  <div class="detail-header">
-    <a href="#init/1" class="detail-link" title="Link to this function">
-      <span class="icon-link" aria-hidden="true"></span>
-      <span class="sr-only">Link to this function</span>
-    </a>
-    <h1 class="signature">init(opts)</h1>
-      </div>
-
-  <section class="docstring">
-
-<p>Callback required by Plug that initializes the router
-for serving web requests.</p>  </section>
-</section>
-          </div>
-        </section>
-          <footer class="footer">
+<h1>Pipelines</h1><p>A Pipeline is a blueprint (therefore a description) built as a chain of <a href="0003-blocks.html">blocks</a>.</p><p>A pipeline can be parametric, so the same description can be made generic and applied in different
+scenarios that require the same computation steps (but performed with different parameters).</p><p>Parameters are provided with a JSON configuration object when a pipeline is instantiated, and they
+can be accessed using <a href="https://goessner.net/articles/JsonPath/">JSON Path</a>.</p><p>Once a pipeline has been instantiated it is called a <a href="0005-flows.html">Flow</a>, and from that moment
+it starts processing <a href="0002-flow-messages.html">messages</a>, taking up the necessary computation
+resources.</p><h1>Designing / Writing a Pipeline</h1><p>A pipeline can be designed using a visual editor (Pipeline Builder, which is part of
+<a href="https://github.com/astarte-platform/astarte-dashboard/">Astarte Dashboard</a>) or written using
+Astarte Flow <a href="0010-defining-a-pipeline.html">Pipeline DSL</a>.</p><h1>Managing Pipelines</h1><p>A pipeline can be installed using Astarte Dashboard or using
+<a href="api/index.html#/pipelines/createPipeline">Astarte Flow REST API</a>. The latter is best-suited for
+scripts and automations.</p>      <footer class="footer">
         <p>
           <span class="line">
             Built using
