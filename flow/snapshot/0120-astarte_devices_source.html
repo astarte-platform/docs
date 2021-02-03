@@ -81,7 +81,7 @@ below)</p><h2 id="amqp_exchange" class="section-heading">
 <p>The exchange where the events are being published. This must match the exchange that was used while
 setting up the AMQP trigger, as this block will bind a queue to that exchange (possibly using the
 configured <code class="inline">amqp_routing_key</code>).</p><p>This exchange name must follow the same restrictions that are present in Astarte triggers, namely it
-must match this regular expression</p><pre><code class="nohighlight makeup elixir"><span class="o">^</span><span class="n">astarte_events_</span><span class="err">$</span><span class="n">realm_</span><span class="p" data-group-id="4960422644-1">[</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="nc">Z0</span><span class="o">-</span><span class="mi">9</span><span class="bp">_</span><span class="err">\</span><span class="o">.</span><span class="err">\</span><span class="p">:</span><span class="p" data-group-id="4960422644-1">]</span><span class="o">+</span><span class="err">$</span></code></pre><p>where <code class="inline">$realm</code> must be substituted with the provided <code class="inline">realm</code>.</p><h2 id="amqp_routing_key" class="section-heading">
+must match this regular expression</p><pre><code class="nohighlight makeup elixir"><span class="o">^</span><span class="n">astarte_events_</span><span class="err">$</span><span class="n">realm_</span><span class="p" data-group-id="1474780728-1">[</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="nc">Z0</span><span class="o">-</span><span class="mi">9</span><span class="bp">_</span><span class="err">\</span><span class="o">.</span><span class="err">\</span><span class="p">:</span><span class="p" data-group-id="1474780728-1">]</span><span class="o">+</span><span class="err">$</span></code></pre><p>where <code class="inline">$realm</code> must be substituted with the provided <code class="inline">realm</code>.</p><h2 id="amqp_routing_key" class="section-heading">
   <a href="#amqp_routing_key" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   <code class="inline">amqp_routing_key</code>
 </h2>
@@ -109,25 +109,25 @@ with <code class="inline">integer</code> type.</li><li><code class="inline">time
 supports <code class="inline">explicit_timestamp</code>, the timestamp is the one explicitly sent from the device, otherwise
 it's the reception timestamp.</li></ul><h1>Examples</h1><p>The following example uses <code class="inline">astarte_devices_source</code> block to generate messages coming from the
 <code class="inline">test</code> Realm on the <code class="inline">org.astarte-platform.genericsensors.Values</code> interface.</p><pre><code class="nohighlight makeup elixir"><span class="n">astarte_devices_source</span><span class="w">
-  </span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="3590098956-1">(</span><span class="s">&quot;test&quot;</span><span class="p" data-group-id="3590098956-1">)</span><span class="w">
-  </span><span class="o">.</span><span class="n">amqp_exchange</span><span class="p" data-group-id="3590098956-2">(</span><span class="s">&quot;astarte_events_test_1&quot;</span><span class="p" data-group-id="3590098956-2">)</span><span class="w">
-</span><span class="p" data-group-id="3590098956-3">[</span><span class="n">...</span><span class="p" data-group-id="3590098956-3">]</span></code></pre><p>To make the example work, the following trigger must be installed in Astarte in the <code class="inline">test</code> Realm:</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="6341858396-1">{</span><span class="w">
+  </span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="5453310686-1">(</span><span class="s">&quot;test&quot;</span><span class="p" data-group-id="5453310686-1">)</span><span class="w">
+  </span><span class="o">.</span><span class="n">amqp_exchange</span><span class="p" data-group-id="5453310686-2">(</span><span class="s">&quot;astarte_events_test_1&quot;</span><span class="p" data-group-id="5453310686-2">)</span><span class="w">
+</span><span class="p" data-group-id="5453310686-3">[</span><span class="n">...</span><span class="p" data-group-id="5453310686-3">]</span></code></pre><p>To make the example work, the following trigger must be installed in Astarte in the <code class="inline">test</code> Realm:</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="4365475126-1">{</span><span class="w">
   </span><span class="ss">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example_trigger&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="ss">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6341858396-2">{</span><span class="w">
+  </span><span class="ss">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4365475126-2">{</span><span class="w">
     </span><span class="ss">&quot;amqp_exchange&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;astarte_events_test_1&quot;</span><span class="p">,</span><span class="w">
     </span><span class="ss">&quot;amqp_message_expiration_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
     </span><span class="ss">&quot;amqp_message_persistent&quot;</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
-  </span><span class="p" data-group-id="6341858396-2">}</span><span class="p">,</span><span class="w">
-  </span><span class="ss">&quot;simple_triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6341858396-3">[</span><span class="w">
-    </span><span class="p" data-group-id="6341858396-4">{</span><span class="w">
+  </span><span class="p" data-group-id="4365475126-2">}</span><span class="p">,</span><span class="w">
+  </span><span class="ss">&quot;simple_triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4365475126-3">[</span><span class="w">
+    </span><span class="p" data-group-id="4365475126-4">{</span><span class="w">
       </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;data_trigger&quot;</span><span class="p">,</span><span class="w">
       </span><span class="ss">&quot;on&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;incoming_data&quot;</span><span class="p">,</span><span class="w">
       </span><span class="ss">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;org.astarte-platform.genericsensors.Values&quot;</span><span class="p">,</span><span class="w">
       </span><span class="ss">&quot;interface_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="ss">&quot;match_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/*&quot;</span><span class="w">
-    </span><span class="p" data-group-id="6341858396-4">}</span><span class="w">
-  </span><span class="p" data-group-id="6341858396-3">]</span><span class="w">
-</span><span class="p" data-group-id="6341858396-1">}</span></code></pre>      <footer class="footer">
+    </span><span class="p" data-group-id="4365475126-4">}</span><span class="w">
+  </span><span class="p" data-group-id="4365475126-3">]</span><span class="w">
+</span><span class="p" data-group-id="4365475126-1">}</span></code></pre>      <footer class="footer">
         <p>
           <span class="line">
             Built using

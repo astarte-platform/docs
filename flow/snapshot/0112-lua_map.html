@@ -82,15 +82,16 @@ hard-coding them. It can be accessed using <code class="inline">config</code>.</
 Missing message attributes are taken from the input message, therefore some fields are kept
 unchanged.</p><h1>Examples</h1><p>The following example uses <code class="inline">lua_map</code> block for Fahrenheit to Celsius degrees conversion. A key
 prefix is provided through <code class="inline">config</code> object and prepended to the string <code class="inline">&quot;/celsius&quot;</code>.
-All other existing message attributes are taken as-is from the input message.</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="8682326725-1">[</span><span class="n">...</span><span class="p" data-group-id="8682326725-1">]</span><span class="w">
+All other existing message attributes are taken as-is from the input message.</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="6311154122-1">[</span><span class="n">...</span><span class="p" data-group-id="6311154122-1">]</span><span class="w">
 </span><span class="o">|</span><span class="w"> </span><span class="n">lua_map</span><span class="w">
-  </span><span class="o">.</span><span class="n">script</span><span class="p" data-group-id="8682326725-2">(</span><span class="s">&quot;&quot;&quot;
+  </span><span class="o">.</span><span class="n">script</span><span class="p" data-group-id="6311154122-2">(</span><span class="s">&quot;&quot;&quot;
+    new_message = {};
     new_message.key = config.prefix .. &quot;/celsius&quot;;
     new_message.data = (message.data - 32) / 1.8;
     return new_message;
-  &quot;&quot;&quot;</span><span class="p" data-group-id="8682326725-2">)</span><span class="w">
-  </span><span class="o">.</span><span class="n">config</span><span class="p" data-group-id="8682326725-3">(</span><span class="err">$</span><span class="p" data-group-id="8682326725-4">{</span><span class="n">config</span><span class="p" data-group-id="8682326725-4">}</span><span class="p" data-group-id="8682326725-3">)</span><span class="w">
-</span><span class="p" data-group-id="8682326725-5">[</span><span class="n">...</span><span class="p" data-group-id="8682326725-5">]</span></code></pre>      <footer class="footer">
+  &quot;&quot;&quot;</span><span class="p" data-group-id="6311154122-2">)</span><span class="w">
+  </span><span class="o">.</span><span class="n">config</span><span class="p" data-group-id="6311154122-3">(</span><span class="err">$</span><span class="p" data-group-id="6311154122-4">{</span><span class="n">config</span><span class="p" data-group-id="6311154122-4">}</span><span class="p" data-group-id="6311154122-3">)</span><span class="w">
+</span><span class="p" data-group-id="6311154122-5">[</span><span class="n">...</span><span class="p" data-group-id="6311154122-5">]</span></code></pre>      <footer class="footer">
         <p>
           <span class="line">
             Built using
