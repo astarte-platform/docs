@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="astarte_flow v0.1.0">
+    <title>mqtt_source — astarte_flow v0.1.0</title>
+    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
+    <script src="dist/sidebar_items-7d1d6feee2.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="0001-overview.html" class="sidebar-projectName">
+astarte_flow      </a>
+      <strong class="sidebar-projectVersion">
+        v0.1.0
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Guides</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>mqtt_source</h1><ul><li>type: producer</li><li>output: a message each time an <a href="https://mqtt.org/">MQTT</a> message is received</li></ul><p>An Astarte Flow source that produces data from an <a href="https://mqtt.org/">MQTT</a> connection.</p><p>This block has been implemented using the <a href="https://elixir-lang.org/">Elixir</a>
+<a href="https://hexdocs.pm/tortoise/introduction.html">tortoise MQTT client application</a>.</p><h1>Properties</h1><ul><li><code class="inline">broker_url</code>: The URL of the broker the source will connect to. (required, string)</li><li><code class="inline">subscriptions</code>: A non-empty list of topic filters to subscribe to. (required, string array)</li><li><code class="inline">client_id</code>: The client id used to connect. Defaults to a random string. (optional, string)</li><li><code class="inline">ignore_ssl_errors</code>: If true, accept invalid certificates (e.g. self-signed) when using SSL.
+ (optional, boolean, default: false)</li><li><code class="inline">username</code>: Username used to authenticate to the broker. (optional, string)</li><li><code class="inline">password</code>: Password used to authenticate to the broker. (optional, string)</li><li><code class="inline">subtype</code>: A MIME type that will be put as <code class="inline">subtype</code> in the generated Messages. Defaults to <code class="inline">application/octet-stream</code>.</li></ul><h2 id="broker_url" class="section-heading">
+  <a href="#broker_url" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">broker_url</code>
+</h2>
+<p>The URL of the broker the source will connect to. The transport will be deduced by the URL: if
+<code class="inline">mqtts://</code> is used, SSL transport will be used, if <code class="inline">mqtt://</code> is used, TCP transport will be used.</p><h2 id="subscriptions" class="section-heading">
+  <a href="#subscriptions" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">subscriptions</code>
+</h2>
+<p>A non-empty list of topic filters to subscribe to.</p><h2 id="client_id" class="section-heading">
+  <a href="#client_id" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">client_id</code>
+</h2>
+<p>The client id used to connect. Defaults to a random string.</p><h2 id="ignore_ssl_errors" class="section-heading">
+  <a href="#ignore_ssl_errors" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">ignore_ssl_errors</code>
+</h2>
+<p>If true, accept invalid certificates (e.g.
+<a href="https://en.wikipedia.org/wiki/Self-signed_certificate">self-signed</a>) when using SSL.</p><h2 id="username" class="section-heading">
+  <a href="#username" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">username</code>
+</h2>
+<p>Username used to authenticate to the broker.</p><h2 id="password" class="section-heading">
+  <a href="#password" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">password</code>
+</h2>
+<p>Password used to authenticate to the broker.</p><h2 id="subtype" class="section-heading">
+  <a href="#subtype" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">subtype</code>
+</h2>
+<p>A MIME type that will be put as <a href="0002-flow-messages.html#subtype"><code class="inline">subtype</code></a> in the generated Messages. Defaults to <code class="inline">application/octet-stream</code>.</p><h1>Output message</h1><ul><li><code class="inline">key</code>: contains the MQTT topic on which the message was received</li><li><code class="inline">data</code>: contains the payload of the message</li><li><code class="inline">type</code>: is always <code class="inline">binary</code></li><li><code class="inline">subtype</code>: is always <code class="inline">&quot;application/octet-stream&quot;</code> but can be configured with the <code class="inline">subtype</code> option</li><li><code class="inline">metadata</code>: contains the <code class="inline">Astarte.Flow.Blocks.MqttSource.broker_url</code> key with the broker url as
+ value.</li><li><code class="inline">timestamp</code> contains the timestamp (in microseconds) the response was received.</li></ul><h1>Examples</h1><p>The following example uses the <code class="inline">mqtt_source</code> block to connect to <code class="inline">www.example.com</code> MQTT broker and
+to subcribe to <code class="inline">#</code> topic.</p><pre><code class="nohighlight makeup elixir"><span class="n">mqtt_source</span><span class="w">
+  </span><span class="o">.</span><span class="n">broker_url</span><span class="p" data-group-id="5537456113-1">(</span><span class="s">&quot;mqtts://www.example.com/&quot;</span><span class="p" data-group-id="5537456113-1">)</span><span class="w">
+  </span><span class="o">.</span><span class="n">subscriptions</span><span class="p" data-group-id="5537456113-2">(</span><span class="p" data-group-id="5537456113-3">[</span><span class="s">&quot;#&quot;</span><span class="p" data-group-id="5537456113-3">]</span><span class="p" data-group-id="5537456113-2">)</span><span class="w">
+</span><span class="p" data-group-id="5537456113-4">[</span><span class="n">...</span><span class="p" data-group-id="5537456113-4">]</span></code></pre>      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>
+

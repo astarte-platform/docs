@@ -8,7 +8,7 @@
     <meta name="project" content="astarte_flow v0.1.0">
     <title>Defining a Pipeline — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-1d08e4d188.js"></script>
+    <script src="dist/sidebar_items-7d1d6feee2.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
   </head>
@@ -68,9 +68,9 @@ blocks.</p><p>In the following example messages flowing out from block1 (the sou
 block2 and they will be processes from block3 (the sink):</p><pre><code class="nohighlight makeup elixir"><span class="w">    </span><span class="n">block1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">block2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">block3</span></code></pre><p>New lines are allowed (and suggested) for readabilty reasons.</p><h1>With Operator</h1><p>Most of the times blocks are not usable alone without any kind of configuration.</p><p>Astarte Flow DSL defines a <code class="inline">.</code> operator that can be read as &quot;with&quot;. Several <code class="inline">.</code> can be chained
 together.</p><p>Syntax for <code class="inline">.</code> operator is <code class="inline">block.property1(value1).property2(value2)</code>.</p><p>The following example can be read as: &quot;Pipe messages from <code class="inline">astarte_devices_source</code> block with
 <code class="inline">realm</code> <code class="inline">&quot;test&quot;</code> to <code class="inline">filter</code> block with script <code class="inline">&quot;return message.value &gt; 0&quot;</code>.</p><pre><code class="nohighlight makeup elixir"><span class="n">astarte_devices_source</span><span class="w">
-  </span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="6448821652-1">(</span><span class="s">&quot;test&quot;</span><span class="p" data-group-id="6448821652-1">)</span><span class="w">
+  </span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="1193428697-1">(</span><span class="s">&quot;test&quot;</span><span class="p" data-group-id="1193428697-1">)</span><span class="w">
 </span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w">
-  </span><span class="o">.</span><span class="n">script</span><span class="p" data-group-id="6448821652-2">(</span><span class="s">&quot;return message.value &gt; 0&quot;</span><span class="p" data-group-id="6448821652-2">)</span></code></pre><h1>Literals</h1><p>In Astarte Flow DSL literals are meant to be used with <code class="inline">.</code> operator.</p><h2 id="integers" class="section-heading">
+  </span><span class="o">.</span><span class="n">script</span><span class="p" data-group-id="1193428697-2">(</span><span class="s">&quot;return message.value &gt; 0&quot;</span><span class="p" data-group-id="1193428697-2">)</span></code></pre><h1>Literals</h1><p>In Astarte Flow DSL literals are meant to be used with <code class="inline">.</code> operator.</p><h2 id="integers" class="section-heading">
   <a href="#integers" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Integers
 </h2>
@@ -92,24 +92,24 @@ string
   Objects
 </h2>
 <p>JSON like objects are allowed, however there is a major difference: <code class="inline">&quot;&quot;</code> around keys are not
-required (and should not be used).</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="5650305460-1">{</span><span class="w">
+required (and should not be used).</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="1473415786-1">{</span><span class="w">
   </span><span class="ss">a</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="ss">b</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
   </span><span class="ss">c</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
-</span><span class="p" data-group-id="5650305460-1">}</span></code></pre><h2 id="jsonpath" class="section-heading">
+</span><span class="p" data-group-id="1473415786-1">}</span></code></pre><h2 id="jsonpath" class="section-heading">
   <a href="#jsonpath" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   JSONPath
 </h2>
 <p><a href="https://goessner.net/articles/JsonPath/">JSONPath</a> expressions such as <code class="inline">${ $.config.something }</code> play
 a special role in Astarte Flow DSL, since they allow queries to any configuration object.</p><p>Following example uses a JSON Path expressions instead of harcoding the realm name.</p><pre><code class="nohighlight makeup elixir"><span class="n">astarte_devices_source</span><span class="w">
-    </span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="9407747182-1">(</span><span class="err">$</span><span class="p" data-group-id="9407747182-2">{</span><span class="err">$</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="9407747182-2">}</span><span class="p" data-group-id="9407747182-1">)</span></code></pre><h1>Pipeline Example</h1><pre><code class="nohighlight makeup elixir"><span class="n">astarte_devices_source</span><span class="w">
-    </span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="9996138122-1">(</span><span class="err">$</span><span class="p" data-group-id="9996138122-2">{</span><span class="err">$</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="9996138122-2">}</span><span class="p" data-group-id="9996138122-1">)</span><span class="w">
+    </span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="0185149088-1">(</span><span class="err">$</span><span class="p" data-group-id="0185149088-2">{</span><span class="err">$</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="0185149088-2">}</span><span class="p" data-group-id="0185149088-1">)</span></code></pre><h1>Pipeline Example</h1><pre><code class="nohighlight makeup elixir"><span class="n">astarte_devices_source</span><span class="w">
+    </span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="2672234055-1">(</span><span class="err">$</span><span class="p" data-group-id="2672234055-2">{</span><span class="err">$</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="2672234055-2">}</span><span class="p" data-group-id="2672234055-1">)</span><span class="w">
 </span><span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w">
-    </span><span class="o">.</span><span class="n">script</span><span class="p" data-group-id="9996138122-3">(</span><span class="s">&quot;&quot;&quot;
+    </span><span class="o">.</span><span class="n">script</span><span class="p" data-group-id="2672234055-3">(</span><span class="s">&quot;&quot;&quot;
             return string.find(message.key, &quot;org.astarte%-platform.genericsensors.Values&quot;) ~= nil;
-            &quot;&quot;&quot;</span><span class="p" data-group-id="9996138122-3">)</span><span class="w">
+            &quot;&quot;&quot;</span><span class="p" data-group-id="2672234055-3">)</span><span class="w">
 </span><span class="o">|</span><span class="w"> </span><span class="n">lua_map</span><span class="w">
-    </span><span class="o">.</span><span class="n">script</span><span class="p" data-group-id="9996138122-4">(</span><span class="s">&quot;&quot;&quot;
+    </span><span class="o">.</span><span class="n">script</span><span class="p" data-group-id="2672234055-4">(</span><span class="s">&quot;&quot;&quot;
             tokens = string_utils.split(message.key, &quot;/&quot;);
             sensor_id = tokens[4];
             new_device_id = uuid.get_v5_base64(&quot;b25aa4c6-a55b-4231-a080-a5af629d05a3&quot;, sensor_id);
@@ -117,12 +117,12 @@ a special role in Astarte Flow DSL, since they allow queries to any configuratio
             new_message.key = config.realm .. &quot;/&quot; .. new_device_id .. &quot;/org.astarte-platform.ComputedValues/value&quot;;
             new_message.data = (message.data - 32) / 1.8;
             return new_message;
-            &quot;&quot;&quot;</span><span class="p" data-group-id="9996138122-4">)</span><span class="w">
-    </span><span class="o">.</span><span class="n">config</span><span class="p" data-group-id="9996138122-5">(</span><span class="err">$</span><span class="p" data-group-id="9996138122-6">{</span><span class="n">config</span><span class="p" data-group-id="9996138122-6">}</span><span class="p" data-group-id="9996138122-5">)</span><span class="w">
+            &quot;&quot;&quot;</span><span class="p" data-group-id="2672234055-4">)</span><span class="w">
+    </span><span class="o">.</span><span class="n">config</span><span class="p" data-group-id="2672234055-5">(</span><span class="err">$</span><span class="p" data-group-id="2672234055-6">{</span><span class="n">config</span><span class="p" data-group-id="2672234055-6">}</span><span class="p" data-group-id="2672234055-5">)</span><span class="w">
 </span><span class="o">|</span><span class="w"> </span><span class="n">virtual_device_pool</span><span class="w">
-    </span><span class="o">.</span><span class="n">pairing_url</span><span class="p" data-group-id="9996138122-7">(</span><span class="s">&quot;https://example.com/pairing/v1&quot;</span><span class="p" data-group-id="9996138122-7">)</span><span class="w">
-    </span><span class="o">.</span><span class="n">realms</span><span class="p" data-group-id="9996138122-8">(</span><span class="p" data-group-id="9996138122-9">[</span><span class="p" data-group-id="9996138122-10">{</span><span class="ss">realm</span><span class="p">:</span><span class="w"> </span><span class="err">$</span><span class="p" data-group-id="9996138122-11">{</span><span class="err">$</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="9996138122-11">}</span><span class="p">,</span><span class="w"> </span><span class="ss">jwt</span><span class="p">:</span><span class="w"> </span><span class="err">$</span><span class="p" data-group-id="9996138122-12">{</span><span class="err">$</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">pairing_jwt</span><span class="p" data-group-id="9996138122-12">}</span><span class="p" data-group-id="9996138122-10">}</span><span class="p" data-group-id="9996138122-9">]</span><span class="p" data-group-id="9996138122-8">)</span><span class="w">
-    </span><span class="o">.</span><span class="n">interfaces</span><span class="p" data-group-id="9996138122-13">(</span><span class="err">$</span><span class="p" data-group-id="9996138122-14">{</span><span class="err">$</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">interfaces</span><span class="p" data-group-id="9996138122-14">}</span><span class="p" data-group-id="9996138122-13">)</span></code></pre><h1>Installing a Pipeline</h1><p>Pipelines can be installed using Astarte Flow <a href="api/index.html#/pipelines/createPipeline">REST API</a>
+    </span><span class="o">.</span><span class="n">pairing_url</span><span class="p" data-group-id="2672234055-7">(</span><span class="s">&quot;https://example.com/pairing/v1&quot;</span><span class="p" data-group-id="2672234055-7">)</span><span class="w">
+    </span><span class="o">.</span><span class="n">realms</span><span class="p" data-group-id="2672234055-8">(</span><span class="p" data-group-id="2672234055-9">[</span><span class="p" data-group-id="2672234055-10">{</span><span class="ss">realm</span><span class="p">:</span><span class="w"> </span><span class="err">$</span><span class="p" data-group-id="2672234055-11">{</span><span class="err">$</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="2672234055-11">}</span><span class="p">,</span><span class="w"> </span><span class="ss">jwt</span><span class="p">:</span><span class="w"> </span><span class="err">$</span><span class="p" data-group-id="2672234055-12">{</span><span class="err">$</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">pairing_jwt</span><span class="p" data-group-id="2672234055-12">}</span><span class="p" data-group-id="2672234055-10">}</span><span class="p" data-group-id="2672234055-9">]</span><span class="p" data-group-id="2672234055-8">)</span><span class="w">
+    </span><span class="o">.</span><span class="n">interfaces</span><span class="p" data-group-id="2672234055-13">(</span><span class="err">$</span><span class="p" data-group-id="2672234055-14">{</span><span class="err">$</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">interfaces</span><span class="p" data-group-id="2672234055-14">}</span><span class="p" data-group-id="2672234055-13">)</span></code></pre><h1>Installing a Pipeline</h1><p>Pipelines can be installed using Astarte Flow <a href="api/index.html#/pipelines/createPipeline">REST API</a>
 or using Astarte Dashboard.</p><h1>Running a Pipeline</h1><p>Pipelines are just blueprints and they must be instantiated so they can start processing messages,
 once instantiated they are called <a href="">Flows</a>. Pipelines must be installed in order to be instantiated,
 a pipeline which has not been instantiated does not consume any resource (and it does not process
