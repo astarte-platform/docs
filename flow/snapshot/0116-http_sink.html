@@ -8,7 +8,7 @@
     <meta name="project" content="astarte_flow v0.1.0">
     <title>http_sink — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-da51001f76.js"></script>
+    <script src="dist/sidebar_items-1d08e4d188.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
   </head>
@@ -75,9 +75,9 @@ of different message types must be handled in a preceding block.</p><p>For the t
   <code class="inline">headers</code>
 </h2>
 <p>An optional object with additional headers such as <code class="inline">{authorization: &quot;Bearer &lt;token&gt;&quot;}</code>.</p><h1>Accepted input message</h1><p>The HTTP request built by the <code class="inline">http_sink</code> can be customized by the input message with the following properties:</p><ul><li><code class="inline">data</code>: the body of the request.</li><li><code class="inline">type</code>: is always <code class="inline">binary</code>.</li><li><code class="inline">subtype</code>: if present, it will be the value of the <code class="inline">content-type</code> HTTP header.</li></ul><h1>Examples</h1><p>The following example uses <code class="inline">http_sink</code> block to send HTTP POST requests to <code class="inline">http://www.example.com/test</code>
-whenever a valid message is received.</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="6051023499-1">[</span><span class="n">...</span><span class="p" data-group-id="6051023499-1">]</span><span class="w">
+whenever a valid message is received.</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="1998600763-1">[</span><span class="n">...</span><span class="p" data-group-id="1998600763-1">]</span><span class="w">
 </span><span class="o">|</span><span class="w"> </span><span class="n">http_sink</span><span class="w">
-  </span><span class="o">.</span><span class="n">url</span><span class="p" data-group-id="6051023499-2">(</span><span class="s">&quot;http://www.example.com/test&quot;</span><span class="p" data-group-id="6051023499-2">)</span></code></pre>      <footer class="footer">
+  </span><span class="o">.</span><span class="n">url</span><span class="p" data-group-id="1998600763-2">(</span><span class="s">&quot;http://www.example.com/test&quot;</span><span class="p" data-group-id="1998600763-2">)</span></code></pre>      <footer class="footer">
         <p>
           <span class="line">
             Built using
