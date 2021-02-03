@@ -8,7 +8,7 @@
     <meta name="project" content="astarte_flow v0.1.0">
     <title>to_json — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-0f40eb93f7.js"></script>
+    <script src="dist/sidebar_items-690c301f00.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
   </head>
@@ -69,10 +69,10 @@ and produces a message having a JSON serialized payload.</p><h1>Properties</h1><
   <code class="inline">pretty</code>
 </h2>
 <p>Specifies if the JSON binary should be pretty formatted.</p><h1>Output message</h1><ul><li><code class="inline">key</code>: contains the same <code class="inline">key</code> specified in the input message.</li><li><code class="inline">data</code>: the incoming data formatted as a JSON binary</li><li><code class="inline">type</code>: is always <code class="inline">binary</code></li><li><code class="inline">subtype</code>: is always <code class="inline">application/json</code></li><li><code class="inline">timestamp</code>: the same <code class="inline">timestamp</code> specified in the input message.</li></ul><h1>Examples</h1><p>The following example uses <code class="inline">to_json</code> block to format incoming messages to human readable JSON binary
-before letting them through.</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="1179908310-1">[</span><span class="n">...</span><span class="p" data-group-id="1179908310-1">]</span><span class="w">
+before letting them through.</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="7524078992-1">[</span><span class="n">...</span><span class="p" data-group-id="7524078992-1">]</span><span class="w">
 </span><span class="o">|</span><span class="w"> </span><span class="n">to_json</span><span class="w">
-  </span><span class="o">.</span><span class="n">pretty</span><span class="p" data-group-id="1179908310-2">(</span><span class="no">true</span><span class="p" data-group-id="1179908310-2">)</span><span class="w">
-</span><span class="p" data-group-id="1179908310-3">[</span><span class="n">...</span><span class="p" data-group-id="1179908310-3">]</span></code></pre>      <footer class="footer">
+  </span><span class="o">.</span><span class="n">pretty</span><span class="p" data-group-id="7524078992-2">(</span><span class="no">true</span><span class="p" data-group-id="7524078992-2">)</span><span class="w">
+</span><span class="p" data-group-id="7524078992-3">[</span><span class="n">...</span><span class="p" data-group-id="7524078992-3">]</span></code></pre>      <footer class="footer">
         <p>
           <span class="line">
             Built using
