@@ -8,7 +8,7 @@
     <meta name="project" content="astarte_flow v0.1.0">
     <title>container — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-690c301f00.js"></script>
+    <script src="dist/sidebar_items-1d4b9cf18b.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
   </head>
@@ -70,7 +70,8 @@ cluster using the
 <a href="https://github.com/astarte-platform/astarte-kubernetes-operator">Astarte Kubernetes Operator</a>.</p><p>Containers allow implementing and deploying algorithms with a language-agnostic approach. However a
 <a href="https://github.com/astarte-platform/astarte_flow_sdk_python">Python SDK</a> is available as a
 replacement to AMQP connection and JSON SerDes code.</p><p>Most of the times containers can be avoided and simple messages transformation and filtering can
-be achieved using <a href="https://www.lua.org/manual/5.2/">Lua 5.2</a> scripting blocks.</p><h1>Properties</h1><ul><li><code class="inline">image</code>: Docker container image (required, string)</li><li><code class="inline">type</code>: Container type, either <code class="inline">&quot;producer&quot;</code>, <code class="inline">&quot;consumer&quot;</code> or <code class="inline">&quot;producer_consumer&quot;</code> (required)</li></ul><h2 id="image" class="section-heading">
+be achieved using <a href="https://www.lua.org/manual/5.2/">Lua 5.2</a> scripting blocks.</p><h1>Properties</h1><ul><li><code class="inline">image</code>: Docker container image (required, string)</li><li><code class="inline">type</code>: Container type, either <code class="inline">&quot;producer&quot;</code>, <code class="inline">&quot;consumer&quot;</code> or <code class="inline">&quot;producer_consumer&quot;</code> (required)</li><li><code class="inline">image_pull_secrets</code>: The secrets used to pull images from private registries (optional, array of
+strings)</li></ul><h2 id="image" class="section-heading">
   <a href="#image" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   <code class="inline">image</code>
 </h2>
@@ -79,13 +80,20 @@ be achieved using <a href="https://www.lua.org/manual/5.2/">Lua 5.2</a> scriptin
   <code class="inline">type</code>
 </h2>
 <p><strong>This block property is going to be removed in favor of implicit configuration.</strong></p><p>According to container type a container is used as an AMQP producer, cosumer or as a middle
-processing block.</p><h1>Accepted Input Messages</h1><p>Input messages are consumed only from <code class="inline">consumer</code> and <code class="inline">producer_consumer</code> containers.</p><p>For those types of containers accepted input messages type and format depends on their
+processing block.</p><h2 id="image_pull_secrets" class="section-heading">
+  <a href="#image_pull_secrets" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">image_pull_secrets</code>
+</h2>
+<p>A list of names of Kubernetes secrets that will be used to pull the image. This is required only if
+the image is pulled from a private registry. The secrets must be already existing and must live in
+the same namespace where Astarte Flow is deployed.</p><p>For more information on creating them, please read the relevant <a href="https://kubernetes.io/docs/concepts/containers/images/#creating-a-secret-with-a-docker-config">Kubernetes
+documentation</a> </p><h1>Accepted Input Messages</h1><p>Input messages are consumed only from <code class="inline">consumer</code> and <code class="inline">producer_consumer</code> containers.</p><p>For those types of containers accepted input messages type and format depends on their
 implementation.</p><h1>Output message</h1><p>An output message is produced only from <code class="inline">producer</code> and <code class="inline">producer_consumer</code> containers.</p><p>For those types of containers the output message format depends on their implementation.</p><h1>Examples</h1><p>The following example uses a container (pulled from <code class="inline">&quot;example/test&quot;</code>) and declares it as producer
 and consumer, wich consumes messages produced by any_producer_block and feeds into
 any_consumer_block:</p><pre><code class="nohighlight makeup elixir"><span class="n">any_producer_block</span><span class="w">
 </span><span class="o">|</span><span class="w"> </span><span class="n">container</span><span class="w">
-  </span><span class="o">.</span><span class="n">image</span><span class="p" data-group-id="6099800338-1">(</span><span class="s">&quot;example/test&quot;</span><span class="p" data-group-id="6099800338-1">)</span><span class="w">
-  </span><span class="o">.</span><span class="n">type</span><span class="p" data-group-id="6099800338-2">(</span><span class="s">&quot;producer_consumer&quot;</span><span class="p" data-group-id="6099800338-2">)</span><span class="w">
+  </span><span class="o">.</span><span class="n">image</span><span class="p" data-group-id="2426585442-1">(</span><span class="s">&quot;example/test&quot;</span><span class="p" data-group-id="2426585442-1">)</span><span class="w">
+  </span><span class="o">.</span><span class="n">type</span><span class="p" data-group-id="2426585442-2">(</span><span class="s">&quot;producer_consumer&quot;</span><span class="p" data-group-id="2426585442-2">)</span><span class="w">
 </span><span class="o">|</span><span class="w"> </span><span class="n">any_consumer_block</span></code></pre>      <footer class="footer">
         <p>
           <span class="line">

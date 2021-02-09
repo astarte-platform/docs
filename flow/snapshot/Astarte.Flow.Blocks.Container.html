@@ -8,7 +8,7 @@
     <meta name="project" content="astarte_flow v0.1.0">
     <title>Astarte.Flow.Blocks.Container — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-690c301f00.js"></script>
+    <script src="dist/sidebar_items-1d4b9cf18b.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
   </head>
@@ -148,7 +148,9 @@ when options: [option],
   Options
 </h2>
 <ul><li><code class="inline">:id</code> (required) - The id of the block, it has to be unique between all container blocks.</li><li><code class="inline">:image</code> (required) - The tag of the docker image that will be used by the block.</li><li><code class="inline">:config</code> - The Flow configuration that will be passed to the container.</li><li><code class="inline">:connection</code> - A keyword list containing the options that will be passed to
-<a href="https://hexdocs.pm/amqp/1.4.0/AMQP.Connection.html#open/1"><code class="inline">AMQP.Connection.open/1</code></a>. Defaults to <code class="inline">[]</code>.</li><li><code class="inline">:prefetch_count</code> - The prefetch count of the AMQP channel. Defaults to 100.</li><li><code class="inline">:amqp_client</code> - A module that implements the
+<a href="https://hexdocs.pm/amqp/1.4.0/AMQP.Connection.html#open/1"><code class="inline">AMQP.Connection.open/1</code></a>. Defaults to <code class="inline">[]</code>.</li><li><code class="inline">:image_pull_secrets</code> - An array of strings, representing the name of K8s secrets that
+will be used by the Pod created by the container block. This is needed if your image
+is pulled from a private container registry.</li><li><code class="inline">:prefetch_count</code> - The prefetch count of the AMQP channel. Defaults to 100.</li><li><code class="inline">:amqp_client</code> - A module that implements the
 <code class="inline">Astarte.Flow.Blocks.Container.AMQPClient</code> behaviour and that will
 be used to connect to AMQP. Defaults to
 <a href="Astarte.Flow.Blocks.Container.RabbitMQClient.html"><code class="inline">Astarte.Flow.Blocks.Container.RabbitMQClient</code></a></li></ul>  </section>
