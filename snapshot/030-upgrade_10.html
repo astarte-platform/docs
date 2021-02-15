@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.22.1">
     <meta name="project" content="Astarte v1.0.0-beta.1">
-    <title>Upgrading the Cluster — Astarte v1.0.0-beta.1</title>
+    <title>Upgrade v1.0 — Astarte v1.0.0-beta.1</title>
     <link rel="stylesheet" href="dist/elixir-e589b8fad3dab6230c65.css" />
     <script src="dist/sidebar_items-6509605394.js"></script>
       <script src="../common_vars.js"></script>
@@ -64,26 +64,24 @@ Astarte      </a>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
-<h1>Upgrading the Cluster</h1><p>Upgrading an Astarte Cluster is meant to be a completely managed operation, as the Operator encapsulates
-all the needed logic for a clean Upgrade. Manual Upgrades are not supported and out of the scope of this
-guide - if you're maintaining a non-operator installation, you will need to understand all the manual steps
-for Upgrade for each Astarte component, which are explained in Release notes. However, the only supported
-mean of Upgrade remains the Operator.</p><h2 id="upgrading-through-astartectl" class="section-heading">
-  <a href="#upgrading-through-astartectl" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Upgrading through astartectl
+<h1>Upgrade v1.0</h1><h2 id="upgrade-astarte-operator" class="section-heading">
+  <a href="#upgrade-astarte-operator" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Upgrade Astarte Operator
 </h2>
-<p><code class="inline">astartectl</code> features an <code class="inline">astartectl cluster instances upgrade</code> command which can upgrade both <code class="inline">astartectl</code>
-and non-<code class="inline">astartectl</code> Managed Installations alike. When using a Profile, though, the upgrade procedure will
-also script any changes to the CR the profile carries over among versions (if needed), ensuring that the
-process is smooth enough.</p><p>To upgrade, run</p><pre><code class="bash">astartectl cluster instances upgrade &lt;instance name&gt;</code></pre><p>You can optionally add an Astarte version as the second parameter - otherwise, <code class="inline">astartectl</code> will try to
-upgrade to the latest stable release.</p><p><code class="inline">astartectl</code> will interactively prompt you a number of questions depending on the operation, and will start
-the upgrade procedure. Please note that depending on the upgrade, the operation might require a downtime.</p><h2 id="upgrading-by-modifying-the-cr" class="section-heading">
-  <a href="#upgrading-by-modifying-the-cr" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Upgrading by modifying the CR
+<p>Astarte Operator's upgrade procedure is handled by Helm. To upgrade the Helm chart, use the
+dedicated <code class="inline">helm upgrade</code> command:</p><pre><code class="bash">helm upgrade astarte-operator astarte/astarte-operator --devel</code></pre><p>The optional <code class="inline">--version</code> switch allows to specify the version to upgrade to - when not specified,
+the latest version will be fetched and used.</p><p>By design, Astarte Operator's Helm charts cannot univocally be mapped to Operator's releases in a
+one-to-one relationship. However each chart is tied to a specific Operator's version, which is user
+configurable.</p><p>Therefore, upgrading a chart lead to an Operator's upgrade if and only if the Operator's tag
+referenced by the chart is changed. You can check the Operator's tag binded to the chart simply
+running:</p><pre><code class="bash">helm show values astarte/astarte-operator --devel</code></pre><p>As usual, you can use the usual <code class="inline">--version</code> flag to point to a specific chart version.</p><h2 id="upgrade-astarte" class="section-heading">
+  <a href="#upgrade-astarte" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Upgrade Astarte
 </h2>
-<p>If you do not want to use <code class="inline">astartectl</code>, you will need to upgrade by modifying the CR manually. Usually,
-this boils down to bumping the <code class="inline">version</code> field in the spec - however, you should read all release notes
-carefully to know if any other changes to the CR are required.</p><p>Once you apply the changes to the Resource, the Operator will take over and perform the Upgrade.</p>      <footer class="footer">
+<p>To upgrade your Astarte instance simply edit the Astarte resource in the cluster updating the
+<code class="inline">version</code> field to the one you want to upgrate to.</p><p>Open the yaml file describing the Astarte resource with:</p><pre><code class="bash">kubectl edit astarte -n astarte</code></pre><p>Find the <code class="inline">version</code> field in the Astarte Spec section and change it according to your needs. Once the
+yaml file will be saved, the Operator will take over ensuring the reconciliation of your Astarte
+instance to the requested version.</p>      <footer class="footer">
         <p>
           <span class="line">
             Built using
