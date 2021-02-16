@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.23.0">
     <meta name="project" content="astarte_flow v0.1.0">
-    <title>Astarte.Flow.Blocks.DynamicVirtualDevicePool — astarte_flow v0.1.0</title>
+    <title>Astarte.Flow.Blocks.MqttSink — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
     <script src="dist/sidebar_items-89d7ab79ac.js"></script>
       <script src="docs_config.js"></script>
@@ -64,14 +64,15 @@ astarte_flow      </a>
 
 
       <h1>
-        Astarte.Flow.Blocks.DynamicVirtualDevicePool <small class="app-vsn">(astarte_flow v0.1.0)</small>
+        Astarte.Flow.Blocks.MqttSink <small class="app-vsn">(astarte_flow v0.1.0)</small>
       </h1>
 
 
         <section id="moduledoc">
-<p>This is a consumer block that takes <code class="inline">data</code> from incoming <code class="inline">Message</code>s and publishes it as an Astarte device,
-interpreting the <code class="inline">key</code> as &lt;realm&gt;/&lt;device_id&gt;/&lt;interface&gt;&lt;path&gt;.</p><p>The devices are dynamically registered when their device id is first seens. Credentials secret obtained
-with the registration are stored in the chosen CredentialsStorage.</p>        </section>
+<p>An Astarte Flow consumer that publishes MQTT messages from incoming Flow
+messages.</p><p>This block supports only incoming messages with type <code class="inline">:binary</code>, so
+serialization to binary format must be handled in a separate block before the
+message arrives here.</p><p>When a message is received, <code class="inline">MqttSink</code> generates an MQTT publish with this conversion process:</p><ul><li><code class="inline">key</code> is used as topic</li><li><code class="inline">data</code> is used as payload</li><li><code class="inline">type</code> must always be <code class="inline">:binary</code>, messages without a binary type are discarded</li></ul>        </section>
 
         <section id="summary" class="details-list">
           <h1 class="section-heading">
@@ -89,7 +90,7 @@ with the registration are stored in the chosen CredentialsStorage.</p>        </
   <div class="summary-signature">
     <a href="#start_link/1">start_link(opts)</a>
   </div>
-    <div class="summary-synopsis"><p>Starts the <code class="inline">DynamicVirtualDevicePool</code>.</p></div>
+    <div class="summary-synopsis"><p>Starts the <code class="inline">MqttSource</code>.</p></div>
 </div>
   </div>
         </section>
@@ -114,28 +115,24 @@ Functions          </h1>
   <section class="docstring">
       <h2>Specs</h2>
       <div class="specs">
-          <pre>start_link(options) :: <a href="https://hexdocs.pm/elixir/GenServer.html#t:on_start/0">GenServer.on_start</a>()
-when options: [option],
-     option:
-       {:pairing_url, pairing_url :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}
-       | {:pairing_jwt_map,
-          pairing_jwt_map :: %{
-            optional(realm :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) =&gt; jwt :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()
-          }}
-       | {:interface_provider, {<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()} | <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}
-       | {:ignore_ssl_errors, ignore_ssl_errors :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()}
-       | {:credentials_storage, credentials_storage :: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">module</a>()}</pre>
+          <pre>start_link(opts) :: <a href="https://hexdocs.pm/elixir/GenServer.html#t:on_start/0">GenServer.on_start</a>()
+when opts: [opt],
+     opt:
+       {:broker_url, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}
+       | {:client_id, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}
+       | {:username, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}
+       | {:password, <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()}
+       | {:ignore_ssl_errors, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()}
+       | {:qos, <a href="https://hexdocs.pm/tortoise/0.9.4/Tortoise.html#t:qos/0">Tortoise.qos</a>()}</pre>
       </div>
 
-<p>Starts the <code class="inline">DynamicVirtualDevicePool</code>.</p><h2 id="start_link/1-options" class="section-heading">
+<p>Starts the <code class="inline">MqttSource</code>.</p><h2 id="start_link/1-options" class="section-heading">
   <a href="#start_link/1-options" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Options
 </h2>
-<ul><li><code class="inline">:pairing_url</code> (required) - base URL of the Astarte Pairing API instance the devices will
-connect to, e.g. <code class="inline">https://astarte.api.example.com/pairing</code> or <code class="inline">http://localhost:4003</code> for
-a local installation. URL containing the API version suffix (i.e. <code class="inline">/v1</code>) are <em>deprecated</em>
-and will be removed in a future release.</li><li><code class="inline">:pairing_jwt_map</code> (required) - A map in the form <code class="inline">%{realm_name =&gt; jwt}</code> where jwt must be a JWT with the authorizations needed
-to register a device in that realm.</li><li><code class="inline">:interface_provider</code> (required) - The <code class="inline">interface_provider</code> that will be used by the spawned devices.</li><li><code class="inline">:ignore_ssl_errors</code> - A boolean to indicate wether devices have to ignore SSL errors when connecting to the broker. Defaults to <code class="inline">false</code>.</li><li><code class="inline">:credentials_storage</code> - The module used to store and fetch credentials secrets. Defaults to <code class="inline">DETSCredentialsStorage</code>.</li><li><code class="inline">:pairing_agent</code> - The module used to register the devices. Defaults to <a href="https://hexdocs.pm/astarte_device/1.0.0-dev/Astarte.API.Pairing.Agent.html"><code class="inline">Astarte.API.Pairing.Agent</code></a> </li></ul>  </section>
+<ul><li><code class="inline">broker_url</code> (required): the URL of the broker the source will connect to. The transport will
+be deduced by the URL: if <code class="inline">mqtts://</code> is used, SSL transport will be used, if <code class="inline">mqtt://</code> is
+used, TCP transport will be used.</li><li><code class="inline">client_id</code>: the client id used to connect. Defaults to a random string.</li><li><code class="inline">username</code>: username used to authenticate to the broker.</li><li><code class="inline">password</code>: password used to authenticate to the broker.</li><li><code class="inline">ignore_ssl_errors</code>: if true, accept invalid certificates (e.g. self-signed) when using SSL.</li><li><code class="inline">qos</code>: the qos that will be used to publish messages. Defaults to 0.</li></ul>  </section>
 </section>
           </div>
         </section>

@@ -8,7 +8,7 @@
     <meta name="project" content="astarte_flow v0.1.0">
     <title>sort — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-1d4b9cf18b.js"></script>
+    <script src="dist/sidebar_items-89d7ab79ac.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
   </head>
@@ -78,11 +78,11 @@ carefully choosen.</p><h2 id="deduplicate" class="section-heading">
 same timestamp and value (any other message attribute is ignored) and they are both inside the
 same sliding window.</p><h1>Output message</h1><p>No transformation is performed on messages, however some messages taken from input are discarded or
 reordered.</p><h1>Examples</h1><p>The following example uses sort to deduplicate messages that might be duplicated due to source or
-transport peculiarities:</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="3057783520-1">[</span><span class="n">...</span><span class="p" data-group-id="3057783520-1">]</span><span class="w">
+transport peculiarities:</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="4136118972-1">[</span><span class="n">...</span><span class="p" data-group-id="4136118972-1">]</span><span class="w">
 </span><span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w">
-  </span><span class="o">.</span><span class="n">window_size_ms</span><span class="p" data-group-id="3057783520-2">(</span><span class="mi">2000</span><span class="p" data-group-id="3057783520-2">)</span><span class="w">
-  </span><span class="o">.</span><span class="n">deduplicate</span><span class="p" data-group-id="3057783520-3">(</span><span class="no">true</span><span class="p" data-group-id="3057783520-3">)</span><span class="w">
-</span><span class="p" data-group-id="3057783520-4">[</span><span class="n">...</span><span class="p" data-group-id="3057783520-4">]</span></code></pre>      <footer class="footer">
+  </span><span class="o">.</span><span class="n">window_size_ms</span><span class="p" data-group-id="4136118972-2">(</span><span class="mi">2000</span><span class="p" data-group-id="4136118972-2">)</span><span class="w">
+  </span><span class="o">.</span><span class="n">deduplicate</span><span class="p" data-group-id="4136118972-3">(</span><span class="no">true</span><span class="p" data-group-id="4136118972-3">)</span><span class="w">
+</span><span class="p" data-group-id="4136118972-4">[</span><span class="n">...</span><span class="p" data-group-id="4136118972-4">]</span></code></pre>      <footer class="footer">
         <p>
           <span class="line">
             Built using

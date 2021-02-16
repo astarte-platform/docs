@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.23.0">
     <meta name="project" content="astarte_flow v0.1.0">
-    <title>mqtt_source — astarte_flow v0.1.0</title>
+    <title>mqtt_sink — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
     <script src="dist/sidebar_items-89d7ab79ac.js"></script>
       <script src="docs_config.js"></script>
@@ -63,18 +63,16 @@ astarte_flow      </a>
     <div id="content" class="content-inner">
 
 
-<h1>mqtt_source</h1><ul><li>type: producer</li><li>output: a message each time an <a href="https://mqtt.org/">MQTT</a> message is received</li></ul><p>An Astarte Flow source that produces data from an <a href="https://mqtt.org/">MQTT</a> connection.</p><p>This block has been implemented using the <a href="https://elixir-lang.org/">Elixir</a>
-<a href="https://hexdocs.pm/tortoise/introduction.html">tortoise MQTT client application</a>.</p><h1>Properties</h1><ul><li><code class="inline">broker_url</code>: The URL of the broker the source will connect to. (required, string)</li><li><code class="inline">subscriptions</code>: A non-empty list of topic filters to subscribe to. (required, string array)</li><li><code class="inline">client_id</code>: The client id used to connect. Defaults to a random string. (optional, string)</li><li><code class="inline">ignore_ssl_errors</code>: If true, accept invalid certificates (e.g. self-signed) when using SSL.
- (optional, boolean, default: false)</li><li><code class="inline">username</code>: Username used to authenticate to the broker. (optional, string)</li><li><code class="inline">password</code>: Password used to authenticate to the broker. (optional, string)</li><li><code class="inline">subtype</code>: A MIME type that will be put as <code class="inline">subtype</code> in the generated Messages. Defaults to <code class="inline">application/octet-stream</code>.</li></ul><h2 id="broker_url" class="section-heading">
+<h1>mqtt_sink</h1><ul><li>type: consumer</li><li>input: binary messages</li></ul><p>This is a consumer block that takes data from an incoming message and publishes it using an
+<a href="https://mqtt.org/">MQTT</a> connection.</p><p>This block supports only incoming messages with type <code class="inline">binary</code>, so serialization of different message
+types must be handled in a preceding block.</p><p>This block has been implemented using the <a href="https://elixir-lang.org/">Elixir</a> <a href="https://hexdocs.pm/tortoise/introduction.html">tortoise MQTT client
+application</a>.</p><h1>Properties</h1><ul><li><code class="inline">broker_url</code>: The URL of the broker the source will connect to. (required, string)</li><li><code class="inline">client_id</code>: The client id used to connect. Defaults to a random string. (optional, string)</li><li><code class="inline">ignore_ssl_errors</code>: If true, accept invalid certificates (e.g. self-signed) when using SSL.
+ (optional, boolean, default: <code class="inline">false</code>)</li><li><code class="inline">username</code>: Username used to authenticate to the broker. (optional, string)</li><li><code class="inline">password</code>: Password used to authenticate to the broker. (optional, string)</li><li><code class="inline">qos</code>: The QoS used when publishing (optional, integer, default: <code class="inline">0</code>)</li></ul><h2 id="broker_url" class="section-heading">
   <a href="#broker_url" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   <code class="inline">broker_url</code>
 </h2>
 <p>The URL of the broker the source will connect to. The transport will be deduced by the URL: if
-<code class="inline">mqtts://</code> is used, SSL transport will be used, if <code class="inline">mqtt://</code> is used, TCP transport will be used.</p><h2 id="subscriptions" class="section-heading">
-  <a href="#subscriptions" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  <code class="inline">subscriptions</code>
-</h2>
-<p>A non-empty list of topic filters to subscribe to.</p><h2 id="client_id" class="section-heading">
+<code class="inline">mqtts://</code> is used, SSL transport will be used, if <code class="inline">mqtt://</code> is used, TCP transport will be used.</p><h2 id="client_id" class="section-heading">
   <a href="#client_id" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   <code class="inline">client_id</code>
 </h2>
@@ -91,16 +89,16 @@ astarte_flow      </a>
   <a href="#password" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   <code class="inline">password</code>
 </h2>
-<p>Password used to authenticate to the broker.</p><h2 id="subtype" class="section-heading">
-  <a href="#subtype" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  <code class="inline">subtype</code>
+<p>Password used to authenticate to the broker.</p><h2 id="qos" class="section-heading">
+  <a href="#qos" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">qos</code>
 </h2>
-<p>A MIME type that will be put as <a href="0002-flow-messages.html#subtype"><code class="inline">subtype</code></a> in the generated Messages. Defaults to <code class="inline">application/octet-stream</code>.</p><h1>Output message</h1><ul><li><code class="inline">key</code>: contains the MQTT topic on which the message was received</li><li><code class="inline">data</code>: contains the payload of the message</li><li><code class="inline">type</code>: is always <code class="inline">binary</code></li><li><code class="inline">subtype</code>: is always <code class="inline">&quot;application/octet-stream&quot;</code> but can be configured with the <code class="inline">subtype</code> option</li><li><code class="inline">metadata</code>: contains the <code class="inline">Astarte.Flow.Blocks.MqttSource.broker_url</code> key with the broker url as
- value.</li><li><code class="inline">timestamp</code> contains the timestamp (in microseconds) the response was received.</li></ul><h1>Examples</h1><p>The following example uses the <code class="inline">mqtt_source</code> block to connect to <code class="inline">www.example.com</code> MQTT broker and
-to subcribe to <code class="inline">#</code> topic.</p><pre><code class="nohighlight makeup elixir"><span class="n">mqtt_source</span><span class="w">
-  </span><span class="o">.</span><span class="n">broker_url</span><span class="p" data-group-id="6546432848-1">(</span><span class="s">&quot;mqtts://www.example.com/&quot;</span><span class="p" data-group-id="6546432848-1">)</span><span class="w">
-  </span><span class="o">.</span><span class="n">subscriptions</span><span class="p" data-group-id="6546432848-2">(</span><span class="p" data-group-id="6546432848-3">[</span><span class="s">&quot;#&quot;</span><span class="p" data-group-id="6546432848-3">]</span><span class="p" data-group-id="6546432848-2">)</span><span class="w">
-</span><span class="p" data-group-id="6546432848-4">[</span><span class="n">...</span><span class="p" data-group-id="6546432848-4">]</span></code></pre>      <footer class="footer">
+<p>The MQTT QoS used when publishing. Defaults to <code class="inline">0</code>, possible valid values are <code class="inline">0</code>, <code class="inline">1</code> or <code class="inline">2</code>.</p><h1>Accepted input message</h1><p>This block supports only messages with a <code class="inline">binary</code> type. Serialization must be explicitly handled in
+another block. Messages with a different type are discarded by the block.</p><p>The message fields are used as follows:</p><ul><li><code class="inline">key</code> becomes the MQTT topic for the published message</li><li><code class="inline">data</code> is used as message payload</li><li><code class="inline">type</code> must always be <code class="inline">binary</code>, otherwise the message is discarded</li></ul><h1>Examples</h1><p>This example uses the <code class="inline">mqtt_sink</code> block to connect to an MQTT broker with host <code class="inline">example.com</code> on port
+<code class="inline">8883</code> and publish incoming messages with QoS 1</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="8703245586-1">[</span><span class="n">...</span><span class="p" data-group-id="8703245586-1">]</span><span class="w">
+</span><span class="o">|</span><span class="w"> </span><span class="n">mqtt_sink</span><span class="w">
+  </span><span class="o">.</span><span class="n">broker_url</span><span class="p" data-group-id="8703245586-2">(</span><span class="s">&quot;mqtts://example.com:8883&quot;</span><span class="p" data-group-id="8703245586-2">)</span><span class="w">
+  </span><span class="o">.</span><span class="n">qos</span><span class="p" data-group-id="8703245586-3">(</span><span class="mi">1</span><span class="p" data-group-id="8703245586-3">)</span></code></pre>      <footer class="footer">
         <p>
           <span class="line">
             Built using
