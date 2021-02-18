@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="project" content="astarte_flow v0.1.0">
+    <title>modbus_tcp_source — astarte_flow v0.1.0</title>
+    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
+    <script src="dist/sidebar_items-c518665c6c.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="0001-overview.html" class="sidebar-projectName">
+astarte_flow      </a>
+      <strong class="sidebar-projectVersion">
+        v0.1.0
+      </strong>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Guides</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>modbus_tcp_source</h1><ul><li>type: producer</li><li>output: integer, float or boolean messages</li></ul><p>This is a producer block that generates messages by polling a Modbus device over TCP. </p><p>It works by specifying a <code class="inline">host</code> (optionally with a <code class="inline">port</code>), a <code class="inline">slave_id</code> and a list of <code class="inline">targets</code> to
+be polled. Data read from registers is converted to well defined formats before generating a Flow
+Message.</p><p><em>Note</em>: currently <code class="inline">polling_interval_ms</code> <em>must</em> be the same for all targets. This limitation will be
+removed in a future release.</p><h1>Properties</h1><ul><li><code class="inline">host</code>: The IP adress of the Modbus device. (required, string)</li><li><code class="inline">slave_id</code>: The Modbus slave id of the target. (required, integer)</li><li><code class="inline">targets</code>: The array of targets to be polled. (required, array of objects)</li><li><code class="inline">port</code>: The TCP port of the target Modbus device, defaults to 502. (optional, integer)</li></ul><h2 id="host" class="section-heading">
+  <a href="#host" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">host</code>
+</h2>
+<p>A string representing an IP address to reach the Modbus device (e.g. <code class="inline">&quot;192.168.1.2&quot;</code>).</p><h2 id="port" class="section-heading">
+  <a href="#port" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">port</code>
+</h2>
+<p>The TCP port for the Modbus connection, defaults to <code class="inline">502</code> (the standard Modbus TCP port).</p><h2 id="slave_id" class="section-heading">
+  <a href="#slave_id" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">slave_id</code>
+</h2>
+<p>The slave id of the target Modbus device. This should be an integer between <code class="inline">1</code> and <code class="inline">247</code>.</p><h2 id="targets" class="section-heading">
+  <a href="#targets" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">targets</code>
+</h2>
+<p>An array of objects representing the targets. Each of these objects should have these keys:</p><ul><li><code class="inline">name</code>: The name of the target. This will be used as <code class="inline">key</code> in the generated messages. (required,
+string)</li><li><code class="inline">base_address</code>: The Modbus address of the target. One or more registers starting from this address
+will be read when polling this target, depending on the <code class="inline">format</code>. (required, integer)</li><li><code class="inline">format</code>: The format of the data. Must be one of these strings: <code class="inline">&quot;int16&quot;</code>, <code class="inline">&quot;uint16&quot;</code>,
+<code class="inline">&quot;float32be&quot;</code>, <code class="inline">&quot;float32le&quot;</code>, <code class="inline">&quot;boolean&quot;</code>. The format will also determine how many registers are
+read for this target. (required, string)</li><li><code class="inline">modbus_type</code>: The modbus type of the target register. Must be one of these strings: <code class="inline">&quot;coil&quot;</code>,
+<code class="inline">&quot;discrete_input&quot;</code>, <code class="inline">&quot;input_register&quot;</code>, <code class="inline">&quot;holding_register&quot;</code>. (required, string)</li><li><code class="inline">polling_interval_ms</code>: The interval between to consecutive polling requests, expressed in
+milliseconds. <em>Caveat</em>: right now all targets must have the same polling interval, this limitation
+will be removed in a future release. (required, integer)</li><li><code class="inline">static_metadata</code>: A <code class="inline">string -&gt; string</code> object of metadata that will be added as metadata to all
+messages produced for this target.</li></ul><h1>Output message</h1><p>If the polling succeeds, for each target <code class="inline">modbus_tcp_source</code> produces a message containing these
+fields:</p><ul><li><code class="inline">key</code>: contains the <code class="inline">name</code> of the target</li><li><code class="inline">data</code>: contains the data converted with the chosen format</li><li><code class="inline">type</code>: depends on the chosen format</li><li><code class="inline">metadata</code>: contains the <code class="inline">static_metadata</code> of the target, if present</li><li><code class="inline">timestamp</code> contains the timestamp (in microseconds) the response was received.</li></ul><h1>Examples</h1><p>The following example uses <code class="inline">modbus_tcp_source</code> to poll every 30 seconds a Modbus device at IP
+<code class="inline">192.168.1.42</code> at port <code class="inline">2000</code>, with a slave id value of <code class="inline">3</code>. The only target is a voltage value
+stored as float with a little endian format in the holding registers <code class="inline">42</code> and <code class="inline">43</code>.</p><pre><code class="nohighlight makeup elixir"><span class="n">modbus_tcp_source</span><span class="w">
+    </span><span class="o">.</span><span class="n">host</span><span class="p" data-group-id="4884455557-1">(</span><span class="s">&quot;192.168.1.42&quot;</span><span class="p" data-group-id="4884455557-1">)</span><span class="w">
+    </span><span class="o">.</span><span class="n">port</span><span class="p" data-group-id="4884455557-2">(</span><span class="mi">2000</span><span class="p" data-group-id="4884455557-2">)</span><span class="w">
+    </span><span class="o">.</span><span class="n">slave_id</span><span class="p" data-group-id="4884455557-3">(</span><span class="mi">3</span><span class="p" data-group-id="4884455557-3">)</span><span class="w">
+    </span><span class="o">.</span><span class="n">targets</span><span class="p" data-group-id="4884455557-4">(</span><span class="p" data-group-id="4884455557-5">[</span><span class="w">
+      </span><span class="p" data-group-id="4884455557-6">{</span><span class="w">
+        </span><span class="ss">base_address</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+        </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sensor-V_RMS&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="ss">format</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;float32le&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="ss">static_metadata</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4884455557-7">{</span><span class="w">
+          </span><span class="ss">units</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;V&quot;</span><span class="w">
+        </span><span class="p" data-group-id="4884455557-7">}</span><span class="w">
+        </span><span class="ss">polling_interval_ms</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span><span class="w">
+        </span><span class="ss">modbus_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;holding_register&quot;</span><span class="w">
+      </span><span class="p" data-group-id="4884455557-6">}</span><span class="w">
+    </span><span class="p" data-group-id="4884455557-5">]</span><span class="p" data-group-id="4884455557-4">)</span><span class="w">
+</span><span class="o">|</span><span class="w"> </span><span class="p" data-group-id="4884455557-8">[</span><span class="n">...</span><span class="p" data-group-id="4884455557-8">]</span></code></pre>      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>
+
