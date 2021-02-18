@@ -8,7 +8,7 @@
     <meta name="project" content="astarte_flow v0.1.0">
     <title>mqtt_sink — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-fba1acf8b2.js"></script>
+    <script src="dist/sidebar_items-6dccc80edd.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
   </head>
@@ -95,10 +95,10 @@ application</a>.</p><h1>Properties</h1><ul><li><code class="inline">broker_url</
 </h2>
 <p>The MQTT QoS used when publishing. Defaults to <code class="inline">0</code>, possible valid values are <code class="inline">0</code>, <code class="inline">1</code> or <code class="inline">2</code>.</p><h1>Accepted input message</h1><p>This block supports only messages with a <code class="inline">binary</code> type. Serialization must be explicitly handled in
 another block. Messages with a different type are discarded by the block.</p><p>The message fields are used as follows:</p><ul><li><code class="inline">key</code> becomes the MQTT topic for the published message</li><li><code class="inline">data</code> is used as message payload</li><li><code class="inline">type</code> must always be <code class="inline">binary</code>, otherwise the message is discarded</li></ul><h1>Examples</h1><p>This example uses the <code class="inline">mqtt_sink</code> block to connect to an MQTT broker with host <code class="inline">example.com</code> on port
-<code class="inline">8883</code> and publish incoming messages with QoS 1</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="3087907548-1">[</span><span class="n">...</span><span class="p" data-group-id="3087907548-1">]</span><span class="w">
+<code class="inline">8883</code> and publish incoming messages with QoS 1</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="3080069035-1">[</span><span class="n">...</span><span class="p" data-group-id="3080069035-1">]</span><span class="w">
 </span><span class="o">|</span><span class="w"> </span><span class="n">mqtt_sink</span><span class="w">
-  </span><span class="o">.</span><span class="n">broker_url</span><span class="p" data-group-id="3087907548-2">(</span><span class="s">&quot;mqtts://example.com:8883&quot;</span><span class="p" data-group-id="3087907548-2">)</span><span class="w">
-  </span><span class="o">.</span><span class="n">qos</span><span class="p" data-group-id="3087907548-3">(</span><span class="mi">1</span><span class="p" data-group-id="3087907548-3">)</span></code></pre>      <footer class="footer">
+  </span><span class="o">.</span><span class="n">broker_url</span><span class="p" data-group-id="3080069035-2">(</span><span class="s">&quot;mqtts://example.com:8883&quot;</span><span class="p" data-group-id="3080069035-2">)</span><span class="w">
+  </span><span class="o">.</span><span class="n">qos</span><span class="p" data-group-id="3080069035-3">(</span><span class="mi">1</span><span class="p" data-group-id="3080069035-3">)</span></code></pre>      <footer class="footer">
         <p>
           <span class="line">
             Built using

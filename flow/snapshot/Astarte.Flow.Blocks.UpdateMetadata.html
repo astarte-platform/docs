@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.23.0">
     <meta name="project" content="astarte_flow v0.1.0">
-    <title>Astarte.Flow.Config.XandraNodes — astarte_flow v0.1.0</title>
+    <title>Astarte.Flow.Blocks.UpdateMetadata — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
     <script src="dist/sidebar_items-6dccc80edd.js"></script>
       <script src="docs_config.js"></script>
@@ -64,12 +64,71 @@ astarte_flow      </a>
 
 
       <h1>
-        Astarte.Flow.Config.XandraNodes <small class="app-vsn">(astarte_flow v0.1.0)</small>
+        Astarte.Flow.Blocks.UpdateMetadata <small class="app-vsn">(astarte_flow v0.1.0)</small>
       </h1>
 
 
+        <section id="moduledoc">
+<p>This is a producer-consumer block that modifies the <code class="inline">metadata</code> field of
+incoming <code class="inline">Message</code>s by inserting, updating or removing keys using a static
+configuration.</p>        </section>
 
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#start_link/1">start_link(opts)</a>
+  </div>
+    <div class="summary-synopsis"><p>Starts the <code class="inline">UpdateMetadata</code> block.</p></div>
+</div>
+  </div>
+        </section>
 
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="start_link/1">
+  <div class="detail-header">
+    <a href="#start_link/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">start_link(opts)</h1>
+      </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>start_link([Astarte.Flow.Blocks.UpdateMetadata.Config.option()]) ::
+  <a href="https://hexdocs.pm/elixir/GenServer.html#t:on_start/0">GenServer.on_start</a>()</pre>
+      </div>
+
+<p>Starts the <code class="inline">UpdateMetadata</code> block.</p><h2 id="start_link/1-options" class="section-heading">
+  <a href="#start_link/1-options" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Options
+</h2>
+<ul><li><code class="inline">:metadata</code> - The metadata map. All keys present in the object are either
+inserted or updated in the <code class="inline">Message</code> metadata, with the only exception
+that if a key has a value of null, it will be removed from metadata
+(required, object with string keys and string or null values)</li></ul>  </section>
+</section>
+          </div>
+        </section>
           <footer class="footer">
         <p>
           <span class="line">
