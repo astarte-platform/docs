@@ -8,7 +8,7 @@
     <meta name="project" content="astarte_flow v0.1.0">
     <title>random_source — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-c518665c6c.js"></script>
+    <script src="dist/sidebar_items-fba1acf8b2.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
   </head>
@@ -91,11 +91,11 @@ The value must be <code class="inline">&gt;= 0</code> and <code class="inline">&
 </h2>
 <p>The delay between generated messages in milliseconds. For example use <code class="inline">5000</code> for 5 seconds.</p><h1>Output message</h1><ul><li><code class="inline">key</code>: contains the <code class="inline">key</code> specified as parameter.</li><li><code class="inline">data</code>: contains the generated value.</li><li><code class="inline">type</code>: the <code class="inline">type</code> specified as parameter.</li><li><code class="inline">timestamp</code>: contains the timestamp (in microseconds) in which the message was generated.</li></ul><h1>Examples</h1><p>The following example uses <code class="inline">random_source</code> block to generate messages that emulate a dice throw
 every 10000 milliseconds (10 seconds).</p><pre><code class="nohighlight makeup elixir"><span class="n">random_source</span><span class="w">
-  </span><span class="o">.</span><span class="n">type</span><span class="p" data-group-id="4885143525-1">(</span><span class="s">&quot;integer&quot;</span><span class="p" data-group-id="4885143525-1">)</span><span class="w">
-  </span><span class="o">.</span><span class="n">min</span><span class="p" data-group-id="4885143525-2">(</span><span class="mi">1</span><span class="p" data-group-id="4885143525-2">)</span><span class="w">
-  </span><span class="o">.</span><span class="n">max</span><span class="p" data-group-id="4885143525-3">(</span><span class="mi">6</span><span class="p" data-group-id="4885143525-3">)</span><span class="w">
-  </span><span class="o">.</span><span class="n">delay_ms</span><span class="p" data-group-id="4885143525-4">(</span><span class="mi">10000</span><span class="p" data-group-id="4885143525-4">)</span><span class="w">
-</span><span class="p" data-group-id="4885143525-5">[</span><span class="n">...</span><span class="p" data-group-id="4885143525-5">]</span></code></pre>      <footer class="footer">
+  </span><span class="o">.</span><span class="n">type</span><span class="p" data-group-id="2733063639-1">(</span><span class="s">&quot;integer&quot;</span><span class="p" data-group-id="2733063639-1">)</span><span class="w">
+  </span><span class="o">.</span><span class="n">min</span><span class="p" data-group-id="2733063639-2">(</span><span class="mi">1</span><span class="p" data-group-id="2733063639-2">)</span><span class="w">
+  </span><span class="o">.</span><span class="n">max</span><span class="p" data-group-id="2733063639-3">(</span><span class="mi">6</span><span class="p" data-group-id="2733063639-3">)</span><span class="w">
+  </span><span class="o">.</span><span class="n">delay_ms</span><span class="p" data-group-id="2733063639-4">(</span><span class="mi">10000</span><span class="p" data-group-id="2733063639-4">)</span><span class="w">
+</span><span class="p" data-group-id="2733063639-5">[</span><span class="n">...</span><span class="p" data-group-id="2733063639-5">]</span></code></pre>      <footer class="footer">
         <p>
           <span class="line">
             Built using

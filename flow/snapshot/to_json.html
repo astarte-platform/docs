@@ -8,7 +8,7 @@
     <meta name="project" content="astarte_flow v0.1.0">
     <title>to_json — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-c518665c6c.js"></script>
+    <script src="dist/sidebar_items-fba1acf8b2.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
   </head>
@@ -64,15 +64,25 @@ astarte_flow      </a>
 
 
 <h1>to_json</h1><ul><li>type: producer_consumer</li><li>input: any message</li><li>output: binary messages</li></ul><p>This is a producer and consumer block that takes <code class="inline">data</code> from incoming message
-and produces a message having a JSON serialized payload.</p><h1>Properties</h1><ul><li><code class="inline">pretty</code>: serialize the output to pretty format that is easier to read for humans. (optional, boolean)</li></ul><h2 id="pretty" class="section-heading">
+and produces a message having a JSON serialized payload.</p><h1>Properties</h1><ul><li><code class="inline">pretty</code>: serialize the output to pretty format that is easier to read for humans. (optional, boolean)</li><li><code class="inline">template</code>: a JSONTemplate template. (optional, object)</li></ul><h2 id="pretty" class="section-heading">
   <a href="#pretty" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   <code class="inline">pretty</code>
 </h2>
-<p>Specifies if the JSON binary should be pretty formatted.</p><h1>Output message</h1><ul><li><code class="inline">key</code>: contains the same <code class="inline">key</code> specified in the input message.</li><li><code class="inline">data</code>: the incoming data formatted as a JSON binary</li><li><code class="inline">type</code>: is always <code class="inline">binary</code></li><li><code class="inline">subtype</code>: is always <code class="inline">application/json</code></li><li><code class="inline">timestamp</code>: the same <code class="inline">timestamp</code> specified in the input message.</li></ul><h1>Examples</h1><p>The following example uses <code class="inline">to_json</code> block to format incoming messages to human readable JSON binary
-before letting them through.</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="5454808750-1">[</span><span class="n">...</span><span class="p" data-group-id="5454808750-1">]</span><span class="w">
+<p>Specifies if the JSON binary should be pretty formatted.</p><h2 id="template" class="section-heading">
+  <a href="#template" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">template</code>
+</h2>
+<p>Given <code class="inline">{key: &quot;key&quot;, data: 42}</code> as input message, the following template renders to
+<code class="inline">{&quot;thekey&quot;: &quot;key&quot;, &quot;thevalue&quot;: 42}</code>:</p><pre><code class="nohighlight makeup elixir"><span class="o">.</span><span class="n">template</span><span class="p" data-group-id="2252995424-1">(</span><span class="w">
+  </span><span class="p" data-group-id="2252995424-2">{</span><span class="w">
+    </span><span class="ss">thekey</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{ message.key }}&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">thevalue</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{{ message.data }}}&quot;</span><span class="w">
+  </span><span class="p" data-group-id="2252995424-2">}</span><span class="w">
+</span><span class="p" data-group-id="2252995424-1">)</span></code></pre><h1>Output message</h1><ul><li><code class="inline">key</code>: contains the same <code class="inline">key</code> specified in the input message.</li><li><code class="inline">data</code>: the incoming data formatted as a JSON binary</li><li><code class="inline">type</code>: is always <code class="inline">binary</code></li><li><code class="inline">subtype</code>: is always <code class="inline">application/json</code></li><li><code class="inline">timestamp</code>: the same <code class="inline">timestamp</code> specified in the input message.</li></ul><h1>Examples</h1><p>The following example uses <code class="inline">to_json</code> block to format incoming messages to human readable JSON binary
+before letting them through.</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="9363658258-1">[</span><span class="n">...</span><span class="p" data-group-id="9363658258-1">]</span><span class="w">
 </span><span class="o">|</span><span class="w"> </span><span class="n">to_json</span><span class="w">
-  </span><span class="o">.</span><span class="n">pretty</span><span class="p" data-group-id="5454808750-2">(</span><span class="no">true</span><span class="p" data-group-id="5454808750-2">)</span><span class="w">
-</span><span class="p" data-group-id="5454808750-3">[</span><span class="n">...</span><span class="p" data-group-id="5454808750-3">]</span></code></pre>      <footer class="footer">
+  </span><span class="o">.</span><span class="n">pretty</span><span class="p" data-group-id="9363658258-2">(</span><span class="no">true</span><span class="p" data-group-id="9363658258-2">)</span><span class="w">
+</span><span class="p" data-group-id="9363658258-3">[</span><span class="n">...</span><span class="p" data-group-id="9363658258-3">]</span></code></pre>      <footer class="footer">
         <p>
           <span class="line">
             Built using
