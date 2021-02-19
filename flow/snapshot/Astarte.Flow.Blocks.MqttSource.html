@@ -8,7 +8,7 @@
     <meta name="project" content="astarte_flow v0.1.0">
     <title>Astarte.Flow.Blocks.MqttSource — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-6dccc80edd.js"></script>
+    <script src="dist/sidebar_items-bd4933fc8a.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
   </head>
@@ -133,7 +133,10 @@ when opts: [opt],
 </h2>
 <ul><li><code class="inline">broker_url</code> (required): the URL of the broker the source will connect to. The transport will
 be deduced by the URL: if <code class="inline">mqtts://</code> is used, SSL transport will be used, if <code class="inline">mqtt://</code> is
-used, TCP transport will be used.</li><li><code class="inline">subscriptions</code> (required): a non-empty list of topic filters to subscribe to.</li><li><code class="inline">client_id</code>: the client id used to connect. Defaults to a random string.</li><li><code class="inline">username</code>: username used to authenticate to the broker.</li><li><code class="inline">password</code>: password used to authenticate to the broker.</li><li><code class="inline">ignore_ssl_errors</code>: if true, accept invalid certificates (e.g. self-signed) when using SSL.</li><li><code class="inline">subtype</code>: a MIME type that will be put as <code class="inline">subtype</code> in the generated Messages. Defaults to
+used, TCP transport will be used.</li><li><code class="inline">subscriptions</code> (required): a non-empty list of topic filters to subscribe to.</li><li><code class="inline">client_id</code>: the client id used to connect. Defaults to a random string.</li><li><code class="inline">username</code>: username used to authenticate to the broker.</li><li><code class="inline">password</code>: password used to authenticate to the broker.</li><li><code class="inline">ca_cert_pem</code>: a PEM encoded CA certificate. If not provided, the default CA trust store
+provided by <code class="inline">:certifi</code> will be used.</li><li><code class="inline">client_cert_pem</code>: a PEM encoded client certificate, used for mutual SSL authentication. If
+this is provided, also <code class="inline">private_key_pem</code> must be provided.</li><li><code class="inline">private_key_pem</code>: a PEM encoded private key, used for mutual SSL authentication. If this
+is provided, also <code class="inline">client_cert_pem</code> must be provided.</li><li><code class="inline">ignore_ssl_errors</code>: if true, accept invalid certificates (e.g. self-signed) when using SSL.</li><li><code class="inline">subtype</code>: a MIME type that will be put as <code class="inline">subtype</code> in the generated Messages. Defaults to
 <code class="inline">application/octet-stream</code></li></ul>  </section>
 </section>
           </div>

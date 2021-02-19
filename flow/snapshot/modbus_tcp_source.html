@@ -8,7 +8,7 @@
     <meta name="project" content="astarte_flow v0.1.0">
     <title>modbus_tcp_source — astarte_flow v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-6dccc80edd.js"></script>
+    <script src="dist/sidebar_items-bd4933fc8a.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
   </head>
@@ -94,22 +94,22 @@ messages produced for this target.</li></ul><h1>Output message</h1><p>If the pol
 fields:</p><ul><li><code class="inline">key</code>: contains the <code class="inline">name</code> of the target</li><li><code class="inline">data</code>: contains the data converted with the chosen format</li><li><code class="inline">type</code>: depends on the chosen format</li><li><code class="inline">metadata</code>: contains the <code class="inline">static_metadata</code> of the target, if present</li><li><code class="inline">timestamp</code> contains the timestamp (in microseconds) the response was received.</li></ul><h1>Examples</h1><p>The following example uses <code class="inline">modbus_tcp_source</code> to poll every 30 seconds a Modbus device at IP
 <code class="inline">192.168.1.42</code> at port <code class="inline">2000</code>, with a slave id value of <code class="inline">3</code>. The only target is a voltage value
 stored as float with a little endian format in the holding registers <code class="inline">42</code> and <code class="inline">43</code>.</p><pre><code class="nohighlight makeup elixir"><span class="n">modbus_tcp_source</span><span class="w">
-    </span><span class="o">.</span><span class="n">host</span><span class="p" data-group-id="0427190653-1">(</span><span class="s">&quot;192.168.1.42&quot;</span><span class="p" data-group-id="0427190653-1">)</span><span class="w">
-    </span><span class="o">.</span><span class="n">port</span><span class="p" data-group-id="0427190653-2">(</span><span class="mi">2000</span><span class="p" data-group-id="0427190653-2">)</span><span class="w">
-    </span><span class="o">.</span><span class="n">slave_id</span><span class="p" data-group-id="0427190653-3">(</span><span class="mi">3</span><span class="p" data-group-id="0427190653-3">)</span><span class="w">
-    </span><span class="o">.</span><span class="n">targets</span><span class="p" data-group-id="0427190653-4">(</span><span class="p" data-group-id="0427190653-5">[</span><span class="w">
-      </span><span class="p" data-group-id="0427190653-6">{</span><span class="w">
+    </span><span class="o">.</span><span class="n">host</span><span class="p" data-group-id="0911280490-1">(</span><span class="s">&quot;192.168.1.42&quot;</span><span class="p" data-group-id="0911280490-1">)</span><span class="w">
+    </span><span class="o">.</span><span class="n">port</span><span class="p" data-group-id="0911280490-2">(</span><span class="mi">2000</span><span class="p" data-group-id="0911280490-2">)</span><span class="w">
+    </span><span class="o">.</span><span class="n">slave_id</span><span class="p" data-group-id="0911280490-3">(</span><span class="mi">3</span><span class="p" data-group-id="0911280490-3">)</span><span class="w">
+    </span><span class="o">.</span><span class="n">targets</span><span class="p" data-group-id="0911280490-4">(</span><span class="p" data-group-id="0911280490-5">[</span><span class="w">
+      </span><span class="p" data-group-id="0911280490-6">{</span><span class="w">
         </span><span class="ss">base_address</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
         </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sensor-V_RMS&quot;</span><span class="p">,</span><span class="w">
         </span><span class="ss">format</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;float32le&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="ss">static_metadata</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0427190653-7">{</span><span class="w">
+        </span><span class="ss">static_metadata</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0911280490-7">{</span><span class="w">
           </span><span class="ss">units</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;V&quot;</span><span class="w">
-        </span><span class="p" data-group-id="0427190653-7">}</span><span class="w">
+        </span><span class="p" data-group-id="0911280490-7">}</span><span class="w">
         </span><span class="ss">polling_interval_ms</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span><span class="w">
         </span><span class="ss">modbus_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;holding_register&quot;</span><span class="w">
-      </span><span class="p" data-group-id="0427190653-6">}</span><span class="w">
-    </span><span class="p" data-group-id="0427190653-5">]</span><span class="p" data-group-id="0427190653-4">)</span><span class="w">
-</span><span class="o">|</span><span class="w"> </span><span class="p" data-group-id="0427190653-8">[</span><span class="n">...</span><span class="p" data-group-id="0427190653-8">]</span></code></pre>      <footer class="footer">
+      </span><span class="p" data-group-id="0911280490-6">}</span><span class="w">
+    </span><span class="p" data-group-id="0911280490-5">]</span><span class="p" data-group-id="0911280490-4">)</span><span class="w">
+</span><span class="o">|</span><span class="w"> </span><span class="p" data-group-id="0911280490-8">[</span><span class="n">...</span><span class="p" data-group-id="0911280490-8">]</span></code></pre>      <footer class="footer">
         <p>
           <span class="line">
             Built using
