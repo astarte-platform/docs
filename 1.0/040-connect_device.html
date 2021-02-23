@@ -83,7 +83,7 @@ routine, which results in the device obtaining its Credentials for accessing its
 Transport.</p><p>A Device's <em>Credentials Secret</em> allows access to <a href="https://docs.astarte-platform.org/1.0/api/?urls.primaryName=Pairing%20API#/device">Pairing API's Device REST
 API</a>, which
 is then used for obtaining information about which Transports the Device can use for communicating,
-and for obtaining Credentials for its assigned Transports.</p><p>The ability to request Credentials of a Device can be inhibited with <a href="/api/#/device/updateDeviceStatus">AppEngine
+and for obtaining Credentials for its assigned Transports.</p><p>The ability to request Credentials of a Device can be inhibited with <a href="https://docs.astarte-platform.org/1.0/api/#/device/updateDeviceStatus">AppEngine
 API</a> or using
 <a href="https://github.com/astarte-platform/astartectl"><code class="inline">astartectl</code></a> with this command:</p><pre><code class="bash">astartectl appengine devices credentials inhibit &lt;device_id_or_alias&gt; true \
   -k &lt;appengine-key&gt; -r &lt;realm-name&gt; -u &lt;astarte-api-url&gt;</code></pre><p>Once its <code class="inline">credentials_inhibited</code> field is set to <code class="inline">true</code>, a Device is not able to request new
