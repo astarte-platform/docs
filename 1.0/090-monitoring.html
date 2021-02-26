@@ -6,14 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.22.1">
     <meta name="project" content="Astarte v1.0.0-beta.1">
+
     <title>Monitoring — Astarte v1.0.0-beta.1</title>
     <link rel="stylesheet" href="dist/elixir-e589b8fad3dab6230c65.css" />
+
     <script src="dist/sidebar_items-efa0045484.js"></script>
+
       <script src="../common_vars.js"></script>
+
     <script async src="dist/app-5c0c23dfec2d63ae33a2.js"></script>
+
+
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -41,14 +48,17 @@
   <div class="sidebar-header">
     <div class="sidebar-projectDetails">
       <a href="http://astarte-platform.org" class="sidebar-projectName">
-Astarte      </a>
+Astarte
+      </a>
       <h2 class="sidebar-projectVersion">
         v1.0.0-beta.1
       </h2>
     </div>
+
       <a href="http://astarte-platform.org">
         <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
       </a>
+
   </div>
 
   <ul class="sidebar-listNav">
@@ -81,7 +91,8 @@ Astarte      </a>
   <a href="#authentication-and-access-to-metrics" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Authentication and access to metrics
 </h3>
-<p><code class="inline">/metrics</code>, being Prometheus-compatible, does not implement any kind of authentication or access control. Ideally, only your scraper should have access to <code class="inline">/metrics</code>, as it can leak sensitive information and should not be exposed to the outer world.</p><p>Astarte Operator, by default, forbids access to <code class="inline">/metrics</code> through its ingress, as it assumes your scraper lives within the Kubernetes cluster or has means to access the cluster on its own. However, this behavior can be overridden through by setting <code class="inline">serveMetrics: true</code> in the <code class="inline">api</code> section. An additional parameter, <code class="inline">serveMetricsToSubnet</code>, can be specified to restrict access to <code class="inline">/metrics</code> only to source IPs in a specific subnet. It is strongly recommended to set this up in case an external scraper needs to have access to <code class="inline">/metrics</code>, to ensure access is restricted.</p>      <footer class="footer">
+<p><code class="inline">/metrics</code>, being Prometheus-compatible, does not implement any kind of authentication or access control. Ideally, only your scraper should have access to <code class="inline">/metrics</code>, as it can leak sensitive information and should not be exposed to the outer world.</p><p>Astarte Operator, by default, forbids access to <code class="inline">/metrics</code> through its ingress, as it assumes your scraper lives within the Kubernetes cluster or has means to access the cluster on its own. However, this behavior can be overridden through by setting <code class="inline">serveMetrics: true</code> in the <code class="inline">api</code> section. An additional parameter, <code class="inline">serveMetricsToSubnet</code>, can be specified to restrict access to <code class="inline">/metrics</code> only to source IPs in a specific subnet. It is strongly recommended to set this up in case an external scraper needs to have access to <code class="inline">/metrics</code>, to ensure access is restricted.</p>
+      <footer class="footer">
         <p>
           <span class="line">
             Built using
@@ -112,5 +123,7 @@ Astarte      </a>
   </div>
 </section>
 </div>
+
+
   </body>
 </html>
