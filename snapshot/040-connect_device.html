@@ -6,14 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.22.1">
     <meta name="project" content="Astarte v1.0.0-beta.1">
+
     <title>Connecting a Device — Astarte v1.0.0-beta.1</title>
     <link rel="stylesheet" href="dist/elixir-e589b8fad3dab6230c65.css" />
-    <script src="dist/sidebar_items-6509605394.js"></script>
+
+    <script src="dist/sidebar_items-f06601055c.js"></script>
+
       <script src="../common_vars.js"></script>
+
     <script async src="dist/app-5c0c23dfec2d63ae33a2.js"></script>
+
+
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -41,14 +48,17 @@
   <div class="sidebar-header">
     <div class="sidebar-projectDetails">
       <a href="http://astarte-platform.org" class="sidebar-projectName">
-Astarte      </a>
+Astarte
+      </a>
       <h2 class="sidebar-projectVersion">
         v1.0.0-beta.1
       </h2>
     </div>
+
       <a href="http://astarte-platform.org">
         <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
       </a>
+
   </div>
 
   <ul class="sidebar-listNav">
@@ -83,7 +93,7 @@ routine, which results in the device obtaining its Credentials for accessing its
 Transport.</p><p>A Device's <em>Credentials Secret</em> allows access to <a href="https://docs.astarte-platform.org/1.0/api/?urls.primaryName=Pairing%20API#/device">Pairing API's Device REST
 API</a>, which
 is then used for obtaining information about which Transports the Device can use for communicating,
-and for obtaining Credentials for its assigned Transports.</p><p>The ability to request Credentials of a Device can be inhibited with <a href="/api/#/device/updateDeviceStatus">AppEngine
+and for obtaining Credentials for its assigned Transports.</p><p>The ability to request Credentials of a Device can be inhibited with <a href="https://docs.astarte-platform.org/1.0/api/#/device/updateDeviceStatus">AppEngine
 API</a> or using
 <a href="https://github.com/astarte-platform/astartectl"><code class="inline">astartectl</code></a> with this command:</p><pre><code class="bash">astartectl appengine devices credentials inhibit &lt;device_id_or_alias&gt; true \
   -k &lt;appengine-key&gt; -r &lt;realm-name&gt; -u &lt;astarte-api-url&gt;</code></pre><p>Once its <code class="inline">credentials_inhibited</code> field is set to <code class="inline">true</code>, a Device is not able to request new
@@ -140,7 +150,8 @@ should try to send a specific message. In case the Transport is unreachable, the
 persist, either in memory or on disk, and send the message when the connection is available again.</p><p>Please note that these parameters declared in Interfaces are to be considered on a best effort
 basis. In case your SDK does not support persistency or has persistency disabled, a number of
 warranties requested by an Interface might not be satisfied. Make sure your SDK is configured
-correctly before moving to production.</p>      <footer class="footer">
+correctly before moving to production.</p>
+      <footer class="footer">
         <p>
           <span class="line">
             Built using
@@ -171,5 +182,7 @@ correctly before moving to production.</p>      <footer class="footer">
   </div>
 </section>
 </div>
+
+
   </body>
 </html>

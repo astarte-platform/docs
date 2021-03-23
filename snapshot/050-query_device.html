@@ -6,14 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.22.1">
     <meta name="project" content="Astarte v1.0.0-beta.1">
+
     <title>Querying a Device — Astarte v1.0.0-beta.1</title>
     <link rel="stylesheet" href="dist/elixir-e589b8fad3dab6230c65.css" />
-    <script src="dist/sidebar_items-6509605394.js"></script>
+
+    <script src="dist/sidebar_items-f06601055c.js"></script>
+
       <script src="../common_vars.js"></script>
+
     <script async src="dist/app-5c0c23dfec2d63ae33a2.js"></script>
+
+
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -41,14 +48,17 @@
   <div class="sidebar-header">
     <div class="sidebar-projectDetails">
       <a href="http://astarte-platform.org" class="sidebar-projectName">
-Astarte      </a>
+Astarte
+      </a>
       <h2 class="sidebar-projectVersion">
         v1.0.0-beta.1
       </h2>
     </div>
+
       <a href="http://astarte-platform.org">
         <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
       </a>
+
   </div>
 
   <ul class="sidebar-listNav">
@@ -126,8 +136,8 @@ Clicking on the Device ID will take you to its details page.</p><h3 id="query-de
         &quot;aliases&quot;: {
             &quot;name&quot;: &quot;device_a&quot;
         },
-        &quot;metadata&quot;: {
-            &quot;metadata_key&quot;: &quot;metadata_value&quot;
+        &quot;attributes&quot;: {
+            &quot;attributes_key&quot;: &quot;attributes_value&quot;
         },
         &quot;groups&quot;: [
             &quot;my_group&quot;,
@@ -147,8 +157,13 @@ Clicking on the Device ID will take you to its details page.</p><h3 id="query-de
         &quot;com.example.ExampleInterface&quot;,
         &quot;com.example.TestInterface&quot;
     ]
-}</code></pre><p>This returns the Interfaces which the device reported in its Introspection <em>and</em> which are known to the Realm.</p><p>Arbitrary information can be added to the device by means of <code class="inline">metadata</code>: they allow to store any number of string values associated to a corresponding string key.
-To set, modify and delete <code class="inline">metadata</code>, a <code class="inline">PATCH</code> on the device endpoint is required:</p><pre><code class="nohighlight makeup elixir"><span class="nc">PATCH</span><span class="w"> </span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">appengine</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span></code></pre><p>In the request body, the <code class="inline">data</code> JSON object should have a <code class="inline">metadata</code> key which bears a dictionary of strings. A valid request body which changes only device metadata, for example, is <code class="inline">{&quot;data&quot;:{&quot;metadata&quot;: {&quot;&lt;key&gt;&quot;: &quot;&lt;value&gt;&quot;}}}</code>. To delete a metadata entry, set the value of the corresponding key to <code class="inline">null</code>. For example, POSTing <code class="inline">{&quot;data&quot;:{&quot;metadata&quot;: {&quot;my_key&quot;: null}}}</code> will remove the <code class="inline">my_key</code> metadata entry from the device.</p><p>Depending on the aggregation and ownership of the Interface, you can <code class="inline">GET</code>/<code class="inline">PUT</code>/<code class="inline">POST</code> on the interface itself or one of its mappings,
+}</code></pre><p>This returns the Interfaces which the device reported in its Introspection <em>and</em> which are known to the Realm.</p><p>Arbitrary information can be added to the device by means of <code class="inline">attributes</code>: they allow to store any
+number of string values associated to a corresponding string key.
+To set, modify and delete <code class="inline">attributes</code>, a <code class="inline">PATCH</code> on the device endpoint is required:</p><pre><code class="nohighlight makeup elixir"><span class="nc">PATCH</span><span class="w"> </span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">appengine</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span></code></pre><p>In the request body, the <code class="inline">data</code> JSON object should have a <code class="inline">attributes</code> key which bears a dictionary
+of strings. A valid request body which changes only device attributes, for example, is
+<code class="inline">{&quot;data&quot;:{&quot;attributes&quot;: {&quot;&lt;key&gt;&quot;: &quot;&lt;value&gt;&quot;}}}</code>. To delete an attribute entry, set the value of the
+corresponding key to <code class="inline">null</code>. For example, POSTing <code class="inline">{&quot;data&quot;:{&quot;attributes&quot;: {&quot;my_key&quot;: null}}}</code> will
+remove the <code class="inline">my_key</code> attribute entry from the device.</p><p>Depending on the aggregation and ownership of the Interface, you can <code class="inline">GET</code>/<code class="inline">PUT</code>/<code class="inline">POST</code> on the interface itself or one of its mappings,
 or use <code class="inline">astartectl</code> to perform the same operation on the command line. Some examples are:</p><h3 id="get-data-from-an-aggregate-device-properties-interface" class="section-heading">
   <a href="#get-data-from-an-aggregate-device-properties-interface" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Get data from an <code class="inline">aggregate</code> <code class="inline">device</code> <code class="inline">properties</code> interface
@@ -208,7 +223,8 @@ When <a href="052-using_channels.html">using Astarte Channels</a> the REST API s
   <a href="#exporting-devices-data-with-astartectl" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Exporting Devices Data with astartectl
 </h3>
-<p>The previous feature makes <code class="inline">astartectl</code> extremely useful when it comes to export or dump data. Moreover, <code class="inline">get-samples</code> features a <code class="inline">--output</code> option, which allows to print the results in different formats, such as <code class="inline">json</code> or <code class="inline">CSV</code>. This way, exporting values becomes extremely easy, as <code class="inline">get-samples</code> can easily tap into an Interface's entire data set and print it into a CSV file.</p>      <footer class="footer">
+<p>The previous feature makes <code class="inline">astartectl</code> extremely useful when it comes to export or dump data. Moreover, <code class="inline">get-samples</code> features a <code class="inline">--output</code> option, which allows to print the results in different formats, such as <code class="inline">json</code> or <code class="inline">CSV</code>. This way, exporting values becomes extremely easy, as <code class="inline">get-samples</code> can easily tap into an Interface's entire data set and print it into a CSV file.</p>
+      <footer class="footer">
         <p>
           <span class="line">
             Built using
@@ -239,5 +255,7 @@ When <a href="052-using_channels.html">using Astarte Channels</a> the REST API s
   </div>
 </section>
 </div>
+
+
   </body>
 </html>

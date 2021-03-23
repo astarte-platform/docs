@@ -6,14 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.22.1">
     <meta name="project" content="Astarte v1.0.0-beta.1">
+
     <title>Upgrade v0.11-v1.0 — Astarte v1.0.0-beta.1</title>
     <link rel="stylesheet" href="dist/elixir-e589b8fad3dab6230c65.css" />
-    <script src="dist/sidebar_items-6509605394.js"></script>
+
+    <script src="dist/sidebar_items-f06601055c.js"></script>
+
       <script src="../common_vars.js"></script>
+
     <script async src="dist/app-5c0c23dfec2d63ae33a2.js"></script>
+
+
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -41,14 +48,17 @@
   <div class="sidebar-header">
     <div class="sidebar-projectDetails">
       <a href="http://astarte-platform.org" class="sidebar-projectName">
-Astarte      </a>
+Astarte
+      </a>
       <h2 class="sidebar-projectVersion">
         v1.0.0-beta.1
       </h2>
     </div>
+
       <a href="http://astarte-platform.org">
         <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
       </a>
+
   </div>
 
   <ul class="sidebar-listNav">
@@ -81,10 +91,10 @@ and if the CA certificate changes all devices will have invalid credentials and 
 new credentials.</p><p><code class="inline">tar</code> must be installed onto your machine in order to successfully complete this step.</p><p>Export the following enviroment variables and ensure they matches the name of the corresponding
 components within your cluster:</p><ul><li><code class="inline">ASTARTE_RELEASE_NAME</code>: the name of the Astarte instance deployed in your cluster,</li><li><code class="inline">ASTARTE_RELEASE_NAMESPACE</code>: the namespace in which your Astarte instance resides.</li></ul><p>For instance, if you followed the standard naming conventions while installing Astarte it should be
 sufficient setting the following values:</p><pre><code class="bash">export ASTARTE_RELEASE_NAME=astarte
-export ASTARTE_RELEASE_NAMESPACE=astarte</code></pre><p>However, <strong>it is your responsibility checking that these values match the ones of your cluster</strong>.</p><p>Now, migrate the CA certificates and key:</p><pre><code class="bash">kubectl cp $ASTARTE_RELEASE_NAME-cfssl-0:/data/ca-key.pem tls.key
-kubectl cp $ASTARTE_RELEASE_NAME-cfssl-0:/data/ca.pem tls.crt
-kubectl create secret tls $ASTARTE_RELEASE_NAME-devices-ca -n $ASTARTE_RELEASE_NAMESPACE
---cert=tls.crt --key=tls.key</code></pre><h3 id="remove-astarte-operator-v0-11" class="section-heading">
+export ASTARTE_RELEASE_NAMESPACE=astarte</code></pre><p>However, <strong>it is your responsibility checking that these values match the ones of your cluster</strong>.</p><p>Now, migrate the CA certificates and key:</p><pre><code class="bash">kubectl cp $ASTARTE_RELEASE_NAMESPACE/$ASTARTE_RELEASE_NAME-cfssl-0:/data/ca-key.pem tls.key
+kubectl cp $ASTARTE_RELEASE_NAMESPACE/$ASTARTE_RELEASE_NAME-cfssl-0:/data/ca.pem tls.crt
+kubectl create secret tls $ASTARTE_RELEASE_NAME-devices-ca -n $ASTARTE_RELEASE_NAMESPACE \
+  --cert=tls.crt --key=tls.key</code></pre><h3 id="remove-astarte-operator-v0-11" class="section-heading">
   <a href="#remove-astarte-operator-v0-11" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Remove Astarte Operator v0.11
 </h3>
@@ -96,10 +106,10 @@ with a consequent data loss.</p><h3 id="install-cert-manager" class="section-hea
   Install cert-manager
 </h3>
 <p>Please, before proceeding to the next steps make sure to be compliant with the new requirements for
-<code class="inline">v1.0</code>, i.e. if <code class="inline">cert-manager</code> is not installed yet, run the following commands:</p><pre><code class="bash">$ helm repo add jetstack https://charts.jetstack.io
-$ helm repo update
-$ kubectl create namespace cert-manager
-$ helm install \
+<code class="inline">v1.0</code>, i.e. if <code class="inline">cert-manager</code> is not installed yet, run the following commands:</p><pre><code class="bash">helm repo add jetstack https://charts.jetstack.io
+helm repo update
+kubectl create namespace cert-manager
+helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --version v1.1.0 \
@@ -165,7 +175,8 @@ cluster to be fully operational.</p><h2 id="upgrade-astarte" class="section-head
 To do so, simply edit the Astarte resource in the cluster updating the <code class="inline">version</code> field to the
 one you want to upgrate to.</p><p>Open the yaml file describing the Astarte resource with:</p><pre><code class="bash">kubectl edit astarte -n astarte</code></pre><p>Find the <code class="inline">version</code> field in the Astarte Spec section and change it according to your needs. Once the
 yaml file will be saved, the Operator will take over ensuring the reconciliation of your Astarte
-instance to the requested version.</p>      <footer class="footer">
+instance to the requested version.</p>
+      <footer class="footer">
         <p>
           <span class="line">
             Built using
@@ -196,5 +207,7 @@ instance to the requested version.</p>      <footer class="footer">
   </div>
 </section>
 </div>
+
+
   </body>
 </html>

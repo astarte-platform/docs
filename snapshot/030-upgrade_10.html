@@ -6,14 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.22.1">
     <meta name="project" content="Astarte v1.0.0-beta.1">
+
     <title>Upgrade v1.0 — Astarte v1.0.0-beta.1</title>
     <link rel="stylesheet" href="dist/elixir-e589b8fad3dab6230c65.css" />
-    <script src="dist/sidebar_items-6509605394.js"></script>
+
+    <script src="dist/sidebar_items-f06601055c.js"></script>
+
       <script src="../common_vars.js"></script>
+
     <script async src="dist/app-5c0c23dfec2d63ae33a2.js"></script>
+
+
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -41,14 +48,17 @@
   <div class="sidebar-header">
     <div class="sidebar-projectDetails">
       <a href="http://astarte-platform.org" class="sidebar-projectName">
-Astarte      </a>
+Astarte
+      </a>
       <h2 class="sidebar-projectVersion">
         v1.0.0-beta.1
       </h2>
     </div>
+
       <a href="http://astarte-platform.org">
         <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
       </a>
+
   </div>
 
   <ul class="sidebar-listNav">
@@ -81,7 +91,22 @@ running:</p><pre><code class="bash">helm show values astarte/astarte-operator --
 <p>To upgrade your Astarte instance simply edit the Astarte resource in the cluster updating the
 <code class="inline">version</code> field to the one you want to upgrate to.</p><p>Open the yaml file describing the Astarte resource with:</p><pre><code class="bash">kubectl edit astarte -n astarte</code></pre><p>Find the <code class="inline">version</code> field in the Astarte Spec section and change it according to your needs. Once the
 yaml file will be saved, the Operator will take over ensuring the reconciliation of your Astarte
-instance to the requested version.</p>      <footer class="footer">
+instance to the requested version.</p><h3 id="caveats-for-astarte-flow" class="section-heading">
+  <a href="#caveats-for-astarte-flow" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Caveats for Astarte Flow
+</h3>
+<p>Currently, although <a href="https://docs.astarte-platform.org/flow/">Astarte Flow</a> is a component of
+Astarte, it doesn't follow Astarte's release cycle. Therefore if you upgraded your Astarte instance
+to v1.0.0, Astarte Operator will try to deploy <code class="inline">astarte/astarte_flow:1.0.0</code> which is currently not
+existent.</p><p>All you have to do to overcome this temporary limitation is to edit your Astarte resource by
+explicitly setting the Astarte Flow image you plan to use:</p><pre><code class="yaml">spec:
+  ...
+  components:
+    ...
+    flow:
+      image: &lt;the-astarte-flow-image&gt;</code></pre><p>All the available Astarte Flow's tags can be found
+<a href="https://hub.docker.com/r/astarte/astarte_flow/tags?page=1&ordering=last_updated">here</a>.</p>
+      <footer class="footer">
         <p>
           <span class="line">
             Built using
@@ -112,5 +137,7 @@ instance to the requested version.</p>      <footer class="footer">
   </div>
 </section>
 </div>
+
+
   </body>
 </html>

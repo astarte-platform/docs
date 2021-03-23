@@ -6,14 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.22.1">
     <meta name="project" content="Astarte v1.0.0-beta.1">
+
     <title>Interacting with Astarte — Astarte v1.0.0-beta.1</title>
     <link rel="stylesheet" href="dist/elixir-e589b8fad3dab6230c65.css" />
-    <script src="dist/sidebar_items-6509605394.js"></script>
+
+    <script src="dist/sidebar_items-f06601055c.js"></script>
+
       <script src="../common_vars.js"></script>
+
     <script async src="dist/app-5c0c23dfec2d63ae33a2.js"></script>
+
+
   </head>
   <body data-type="extras">
     <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -41,14 +48,17 @@
   <div class="sidebar-header">
     <div class="sidebar-projectDetails">
       <a href="http://astarte-platform.org" class="sidebar-projectName">
-Astarte      </a>
+Astarte
+      </a>
       <h2 class="sidebar-projectVersion">
         v1.0.0-beta.1
       </h2>
     </div>
+
       <a href="http://astarte-platform.org">
         <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
       </a>
+
   </div>
 
   <ul class="sidebar-listNav">
@@ -70,8 +80,8 @@ Astarte      </a>
 </h2>
 <p>When interacting with Astarte as a User, you have several options to choose from:</p><ul><li><a href="https://github.com/astarte-platform/astartectl">astartectl</a>: <code class="inline">astartectl</code> is the main command-line tool to interact with Astarte clusters, which packs
 in a number of subcommands to interact with Astarte API sets. It is a swiss army knife to perform daily operations on Astarte Clusters, and it abstracts
-most Astarte API interactions in a user-friendly way.</li><li>Astarte Dashboard: Astarte provides a built-in UI that can be used for managing Interfaces, Devices and Triggers. If your cluster has the dashboard enabled, it can
-be usually found at <code class="inline">dashboard.&lt;base Astarte URL&gt;</code>. It is meant to be a graphical, user-friendly tool to perform daily operations in the Cluster.</li><li>Astarte API Clients: API Clients are provided for a variety of languages. These clients abstract API interaction with language-friendly paradigms, and provide
+most Astarte API interactions in a user-friendly way.</li><li><a href="015-astarte_dashboard.html">Astarte Dashboard</a>: Astarte provides a built-in UI that can be used for managing Interfaces, Devices and Triggers.
+It is meant to be a graphical, user-friendly tool to perform daily operations on Realms.</li><li>Astarte API Clients: API Clients are provided for a variety of languages. These clients abstract API interaction with language-friendly paradigms, and provide
 API automations for several operations. Currently, the main API client available is <a href="https://github.com/astarte-platform/astarte-go">astarte-go</a>.</li><li>Astarte APIs: The base APIs are the lower level interaction layer. They are accessible, in standard installations, at <code class="inline">api.&lt;base Astarte URL&gt;/&lt;apiset&gt;</code>, and are
 the main mean of interaction upon which all other clients are based upon.</li></ul><p>Depending on the context, you might want to choose what suits you best. Over the course of the documentation, several examples will be provided with
 interaction means.</p><h3 id="setting-up-astartectl" class="section-heading">
@@ -105,7 +115,8 @@ interaction means.</p><h3 id="setting-up-astartectl" class="section-heading">
   <a href="#accessing-the-apis" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Accessing the APIs
 </h3>
-<p>In a standard Astarte installation, AppEngine API and Realm Management API are usually accessible at <code class="inline">api.&lt;your astarte domain&gt;/appengine</code> and <code class="inline">api.&lt;your astarte domain&gt;/realmmanagement</code>.</p><p>If your Astarte installation has Swagger UI enabled, you can use the <code class="inline">/swagger</code> endpoint to access it, and to issue API calls straight from your browser to follow this guide.</p>      <footer class="footer">
+<p>In a standard Astarte installation, AppEngine API and Realm Management API are usually accessible at <code class="inline">api.&lt;your astarte domain&gt;/appengine</code> and <code class="inline">api.&lt;your astarte domain&gt;/realmmanagement</code>.</p><p>If your Astarte installation has Swagger UI enabled, you can use the <code class="inline">/swagger</code> endpoint to access it, and to issue API calls straight from your browser to follow this guide.</p>
+      <footer class="footer">
         <p>
           <span class="line">
             Built using
@@ -136,5 +147,7 @@ interaction means.</p><h3 id="setting-up-astartectl" class="section-heading">
   </div>
 </section>
 </div>
+
+
   </body>
 </html>
