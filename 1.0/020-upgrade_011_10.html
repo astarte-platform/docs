@@ -175,7 +175,16 @@ cluster to be fully operational.</p><h2 id="upgrade-astarte" class="section-head
 To do so, simply edit the Astarte resource in the cluster updating the <code class="inline">version</code> field to the
 one you want to upgrate to.</p><p>Open the yaml file describing the Astarte resource with:</p><pre><code class="bash">kubectl edit astarte -n astarte</code></pre><p>Find the <code class="inline">version</code> field in the Astarte Spec section and change it according to your needs. Once the
 yaml file will be saved, the Operator will take over ensuring the reconciliation of your Astarte
-instance to the requested version.</p>
+instance to the requested version.</p><h3 id="caveats" class="section-heading">
+  <a href="#caveats" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Caveats
+</h3>
+<p>Astarte v0.11 employs a persistent volume to store CA certificate and private key, while upgrading
+to v1.0 involves a change in how device certificates are stored as, behind the scenes, these data
+are held as a Kubernetes TLS secret.</p><p>Following the Kubernetes conventions, the formerly used persistent volume and its corresponding
+claim are left within the cluster even if not used anymore.</p><p>If you followed the procedure described <a href="#migrate-ca-certificate-and-key">here</a> you are free to
+remove the CFSSL persistent volume and claim without the need for your devices to request new
+credentials.</p>
       <footer class="footer">
         <p>
           <span class="line">
