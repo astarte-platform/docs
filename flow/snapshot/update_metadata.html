@@ -71,13 +71,13 @@ astarte_flow      </a>
 <p>This object defines how this block will change the <code class="inline">metadata</code> of incoming messages.</p><p>All keys present in the object are either inserted or updated in the <code class="inline">Message</code> metadata, with the
 only exception that if a key has a value of <code class="inline">null</code>, it will be removed from <code class="inline">metadata</code>. All other
 metadata keys are not touched by this block.</p><h1>Output message</h1><p>The only modified field in the message is <code class="inline">metadata</code>, according to the rules specified above.</p><h1>Examples</h1><p>The following example uses <code class="inline">update_metadata</code> block to add/update the <code class="inline">&quot;foo&quot;</code> key in metadata to have
-the <code class="inline">&quot;bar&quot;</code> value, and to remove the <code class="inline">&quot;baz&quot;</code> metadata key.</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="4828668029-1">[</span><span class="n">...</span><span class="p" data-group-id="4828668029-1">]</span><span class="w">
+the <code class="inline">&quot;bar&quot;</code> value, and to remove the <code class="inline">&quot;baz&quot;</code> metadata key.</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="1011610409-1">[</span><span class="n">...</span><span class="p" data-group-id="1011610409-1">]</span><span class="w">
 </span><span class="o">|</span><span class="w"> </span><span class="n">update_metadata</span><span class="w">
-    </span><span class="o">.</span><span class="n">metadata</span><span class="p" data-group-id="4828668029-2">(</span><span class="p" data-group-id="4828668029-3">{</span><span class="w">
+    </span><span class="o">.</span><span class="n">metadata</span><span class="p" data-group-id="1011610409-2">(</span><span class="p" data-group-id="1011610409-3">{</span><span class="w">
       </span><span class="ss">foo</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span><span class="w">
       </span><span class="ss">baz</span><span class="p">:</span><span class="w"> </span><span class="n">null</span><span class="w">
-    </span><span class="p" data-group-id="4828668029-3">}</span><span class="p" data-group-id="4828668029-2">)</span><span class="w">
-</span><span class="p" data-group-id="4828668029-4">[</span><span class="n">...</span><span class="p" data-group-id="4828668029-4">]</span></code></pre>      <footer class="footer">
+    </span><span class="p" data-group-id="1011610409-3">}</span><span class="p" data-group-id="1011610409-2">)</span><span class="w">
+</span><span class="p" data-group-id="1011610409-4">[</span><span class="n">...</span><span class="p" data-group-id="1011610409-4">]</span></code></pre>      <footer class="footer">
         <p>
           <span class="line">
             Built using

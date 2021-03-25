@@ -93,30 +93,30 @@ object)</li></ul><h2 id="pairing_url" class="section-heading">
 </h2>
 <p>An object used to configure the target devices. The object <em>must</em> contain these keys:</p><ul><li><code class="inline">realm</code>: the target Realm for the device (required, string)</li><li><code class="inline">device_id</code>: the Device ID of the target device (required, string)</li><li><code class="inline">credentials_secret</code>: the <code class="inline">credentials_secret</code> of the target device (required, string)</li><li><code class="inline">interfaces</code>: the interfaces supported by the target device. Note that this should be an array of
 objects, the whole interface definition must be present for every interface. Right now only
-datastream interfaces are supported. (requires, array of objects)</li></ul><p>This is an example of a <code class="inline">target_devices</code> object:</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="3271652837-1">{</span><span class="w">
+datastream interfaces are supported. (requires, array of objects)</li></ul><p>This is an example of a <code class="inline">target_devices</code> object:</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="7582860885-1">{</span><span class="w">
   </span><span class="ss">realm</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">device_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;EA8lpOrkR8OJ-bp9dSVYQA&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">credentials_secret</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;N0hUYzmGzpK2SdN8FLoFtw==&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="ss">interfaces</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3271652837-2">[</span><span class="w">
-    </span><span class="p" data-group-id="3271652837-3">{</span><span class="w">
+  </span><span class="ss">interfaces</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7582860885-2">[</span><span class="w">
+    </span><span class="p" data-group-id="7582860885-3">{</span><span class="w">
       </span><span class="ss">interface_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;org.astarte-platform.genericsensors.Values&quot;</span><span class="p">,</span><span class="w">
       </span><span class="ss">version_major</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="ss">version_minor</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;datastream&quot;</span><span class="p">,</span><span class="w">
       </span><span class="ss">ownership</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;device&quot;</span><span class="p">,</span><span class="w">
       </span><span class="ss">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Generic sensors sampled data.&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="ss">mappings</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3271652837-4">[</span><span class="w">
-        </span><span class="p" data-group-id="3271652837-5">{</span><span class="w">
+      </span><span class="ss">mappings</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7582860885-4">[</span><span class="w">
+        </span><span class="p" data-group-id="7582860885-5">{</span><span class="w">
           </span><span class="ss">endpoint</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/%{sensor_id}/value&quot;</span><span class="p">,</span><span class="w">
           </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;double&quot;</span><span class="p">,</span><span class="w">
           </span><span class="ss">explicit_timestamp</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
           </span><span class="ss">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Sampled real value.&quot;</span><span class="p">,</span><span class="w">
           </span><span class="ss">doc</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Datastream of sampled real values.&quot;</span><span class="w">
-        </span><span class="p" data-group-id="3271652837-5">}</span><span class="w">
-      </span><span class="p" data-group-id="3271652837-4">]</span><span class="w">
-    </span><span class="p" data-group-id="3271652837-3">}</span><span class="w">
-  </span><span class="p" data-group-id="3271652837-2">]</span><span class="w">
-</span><span class="p" data-group-id="3271652837-1">}</span></code></pre><h2 id="dynamic-devices" class="section-heading">
+        </span><span class="p" data-group-id="7582860885-5">}</span><span class="w">
+      </span><span class="p" data-group-id="7582860885-4">]</span><span class="w">
+    </span><span class="p" data-group-id="7582860885-3">}</span><span class="w">
+  </span><span class="p" data-group-id="7582860885-2">]</span><span class="w">
+</span><span class="p" data-group-id="7582860885-1">}</span></code></pre><h2 id="dynamic-devices" class="section-heading">
   <a href="#dynamic-devices" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Dynamic devices
 </h2>
@@ -132,34 +132,34 @@ objects).</li></ul><h2 id="pairing_url-1" class="section-heading">
   <code class="inline">realms</code>
 </h2>
 <p>An object used to configure the target devices. The object <em>must</em> contain these keys:</p><ul><li><code class="inline">realm</code>: the realm name (required, string)</li><li><code class="inline">jwt</code>: a JWT with the correct claims to access the target Astarte Pairing API instance. (required,
-string)</li></ul><p>This is an example of a <code class="inline">realms</code> object:</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="6716976947-1">{</span><span class="w">
+string)</li></ul><p>This is an example of a <code class="inline">realms</code> object:</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="7777406917-1">{</span><span class="w">
   </span><span class="ss">realm</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">jwt</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTIyODA4MjIsImFfcGEiOlsiLio6Oi4qIl19.RjqQGV3-ZNbqJ-wj77Sw41CfsWHhlLf9hBZ1Ni-2TQNeKwdpWlmClA1yrtRv41dtVojWjGPLdPMeC7R7yx46VgJlnJXrNE1ffxflAtls5kE3cMF8h6scqbS4Hy7oP_G2g7XS1c9HCwwkiSRzqu6pUY0XgtI0ss35OhvrpkNn0UC4sGS8uAxQauATbfzBdIvkiWPqF-CUrT23sHISlfEv6Y_cnciszJsGTGhVlG1M2hqYHITgnFOivxCgLPQUpqI0GCjkPbfJp9eBClDXJdvIimzRQ74Hv0arBOC6OrCLvztMAwQaxBm47w9sCjkP-aCMN2JqBpmimzFEU8ulXVjxQcgfnAIWrL1cMo4DOhwPvRmyy6Zc9ahRzQdpYvbzbTTfMkPU6u3m-u9CL5JXI8B1l_RriambWsbUeMsOR0WZG9zC98YUwar9bA1o6S7w-3DzxuXDZ4yEe_VdEO8QHb9G_5S1nYXClFXoeL2tRk4Ib9g2HzewC3Zt7pQCX3ksukaPwsxauivQ6m3C_j6LEPiPR4FG2-rJyWFrnAmltYlYs0z7rP0WQjicNIpIRZkB2ovi8gw-PHXFbVlmFfoTx7yl2wWXxLIFDoDieZGdbYcciOERZZ_JzeF7XEWnJvUPmIGhwa5W-UEhAPHXrYjuvHeWTC-FIV5yvjiiSKYjA-DiZSU&quot;</span><span class="w">
-</span><span class="p" data-group-id="6716976947-1">}</span></code></pre><h2 id="interfaces" class="section-heading">
+</span><span class="p" data-group-id="7777406917-1">}</span></code></pre><h2 id="interfaces" class="section-heading">
   <a href="#interfaces" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   <code class="inline">interfaces</code>
 </h2>
 <p>The interfaces supported by the target devices. Note that this should be an array of objects, the
 whole interface definition in must be present for every interface. Right now only datastream
-interfaces are supported.</p><p>This is an example of an <code class="inline">interfaces</code> array:</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="6725979909-1">[</span><span class="w">
-  </span><span class="p" data-group-id="6725979909-2">{</span><span class="w">
+interfaces are supported.</p><p>This is an example of an <code class="inline">interfaces</code> array:</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="7724613040-1">[</span><span class="w">
+  </span><span class="p" data-group-id="7724613040-2">{</span><span class="w">
     </span><span class="ss">interface_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;org.astarte-platform.genericsensors.Values&quot;</span><span class="p">,</span><span class="w">
     </span><span class="ss">version_major</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="ss">version_minor</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;datastream&quot;</span><span class="p">,</span><span class="w">
     </span><span class="ss">ownership</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;device&quot;</span><span class="p">,</span><span class="w">
     </span><span class="ss">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Generic sensors sampled data.&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="ss">mappings</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6725979909-3">[</span><span class="w">
-      </span><span class="p" data-group-id="6725979909-4">{</span><span class="w">
+    </span><span class="ss">mappings</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7724613040-3">[</span><span class="w">
+      </span><span class="p" data-group-id="7724613040-4">{</span><span class="w">
         </span><span class="ss">endpoint</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/%{sensor_id}/value&quot;</span><span class="p">,</span><span class="w">
         </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;double&quot;</span><span class="p">,</span><span class="w">
         </span><span class="ss">explicit_timestamp</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
         </span><span class="ss">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Sampled real value.&quot;</span><span class="p">,</span><span class="w">
         </span><span class="ss">doc</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Datastream of sampled real values.&quot;</span><span class="w">
-      </span><span class="p" data-group-id="6725979909-4">}</span><span class="w">
-    </span><span class="p" data-group-id="6725979909-3">]</span><span class="w">
-  </span><span class="p" data-group-id="6725979909-2">}</span><span class="w">
-</span><span class="p" data-group-id="6725979909-1">]</span></code></pre><h1>Accepted Input Messages</h1><p>When receiving a message, the <code class="inline">virtual_device_pool</code> block expects a key with this format:</p><pre><code class="nohighlight makeup elixir"><span class="n">realm</span><span class="o">/</span><span class="n">device_id</span><span class="o">/</span><span class="n">interface_name</span><span class="o">/</span><span class="n">path</span></code></pre><p>So, for example, an incoming message with key
+      </span><span class="p" data-group-id="7724613040-4">}</span><span class="w">
+    </span><span class="p" data-group-id="7724613040-3">]</span><span class="w">
+  </span><span class="p" data-group-id="7724613040-2">}</span><span class="w">
+</span><span class="p" data-group-id="7724613040-1">]</span></code></pre><h1>Accepted Input Messages</h1><p>When receiving a message, the <code class="inline">virtual_device_pool</code> block expects a key with this format:</p><pre><code class="nohighlight makeup elixir"><span class="n">realm</span><span class="o">/</span><span class="n">device_id</span><span class="o">/</span><span class="n">interface_name</span><span class="o">/</span><span class="n">path</span></code></pre><p>So, for example, an incoming message with key
 <code class="inline">test/EA8lpOrkR8OJ-bp9dSVYQA/org.astarte-platform.genericsensors.Values/mysensor/value</code> will produce
 a message sent from a device in the <code class="inline">test</code> realm with Device ID <code class="inline">EA8lpOrkR8OJ-bp9dSVYQA</code> on the
 <code class="inline">org.astarte-platform.genericsensors.Values</code> interface with <code class="inline">/mysensor/value</code> path.</p><p>If you're using a static <code class="inline">virtual_device_pool</code>, the Device ID must be present in the list of target
@@ -170,67 +170,67 @@ timestamp.</p><h1>Examples</h1><h2 id="static-devices-1" class="section-heading"
   <a href="#static-devices-1" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Static devices
 </h2>
-<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="5871730455-1">[</span><span class="n">...</span><span class="p" data-group-id="5871730455-1">]</span><span class="w">
+<pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="8748892632-1">[</span><span class="n">...</span><span class="p" data-group-id="8748892632-1">]</span><span class="w">
 </span><span class="o">|</span><span class="w"> </span><span class="n">virtual_device_pool</span><span class="w">
-  </span><span class="o">.</span><span class="n">pairing_url</span><span class="p" data-group-id="5871730455-2">(</span><span class="s">&quot;https://astarte.example.com/pairing&quot;</span><span class="p" data-group-id="5871730455-2">)</span><span class="w">
-  </span><span class="o">.</span><span class="n">target_devices</span><span class="p" data-group-id="5871730455-3">(</span><span class="w">
-    </span><span class="p" data-group-id="5871730455-4">[</span><span class="w">
-      </span><span class="p" data-group-id="5871730455-5">{</span><span class="w">
+  </span><span class="o">.</span><span class="n">pairing_url</span><span class="p" data-group-id="8748892632-2">(</span><span class="s">&quot;https://astarte.example.com/pairing&quot;</span><span class="p" data-group-id="8748892632-2">)</span><span class="w">
+  </span><span class="o">.</span><span class="n">target_devices</span><span class="p" data-group-id="8748892632-3">(</span><span class="w">
+    </span><span class="p" data-group-id="8748892632-4">[</span><span class="w">
+      </span><span class="p" data-group-id="8748892632-5">{</span><span class="w">
         </span><span class="ss">realm</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test&quot;</span><span class="p">,</span><span class="w">
         </span><span class="ss">device_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;EA8lpOrkR8OJ-bp9dSVYQA&quot;</span><span class="p">,</span><span class="w">
         </span><span class="ss">credentials_secret</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;N0hUYzmGzpK2SdN8FLoFtw==&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="ss">interfaces</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5871730455-6">[</span><span class="w">
-          </span><span class="p" data-group-id="5871730455-7">{</span><span class="w">
+        </span><span class="ss">interfaces</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8748892632-6">[</span><span class="w">
+          </span><span class="p" data-group-id="8748892632-7">{</span><span class="w">
             </span><span class="ss">interface_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;org.astarte-platform.genericsensors.Values&quot;</span><span class="p">,</span><span class="w">
             </span><span class="ss">version_major</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="ss">version_minor</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;datastream&quot;</span><span class="p">,</span><span class="w">
             </span><span class="ss">ownership</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;device&quot;</span><span class="p">,</span><span class="w">
             </span><span class="ss">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Generic sensors sampled data.&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="ss">mappings</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5871730455-8">[</span><span class="w">
-              </span><span class="p" data-group-id="5871730455-9">{</span><span class="w">
+            </span><span class="ss">mappings</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8748892632-8">[</span><span class="w">
+              </span><span class="p" data-group-id="8748892632-9">{</span><span class="w">
                 </span><span class="ss">endpoint</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/%{sensor_id}/value&quot;</span><span class="p">,</span><span class="w">
                 </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;double&quot;</span><span class="p">,</span><span class="w">
                 </span><span class="ss">explicit_timestamp</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
                 </span><span class="ss">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Sampled real value.&quot;</span><span class="p">,</span><span class="w">
                 </span><span class="ss">doc</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Datastream of sampled real values.&quot;</span><span class="w">
-              </span><span class="p" data-group-id="5871730455-9">}</span><span class="w">
-            </span><span class="p" data-group-id="5871730455-8">]</span><span class="w">
-          </span><span class="p" data-group-id="5871730455-7">}</span><span class="w">
-        </span><span class="p" data-group-id="5871730455-6">]</span><span class="w">
-      </span><span class="p" data-group-id="5871730455-5">}</span><span class="w">
-    </span><span class="p" data-group-id="5871730455-4">]</span><span class="w">
-  </span><span class="p" data-group-id="5871730455-3">)</span></code></pre><h2 id="dynamic-devices-1" class="section-heading">
+              </span><span class="p" data-group-id="8748892632-9">}</span><span class="w">
+            </span><span class="p" data-group-id="8748892632-8">]</span><span class="w">
+          </span><span class="p" data-group-id="8748892632-7">}</span><span class="w">
+        </span><span class="p" data-group-id="8748892632-6">]</span><span class="w">
+      </span><span class="p" data-group-id="8748892632-5">}</span><span class="w">
+    </span><span class="p" data-group-id="8748892632-4">]</span><span class="w">
+  </span><span class="p" data-group-id="8748892632-3">)</span></code></pre><h2 id="dynamic-devices-1" class="section-heading">
   <a href="#dynamic-devices-1" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Dynamic devices
 </h2>
 <pre><code class="nohighlight makeup elixir"><span class="o">|</span><span class="w"> </span><span class="n">virtual_device_pool</span><span class="w">
-  </span><span class="o">.</span><span class="n">pairing_url</span><span class="p" data-group-id="2538035295-1">(</span><span class="s">&quot;https://astarte.example.com/pairing&quot;</span><span class="p" data-group-id="2538035295-1">)</span><span class="w">
-  </span><span class="o">.</span><span class="n">realms</span><span class="p" data-group-id="2538035295-2">(</span><span class="p" data-group-id="2538035295-3">[</span><span class="w">
-    </span><span class="p" data-group-id="2538035295-4">{</span><span class="w">
+  </span><span class="o">.</span><span class="n">pairing_url</span><span class="p" data-group-id="7245418076-1">(</span><span class="s">&quot;https://astarte.example.com/pairing&quot;</span><span class="p" data-group-id="7245418076-1">)</span><span class="w">
+  </span><span class="o">.</span><span class="n">realms</span><span class="p" data-group-id="7245418076-2">(</span><span class="p" data-group-id="7245418076-3">[</span><span class="w">
+    </span><span class="p" data-group-id="7245418076-4">{</span><span class="w">
       </span><span class="ss">realm</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;test&quot;</span><span class="p">,</span><span class="w">
       </span><span class="ss">jwt</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTIyODA4MjIsImFfcGEiOlsiLio6Oi4qIl19.RjqQGV3-ZNbqJ-wj77Sw41CfsWHhlLf9hBZ1Ni-2TQNeKwdpWlmClA1yrtRv41dtVojWjGPLdPMeC7R7yx46VgJlnJXrNE1ffxflAtls5kE3cMF8h6scqbS4Hy7oP_G2g7XS1c9HCwwkiSRzqu6pUY0XgtI0ss35OhvrpkNn0UC4sGS8uAxQauATbfzBdIvkiWPqF-CUrT23sHISlfEv6Y_cnciszJsGTGhVlG1M2hqYHITgnFOivxCgLPQUpqI0GCjkPbfJp9eBClDXJdvIimzRQ74Hv0arBOC6OrCLvztMAwQaxBm47w9sCjkP-aCMN2JqBpmimzFEU8ulXVjxQcgfnAIWrL1cMo4DOhwPvRmyy6Zc9ahRzQdpYvbzbTTfMkPU6u3m-u9CL5JXI8B1l_RriambWsbUeMsOR0WZG9zC98YUwar9bA1o6S7w-3DzxuXDZ4yEe_VdEO8QHb9G_5S1nYXClFXoeL2tRk4Ib9g2HzewC3Zt7pQCX3ksukaPwsxauivQ6m3C_j6LEPiPR4FG2-rJyWFrnAmltYlYs0z7rP0WQjicNIpIRZkB2ovi8gw-PHXFbVlmFfoTx7yl2wWXxLIFDoDieZGdbYcciOERZZ_JzeF7XEWnJvUPmIGhwa5W-UEhAPHXrYjuvHeWTC-FIV5yvjiiSKYjA-DiZSU&quot;</span><span class="w">
-    </span><span class="p" data-group-id="2538035295-4">}</span><span class="w">
-  </span><span class="p" data-group-id="2538035295-3">]</span><span class="p" data-group-id="2538035295-2">)</span><span class="w">
-  </span><span class="o">.</span><span class="n">interfaces</span><span class="p" data-group-id="2538035295-5">(</span><span class="p" data-group-id="2538035295-6">[</span><span class="w">
-    </span><span class="p" data-group-id="2538035295-7">{</span><span class="w">
+    </span><span class="p" data-group-id="7245418076-4">}</span><span class="w">
+  </span><span class="p" data-group-id="7245418076-3">]</span><span class="p" data-group-id="7245418076-2">)</span><span class="w">
+  </span><span class="o">.</span><span class="n">interfaces</span><span class="p" data-group-id="7245418076-5">(</span><span class="p" data-group-id="7245418076-6">[</span><span class="w">
+    </span><span class="p" data-group-id="7245418076-7">{</span><span class="w">
       </span><span class="ss">interface_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;org.astarte-platform.genericsensors.Values&quot;</span><span class="p">,</span><span class="w">
       </span><span class="ss">version_major</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="ss">version_minor</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;datastream&quot;</span><span class="p">,</span><span class="w">
       </span><span class="ss">ownership</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;device&quot;</span><span class="p">,</span><span class="w">
       </span><span class="ss">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Generic sensors sampled data.&quot;</span><span class="p">,</span><span class="w">
-      </span><span class="ss">mappings</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2538035295-8">[</span><span class="w">
-        </span><span class="p" data-group-id="2538035295-9">{</span><span class="w">
+      </span><span class="ss">mappings</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7245418076-8">[</span><span class="w">
+        </span><span class="p" data-group-id="7245418076-9">{</span><span class="w">
           </span><span class="ss">endpoint</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/%{sensor_id}/value&quot;</span><span class="p">,</span><span class="w">
           </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;double&quot;</span><span class="p">,</span><span class="w">
           </span><span class="ss">explicit_timestamp</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
           </span><span class="ss">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Sampled real value.&quot;</span><span class="p">,</span><span class="w">
           </span><span class="ss">doc</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Datastream of sampled real values.&quot;</span><span class="w">
-        </span><span class="p" data-group-id="2538035295-9">}</span><span class="w">
-      </span><span class="p" data-group-id="2538035295-8">]</span><span class="w">
-    </span><span class="p" data-group-id="2538035295-7">}</span><span class="w">
-  </span><span class="p" data-group-id="2538035295-6">]</span><span class="p" data-group-id="2538035295-5">)</span></code></pre>      <footer class="footer">
+        </span><span class="p" data-group-id="7245418076-9">}</span><span class="w">
+      </span><span class="p" data-group-id="7245418076-8">]</span><span class="w">
+    </span><span class="p" data-group-id="7245418076-7">}</span><span class="w">
+  </span><span class="p" data-group-id="7245418076-6">]</span><span class="p" data-group-id="7245418076-5">)</span></code></pre>      <footer class="footer">
         <p>
           <span class="line">
             Built using
