@@ -1,0 +1,19 @@
+digraph "/home/runner/work/astarte-device-sdk-esp32/astarte-device-sdk-esp32/astarte-device-sdk-esp32/include/astarte.h"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="/home/runner/work/astarte\l-device-sdk-esp32/astarte\l-device-sdk-esp32/astarte\l-device-sdk-esp32/include\l/astarte.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Astarte types and defines."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="/home/runner/work/astarte\l-device-sdk-esp32/astarte\l-device-sdk-esp32/astarte\l-device-sdk-esp32/include\l/astarte_bson.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$astarte__bson_8h.html",tooltip="Astarte BSON manipulation functions."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="/home/runner/work/astarte\l-device-sdk-esp32/astarte\l-device-sdk-esp32/astarte\l-device-sdk-esp32/include\l/astarte_bson_serializer.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$astarte__bson__serializer_8h.html",tooltip="Astarte BSON serializer functions."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="/home/runner/work/astarte\l-device-sdk-esp32/astarte\l-device-sdk-esp32/astarte\l-device-sdk-esp32/include\l/astarte_credentials.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$astarte__credentials_8h.html",tooltip="Astarte credentials functions."];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="/home/runner/work/astarte\l-device-sdk-esp32/astarte\l-device-sdk-esp32/astarte\l-device-sdk-esp32/include\l/astarte_device.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$astarte__device_8h.html",tooltip="Astarte device SDK high level API."];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="/home/runner/work/astarte\l-device-sdk-esp32/astarte\l-device-sdk-esp32/astarte\l-device-sdk-esp32/include\l/astarte_hwid.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$astarte__hwid_8h.html",tooltip="Astarte hardware ID functions."];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="/home/runner/work/astarte\l-device-sdk-esp32/astarte\l-device-sdk-esp32/astarte\l-device-sdk-esp32/include\l/astarte_pairing.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$astarte__pairing_8h.html",tooltip="Astarte pairing functions."];
+}
