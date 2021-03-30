@@ -76,13 +76,14 @@ Astarte
 
 <h1>Installing Astarte Operator</h1><p>The most simple and common installation procedure exploits the <a href="https://artifacthub.io/packages/helm/astarte/astarte-operator">Astarte Operator's Helm
 chart</a>.</p><p>Helm is intended to be used as the operator's lifecycle management tool, thus make sure you are
-ready with a working <a href="https://helm.sh/docs/intro/install/">Helm installation</a>.</p><h2 id="installation" class="section-heading">
+ready with a working <a href="https://helm.sh/docs/intro/install/">Helm installation</a>.</p><p>Please, before starting with the Operator's install procedure make sure that any
+<a href="020-prerequisites.html">prerequisite</a> has been satisfied.</p><h2 id="installation" class="section-heading">
   <a href="#installation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Installation
 </h2>
 <p>Installing the Operator is as simple as</p><pre><code class="bash">helm repo add astarte https://helm.astarte-platform.org
 helm repo update
-helm install astarte-operator astarte/astarte-operator</code></pre><p>This command will take care of installing all needed components for the Operator to run. This
+helm install astarte-operator astarte/astarte-operator -n kube-system</code></pre><p>This command will take care of installing all needed components for the Operator to run. This
 includes all the RBAC roles, Custom Resource Definitions, Webhooks, and the Operator itself.</p><p>You can use the <code class="inline">--version</code> switch to specify a version to install. When not specified, the latest
 stable version will be installed instead.</p><h2 id="upgrading-the-operator" class="section-heading">
   <a href="#upgrading-the-operator" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
