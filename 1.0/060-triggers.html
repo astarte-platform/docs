@@ -313,13 +313,14 @@ ingestion, integration with an existing AMQP infrastructure, etc...</p><p>Payloa
 therefore if any other format is required Astarte Flow should be employed as a format converter.</p><p>This is a minimal configuration object representing an
 <a href="https://www.rabbitmq.com/tutorials/amqp-concepts.html">AMQP 0-9-1</a> action:</p><pre><code class="json">{
   &quot;amqp_exchange&quot;: &quot;astarte_events_&lt;realm-name&gt;_&lt;exchange-suffix&gt;&quot;,
+  &quot;amqp_routing_key&quot;: &quot;my_routing_key&quot;,
   &quot;amqp_message_expiration_ms&quot;: &lt;expiration in milliseconds&gt;,
   &quot;amqp_message_persistent&quot;: &lt;true when disk persistency is used&gt;
 }</code></pre><p>It is possible to configure more advanced AMQP 0-9-1 actions:</p><pre><code class="json">{
   &quot;amqp_exchange&quot;: &quot;astarte_events_myrealm_myexchange&quot;,
   &quot;amqp_routing_key&quot;: &quot;my routing key&quot;,
   &quot;amqp_static_headers&quot;: {
-    &quot;key&quot;: &quot;calue&quot;
+    &quot;key&quot;: &quot;value&quot;
   },
   &quot;amqp_message_expiration_ms&quot;: 10000,
   &quot;amqp_message_priority&quot;: 0,

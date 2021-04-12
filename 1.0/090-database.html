@@ -258,11 +258,12 @@ ADD (
 </h3>
 <h4>Realm Keyspace v1.0.0 Changes</h4><ul><li>Rename the <code class="inline">metadata</code> to <code class="inline">attributes</code> in the <code class="inline">devices</code> table</li></ul><p><em>Warning</em>: migrating data from the <code class="inline">metadata</code> column to the <code class="inline">attributes</code> one is possible but is out
 of scope of this guide since this change happened between development releases. The procedure below
-just removes and recreates the column <em>without migrating data</em>.</p><pre><code class="sql">ALTER TABLE devices
-DROP metadata;</code></pre><pre><code class="sql">ALTER TABLE devices
+just creates the new column and then deletes the old one <em>without migrating data</em>. You're free to
+implement a migration procedure between the two steps.</p><pre><code class="sql">ALTER TABLE devices
 ADD (
     attributes map&lt;varchar, varchar&gt;
-);</code></pre>
+);</code></pre><pre><code class="sql">ALTER TABLE devices
+DROP metadata;</code></pre>
       <footer class="footer">
         <p>
           <span class="line">
