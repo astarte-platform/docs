@@ -73,16 +73,16 @@ and produces a message having a JSON serialized payload.</p><h1>Properties</h1><
   <code class="inline">template</code>
 </h2>
 <p>Given <code class="inline">{key: &quot;key&quot;, data: 42}</code> as input message, the following template renders to
-<code class="inline">{&quot;thekey&quot;: &quot;key&quot;, &quot;thevalue&quot;: 42}</code>:</p><pre><code class="nohighlight makeup elixir"><span class="o">.</span><span class="n">template</span><span class="p" data-group-id="3857261938-1">(</span><span class="w">
-  </span><span class="p" data-group-id="3857261938-2">{</span><span class="w">
+<code class="inline">{&quot;thekey&quot;: &quot;key&quot;, &quot;thevalue&quot;: 42}</code>:</p><pre><code class="nohighlight makeup elixir"><span class="o">.</span><span class="n">template</span><span class="p" data-group-id="1772130453-1">(</span><span class="w">
+  </span><span class="p" data-group-id="1772130453-2">{</span><span class="w">
     </span><span class="ss">thekey</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{ message.key }}&quot;</span><span class="p">,</span><span class="w">
     </span><span class="ss">thevalue</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{{ message.data }}}&quot;</span><span class="w">
-  </span><span class="p" data-group-id="3857261938-2">}</span><span class="w">
-</span><span class="p" data-group-id="3857261938-1">)</span></code></pre><h1>Output message</h1><ul><li><code class="inline">key</code>: contains the same <code class="inline">key</code> specified in the input message.</li><li><code class="inline">data</code>: the incoming data formatted as a JSON binary</li><li><code class="inline">type</code>: is always <code class="inline">binary</code></li><li><code class="inline">subtype</code>: is always <code class="inline">application/json</code></li><li><code class="inline">timestamp</code>: the same <code class="inline">timestamp</code> specified in the input message.</li></ul><h1>Examples</h1><p>The following example uses <code class="inline">to_json</code> block to format incoming messages to human readable JSON binary
-before letting them through.</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="8110102208-1">[</span><span class="n">...</span><span class="p" data-group-id="8110102208-1">]</span><span class="w">
+  </span><span class="p" data-group-id="1772130453-2">}</span><span class="w">
+</span><span class="p" data-group-id="1772130453-1">)</span></code></pre><h1>Output message</h1><ul><li><code class="inline">key</code>: contains the same <code class="inline">key</code> specified in the input message.</li><li><code class="inline">data</code>: the incoming data formatted as a JSON binary</li><li><code class="inline">type</code>: is always <code class="inline">binary</code></li><li><code class="inline">subtype</code>: is always <code class="inline">application/json</code></li><li><code class="inline">timestamp</code>: the same <code class="inline">timestamp</code> specified in the input message.</li></ul><h1>Examples</h1><p>The following example uses <code class="inline">to_json</code> block to format incoming messages to human readable JSON binary
+before letting them through.</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="3607977858-1">[</span><span class="n">...</span><span class="p" data-group-id="3607977858-1">]</span><span class="w">
 </span><span class="o">|</span><span class="w"> </span><span class="n">to_json</span><span class="w">
-  </span><span class="o">.</span><span class="n">pretty</span><span class="p" data-group-id="8110102208-2">(</span><span class="no">true</span><span class="p" data-group-id="8110102208-2">)</span><span class="w">
-</span><span class="p" data-group-id="8110102208-3">[</span><span class="n">...</span><span class="p" data-group-id="8110102208-3">]</span></code></pre>      <footer class="footer">
+  </span><span class="o">.</span><span class="n">pretty</span><span class="p" data-group-id="3607977858-2">(</span><span class="no">true</span><span class="p" data-group-id="3607977858-2">)</span><span class="w">
+</span><span class="p" data-group-id="3607977858-3">[</span><span class="n">...</span><span class="p" data-group-id="3607977858-3">]</span></code></pre>      <footer class="footer">
         <p>
           <span class="line">
             Built using
