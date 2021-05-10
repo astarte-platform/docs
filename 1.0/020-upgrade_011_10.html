@@ -5,9 +5,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.24.2">
-    <meta name="project" content="Astarte v1.0.0-beta.2">
+    <meta name="project" content="Astarte v1.0.0-rc.0">
 
-    <title>Upgrade v0.11-v1.0 — Astarte v1.0.0-beta.2</title>
+    <title>Upgrade v0.11-v1.0 — Astarte v1.0.0-rc.0</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
     <script src="dist/sidebar_items-6bee3a8806.js"></script>
@@ -58,7 +58,7 @@
 Astarte
       </a>
       <strong class="sidebar-projectVersion">
-        v1.0.0-beta.2
+        v1.0.0-rc.0
       </strong>
     </div>
 
@@ -142,13 +142,13 @@ export ASTARTE_OP_RELEASE_NAMESPACE=kube-system</code></pre><p>Generate the Helm
 to your needs. For instance, if you want to refer to a particular Operator's tag all you have to do
 is to append <code class="inline">--set image.tag=&lt;the-required-tag&gt;</code> to the previous command. To check all the
 configurable values run <code class="inline">helm show values astarte/astarte-operator</code>.</p><p>Now it's time to prepare the cluster to allow the new operator installation by means of the
-templates generated in the previous step.</p><p>The following tasks will be performed:</p><ul><li>replacement of the Astarte's and AstarteVoyagerIngress' CRDs with their updated versions,</li><li>installation of the Flow's CRD,</li><li>installation of the Operator's RBACs,</li><li>installation of the Operator's Webhooks,</li><li>annotation of the installed resources as to allow Helm to manipulate and take control of them.</li></ul><p>This <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/release-1.0/hack/upgrade-operator-011-10.sh">bash
+templates generated in the previous step.</p><p>The following tasks will be performed:</p><ul><li>replacement of the Astarte's and AstarteVoyagerIngress' CRDs with their updated versions,</li><li>installation of the Flow's CRD,</li><li>installation of the Operator's RBACs,</li><li>installation of the Operator's Webhooks,</li><li>annotation of the installed resources as to allow Helm to manipulate and take control of them.</li></ul><p>This <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/v1.0.0-rc.0/hack/upgrade-operator-011-10.sh">bash
 script</a>
 takes care of handling the aforementioned tasks. Download it and, assuming you saved it as
 <code class="inline">upgrade-operator-011-10.sh</code>, run the following:</p><pre><code class="bash">bash path/to/your/upgrade-operator-011-10.sh \
     -d $ASTARTE_OP_TEMPLATE_DIR \
     -n $ASTARTE_OP_RELEASE_NAME \
-    -N $ASTARTE_OP_RELEASE_NAMESPACE</code></pre><p>In a more concise way you can perform the same task simply executing:</p><pre><code class="bash">ASTARTE_OP_UPGRADE_SCRIPT_URL=https://raw.githubusercontent.com/astarte-platform/astarte-kubernetes-operator/release-1.0/hack/upgrade-operator-011-10.sh
+    -N $ASTARTE_OP_RELEASE_NAMESPACE</code></pre><p>In a more concise way you can perform the same task simply executing:</p><pre><code class="bash">ASTARTE_OP_UPGRADE_SCRIPT_URL=https://raw.githubusercontent.com/astarte-platform/astarte-kubernetes-operator/v1.0.0-rc.0/hack/upgrade-operator-011-10.sh
 curl -fsSL $ASTARTE_OP_UPGRADE_SCRIPT_URL &gt; /tmp/upgrade-operator-011-10.sh
 bash /tmp/upgrade-operator-011-10.sh \
     -d $ASTARTE_OP_TEMPLATE_DIR \
