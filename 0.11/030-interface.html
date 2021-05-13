@@ -253,9 +253,8 @@ path <code class="inline">/</code> is not ambiguous.</p><p>This is the correct w
 </h2>
 <p><code class="inline">datastream</code> interfaces are highly tunable, depending on the kind of
 data they are representing: it is possible to fine tune several aspects of how data is stored,
-transferred and indexed. The following properties can be set either at interface level, making them
-the default for each mapping, or at mapping level, overriding any interface-wide setting.</p><blockquote><p>NOTE: In case the interface is aggregated, overriding any additional properties at mapping level
-does not have any effect, and might cause a validation error.</p></blockquote><ul><li><code class="inline">explicit_timestamp</code>: By default, Astarte associates a timestamp to data whenever it is collected
+transferred and indexed. The following properties can be set at mapping level.</p><blockquote><p>NOTE: In case the interface is aggregated, additional properties must 
+be the same for each mapping.</p></blockquote><ul><li><code class="inline">explicit_timestamp</code>: By default, Astarte associates a timestamp to data whenever it is collected
 (or - when the message hits the data collection stage). However, when setting this property to
 <code class="inline">true</code>, Astarte expects the owner to attach a valid timestamp each time it produces data. In that
 case, the provided timestamp is used for indexing.</li><li><code class="inline">reliability</code>: Each mapping can be <code class="inline">unreliable</code> (default), <code class="inline">guaranteed</code>, <code class="inline">unique</code>. This defines
