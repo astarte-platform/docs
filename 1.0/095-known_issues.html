@@ -10,7 +10,7 @@
     <title>Known issues — Astarte v1.0.0-rc.0</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-464bf85a8f.js"></script>
+    <script src="dist/sidebar_items-de157b9ae1.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -109,7 +109,16 @@ have access to is to provide a backend which is able to perform the necessary au
 and then performs the necessary additions/removals, while the user only has a read access to the
 group resource.</p><p>In the long term a minor semantic change is going to employed, therefore currently we discourage
 emitting long living tokens which allow a non-root user to manage groups (i.e. create and modify
-them) since the current tokens could become incompatible with future changes.</p>
+them) since the current tokens could become incompatible with future changes.</p><h2 id="ghost-connected-devices" class="section-heading">
+  <a href="#ghost-connected-devices" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Ghost connected devices
+</h2>
+<p>In some circumstances, prior to Astarte <code class="inline">v1.0</code>, a device might be mistakenly reported as connected.
+This bug has been fixed in <code class="inline">v1.0</code>, however this bug may still affect devices that have connected
+last time while using <code class="inline">v0.11</code> (prior to the upgrade to <code class="inline">v1.0</code>).
+This issue is likely to happen when upgrading to <code class="inline">v1.0</code> since it might be caused by VerneMQ
+shutdown.
+A device reconnection fixes this issue, and the connection state will always be reliably reported.</p>
 <div class="bottom-actions">
   <div class="bottom-actions-item">
 
