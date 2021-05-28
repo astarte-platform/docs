@@ -4,22 +4,29 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.22.1">
-    <meta name="project" content="Astarte v1.0.0-beta.2">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="Astarte v1.0.0-rc.0">
 
-    <title>Installing Astarte Operator — Astarte v1.0.0-beta.2</title>
-    <link rel="stylesheet" href="dist/elixir-e589b8fad3dab6230c65.css" />
+    <title>Installing Astarte Operator — Astarte v1.0.0-rc.0</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-8478e037bb.js"></script>
+    <script src="dist/sidebar_items-3540881f26.js"></script>
 
       <script src="../common_vars.js"></script>
 
-    <script async src="dist/app-5c0c23dfec2d63ae33a2.js"></script>
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
 
 
   </head>
   <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+    <script>
+
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
 
 <div class="main">
 
@@ -29,14 +36,14 @@
 
 <section class="sidebar">
   <form class="sidebar-search" action="search.html">
-    <button type="submit" class="search-button">
-      <span class="icon-search" aria-hidden="true"></span>
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
     </button>
-    <button type="button" tabindex="-1" class="search-close-button">
-      <span class="icon-cross" title="Cancel search"></span>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
     </button>
     <label class="search-label">
-      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
     </label>
   </form>
 
@@ -50,9 +57,9 @@
       <a href="http://astarte-platform.org" class="sidebar-projectName">
 Astarte
       </a>
-      <h2 class="sidebar-projectVersion">
-        v1.0.0-beta.2
-      </h2>
+      <strong class="sidebar-projectVersion">
+        v1.0.0-rc.0
+      </strong>
     </div>
 
       <a href="http://astarte-platform.org">
@@ -62,7 +69,7 @@ Astarte
   </div>
 
   <ul class="sidebar-listNav">
-    <li><a id="extras-list" href="#full-list">Pages</a></li>
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
 
 
   </ul>
@@ -94,24 +101,62 @@ from. Please refer to the <a href="000-upgrade_index.html">Upgrade Guide</a> sec
   <a href="#uninstalling-the-operator" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Uninstalling the Operator
 </h2>
-<p>To uninstall the Operator, use the dedicated <code class="inline">helm uninstall</code> command.</p><pre><code class="bash">helm uninstall astarte-operator</code></pre><p>Uninstalling the Operator can be performed even if an Astarte instance is still active in the
-cluster. The result of this operation consists in the deletion of RBACs and of the Operator's
-deployment itself.</p><p><em>Note: CRDs are not affected by the uninstall procedure as, according to Helm's choices, forcing
-their removal may lead to unwanted and (in some cases) catastrophic aftermaths. In case you want to
-remove any of the CRDs, you will be responsible for their handling: be sure you know what you are
-doing and act very carefully as you may end up with a broken cluster.</em></p>
+<p><strong>WARNING</strong> - <em>Understanding the consequences of the uninstall procedure is fundamental to avoid
+catastrophic aftermaths. Please read carefully this section to understand how the uninstall
+procedure may impact your Astarte instance.</em></p><p>Be aware that the following statements hold:</p><ol><li>the Astarte's CRDs are installed and handled by the Operator's Helm chart;</li><li>uninstalling the Operator causes the Astarte's CRDs to be marked for deletion;</li><li>the deletion of CRDs leads to the destruction of all the Kubernetes instances of the CRDs (i.e.
+Astarte will be destroyed).</li></ol><p>The <a href="095-advanced-operations.html#handling-astarte-when-uninstalling-the-operator">Advanced Operations
+section</a> outlines all
+the relevant information to handle your Astarte instance when uninstalling the Operator, explains
+how to recover your Astarte instance and highlights in a more exhaustive way what's happening under
+the hood.</p><p>To uninstall the Operator, use the dedicated <code class="inline">helm uninstall</code> command. This operation is responsible
+for the deletion of both RBACs and the Operator's deployment itself. Moreover, all the CRDs
+installed by the Operator's Helm chart are marked for deletion.</p><pre><code class="bash">helm uninstall astarte-operator -n kube-system</code></pre><p>So, what should you expect after uninstalling the Operator?</p><p>After executing the <code class="inline">helm uninstall</code> command your Operator's deployment will be destroyed, along
+with the <code class="inline">AstarteVoyagerIngress</code> and <code class="inline">Flow</code> CRDs and resources (when they exist). Both the Astarte
+CRD and its instance will not be immediately destroyed as their deletion is allowed after the
+Astarte finalizer is executed. Please refer to the <a href="095-advanced-operations.html#handling-astarte-when-uninstalling-the-operator">Advanced Operations
+section</a> to learn how
+to handle your Astarte instance and how to restore its functionalities.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="020-prerequisites.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Prerequisites
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="040-manual_kubernetes.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Manual Operator Installation
+        </span>
+      </a>
+
+  </div>
+</div>
+
       <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.22.1),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
           </span>
           <span class="line">
-            designed by
+            Designed by
             <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
           </span>
         </p>
         <p>
+
           <button class="line footer-button display-shortcuts-help">
             Display keyboard shortcuts
           </button>
