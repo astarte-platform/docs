@@ -107,7 +107,9 @@ connected to the Cassandra/ScyllaDB instance that your Astarte instance is using
   <a href="#delete-the-interface" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Delete the interface
 </h3>
-<p>After you retrieve the interface id, you can delete the interface </p><pre><code class="makeup elixir"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">DELETE</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">interfaces</span><span class="w">
+<p><em>WARNING: This is a destructive step that will erase the correlation between the Interface name and
+internal ID. Before proceeding, ensure you saved the interface ID, or you will end up with dangling
+data. Further steps in this guide will require the interface ID.</em></p><p>To delete the interface,</p><pre><code class="makeup elixir"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">DELETE</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">interfaces</span><span class="w">
   </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="sc">&#39;org.astarte-platform.genericsensors.Values&#39;</span><span class="w">
   </span><span class="nc">AND</span><span class="w"> </span><span class="n">major_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span></code></pre><p><em>Keep in mind that after this step, all existing devices that try to publish on this interface will
 be disconnected as soon as they try to do so.</em></p><h3 id="delete-interface-data" class="section-heading">
