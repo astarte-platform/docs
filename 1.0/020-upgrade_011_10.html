@@ -141,7 +141,8 @@ export ASTARTE_OP_RELEASE_NAMESPACE=kube-system</code></pre><p>Generate the Helm
 <code class="inline">$ASTARTE_OP_TEMPLATE_DIR/astarte-operator/templates</code>.</p><p>Leveraging the templating capabilities of Helm, the generated templates can be customized according
 to your needs. For instance, if you want to refer to a particular Operator's tag all you have to do
 is to append <code class="inline">--set image.tag=&lt;the-required-tag&gt;</code> to the previous command. To check all the
-configurable values run <code class="inline">helm show values astarte/astarte-operator</code>.</p><p>Now it's time to prepare the cluster to allow the new operator installation by means of the
+configurable values run <code class="inline">helm show values astarte/astarte-operator</code>.</p><p>Before moving on, make sure that <code class="inline">gawk</code> is installed on your host machine. If you are on OSX,
+running the following command will be sufficient:</p><pre><code class="bash">$ brew install gawk</code></pre><p>while on any Debian based OS run:</p><pre><code class="bash"># apt install gawk</code></pre><p>Now it's time to prepare the cluster to allow the new operator installation by means of the
 templates generated in the previous step.</p><p>The following tasks will be performed:</p><ul><li>replacement of the Astarte's and AstarteVoyagerIngress' CRDs with their updated versions,</li><li>installation of the Flow's CRD,</li><li>installation of the Operator's RBACs,</li><li>installation of the Operator's Webhooks,</li><li>annotation of the installed resources as to allow Helm to manipulate and take control of them.</li></ul><p>This <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/v1.0.0-rc.0/hack/upgrade-operator-011-10.sh">bash
 script</a>
 takes care of handling the aforementioned tasks. Download it and, assuming you saved it as
