@@ -217,7 +217,7 @@ installation is handled simply with an <code class="inline">helm install</code> 
 <a href="030-installation_kubernetes.html#installation">here</a>.</p><p>When the first reconciliation loop is executed, the Operator becomes aware that the Astarte resource
 is marked for deletion, so it executes the Astarte finalizer and eventually destroys the Astarte's
 CRD and its resources.</p><p>Even if it might look like the status of the cluster is compromised, a simple command reestablishes
-the order:</p><pre><code class="bash">helm upgrade --install astarte-operator astarte/astarte-operator --devel -n kube-system</code></pre><p>This command simply upgrades the Operator and, as a result, installs the missing CRDs. Now it's time
+the order:</p><pre><code class="bash">helm upgrade --install astarte-operator astarte/astarte-operator -n kube-system</code></pre><p>This command simply upgrades the Operator and, as a result, installs the missing CRDs. Now it's time
 to restore the Astarte resources.</p><h3 id="apply-backed-up-resources" class="section-heading">
   <a href="#apply-backed-up-resources" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Apply backed up resources

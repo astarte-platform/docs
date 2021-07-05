@@ -135,7 +135,6 @@ for the large majority of use cases.</p><p>Note that you are responsible for che
 cluster.</p><pre><code class="bash">export ASTARTE_OP_TEMPLATE_DIR=/tmp
 export ASTARTE_OP_RELEASE_NAME=astarte-operator
 export ASTARTE_OP_RELEASE_NAMESPACE=kube-system</code></pre><p>Generate the Helm templates with the following:</p><pre><code class="bash">helm template $ASTARTE_OP_RELEASE_NAME astarte/astarte-operator \
-    --devel \
     --namespace $ASTARTE_OP_RELEASE_NAMESPACE \
     --output-dir $ASTARTE_OP_TEMPLATE_DIR</code></pre><p>The outcome of this command consists of a series of <code class="inline">yaml</code> files located in
 <code class="inline">$ASTARTE_OP_TEMPLATE_DIR/astarte-operator/templates</code>.</p><p>Leveraging the templating capabilities of Helm, the generated templates can be customized according
@@ -161,7 +160,7 @@ bash /tmp/upgrade-operator-011-10.sh \
 <p>Now it's time to install the Astarte Operator v1.0.</p><p>If during the <a href="#prepare-the-cluster-to-the-operator-v1-0-installation">preparation of the cluster</a>
 you customized the chart values with the <code class="inline">--set</code> flag, please take care of setting the same values
 accordingly while installing Astarte Operator.</p><p>To install the Operator, simply run:</p><pre><code class="bash">helm install $ASTARTE_OP_RELEASE_NAME astarte/astarte-operator -n $ASTARTE_OP_RELEASE_NAMESPACE \
-    --devel --skip-crds</code></pre><p>Note that the <code class="inline">--skip-crds</code> flag is required as, following the migration path, we already
+    --skip-crds</code></pre><p>Note that the <code class="inline">--skip-crds</code> flag is required as, following the migration path, we already
 updated/installed the required CRDs.</p><p>Version <code class="inline">1.0.0</code> is a safe landing version to perform the upgrade to. Upgrading to a more recent
 version may lead to a broken state with possible catastrophic aftermaths: if you choose to follow
 this path, make sure you know what you are doing. However deviating from the upgrade path outlined
