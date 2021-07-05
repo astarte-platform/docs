@@ -5,9 +5,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.24.2">
-    <meta name="project" content="Astarte v1.0.0-rc.0">
+    <meta name="project" content="Astarte v1.0.0">
 
-    <title>Upgrade v1.0 — Astarte v1.0.0-rc.0</title>
+    <title>Upgrade v1.0 — Astarte v1.0.0</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
     <script src="dist/sidebar_items-3540881f26.js"></script>
@@ -58,7 +58,7 @@
 Astarte
       </a>
       <strong class="sidebar-projectVersion">
-        v1.0.0-rc.0
+        v1.0.0
       </strong>
     </div>
 
@@ -86,12 +86,12 @@ Astarte
   Upgrade Astarte Operator
 </h2>
 <p>Astarte Operator's upgrade procedure is handled by Helm. To upgrade the Helm chart, use the
-dedicated <code class="inline">helm upgrade</code> command:</p><pre><code class="bash">helm upgrade astarte-operator astarte/astarte-operator --devel</code></pre><p>The optional <code class="inline">--version</code> switch allows to specify the version to upgrade to - when not specified,
+dedicated <code class="inline">helm upgrade</code> command:</p><pre><code class="bash">helm upgrade astarte-operator astarte/astarte-operator</code></pre><p>The optional <code class="inline">--version</code> switch allows to specify the version to upgrade to - when not specified,
 the latest version will be fetched and used.</p><p>By design, Astarte Operator's Helm charts cannot univocally be mapped to Operator's releases in a
 one-to-one relationship. However each chart is tied to a specific Operator's version, which is user
 configurable.</p><p>Therefore, upgrading a chart lead to an Operator's upgrade if and only if the Operator's tag
 referenced by the chart is changed. You can check the Operator's tag binded to the chart simply
-running:</p><pre><code class="bash">helm show values astarte/astarte-operator --devel</code></pre><p>As usual, you can use the usual <code class="inline">--version</code> flag to point to a specific chart version.</p><h2 id="upgrade-astarte" class="section-heading">
+running:</p><pre><code class="bash">helm show values astarte/astarte-operator</code></pre><p>As usual, you can use the usual <code class="inline">--version</code> flag to point to a specific chart version.</p><h2 id="upgrade-astarte" class="section-heading">
   <a href="#upgrade-astarte" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Upgrade Astarte
 </h2>
