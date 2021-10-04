@@ -85,9 +85,20 @@ Astarte
   <a href="#upgrade-astarte-operator" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Upgrade Astarte Operator
 </h2>
-<p>Astarte Operator's upgrade procedure is handled by Helm. To upgrade the Helm chart, use the
-dedicated <code class="inline">helm upgrade</code> command:</p><pre><code class="bash">helm upgrade astarte-operator astarte/astarte-operator</code></pre><p>The optional <code class="inline">--version</code> switch allows to specify the version to upgrade to - when not specified,
-the latest version will be fetched and used.</p><p>By design, Astarte Operator's Helm charts cannot univocally be mapped to Operator's releases in a
+<p>Astarte Operator's upgrade procedure is handled by Helm. However, according to the Helm policies,
+upgrading the CRDs must be handled manually.</p><p>To upgrade the Astarte CRDs, the following environment variables will be employed:</p><ul><li><code class="inline">ASTARTE_OP_TEMPLATE_DIR</code> is the target directory in which the chart templates will be generated,</li><li><code class="inline">ASTARTE_OP_RELEASE_NAME</code> is the name of the Astarte Operator deployment,</li><li><code class="inline">ASTARTE_OP_RELEASE_NAMESPACE</code> is the namespace in which the Astarte Operator resides.</li></ul><p>Please, make sure that the values you set for both the Operator's name and namespace match the
+naming you already adopted when installing the Operator. A wrong naming can lead to a malfunctioning
+Astarte cluster.</p><p>For standard deployments the following variables should be ok. However, it is your responsibility
+checking that the values you set are consistent with your setup:</p><pre><code class="bash">export ASTARTE_OP_TEMPLATE_DIR=/tmp
+export ASTARTE_OP_RELEASE_NAME=astarte-operator
+export ASTARTE_OP_RELEASE_NAMESPACE=kube-system</code></pre><p>Render the Helm templates with the following:</p><pre><code class="bash">helm template $ASTARTE_OP_RELEASE_NAME astarte/astarte-operator \
+    --namespace $ASTARTE_OP_RELEASE_NAMESPACE \
+    --output-dir $ASTARTE_OP_TEMPLATE_DIR</code></pre><p>After these step you will find the updated CRDs within
+<code class="inline">$ASTARTE_OP_TEMPLATE_DIR/$ASTARTE_OP_RELEASE_NAME/templates/crds.yaml</code>. Update the CRDs in your
+cluster by replacing the CRDs yaml file:</p><pre><code class="bash">kubectl replace -f $ASTARTE_OP_TEMPLATE_DIR/$ASTARTE_OP_RELEASE_NAME/templates/crds.yaml</code></pre><p>Finally, to upgrade the Operator use the dedicated <code class="inline">helm upgrade</code> command:</p><pre><code class="bash">helm upgrade astarte-operator astarte/astarte-operator -n kube-system</code></pre><p>The optional <code class="inline">--version</code> switch allows to specify the version to upgrade to - when not specified,
+the latest version will be fetched and used. If you choose to upgrade to a specific version of the
+chart by using the <code class="inline">--version</code> flag, please make sure to generate the updated CRDs template using
+the same chart version.</p><p>By design, Astarte Operator's Helm charts cannot univocally be mapped to Operator's releases in a
 one-to-one relationship. However each chart is tied to a specific Operator's version, which is user
 configurable.</p><p>Therefore, upgrading a chart lead to an Operator's upgrade if and only if the Operator's tag
 referenced by the chart is changed. You can check the Operator's tag binded to the chart simply
