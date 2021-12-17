@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="Astarte v1.0.1">
+
+    <title>Astarte Device SDKs — Astarte v1.0.1</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+
+    <script src="dist/sidebar_items-1467b2ba5f.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+
+
+  </head>
+  <body data-type="extras">
+    <script>
+
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte
+      </a>
+      <strong class="sidebar-projectVersion">
+        v1.0.1
+      </strong>
+    </div>
+
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>Astarte Device SDKs</h1><h2 id="introduction" class="section-heading">
+  <a href="#introduction" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Introduction
+</h2>
+<p>Astarte Device SDKs are ready to use libraries that provide communication and pairing primitives.
+They allow to connect any device to an Astarte instance.
+While an SDK is not strictly required to connect an application to Astarte using MQTT, it enables
+rapid development and a pleasant developer experience.</p><p>Astarte Device SDKs should not be confused with client SDKs, as they are not meant for client to
+device communications. If one is interested in an abstraction layer on top of existing APIs instead,
+an optional Astarte Client SDK (such as <a href="https://github.com/astarte-platform/astarte-go"><code class="inline">astarte-go</code></a>) 
+is to be used.</p><p>Under the hood Astarte Device SDKs make use of MQTT, BSON, HTTP, persistence and crypto libraries
+to implement <a href="080-mqtt-v1-protocol.html">Astarte MQTT v1 Protocol</a> and all the other
+useful features.</p><p>They can be easily integrated into new or existing IoT projects written in any of the supported
+languages or platforms.
+At the moment the following SDKs are available:</p><ul><li>C<ul><li>ESP32: <a href="https://github.com/astarte-platform/astarte-device-sdk-esp32">astarte-device-sdk-esp32</a></li></ul></li><li>C++<ul><li>Qt5: <a href="https://github.com/astarte-platform/astarte-device-sdk-qt5">astarte-device-sdk-qt5</a></li></ul></li><li>Elixir: <a href="https://github.com/astarte-platform/astarte-device-sdk-elixir">astarte-device-sdk-elixir</a></li><li>Go: <a href="https://github.com/astarte-platform/astarte-device-sdk-go">astarte-device-sdk-go</a></li><li>Java<ul><li>Android: <a href="https://github.com/astarte-platform/astarte-device-sdk-java">astarte-device-sdk-java</a></li><li>Generic: <a href="https://github.com/astarte-platform/astarte-device-sdk-java">astarte-device-sdk-java</a></li></ul></li><li>Python: <a href="https://github.com/astarte-platform/astarte-device-sdk-python">astarte-device-sdk-python</a></li><li>Rust: <a href="https://github.com/astarte-platform/astarte-device-sdk-rust">astarte-device-sdk-rust</a></li></ul><p>Further languages and platforms will be supported in the near future.
+<a href="https://github.com/astarte-platform/astarte/issues">Requests for new SDKs</a> are welcome.</p><h2 id="sdks-features" class="section-heading">
+  <a href="#sdks-features" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  SDKs Features
+</h2>
+<h3 id="mqtt-connection" class="section-heading">
+  <a href="#mqtt-connection" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  MQTT Connection
+</h3>
+<p>Astarte Device SDKs make use of platform specific MQTT libraries and they hide all MQTT connection
+management details, including smart reconnection (randomized reconnection backoff is used).</p><h3 id="device-id-generation" class="section-heading">
+  <a href="#device-id-generation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Device ID Generation
+</h3>
+<p>Some of the Astarte Device SDKs (such as the ESP32) offer optional device id generation utils that
+can use the hardware id as seed.</p><h3 id="automatic-registration-agent" class="section-heading">
+  <a href="#automatic-registration-agent" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Automatic Registration (Agent)
+</h3>
+<p>Astarte Device SDKs can provide an optional automatic registration mechanism that can be used on the
+field, avoiding any manual data entry or additional operations.
+This optional component can be disabled when performing registration during manufactoring process.</p><h3 id="client-ssl-certs-request-and-renewal" class="section-heading">
+  <a href="#client-ssl-certs-request-and-renewal" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Client SSL Certs Request and Renewal
+</h3>
+<p>Astarte Device SDKs make use of short lived SSL certificates which are automatically renewed before
+their expiration.</p><p>Astarte Device SDKs take care of the complete process from the certificate generation to the
+certificate signing request.</p><h3 id="data-serialization-and-protocol-management" class="section-heading">
+  <a href="#data-serialization-and-protocol-management" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Data Serialization and Protocol Management
+</h3>
+<p>MQTT payloads are format agnostic, hence a serialization format should be used before transmitting
+data. For this specific purpose Astarte makes use of <a href="http://bsonspec.org/">BSON</a> format which
+easily maps to JSON.</p><p>Astarte Device SDKs take care on user behalf of data serialization to BSON.
+Last but not least some additional signaling messages are exchanged such as the introspection,
+Astarte Device SDKs take care of automatically sending them and applying data compression when
+necessary.</p><h3 id="data-persistence-and-automatic-retransmission" class="section-heading">
+  <a href="#data-persistence-and-automatic-retransmission" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Data Persistence and Automatic Retransmission
+</h3>
+<p>Astarte Device SDKs allow configuring persitence and reliability policies. In case of connection
+loss data is stored to memory or disk (according to mappings configuration) and they are
+automatically retransmitted as soon as the device is back online.</p><p>This feature is not available yet on Elixir, ESP32, Go and Python SDKs and might be not avilable on
+other platforms with constrained resources.</p><h3 id="smart-properties-sync" class="section-heading">
+  <a href="#smart-properties-sync" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Smart Properties Sync
+</h3>
+<p>Astarte has support for the concept of properties, which are kept synchronized between the server
+and the device.</p><p>Thanks to the <a href="080-mqtt-v1-protocol.html">Astarte MQTT v1 Protocol</a> an incremental approach is
+employed therefore only changed properties are synchronized. This feature is not available yet on 
+Elixir, Go and Python SDKs and might be not avilable on other SDKs with no <code class="inline">session_present</code> support.</p><h3 id="data-validation" class="section-heading">
+  <a href="#data-validation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Data Validation
+</h3>
+<p>Astarte Device SDKs take care of data validation before sending any data, hence errors are reported
+locally on the device improving troubleshooting experience.</p><p>This feature is not available yet on ESP32 and is WIP on Rust and Python.</p><h2 id="device-registration" class="section-heading">
+  <a href="#device-registration" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Device Registration
+</h2>
+<p>A device must be registered beforehand to obtain its <code class="inline">credentials-secret</code>.
+While there are some manual options (such as using the <a href="https://github.com/astarte-platform/astartectl"><code class="inline">astartectl</code></a> command
+or using the <a href="https://docs.astarte-platform.org/snapshot/015-astarte_dashboard.html"><code class="inline">Astarte Dashboard</code></a>), 
+almost all Astarte Device SDKs allow to programmatically register a Device. 
+For Go you can use the <a href="https://github.com/astarte-platform/astarte-go">astarte_go</a> client.</p><h3 id="device-id" class="section-heading">
+  <a href="#device-id" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Device id
+</h3>
+<p>Device ids are 128-bit long url-safe base64 strings without padding. They can be deterministic (UUID v5) or random (UUID v4).
+UUID v5 are obtained from a namespace UUID and a payload (a string).
+While all SDKs work with user-provided device ids, some also provide utilities to for UUID generation.</p><p>C (ESP32) with an unique hardware ID using device MAC address and other identification bits:</p><pre><code class="c">// deterministic id
+astarte_err_t astarte_hwid_get_id(&amp;hw_id);</code></pre><p>C++ (Qt5): not supported.</p><p>Elixir: UUIDv5 can be obtained using the <a href="https://github.com/zyro/elixir-uuid">elixir_uuid library</a>.</p><pre><code class="makeup elixir"><span class="c1"># random id</span><span class="w">
+</span><span class="n">device_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">:crypto</span><span class="o">.</span><span class="n">strong_rand_bytes</span><span class="p" data-group-id="0231783704-1">(</span><span class="mi">16</span><span class="p" data-group-id="0231783704-1">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Base</span><span class="o">.</span><span class="n">url_encode64</span><span class="p" data-group-id="0231783704-2">(</span><span class="ss">padding</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p" data-group-id="0231783704-2">)</span><span class="w">
+
+</span><span class="c1">#deterministic id</span><span class="w">
+</span><span class="n">device_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">UUID</span><span class="o">.</span><span class="n">uuid5</span><span class="p" data-group-id="0231783704-3">(</span><span class="n">namespace_uuid</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="ss">:raw</span><span class="p" data-group-id="0231783704-3">)</span><span class="w">
+            </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Astarte.Core.Device</span><span class="o">.</span><span class="n">encode_device_id</span><span class="p" data-group-id="0231783704-4">(</span><span class="p" data-group-id="0231783704-4">)</span></code></pre><p>Go (using the <a href="https://github.com/astarte-platform/astarte-go">Astarte Go Client</a>):</p><pre><code class="go">// Random id
+random_id, err := GenerateRandomAstarteId()
+
+// Namespaced id
+namespaced_id, err := GetNamespacedAstarteDeviceID(namespaceUuid,payload)</code></pre><p>Java/Android: </p><pre><code class="java">// Random id
+String randomID = AstarteDeviceIdUtils.generateId();
+
+// Namespaced id
+String deviceID = AstarteDeviceIdUtils.generateId(namespaceUuid, payload);</code></pre><p>Python: not supported.</p><p>Rust:</p><pre><code class="rust">/// Random id
+let random_uuid = astarte_sdk::registration::generate_random_uuid();
+
+///Namespaced id
+let namespaced_id = astarte_sdk::registration::generate_uuid(namespaceUuid, &amp;payload);</code></pre><h3 id="automatic-registration-agent-1" class="section-heading">
+  <a href="#automatic-registration-agent-1" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Automatic Registration (Agent)
+</h3>
+<p>You can refer to the <a href="https://docs.astarte-platform.org/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/registerDevice">Astarte API for device registration</a> for more details.</p><p>C (ESP32):</p><pre><code class="c">astarte_pairing_config cfg = 
+{
+    .base_url = &amp;base_astarte_url;
+    .jwt = &amp;jwt_token;
+    .realm = &amp;realm;
+    .hw_id = &amp;device_id;
+    .credentials_secret = &amp;credentials_secret;
+};
+
+astarte_err_t err = astarte_pairing_register_device(&amp;astarte_pairing_config);</code></pre><p>C++ (Qt5): registration is done on device instantiation, see the next section.</p><p>Elixir: </p><pre><code class="makeup elixir"><span class="p" data-group-id="9595943881-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9595943881-2">%{</span><span class="ss">body</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9595943881-3">%{</span><span class="s">&quot;data&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p" data-group-id="9595943881-4">%{</span><span class="s">&quot;credentials_secret&quot;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="n">credentials_secret</span><span class="p" data-group-id="9595943881-4">}</span><span class="p" data-group-id="9595943881-3">}</span><span class="p" data-group-id="9595943881-2">}</span><span class="p" data-group-id="9595943881-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Agent</span><span class="o">.</span><span class="n">register_device</span><span class="p" data-group-id="9595943881-5">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">device_id</span><span class="p" data-group-id="9595943881-5">)</span></code></pre><p>Go (using the <a href="https://github.com/astarte-platform/astarte-go">Astarte Go Client</a>): </p><pre><code class="go">credentials_secret, err := client.Pairing.RegisterDevice(realm, deviceID) </code></pre><p>Java/Android: </p><pre><code class="java">AstartePairingService astartePairingService = new AstartePairingService(pairing_url, realm);
+String credentialsSecret = astartePairingService.registerDevice(jwt_token, device_id);</code></pre><p>Python:</p><pre><code class="python">credentials_secret = register_device_with_jwt_token(device_id, realm, jwt_token, pairing_base_url)</code></pre><p>or </p><pre><code class="python">credentials_secret = register_device_with_private_key(device_id, realm, private_key_file, pairing_base_url)</code></pre><p>Rust: </p><pre><code class="rust">    let credentials_secret =
+        astarte_sdk::registration::register_device(&amp;jwt_token, &amp;pairing_url, &amp;realm, &amp;device_id)
+            .await?;</code></pre><h3 id="device-unregistration" class="section-heading">
+  <a href="#device-unregistration" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Device Unregistration
+</h3>
+<p>Unregistering a device boils down to making its credentials secret invalid.<br/>Just as device registration, there are manual or programmatic options. 
+In all cases, you can use the astartectl command <a href="https://github.com/astarte-platform/astartectl"><code class="inline">astartectl</code></a>,
+the <a href="https://docs.astarte-platform.org/snapshot/015-astarte_dashboard.html"><code class="inline">Astarte Dashboard</code></a>), or 
+the <a href="https://docs.astarte-platform.org/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/unregisterDevice">Astarte API for device unregistration</a>.</p><p>For Go and Elixir, you can also do this programmatically. </p><p>C (ESP32): not supported. </p><p>C++ (Qt5): not supported.</p><p>Elixir:</p><pre><code class="makeup elixir"><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Agent</span><span class="o">.</span><span class="n">unregister_device</span><span class="p" data-group-id="1917849051-1">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">device_id</span><span class="p" data-group-id="1917849051-1">)</span></code></pre><p>Go (using the <a href="https://github.com/astarte-platform/astarte-go">Astarte Go Client</a>): </p><pre><code class="go">err := client.Pairing.UnregisterDevice(realm, deviceID) </code></pre><p>Java/Android: not supported.</p><p>Python: not supported.</p><p>Rust: not supported.</p><h2 id="declaring-interfaces-introspection" class="section-heading">
+  <a href="#declaring-interfaces-introspection" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Declaring interfaces / Introspection
+</h2>
+<p>Each device must declare the set of supported interfaces and their version. 
+Astarte needs to know which interfaces the device advertises before processing any further data publish. 
+This message in Astarte jargon is called introspection and it's performed by publishing on the device root topic the list of interfaces that are installed on the device.</p><p>The Astarte Device SDKs take care of performing the introspection on user behalf. 
+In order to do so, the Astarte Device SDKs need to have some informations about the registered device: </p><ul><li>the Astarte realm in which the device is registered</li><li>its device id </li><li>its credentials_secret </li><li>the url of Astarte pairing service</li><li>the path of the desired interfaces.</li></ul><p>Then the Astarte Device SDKs will be able to connect the device to Astarte and perform introspection. </p><p>C (ESP32):</p><pre><code class="c">astarte_device_config_t cfg = {
+    .data_event_callback = astarte_data_events_handler,
+    .connection_event_callback = astarte_connection_events_handler,
+    .disconnection_event_callback = astarte_disconnection_events_handler,
+};
+
+astarte_device_handle_t device = astarte_device_init(&amp;cfg);
+if (!device) {
+    ESP_LOGE(TAG, &quot;Failed to init astarte device&quot;);
+    return;
+}
+
+astarte_device_add_interface(device, &amp;device_example_interface);
+if (astarte_device_start(device) != ASTARTE_OK) {
+    ESP_LOGE(TAG, &quot;Failed to start astarte device&quot;);
+    return;
+}</code></pre><p>C++ (Qt5):</p><pre><code class="c++">// declare device options and interfaces
+m_sdk = new AstarteDeviceSDK(QDir::currentPath() + QStringLiteral(&quot;./examples/device_sdk.conf&quot;).arg(deviceId), QDir::currentPath() + QStringLiteral(&quot;./examples/interfaces&quot;), deviceId.toLatin1());
+
+// initialize device
+connect(m_sdk-&gt;init(), &amp;Hemera::Operation::finished, this, &amp;AstarteStreamQt5Test::checkInitResult);
+
+// set data handlers
+connect(m_sdk, &amp;AstarteDeviceSDK::dataReceived, this, &amp;AstarteStreamQt5Test::handleIncomingData)</code></pre><p>Elixir:</p><pre><code class="makeup elixir"><span class="c1"># declare device options</span><span class="w">
+</span><span class="n">opts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="8545929753-1">[</span><span class="ss">pairing_url</span><span class="p">:</span><span class="w"> </span><span class="n">pairing_url</span><span class="p">,</span><span class="w"> </span><span class="ss">realm</span><span class="p">:</span><span class="w"> </span><span class="n">realm</span><span class="p">,</span><span class="w"> </span><span class="ss">device_id</span><span class="p">:</span><span class="w"> </span><span class="n">device_id</span><span class="p">,</span><span class="w"> </span><span class="ss">interface_provider</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;./examples/interfaces&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">credentials_secret</span><span class="p">:</span><span class="w"> </span><span class="n">credentials_secret</span><span class="p" data-group-id="8545929753-1">]</span><span class="w">
+
+</span><span class="c1"># start device and connect asynchronously</span><span class="w">
+</span><span class="p" data-group-id="8545929753-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">pid</span><span class="p" data-group-id="8545929753-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Device</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="8545929753-3">(</span><span class="n">opts</span><span class="p" data-group-id="8545929753-3">)</span><span class="w">
+
+</span><span class="c1"># blocking (optional)</span><span class="w">
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nc">Device</span><span class="o">.</span><span class="n">wait_for_connection</span><span class="p" data-group-id="8545929753-4">(</span><span class="n">device_pid</span><span class="p" data-group-id="8545929753-4">)</span></code></pre><p>Go:</p><pre><code class="go">    // Create device
+    d, err := device.NewDevice(deviceID, deviceRealm, credentialsSecret, apiEndpoint)
+    if err != nil {
+        fmt.Println(err.Error())
+        os.Exit(1)
+    }
+
+    // Load interface - fix this path(s) to load the right interface
+    byteValue, err := ioutil.ReadFile(&quot;/examples/interfaces/com.example.Interface.json&quot;)
+    if err != nil {
+        fmt.Println(err.Error())
+        os.Exit(1)
+    }
+    iface := interfaces.AstarteInterface{}
+    if iface, err = interfaces.ParseInterface(byteValue); err != nil {
+        fmt.Println(err.Error())
+        os.Exit(1)
+    }
+
+    if err = d.AddInterface(iface); err != nil {
+        fmt.Println(err.Error())
+        os.Exit(1)
+    }
+
+    // Set up callbacks
+    d.OnConnectionStateChanged = func(d *device.Device, state bool) {
+        fmt.Printf(&quot;Device connection state: %t\n&quot;, state)
+    }
+
+    // Connect the device and listen to the connection status channel
+    c := make(chan error)
+    d.Connect(c)
+    if err := &lt;-c; err == nil {
+        fmt.Println(&quot;Connected successfully&quot;)
+    } else {
+        fmt.Println(err.Error())
+        os.Exit(1)
+    }</code></pre><p>Java:</p><pre><code class="java">    // Device creation
+    // connectionSource allows to connect to a db for persistency
+    // The interfaces supported by the device are populated by ExampleInterfaceProvider
+    AstarteDevice device =
+        new AstarteGenericDevice(
+            deviceId,
+            realm,
+            credentialsSecret,
+            new ExampleInterfaceProvider(),
+            pairingUrl,
+            connectionSource);
+
+    // ExampleMessageListener listens for device connection, disconnection and failure.
+    device.setAstarteMessageListener(new ExampleMessageListener());
+
+    // Connect the device
+    device.connect();
+</code></pre><p>Python:</p><pre><code class="python"># declare device options
+device = Device(device_id, realm, credentials_secret, pairing_base_url)
+
+# load device interfaces
+device.add_interface(json.loads(&quot;/examples/interfaces/com.example.Interface.json&quot;))
+
+#register a callback that will be invoked everytime the device successfully connects
+device.on_connected(callback)
+
+#connect the device asynchronously
+device.connect()</code></pre><p>Rust:</p><pre><code class="rust">    /// declare device options
+    let mut sdk_options =
+        AstarteOptions::new(&amp;realm, &amp;device_id, &amp;credentials_secret, &amp;pairing_url);
+
+    /// load interfaces from a directory
+    sdk_options
+        .add_interface_files(&quot;./examples/interfaces&quot;)
+        .unwrap();
+
+    /// build Astarte client
+    sdk_options.build().await.unwrap();
+
+    /// connect the device
+    let mut device = sdk_options.connect().await.unwrap();</code></pre><h2 id="streaming-data" class="section-heading">
+  <a href="#streaming-data" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Streaming data
+</h2>
+<p>All Astarte Device SDKs have a primitive for sending data to a remote Astarte instance.</p><h3 id="using-individual-aggregated-interfaces" class="section-heading">
+  <a href="#using-individual-aggregated-interfaces" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Using Individual Aggregated Interfaces
+</h3>
+<p>In Astarte interfaces with <code class="inline">individual</code> aggregation, each mapping is treated as an independent value 
+and is managed individually.</p><p>Following examples show how to send a value that will be inserted into the <code class="inline">&quot;/test0/value&quot;</code> time series
+which is defined by <code class="inline">&quot;/%{sensor_id}/value&quot;</code> parametric endpoint (that is part of
+<code class="inline">&quot;org.astarte-platform.genericsensors.Values&quot;</code> datastream interface).</p><p>C (ESP32):</p><pre><code class="c">struct timeval tv;
+gettimeofday(&amp;tv, NULL);
+uint64_t ts = tv-&gt;tv_sec * 1000 + tv-&gt;tv_usec / 1000;
+
+astarte_err_t err = astarte_device_stream_double_with_timestamp(device, &quot;org.astarte-platform.genericsensors.Values&quot;, &quot;/test0/value&quot;, 0.3, ts, 0);</code></pre><p>C++ (Qt5):</p><pre><code class="c++">m_sdk-&gt;sendData(&quot;org.astarte-platform.genericsensors.Values&quot;, &quot;/test0/value&quot;, 0.3, QDateTime::currentDateTime());</code></pre><p>Elixir:</p><pre><code class="makeup elixir"><span class="nc">Device</span><span class="o">.</span><span class="n">send_datastream</span><span class="p" data-group-id="9636562818-1">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;org.astarte-platform.genericsensors.Values&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/test0/value&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="ss">timestamp</span><span class="p">:</span><span class="w"> </span><span class="nc">DateTime</span><span class="o">.</span><span class="n">utc_now</span><span class="p" data-group-id="9636562818-2">(</span><span class="p" data-group-id="9636562818-2">)</span><span class="p" data-group-id="9636562818-1">)</span></code></pre><p>Go:</p><pre><code class="go">d.SendIndividualMessageWithTimestamp(&quot;org.astarte-platform.genericsensors.Values&quot;, &quot;/test0/value&quot;, 0.3, time.Now())</code></pre><p>Java:</p><pre><code class="java">genericSensorsValuesInterface.streamData(&quot;/test0/value&quot;, 0.3, DateTime.now());</code></pre><p>Python:</p><pre><code class="python">device.send(&quot;org.astarte-platform.genericsensors.Values&quot;, &quot;/test0/value&quot;, 0.3, timestamp=datetime.now())</code></pre><p>Rust</p><pre><code class="rust">device.send_with_timestamp(&quot;org.astarte-platform.genericsensors.Values&quot;, &quot;/test0/value&quot;, 3, chrono::offset::Utc::now()).await?;</code></pre><h3 id="using-object-aggregated-interfaces" class="section-heading">
+  <a href="#using-object-aggregated-interfaces" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Using Object Aggregated Interfaces
+</h3>
+<p>In Astarte interfaces with <code class="inline">object</code> aggregation, Astarte expects the owner to send all of the interface's mappings 
+at the same time, packed in a single message. In this case, all of the mappings share some core properties.</p><p>Following examples show how to send a value for an object aggregated interface.
+In this examples, <code class="inline">lat</code> and <code class="inline">long</code> will be sent together and will be inserted into the <code class="inline">&quot;/coords&quot;</code> time series
+which is defined by <code class="inline">&quot;/coords&quot;</code> endpoint (that is part of <code class="inline">&quot;com.example.GPS&quot;</code> datastream interface).</p><p>C (ESP32):</p><pre><code class="c">astarte_bson_serializer_init(&amp;bs);
+astarte_bson_serializer_append_double(&amp;bs, &quot;lat&quot;, 45.409627);
+astarte_bson_serializer_append_double(&amp;bs, &quot;long&quot;, 11.8765254);
+astarte_bson_serializer_append_end_of_document(&amp;bs);
+int size;
+const void *coord = astarte_bson_serializer_get_document(&amp;bs, &amp;size);
+
+struct timeval tv;
+gettimeofday(&amp;tv, NULL);
+uint64_t ts = tv-&gt;tv_sec * 1000 + tv-&gt;tv_usec / 1000;
+
+astarte_device_stream_aggregate_with_timestamp(device, &quot;com.example.GPS&quot;, &quot;/coords&quot;, coords, ts, 0);</code></pre><p>C++ (Qt5):</p><pre><code class="c++">QVariantHash coords;
+coords.insert(QStringLiteral(&quot;lat&quot;), 45.409627);
+coords.insert(QStringLiteral(&quot;long&quot;), 11.8765254);
+m_sdk-&gt;sendData(&quot;com.example.GPS&quot;, &quot;/coords&quot;, coords, QDateTime::currentDateTime());</code></pre><p>Elixir:</p><pre><code class="makeup elixir"><span class="w">
+</span><span class="n">coords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="8278793541-1">%{</span><span class="ss">lat</span><span class="p">:</span><span class="w"> </span><span class="mf">45.409627</span><span class="p">,</span><span class="w"> </span><span class="ss">long</span><span class="p">:</span><span class="w"> </span><span class="mf">11.8765254</span><span class="p" data-group-id="8278793541-1">}</span><span class="w">
+</span><span class="nc">Device</span><span class="o">.</span><span class="n">send_datastream</span><span class="p" data-group-id="8278793541-2">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;com.example.GPS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/coords&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">coords</span><span class="p">,</span><span class="w"> </span><span class="ss">timestamp</span><span class="p">:</span><span class="w"> </span><span class="nc">DateTime</span><span class="o">.</span><span class="n">utc_now</span><span class="p" data-group-id="8278793541-3">(</span><span class="p" data-group-id="8278793541-3">)</span><span class="p" data-group-id="8278793541-2">)</span></code></pre><p>Go:</p><pre><code class="go">coords := map[string]double{&quot;lat&quot;: 45.409627, &quot;long&quot;: 11.8765254}
+d.SendAggregateMessageWithTimestamp(&quot;com.example.GPS&quot;, &quot;/coords&quot;, coords, time.Now())</code></pre><p>Java:</p><pre><code class="java">
+Map&lt;String, Double&gt; coords = new HashMap&lt;String, Double&gt;()
+{
+    {
+        put(&quot;lat&quot;, 45.409627);
+        put(&quot;long&quot;, 11.8765254);
+    }
+};
+
+exampleGPSInterface.streamData(&quot;/coords&quot;, coords, DateTime.now());</code></pre><p>Python:</p><pre><code class="python">coords = {'lat': 45.409627, 'long': 11.8765254}
+device.send_aggregate(&quot;com.example.GPS&quot;, &quot;/coords&quot;, coords, timestamp=datetime.now())</code></pre><p>Rust: </p><pre><code class="rust">/// Coords must implement the Serializable trait
+let coords = Coords{lat:  45.409627, long: 11.8765254};
+device.send_object_with_timestamp(&quot;com.example.GPS&quot;, &quot;/coords&quot;, coords, chrono::offset::Utc::now()).await?;</code></pre><h3 id="setting-and-unsetting-properties" class="section-heading">
+  <a href="#setting-and-unsetting-properties" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Setting and Unsetting Properties
+</h3>
+<p><code class="inline">properties</code> represent a persistent, stateful, synchronized state with no concept of history or timestamping.
+From a programming point of view, setting and unsetting properties of device-owned interface is rather similar to sending messages on datastream interfaces.</p><p>Following examples show how to send a value that will be inserted into the <code class="inline">&quot;/sensor0/name&quot;</code> property
+which is defined by <code class="inline">&quot;/%{sensor_id}/name&quot;</code> parametric endpoint (that is part of
+<code class="inline">&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;</code> device-owned properties interface).</p><p>C (ESP32):</p><pre><code class="c">// set property (one function for each type)
+astarte_device_set_string_property(device, &quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;, &quot;foobar&quot;);
+
+// unset property
+astarte_device_unset_path(device, &quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;);</code></pre><p>C++ (Qt5):</p><pre><code class="c++">// set property (same as datastream)
+m_sdk-&gt;sendData(m_interface, m_path, value, QDateTime::currentDateTime());
+
+// unset property
+m_sdk-&gt;sendUnset(m_interface, m_path);</code></pre><p>Elixir:</p><pre><code class="makeup elixir"><span class="c1"># set property (same as datastream)</span><span class="w">
+</span><span class="nc">Device</span><span class="o">.</span><span class="n">set_property</span><span class="p" data-group-id="2584839615-1">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/sensor0/name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foobar&quot;</span><span class="p" data-group-id="2584839615-1">)</span><span class="w">
+
+</span><span class="c1"># unset property</span><span class="w">
+</span><span class="nc">Device</span><span class="o">.</span><span class="n">unset_property</span><span class="p" data-group-id="2584839615-2">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/sensor0/name&quot;</span><span class="p" data-group-id="2584839615-2">)</span></code></pre><p>Go: </p><pre><code class="go">// set property
+d.SetProperty(&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;, &quot;foobar&quot;)
+
+// unset property
+d.UnsetProperty(&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;)</code></pre><p>Java:</p><pre><code class="java">// set property
+availableSensorsInterface.setProperty(&quot;/sensor0/name&quot;, &quot;foobar&quot;);
+
+// unset property
+propertyInterface.unsetProperty(&quot;/sensor0/name&quot;);</code></pre><p>Python:</p><pre><code class="python"># set property (same as datastream)
+device.send(&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;, &quot;foobar&quot;)
+
+# unset property
+device.unset_property(&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;)</code></pre><p>Rust: </p><pre><code class="rust">/// set property (same as datastream)
+device.send(&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;, &quot;foobar&quot;);
+
+/// unset property
+device.unset(&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;);</code></pre>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="040-connect_device.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Connecting a Device
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="045-device_errors.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Device errors
+        </span>
+      </a>
+
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>
