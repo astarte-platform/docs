@@ -1,6 +1,7 @@
 var astarte__bson__types_8h =
 [
     [ "BSON_SUBTYPE_DEFAULT_BINARY", "astarte__bson__types_8h.html#ab5bca60dcb135a529b8aba9b175881d5", null ],
+    [ "BSON_TYPE_ARRAY", "astarte__bson__types_8h.html#a575d6520c6115eb9f5c63ff746b6d025", null ],
     [ "BSON_TYPE_BINARY", "astarte__bson__types_8h.html#a4fcd543d4ac364f70a873b25a5d1c54c", null ],
     [ "BSON_TYPE_BOOLEAN", "astarte__bson__types_8h.html#a331d8f4a440da585f1840ad06d08db79", null ],
     [ "BSON_TYPE_DATETIME", "astarte__bson__types_8h.html#aa5478671b3abe13d6ea84b2d16e6fafd", null ],
