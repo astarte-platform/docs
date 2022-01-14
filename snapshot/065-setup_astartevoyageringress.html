@@ -7,10 +7,10 @@
     <meta name="generator" content="ExDoc v0.24.2">
     <meta name="project" content="Astarte v1.1.0-dev">
 
-    <title>Setting up the Ingress — Astarte v1.1.0-dev</title>
+    <title>Setting up the Astarte Voyager Ingress — Astarte v1.1.0-dev</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-3540881f26.js"></script>
+    <script src="dist/sidebar_items-1467b2ba5f.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -81,7 +81,12 @@ Astarte
   <div class="content-outer">
     <div id="content" class="content-inner">
 
-<h1>Setting up the Ingress</h1><p>Once your Cluster <a href="060-setup_cluster.html">is up and running</a>, to expose it to the outer world you
+<h1>Setting up the Astarte Voyager Ingress</h1><hr class="thin"/><p><strong>IMPORTANT</strong>: Due to changes in Voyager policies and to the
+<a href="https://blog.byte.builders/post/voyager-v2021.09.15/">announcement</a> that, starting from Dec 31st
+2021, it will not possible to pull older Voyager docker images the Astarte Voyager Ingress is
+deprecated and will be dropped in a future release (i.e.: <code class="inline">v1.1</code>). Please, consider using the NGINX
+based drop-in replacement for Astarte called
+<a href="064-setup_astartedefaultingress.html"><code class="inline">AstarteDefaultIngress</code></a>.</p><hr class="thin"/><p>Once your Cluster <a href="060-setup_cluster.html">is up and running</a>, to expose it to the outer world you
 need to set up an Ingress. Currently, the only managed and supported Ingress is based upon
 <a href="https://github.com/appscode/voyager">Voyager</a>, and this guide will cover only this specific case.</p><p>Of course, ensure you have installed <a href="https://appscode.com/products/voyager/latest/setup/install/">Voyager Operator</a>
 before you begin.</p><h2 id="creating-an-astartevoyageringress" class="section-heading">
@@ -134,12 +139,12 @@ to learn more.</p>
 <div class="bottom-actions">
   <div class="bottom-actions-item">
 
-      <a href="060-setup_cluster.html" class="bottom-actions-button" rel="prev">
+      <a href="064-setup_astartedefaultingress.html" class="bottom-actions-button" rel="prev">
         <span class="subheader">
           ← Previous Page
         </span>
         <span class="title">
-Setting up the Cluster
+Setting up Astarte Default Ingress
         </span>
       </a>
 

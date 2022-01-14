@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="Astarte v1.1.0-dev">
+
+    <title>Upgrade v1.0.0-v1.0.1 — Astarte v1.1.0-dev</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+
+    <script src="dist/sidebar_items-1467b2ba5f.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+
+
+  </head>
+  <body data-type="extras">
+    <script>
+
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte
+      </a>
+      <strong class="sidebar-projectVersion">
+        v1.1.0-dev
+      </strong>
+    </div>
+
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>Upgrade v1.0.0-v1.0.1</h1><p>The current section describes the required steps to upgrade your Astarte instance from <code class="inline">v1.0.0</code> to
+<code class="inline">v1.0.1</code>. The described upgrade path involves some heavy changes as a consequence of <a href="https://blog.byte.builders/post/voyager-v2021.09.15/">this Voyager
+announcement</a> and the following <a href="https://github.com/astarte-platform/astarte/issues/613">Astarte
+design choice</a>.</p><p>Before moving on, it must be clear that AstarteVoyagerIngress is deprecated and that <strong>the only
+supported managed ingress is the AstarteDefaultIngress</strong> .</p><p>The upcoming sections will cover the following topics:</p><ul><li>upgrading the Astarte Operator,</li><li>upgrading the Astarte instance to allow for TLS termination at VerneMQ level,</li><li>deployment of the <a href="064-setup_astartedefaultingress.html"><code class="inline">AstarteDefaultIngress</code></a> in place of the
+deprecated <code class="inline">AstarteVoyagerIngress</code>.</li></ul><p>Before starting with the upgrade procedure it is strongly advised to <a href="095-advanced-operations.html#backup-your-astarte-resources">backup your Astarte
+resources</a>.</p><h2 id="upgrade-astarte-operator" class="section-heading">
+  <a href="#upgrade-astarte-operator" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Upgrade Astarte Operator
+</h2>
+<p>Astarte Operator's upgrade procedure is handled by Helm. However, according to the Helm policies,
+upgrading the CRDs must be handled manually.</p><p>The current section assumes that the Operator's chart landing version is <code class="inline">v1.0.2</code>. If a more recent
+chart version is available, it is <strong>your responsibility</strong> referencing to the <code class="inline">v1.0.2</code> chart using
+the <code class="inline">--version</code> flag when running <code class="inline">helm</code> commands.</p><p>To upgrade the Astarte CRDs, the following environment variables will be employed:</p><ul><li><code class="inline">ASTARTE_OP_TEMPLATE_DIR</code> is the target directory in which the chart templates will be generated,</li><li><code class="inline">ASTARTE_OP_RELEASE_NAME</code> is the name of the Astarte Operator deployment,</li><li><code class="inline">ASTARTE_OP_RELEASE_NAMESPACE</code> is the namespace in which the Astarte Operator resides.</li></ul><p>Please, make sure that the values you set for both the Operator's name and namespace match the
+naming you already adopted when installing the Operator. A wrong naming can lead to a malfunctioning
+Astarte cluster.</p><p>For standard deployments the following variables should be ok. However, it is your responsibility
+checking that the values you set are consistent with your setup:</p><pre><code class="bash">export ASTARTE_OP_TEMPLATE_DIR=/tmp
+export ASTARTE_OP_RELEASE_NAME=astarte-operator
+export ASTARTE_OP_RELEASE_NAMESPACE=kube-system</code></pre><p>Update your local Helm charts:</p><pre><code class="bash">$ helm repo update</code></pre><p>Render the Helm templates with the following:</p><pre><code class="bash">helm template $ASTARTE_OP_RELEASE_NAME astarte/astarte-operator \
+    --namespace $ASTARTE_OP_RELEASE_NAMESPACE \
+    --output-dir $ASTARTE_OP_TEMPLATE_DIR</code></pre><p>After these steps you will find the updated CRDs within
+<code class="inline">$ASTARTE_OP_TEMPLATE_DIR/$ASTARTE_OP_RELEASE_NAME/templates/crds.yaml</code>. Update the CRDs in your
+cluster by replacing the CRDs yaml file:</p><pre><code class="bash">kubectl replace -f $ASTARTE_OP_TEMPLATE_DIR/$ASTARTE_OP_RELEASE_NAME/templates/crds.yaml</code></pre><p>The previous command will raise an error saying <code class="inline">customresourcedefinitions.apiextensions.k8s.io &quot;astartedefaultingresses.ingress.astarte-platform.org&quot; not found</code>. It is nothing to worry about:
+under the hood the <code class="inline">replace</code> command has updated the CRDs for Astarte, AstarteVoyagerIngress and
+Flow, while it cannot replace the <code class="inline">AstarteDefaultIngress</code> CRD as it is not installed yet. This issue
+is easily fixed with the next command.</p><p>To upgrade the Operator use the dedicated <code class="inline">helm upgrade</code> command:</p><pre><code class="bash">helm upgrade astarte-operator astarte/astarte-operator -n kube-system</code></pre><p>The optional <code class="inline">--version</code> switch allows to specify the version to upgrade to - when not specified,
+the latest version will be fetched and used. If you choose to upgrade to a specific version of the
+chart by using the <code class="inline">--version</code> flag, please make sure to generate the updated CRDs template using
+the same chart version.</p><p>By design, Astarte Operator's Helm charts cannot univocally be mapped to Operator's releases in a
+one-to-one relationship. However each chart is tied to a specific Operator's version, which is user
+configurable.</p><p>Therefore, upgrading a chart leads to an Operator's upgrade if and only if the Operator's tag
+referenced by the chart is changed. You can check the Operator's tag bound to the chart simply
+running:</p><pre><code class="bash">helm show values astarte/astarte-operator</code></pre><p>As usual, you can use the usual <code class="inline">--version</code> flag to point to a specific chart version.</p><h2 id="upgrade-astarte" class="section-heading">
+  <a href="#upgrade-astarte" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Upgrade Astarte
+</h2>
+<p>To upgrade your Astarte instance simply edit the Astarte resource in the cluster updating the
+<code class="inline">version</code> field to the one you want to upgrade to.</p><p>In order to properly expose your Astarte instance to the outer world through the
+<a href="064-setup_astartedefaultingress.html"><code class="inline">AstarteDefaultIngress</code></a> a configuration change for VerneMQ
+is required: in particular, TLS termination must be handled at VerneMQ level.</p><p>Open the yaml file describing the Astarte resource with:</p><pre><code class="bash">kubectl edit astarte -n astarte</code></pre><p>Find the <code class="inline">version</code> field in the Astarte Spec section and change it according to your needs (i.e.:
+set it to <code class="inline">1.0.1</code>). Moreover, in the <code class="inline">vernemq</code> configuration section two new fields must be added,
+namely <code class="inline">sslListener</code> and <code class="inline">sslListenerCertSecretName</code>: the first field is a boolean that, when true,
+set VerneMQ to handle TLS termination, while the latter set the secret containing the TLS
+certificate (further details on certificates can be found <a href="050-handling_certificates.html">here</a>).</p><p>To summarize, the needed changes will look like the following sample snippet:</p><pre><code class="yaml">apiVersion: api.astarte-platform.org/v1alpha2
+kind: Astarte
+...
+spec:
+  ...
+  vernemq:
+    sslListener: true
+    sslListenerCertSecretName: &lt;your-tls-secret-name&gt;
+    ...
+  version: 1.0.1</code></pre><p>Once the yaml file is applied, the Operator will take over ensuring the reconciliation of your
+Astarte instance.</p><h3 id="caveats-for-astarte-flow" class="section-heading">
+  <a href="#caveats-for-astarte-flow" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Caveats for Astarte Flow
+</h3>
+<p>Currently, although <a href="https://docs.astarte-platform.org/flow/">Astarte Flow</a> is a component of
+Astarte, it doesn't follow Astarte's release cycle. Therefore if you upgraded your Astarte instance
+to v1.0.1, Astarte Operator will try to deploy <code class="inline">astarte/astarte_flow:1.0.1</code> which is currently not
+existent.</p><p>All you have to do to overcome this temporary limitation is to edit your Astarte resource by
+explicitly setting the Astarte Flow image you plan to use:</p><pre><code class="yaml">spec:
+  ...
+  components:
+    ...
+    flow:
+      image: &lt;the-astarte-flow-image&gt;</code></pre><p>All the available Astarte Flow's tags can be found
+<a href="https://hub.docker.com/r/astarte/astarte_flow/tags?page=1&ordering=last_updated">here</a>.</p><h2 id="deploy-astartedefaultingress-in-place-of-astartevoyageringress" class="section-heading">
+  <a href="#deploy-astartedefaultingress-in-place-of-astartevoyageringress" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Deploy <code class="inline">AstarteDefaultIngress</code> in place of <code class="inline">AstarteVoyagerIngress</code>
+</h2>
+<p>The current section describes the procedure for replacing the deprecated <code class="inline">AstarteVoyagerIngress</code>
+with the new <code class="inline">AstarteDefaultIngress</code>. If the Voyager ingress is not deployed within your cluster,
+feel free to skip this section.</p><p>The first step requires the installation of the <a href="https://kubernetes.github.io/ingress-nginx/">NGINX Ingress
+Controller</a>:</p><pre><code class="bash">$ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+$ helm repo update
+$ helm install ingress-nginx ingress-nginx/ingress-nginx -n ingress-nginx \
+    --set controller.service.externalTrafficPolicy=Local \
+    --create-namespace</code></pre><p>Then, the <code class="inline">AstarteDefaultIngress</code> must be deployed. If your Kubernetes installation supports
+LoadBalancer ingresses (most managed ones do), you should be able to get away with the most standard
+CR:</p><pre><code class="yaml">apiVersion: ingress.astarte-platform.org/v1alpha1
+kind: AstarteDefaultIngress
+metadata:
+  name: adi
+  namespace: astarte
+spec:
+  ### Astarte Default Ingress CRD
+  astarte: astarte
+  tlsSecret: &lt;your-astarte-tls-secret&gt;
+  api:
+    exposeHousekeeping: true
+  dashboard:
+    deploy: true
+    ssl: true
+    host: &lt;your-astarte-dashboard-host&gt;
+  broker:
+    deploy: true
+    serviceType: LoadBalancer</code></pre><p>Further details on this topic can be found at <a href="064-setup_astartedefaultingress.html">this page</a>. If
+your certificate is issued by cert-manager after the solution of an HTTP challenge, please refer to
+<a href="064-setup_astartedefaultingress.html#how-to-support-automatic-certificate-renewal-for-http-challenges">this
+section</a>
+to support the automatic renewal of your certificate.</p><p>When the <code class="inline">AstarteDefaultIngress</code> resource is created, the Operator is responsible for the creation
+of:</p><ul><li>an NGINX ingress which is devoted to routing requests to both the Astarte API and the Astarte
+Dashboard;</li><li>a service of type LoadBalancer that exposes the Astarte broker to the outer world.</li></ul><p>As soon as both the ingress and the broker service have an assigned external IP, update your Cloud
+DNS zone record sets with the new external IPs. Assuming that your Astarte and AstarteDefaultIngress
+are named <code class="inline">astarte</code> and <code class="inline">adi</code> respectively and that they resides in the <code class="inline">astarte</code> namespace, you can
+find the external IPs with:</p><pre><code class="bash">$ # retrieve information about the ingress
+$ kubectl get ingress -n astarte
+NAME              CLASS   HOSTS          ADDRESS   PORTS     AGE
+adi-api-ingress   nginx   &lt;your-hosts&gt;   X.Y.W.Z   80, 443   6s</code></pre><p>and</p><pre><code class="bash">$ # retrieve information about the broker service
+$ kubectl get service -n astarte adi-broker-service
+NAME                 TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)         AGE
+adi-broker-service   LoadBalancer   x.x.x.x        A.B.C.D       443:32149/TCP   17s</code></pre><p>At this, point your requests are routed to your Astarte instance through the new
+AstarteDefaultIngress.</p><p>The dangling AstarteVoyagerIngress is not needed anymore. To delete the resource simply run:</p><pre><code class="bash">$ kubectl delete avi -n astarte</code></pre>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="020-upgrade_011_10.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Upgrade v0.11-v1.0
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="010-astarte_in_5_minutes.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Astarte in 5 minutes
+        </span>
+      </a>
+
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>
