@@ -4,17 +4,17 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.28.2">
+    <meta name="generator" content="ExDoc v0.24.2">
     <meta name="project" content="Astarte v0.10.2">
 
     <title>Registering a Device — Astarte v0.10.2</title>
-    <link rel="stylesheet" href="dist/elixir-69d615db1d0fc8b2ce48.css" />
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-eec386e600.js"></script>
+    <script src="dist/sidebar_items-61bd90a078.js"></script>
 
       <script src="../common_vars.js"></script>
 
-    <script async src="dist/app-073abeeda7b7e6d5d7e9.js"></script>
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
 
 
   </head>
@@ -30,21 +30,19 @@
 
 <div class="main">
 
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
 
 <section class="sidebar">
-  <button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
-    <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
-  </button>
-
   <form class="sidebar-search" action="search.html">
     <button type="submit" class="search-button" aria-label="Submit Search">
-      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
     </button>
     <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
-      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
     </button>
     <label class="search-label">
-      <p class="sr-only">Search</p>
       <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
     </label>
   </form>
@@ -55,26 +53,26 @@
   </div>
 
   <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte
+      </a>
+      <strong class="sidebar-projectVersion">
+        v0.10.2
+      </strong>
+    </div>
 
       <a href="http://astarte-platform.org">
         <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
       </a>
 
-    <div class="sidebar-projectDetails">
-      <a href="http://astarte-platform.org" class="sidebar-projectName" translate="no">
-Astarte
-      </a>
-      <strong class="sidebar-projectVersion" translate="no">
-        v0.10.2
-      </strong>
-    </div>
-    <ul class="sidebar-listNav">
-      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
-
-
-    </ul>
   </div>
 
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+  </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
 </section>
@@ -83,22 +81,7 @@ Astarte
   <div class="content-outer">
     <div id="content" class="content-inner">
 
-<h1>
-<button class="settings display-settings">
-  <i class="ri-settings-3-line"></i>
-  <span class="sr-only">Settings</span>
-</button>
-
-
-    <a href="https://git.ispirata.com/Astarte-NG/pages/user/035-register_device.md#L1" title="View Source" class="view-source" rel="help">
-      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-      <span class="sr-only">View Source</span>
-    </a>
-
-  <span>Registering a Device</span>
-</h1>
-
-<p>Devices are Astarte's main entities for exchanging data. Even though a Device usually represents the
+<h1>Registering a Device</h1><p>Devices are Astarte's main entities for exchanging data. Even though a Device usually represents the
 physical Device communicating with Astarte, they might as well be mapped to other entities, such as
 individual sensors or aggregated gateways. A Device always belongs to a Realm and is identified by a
 <a href="010-design_principles.html#device-id">Device ID</a>, which has to be unique at least within its Realm.</p><p>Devices communicate with Astarte through Transports - in most installations, this means through an
@@ -111,9 +94,7 @@ Architecture</a> to learn more about Pairing's workflow basics.</p><p>The <em>Cr
 information and Credentials for its Transport. As such, registration happens <strong>only once</strong> during a
 Device's lifecycle, and is a security-sensitive process. As such, this process is usually carried
 over (in production scenarios) through an <em>Agent</em>.</p><h2 id="registration-agent" class="section-heading">
-  <a href="#registration-agent" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">registration-agent</p>
-  </a>
+  <a href="#registration-agent" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Registration Agent
 </h2>
 <p>An <em>Agent</em>'s purpose is to perform Registration on behalf of a Device. <em>Agents</em> should be the only
@@ -123,9 +104,7 @@ give access to Pairing API to anything which isn't an Agent).</p><p>When setting
 registered and hence where your Agent(s) will belong. There's two main ways for implementing an
 Agent, even though in production scenarios <em>On Board Agents</em> are <strong>strongly discouraged</strong> as they
 expose a single point of failure in terms of a Realm's whole fleet security.</p><h3 id="on-board-agent" class="section-heading">
-  <a href="#on-board-agent" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">on-board-agent</p>
-  </a>
+  <a href="#on-board-agent" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   On Board Agent
 </h3>
 <p><em>Please keep in mind that On Board Agents are not advised in production, as a single compromised
@@ -141,9 +120,7 @@ APIs</a>. This token should then be delivered to
 your devices and provided to the SDK in order to carry over the Registration. The SDK will do this
 automatically and without any need for additional code, as long as you set the <code class="inline">agentKey</code>
 configuration key to a meaningful value, and no <em>Credentials Secret</em> has been set.</p><h3 id="3rd-party-agent" class="section-heading">
-  <a href="#3rd-party-agent" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">3rd-party-agent</p>
-  </a>
+  <a href="#3rd-party-agent" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   3rd Party Agent
 </h3>
 <p>A more secure approach to the Registration process is having a 3rd Party agent. In such a case, an
@@ -167,9 +144,7 @@ this case, it's up to the user setting up all mechanisms for delivering the <em>
 the Device, which includes securing the communication channel. On the other hand, this allows an
 extremely flexible approach to Registration, which can be implemented through an entirely custom
 logic.</p><h2 id="credentials-secret-lifecycle" class="section-heading">
-  <a href="#credentials-secret-lifecycle" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">credentials-secret-lifecycle</p>
-  </a>
+  <a href="#credentials-secret-lifecycle" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Credentials Secret Lifecycle
 </h2>
 <p><em>Credentials Secrets</em> are meant to be immutable - as such, they should be handled with extreme care.
@@ -180,9 +155,7 @@ including any kind of external custom logic of the Agents, has been carried over
 allowing a de-facto &quot;retry&quot; until there's certainty the Device has access to its <em>Credentials
 Secret</em>. Please note that when Registering a Device, a new <em>Credentials Secret</em> is generated every
 time.</p><h2 id="unregistering-a-device" class="section-heading">
-  <a href="#unregistering-a-device" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">unregistering-a-device</p>
-  </a>
+  <a href="#unregistering-a-device" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Unregistering a device
 </h2>
 <p>Once the <em>Credentials Secret</em> is used for retrieving Credentials for a Transport for the first time,
@@ -219,11 +192,32 @@ Connecting a Device
 </div>
 
       <footer class="footer">
-
         <p>
-          Built using
-          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.28.2) for the
-          <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
         </p>
       </footer>
     </div>
