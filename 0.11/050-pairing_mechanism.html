@@ -4,16 +4,22 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="generator" content="ExDoc v0.24.2">
     <meta name="project" content="Astarte v0.11.4">
     <title>Pairing Mechanism — Astarte v0.11.4</title>
-    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
     <script src="dist/sidebar_items-e57538aa08.js"></script>
       <script src="../common_vars.js"></script>
-    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
   </head>
   <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+    <script>
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -29,7 +35,7 @@
       <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
     </button>
     <label class="search-label">
-      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
     </label>
   </form>
 
@@ -52,7 +58,7 @@ Astarte      </a>
   </div>
 
   <ul class="sidebar-listNav">
-    <li><a id="extras-list" href="#full-list">Pages</a></li>
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
 
 
   </ul>
@@ -73,7 +79,7 @@ main endpoint which orchestrates Device Authentication in Astarte, abstracting a
   <a href="#authentication-flow" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Authentication flow
 </h2>
-<p><img src="assets/astarte_basic_pairing_routine.svg" alt="Pairing basic flow"></img></p><h2 id="credentials-secret-vs-transport-credentials" class="section-heading">
+<p><img src="assets/astarte_basic_pairing_routine.svg" alt="Pairing basic flow"/></p><h2 id="credentials-secret-vs-transport-credentials" class="section-heading">
   <a href="#credentials-secret-vs-transport-credentials" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Credentials Secret vs. Transport Credentials
 </h2>
@@ -119,7 +125,7 @@ contains all needed information for Authorization as well.</p><h3 id="mutual-ssl
   <a href="#mutual-ssl-authentication-flow" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Mutual SSL Authentication Flow
 </h3>
-<p><img src="assets/astarte_ssl_pairing_routine.svg" alt="Pairing SSL flow"></img></p><p><em>Side note: the Transport usually bears the public certificate of the CA, and actually interacts
+<p><img src="assets/astarte_ssl_pairing_routine.svg" alt="Pairing SSL flow"/></p><p><em>Side note: the Transport usually bears the public certificate of the CA, and actually interacts
 with the CA itself only if it exposes an OCSP endpoint and the Transport is capable of understanding
 it. In case the CA exposes a CRL, the Transport just makes sure to update its CRL from the CA every
 once in a while. In both cases, Transport's only interaction with the CA is the configuration of its
@@ -190,11 +196,32 @@ This allows granting each Device a specific Transport configuration, which can b
 installations with more than a single Transport, and automates the configuration on the Device's
 end, which knows in advance what is supported and how to access its Transport(s).</p><p>Moreover, each Transport implementation has a <code class="inline">/verify</code> endpoint where a client, authenticating with
 its <em>Credentials Secret</em>, can verify whether its <em>Transport Credentials</em> are valid or not. This, in
-case SSL is used, is especially useful for checking against revocation lists.</p>      <footer class="footer">
+case SSL is used, is especially useful for checking against revocation lists.</p><div class="bottom-actions">
+  <div class="bottom-actions-item">
+      <a href="040-interface_schema.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Interface Schema        </span>
+      </a>
+  </div>
+  <div class="bottom-actions-item">
+      <a href="060-triggers.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Triggers        </span>
+      </a>
+  </div>
+</div>
+
+      <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
             <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
           </span>
           <span class="line">
@@ -224,4 +251,3 @@ case SSL is used, is especially useful for checking against revocation lists.</p
 </div>
   </body>
 </html>
-

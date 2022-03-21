@@ -4,16 +4,22 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="generator" content="ExDoc v0.24.2">
     <meta name="project" content="Astarte v0.11.4">
     <title>Authentication and Authorization — Astarte v0.11.4</title>
-    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
     <script src="dist/sidebar_items-e57538aa08.js"></script>
       <script src="../common_vars.js"></script>
-    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
   </head>
   <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+    <script>
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -29,7 +35,7 @@
       <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
     </button>
     <label class="search-label">
-      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
     </label>
   </form>
 
@@ -52,7 +58,7 @@ Astarte      </a>
   </div>
 
   <ul class="sidebar-listNav">
-    <li><a id="extras-list" href="#full-list">Pages</a></li>
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
 
 
   </ul>
@@ -126,11 +132,32 @@ Astarte      </a>
   <a href="#changing-a-realm-s-validation-mean" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Changing a Realm's validation mean
 </h3>
-<p>Over the lifetime of a cluster, it might be necessary to change a realm's validation mean for the most diverse reasons. By design, validation means are meant to be long lived, and changing them is supposed to be an extraordinary operation.</p><p>Astarte supports only one validation mean at a time. When the validation mean is changed, all tokens emitted which could be validated with the previous mean become invalid.</p><p>It is also possible that there might be a delay between the request of a validation mean change and its actuation. This means during this grace period tokens will be validated against the previously configured mean. As such, it is advised to treat a validation mean change as a maintenance operation for the realm. More details can be found in the Administrator Guide.</p>      <footer class="footer">
+<p>Over the lifetime of a cluster, it might be necessary to change a realm's validation mean for the most diverse reasons. By design, validation means are meant to be long lived, and changing them is supposed to be an extraordinary operation.</p><p>Astarte supports only one validation mean at a time. When the validation mean is changed, all tokens emitted which could be validated with the previous mean become invalid.</p><p>It is also possible that there might be a delay between the request of a validation mean change and its actuation. This means during this grace period tokens will be validated against the previously configured mean. As such, it is advised to treat a validation mean change as a maintenance operation for the realm. More details can be found in the Administrator Guide.</p><div class="bottom-actions">
+  <div class="bottom-actions-item">
+      <a href="065-groups.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Groups        </span>
+      </a>
+  </div>
+  <div class="bottom-actions-item">
+      <a href="080-mqtt-v1-protocol.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Astarte MQTT v1 Protocol        </span>
+      </a>
+  </div>
+</div>
+
+      <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
             <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
           </span>
           <span class="line">
@@ -160,4 +187,3 @@ Astarte      </a>
 </div>
   </body>
 </html>
-

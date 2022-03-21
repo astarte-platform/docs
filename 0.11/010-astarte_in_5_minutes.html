@@ -4,16 +4,22 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="generator" content="ExDoc v0.24.2">
     <meta name="project" content="Astarte v0.11.4">
     <title>Astarte in 5 minutes — Astarte v0.11.4</title>
-    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
     <script src="dist/sidebar_items-e57538aa08.js"></script>
       <script src="../common_vars.js"></script>
-    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
   </head>
   <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+    <script>
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -29,7 +35,7 @@
       <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
     </button>
     <label class="search-label">
-      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
     </label>
   </form>
 
@@ -52,7 +58,7 @@ Astarte      </a>
   </div>
 
   <ul class="sidebar-listNav">
-    <li><a id="extras-list" href="#full-list">Pages</a></li>
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
 
 
   </ul>
@@ -65,12 +71,12 @@ Astarte      </a>
     <div id="content" class="content-inner">
 
 
-<h1>Astarte in 5 minutes</h1><p>This tutorial will guide you through bringing up your Astarte instance, creating a realm and streaming your first data from a device simulator (or a real device) before your cup of tea is ready.</p><h2 id="before-you-begin" class="section-heading">
+<h1>Astarte in 5 minutes</h1><p><strong>This documentation page describes a discontinued version, for production systems use a newer version instead.</strong></p><p>This tutorial will guide you through bringing up your Astarte instance, creating a realm and streaming your first data from a device simulator (or a real device) before your cup of tea is ready.</p><h2 id="before-you-begin" class="section-heading">
   <a href="#before-you-begin" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Before you begin
 </h2>
 <p>First of all, please keep in mind that <strong>this setup is not meant to be used in production</strong>: by default, no persistence is involved, the installation does not have any recovery mechanism, and you will have to restart services manually in case something goes awry. This guide is great if you want to take Astarte for a spin, or if you want to use an isolated instance for development.</p><p>You will need a machine with at least 4GB of RAM, a recent 64-bit operating system with <a href="https://www.docker.com/">Docker</a>, <a href="https://docs.docker.com/compose/install/">Docker Compose</a> and <a href="https://github.com/astarte-platform/astartectl">astartectl</a> installed. If you don't have <code class="inline">astartectl</code> installed on your machine yet, you should install it by following the instructions in <a href="https://github.com/astarte-platform/astartectl#installation">astartectl's README</a></p><p>Also, on the machine(s) or device(s) you will use as a client, you will need either Docker, or a <a href="https://www.qt.io/">Qt5</a> installation with development components if you wish to build and run components locally.</p><p>Due to ScyllaDB requirements, if you're working on a Linux machine you should make sure that <code class="inline">aio-max-nr</code> is at least <code class="inline">1048576</code>:</p><pre><code class="sh">cat /proc/sys/fs/aio-max-nr
-1048576</code></pre><p>If it's less than that, you'll need to edit your <code class="inline">/etc/sysctl.conf</code> file</p><pre><code class="nohighlight makeup elixir"><span class="n">fs</span><span class="o">.</span><span class="n">aio</span><span class="o">-</span><span class="n">max</span><span class="o">-</span><span class="n">nr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1048576</span></code></pre><p>and to persist this configuration</p><pre><code class="sh">sudo sysctl -p</code></pre><h2 id="checking-prerequistes" class="section-heading">
+1048576</code></pre><p>If it's less than that, you'll need to edit your <code class="inline">/etc/sysctl.conf</code> file</p><pre><code class="makeup elixir"><span class="n">fs</span><span class="o">.</span><span class="n">aio</span><span class="o">-</span><span class="n">max</span><span class="o">-</span><span class="n">nr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1048576</span></code></pre><p>and to persist this configuration</p><pre><code class="sh">sudo sysctl -p</code></pre><h2 id="checking-prerequistes" class="section-heading">
   <a href="#checking-prerequistes" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Checking prerequistes
 </h2>
@@ -147,11 +153,32 @@ $ make</code></pre><p>You can now run <code class="inline">stream-qt5-test</code
   <a href="#final-notes" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Final notes
 </h2>
-<p>Running Astarte through <code class="inline">docker-compose</code> is the fastest way for going from zero to hero. However, <strong>please keep in mind this setup is unlikely to hold for long in production, and is by design broken for large installations</strong>. We can't stop you from running such a thing in production, but do so as long as you know you voided your warranty by doing so.</p><p>This method is great for development and for trying out the system. If you wish to deploy Astarte in a more robust environment, have a look at <a href="https://astarte.cloud/">Astarte Enterprise</a> or, if you want to go the DIY way, make sure that <strong>at least</strong> every service which requires persistency has reliable storage and adequate redundancy beneath it.</p>      <footer class="footer">
+<p>Running Astarte through <code class="inline">docker-compose</code> is the fastest way for going from zero to hero. However, <strong>please keep in mind this setup is unlikely to hold for long in production, and is by design broken for large installations</strong>. We can't stop you from running such a thing in production, but do so as long as you know you voided your warranty by doing so.</p><p>This method is great for development and for trying out the system. If you wish to deploy Astarte in a more robust environment, have a look at <a href="https://astarte.cloud/">Astarte Enterprise</a> or, if you want to go the DIY way, make sure that <strong>at least</strong> every service which requires persistency has reliable storage and adequate redundancy beneath it.</p><div class="bottom-actions">
+  <div class="bottom-actions-item">
+      <a href="095-advanced-operations.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Advanced operations        </span>
+      </a>
+  </div>
+  <div class="bottom-actions-item">
+      <a href="001-intro_api.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Introduction        </span>
+      </a>
+  </div>
+</div>
+
+      <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
             <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
           </span>
           <span class="line">
@@ -181,4 +208,3 @@ $ make</code></pre><p>You can now run <code class="inline">stream-qt5-test</code
 </div>
   </body>
 </html>
-

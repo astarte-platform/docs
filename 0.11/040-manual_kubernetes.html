@@ -4,16 +4,22 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="generator" content="ExDoc v0.24.2">
     <meta name="project" content="Astarte v0.11.4">
     <title>Manual Operator Installation — Astarte v0.11.4</title>
-    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
     <script src="dist/sidebar_items-e57538aa08.js"></script>
       <script src="../common_vars.js"></script>
-    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
   </head>
   <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+    <script>
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
 <div class="main">
 
 <button class="sidebar-button sidebar-toggle">
@@ -29,7 +35,7 @@
       <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
     </button>
     <label class="search-label">
-      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
     </label>
   </form>
 
@@ -52,7 +58,7 @@ Astarte      </a>
   </div>
 
   <ul class="sidebar-listNav">
-    <li><a id="extras-list" href="#full-list">Pages</a></li>
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
 
 
   </ul>
@@ -99,7 +105,7 @@ To work around this, you should always install CRDs with <code class="inline">ku
 <p>Navigate into the <code class="inline">deploy</code> directory of your local clone. The Operator Deployment template can be found in
 <code class="inline">operator.yaml</code>. At this time, you might want to tweak the Deployment - especially for what concerns the
 image tag. Once you're ready to go, apply the Deployment to your Kubernetes cluster, and wait until it
-becomes ready.</p><pre><code class="nohighlight makeup elixir"><span class="n">kubectl</span><span class="w"> </span><span class="n">apply</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="n">operator</span><span class="o">.</span><span class="n">yaml</span><span class="w">
+becomes ready.</p><pre><code class="makeup elixir"><span class="n">kubectl</span><span class="w"> </span><span class="n">apply</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="n">operator</span><span class="o">.</span><span class="n">yaml</span><span class="w">
 </span><span class="n">kubectl</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="n">deployment</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="n">kube</span><span class="o">-</span><span class="n">system</span><span class="w"> </span><span class="n">astarte</span><span class="o">-</span><span class="n">operator</span></code></pre><h2 id="running-the-operator-outside-the-cluster" class="section-heading">
   <a href="#running-the-operator-outside-the-cluster" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Running the Operator outside the Cluster
@@ -116,11 +122,32 @@ of the <code class="inline">operator-sdk</code> module in the Operator's <code c
 <p>When running the Operator locally, you're bound to a single namespace, and to all limitations of <code class="inline">operator-sdk run</code>. This is
 out of the scope of this guide, and you should be confident with
 <a href="https://github.com/operator-framework/operator-sdk/blob/master/doc/user-guide.md"><code class="inline">operator-sdk</code>'s User Guide</a> if you plan
-on running the Operator outside the Cluster.</p>      <footer class="footer">
+on running the Operator outside the Cluster.</p><div class="bottom-actions">
+  <div class="bottom-actions-item">
+      <a href="030-installation_kubernetes.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Installing Astarte Operator        </span>
+      </a>
+  </div>
+  <div class="bottom-actions-item">
+      <a href="060-setup_cluster.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Setting up the Cluster        </span>
+      </a>
+  </div>
+</div>
+
+      <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
             <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
           </span>
           <span class="line">
@@ -150,4 +177,3 @@ on running the Operator outside the Cluster.</p>      <footer class="footer">
 </div>
   </body>
 </html>
-
