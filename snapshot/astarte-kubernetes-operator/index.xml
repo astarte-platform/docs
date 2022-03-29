@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Astarte Kubernetes Operator APIs</title>
+    <link>https://docs.astarte-platform.org/snapshot/astarte-kubernetes-operator/</link>
+    <description>Recent content on Astarte Kubernetes Operator APIs</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://docs.astarte-platform.org/snapshot/astarte-kubernetes-operator/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://docs.astarte-platform.org/snapshot/astarte-kubernetes-operator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.astarte-platform.org/snapshot/astarte-kubernetes-operator/</guid>
+      <description>API Reference #  Packages #    api.astarte-platform.org/v1alpha1  api.astarte-platform.org/v1alpha2  ingress.astarte-platform.org/v1alpha1  api.astarte-platform.org/v1alpha1 #  Package v1alpha1 contains API Schema definitions for the api v1alpha1 API group
+Resource Types #    Astarte  AstarteList  AstarteVoyagerIngress  AstarteVoyagerIngressList  Flow  FlowList  Astarte #  Astarte is the Schema for the astartes API
+Appears in:
+  AstarteList     Field Description     apiVersion string api.</description>
+    </item>
+    
+  </channel>
+</rss>
