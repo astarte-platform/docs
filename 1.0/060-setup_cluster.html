@@ -5,12 +5,12 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.24.2">
-    <meta name="project" content="Astarte v1.0.1">
+    <meta name="project" content="Astarte v1.0.2">
 
-    <title>Setting up the Cluster — Astarte v1.0.1</title>
+    <title>Setting up the Cluster — Astarte v1.0.2</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-1467b2ba5f.js"></script>
+    <script src="dist/sidebar_items-35e17bc187.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -58,7 +58,7 @@
 Astarte
       </a>
       <strong class="sidebar-projectVersion">
-        v1.0.1
+        v1.0.2
       </strong>
     </div>
 
@@ -88,7 +88,7 @@ Astarte
 </h2>
 <p>The standard way of deploying an Astarte instance is by creating your own Astarte Custom Resource.
 This gives you an high degree of customization, allowing you to tweak any single parameter in the
-Astarte setup. The main Astarte CRD contains <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/v1.0.1/config/crd/bases/api.astarte-platform.org_astartes.yaml">extensive
+Astarte setup. The main Astarte CRD contains <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/v1.0.2/config/crd/bases/api.astarte-platform.org_astartes.yaml">extensive
 documentation</a>
 on the available fields in OpenAPIv3 format. Just create your Astarte Custom Resource, which will
 look something like this:</p><pre><code class="yaml">apiVersion: api.astarte-platform.org/v1alpha1
@@ -99,7 +99,7 @@ metadata:
 spec:
   # This is the most minimal set of reasonable configuration to spin up an Astarte
   # instance with reasonable defaults and enough control over the deployment.
-  version: 1.0.1
+  version: 1.0.2
   api:
     host: &quot;api.astarte.yourdomain.com&quot; # MANDATORY
   rabbitmq:

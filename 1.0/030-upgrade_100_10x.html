@@ -5,12 +5,12 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.24.2">
-    <meta name="project" content="Astarte v1.0.1">
+    <meta name="project" content="Astarte v1.0.2">
 
-    <title>Upgrade v1.0.0-v1.0.1 — Astarte v1.0.1</title>
+    <title>Upgrade v1.0.0-v1.0.x — Astarte v1.0.2</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-1467b2ba5f.js"></script>
+    <script src="dist/sidebar_items-35e17bc187.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -58,7 +58,7 @@
 Astarte
       </a>
       <strong class="sidebar-projectVersion">
-        v1.0.1
+        v1.0.2
       </strong>
     </div>
 
@@ -81,10 +81,11 @@ Astarte
   <div class="content-outer">
     <div id="content" class="content-inner">
 
-<h1>Upgrade v1.0.0-v1.0.1</h1><p>The current section describes the required steps to upgrade your Astarte instance from <code class="inline">v1.0.0</code> to
-<code class="inline">v1.0.1</code>. The described upgrade path involves some heavy changes as a consequence of <a href="https://blog.byte.builders/post/voyager-v2021.09.15/">this Voyager
-announcement</a> and the following <a href="https://github.com/astarte-platform/astarte/issues/613">Astarte
-design choice</a>.</p><p>Before moving on, it must be clear that AstarteVoyagerIngress is deprecated and that <strong>the only
+<h1>Upgrade v1.0.0-v1.0.x</h1><p>The current section describes the required steps to upgrade your Astarte instance from <code class="inline">v1.0.0</code> to
+<code class="inline">v1.0.x</code>. Currently, the last released patch version is <code class="inline">v1.0.2</code> and, as such, the remainder of this
+page will refer to this version. The described upgrade path involves some heavy changes as a
+consequence of <a href="https://blog.byte.builders/post/voyager-v2021.09.15/">this Voyager announcement</a> and
+the following <a href="https://github.com/astarte-platform/astarte/issues/613">Astarte design choice</a>.</p><p>Before moving on, it must be clear that AstarteVoyagerIngress is deprecated and that <strong>the only
 supported managed ingress is the AstarteDefaultIngress</strong> .</p><p>The upcoming sections will cover the following topics:</p><ul><li>upgrading the Astarte Operator,</li><li>upgrading the Astarte instance to allow for TLS termination at VerneMQ level,</li><li>deployment of the <a href="064-setup_astartedefaultingress.html"><code class="inline">AstarteDefaultIngress</code></a> in place of the
 deprecated <code class="inline">AstarteVoyagerIngress</code>.</li></ul><p>Before starting with the upgrade procedure it is strongly advised to <a href="095-advanced-operations.html#backup-your-astarte-resources">backup your Astarte
 resources</a>.</p><h2 id="upgrade-astarte-operator" class="section-heading">
@@ -121,7 +122,7 @@ running:</p><pre><code class="bash">helm show values astarte/astarte-operator</c
 <code class="inline">version</code> field to the one you want to upgrade to.</p><p>In order to properly expose your Astarte instance to the outer world through the
 <a href="064-setup_astartedefaultingress.html"><code class="inline">AstarteDefaultIngress</code></a> a configuration change for VerneMQ
 is required: in particular, TLS termination must be handled at VerneMQ level.</p><p>Open the yaml file describing the Astarte resource with:</p><pre><code class="bash">kubectl edit astarte -n astarte</code></pre><p>Find the <code class="inline">version</code> field in the Astarte Spec section and change it according to your needs (i.e.:
-set it to <code class="inline">1.0.1</code>). Moreover, in the <code class="inline">vernemq</code> configuration section two new fields must be added,
+set it to <code class="inline">1.0.2</code>). Moreover, in the <code class="inline">vernemq</code> configuration section two new fields must be added,
 namely <code class="inline">sslListener</code> and <code class="inline">sslListenerCertSecretName</code>: the first field is a boolean that, when true,
 set VerneMQ to handle TLS termination, while the latter set the secret containing the TLS
 certificate (further details on certificates can be found <a href="050-handling_certificates.html">here</a>).</p><p>To summarize, the needed changes will look like the following sample snippet:</p><pre><code class="yaml">apiVersion: api.astarte-platform.org/v1alpha2
@@ -133,14 +134,14 @@ spec:
     sslListener: true
     sslListenerCertSecretName: &lt;your-tls-secret-name&gt;
     ...
-  version: 1.0.1</code></pre><p>Once the yaml file is applied, the Operator will take over ensuring the reconciliation of your
+  version: 1.0.2</code></pre><p>Once the yaml file is applied, the Operator will take over ensuring the reconciliation of your
 Astarte instance.</p><h3 id="caveats-for-astarte-flow" class="section-heading">
   <a href="#caveats-for-astarte-flow" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Caveats for Astarte Flow
 </h3>
 <p>Currently, although <a href="https://docs.astarte-platform.org/flow/">Astarte Flow</a> is a component of
 Astarte, it doesn't follow Astarte's release cycle. Therefore if you upgraded your Astarte instance
-to v1.0.1, Astarte Operator will try to deploy <code class="inline">astarte/astarte_flow:1.0.1</code> which is currently not
+to v1.0.2, Astarte Operator will try to deploy <code class="inline">astarte/astarte_flow:1.0.2</code> which is currently not
 existent.</p><p>All you have to do to overcome this temporary limitation is to edit your Astarte resource by
 explicitly setting the Astarte Flow image you plan to use:</p><pre><code class="yaml">spec:
   ...

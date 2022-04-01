@@ -5,12 +5,12 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.24.2">
-    <meta name="project" content="Astarte v1.0.1">
+    <meta name="project" content="Astarte v1.0.2">
 
-    <title>Astarte in 5 minutes — Astarte v1.0.1</title>
+    <title>Astarte in 5 minutes — Astarte v1.0.2</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-1467b2ba5f.js"></script>
+    <script src="dist/sidebar_items-35e17bc187.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -58,7 +58,7 @@
 Astarte
       </a>
       <strong class="sidebar-projectVersion">
-        v1.0.1
+        v1.0.2
       </strong>
     </div>
 
@@ -98,8 +98,8 @@ Ubuntu 18.04 and macOS 10.15 Catalina, but any other modern operating system sho
   <a href="#install-astarte" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Install Astarte
 </h2>
-<p>To get our Astarte instance running as fast as possible, we will install Astarte's standalone distribution. It includes a tunable Docker Compose which brings up Astarte and every companion service needed for it to work. To do so, simply clone Astarte's main repository and use its scripts to bring it up:</p><pre><code class="sh">$ git clone https://github.com/astarte-platform/astarte.git -b v1.0.1 &amp;&amp; cd astarte
-$ docker run -v $(pwd)/compose:/compose astarte/docker-compose-initializer:1.0.1
+<p>To get our Astarte instance running as fast as possible, we will install Astarte's standalone distribution. It includes a tunable Docker Compose which brings up Astarte and every companion service needed for it to work. To do so, simply clone Astarte's main repository and use its scripts to bring it up:</p><pre><code class="sh">$ git clone https://github.com/astarte-platform/astarte.git -b v1.0.2 &amp;&amp; cd astarte
+$ docker run -v $(pwd)/compose:/compose astarte/docker-compose-initializer:1.0.2
 $ docker-compose up -d</code></pre><p><code class="inline">docker-compose-initializer</code> will generate a root CA for devices, a key pair for Housekeeping, and a self-signed certificate for the broker (note: this is a <em>really</em> bad idea in production). You can tune the compose file further to use legitimate certificates and custom keys, but this is out of the scope of this tutorial.</p><p>Compose might take some time to bring everything up, but usually within a minute from the containers creation Astarte will be ready. Compose will forward the following ports to your machine:</p><ul><li><code class="inline">4000</code>: Realm Management API</li><li><code class="inline">4001</code>: Housekeeping API</li><li><code class="inline">4002</code>: AppEngine API</li><li><code class="inline">4003</code>: Pairing API</li><li><code class="inline">8883</code>: MQTTS</li><li><code class="inline">1885</code>: MQTT with Proxy Protocol for SSL termination (won't be used)</li><li><code class="inline">80</code>: Let's Encrypt verification (won't be used)</li></ul><p>This example won't use Let's Encrypt with VerneMQ - in case binding to port 80 is a problem to you, you can comment it out in <code class="inline">docker-compose.yml</code> without affecting any functionality.</p><p>To check everything went fine, use <code class="inline">docker ps</code> to verify relevant containers are up: Astarte itself, VerneMQ, PostgreSQL (used by CFSSL), CFSSL, RabbitMQ and ScyllaDB should be now running on your system. If any of them isn't up and running, <code class="inline">docker ps -a</code> should show it stopped or failed. In those cases, it is advised to issue <code class="inline">docker-compose up -d</code> again to fix potential temporary failures.</p><h2 id="create-a-realm" class="section-heading">
   <a href="#create-a-realm" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Create a Realm
@@ -141,7 +141,7 @@ or from another machine or device on the same network.</p><h3 id="using-a-contai
   <a href="#using-a-container-for-stream-qt5-test" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Using a container for stream-qt5-test
 </h3>
-<p>Astarte's <code class="inline">stream-qt5-test</code> can be pulled from Docker Hub with:</p><pre><code class="sh">$ docker pull astarte/astarte-stream-qt5-test:1.0.1</code></pre><p>Its most basic invocation (from your <code class="inline">astarte</code> repository tree) is:</p><pre><code class="sh">$ docker run --net=&quot;host&quot; -e &quot;DEVICE_ID=$(astartectl utils device-id generate-random)&quot; -e &quot;PAIRING_URL=http://localhost:4003&quot; -e &quot;REALM=test&quot; -e &quot;PAIRING_JWT=$(astartectl utils gen-jwt pairing -k test_private.pem)&quot; -e &quot;IGNORE_SSL_ERRORS=true&quot; astarte/astarte-stream-qt5-test:1.0.1</code></pre><p>This will generate a random datastream from a brand new, random Device ID. You can tweak those parameters to whatever suits you better by having a look at the Dockerfile. You can spawn any number of instances you like, or you can have the same Device ID send longer streams of data by saving the container's persistency through a Docker Volume. If you wish to do so, simply add <code class="inline">-v /persistency:&lt;your persistency path&gt;</code> to your <code class="inline">docker run</code> invocation.</p><p>Refer to <code class="inline">stream-qt5-test</code> <a href="https://github.com/astarte-platform/stream-qt5-test/blob/v1.0.1/README.md">README</a> for more details on which variables can be passed to the container.</p><p>Also, please note that the <code class="inline">--net=&quot;host&quot;</code> parameter is required to make <code class="inline">localhost</code> work. If this is not desirable, you can change <code class="inline">PAIRING_HOST</code> to an host reachable from within the container network. Obviously, that parameter isn't required if you're running the container on a different machine and <code class="inline">PAIRING_HOST</code> is pointing to a different URL.</p><h2 id="grab-your-tea" class="section-heading">
+<p>Astarte's <code class="inline">stream-qt5-test</code> can be pulled from Docker Hub with:</p><pre><code class="sh">$ docker pull astarte/astarte-stream-qt5-test:1.0.2</code></pre><p>Its most basic invocation (from your <code class="inline">astarte</code> repository tree) is:</p><pre><code class="sh">$ docker run --net=&quot;host&quot; -e &quot;DEVICE_ID=$(astartectl utils device-id generate-random)&quot; -e &quot;PAIRING_URL=http://localhost:4003&quot; -e &quot;REALM=test&quot; -e &quot;PAIRING_JWT=$(astartectl utils gen-jwt pairing -k test_private.pem)&quot; -e &quot;IGNORE_SSL_ERRORS=true&quot; astarte/astarte-stream-qt5-test:1.0.2</code></pre><p>This will generate a random datastream from a brand new, random Device ID. You can tweak those parameters to whatever suits you better by having a look at the Dockerfile. You can spawn any number of instances you like, or you can have the same Device ID send longer streams of data by saving the container's persistency through a Docker Volume. If you wish to do so, simply add <code class="inline">-v /persistency:&lt;your persistency path&gt;</code> to your <code class="inline">docker run</code> invocation.</p><p>Refer to <code class="inline">stream-qt5-test</code> <a href="https://github.com/astarte-platform/stream-qt5-test/blob/v1.0.2/README.md">README</a> for more details on which variables can be passed to the container.</p><p>Also, please note that the <code class="inline">--net=&quot;host&quot;</code> parameter is required to make <code class="inline">localhost</code> work. If this is not desirable, you can change <code class="inline">PAIRING_HOST</code> to an host reachable from within the container network. Obviously, that parameter isn't required if you're running the container on a different machine and <code class="inline">PAIRING_HOST</code> is pointing to a different URL.</p><h2 id="grab-your-tea" class="section-heading">
   <a href="#grab-your-tea" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Grab your tea
 </h2>
@@ -157,12 +157,12 @@ or from another machine or device on the same network.</p><h3 id="using-a-contai
 <div class="bottom-actions">
   <div class="bottom-actions-item">
 
-      <a href="030-upgrade_100_101.html" class="bottom-actions-button" rel="prev">
+      <a href="030-upgrade_100_10x.html" class="bottom-actions-button" rel="prev">
         <span class="subheader">
           ← Previous Page
         </span>
         <span class="title">
-Upgrade v1.0.0-v1.0.1
+Upgrade v1.0.0-v1.0.x
         </span>
       </a>
 
