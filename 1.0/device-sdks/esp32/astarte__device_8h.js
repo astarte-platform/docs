@@ -1,6 +1,7 @@
 var astarte__device_8h =
 [
     [ "astarte_device_data_event_t", "structastarte__device__data__event__t.html", "structastarte__device__data__event__t" ],
+    [ "astarte_device_unset_event_t", "structastarte__device__unset__event__t.html", "structastarte__device__unset__event__t" ],
     [ "astarte_device_connection_event_t", "structastarte__device__connection__event__t.html", "structastarte__device__connection__event__t" ],
     [ "astarte_device_disconnection_event_t", "structastarte__device__disconnection__event__t.html", "structastarte__device__disconnection__event__t" ],
     [ "astarte_device_config_t", "structastarte__device__config__t.html", "structastarte__device__config__t" ],
@@ -9,6 +10,7 @@ var astarte__device_8h =
     [ "astarte_device_data_event_callback_t", "astarte__device_8h.html#a9ff127c7fc09dc12b5ad79a0bfceed1b", null ],
     [ "astarte_device_disconnection_event_callback_t", "astarte__device_8h.html#ab44c3b5b5d2f677ec9cb53269eb6d5de", null ],
     [ "astarte_device_handle_t", "astarte__device_8h.html#ada4e51f3ebd37db75bc23f094b91e49c", null ],
+    [ "astarte_device_unset_event_callback_t", "astarte__device_8h.html#a508d8e3535dfb1f123ea06e331cbdfc0", null ],
     [ "astarte_device_add_interface", "astarte__device_8h.html#a2b3a8773ceb649857fa67eed1e8ac30b", null ],
     [ "astarte_device_destroy", "astarte__device_8h.html#a7101d473c2b008d9fe4efdfe24fcd3f1", null ],
     [ "astarte_device_get_encoded_id", "astarte__device_8h.html#af3a641e9d21dfcdc370a62d5b3d1de31", null ],
