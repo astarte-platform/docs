@@ -22,7 +22,7 @@ var astarte__device_8h =
     [ "astarte_device_set_double_property", "astarte__device_8h.html#a79d9d8843385b9581a75c5657106ad38", null ],
     [ "astarte_device_set_integer_property", "astarte__device_8h.html#aea8b2d533f552356d3dee678d9131599", null ],
     [ "astarte_device_set_longinteger_property", "astarte__device_8h.html#a50a138454cdcb8f4306143504871b26e", null ],
-    [ "astarte_device_set_string_property", "astarte__device_8h.html#a9bc5db9465434cbc05ef88a11f6fe11b", null ],
+    [ "astarte_device_set_string_property", "astarte__device_8h.html#ac7a5b41823cb0ffa6f0738d1ea0c15e6", null ],
     [ "astarte_device_start", "astarte__device_8h.html#a41931e977d0752bf48e18445fa87ad41", null ],
     [ "astarte_device_stop", "astarte__device_8h.html#a20aaaa94be7b173c521676ddf6c14c05", null ],
     [ "astarte_device_stream_aggregate", "astarte__device_8h.html#ac6bded8afb6018dfcaf46147470a1762", null ],
@@ -51,9 +51,9 @@ var astarte__device_8h =
     [ "astarte_device_stream_longinteger_array", "astarte__device_8h.html#aeb4c1b6a7569c28141be471694288716", null ],
     [ "astarte_device_stream_longinteger_array_with_timestamp", "astarte__device_8h.html#ab5b51b0c8c3167b2464127b6d4f24a6f", null ],
     [ "astarte_device_stream_longinteger_with_timestamp", "astarte__device_8h.html#a0f310b9353c14dbdf3f1d90d09955166", null ],
-    [ "astarte_device_stream_string", "astarte__device_8h.html#a44736e4ff24530d1090aec9f5688c1fb", null ],
-    [ "astarte_device_stream_string_array", "astarte__device_8h.html#aadca881b5f485c55444748d55dd6cbf6", null ],
+    [ "astarte_device_stream_string", "astarte__device_8h.html#aa580c422aaf7ad4878be07cd8fd6559d", null ],
+    [ "astarte_device_stream_string_array", "astarte__device_8h.html#a679c016f4b0727e2ccf86d237ae7a092", null ],
     [ "astarte_device_stream_string_array_with_timestamp", "astarte__device_8h.html#aa69b59c1982fa9c4d67275daec06f5f8", null ],
-    [ "astarte_device_stream_string_with_timestamp", "astarte__device_8h.html#ac32cd6640f24b7e7b1aeb8432f1f3071", null ],
+    [ "astarte_device_stream_string_with_timestamp", "astarte__device_8h.html#a22b3023852a97db477f7810c3652dd66", null ],
     [ "astarte_device_unset_path", "astarte__device_8h.html#a9359c554df96f2b58bf30aeff2fff62e", null ]
 ];
