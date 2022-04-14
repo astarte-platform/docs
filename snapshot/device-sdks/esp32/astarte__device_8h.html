@@ -112,6 +112,8 @@ Include dependency graph for astarte_device.h:</div>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__device__data__event__t.html">astarte_device_data_event_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__device__unset__event__t.html">astarte_device_unset_event_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__device__connection__event__t.html">astarte_device_connection_event_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__device__disconnection__event__t.html">astarte_device_disconnection_event_t</a></td></tr>
@@ -139,6 +141,9 @@ typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><b>astarte_dev
 <tr class="memitem:ab44c3b5b5d2f677ec9cb53269eb6d5de"><td class="memItemLeft" align="right" valign="top"><a id="ab44c3b5b5d2f677ec9cb53269eb6d5de"></a>
 typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><b>astarte_device_disconnection_event_callback_t</b>) (<a class="el" href="structastarte__device__disconnection__event__t.html">astarte_device_disconnection_event_t</a> *event)</td></tr>
 <tr class="separator:ab44c3b5b5d2f677ec9cb53269eb6d5de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a508d8e3535dfb1f123ea06e331cbdfc0"><td class="memItemLeft" align="right" valign="top"><a id="a508d8e3535dfb1f123ea06e331cbdfc0"></a>
+typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><b>astarte_device_unset_event_callback_t</b>) (<a class="el" href="structastarte__device__unset__event__t.html">astarte_device_unset_event_t</a> *event)</td></tr>
+<tr class="separator:a508d8e3535dfb1f123ea06e331cbdfc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -181,12 +186,12 @@ Functions</h2></td></tr>
 <tr class="memitem:abf5f082577f4b8eebdac638fc73f0272"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#abf5f082577f4b8eebdac638fc73f0272">astarte_device_stream_boolean_with_timestamp</a> (astarte_device_handle_t device, const char *interface_name, const char *path, bool value, uint64_t ts_epoch_millis, int qos)</td></tr>
 <tr class="memdesc:abf5f082577f4b8eebdac638fc73f0272"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a boolean value on a datastream endpoint with an explicit timestamp.  <a href="astarte__device_8h.html#abf5f082577f4b8eebdac638fc73f0272">More...</a><br /></td></tr>
 <tr class="separator:abf5f082577f4b8eebdac638fc73f0272"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44736e4ff24530d1090aec9f5688c1fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#a44736e4ff24530d1090aec9f5688c1fb">astarte_device_stream_string</a> (astarte_device_handle_t device, const char *interface_name, const char *path, char *value, int qos)</td></tr>
-<tr class="memdesc:a44736e4ff24530d1090aec9f5688c1fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a UTF8 encoded string on a datastream endpoint.  <a href="astarte__device_8h.html#a44736e4ff24530d1090aec9f5688c1fb">More...</a><br /></td></tr>
-<tr class="separator:a44736e4ff24530d1090aec9f5688c1fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac32cd6640f24b7e7b1aeb8432f1f3071"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#ac32cd6640f24b7e7b1aeb8432f1f3071">astarte_device_stream_string_with_timestamp</a> (astarte_device_handle_t device, const char *interface_name, const char *path, char *value, uint64_t ts_epoch_millis, int qos)</td></tr>
-<tr class="memdesc:ac32cd6640f24b7e7b1aeb8432f1f3071"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a UTF8 encoded string on a datastream endpoint with an explicit timestamp.  <a href="astarte__device_8h.html#ac32cd6640f24b7e7b1aeb8432f1f3071">More...</a><br /></td></tr>
-<tr class="separator:ac32cd6640f24b7e7b1aeb8432f1f3071"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa580c422aaf7ad4878be07cd8fd6559d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#aa580c422aaf7ad4878be07cd8fd6559d">astarte_device_stream_string</a> (astarte_device_handle_t device, const char *interface_name, const char *path, const char *value, int qos)</td></tr>
+<tr class="memdesc:aa580c422aaf7ad4878be07cd8fd6559d"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a UTF8 encoded string on a datastream endpoint.  <a href="astarte__device_8h.html#aa580c422aaf7ad4878be07cd8fd6559d">More...</a><br /></td></tr>
+<tr class="separator:aa580c422aaf7ad4878be07cd8fd6559d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22b3023852a97db477f7810c3652dd66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#a22b3023852a97db477f7810c3652dd66">astarte_device_stream_string_with_timestamp</a> (astarte_device_handle_t device, const char *interface_name, const char *path, const char *value, uint64_t ts_epoch_millis, int qos)</td></tr>
+<tr class="memdesc:a22b3023852a97db477f7810c3652dd66"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a UTF8 encoded string on a datastream endpoint with an explicit timestamp.  <a href="astarte__device_8h.html#a22b3023852a97db477f7810c3652dd66">More...</a><br /></td></tr>
+<tr class="separator:a22b3023852a97db477f7810c3652dd66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7ad8eb57f86dd44690a280e1106d74c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#ae7ad8eb57f86dd44690a280e1106d74c">astarte_device_stream_binaryblob</a> (astarte_device_handle_t device, const char *interface_name, const char *path, void *value, size_t size, int qos)</td></tr>
 <tr class="memdesc:ae7ad8eb57f86dd44690a280e1106d74c"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a binary value on a datastream endpoint.  <a href="astarte__device_8h.html#ae7ad8eb57f86dd44690a280e1106d74c">More...</a><br /></td></tr>
 <tr class="separator:ae7ad8eb57f86dd44690a280e1106d74c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -199,6 +204,48 @@ Functions</h2></td></tr>
 <tr class="memitem:a865812ad0918d678f08e70e3022ef7c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#a865812ad0918d678f08e70e3022ef7c8">astarte_device_stream_datetime_with_timestamp</a> (astarte_device_handle_t device, const char *interface_name, const char *path, int64_t value, uint64_t ts_epoch_millis, int qos)</td></tr>
 <tr class="memdesc:a865812ad0918d678f08e70e3022ef7c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a datetime value on a datastream endpoint with an explicit timestamp.  <a href="astarte__device_8h.html#a865812ad0918d678f08e70e3022ef7c8">More...</a><br /></td></tr>
 <tr class="separator:a865812ad0918d678f08e70e3022ef7c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fe888862861e457f710bea636fda763"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#a0fe888862861e457f710bea636fda763">astarte_device_stream_double_array_with_timestamp</a> (astarte_device_handle_t device, const char *interface_name, const char *path, const double *values, int count, uint64_t ts_epoch_millis, int qos)</td></tr>
+<tr class="memdesc:a0fe888862861e457f710bea636fda763"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a double array value on a datastream endpoint with an explicit timestamp.  <a href="astarte__device_8h.html#a0fe888862861e457f710bea636fda763">More...</a><br /></td></tr>
+<tr class="separator:a0fe888862861e457f710bea636fda763"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3715b669b6a31c0a8ab0e9d71dd61f6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#af3715b669b6a31c0a8ab0e9d71dd61f6">astarte_device_stream_double_array</a> (astarte_device_handle_t device, const char *interface_name, const char *path, const double *values, int count, uint64_t ts_epoch_millis, int qos)</td></tr>
+<tr class="memdesc:af3715b669b6a31c0a8ab0e9d71dd61f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a double array value on a datastream endpoint.  <a href="astarte__device_8h.html#af3715b669b6a31c0a8ab0e9d71dd61f6">More...</a><br /></td></tr>
+<tr class="separator:af3715b669b6a31c0a8ab0e9d71dd61f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac0ac9e1a724fd898277264da0895f67"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#aac0ac9e1a724fd898277264da0895f67">astarte_device_stream_integer_array_with_timestamp</a> (astarte_device_handle_t device, const char *interface_name, const char *path, const int32_t *values, int count, uint64_t ts_epoch_millis, int qos)</td></tr>
+<tr class="memdesc:aac0ac9e1a724fd898277264da0895f67"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a 32 bit integer array value on a datastream endpoint with an explicit timestamp.  <a href="astarte__device_8h.html#aac0ac9e1a724fd898277264da0895f67">More...</a><br /></td></tr>
+<tr class="separator:aac0ac9e1a724fd898277264da0895f67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5564a109ed290cb43d1e6aa47a96f1f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#ad5564a109ed290cb43d1e6aa47a96f1f">astarte_device_stream_integer_array</a> (astarte_device_handle_t device, const char *interface_name, const char *path, const int32_t *values, int count, int qos)</td></tr>
+<tr class="memdesc:ad5564a109ed290cb43d1e6aa47a96f1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a 32 bit integer array value on a datastream endpoint.  <a href="astarte__device_8h.html#ad5564a109ed290cb43d1e6aa47a96f1f">More...</a><br /></td></tr>
+<tr class="separator:ad5564a109ed290cb43d1e6aa47a96f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5b51b0c8c3167b2464127b6d4f24a6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#ab5b51b0c8c3167b2464127b6d4f24a6f">astarte_device_stream_longinteger_array_with_timestamp</a> (astarte_device_handle_t device, const char *interface_name, const char *path, const int64_t *values, int count, uint64_t ts_epoch_millis, int qos)</td></tr>
+<tr class="memdesc:ab5b51b0c8c3167b2464127b6d4f24a6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a 64 bit integer array value on a datastream endpoint with an explicit timestamp.  <a href="astarte__device_8h.html#ab5b51b0c8c3167b2464127b6d4f24a6f">More...</a><br /></td></tr>
+<tr class="separator:ab5b51b0c8c3167b2464127b6d4f24a6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb4c1b6a7569c28141be471694288716"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#aeb4c1b6a7569c28141be471694288716">astarte_device_stream_longinteger_array</a> (astarte_device_handle_t device, const char *interface_name, const char *path, const int64_t *values, int count, int qos)</td></tr>
+<tr class="memdesc:aeb4c1b6a7569c28141be471694288716"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a 64 bit integer array value on a datastream endpoint.  <a href="astarte__device_8h.html#aeb4c1b6a7569c28141be471694288716">More...</a><br /></td></tr>
+<tr class="separator:aeb4c1b6a7569c28141be471694288716"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1c218701364538cd2991b74d69cc57f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#aa1c218701364538cd2991b74d69cc57f">astarte_device_stream_boolean_array_with_timestamp</a> (astarte_device_handle_t device, const char *interface_name, const char *path, const bool *values, int count, uint64_t ts_epoch_millis, int qos)</td></tr>
+<tr class="memdesc:aa1c218701364538cd2991b74d69cc57f"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a boolean array value on a datastream endpoint with an explicit timestamp.  <a href="astarte__device_8h.html#aa1c218701364538cd2991b74d69cc57f">More...</a><br /></td></tr>
+<tr class="separator:aa1c218701364538cd2991b74d69cc57f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe8e977bc525835ece5900dcd957fa87"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#abe8e977bc525835ece5900dcd957fa87">astarte_device_stream_boolean_array</a> (astarte_device_handle_t device, const char *interface_name, const char *path, const bool *values, int count, int qos)</td></tr>
+<tr class="memdesc:abe8e977bc525835ece5900dcd957fa87"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a boolean array value on a datastream endpoint.  <a href="astarte__device_8h.html#abe8e977bc525835ece5900dcd957fa87">More...</a><br /></td></tr>
+<tr class="separator:abe8e977bc525835ece5900dcd957fa87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa69b59c1982fa9c4d67275daec06f5f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#aa69b59c1982fa9c4d67275daec06f5f8">astarte_device_stream_string_array_with_timestamp</a> (astarte_device_handle_t device, const char *interface_name, const char *path, const char *const *values, int count, uint64_t ts_epoch_millis, int qos)</td></tr>
+<tr class="memdesc:aa69b59c1982fa9c4d67275daec06f5f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a string array value on a datastream endpoint with an explicit timestamp.  <a href="astarte__device_8h.html#aa69b59c1982fa9c4d67275daec06f5f8">More...</a><br /></td></tr>
+<tr class="separator:aa69b59c1982fa9c4d67275daec06f5f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a679c016f4b0727e2ccf86d237ae7a092"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#a679c016f4b0727e2ccf86d237ae7a092">astarte_device_stream_string_array</a> (astarte_device_handle_t device, const char *interface_name, const char *path, const char *const *values, int count, int qos)</td></tr>
+<tr class="memdesc:a679c016f4b0727e2ccf86d237ae7a092"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a string array value on a datastream endpoint.  <a href="astarte__device_8h.html#a679c016f4b0727e2ccf86d237ae7a092">More...</a><br /></td></tr>
+<tr class="separator:a679c016f4b0727e2ccf86d237ae7a092"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ccbefb05b904c956a3f9edca3343343"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#a8ccbefb05b904c956a3f9edca3343343">astarte_device_stream_binaryblob_array_with_timestamp</a> (astarte_device_handle_t device, const char *interface_name, const char *path, const void *const *values, const int *sizes, int count, uint64_t ts_epoch_millis, int qos)</td></tr>
+<tr class="memdesc:a8ccbefb05b904c956a3f9edca3343343"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a binary blob array value on a datastream endpoint with an explicit timestamp.  <a href="astarte__device_8h.html#a8ccbefb05b904c956a3f9edca3343343">More...</a><br /></td></tr>
+<tr class="separator:a8ccbefb05b904c956a3f9edca3343343"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a695421ff48ff8cee68b03c034590a43d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#a695421ff48ff8cee68b03c034590a43d">astarte_device_stream_binaryblob_array</a> (astarte_device_handle_t device, const char *interface_name, const char *path, const void *const *values, const int *sizes, int count, int qos)</td></tr>
+<tr class="memdesc:a695421ff48ff8cee68b03c034590a43d"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a binary blob array value on a datastream endpoint with an explicit timestamp.  <a href="astarte__device_8h.html#a695421ff48ff8cee68b03c034590a43d">More...</a><br /></td></tr>
+<tr class="separator:a695421ff48ff8cee68b03c034590a43d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4233119a61127bbe20969541910fd44e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#a4233119a61127bbe20969541910fd44e">astarte_device_stream_datetime_array_with_timestamp</a> (astarte_device_handle_t device, const char *interface_name, const char *path, const int64_t *values, int count, uint64_t ts_epoch_millis, int qos)</td></tr>
+<tr class="memdesc:a4233119a61127bbe20969541910fd44e"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a datetime value on a datastream endpoint with an explicit timestamp.  <a href="astarte__device_8h.html#a4233119a61127bbe20969541910fd44e">More...</a><br /></td></tr>
+<tr class="separator:a4233119a61127bbe20969541910fd44e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fa579ae0b74464e8eeafb567ce1fe05"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#a1fa579ae0b74464e8eeafb567ce1fe05">astarte_device_stream_datetime_array</a> (astarte_device_handle_t device, const char *interface_name, const char *path, const int64_t *values, int count, int qos)</td></tr>
+<tr class="memdesc:a1fa579ae0b74464e8eeafb567ce1fe05"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a datetime value on a datastream endpoint.  <a href="astarte__device_8h.html#a1fa579ae0b74464e8eeafb567ce1fe05">More...</a><br /></td></tr>
+<tr class="separator:a1fa579ae0b74464e8eeafb567ce1fe05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6bded8afb6018dfcaf46147470a1762"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#ac6bded8afb6018dfcaf46147470a1762">astarte_device_stream_aggregate</a> (astarte_device_handle_t device, const char *interface_name, const char *path_prefix, const void *bson_document, int qos)</td></tr>
 <tr class="memdesc:ac6bded8afb6018dfcaf46147470a1762"><td class="mdescLeft">&#160;</td><td class="mdescRight">send an aggregate value on a datastream endpoint of an interface with object aggregation.  <a href="astarte__device_8h.html#ac6bded8afb6018dfcaf46147470a1762">More...</a><br /></td></tr>
 <tr class="separator:ac6bded8afb6018dfcaf46147470a1762"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -217,9 +264,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a1ec925e23e0b774072d1f8f2d21b796a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#a1ec925e23e0b774072d1f8f2d21b796a">astarte_device_set_boolean_property</a> (astarte_device_handle_t device, const char *interface_name, const char *path, bool value)</td></tr>
 <tr class="memdesc:a1ec925e23e0b774072d1f8f2d21b796a"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a boolean value on a properties endpoint.  <a href="astarte__device_8h.html#a1ec925e23e0b774072d1f8f2d21b796a">More...</a><br /></td></tr>
 <tr class="separator:a1ec925e23e0b774072d1f8f2d21b796a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9bc5db9465434cbc05ef88a11f6fe11b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#a9bc5db9465434cbc05ef88a11f6fe11b">astarte_device_set_string_property</a> (astarte_device_handle_t device, const char *interface_name, const char *path, char *value)</td></tr>
-<tr class="memdesc:a9bc5db9465434cbc05ef88a11f6fe11b"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a UTF8 encoded string on a properties endpoint.  <a href="astarte__device_8h.html#a9bc5db9465434cbc05ef88a11f6fe11b">More...</a><br /></td></tr>
-<tr class="separator:a9bc5db9465434cbc05ef88a11f6fe11b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7a5b41823cb0ffa6f0738d1ea0c15e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#ac7a5b41823cb0ffa6f0738d1ea0c15e6">astarte_device_set_string_property</a> (astarte_device_handle_t device, const char *interface_name, const char *path, const char *value)</td></tr>
+<tr class="memdesc:ac7a5b41823cb0ffa6f0738d1ea0c15e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a UTF8 encoded string on a properties endpoint.  <a href="astarte__device_8h.html#ac7a5b41823cb0ffa6f0738d1ea0c15e6">More...</a><br /></td></tr>
+<tr class="separator:ac7a5b41823cb0ffa6f0738d1ea0c15e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b6afacc008f801d4835e8099ba6112d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__device_8h.html#a7b6afacc008f801d4835e8099ba6112d">astarte_device_set_binaryblob_property</a> (astarte_device_handle_t device, const char *interface_name, const char *path, void *value, size_t size)</td></tr>
 <tr class="memdesc:a7b6afacc008f801d4835e8099ba6112d"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a binary value on a properties endpoint.  <a href="astarte__device_8h.html#a7b6afacc008f801d4835e8099ba6112d">More...</a><br /></td></tr>
 <tr class="separator:a7b6afacc008f801d4835e8099ba6112d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -704,8 +751,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9bc5db9465434cbc05ef88a11f6fe11b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9bc5db9465434cbc05ef88a11f6fe11b">&#9670;&nbsp;</a></span>astarte_device_set_string_property()</h2>
+<a id="ac7a5b41823cb0ffa6f0738d1ea0c15e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7a5b41823cb0ffa6f0738d1ea0c15e6">&#9670;&nbsp;</a></span>astarte_device_set_string_property()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -731,7 +778,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
@@ -1011,6 +1058,167 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a695421ff48ff8cee68b03c034590a43d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a695421ff48ff8cee68b03c034590a43d">&#9670;&nbsp;</a></span>astarte_device_stream_binaryblob_array()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> astarte_device_stream_binaryblob_array </td>
+          <td>(</td>
+          <td class="paramtype">astarte_device_handle_t&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>interface_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *const *&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int *&#160;</td>
+          <td class="paramname"><em>sizes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>qos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>send a binary blob array value on a datastream endpoint with an explicit timestamp. </p>
+<p>This function sends a binary blob array value on a path of a given datastream interface. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>A started Astarte device handle. </td></tr>
+    <tr><td class="paramname">interface_name</td><td>A string containing the name of the interface. </td></tr>
+    <tr><td class="paramname">path</td><td>A string containing the path (beginning with /). </td></tr>
+    <tr><td class="paramname">values</td><td>The array of binary blobs to be sent (having each one const void * type). </td></tr>
+    <tr><td class="paramname">sizes</td><td>The size of each binary blob that is in the given values array. </td></tr>
+    <tr><td class="paramname">count</td><td>The number of values stored in values array. </td></tr>
+    <tr><td class="paramname">qos</td><td>The MQTT QoS to be used for the publish (0, 1 or 2). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ASTARTE_OK if the value was correctly published, another astarte_err_t otherwise. Note that this just checks that the publish sequence correctly started, i.e. it doesn't wait for PUBACK for QoS 1 messages or for PUBCOMP for QoS 2 messages </dd></dl>
+
+</div>
+</div>
+<a id="a8ccbefb05b904c956a3f9edca3343343"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ccbefb05b904c956a3f9edca3343343">&#9670;&nbsp;</a></span>astarte_device_stream_binaryblob_array_with_timestamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> astarte_device_stream_binaryblob_array_with_timestamp </td>
+          <td>(</td>
+          <td class="paramtype">astarte_device_handle_t&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>interface_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *const *&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int *&#160;</td>
+          <td class="paramname"><em>sizes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>ts_epoch_millis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>qos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>send a binary blob array value on a datastream endpoint with an explicit timestamp. </p>
+<p>This function sends a binary blob array value on a path of a given datastream interface. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>A started Astarte device handle. </td></tr>
+    <tr><td class="paramname">interface_name</td><td>A string containing the name of the interface. </td></tr>
+    <tr><td class="paramname">path</td><td>A string containing the path (beginning with /). </td></tr>
+    <tr><td class="paramname">values</td><td>The array of binary blobs to be sent (having each one const void * type). </td></tr>
+    <tr><td class="paramname">sizes</td><td>The size of each binary blob that is in the given values array. </td></tr>
+    <tr><td class="paramname">count</td><td>The number of values stored in values array. </td></tr>
+    <tr><td class="paramname">ts_epoch_millis</td><td>The timestamp of the datastream. This is useful only on mappings with explicit_timestamp set to true and it's represented as milliseconds since epoch. A value of ASTARTE_INVALID_TIMESTAMP is ignored. </td></tr>
+    <tr><td class="paramname">qos</td><td>The MQTT QoS to be used for the publish (0, 1 or 2). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ASTARTE_OK if the value was correctly published, another astarte_err_t otherwise. Note that this just checks that the publish sequence correctly started, i.e. it doesn't wait for PUBACK for QoS 1 messages or for PUBCOMP for QoS 2 messages </dd></dl>
+
+</div>
+</div>
 <a id="aa695e05ad1b7d4327f7f822654277111"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa695e05ad1b7d4327f7f822654277111">&#9670;&nbsp;</a></span>astarte_device_stream_binaryblob_with_timestamp()</h2>
 
@@ -1135,6 +1343,153 @@ Functions</h2></td></tr>
     <tr><td class="paramname">interface_name</td><td>A string containing the name of the interface. </td></tr>
     <tr><td class="paramname">path</td><td>A string containing the path (beginning with /). </td></tr>
     <tr><td class="paramname">value</td><td>The value to be sent (0 or 1). </td></tr>
+    <tr><td class="paramname">qos</td><td>The MQTT QoS to be used for the publish (0, 1 or 2). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ASTARTE_OK if the value was correctly published, another astarte_err_t otherwise. Note that this just checks that the publish sequence correctly started, i.e. it doesn't wait for PUBACK for QoS 1 messages or for PUBCOMP for QoS 2 messages </dd></dl>
+
+</div>
+</div>
+<a id="abe8e977bc525835ece5900dcd957fa87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe8e977bc525835ece5900dcd957fa87">&#9670;&nbsp;</a></span>astarte_device_stream_boolean_array()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> astarte_device_stream_boolean_array </td>
+          <td>(</td>
+          <td class="paramtype">astarte_device_handle_t&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>interface_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool *&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>qos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>send a boolean array value on a datastream endpoint. </p>
+<p>This function sends a boolean array value on a path of a given datastream interface. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>A started Astarte device handle. </td></tr>
+    <tr><td class="paramname">interface_name</td><td>A string containing the name of the interface. </td></tr>
+    <tr><td class="paramname">path</td><td>A string containing the path (beginning with /). </td></tr>
+    <tr><td class="paramname">values</td><td>The array of booleans to be sent (false or true). </td></tr>
+    <tr><td class="paramname">count</td><td>The number of values stored in values array. </td></tr>
+    <tr><td class="paramname">qos</td><td>The MQTT QoS to be used for the publish (0, 1 or 2). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ASTARTE_OK if the value was correctly published, another astarte_err_t otherwise. Note that this just checks that the publish sequence correctly started, i.e. it doesn't wait for PUBACK for QoS 1 messages or for PUBCOMP for QoS 2 messages </dd></dl>
+
+</div>
+</div>
+<a id="aa1c218701364538cd2991b74d69cc57f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1c218701364538cd2991b74d69cc57f">&#9670;&nbsp;</a></span>astarte_device_stream_boolean_array_with_timestamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> astarte_device_stream_boolean_array_with_timestamp </td>
+          <td>(</td>
+          <td class="paramtype">astarte_device_handle_t&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>interface_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool *&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>ts_epoch_millis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>qos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>send a boolean array value on a datastream endpoint with an explicit timestamp. </p>
+<p>This function sends a boolean array value on a path of a given datastream interface. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>A started Astarte device handle. </td></tr>
+    <tr><td class="paramname">interface_name</td><td>A string containing the name of the interface. </td></tr>
+    <tr><td class="paramname">path</td><td>A string containing the path (beginning with /). </td></tr>
+    <tr><td class="paramname">values</td><td>The array of booleans to be sent (false or true). </td></tr>
+    <tr><td class="paramname">count</td><td>The number of values stored in values array. </td></tr>
+    <tr><td class="paramname">ts_epoch_millis</td><td>The timestamp of the datastream. This is useful only on mappings with explicit_timestamp set to true and it's represented as milliseconds since epoch. A value of ASTARTE_INVALID_TIMESTAMP is ignored. </td></tr>
     <tr><td class="paramname">qos</td><td>The MQTT QoS to be used for the publish (0, 1 or 2). </td></tr>
   </table>
   </dd>
@@ -1268,6 +1623,153 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a1fa579ae0b74464e8eeafb567ce1fe05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fa579ae0b74464e8eeafb567ce1fe05">&#9670;&nbsp;</a></span>astarte_device_stream_datetime_array()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> astarte_device_stream_datetime_array </td>
+          <td>(</td>
+          <td class="paramtype">astarte_device_handle_t&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>interface_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int64_t *&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>qos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>send a datetime value on a datastream endpoint. </p>
+<p>This function sends a datetime value on a path of a given datastream interface. The datetime represents the number of milliseconds since Unix epoch (1970-01-01). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>A started Astarte device handle. </td></tr>
+    <tr><td class="paramname">interface_name</td><td>A string containing the name of the interface. </td></tr>
+    <tr><td class="paramname">path</td><td>A string containing the path (beginning with /). </td></tr>
+    <tr><td class="paramname">values</td><td>The array of datetimes, each one representing the number of milliseconds since Unix epoch (1970-01-01). </td></tr>
+    <tr><td class="paramname">count</td><td>The number of values stored in values array. </td></tr>
+    <tr><td class="paramname">qos</td><td>The MQTT QoS to be used for the publish (0, 1 or 2). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ASTARTE_OK if the value was correctly published, another astarte_err_t otherwise. Note that this just checks that the publish sequence correctly started, i.e. it doesn't wait for PUBACK for QoS 1 messages or for PUBCOMP for QoS 2 messages </dd></dl>
+
+</div>
+</div>
+<a id="a4233119a61127bbe20969541910fd44e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4233119a61127bbe20969541910fd44e">&#9670;&nbsp;</a></span>astarte_device_stream_datetime_array_with_timestamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> astarte_device_stream_datetime_array_with_timestamp </td>
+          <td>(</td>
+          <td class="paramtype">astarte_device_handle_t&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>interface_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int64_t *&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>ts_epoch_millis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>qos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>send a datetime value on a datastream endpoint with an explicit timestamp. </p>
+<p>This function sends a datetime value on a path of a given datastream interface. The datetime represents the number of milliseconds since Unix epoch (1970-01-01). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>A started Astarte device handle. </td></tr>
+    <tr><td class="paramname">interface_name</td><td>A string containing the name of the interface. </td></tr>
+    <tr><td class="paramname">path</td><td>A string containing the path (beginning with /). </td></tr>
+    <tr><td class="paramname">values</td><td>The array of datetimes, each one representing the number of milliseconds since Unix epoch (1970-01-01). </td></tr>
+    <tr><td class="paramname">count</td><td>The number of values stored in values array. </td></tr>
+    <tr><td class="paramname">ts_epoch_millis</td><td>The timestamp of the datastream. This is useful only on mappings with explicit_timestamp set to true and it's represented as milliseconds since epoch. A value of ASTARTE_INVALID_TIMESTAMP is ignored. </td></tr>
+    <tr><td class="paramname">qos</td><td>The MQTT QoS to be used for the publish (0, 1 or 2). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ASTARTE_OK if the value was correctly published, another astarte_err_t otherwise. Note that this just checks that the publish sequence correctly started, i.e. it doesn't wait for PUBACK for QoS 1 messages or for PUBCOMP for QoS 2 messages </dd></dl>
+
+</div>
+</div>
 <a id="a865812ad0918d678f08e70e3022ef7c8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a865812ad0918d678f08e70e3022ef7c8">&#9670;&nbsp;</a></span>astarte_device_stream_datetime_with_timestamp()</h2>
 
@@ -1385,6 +1887,159 @@ Functions</h2></td></tr>
     <tr><td class="paramname">interface_name</td><td>A string containing the name of the interface. </td></tr>
     <tr><td class="paramname">path</td><td>A string containing the path (beginning with /). </td></tr>
     <tr><td class="paramname">value</td><td>The value to be sent. </td></tr>
+    <tr><td class="paramname">qos</td><td>The MQTT QoS to be used for the publish (0, 1 or 2). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ASTARTE_OK if the value was correctly published, another astarte_err_t otherwise. Note that this just checks that the publish sequence correctly started, i.e. it doesn't wait for PUBACK for QoS 1 messages or for PUBCOMP for QoS 2 messages </dd></dl>
+
+</div>
+</div>
+<a id="af3715b669b6a31c0a8ab0e9d71dd61f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3715b669b6a31c0a8ab0e9d71dd61f6">&#9670;&nbsp;</a></span>astarte_device_stream_double_array()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> astarte_device_stream_double_array </td>
+          <td>(</td>
+          <td class="paramtype">astarte_device_handle_t&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>interface_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>ts_epoch_millis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>qos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>send a double array value on a datastream endpoint. </p>
+<p>This function sends a double array value on a path of a given datastream interface. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>A started Astarte device handle. </td></tr>
+    <tr><td class="paramname">interface_name</td><td>A string containing the name of the interface. </td></tr>
+    <tr><td class="paramname">path</td><td>A string containing the path (beginning with /). </td></tr>
+    <tr><td class="paramname">values</td><td>The array of double to be sent. </td></tr>
+    <tr><td class="paramname">count</td><td>The number of values stored in values array. </td></tr>
+    <tr><td class="paramname">qos</td><td>The MQTT QoS to be used for the publish (0, 1 or 2). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ASTARTE_OK if the value was correctly published, another astarte_err_t otherwise. Note that this just checks that the publish sequence correctly started, i.e. it doesn't wait for PUBACK for QoS 1 messages or for PUBCOMP for QoS 2 messages </dd></dl>
+
+</div>
+</div>
+<a id="a0fe888862861e457f710bea636fda763"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fe888862861e457f710bea636fda763">&#9670;&nbsp;</a></span>astarte_device_stream_double_array_with_timestamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> astarte_device_stream_double_array_with_timestamp </td>
+          <td>(</td>
+          <td class="paramtype">astarte_device_handle_t&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>interface_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>ts_epoch_millis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>qos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>send a double array value on a datastream endpoint with an explicit timestamp. </p>
+<p>This function sends a double array value on a path of a given datastream interface. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>A started Astarte device handle. </td></tr>
+    <tr><td class="paramname">interface_name</td><td>A string containing the name of the interface. </td></tr>
+    <tr><td class="paramname">path</td><td>A string containing the path (beginning with /). </td></tr>
+    <tr><td class="paramname">values</td><td>The array of double to be sent. </td></tr>
+    <tr><td class="paramname">count</td><td>The number of values stored in values array. </td></tr>
+    <tr><td class="paramname">ts_epoch_millis</td><td>The timestamp of the datastream. This is useful only on mappings with explicit_timestamp set to true and it's represented as milliseconds since epoch. A value of ASTARTE_INVALID_TIMESTAMP is ignored. </td></tr>
     <tr><td class="paramname">qos</td><td>The MQTT QoS to be used for the publish (0, 1 or 2). </td></tr>
   </table>
   </dd>
@@ -1518,6 +2173,153 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ad5564a109ed290cb43d1e6aa47a96f1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5564a109ed290cb43d1e6aa47a96f1f">&#9670;&nbsp;</a></span>astarte_device_stream_integer_array()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> astarte_device_stream_integer_array </td>
+          <td>(</td>
+          <td class="paramtype">astarte_device_handle_t&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>interface_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int32_t *&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>qos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>send a 32 bit integer array value on a datastream endpoint. </p>
+<p>This function sends a signed 32 bit int array value on a path of a given datastream interface. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>A started Astarte device handle. </td></tr>
+    <tr><td class="paramname">interface_name</td><td>A string containing the name of the interface. </td></tr>
+    <tr><td class="paramname">path</td><td>A string containing the path (beginning with /). </td></tr>
+    <tr><td class="paramname">values</td><td>The array of int32_t to be sent. </td></tr>
+    <tr><td class="paramname">count</td><td>The number of values stored in values array. </td></tr>
+    <tr><td class="paramname">qos</td><td>The MQTT QoS to be used for the publish (0, 1 or 2). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ASTARTE_OK if the value was correctly published, another astarte_err_t otherwise. Note that this just checks that the publish sequence correctly started, i.e. it doesn't wait for PUBACK for QoS 1 messages or for PUBCOMP for QoS 2 messages </dd></dl>
+
+</div>
+</div>
+<a id="aac0ac9e1a724fd898277264da0895f67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac0ac9e1a724fd898277264da0895f67">&#9670;&nbsp;</a></span>astarte_device_stream_integer_array_with_timestamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> astarte_device_stream_integer_array_with_timestamp </td>
+          <td>(</td>
+          <td class="paramtype">astarte_device_handle_t&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>interface_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int32_t *&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>ts_epoch_millis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>qos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>send a 32 bit integer array value on a datastream endpoint with an explicit timestamp. </p>
+<p>This function sends a signed 32 bit int array value on a path of a given datastream interface. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>A started Astarte device handle. </td></tr>
+    <tr><td class="paramname">interface_name</td><td>A string containing the name of the interface. </td></tr>
+    <tr><td class="paramname">path</td><td>A string containing the path (beginning with /). </td></tr>
+    <tr><td class="paramname">values</td><td>The array of int32_t to be sent. </td></tr>
+    <tr><td class="paramname">count</td><td>The number of values stored in values array. </td></tr>
+    <tr><td class="paramname">ts_epoch_millis</td><td>The timestamp of the datastream. This is useful only on mappings with explicit_timestamp set to true and it's represented as milliseconds since epoch. A value of ASTARTE_INVALID_TIMESTAMP is ignored. </td></tr>
+    <tr><td class="paramname">qos</td><td>The MQTT QoS to be used for the publish (0, 1 or 2). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ASTARTE_OK if the value was correctly published, another astarte_err_t otherwise. Note that this just checks that the publish sequence correctly started, i.e. it doesn't wait for PUBACK for QoS 1 messages or for PUBCOMP for QoS 2 messages </dd></dl>
+
+</div>
+</div>
 <a id="a392cd2086d86897770a0ec09f7a92039"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a392cd2086d86897770a0ec09f7a92039">&#9670;&nbsp;</a></span>astarte_device_stream_integer_with_timestamp()</h2>
 
@@ -1643,6 +2445,153 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aeb4c1b6a7569c28141be471694288716"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb4c1b6a7569c28141be471694288716">&#9670;&nbsp;</a></span>astarte_device_stream_longinteger_array()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> astarte_device_stream_longinteger_array </td>
+          <td>(</td>
+          <td class="paramtype">astarte_device_handle_t&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>interface_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int64_t *&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>qos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>send a 64 bit integer array value on a datastream endpoint. </p>
+<p>This function sends a signed 64 bit int array value on a path of a given datastream interface. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>A started Astarte device handle. </td></tr>
+    <tr><td class="paramname">interface_name</td><td>A string containing the name of the interface. </td></tr>
+    <tr><td class="paramname">path</td><td>A string containing the path (beginning with /). </td></tr>
+    <tr><td class="paramname">values</td><td>The array of int64_t to be sent. </td></tr>
+    <tr><td class="paramname">count</td><td>The number of values stored in values array. </td></tr>
+    <tr><td class="paramname">qos</td><td>The MQTT QoS to be used for the publish (0, 1 or 2). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ASTARTE_OK if the value was correctly published, another astarte_err_t otherwise. Note that this just checks that the publish sequence correctly started, i.e. it doesn't wait for PUBACK for QoS 1 messages or for PUBCOMP for QoS 2 messages </dd></dl>
+
+</div>
+</div>
+<a id="ab5b51b0c8c3167b2464127b6d4f24a6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5b51b0c8c3167b2464127b6d4f24a6f">&#9670;&nbsp;</a></span>astarte_device_stream_longinteger_array_with_timestamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> astarte_device_stream_longinteger_array_with_timestamp </td>
+          <td>(</td>
+          <td class="paramtype">astarte_device_handle_t&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>interface_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int64_t *&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>ts_epoch_millis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>qos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>send a 64 bit integer array value on a datastream endpoint with an explicit timestamp. </p>
+<p>This function sends a signed 64 bit int array value on a path of a given datastream interface. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>A started Astarte device handle. </td></tr>
+    <tr><td class="paramname">interface_name</td><td>A string containing the name of the interface. </td></tr>
+    <tr><td class="paramname">path</td><td>A string containing the path (beginning with /). </td></tr>
+    <tr><td class="paramname">values</td><td>The array of int64_t to be sent. </td></tr>
+    <tr><td class="paramname">count</td><td>The number of values stored in values array. </td></tr>
+    <tr><td class="paramname">ts_epoch_millis</td><td>The timestamp of the datastream. This is useful only on mappings with explicit_timestamp set to true and it's represented as milliseconds since epoch. A value of ASTARTE_INVALID_TIMESTAMP is ignored. </td></tr>
+    <tr><td class="paramname">qos</td><td>The MQTT QoS to be used for the publish (0, 1 or 2). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ASTARTE_OK if the value was correctly published, another astarte_err_t otherwise. Note that this just checks that the publish sequence correctly started, i.e. it doesn't wait for PUBACK for QoS 1 messages or for PUBCOMP for QoS 2 messages </dd></dl>
+
+</div>
+</div>
 <a id="a0f310b9353c14dbdf3f1d90d09955166"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0f310b9353c14dbdf3f1d90d09955166">&#9670;&nbsp;</a></span>astarte_device_stream_longinteger_with_timestamp()</h2>
 
@@ -1709,8 +2658,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a44736e4ff24530d1090aec9f5688c1fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a44736e4ff24530d1090aec9f5688c1fb">&#9670;&nbsp;</a></span>astarte_device_stream_string()</h2>
+<a id="aa580c422aaf7ad4878be07cd8fd6559d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa580c422aaf7ad4878be07cd8fd6559d">&#9670;&nbsp;</a></span>astarte_device_stream_string()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1736,7 +2685,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>value</em>, </td>
         </tr>
         <tr>
@@ -1768,8 +2717,155 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ac32cd6640f24b7e7b1aeb8432f1f3071"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac32cd6640f24b7e7b1aeb8432f1f3071">&#9670;&nbsp;</a></span>astarte_device_stream_string_with_timestamp()</h2>
+<a id="a679c016f4b0727e2ccf86d237ae7a092"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a679c016f4b0727e2ccf86d237ae7a092">&#9670;&nbsp;</a></span>astarte_device_stream_string_array()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> astarte_device_stream_string_array </td>
+          <td>(</td>
+          <td class="paramtype">astarte_device_handle_t&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>interface_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *const *&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>qos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>send a string array value on a datastream endpoint. </p>
+<p>This function sends a string array value on a path of a given datastream interface. The datetime represents the number of milliseconds since Unix epoch (1970-01-01). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>A started Astarte device handle. </td></tr>
+    <tr><td class="paramname">interface_name</td><td>A string containing the name of the interface. </td></tr>
+    <tr><td class="paramname">path</td><td>A string containing the path (beginning with /). </td></tr>
+    <tr><td class="paramname">values</td><td>The array of C strings to be sent (having each one const char * type and encoded as 0 terminated UTF-8 string). </td></tr>
+    <tr><td class="paramname">count</td><td>The number of values stored in values array. </td></tr>
+    <tr><td class="paramname">qos</td><td>The MQTT QoS to be used for the publish (0, 1 or 2). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ASTARTE_OK if the value was correctly published, another astarte_err_t otherwise. Note that this just checks that the publish sequence correctly started, i.e. it doesn't wait for PUBACK for QoS 1 messages or for PUBCOMP for QoS 2 messages </dd></dl>
+
+</div>
+</div>
+<a id="aa69b59c1982fa9c4d67275daec06f5f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa69b59c1982fa9c4d67275daec06f5f8">&#9670;&nbsp;</a></span>astarte_device_stream_string_array_with_timestamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> astarte_device_stream_string_array_with_timestamp </td>
+          <td>(</td>
+          <td class="paramtype">astarte_device_handle_t&#160;</td>
+          <td class="paramname"><em>device</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>interface_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *const *&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>ts_epoch_millis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>qos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>send a string array value on a datastream endpoint with an explicit timestamp. </p>
+<p>This function sends a string array value on a path of a given datastream interface. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>A started Astarte device handle. </td></tr>
+    <tr><td class="paramname">interface_name</td><td>A string containing the name of the interface. </td></tr>
+    <tr><td class="paramname">path</td><td>A string containing the path (beginning with /). </td></tr>
+    <tr><td class="paramname">values</td><td>The array of C strings to be sent (having each one const char * type and encoded as 0 terminated UTF-8 string). </td></tr>
+    <tr><td class="paramname">count</td><td>The number of values stored in values array. </td></tr>
+    <tr><td class="paramname">ts_epoch_millis</td><td>The timestamp of the datastream. This is useful only on mappings with explicit_timestamp set to true and it's represented as milliseconds since epoch. A value of ASTARTE_INVALID_TIMESTAMP is ignored. </td></tr>
+    <tr><td class="paramname">qos</td><td>The MQTT QoS to be used for the publish (0, 1 or 2). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ASTARTE_OK if the value was correctly published, another astarte_err_t otherwise. Note that this just checks that the publish sequence correctly started, i.e. it doesn't wait for PUBACK for QoS 1 messages or for PUBCOMP for QoS 2 messages </dd></dl>
+
+</div>
+</div>
+<a id="a22b3023852a97db477f7810c3652dd66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22b3023852a97db477f7810c3652dd66">&#9670;&nbsp;</a></span>astarte_device_stream_string_with_timestamp()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1795,7 +2891,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>value</em>, </td>
         </tr>
         <tr>
