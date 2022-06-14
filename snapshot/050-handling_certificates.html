@@ -10,7 +10,7 @@
     <title>Handling Astarte certificates — Astarte v1.1.0-dev</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-35e17bc187.js"></script>
+    <script src="dist/sidebar_items-a32df562ac.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -105,7 +105,7 @@ $ kubectl create namespace cert-manager
 $ helm install \
 cert-manager jetstack/cert-manager \
 --namespace cert-manager \
---version v1.1.0 \
+--version v1.7.0 \
 --set installCRDs=true</code></pre></li><li>install NGINX ingress controller:<pre><code class="bash">$ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 $ helm repo update
 $ helm install ingress-nginx ingress-nginx/ingress-nginx -n ingress-nginx \

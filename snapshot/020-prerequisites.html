@@ -10,7 +10,7 @@
     <title>Prerequisites — Astarte v1.1.0-dev</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-35e17bc187.js"></script>
+    <script src="dist/sidebar_items-a32df562ac.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -102,7 +102,11 @@ controller is as simple as running a few <code class="inline">helm</code> comman
 $ helm repo update
 $ helm install ingress-nginx ingress-nginx/ingress-nginx -n ingress-nginx \
     --set controller.service.externalTrafficPolicy=Local \
-    --create-namespace</code></pre><p>You don't need to create NGINX ingresses yourself - just the Operator itself is enough.</p><h2 id="voyager-deprecated" class="section-heading">
+    --create-namespace</code></pre><p>Please, be aware that trying to deploy multiple ingress controllers in your cluster may result in all
+of them trying simultaneously to handle the Astarte ingress resource. Consider using ingress classes
+for avoiding confusing situations as outlined
+<a href="https://kubernetes.github.io/ingress-nginx/user-guide/multiple-ingress/">here</a>.</p><p>In the end, you won't need to create NGINX ingresses yourself: the Astarte Operator itself will take
+care of this task.</p><h2 id="voyager-deprecated" class="section-heading">
   <a href="#voyager-deprecated" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Voyager (deprecated)
 </h2>
@@ -119,8 +123,9 @@ see the previous section).</p><h2 id="cert-manager" class="section-heading">
 <p>Astarte requires <a href="https://cert-manager.io/"><code class="inline">cert-manager</code></a> to be installed in the cluster in its
 default configuration (installed in namespace <code class="inline">cert-manager</code> as <code class="inline">cert-manager</code>). If you are using
 <code class="inline">cert-manager</code> in your cluster already you don't need to take any action - otherwise, you will need
-to install it.</p><p>Astarte is actively tested with <code class="inline">cert-manager</code> 1.1, but should work with any 1.0+ releases of
-<code class="inline">cert-manager</code>.</p><p><a href="https://cert-manager.io/docs/installation/"><code class="inline">cert-manager</code> documentation</a> details all needed steps
+to install it.</p><p>Astarte is actively tested with <code class="inline">cert-manager</code> 1.7, but should work with any 1.0+ releases of
+<code class="inline">cert-manager</code>. If your <code class="inline">cert-manager</code> release is outdated, please consider upgrading to a newer
+version according to <a href="https://cert-manager.io/docs/installation/upgrading/">this guide</a>.</p><p><a href="https://cert-manager.io/docs/installation/"><code class="inline">cert-manager</code> documentation</a> details all needed steps
 to have a working instance on your cluster - however, in case you won't be using <code class="inline">cert-manager</code> for
 other components beyond Astarte or, in general, if you don't have very specific requirements, it is
 advised to install it through its Helm chart. To do so, run the following commands:</p><pre><code class="bash">$ helm repo add jetstack https://charts.jetstack.io
@@ -129,8 +134,8 @@ $ kubectl create namespace cert-manager
 $ helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
-  --version v1.1.0 \
-  --set installCRDs=true</code></pre><p>This will install <code class="inline">cert-manager</code> 1.1.0 and its CRDs in the cluster.</p><h2 id="external-cassandra-scylla" class="section-heading">
+  --version v1.7.0 \
+  --set installCRDs=true</code></pre><p>This will install <code class="inline">cert-manager</code> 1.7.0 and its CRDs in the cluster.</p><h2 id="external-cassandra-scylla" class="section-heading">
   <a href="#external-cassandra-scylla" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   External Cassandra / Scylla
 </h2>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="Astarte v1.1.0-dev">
+
+    <title>Migrating to the Astarte Default Ingress — Astarte v1.1.0-dev</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+
+    <script src="dist/sidebar_items-a32df562ac.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+
+
+  </head>
+  <body data-type="extras">
+    <script>
+
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte
+      </a>
+      <strong class="sidebar-projectVersion">
+        v1.1.0-dev
+      </strong>
+    </div>
+
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>Migrating to the Astarte Default Ingress</h1><p>If your Astarte deployment is still being served by the deprecated AstarteVoyagerIngress, it is
+highly advised to move to the new managed ingress, namely, the AstarteDefaultIngress.</p><p>The current page focuses on describing the procedure for migrating your ingress with ease, simply
+employing <code class="inline">astartectl</code>.</p><p>Please, make sure you have read the entirety of this page and to understand all the concepts and the
+implications before performing the actual migration.</p><h2 id="prerequisites-and-preliminary-checks" class="section-heading">
+  <a href="#prerequisites-and-preliminary-checks" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Prerequisites and preliminary checks
+</h2>
+<p>Before starting with the actual migration procedure, some preliminary activities are required:</p><ul><li><p>ensure that the version of the Astarte operator in your cluster is at least <code class="inline">&gt;= v1.0.1</code> and
+stable. If this requirement is not fulfilled, please refer to the <a href="000-upgrade_index.html">Upgrade
+Procedures</a> section;</p></li><li><p>the <a href="https://kubernetes.github.io/ingress-nginx/"><code class="inline">ingress-nginx</code></a> ingress controller must be
+deployed in your cluster (see <a href="020-prerequisites.html#nginx">this section</a> for the details).
+Be sure of taking note of the <code class="inline">ingress-class</code> of the controller which is meant to handle your
+Astarte ingress. This information will come handy during the migration itself;</p></li><li><p>make sure the TLS secrets used to secure the communications to and from Astarte are deployed. For
+the details, please refer to the <a href="050-handling_certificates.html">Handling Astarte certificates</a>
+page;</p></li><li><p>ensure that <a href="https://github.com/astarte-platform/astartectl"><code class="inline">astartectl</code></a> is installed on your
+machine and its version is at least <code class="inline">&gt;= v1.0.0</code>.</p></li></ul><h2 id="performing-the-migration" class="section-heading">
+  <a href="#performing-the-migration" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Performing the migration
+</h2>
+<p>Performing the actual ingress migration is as simple as executing an <code class="inline">astartectl</code> command:</p><pre><code class="bash">$ astartectl cluster instances migrate replace-voyager</code></pre><p>The <code class="inline">replace-voyager</code> command provides meaningful defaults so that, if your Astarte deployment
+relies on standard naming practices, you can simply omit all the flags.</p><p>The following list of options is available:</p><ul><li><p><code class="inline">--namespace</code>: the namespace in which the Astarte instance resides (default: &quot;astarte&quot;);</p></li><li><p><code class="inline">--operator-name</code>: the name of the Astarte Operator instance (default:
+&quot;astarte-operator-controller-manager&quot;);</p></li><li><p><code class="inline">--operator-namespace</code>: the namespace in which the Astarte Operator resides (default:
+&quot;kube-system&quot;);</p></li><li><p><code class="inline">--ingress-name</code>: the name of the AstarteVoyagerIngress to be migrated. When not set, the first
+ingress found in the cluster will be selected.</p><p>To find the AstarteVoyagerIngress resources present in your cluster simply run:</p><pre><code class="bash">$ kubectl get avi -n &lt;astarte-namespace&gt;</code></pre></li><li><p><code class="inline">--out</code>: the name of the file in which the AstarteVoyagerIngress custom resource will be saved
+(optional).</p></li></ul><p>To successfully complete the procedure, you will be prompted to interactively insert details such
+as:</p><ul><li>the name of the Astarte TLS secrets,</li><li>the name of the to-be-installed AstarteDefaultIngress resource,</li><li>the ingress class of the NGINX ingress controller.</li></ul><p>Before starting the migration routine, you will be asked to review the generated
+AstarteDefaultIngress custom resource. The migration will start only upon confirmation.</p><p>Please, note that you can contextually dump your AstarteVoyagerIngress custom resource for backup
+purposes simply using the <code class="inline">--out &lt;filename&gt;</code> option.</p><h3 id="what-happens-under-the-hood" class="section-heading">
+  <a href="#what-happens-under-the-hood" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  What happens under the hood?
+</h3>
+<p>When invoking the <code class="inline">replace-voyager</code> command, <code class="inline">astartectl</code> interacts with your Astarte cluster and
+retrieves the AstarteVoyagerIngress resource which serves your Astarte instance. If no
+AstarteVoyagerIngresses are present, the procedure is immediately terminated as there is nothing to
+migrate.</p><p>After all the required information is provided through the interactive prompt, the
+AstarteDefaultIngress resource is reviewed and the final confirmation is provided, the following
+tasks are performed:</p><ul><li>the Astarte resource is patched so that TLS termination is handled at the VerneMQ level: in
+particular, the fields <code class="inline">sslListener</code> and <code class="inline">sslListenerCertSecretName</code> are populated;</li><li>the AstarteDefaultIngress resource is installed within your cluster. Once installed, the Astarte
+Operator takes over and ensures that:<ul><li>a service of kind LoadBalancer is created to serve the Astarte broker,</li><li>an ingress resource is created to serve the Astarte APIs (and the Dashboard, if requested).</li></ul></li></ul><p>If one of the previous tasks are not successful, the migration logic is reverted as not to leave
+your cluster in a broken state.</p><p>At the end of the procedure, after the AstarteDefaultIngress is successfully created, the old
+AstarteVoyagerIngress resource will be deleted. Anyway, if any errors occur during the deletion of
+the AstarteVoyagerIngress, the migration procedure is not reverted (as the AstarteDefaultIngress
+resource is successfully deployed) and, as such, you are required to explicitly delete the
+AstarteVoyagerIngress resource by hand.</p><p>Be aware that Voyager specific annotations cannot be mapped to the AstarteDefaultIngress. If any of
+those annotations are present, the <code class="inline">replace-voyager</code> command will print a warning message. It will
+be your responsibility confirming whether you want to proceed or abort the procedure.</p><h2 id="advanced-use-cases" class="section-heading">
+  <a href="#advanced-use-cases" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Advanced use cases
+</h2>
+<p>The current section focuses on some advanced configuration scenarios that might help you in handling
+specific non-standard use cases.</p><h3 id="preserve-the-api-and-broker-ips" class="section-heading">
+  <a href="#preserve-the-api-and-broker-ips" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Preserve the API and Broker IPs
+</h3>
+<p>The need of preserving both the API and Broker IPs may arise in specific use cases when, for
+example, there are any number of impediments in updating your DNS zones.</p><p>Please, be aware that the following instructions rely on the assumption that you can reserve (or you
+already reserved) external IPs. This task is highly dependent on your cloud service provider and, as
+such, you are required to ensure that it can be performed in your specific case.</p><p>If your Astarte instance is exposed to the outer world through the AstarteVoyagerIngress, two
+external IPs are assigned to your services: one for the Broker and another for the Astarte APIs (and
+the dashboard, if deployed).</p><p>Before migrating your ingress to the AstarteDefaultIngress, perform the following operations:</p><ul><li>ensure that both the API and the Broker IPs are reserved,</li><li>patch your AstarteVoyagerIngress resource such that the <code class="inline">loadBalancerIP</code> field is set for the
+broker (if this field is already set, you can skip this step):<pre><code class="yaml">broker:
+  loadBalancerIP: &lt;the-broker-reserved-IP&gt;
+  ...</code></pre></li><li>install (or update, if already installed) the <code class="inline">ingress-nginx</code> deployment by explicitly setting the
+IP for the ingress controller as to make it coincident with the IP assigned to the Astarte APIs.
+Be aware that, at first, the ingress controller external IP will remain in pending state until the
+AstarteVoyagerIngress will be deleted and, once that IP will be available, it will be correctly
+assigned to the ingress controller.<pre><code class="bash">$ helm upgrade --install &lt;ingress-nginx-name&gt; ingress-nginx/ingress-nginx \
+  -n ingress-nginx \
+  --set controller.service.externalTrafficPolicy=Local \
+  --set controller.service.loadBalancerIP=&lt;the-API-reserved-IP&gt;</code></pre></li></ul><p>Once the previous instructions are executed, you are ready to perform the migration to the
+AstarteDefaultIngress as described in the <a href="#performing-the-migration">Performing the Migration</a>
+section.</p><p>As a final remark, if you are interested in preserving only one of the external IPs, please refer
+only to the instructions that apply to your needs (e.g.: the broker) while neglecting the remaining
+parts.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="065-setup_astartevoyageringress.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Setting up the Astarte Voyager Ingress
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="070-manage_realms.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Managing Realms
+        </span>
+      </a>
+
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>

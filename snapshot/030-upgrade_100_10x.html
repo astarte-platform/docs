@@ -10,7 +10,7 @@
     <title>Upgrade v1.0.0-v1.0.x — Astarte v1.1.0-dev</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-35e17bc187.js"></script>
+    <script src="dist/sidebar_items-a32df562ac.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -155,47 +155,10 @@ explicitly setting the Astarte Flow image you plan to use:</p><pre><code class="
 </h2>
 <p>The current section describes the procedure for replacing the deprecated <code class="inline">AstarteVoyagerIngress</code>
 with the new <code class="inline">AstarteDefaultIngress</code>. If the Voyager ingress is not deployed within your cluster,
-feel free to skip this section.</p><p>The first step requires the installation of the <a href="https://kubernetes.github.io/ingress-nginx/">NGINX Ingress
-Controller</a>:</p><pre><code class="bash">$ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-$ helm repo update
-$ helm install ingress-nginx ingress-nginx/ingress-nginx -n ingress-nginx \
-    --set controller.service.externalTrafficPolicy=Local \
-    --create-namespace</code></pre><p>Then, the <code class="inline">AstarteDefaultIngress</code> must be deployed. If your Kubernetes installation supports
-LoadBalancer ingresses (most managed ones do), you should be able to get away with the most standard
-CR:</p><pre><code class="yaml">apiVersion: ingress.astarte-platform.org/v1alpha1
-kind: AstarteDefaultIngress
-metadata:
-  name: adi
-  namespace: astarte
-spec:
-  ### Astarte Default Ingress CRD
-  astarte: astarte
-  tlsSecret: &lt;your-astarte-tls-secret&gt;
-  api:
-    exposeHousekeeping: true
-  dashboard:
-    deploy: true
-    ssl: true
-    host: &lt;your-astarte-dashboard-host&gt;
-  broker:
-    deploy: true
-    serviceType: LoadBalancer</code></pre><p>Further details on this topic can be found at <a href="064-setup_astartedefaultingress.html">this page</a>. If
-your certificate is issued by cert-manager after the solution of an HTTP challenge, please refer to
-<a href="064-setup_astartedefaultingress.html#how-to-support-automatic-certificate-renewal-for-http-challenges">this
-section</a>
-to support the automatic renewal of your certificate.</p><p>When the <code class="inline">AstarteDefaultIngress</code> resource is created, the Operator is responsible for the creation
-of:</p><ul><li>an NGINX ingress which is devoted to routing requests to both the Astarte API and the Astarte
-Dashboard;</li><li>a service of type LoadBalancer that exposes the Astarte broker to the outer world.</li></ul><p>As soon as both the ingress and the broker service have an assigned external IP, update your Cloud
-DNS zone record sets with the new external IPs. Assuming that your Astarte and AstarteDefaultIngress
-are named <code class="inline">astarte</code> and <code class="inline">adi</code> respectively and that they resides in the <code class="inline">astarte</code> namespace, you can
-find the external IPs with:</p><pre><code class="bash">$ # retrieve information about the ingress
-$ kubectl get ingress -n astarte
-NAME              CLASS   HOSTS          ADDRESS   PORTS     AGE
-adi-api-ingress   nginx   &lt;your-hosts&gt;   X.Y.W.Z   80, 443   6s</code></pre><p>and</p><pre><code class="bash">$ # retrieve information about the broker service
-$ kubectl get service -n astarte adi-broker-service
-NAME                 TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)         AGE
-adi-broker-service   LoadBalancer   x.x.x.x        A.B.C.D       443:32149/TCP   17s</code></pre><p>At this, point your requests are routed to your Astarte instance through the new
-AstarteDefaultIngress.</p><p>The dangling AstarteVoyagerIngress is not needed anymore. To delete the resource simply run:</p><pre><code class="bash">$ kubectl delete avi -n astarte</code></pre>
+feel free to skip this section.</p><p>The advised migration path involves the employment of <code class="inline">astartectl</code>: this is the most straightforward
+way of performing the migration task and, as soon as all the requirements are satisfied, it requires
+the execution of one single command.</p><p>The <a href="066-migrate_to_astartedefaultingress.html">Migrating to the AstarteDefaultIngress</a> page
+extensively cover this topic.</p>
 <div class="bottom-actions">
   <div class="bottom-actions-item">
 
