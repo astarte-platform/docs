@@ -10,7 +10,7 @@
     <title>Prerequisites — Astarte v1.0.2</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
-    <script src="dist/sidebar_items-35e17bc187.js"></script>
+    <script src="dist/sidebar_items-a32df562ac.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -102,7 +102,11 @@ controller is as simple as running a few <code class="inline">helm</code> comman
 $ helm repo update
 $ helm install ingress-nginx ingress-nginx/ingress-nginx -n ingress-nginx \
     --set controller.service.externalTrafficPolicy=Local \
-    --create-namespace</code></pre><p>You don't need to create NGINX ingresses yourself - just the Operator itself is enough.</p><h2 id="voyager-deprecated" class="section-heading">
+    --create-namespace</code></pre><p>Please, be aware that trying to deploy multiple ingress controllers in your cluster may result in all
+of them trying simultaneously to handle the Astarte ingress resource. Consider using ingress classes
+for avoiding confusing situations as outlined
+<a href="https://kubernetes.github.io/ingress-nginx/user-guide/multiple-ingress/">here</a>.</p><p>In the end, you won't need to create NGINX ingresses yourself: the Astarte Operator itself will take
+care of this task.</p><h2 id="voyager-deprecated" class="section-heading">
   <a href="#voyager-deprecated" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Voyager (deprecated)
 </h2>
