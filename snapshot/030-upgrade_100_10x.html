@@ -82,7 +82,7 @@ Astarte
     <div id="content" class="content-inner">
 
 <h1>Upgrade v1.0.0-v1.0.x</h1><p>The current section describes the required steps to upgrade your Astarte instance from <code class="inline">v1.0.0</code> to
-<code class="inline">v1.0.x</code>. Currently, the last released patch version is <code class="inline">v1.0.2</code> and, as such, the remainder of this
+<code class="inline">v1.0.x</code>. Currently, the last released patch version is <code class="inline">v1.0.3</code> and, as such, the remainder of this
 page will refer to this version. The described upgrade path involves some heavy changes as a
 consequence of <a href="https://blog.byte.builders/post/voyager-v2021.09.15/">this Voyager announcement</a> and
 the following <a href="https://github.com/astarte-platform/astarte/issues/613">Astarte design choice</a>.</p><p>Before moving on, it must be clear that AstarteVoyagerIngress is deprecated and that <strong>the only
@@ -93,8 +93,8 @@ resources</a>.</p><h2 id="upgrade-astarte-operator" class="section-heading">
   Upgrade Astarte Operator
 </h2>
 <p>Astarte Operator's upgrade procedure is handled by Helm. However, according to the Helm policies,
-upgrading the CRDs must be handled manually.</p><p>The current section assumes that the Operator's chart landing version is <code class="inline">v1.0.2</code>. If a more recent
-chart version is available, it is <strong>your responsibility</strong> referencing to the <code class="inline">v1.0.2</code> chart using
+upgrading the CRDs must be handled manually.</p><p>The current section assumes that the Operator's chart landing version is <code class="inline">v1.0.3</code>. If a more recent
+chart version is available, it is <strong>your responsibility</strong> referencing to the <code class="inline">v1.0.3</code> chart using
 the <code class="inline">--version</code> flag when running <code class="inline">helm</code> commands.</p><p>To upgrade the Astarte CRDs, the following environment variables will be employed:</p><ul><li><code class="inline">ASTARTE_OP_TEMPLATE_DIR</code> is the target directory in which the chart templates will be generated,</li><li><code class="inline">ASTARTE_OP_RELEASE_NAME</code> is the name of the Astarte Operator deployment,</li><li><code class="inline">ASTARTE_OP_RELEASE_NAMESPACE</code> is the namespace in which the Astarte Operator resides.</li></ul><p>Please, make sure that the values you set for both the Operator's name and namespace match the
 naming you already adopted when installing the Operator. A wrong naming can lead to a malfunctioning
 Astarte cluster.</p><p>For standard deployments the following variables should be ok. However, it is your responsibility
@@ -122,7 +122,7 @@ running:</p><pre><code class="bash">helm show values astarte/astarte-operator</c
 <code class="inline">version</code> field to the one you want to upgrade to.</p><p>In order to properly expose your Astarte instance to the outer world through the
 <a href="064-setup_astartedefaultingress.html"><code class="inline">AstarteDefaultIngress</code></a> a configuration change for VerneMQ
 is required: in particular, TLS termination must be handled at VerneMQ level.</p><p>Open the yaml file describing the Astarte resource with:</p><pre><code class="bash">kubectl edit astarte -n astarte</code></pre><p>Find the <code class="inline">version</code> field in the Astarte Spec section and change it according to your needs (i.e.:
-set it to <code class="inline">1.0.2</code>). Moreover, in the <code class="inline">vernemq</code> configuration section two new fields must be added,
+set it to <code class="inline">1.0.3</code>). Moreover, in the <code class="inline">vernemq</code> configuration section two new fields must be added,
 namely <code class="inline">sslListener</code> and <code class="inline">sslListenerCertSecretName</code>: the first field is a boolean that, when true,
 set VerneMQ to handle TLS termination, while the latter set the secret containing the TLS
 certificate (further details on certificates can be found <a href="050-handling_certificates.html">here</a>).</p><p>To summarize, the needed changes will look like the following sample snippet:</p><pre><code class="yaml">apiVersion: api.astarte-platform.org/v1alpha2
@@ -134,14 +134,14 @@ spec:
     sslListener: true
     sslListenerCertSecretName: &lt;your-tls-secret-name&gt;
     ...
-  version: 1.0.2</code></pre><p>Once the yaml file is applied, the Operator will take over ensuring the reconciliation of your
+  version: 1.0.3</code></pre><p>Once the yaml file is applied, the Operator will take over ensuring the reconciliation of your
 Astarte instance.</p><h3 id="caveats-for-astarte-flow" class="section-heading">
   <a href="#caveats-for-astarte-flow" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
   Caveats for Astarte Flow
 </h3>
 <p>Currently, although <a href="https://docs.astarte-platform.org/flow/">Astarte Flow</a> is a component of
 Astarte, it doesn't follow Astarte's release cycle. Therefore if you upgraded your Astarte instance
-to v1.0.2, Astarte Operator will try to deploy <code class="inline">astarte/astarte_flow:1.0.2</code> which is currently not
+to v1.0.3, Astarte Operator will try to deploy <code class="inline">astarte/astarte_flow:1.0.3</code> which is currently not
 existent.</p><p>All you have to do to overcome this temporary limitation is to edit your Astarte resource by
 explicitly setting the Astarte Flow image you plan to use:</p><pre><code class="yaml">spec:
   ...
