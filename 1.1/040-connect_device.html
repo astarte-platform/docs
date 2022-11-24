@@ -5,9 +5,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.24.2">
-    <meta name="project" content="Astarte v1.1.0-dev">
+    <meta name="project" content="Astarte v1.1.0-alpha.0">
 
-    <title>Connecting a Device — Astarte v1.1.0-dev</title>
+    <title>Connecting a Device — Astarte v1.1.0-alpha.0</title>
     <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
 
     <script src="dist/sidebar_items-92d203e4e0.js"></script>
@@ -58,7 +58,7 @@
 Astarte
       </a>
       <strong class="sidebar-projectVersion">
-        v1.1.0-dev
+        v1.1.0-alpha.0
       </strong>
     </div>
 
@@ -97,10 +97,10 @@ Transport(s) and Credentials, Devices have to interact with Pairing.</p><h2 id="
 <p>Once a Device has performed its first registration through an Agent, it holds its <em>Credentials
 Secret</em>. This <em>Credentials Secret</em> is the token the device uses for performing the actual Pairing
 routine, which results in the device obtaining its Credentials for accessing its designated
-Transport.</p><p>A Device's <em>Credentials Secret</em> allows access to <a href="https://docs.astarte-platform.org/1.0/api/?urls.primaryName=Pairing%20API#/device">Pairing API's Device REST
+Transport.</p><p>A Device's <em>Credentials Secret</em> allows access to <a href="https://docs.astarte-platform.org/1.1/api/?urls.primaryName=Pairing%20API#/device">Pairing API's Device REST
 API</a>, which
 is then used for obtaining information about which Transports the Device can use for communicating,
-and for obtaining Credentials for its assigned Transports.</p><p>The ability to request Credentials of a Device can be inhibited with <a href="https://docs.astarte-platform.org/1.0/api/#/device/updateDeviceStatus">AppEngine
+and for obtaining Credentials for its assigned Transports.</p><p>The ability to request Credentials of a Device can be inhibited with <a href="https://docs.astarte-platform.org/1.1/api/#/device/updateDeviceStatus">AppEngine
 API</a> or using
 <a href="https://github.com/astarte-platform/astartectl"><code class="inline">astartectl</code></a> with this command:</p><pre><code class="bash">astartectl appengine devices credentials inhibit &lt;device_id_or_alias&gt; true \
   -k &lt;appengine-key&gt; -r &lt;realm-name&gt; -u &lt;astarte-api-url&gt;</code></pre><p>Once its <code class="inline">credentials_inhibited</code> field is set to <code class="inline">true</code>, a Device is not able to request new
