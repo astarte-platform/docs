@@ -23,7 +23,7 @@ Appears in:
 <link rel="icon" href="/snapshot/astarte-kubernetes-operator/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/snapshot/astarte-kubernetes-operator/book.min.a82d7e77ceb134d151c4d7e381eeb30623fbd5a524d58c584d8716ecec0205bd.css" integrity="sha256-qC1&#43;d86xNNFRxNfjge6zBiP71aUk1YxYTYcW7OwCBb0=" crossorigin="anonymous">
   <script defer src="/snapshot/astarte-kubernetes-operator/flexsearch.min.js"></script>
-  <script defer src="/snapshot/astarte-kubernetes-operator/en.search.min.896c4f55b1462a4cd1c6e9a13f14626cec2b169d9ebc6f55352f903416da2c1f.js" integrity="sha256-iWxPVbFGKkzRxumhPxRibOwrFp2evG9VNS&#43;QNBbaLB8=" crossorigin="anonymous"></script>
+  <script defer src="/snapshot/astarte-kubernetes-operator/en.search.min.99d11e9d8803949ee7ea295ef462d7c76b019fe115bb79348213dd8c9f3374c5.js" integrity="sha256-mdEenYgDlJ7n6ile9GLXx2sBn&#43;EVu3k0ghPdjJ8zdMU=" crossorigin="anonymous"></script>
 
   <script defer src="/snapshot/astarte-kubernetes-operator/sw.min.2af6e4cc892755e281a97bd013574371beb08d01eacc6d2bd19e4b8a0e8eb22e.js" integrity="sha256-KvbkzIknVeKBqXvQE1dDcb6wjQHqzG0r0Z5Lig6Osi4=" crossorigin="anonymous"></script>
 <!--
@@ -80,7 +80,7 @@ https://github.com/alex-shpak/hugo-book
 <ul>
   
   <li>
-    <a href="https://github.com/astarte-platform/astarte-kubernetes-operator" target="_blank" rel="noopener">
+    <a href="https://github.com/astarte-platform/astarte-kubernetes-operator"  target="_blank" rel="noopener">
         Github
       </a>
   </li>
@@ -645,6 +645,10 @@ https://github.com/alex-shpak/hugo-book
 <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
 <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
 </tr>
+<tr>
+<td><code>priorityClass</code> <em>string</em></td>
+<td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+</tr>
 </tbody>
 </table>
 <h4 id="astartecassandraconnectionspec">
@@ -1011,6 +1015,11 @@ https://github.com/alex-shpak/hugo-book
 <td><code>autoscaling</code> <em>boolean</em></td>
 <td></td>
 </tr>
+<tr>
+<td><code>astartePodPriorities</code> <em>
+  <a href="/snapshot/astarte-kubernetes-operator/#astartepodprioritiesspec">AstartePodPrioritiesSpec</a></em></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h4 id="astartegenericapispec">
@@ -1125,6 +1134,10 @@ https://github.com/alex-shpak/hugo-book
 <td><code>autoscaler</code> <em>
   <a href="/snapshot/astarte-kubernetes-operator/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
 <td>Autoscaling resources for this deployment/statefulset.</td>
+</tr>
+<tr>
+<td><code>priorityClass</code> <em>string</em></td>
+<td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
 </tr>
 </tbody>
 </table>
@@ -1303,6 +1316,42 @@ https://github.com/alex-shpak/hugo-book
 <td><code>volumeDefinition</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#volume-v1-core">Volume</a></em></td>
 <td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="astartepodprioritiesspec">
+  AstartePodPrioritiesSpec
+  <a class="anchor" href="#astartepodprioritiesspec">#</a>
+</h4>
+<p>AstartePodPriorities allows to set different priorityClasses for Astarte pods. Note that enabling this feature might generate some counter-intuitive scheduling beahaviour if not done properly.</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/snapshot/astarte-kubernetes-operator/#astartefeatures">AstarteFeatures</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enabled</code> <em>boolean</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>astarteHighPriority</code> <em>integer</em></td>
+<td>The value of the highest PriorityClass for Astarte pods. Once the value is set, updating it will not have effect.</td>
+</tr>
+<tr>
+<td><code>astarteMidPriority</code> <em>integer</em></td>
+<td>The value of the medium PriorityClass for Astarte pods. Once the value is set, updating it will not have effect.</td>
+</tr>
+<tr>
+<td><code>astarteLowPriority</code> <em>integer</em></td>
+<td>The value of the least PriorityClass for Astarte pods. Once the value is set, updating it will not have effect.</td>
 </tr>
 </tbody>
 </table>
@@ -2890,6 +2939,10 @@ https://github.com/alex-shpak/hugo-book
 <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
 <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
 </tr>
+<tr>
+<td><code>priorityClass</code> <em>string</em></td>
+<td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+</tr>
 </tbody>
 </table>
 <h4 id="astartecassandraconnectionspec-1">
@@ -3256,6 +3309,11 @@ https://github.com/alex-shpak/hugo-book
 <td><code>autoscaling</code> <em>boolean</em></td>
 <td></td>
 </tr>
+<tr>
+<td><code>astartePodPriorities</code> <em>
+  <a href="/snapshot/astarte-kubernetes-operator/#astartepodprioritiesspec">AstartePodPrioritiesSpec</a></em></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h4 id="astartegenericapispec-1">
@@ -3370,6 +3428,10 @@ https://github.com/alex-shpak/hugo-book
 <td><code>autoscaler</code> <em>
   <a href="/snapshot/astarte-kubernetes-operator/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
 <td>Autoscaling resources for this deployment/statefulset. If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+</tr>
+<tr>
+<td><code>priorityClass</code> <em>string</em></td>
+<td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
 </tr>
 </tbody>
 </table>
@@ -3547,6 +3609,42 @@ https://github.com/alex-shpak/hugo-book
 <td><code>volumeDefinition</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#volume-v1-core">Volume</a></em></td>
 <td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="astartepodprioritiesspec-1">
+  AstartePodPrioritiesSpec
+  <a class="anchor" href="#astartepodprioritiesspec-1">#</a>
+</h4>
+<p>AstartePodPriorities allows to set different priorityClasses for Astarte pods. Note that enabling this feature might generate some counter-intuitive scheduling beahaviour if not done properly.</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/snapshot/astarte-kubernetes-operator/#astartefeatures">AstarteFeatures</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enabled</code> <em>boolean</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>astarteHighPriority</code> <em>integer</em></td>
+<td>The value of the highest PriorityClass for Astarte pods. Once the value is set, updating it will not have effect.</td>
+</tr>
+<tr>
+<td><code>astarteMidPriority</code> <em>integer</em></td>
+<td>The value of the medium PriorityClass for Astarte pods. Once the value is set, updating it will not have effect.</td>
+</tr>
+<tr>
+<td><code>astarteLowPriority</code> <em>integer</em></td>
+<td>The value of the least PriorityClass for Astarte pods. Once the value is set, updating it will not have effect.</td>
 </tr>
 </tbody>
 </table>
