@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":6,"i3":6,"i4":10,"i5":10,"i6":6,"i7":6,"i8":6,"i9":10,"i10":10,"i11":6,"i12":10,"i13":10,"i14":6};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":6,"i4":6,"i5":10,"i6":10,"i7":6,"i8":6,"i9":6,"i10":10,"i11":10,"i12":6,"i13":10,"i14":10,"i15":10,"i16":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -163,58 +163,70 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstarteDevice.html#addGlobalEventListener-org.astarteplatform.devicesdk.protocol.AstarteGlobalEventListener-">addGlobalEventListener</a></span>(<a href="../../../org/astarteplatform/devicesdk/protocol/AstarteGlobalEventListener.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteGlobalEventListener</a>&nbsp;eventListener)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstarteDevice.html#addInterface-org.json.JSONObject-">addInterface</a></span>(org.json.JSONObject&nbsp;astarteInterfaceObject)</code>
+<div class="block">Method that adds an interface dynamically to the introspection</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstarteDevice.html#alwaysReconnects--">alwaysReconnects</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>abstract void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstarteDevice.html#connect--">connect</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>abstract void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstarteDevice.html#disconnect--">disconnect</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.util.Collection&lt;java.lang.String&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstarteDevice.html#getAllInterfaceNames--">getAllInterfaceNames</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>java.util.Collection&lt;<a href="../../../org/astarteplatform/devicesdk/protocol/AstarteInterface.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteInterface</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstarteDevice.html#getAllInterfaces--">getAllInterfaces</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>abstract <a href="../../../org/astarteplatform/devicesdk/AstarteMessageListener.html" title="interface in org.astarteplatform.devicesdk">AstarteMessageListener</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstarteDevice.html#getAstarteMessageListener--">getAstarteMessageListener</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>abstract java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstarteDevice.html#getAstarteRealm--">getAstarteRealm</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>abstract java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstarteDevice.html#getDeviceId--">getDeviceId</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code><a href="../../../org/astarteplatform/devicesdk/protocol/AstarteInterface.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteInterface</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstarteDevice.html#getInterface-java.lang.String-">getInterface</a></span>(java.lang.String&nbsp;interfaceName)</code>&nbsp;</td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstarteDevice.html#hasInterface-java.lang.String-">hasInterface</a></span>(java.lang.String&nbsp;interfaceName)</code>&nbsp;</td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>abstract boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstarteDevice.html#isConnected--">isConnected</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstarteDevice.html#removeGlobalListener-org.astarteplatform.devicesdk.protocol.AstarteGlobalEventListener-">removeGlobalListener</a></span>(<a href="../../../org/astarteplatform/devicesdk/protocol/AstarteGlobalEventListener.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteGlobalEventListener</a>&nbsp;eventListener)</code>&nbsp;</td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i14" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstarteDevice.html#removeInterface-java.lang.String-">removeInterface</a></span>(java.lang.String&nbsp;interfaceName)</code>
+<div class="block">Method that dynamically removes an interface from the introspection</div>
+</td>
+</tr>
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstarteDevice.html#setAlwaysReconnect-boolean-">setAlwaysReconnect</a></span>(boolean&nbsp;alwaysReconnect)</code>&nbsp;</td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>abstract void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstarteDevice.html#setAstarteMessageListener-org.astarteplatform.devicesdk.AstarteMessageListener-">setAstarteMessageListener</a></span>(<a href="../../../org/astarteplatform/devicesdk/AstarteMessageListener.html" title="interface in org.astarteplatform.devicesdk">AstarteMessageListener</a>&nbsp;astarteMessageListener)</code>&nbsp;</td>
 </tr>
@@ -282,6 +294,44 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>hasInterface</h4>
 <pre>public&nbsp;boolean&nbsp;hasInterface(java.lang.String&nbsp;interfaceName)</pre>
+</li>
+</ul>
+<a name="addInterface-org.json.JSONObject-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addInterface</h4>
+<pre>public&nbsp;void&nbsp;addInterface(org.json.JSONObject&nbsp;astarteInterfaceObject)
+                  throws <a href="../../../org/astarteplatform/devicesdk/protocol/AstarteInvalidInterfaceException.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteInvalidInterfaceException</a>,
+                         <a href="../../../org/astarteplatform/devicesdk/protocol/AstarteInterfaceAlreadyPresentException.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteInterfaceAlreadyPresentException</a></pre>
+<div class="block">Method that adds an interface dynamically to the introspection</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>astarteInterfaceObject</code> - the JSONObject representation of the interface</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="../../../org/astarteplatform/devicesdk/protocol/AstarteInvalidInterfaceException.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteInvalidInterfaceException</a></code> - when the JSON Object does not represent an interface
+     correctly</dd>
+<dd><code><a href="../../../org/astarteplatform/devicesdk/protocol/AstarteInterfaceAlreadyPresentException.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteInterfaceAlreadyPresentException</a></code> - when an interface with the same name, major and
+     minor is already present</dd>
+</dl>
+</li>
+</ul>
+<a name="removeInterface-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>removeInterface</h4>
+<pre>public&nbsp;void&nbsp;removeInterface(java.lang.String&nbsp;interfaceName)
+                     throws <a href="../../../org/astarteplatform/devicesdk/protocol/AstarteInterfaceNotFoundException.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteInterfaceNotFoundException</a></pre>
+<div class="block">Method that dynamically removes an interface from the introspection</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>interfaceName</code> - The name of the interface to remove</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="../../../org/astarteplatform/devicesdk/protocol/AstarteInterfaceNotFoundException.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteInterfaceNotFoundException</a></code> - when no interface is found with the given name</dd>
+</dl>
 </li>
 </ul>
 <a name="getAllInterfaceNames--">

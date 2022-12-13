@@ -84,6 +84,14 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/astarteplatform/devicesdk/AstarteDevice.html#addGlobalEventListener-org.astarteplatform.devicesdk.protocol.AstarteGlobalEventListener-">addGlobalEventListener(AstarteGlobalEventListener)</a></span> - Method in class org.astarteplatform.devicesdk.<a href="org/astarteplatform/devicesdk/AstarteDevice.html" title="class in org.astarteplatform.devicesdk">AstarteDevice</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="org/astarteplatform/devicesdk/AstarteDevice.html#addInterface-org.json.JSONObject-">addInterface(JSONObject)</a></span> - Method in class org.astarteplatform.devicesdk.<a href="org/astarteplatform/devicesdk/AstarteDevice.html" title="class in org.astarteplatform.devicesdk">AstarteDevice</a></dt>
+<dd>
+<div class="block">Method that adds an interface dynamically to the introspection</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/astarteplatform/devicesdk/AstartePairableDevice.html#addInterface-org.json.JSONObject-">addInterface(JSONObject)</a></span> - Method in class org.astarteplatform.devicesdk.<a href="org/astarteplatform/devicesdk/AstartePairableDevice.html" title="class in org.astarteplatform.devicesdk">AstartePairableDevice</a></dt>
+<dd>
+<div class="block">Method that adds an interface dynamically to the introspection.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/astarteplatform/devicesdk/protocol/AstarteServerAggregateDatastreamInterface.html#addListener-org.astarteplatform.devicesdk.protocol.AstarteAggregateDatastreamEventListener-">addListener(AstarteAggregateDatastreamEventListener)</a></span> - Method in class org.astarteplatform.devicesdk.protocol.<a href="org/astarteplatform/devicesdk/protocol/AstarteServerAggregateDatastreamInterface.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteServerAggregateDatastreamInterface</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/astarteplatform/devicesdk/protocol/AstarteServerDatastreamInterface.html#addListener-org.astarteplatform.devicesdk.protocol.AstarteDatastreamEventListener-">addListener(AstarteDatastreamEventListener)</a></span> - Method in class org.astarteplatform.devicesdk.protocol.<a href="org/astarteplatform/devicesdk/protocol/AstarteServerDatastreamInterface.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteServerDatastreamInterface</a></dt>
@@ -205,6 +213,10 @@
 <dt><a href="org/astarteplatform/devicesdk/protocol/AstarteInterface.html" title="class in org.astarteplatform.devicesdk.protocol"><span class="typeNameLink">AstarteInterface</span></a> - Class in <a href="org/astarteplatform/devicesdk/protocol/package-summary.html">org.astarteplatform.devicesdk.protocol</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/astarteplatform/devicesdk/protocol/AstarteInterface.html#AstarteInterface--">AstarteInterface()</a></span> - Constructor for class org.astarteplatform.devicesdk.protocol.<a href="org/astarteplatform/devicesdk/protocol/AstarteInterface.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteInterface</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/astarteplatform/devicesdk/protocol/AstarteInterfaceAlreadyPresentException.html" title="class in org.astarteplatform.devicesdk.protocol"><span class="typeNameLink">AstarteInterfaceAlreadyPresentException</span></a> - Exception in <a href="org/astarteplatform/devicesdk/protocol/package-summary.html">org.astarteplatform.devicesdk.protocol</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="org/astarteplatform/devicesdk/protocol/AstarteInterfaceAlreadyPresentException.html#AstarteInterfaceAlreadyPresentException-java.lang.String-">AstarteInterfaceAlreadyPresentException(String)</a></span> - Constructor for exception org.astarteplatform.devicesdk.protocol.<a href="org/astarteplatform/devicesdk/protocol/AstarteInterfaceAlreadyPresentException.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteInterfaceAlreadyPresentException</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/astarteplatform/devicesdk/protocol/AstarteInterfaceDatastreamMapping.html" title="class in org.astarteplatform.devicesdk.protocol"><span class="typeNameLink">AstarteInterfaceDatastreamMapping</span></a> - Class in <a href="org/astarteplatform/devicesdk/protocol/package-summary.html">org.astarteplatform.devicesdk.protocol</a></dt>
 <dd>&nbsp;</dd>
@@ -589,6 +601,8 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/astarteplatform/devicesdk/AstartePropertyStorage.html#getStoredPathsForInterface-java.lang.String-">getStoredPathsForInterface(String)</a></span> - Method in interface org.astarteplatform.devicesdk.<a href="org/astarteplatform/devicesdk/AstartePropertyStorage.html" title="interface in org.astarteplatform.devicesdk">AstartePropertyStorage</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="org/astarteplatform/devicesdk/AstartePropertyStorage.html#getStoredValue-org.astarteplatform.devicesdk.protocol.AstarteInterface-java.lang.String-">getStoredValue(AstarteInterface, String)</a></span> - Method in interface org.astarteplatform.devicesdk.<a href="org/astarteplatform/devicesdk/AstartePropertyStorage.html" title="interface in org.astarteplatform.devicesdk">AstartePropertyStorage</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/astarteplatform/devicesdk/AstartePropertyStorage.html#getStoredValuesForInterface-org.astarteplatform.devicesdk.protocol.AstarteInterface-">getStoredValuesForInterface(AstarteInterface)</a></span> - Method in interface org.astarteplatform.devicesdk.<a href="org/astarteplatform/devicesdk/AstartePropertyStorage.html" title="interface in org.astarteplatform.devicesdk">AstartePropertyStorage</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/astarteplatform/devicesdk/protocol/AstarteAggregateDatastreamEvent.html#getTimestamp--">getTimestamp()</a></span> - Method in class org.astarteplatform.devicesdk.protocol.<a href="org/astarteplatform/devicesdk/protocol/AstarteAggregateDatastreamEvent.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteAggregateDatastreamEvent</a></dt>
@@ -718,6 +732,8 @@
 <dt><span class="memberNameLink"><a href="org/astarteplatform/devicesdk/protocol/AstarteInterfaceDatastreamMapping.MappingRetention.html#label">label</a></span> - Variable in enum org.astarteplatform.devicesdk.protocol.<a href="org/astarteplatform/devicesdk/protocol/AstarteInterfaceDatastreamMapping.MappingRetention.html" title="enum in org.astarteplatform.devicesdk.protocol">AstarteInterfaceDatastreamMapping.MappingRetention</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/astarteplatform/devicesdk/AstarteInterfaceProvider.html#loadAllInterfaces--">loadAllInterfaces()</a></span> - Method in interface org.astarteplatform.devicesdk.<a href="org/astarteplatform/devicesdk/AstarteInterfaceProvider.html" title="interface in org.astarteplatform.devicesdk">AstarteInterfaceProvider</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="org/astarteplatform/devicesdk/AstarteInterfaceProvider.html#loadInterface-java.lang.String-">loadInterface(String)</a></span> - Method in interface org.astarteplatform.devicesdk.<a href="org/astarteplatform/devicesdk/AstarteInterfaceProvider.html" title="interface in org.astarteplatform.devicesdk">AstarteInterfaceProvider</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <a name="I:M">
@@ -861,6 +877,14 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/astarteplatform/devicesdk/AstarteDevice.html#removeGlobalListener-org.astarteplatform.devicesdk.protocol.AstarteGlobalEventListener-">removeGlobalListener(AstarteGlobalEventListener)</a></span> - Method in class org.astarteplatform.devicesdk.<a href="org/astarteplatform/devicesdk/AstarteDevice.html" title="class in org.astarteplatform.devicesdk">AstarteDevice</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="org/astarteplatform/devicesdk/AstarteDevice.html#removeInterface-java.lang.String-">removeInterface(String)</a></span> - Method in class org.astarteplatform.devicesdk.<a href="org/astarteplatform/devicesdk/AstarteDevice.html" title="class in org.astarteplatform.devicesdk">AstarteDevice</a></dt>
+<dd>
+<div class="block">Method that dynamically removes an interface from the introspection</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/astarteplatform/devicesdk/AstartePairableDevice.html#removeInterface-java.lang.String-">removeInterface(String)</a></span> - Method in class org.astarteplatform.devicesdk.<a href="org/astarteplatform/devicesdk/AstartePairableDevice.html" title="class in org.astarteplatform.devicesdk">AstartePairableDevice</a></dt>
+<dd>
+<div class="block">Method that dynamically removes an interface from the introspection.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/astarteplatform/devicesdk/protocol/AstarteServerAggregateDatastreamInterface.html#removeListener-org.astarteplatform.devicesdk.protocol.AstarteAggregateDatastreamEventListener-">removeListener(AstarteAggregateDatastreamEventListener)</a></span> - Method in class org.astarteplatform.devicesdk.protocol.<a href="org/astarteplatform/devicesdk/protocol/AstarteServerAggregateDatastreamInterface.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteServerAggregateDatastreamInterface</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/astarteplatform/devicesdk/protocol/AstarteServerDatastreamInterface.html#removeListener-org.astarteplatform.devicesdk.protocol.AstarteDatastreamEventListener-">removeListener(AstarteDatastreamEventListener)</a></span> - Method in class org.astarteplatform.devicesdk.protocol.<a href="org/astarteplatform/devicesdk/protocol/AstarteServerDatastreamInterface.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteServerDatastreamInterface</a></dt>
