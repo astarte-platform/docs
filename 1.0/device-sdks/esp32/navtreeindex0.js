@@ -12,6 +12,7 @@ var NAVTREEINDEX0 =
 "astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a2a3a08c0e41c9cc3beaa74435aca52e6":[2,0,0,0,4,11],
 "astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a2fe1092cb206aacd1aa92e621b110ed4":[2,0,0,0,4,18],
 "astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a425117467cbed07e158966a5f4ea666b":[2,0,0,0,4,1],
+"astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a4958df8730ba597a7d21ddba1453c64d":[2,0,0,0,4,20],
 "astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a6254410c0f4d610c6994f60381a27e85":[2,0,0,0,4,9],
 "astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a75103e956d9c310647f70477f2fbcd70":[2,0,0,0,4,3],
 "astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a82de41c505aaa77069523c0255fd874d":[2,0,0,0,4,6],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "structastarte__list__head__t.html#afaea8c49e9a088e517d13499b0491735":[1,0,10,0],
 "structastarte__pairing__config.html":[1,0,11],
 "structastarte__pairing__config.html#a1e2501856cfc92a3858fe4510028d567":[1,0,11,4],
-"structastarte__pairing__config.html#a272ea74846fb3ec089486cbacbc22eeb":[1,0,11,1],
-"structastarte__pairing__config.html#a52ff4408478275095f07dc1f7f8540a0":[1,0,11,0]
+"structastarte__pairing__config.html#a272ea74846fb3ec089486cbacbc22eeb":[1,0,11,1]
 };

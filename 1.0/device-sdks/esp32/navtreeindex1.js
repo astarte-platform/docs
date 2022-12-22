@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"structastarte__pairing__config.html#a52ff4408478275095f07dc1f7f8540a0":[1,0,11,0],
 "structastarte__pairing__config.html#a699959ab4d37ce583531dacf1dd5c293":[1,0,11,3],
 "structastarte__pairing__config.html#a83edfd6d4a7be7aad85edee7a02d8ab7":[1,0,11,2],
 "structastarte__ptr__list__entry__t.html":[1,0,12],
