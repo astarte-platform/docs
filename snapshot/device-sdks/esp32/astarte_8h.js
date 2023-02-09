@@ -24,6 +24,7 @@ var astarte_8h =
       [ "ASTARTE_ERR_INVALID_QOS", "astarte_8h.html#a8c619a744449aa507f5e6dedebffea23afe75bb95b1e020d382639d18d01124eb", null ],
       [ "ASTARTE_ERR_DEVICE_NOT_READY", "astarte_8h.html#a8c619a744449aa507f5e6dedebffea23ae1eed2193d09e917242ee14f67669239", null ],
       [ "ASTARTE_ERR_PUBLISH", "astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a2fe1092cb206aacd1aa92e621b110ed4", null ],
-      [ "ASTARTE_ERR_INVALID_INTROSPECTION", "astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a94f6b5ce42584672189f2d3ad988b7fb", null ]
+      [ "ASTARTE_ERR_INVALID_INTROSPECTION", "astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a94f6b5ce42584672189f2d3ad988b7fb", null ],
+      [ "ASTARTE_ERR_INVALID_INTERFACE_VERSION", "astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a4958df8730ba597a7d21ddba1453c64d", null ]
     ] ]
 ];
