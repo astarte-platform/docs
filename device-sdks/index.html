@@ -2121,19 +2121,16 @@ let namespaced_id = astarte_sdk::registration::generate_uuid(namespaceUuid, &amp
             <pre
               class="code-container"
             ><code class="rust">    /// declare device options
-    let mut sdk_options =
-        AstarteOptions::new(&amp;realm, &amp;device_id, &amp;credentials_secret, &amp;pairing_url);
-          
-    /// load interfaces from a directory
-    sdk_options
-        .add_interface_files(&quot;./examples/interfaces&quot;)
-        .unwrap();
-          
-    /// build Astarte client
-    sdk_options.build().await.unwrap();
-          
-    /// connect the device
-    let mut device = sdk_options.connect().await.unwrap();</code></pre>
+let mut sdk_options =
+    AstarteOptions::new(&amp;realm, &amp;device_id, &amp;credentials_secret, &amp;pairing_url);
+
+/// load interfaces from a directory
+sdk_options
+    .add_interface_files(&quot;./examples/interfaces&quot;)
+    .unwrap();
+
+/// instance and connect the device.
+let mut device = AstarteDeviceSdk::new(&sdk_options).await.unwrap();</code></pre>
 
             <h2 id="streaming-data" class="text-secondary fw-bold pb-2">
               <a href="#streaming-data" class="hover-link">
@@ -2179,7 +2176,12 @@ let namespaced_id = astarte_sdk::registration::generate_uuid(namespaceUuid, &amp
             <p class="text-black-50 fs-5 pb-2 fw-light">Rust</p>
             <pre
               class="code-container"
-            ><code class="rust">device.send_with_timestamp(&quot;org.astarte-platform.genericsensors.Values&quot;, &quot;/test0/value&quot;, 3, chrono::offset::Utc::now()).await?;</code></pre>
+            ><code class="rust">/// send data without an explicit timestamp
+  device.send(&quot;org.astarte-platform.genericsensors.Values&quot;, &quot;/test0/value&quot;, 3).await?;
+
+  /// send data with an explicit timestamp
+  let timestamp = Utc.timestamp(1537449422, 0);
+  device.send_with_timestamp(&quot;org.astarte-platform.genericsensors.Values&quot;, &quot;/test0/value&quot;, 3, timestamp).await?;</code></pre>
 
             <h3
               id="using-object-aggregated-interfaces"
@@ -2214,9 +2216,22 @@ let namespaced_id = astarte_sdk::registration::generate_uuid(namespaceUuid, &amp
             <p class="text-black-50 fs-5 pb-2 fw-light">Rust:</p>
             <pre
               class="code-container"
-            ><code class="rust">/// Coords must implement the Serializable trait
+            ><code class="rust">use astarte_device_sdk_derive::AstarteAggregate;
+/// Coords must derive AstarteAggregate
+#[derive(AstarteAggregate)]
+struct Coords {
+    lat: f64,
+    long: f64,
+}
+[...]
 let coords = Coords{lat:  45.409627, long: 11.8765254};
-device.send_object_with_timestamp(&quot;com.example.GPS&quot;, &quot;/coords&quot;, coords, chrono::offset::Utc::now()).await?;</code></pre>
+
+// stream data with an explicit timestamp
+let timestamp = Utc.timestamp(1537449422, 0);
+device.send_object_with_timestamp(&quot;com.example.GPS&quot;, &quot;/coords&quot;, coords, timestamp).await?;
+
+// stream data without an explicit timestamp
+device.send_object(&quot;com.example.GPS&quot;, &quot;/coords&quot;, coords).await?;</code></pre>
 
             <h3
               id="setting-and-unsetting-properties"
@@ -2251,10 +2266,15 @@ device.send_object_with_timestamp(&quot;com.example.GPS&quot;, &quot;/coords&quo
             <pre
               class="code-container"
             ><code class="rust">/// set property (same as datastream)
-device.send(&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;, &quot;foobar&quot;);
+/// send data without an explicit timestamp
+device.send(&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;, &quot;foobar&quot;).await?;
+
+/// send data with an explicit timestamp
+let timestamp = Utc.timestamp(1537449422, 0);
+device.send_with_timestamp(&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;, &quot;foobar&quot;, timestamp).await?;
           
 /// unset property
-device.unset(&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;);</code></pre>
+device.unset(&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;).await?;</code></pre>
           </div>
         </section>
       </div>
