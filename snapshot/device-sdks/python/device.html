@@ -2,10 +2,10 @@
 
 <!doctype html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>device package &#8212; Astarte Device SDK Python 0.10.0a6 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -14,7 +14,9 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/bizstyle.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -48,12 +50,12 @@
           <div class="body" role="main">
             
   <section id="device-package">
-<h1>device package<a class="headerlink" href="#device-package" title="Permalink to this headline">¶</a></h1>
+<h1>device package<a class="headerlink" href="#device-package" title="Permalink to this heading">¶</a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-device.crypto">
-<span id="device-crypto-module"></span><h2>device.crypto module<a class="headerlink" href="#module-device.crypto" title="Permalink to this headline">¶</a></h2>
+<span id="device-crypto-module"></span><h2>device.crypto module<a class="headerlink" href="#module-device.crypto" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="device.crypto.certificate_is_valid">
 <span class="sig-prename descclassname"><span class="pre">device.crypto.</span></span><span class="sig-name descname"><span class="pre">certificate_is_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crypto_store_dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.crypto.certificate_is_valid" title="Permalink to this definition">¶</a></dt>
@@ -76,7 +78,7 @@
 
 </section>
 <section id="module-device.device">
-<span id="device-device-module"></span><h2>device.device module<a class="headerlink" href="#module-device.device" title="Permalink to this headline">¶</a></h2>
+<span id="device-device-module"></span><h2>device.device module<a class="headerlink" href="#module-device.device" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="device.device.Device">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device.</span></span><span class="sig-name descname"><span class="pre">Device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credentials_secret</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistency_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device.Device" title="Permalink to this definition">¶</a></dt>
@@ -102,7 +104,7 @@ usage of asyncio is strongly recommended.</p>
 <span class="sig-name descname"><span class="pre">on_connected</span></span><a class="headerlink" href="#device.device.Device.on_connected" title="Permalink to this definition">¶</a></dt>
 <dd><p>A function that will be invoked everytime the device successfully connects.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Callable[[<a class="reference internal" href="#device.device.Device" title="device.device.Device">Device</a>], None]</p>
 </dd>
 </dl>
@@ -113,7 +115,7 @@ usage of asyncio is strongly recommended.</p>
 <span class="sig-name descname"><span class="pre">on_disconnected</span></span><a class="headerlink" href="#device.device.Device.on_disconnected" title="Permalink to this definition">¶</a></dt>
 <dd><p>A function that will be invoked everytime the device disconnects. The int parameter bears the disconnect reason.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Callable[[<a class="reference internal" href="#device.device.Device" title="device.device.Device">Device</a>, int], None]</p>
 </dd>
 </dl>
@@ -125,7 +127,7 @@ usage of asyncio is strongly recommended.</p>
 <dd><p>A function that will be invoked everytime data is received from Astarte. Parameters are the Device itself, the Interface
 name, the Interface path, and the payload. The payload will reflect the type defined in the Interface.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Callable[[<a class="reference internal" href="#device.device.Device" title="device.device.Device">Device</a>, string, string, object], None]</p>
 </dd>
 </dl>
@@ -138,7 +140,7 @@ name, the Interface path, and the payload. The payload will reflect the type def
 <p>This will add an Interface definition to the Device. It has to be called before <a class="reference internal" href="#device.device.Device.connect" title="device.device.Device.connect"><code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code></a>, as it will be
 used for building the Device Introspection.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>interface_definition</strong> (<em>dict</em>) – An Astarte Interface definition in the form of a Python dictionary. Usually obtained by using json.loads on an Interface file.</p>
 </dd>
 </dl>
@@ -185,7 +187,7 @@ happened following an explicit disconnection request.</p>
 <p>Removes an Interface definition from the Device. It has to be called before <a class="reference internal" href="#device.device.Device.connect" title="device.device.Device.connect"><code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code></a>, as it will be
 used for building the Device Introspection.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>interface_name</strong> (<em>str</em>) – The name of an Interface previously added with <a class="reference internal" href="#device.device.Device.add_interface" title="device.device.Device.add_interface"><code class="xref py py-func docutils literal notranslate"><span class="pre">add_interface()</span></code></a>.</p>
 </dd>
 </dl>
@@ -196,7 +198,7 @@ used for building the Device Introspection.</p>
 <span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interface_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device.Device.send" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends an individual message to an interface.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>interface_name</strong> (<em>str</em>) – The name of an the Interface to send data to.</p></li>
 <li><p><strong>interface_path</strong> (<em>str</em>) – The path on the Interface to send data to.</p></li>
@@ -213,7 +215,7 @@ as the timestamp for the value.</p></li>
 <span class="sig-name descname"><span class="pre">send_aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interface_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device.Device.send_aggregate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends an aggregate message to an interface</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>interface_name</strong> (<em>str</em>) – The name of an the Interface to send data to.</p></li>
 <li><p><strong>payload</strong> (<em>dict</em>) – A dictionary containing the path:value map for the aggregate.</p></li>
@@ -229,7 +231,7 @@ as the timestamp for the value.</p></li>
 <span class="sig-name descname"><span class="pre">unset_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interface_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device.Device.unset_property" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unset the specified property on an interface.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>interface_name</strong> (<em>str</em>) – The name of an the Interface where the property to unset is located.</p></li>
 <li><p><strong>interface_path</strong> (<em>str</em>) – The path on the Interface to unset.</p></li>
@@ -242,11 +244,11 @@ as the timestamp for the value.</p></li>
 
 </section>
 <section id="module-device.exceptions">
-<span id="device-exceptions-module"></span><h2>device.exceptions module<a class="headerlink" href="#module-device.exceptions" title="Permalink to this headline">¶</a></h2>
+<span id="device-exceptions-module"></span><h2>device.exceptions module<a class="headerlink" href="#module-device.exceptions" title="Permalink to this heading">¶</a></h2>
 <dl class="py exception">
 <dt class="sig sig-object py" id="device.exceptions.APIError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">APIError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.APIError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">device.exceptions.AstarteError</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
 <p>Exception raised when Astarte APIs throw unhandled errors.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py">
@@ -265,7 +267,7 @@ as the timestamp for the value.</p></li>
 <dl class="py exception">
 <dt class="sig sig-object py" id="device.exceptions.AuthorizationError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">AuthorizationError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.AuthorizationError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">device.exceptions.AstarteError</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
 <p>Exception raised when Astarte APIs refuse authentication.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py">
@@ -277,13 +279,13 @@ as the timestamp for the value.</p></li>
 <dl class="py exception">
 <dt class="sig sig-object py" id="device.exceptions.DeviceAlreadyRegisteredError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">DeviceAlreadyRegisteredError</span></span><a class="headerlink" href="#device.exceptions.DeviceAlreadyRegisteredError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">device.exceptions.AstarteError</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
 <p>Exception raised in case a Device being registered has already been registered.</p>
 </dd></dl>
 
 </section>
 <section id="module-device.interface">
-<span id="device-interface-module"></span><h2>device.interface module<a class="headerlink" href="#module-device.interface" title="Permalink to this headline">¶</a></h2>
+<span id="device-interface-module"></span><h2>device.interface module<a class="headerlink" href="#module-device.interface" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="device.interface.Interface">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.interface.</span></span><span class="sig-name descname"><span class="pre">Interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_definition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.interface.Interface" title="Permalink to this definition">¶</a></dt>
@@ -298,7 +300,7 @@ of properties, and can be either aggregated into an object or be an independent 
 <span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#device.interface.Interface.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface name</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
@@ -309,7 +311,7 @@ of properties, and can be either aggregated into an object or be an independent 
 <span class="sig-name descname"><span class="pre">version_major</span></span><a class="headerlink" href="#device.interface.Interface.version_major" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface version major number</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
@@ -320,7 +322,7 @@ of properties, and can be either aggregated into an object or be an independent 
 <span class="sig-name descname"><span class="pre">version_minor</span></span><a class="headerlink" href="#device.interface.Interface.version_minor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface version minor number</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int</p>
 </dd>
 </dl>
@@ -331,7 +333,7 @@ of properties, and can be either aggregated into an object or be an independent 
 <span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#device.interface.Interface.type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface type</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
@@ -342,7 +344,7 @@ of properties, and can be either aggregated into an object or be an independent 
 <span class="sig-name descname"><span class="pre">ownership</span></span><a class="headerlink" href="#device.interface.Interface.ownership" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface ownership</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
@@ -353,7 +355,7 @@ of properties, and can be either aggregated into an object or be an independent 
 <span class="sig-name descname"><span class="pre">aggregation</span></span><a class="headerlink" href="#device.interface.Interface.aggregation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface aggregation policy</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
@@ -364,7 +366,7 @@ of properties, and can be either aggregated into an object or be an independent 
 <span class="sig-name descname"><span class="pre">mappings</span></span><a class="headerlink" href="#device.interface.Interface.mappings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface mapping list</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#device.mapping.Mapping" title="device.mapping.Mapping">Mapping</a></p>
 </dd>
 </dl>
@@ -372,15 +374,15 @@ of properties, and can be either aggregated into an object or be an independent 
 
 <dl class="py method">
 <dt class="sig sig-object py" id="device.interface.Interface.get_mapping">
-<span class="sig-name descname"><span class="pre">get_mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoint</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">astarte.device.mapping.Mapping</span></span></span><a class="headerlink" href="#device.interface.Interface.get_mapping" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoint</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span></span></span><a class="headerlink" href="#device.interface.Interface.get_mapping" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve the Mapping with the given endpoint from the Interface
 :param endpoint: The Mapping endpoint
 :type endpoint: str</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The Mapping if found, None otherwise</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="#device.mapping.Mapping" title="device.mapping.Mapping">Mapping</a> or None</p>
 </dd>
 </dl>
@@ -404,17 +406,17 @@ of properties, and can be either aggregated into an object or be an independent 
 
 <dl class="py method">
 <dt class="sig sig-object py" id="device.interface.Interface.validate">
-<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime.datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#device.interface.Interface.validate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#device.interface.Interface.validate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface Data validation</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path</strong> (<em>str</em>) – Data endpoint in interface</p></li>
 <li><p><strong>payload</strong> (<em>object</em>) – Data to validate</p></li>
 <li><p><strong>timestamp</strong> (<em>datetime</em><em> or </em><em>None</em>) – Timestamp associated to the payload</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>success</strong> (<em>bool</em>) – Success of the validation operation</p></li>
 <li><p><strong>msg</strong> (<em>str</em>) – Error message if success is False</p></li>
@@ -428,7 +430,7 @@ of properties, and can be either aggregated into an object or be an independent 
 
 </section>
 <section id="module-device.introspection">
-<span id="device-introspection-module"></span><h2>device.introspection module<a class="headerlink" href="#module-device.introspection" title="Permalink to this headline">¶</a></h2>
+<span id="device-introspection-module"></span><h2>device.introspection module<a class="headerlink" href="#module-device.introspection" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="device.introspection.Introspection">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.introspection.</span></span><span class="sig-name descname"><span class="pre">Introspection</span></span><a class="headerlink" href="#device.introspection.Introspection" title="Permalink to this definition">¶</a></dt>
@@ -444,7 +446,7 @@ name but different major/minor are not supported.</p>
 <p>This will add an Interface definition to the Device. It has to be called before <code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code>, as it will be
 used for building the Device Introspection.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>interface_definition</strong> (<em>dict</em>) – An Astarte Interface definition in the form of a Python dictionary. Usually obtained by using json.loads on an Interface file.</p>
 </dd>
 </dl>
@@ -455,10 +457,10 @@ used for building the Device Introspection.</p>
 <span class="sig-name descname"><span class="pre">get_all_interfaces</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#device.introspection.Introspection.get_all_interfaces" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve all the list of all Interfaces in Device’s Introspection</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The list of all Interfaces in the Introspection</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>list</p>
 </dd>
 </dl>
@@ -469,10 +471,10 @@ used for building the Device Introspection.</p>
 <span class="sig-name descname"><span class="pre">get_all_server_owned_interfaces</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#device.introspection.Introspection.get_all_server_owned_interfaces" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve all the list of all Interfaces in Device’s Introspection with server ownership</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The list of all Interfaces in the Introspection that have ownership “server”</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>list</p>
 </dd>
 </dl>
@@ -483,13 +485,13 @@ used for building the Device Introspection.</p>
 <span class="sig-name descname"><span class="pre">get_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.introspection.Introspection.get_interface" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve an Interface definition from the Introspection</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>interface_name</strong> (<em>str</em>) – The name of an Interface previously added with <a class="reference internal" href="#device.introspection.Introspection.add_interface" title="device.introspection.Introspection.add_interface"><code class="xref py py-func docutils literal notranslate"><span class="pre">add_interface()</span></code></a>.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>the Interface definition if found in the Introspection, None otherwise</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#device.interface.Interface" title="device.interface.Interface">Interface</a> or None</p>
 </dd>
 </dl>
@@ -502,7 +504,7 @@ used for building the Device Introspection.</p>
 <p>Removes an Interface definition from the Device. It has to be called before <code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code>, as it will be
 used for building the Device Introspection.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>interface_name</strong> (<em>str</em>) – The name of an Interface previously added with <a class="reference internal" href="#device.introspection.Introspection.add_interface" title="device.introspection.Introspection.add_interface"><code class="xref py py-func docutils literal notranslate"><span class="pre">add_interface()</span></code></a>.</p>
 </dd>
 </dl>
@@ -512,12 +514,12 @@ used for building the Device Introspection.</p>
 
 </section>
 <section id="module-device.mapping">
-<span id="device-mapping-module"></span><h2>device.mapping module<a class="headerlink" href="#module-device.mapping" title="Permalink to this headline">¶</a></h2>
+<span id="device-mapping-module"></span><h2>device.mapping module<a class="headerlink" href="#module-device.mapping" title="Permalink to this heading">¶</a></h2>
 <dl class="py data">
 <dt class="sig sig-object py" id="device.mapping.MapType">
 <span class="sig-prename descclassname"><span class="pre">device.mapping.</span></span><span class="sig-name descname"><span class="pre">MapType</span></span><a class="headerlink" href="#device.mapping.MapType" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mapping type to python type mapping</p>
-<p>alias of <code class="xref py py-obj docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code>]]</p>
+<p>alias of <code class="xref py py-obj docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>]]</p>
 </dd></dl>
 
 <dl class="py class">
@@ -534,7 +536,7 @@ endpoint supporting any number of parameters (see <a class="reference external" 
 <span class="sig-name descname"><span class="pre">endpoint</span></span><a class="headerlink" href="#device.mapping.Mapping.endpoint" title="Permalink to this definition">¶</a></dt>
 <dd><p>Path of the Mapping</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
@@ -545,7 +547,7 @@ endpoint supporting any number of parameters (see <a class="reference external" 
 <span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#device.mapping.Mapping.type" title="Permalink to this definition">¶</a></dt>
 <dd><p>Type of the Mapping (see notes)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
@@ -556,7 +558,7 @@ endpoint supporting any number of parameters (see <a class="reference external" 
 <span class="sig-name descname"><span class="pre">explicit_timestamp</span></span><a class="headerlink" href="#device.mapping.Mapping.explicit_timestamp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flag that defines if the Mapping requires a timestamp associated to the Payload before send</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -584,11 +586,6 @@ endpoint supporting any number of parameters (see <a class="reference external" 
 <p><strong>Quality of Service</strong></p>
 <p>Data messages QoS is chosen according to mapping settings, such as reliability. Properties are always published using QoS 2.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 36%" />
-<col style="width: 36%" />
-<col style="width: 28%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>INTERFACE TYPE</p></th>
 <th class="head"><p>RELIABILITY</p></th>
@@ -616,14 +613,14 @@ endpoint supporting any number of parameters (see <a class="reference external" 
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="device.mapping.Mapping.validate">
-<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bytes</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">datetime.datetime</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime.datetime</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime.datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#device.mapping.Mapping.validate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bytes</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">datetime</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#device.mapping.Mapping.validate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mapping data validation
 :param payload: Data to validate
 :type payload: object
 :param timestamp: Timestamp associated to the payload
 :type timestamp: datetime or None</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><ul class="simple">
 <li><p><strong>success</strong> (<em>bool</em>) – Success of the validation operation</p></li>
 <li><p><strong>msg</strong> (<em>str</em>) – Error message if success is False</p></li>
@@ -643,22 +640,22 @@ endpoint supporting any number of parameters (see <a class="reference external" 
 
 </section>
 <section id="module-device.pairing_handler">
-<span id="device-pairing-handler-module"></span><h2>device.pairing_handler module<a class="headerlink" href="#module-device.pairing_handler" title="Permalink to this headline">¶</a></h2>
+<span id="device-pairing-handler-module"></span><h2>device.pairing_handler module<a class="headerlink" href="#module-device.pairing_handler" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="device.pairing_handler.generate_device_id">
-<span class="sig-prename descclassname"><span class="pre">device.pairing_handler.</span></span><span class="sig-name descname"><span class="pre">generate_device_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">namespace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">uuid.UUID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unique_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.pairing_handler.generate_device_id" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">device.pairing_handler.</span></span><span class="sig-name descname"><span class="pre">generate_device_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">namespace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">UUID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unique_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.pairing_handler.generate_device_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Deterministically generate a device Id based on UUID namespace identifier and unique data.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>namespace</strong> (<em>UUID</em>) – UUID namespace of the device_id</p></li>
 <li><p><strong>unique_data</strong> (<em>str</em>) – device unique data used to generate the device_id</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>the generated device Id, using the standard Astarte Device ID encoding (base64 urlencoding without padding).</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
@@ -670,10 +667,10 @@ endpoint supporting any number of parameters (see <a class="reference external" 
 <dd><p>Quick way to generate a device Id.
 Pay attention that each time this value is different and the use in production is discouraged.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>the generated device Id, using the standard Astarte Device ID encoding (base64 urlencoding without padding).</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>str</p>
 </dd>
 </dl>
@@ -695,7 +692,7 @@ Pay attention that each time this value is different and the use in production i
 <dd><p>Registers a Device against an Astarte instance/realm with a JWT Token</p>
 <p>Returns the Credentials secret for the Device</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>device_id</strong> (<em>str</em>) – The Device ID to register.</p></li>
 <li><p><strong>realm</strong> (<em>str</em>) – The Realm in which to register the Device.</p></li>
@@ -712,7 +709,7 @@ Pay attention that each time this value is different and the use in production i
 <dd><p>Registers a Device against an Astarte instance/realm with a Private Key</p>
 <p>Returns the Credentials secret for the Device</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>device_id</strong> (<em>str</em>) – The Device ID to register.</p></li>
 <li><p><strong>realm</strong> (<em>str</em>) – The Realm in which to register the Device.</p></li>
@@ -725,7 +722,7 @@ Pay attention that each time this value is different and the use in production i
 
 </section>
 <section id="module-device">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-device" title="Permalink to this headline">¶</a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-device" title="Permalink to this heading">¶</a></h2>
 </section>
 </section>
 
@@ -741,13 +738,88 @@ Pay attention that each time this value is different and the use in production i
     <ul>
 <li><a class="reference internal" href="#">device package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-device.crypto">device.crypto module</a></li>
-<li><a class="reference internal" href="#module-device.device">device.device module</a></li>
-<li><a class="reference internal" href="#module-device.exceptions">device.exceptions module</a></li>
-<li><a class="reference internal" href="#module-device.interface">device.interface module</a></li>
-<li><a class="reference internal" href="#module-device.introspection">device.introspection module</a></li>
-<li><a class="reference internal" href="#module-device.mapping">device.mapping module</a></li>
-<li><a class="reference internal" href="#module-device.pairing_handler">device.pairing_handler module</a></li>
+<li><a class="reference internal" href="#module-device.crypto">device.crypto module</a><ul>
+<li><a class="reference internal" href="#device.crypto.certificate_is_valid"><code class="docutils literal notranslate"><span class="pre">certificate_is_valid()</span></code></a></li>
+<li><a class="reference internal" href="#device.crypto.device_has_certificate"><code class="docutils literal notranslate"><span class="pre">device_has_certificate()</span></code></a></li>
+<li><a class="reference internal" href="#device.crypto.generate_csr"><code class="docutils literal notranslate"><span class="pre">generate_csr()</span></code></a></li>
+<li><a class="reference internal" href="#device.crypto.import_device_certificate"><code class="docutils literal notranslate"><span class="pre">import_device_certificate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-device.device">device.device module</a><ul>
+<li><a class="reference internal" href="#device.device.Device"><code class="docutils literal notranslate"><span class="pre">Device</span></code></a><ul>
+<li><a class="reference internal" href="#device.device.Device.on_connected"><code class="docutils literal notranslate"><span class="pre">Device.on_connected</span></code></a></li>
+<li><a class="reference internal" href="#device.device.Device.on_disconnected"><code class="docutils literal notranslate"><span class="pre">Device.on_disconnected</span></code></a></li>
+<li><a class="reference internal" href="#device.device.Device.on_data_received"><code class="docutils literal notranslate"><span class="pre">Device.on_data_received</span></code></a></li>
+<li><a class="reference internal" href="#device.device.Device.add_interface"><code class="docutils literal notranslate"><span class="pre">Device.add_interface()</span></code></a></li>
+<li><a class="reference internal" href="#device.device.Device.connect"><code class="docutils literal notranslate"><span class="pre">Device.connect()</span></code></a></li>
+<li><a class="reference internal" href="#device.device.Device.disconnect"><code class="docutils literal notranslate"><span class="pre">Device.disconnect()</span></code></a></li>
+<li><a class="reference internal" href="#device.device.Device.get_device_id"><code class="docutils literal notranslate"><span class="pre">Device.get_device_id()</span></code></a></li>
+<li><a class="reference internal" href="#device.device.Device.is_connected"><code class="docutils literal notranslate"><span class="pre">Device.is_connected()</span></code></a></li>
+<li><a class="reference internal" href="#device.device.Device.remove_interface"><code class="docutils literal notranslate"><span class="pre">Device.remove_interface()</span></code></a></li>
+<li><a class="reference internal" href="#device.device.Device.send"><code class="docutils literal notranslate"><span class="pre">Device.send()</span></code></a></li>
+<li><a class="reference internal" href="#device.device.Device.send_aggregate"><code class="docutils literal notranslate"><span class="pre">Device.send_aggregate()</span></code></a></li>
+<li><a class="reference internal" href="#device.device.Device.unset_property"><code class="docutils literal notranslate"><span class="pre">Device.unset_property()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-device.exceptions">device.exceptions module</a><ul>
+<li><a class="reference internal" href="#device.exceptions.APIError"><code class="docutils literal notranslate"><span class="pre">APIError</span></code></a></li>
+<li><a class="reference internal" href="#device.exceptions.AstarteError"><code class="docutils literal notranslate"><span class="pre">AstarteError</span></code></a></li>
+<li><a class="reference internal" href="#device.exceptions.AuthorizationError"><code class="docutils literal notranslate"><span class="pre">AuthorizationError</span></code></a></li>
+<li><a class="reference internal" href="#device.exceptions.DeviceAlreadyRegisteredError"><code class="docutils literal notranslate"><span class="pre">DeviceAlreadyRegisteredError</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-device.interface">device.interface module</a><ul>
+<li><a class="reference internal" href="#device.interface.Interface"><code class="docutils literal notranslate"><span class="pre">Interface</span></code></a><ul>
+<li><a class="reference internal" href="#device.interface.Interface.name"><code class="docutils literal notranslate"><span class="pre">Interface.name</span></code></a></li>
+<li><a class="reference internal" href="#device.interface.Interface.version_major"><code class="docutils literal notranslate"><span class="pre">Interface.version_major</span></code></a></li>
+<li><a class="reference internal" href="#device.interface.Interface.version_minor"><code class="docutils literal notranslate"><span class="pre">Interface.version_minor</span></code></a></li>
+<li><a class="reference internal" href="#device.interface.Interface.type"><code class="docutils literal notranslate"><span class="pre">Interface.type</span></code></a></li>
+<li><a class="reference internal" href="#device.interface.Interface.ownership"><code class="docutils literal notranslate"><span class="pre">Interface.ownership</span></code></a></li>
+<li><a class="reference internal" href="#device.interface.Interface.aggregation"><code class="docutils literal notranslate"><span class="pre">Interface.aggregation</span></code></a></li>
+<li><a class="reference internal" href="#device.interface.Interface.mappings"><code class="docutils literal notranslate"><span class="pre">Interface.mappings</span></code></a></li>
+<li><a class="reference internal" href="#device.interface.Interface.get_mapping"><code class="docutils literal notranslate"><span class="pre">Interface.get_mapping()</span></code></a></li>
+<li><a class="reference internal" href="#device.interface.Interface.is_aggregation_object"><code class="docutils literal notranslate"><span class="pre">Interface.is_aggregation_object()</span></code></a></li>
+<li><a class="reference internal" href="#device.interface.Interface.is_server_owned"><code class="docutils literal notranslate"><span class="pre">Interface.is_server_owned()</span></code></a></li>
+<li><a class="reference internal" href="#device.interface.Interface.validate"><code class="docutils literal notranslate"><span class="pre">Interface.validate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-device.introspection">device.introspection module</a><ul>
+<li><a class="reference internal" href="#device.introspection.Introspection"><code class="docutils literal notranslate"><span class="pre">Introspection</span></code></a><ul>
+<li><a class="reference internal" href="#device.introspection.Introspection.add_interface"><code class="docutils literal notranslate"><span class="pre">Introspection.add_interface()</span></code></a></li>
+<li><a class="reference internal" href="#device.introspection.Introspection.get_all_interfaces"><code class="docutils literal notranslate"><span class="pre">Introspection.get_all_interfaces()</span></code></a></li>
+<li><a class="reference internal" href="#device.introspection.Introspection.get_all_server_owned_interfaces"><code class="docutils literal notranslate"><span class="pre">Introspection.get_all_server_owned_interfaces()</span></code></a></li>
+<li><a class="reference internal" href="#device.introspection.Introspection.get_interface"><code class="docutils literal notranslate"><span class="pre">Introspection.get_interface()</span></code></a></li>
+<li><a class="reference internal" href="#device.introspection.Introspection.remove_interface"><code class="docutils literal notranslate"><span class="pre">Introspection.remove_interface()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-device.mapping">device.mapping module</a><ul>
+<li><a class="reference internal" href="#device.mapping.MapType"><code class="docutils literal notranslate"><span class="pre">MapType</span></code></a></li>
+<li><a class="reference internal" href="#device.mapping.Mapping"><code class="docutils literal notranslate"><span class="pre">Mapping</span></code></a><ul>
+<li><a class="reference internal" href="#device.mapping.Mapping.endpoint"><code class="docutils literal notranslate"><span class="pre">Mapping.endpoint</span></code></a></li>
+<li><a class="reference internal" href="#device.mapping.Mapping.type"><code class="docutils literal notranslate"><span class="pre">Mapping.type</span></code></a></li>
+<li><a class="reference internal" href="#device.mapping.Mapping.explicit_timestamp"><code class="docutils literal notranslate"><span class="pre">Mapping.explicit_timestamp</span></code></a></li>
+<li><a class="reference internal" href="#device.mapping.Mapping.reliability"><code class="docutils literal notranslate"><span class="pre">Mapping.reliability</span></code></a></li>
+<li><a class="reference internal" href="#device.mapping.Mapping.validate"><code class="docutils literal notranslate"><span class="pre">Mapping.validate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#device.mapping.type_strings"><code class="docutils literal notranslate"><span class="pre">type_strings</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-device.pairing_handler">device.pairing_handler module</a><ul>
+<li><a class="reference internal" href="#device.pairing_handler.generate_device_id"><code class="docutils literal notranslate"><span class="pre">generate_device_id()</span></code></a></li>
+<li><a class="reference internal" href="#device.pairing_handler.generate_random_device_id"><code class="docutils literal notranslate"><span class="pre">generate_random_device_id()</span></code></a></li>
+<li><a class="reference internal" href="#device.pairing_handler.obtain_device_certificate"><code class="docutils literal notranslate"><span class="pre">obtain_device_certificate()</span></code></a></li>
+<li><a class="reference internal" href="#device.pairing_handler.obtain_device_transport_information"><code class="docutils literal notranslate"><span class="pre">obtain_device_transport_information()</span></code></a></li>
+<li><a class="reference internal" href="#device.pairing_handler.register_device_with_jwt_token"><code class="docutils literal notranslate"><span class="pre">register_device_with_jwt_token()</span></code></a></li>
+<li><a class="reference internal" href="#device.pairing_handler.register_device_with_private_key"><code class="docutils literal notranslate"><span class="pre">register_device_with_private_key()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-device">Module contents</a></li>
 </ul>
 </li>
@@ -775,7 +847,7 @@ Pay attention that each time this value is different and the use in production i
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -799,7 +871,7 @@ Pay attention that each time this value is different and the use in production i
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021-2022, SECOMind.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     </div>
   </body>
 </html>
