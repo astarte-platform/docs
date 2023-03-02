@@ -166,11 +166,11 @@ This is the only behaviour previous Astarte versions (i.e. &lt; 1.1) allowed.</p
     &quot;error_handlers&quot; : [
             {
                 &quot;on&quot; : &quot;server_error&quot;,
-                &quot;strategy&quot; : &quot;none&quot;
+                &quot;strategy&quot; : &quot;retry&quot;
             },
             {
                 &quot;on&quot; : &quot;client_error&quot;,
-                &quot;strategy&quot; : &quot;retry&quot;
+                &quot;strategy&quot; : &quot;discard&quot;
             }
         ],
     &quot;retry_times&quot; : 5,
