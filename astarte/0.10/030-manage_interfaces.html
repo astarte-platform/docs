@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="Astarte v0.10.2">
+
+    <title>Managing Interfaces — Astarte v0.10.2</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+
+    <script src="dist/sidebar_items-61bd90a078.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+
+
+  </head>
+  <body data-type="extras">
+    <script>
+
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte
+      </a>
+      <strong class="sidebar-projectVersion">
+        v0.10.2
+      </strong>
+    </div>
+
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>Managing Interfaces</h1><p><a href="030-interface.html">Interfaces</a> define how data is exchanged over Astarte. For a Device to be capable of exchanging data into its Realm, its interfaces have to be registered into the Realm first. Let's walk over the whole process.</p><p>It is assumed that you have read the <a href="029-interface_design_guide.html">Interface design guide</a> before, to avoid bad surprises once your fleet starts rolling.</p><h2 id="querying-interfaces" class="section-heading">
+  <a href="#querying-interfaces" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Querying Interfaces
+</h2>
+<p>To find out which interfaces are installed in a Realm, call /interfaces on your chosen realm in Realm Management API:</p><p><em>Sample Request</em></p><pre><code class="makeup elixir"><span class="nc">GET</span><span class="w"> </span><span class="n">realm</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">interfaces</span></code></pre><p><em>Sample Response</em></p><pre><code class="json">[&quot;com.my.Interface1&quot;,&quot;com.my.Interface2&quot;,&quot;com.my.Interface3&quot;]</code></pre><p>This returns a list of installed interfaces inside the Realm. To retrieve a list of available major versions of a specific interface, go further in the REST tree:</p><p><em>Sample Request</em></p><pre><code class="makeup elixir"><span class="nc">GET</span><span class="w"> </span><span class="n">realm</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">interfaces</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">my</span><span class="o">.</span><span class="nc">Interface1</span></code></pre><p><em>Sample Response</em></p><pre><code class="json">[0,1,2]</code></pre><p>In a realm, only the latest minor version of each major version of an interface is returned as a reference. This can be done due to the fact that Semantic Versioning implies a new minor doesn't introduce any breaking change (e.g.: deleting or renaming a mapping), and as such querying an older version of an interface using a newer one as a model is compatible - some mappings might be empty, as expected, and will be disregarded.</p><p>To inspect the installed interface, you can query one of its major versions:</p><p><em>Sample Request</em></p><pre><code class="makeup elixir"><span class="nc">GET</span><span class="w"> </span><span class="n">realm</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">interfaces</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">my</span><span class="o">.</span><span class="nc">Interface1</span><span class="o">/</span><span class="mi">0</span></code></pre><p><em>Sample Response</em></p><pre><code class="makeup elixir"><span class="p" data-group-id="5031910851-1">{</span><span class="w">
+  </span><span class="ss">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5031910851-2">{</span><span class="w">
+    </span><span class="ss">&quot;version_minor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="ss">&quot;version_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;properties&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">&quot;ownership&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;device&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5031910851-3">[</span><span class="w">
+      </span><span class="p" data-group-id="5031910851-4">{</span><span class="w">
+        </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="ss">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/myValue&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="ss">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;This is quite an important value.&quot;</span><span class="w">
+      </span><span class="p" data-group-id="5031910851-4">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="5031910851-5">{</span><span class="w">
+        </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="ss">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/myBetterValue&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="ss">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;A better revision, introduced in minor 2, supported only by some devices&quot;</span><span class="w">
+      </span><span class="p" data-group-id="5031910851-5">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="5031910851-6">{</span><span class="w">
+        </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;boolean&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="ss">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/awesome&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="ss">&quot;allow_unset&quot;</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+        </span><span class="ss">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Introduced in minor 1, tells you if the device is awesome. Optional.&quot;</span><span class="w">
+      </span><span class="p" data-group-id="5031910851-6">}</span><span class="w">
+    </span><span class="p" data-group-id="5031910851-3">]</span><span class="p">,</span><span class="w">
+    </span><span class="ss">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;com.my.Interface1&quot;</span><span class="w">
+  </span><span class="p" data-group-id="5031910851-2">}</span><span class="w">
+</span><span class="p" data-group-id="5031910851-1">}</span></code></pre><h2 id="installing-updating-an-interface" class="section-heading">
+  <a href="#installing-updating-an-interface" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Installing/Updating an interface
+</h2>
+<p>Interfaces are supposed to change over time, and are dynamic. As such, they can be installed and updated. Interface installation means adding either a whole new interface (as in: an interface with a new name), or a new major version of an already known interface. Interface update means updating a specific, existing interface name/major version with a new minor version.</p><h3 id="installation" class="section-heading">
+  <a href="#installation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Installation
+</h3>
+<p>To install a new interface, <code class="inline">POST</code> its JSON body to the <code class="inline">/interfaces</code> endpoint of the Realm encapsulated in a <code class="inline">data</code> object, like in the following example:</p><pre><code class="makeup elixir"><span class="p" data-group-id="0008242260-1">{</span><span class="w">
+    </span><span class="ss">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0008242260-2">{</span><span class="w">
+      </span><span class="ss">&quot;version_minor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="ss">&quot;version_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;properties&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">&quot;ownership&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;device&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="ss">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0008242260-3">[</span><span class="w">
+        </span><span class="p" data-group-id="0008242260-4">{</span><span class="w">
+          </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="ss">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/myValue&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="ss">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;This is quite an important value.&quot;</span><span class="w">
+        </span><span class="p" data-group-id="0008242260-4">}</span><span class="p">,</span><span class="w">
+        </span><span class="p" data-group-id="0008242260-5">{</span><span class="w">
+          </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;integer&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="ss">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/myBetterValue&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="ss">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;A better revision, introduced in minor 2, supported only by some devices&quot;</span><span class="w">
+        </span><span class="p" data-group-id="0008242260-5">}</span><span class="p">,</span><span class="w">
+        </span><span class="p" data-group-id="0008242260-6">{</span><span class="w">
+          </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;boolean&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="ss">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/awesome&quot;</span><span class="p">,</span><span class="w">
+          </span><span class="ss">&quot;allow_unset&quot;</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
+          </span><span class="ss">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Introduced in minor 1, tells you if the device is awesome. Optional.&quot;</span><span class="w">
+        </span><span class="p" data-group-id="0008242260-6">}</span><span class="w">
+      </span><span class="p" data-group-id="0008242260-3">]</span><span class="p">,</span><span class="w">
+      </span><span class="ss">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;com.my.Interface1&quot;</span><span class="w">
+    </span><span class="p" data-group-id="0008242260-2">}</span><span class="w">
+</span><span class="p" data-group-id="0008242260-1">}</span></code></pre><p>The call will return either <code class="inline">201 Created</code> or an error. Most common failure cases are:</p><ul><li>The interface/major combination already exists in the Realm</li><li>The interface schema fails validation</li></ul><p>In any case, the API returns details on what caused the error and how to solve it through Astarte's standard error reply schema.</p><p>It is also worth noting that interface creation is asynchronous: as such, it might be possible that <code class="inline">201 Created</code> will be returned before the interface is generally available in the Realm.</p><h3 id="update" class="section-heading">
+  <a href="#update" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Update
+</h3>
+<p>To update an existing interface, issue a <code class="inline">PUT</code> <code class="inline">/interfaces/&lt;name&gt;/&lt;major&gt;</code> endpoint of the realm with the very same semantics as the Installation procedure. The call will return either <code class="inline">201 Created</code> or an error. Apart from the very same errors that could be triggered upon installation, Update will also fail if the interface doesn't provide a compatible upgrade path from the previously installed minor.</p><h2 id="interfaces-lifecycle" class="section-heading">
+  <a href="#interfaces-lifecycle" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Interfaces lifecycle
+</h2>
+<p>Interfaces are versioned through a semantic versioning-like mechanism. A Realm can hold any number of interfaces and any number of major versions of a single interface. It holds, however, only the latest installed minor version of each major version, due to the inherent compatibility of Semantic Versioning.</p><p>There is no significant cost in adding a non-aggregated interface to a Realm or updating a non-aggregated interface frequently - keep in mind, however, that you might incur in <a href="#dangling-data">dangling data</a> in your devices if you don't plan your interface update strategy accurately. For what concerns Aggregated interfaces, instead, there is <a href="029-interface_design_guide.html#aggregation-makes-a-difference">an inherent cost which might end up in putting pressure on your Cluster</a>.</p><p>Once an interface has been installed in a Realm, it can't be uninstalled without performing manual operations on Astarte's DB, unless its major version number is <code class="inline">0</code>. This is a safety measure to prevent dangling data from appearing in the cluster. For this reason, when developing an Astarte-based interface, it is strongly advised to keep its major number to <code class="inline">0</code> to allow quick changes at the expense of data loss.</p><p>Please note, however, that deleting a major <code class="inline">0</code> interface is possible if the Realm has no devices left declaring that specific interface in their introspection. This is done to avoid forever dangling data and potential consistency errors. This limitation might be lifted in the future through a mass-deletion mechanism, but there is no guarantee this will ever be done. It is advised to test new interfaces on a limited number of devices to ease operations.</p><h2 id="realm-vs-device-interface-relationship" class="section-heading">
+  <a href="#realm-vs-device-interface-relationship" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Realm vs. Device Interface relationship
+</h2>
+<p>There is a clear difference between how Interfaces are managed in a Realm and its Devices (e.g.: the device Introspection). Whereas a Realm can have any number of versions of a single interface, a Device is allowed to expose in its introspection only a single, specific version of an Interface.</p><p>In general, Realm interfaces are kept as a shared agreement between its entities, but when it comes to interacting with a Device, the Realm honors its introspection (as long as the Device declares interfaces the Realm is knowledgeable about).</p><p>As such, installing an interface in a Realm is a completely safe and non-disruptive operation: by design, Devices aren't aware of which interfaces a Realm supports, and Realms don't impose any interface versioning on a Device.</p><h2 id="caveats" class="section-heading">
+  <a href="#caveats" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Caveats
+</h2>
+<p>Due to how minor versions work, it is responsibility of the end user to prevent accidental data loss due to missing data. Every mapping declared in a new minor release <em>must</em> be assumed as optional, as there is no guarantee that a Device will be able to publish (or receive) data on that specific mapping.</p><p>Minor version bumps work great in case they represents additional, optional features which might be available on an arbitrarly large subset of Devices implementing that interface's major version, and are not necessary or fundamental for normal operations. If that is not the case, consider a major version update or a whole new interface instead.</p><p>Also, please keep in mind that designing interfaces in the right way, especially being as atomic as reasonably possible, helps a lot in preventing situations where a minor interface update can't be done without disrupting operations. Again, the <a href="029-interface_design_guide.html">Interface design guide</a> covers this topic extensively.</p><h2 id="dangling-data" class="section-heading">
+  <a href="#dangling-data" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Dangling data
+</h2>
+<p>In several situations, it is possible to have dangling data inside Astarte. This happens by design, as the liquid nature of a Device makes it possible for data to be stored in interfaces no longer present in its introspection.</p><p>Astarte does not delete data unless requested explicitly: as such, data remains available inside its database, but potentially inaccessible through the cluster's APIs and standard mechanism.</p><p>As of the current version, Astarte has no mechanism for retrieving and acting upon a device's dangling data - this is a limitation that will be lifted in future releases with additions to the current API.</p><h3 id="interface-major-version-change" class="section-heading">
+  <a href="#interface-major-version-change" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Interface major version change
+</h3>
+<p>If a device upgrades one of its interfaces to a new major version, the previous interface is <em>parked</em> and its data remains dangling. Every API call, trigger, or reference to the interface will always target the major version declared in the introspection, regardless of the fact that a more recent version might have been installed in the realm.</p><h3 id="interface-deletion-from-device" class="section-heading">
+  <a href="#interface-deletion-from-device" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Interface deletion from device
+</h3>
+<p>A device might arbitrarly decide to remove an interface from its introspection. In such a case, Astarte won't return any data and will consider all data previously pushed to said interface inaccessible. In case the interface comes back again in the introspection, previously pushed data will be available as if nothing happened.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="029-interface_design_guide.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Interface Design Guide
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="035-register_device.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Registering a Device
+        </span>
+      </a>
+
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>

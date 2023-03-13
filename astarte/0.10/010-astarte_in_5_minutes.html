@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="Astarte v0.10.2">
+
+    <title>Astarte in 5 minutes — Astarte v0.10.2</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+
+    <script src="dist/sidebar_items-61bd90a078.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+
+
+  </head>
+  <body data-type="extras">
+    <script>
+
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte
+      </a>
+      <strong class="sidebar-projectVersion">
+        v0.10.2
+      </strong>
+    </div>
+
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>Astarte in 5 minutes</h1><p><strong>This documentation page describes a discontinued version, for production systems use a newer version instead.</strong></p><p>This tutorial will guide you through bringing up your Astarte instance, creating a realm and streaming your first data from a device simulator (or a real device) before your cup of tea is ready.</p><h2 id="before-you-begin" class="section-heading">
+  <a href="#before-you-begin" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Before you begin
+</h2>
+<p>First of all, please keep in mind that <strong>this setup is not meant to be used in production</strong>: by default, no persistence is involved, the installation does not have any recovery mechanism, and you will have to restart services manually in case something goes awry. This guide is great if you want to take Astarte for a spin, or if you want to use an isolated instance for development.</p><p>You will need a machine with at least 4GB of RAM (mainly due to Cassandra), with <a href="https://www.docker.com/">Docker</a>, <a href="https://github.com/cloudflare/cfssl">cfssl</a>, Python 3 and OpenSSL installed. You will need the PyJWT Python module for generating JWT tokens for Astarte, which you can install either via <code class="inline">pip3</code> (<code class="inline">pip3 install PyJWT</code>) or using your distribution's packages (e.g. <code class="inline">apt-get install python3-jwt</code> on Debian based distributions).</p><p>Also, on the machine(s) or device(s) you will use as a client, you will need either Docker, or a <a href="https://www.qt.io/">Qt5</a> installation with development components if you wish to build and run components locally.</p><h2 id="install-astarte" class="section-heading">
+  <a href="#install-astarte" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Install Astarte
+</h2>
+<p>To get our Astarte instance running as fast as possible, we will install Astarte's standalone distribution. It includes a tunable Docker Compose which brings up Astarte and every companion service needed for it to work. To do so, simply clone Astarte's main repository and use its scripts to bring it up:</p><pre><code class="sh">$ git clone https://github.com/astarte-platform/astarte.git &amp;&amp; cd astarte
+$ ./generate-compose-files.sh
+$ docker-compose up -d</code></pre><p><code class="inline">generate-compose-files.sh</code> will generate a root CA for devices, a key pair for Housekeeping, and a self-signed certificate for the broker (note: this is a <em>really</em> bad idea in production). You can tune the compose file further to use legitimate certificates and custom keys, but this is out of the scope of this tutorial.</p><p>Compose might take some time to bring everything up, but usually within a minute from the containers creation Astarte will be ready. Compose will forward the following ports to your machine:</p><ul><li><code class="inline">4000</code>: Realm Management API</li><li><code class="inline">4001</code>: Housekeeping API</li><li><code class="inline">4002</code>: AppEngine API</li><li><code class="inline">4003</code>: Pairing API</li><li><code class="inline">8883</code>: MQTTS</li><li><code class="inline">1885</code>: MQTT with Proxy Protocol for SSL termination (won't be used)</li><li><code class="inline">80</code>: Let's Encrypt verification (won't be used)</li></ul><p>This example won't use Let's Encrypt with VerneMQ - in case binding to port 80 is a problem to you, you can comment it out in <code class="inline">docker-compose.yml</code> without affecting any functionality.</p><p>To check everything went fine, use <code class="inline">docker ps</code> to verify relevant containers are up: Astarte itself, VerneMQ, PostgreSQL (used by CFSSL), CFSSL, RabbitMQ and Cassandra should be now running on your system. If any of them isn't up and running, <code class="inline">docker ps -a</code> should show it stopped or failed. In those cases, it is advised to issue <code class="inline">docker-compose up -d</code> again to fix potential temporary failures.</p><h2 id="create-a-realm" class="section-heading">
+  <a href="#create-a-realm" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Create a Realm
+</h2>
+<p>Now that we have our instance up and running, we can start setting up a Realm for our device. We'll call our Realm <code class="inline">test</code>. Given we have no SSO or Authentication mechanism set up, we're just going to generate a public key to sign our JWTs with. You can create one with OpenSSL:</p><pre><code class="sh">$ openssl genrsa -out test_realm.key 4096
+$ openssl rsa -in test_realm.key -pubout -outform PEM -out test_realm.key.pub
+$ awk '{printf &quot;%s\\n&quot;, $0}' test_realm.key.pub &gt; test_realm.key.pub.api</code></pre><p>Also, we will need a JWT token to authenticate against Housekeeping. <code class="inline">generate-compose-files.sh</code> created a public key automatically, which is in <code class="inline">compose/astarte-keys/housekeeping.pub</code>. To generate a JWT token for authorizing our calls, we will use the handy <code class="inline">generate-astarte-credentials</code> utility in Astarte's repository, which can also be easily inlined into cURL.</p><p>Use cURL to invoke Housekeeping API for creating a new Realm:</p><pre><code class="sh">$ curl -X POST http://localhost:4001/v1/realms -H &quot;Authorization: Bearer $(./generate-astarte-credentials -t housekeeping -p compose/astarte-keys/housekeeping.key)&quot; -H &quot;Content-Type: application/json&quot; -d &quot;{\&quot;data\&quot;:{\&quot;realm_name\&quot;: \&quot;test\&quot;, \&quot;jwt_public_key_pem\&quot;: \&quot;$(cat test_realm.key.pub.api)\&quot;}}&quot;</code></pre><p>This creates a <code class="inline">test</code> realm, which should be ready to be used almost immediately. To ensure your realm is available and ready, check if it exists in Astarte by issuing:</p><pre><code class="sh">$ curl -X GET http://localhost:4001/v1/realms -H &quot;Authorization: Bearer $(./generate-astarte-credentials -t housekeeping -p compose/astarte-keys/housekeeping.key)&quot;</code></pre><h2 id="install-an-interface" class="section-heading">
+  <a href="#install-an-interface" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Install an interface
+</h2>
+<p>We will use <a href="https://github.com/astarte-platform/stream-qt5-test">Astarte's Qt5 Stream Generator</a> to feed data into Astarte. Clone the repository, as we will have to install its <code class="inline">org.astarteplatform.Values</code> interface into our new realm. To do that, we can use cURL again:</p><pre><code class="sh">$ curl -X POST http://localhost:4000/v1/test/interfaces -H &quot;Authorization: Bearer $(./generate-astarte-credentials -t realm -p test_realm.key)&quot; -H &quot;Content-Type: application/json&quot; -d &quot;{\&quot;data\&quot;: $(cat ../stream-qt5-test/interfaces/org.astarteplatform.Values.json)}&quot;</code></pre><p>Now <code class="inline">org.astarteplatform.Values</code> should show up among our available interfaces:</p><pre><code class="sh">$ curl -X GET http://localhost:4000/v1/test/interfaces -H &quot;Authorization: Bearer $(./generate-astarte-credentials -t realm -p test_realm.key)&quot;</code></pre><p>Our Astarte instance is now ready for our devices.</p><h2 id="install-a-trigger" class="section-heading">
+  <a href="#install-a-trigger" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Install a trigger
+</h2>
+<p>We will also test Astarte's push capabilities with a trigger. This will send a POST to a URL of our choice every time the value generated by <code class="inline">stream_test</code> is above 0.6.</p><p>Due to how triggers work, it is fundamental to install the trigger before a device connects. Doing otherwise will cause the trigger to kick in at a later time, and as such no events will be streamed for a while.</p><p>Replace <code class="inline">http://example.com</code> with your target URL in the command below, you can use a Postbin service like <a href="http://bin.mailgun.net">Mailgun Postbin</a> to generate a URL and see the POST requests.</p><pre><code class="sh">$ export TRIGGER_TARGET_URL=&quot;http://example.com&quot;
+$ curl -X POST http://localhost:4000/v1/test/triggers -H &quot;Authorization: Bearer $(./generate-astarte-credentials -t realm -p test_realm.key)&quot; -H &quot;Content-Type: application/json&quot; -d &quot;{\&quot;data\&quot;: {\&quot;name\&quot;: \&quot;my_trigger\&quot;, \&quot;action\&quot;: {\&quot;http_post_url\&quot;: \&quot;$TRIGGER_TARGET_URL\&quot;}, \&quot;simple_triggers\&quot;: [{\&quot;type\&quot;: \&quot;data_trigger\&quot;, \&quot;on\&quot;: \&quot;incoming_data\&quot;, \&quot;interface_name\&quot;: \&quot;org.astarteplatform.Values\&quot;, \&quot;interface_major\&quot;: 0, \&quot;match_path\&quot;: \&quot;/realValue\&quot;, \&quot;value_match_operator\&quot;: \&quot;&gt;\&quot;, \&quot;known_value\&quot;: 0.6}]}}&quot;</code></pre><p>You can now check that your trigger is correctly installed:</p><pre><code class="sh">curl -X GET http://localhost:4000/v1/test/triggers/my_trigger -H &quot;Authorization: Bearer $(./generate-astarte-credentials -t realm -p test_realm.key)&quot;</code></pre><h2 id="stream-data" class="section-heading">
+  <a href="#stream-data" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Stream data
+</h2>
+<p>If you already have an Astarte compliant device, you can configure it and connect it straight away, and it will just work with your new installation - provided you skip SSL checks on the broker's certificate. If you don't, you can use Astarte's <code class="inline">stream-qt5-test</code> to emulate an Astarte device and generate a <code class="inline">datastream</code>. You can do this either on the same machine where you are running Astarte, or from another machine or device on the same network.</p><p>Depending on what your client supports, you can either compile <code class="inline">stream-qt5-test</code> (this will take some more time), or you can use a ready to use Docker container to launch it. Docker is the easiest and painless way, but this guide will cover both methods.</p><h3 id="using-a-container-for-stream-qt5-test" class="section-heading">
+  <a href="#using-a-container-for-stream-qt5-test" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Using a container for stream-qt5-test
+</h3>
+<p>Astarte's <code class="inline">stream-qt5-test</code> can be pulled from Docker Hub with:</p><pre><code class="sh">$ docker pull astarte/astarte-stream-qt5-test:0.10</code></pre><p>Its most basic invocation (from your <code class="inline">astarte</code> repository tree) is:</p><pre><code class="sh">$ docker run --net=&quot;host&quot; -e &quot;DEVICE_ID=$(./generate-astarte-device-id)&quot; -e &quot;PAIRING_HOST=http://localhost:4003&quot; -e &quot;REALM=test&quot; -e &quot;AGENT_KEY=$(./generate-astarte-credentials -t pairing -p test_realm.key)&quot; -e &quot;IGNORE_SSL_ERRORS=true&quot; astarte/astarte-stream-qt5-test:0.10</code></pre><p>This will generate a random datastream from a brand new, random Device ID. You can tweak those parameters to whatever suits you better by having a look at the Dockerfile. You can spawn any number of instances you like, or you can have the same Device ID send longer streams of data by saving the container's persistency through a Docker Volume. If you wish to do so, simply add <code class="inline">-v /persistency:&lt;your persistency path&gt;</code> to your <code class="inline">docker run</code> invocation.</p><p>Refer to <code class="inline">stream-qt5-test</code> <a href="https://github.com/astarte-platform/stream-qt5-test/blob/master/README.md">README</a> for more details on which variables can be passed to the container.</p><p>Also, please note that the <code class="inline">--net=&quot;host&quot;</code> parameter is required to make <code class="inline">localhost</code> work. If this is not desirable, you can change <code class="inline">PAIRING_HOST</code> to an host reachable from within the container network. Obviously, that parameter isn't required if you're running the container on a different machine and <code class="inline">PAIRING_HOST</code> is pointing to a different URL.</p><h2 id="building-stream-qt5-test-from-source" class="section-heading">
+  <a href="#building-stream-qt5-test-from-source" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Building stream-qt5-test from source
+</h2>
+<p>If your target platform does not support running containers, you can build <code class="inline">stream-qt5-test</code> from source. To do so, you will have to compile both Astarte Qt5 SDK and Astarte Qt5 Stream Test. Their main dependencies are <code class="inline">cmake</code>, <code class="inline">qtbase</code>, <code class="inline">mosquitto</code> and <code class="inline">openssl</code>. If you're on a Debian derivative, you can install them all with:</p><pre><code class="sh"># apt-get install qt5-default qtbase5-dev libqt5sql5-sqlite libssl-dev libmosquittopp-dev cmake git build-essential</code></pre><p>Once your dependencies are installed, compile your components:</p><pre><code class="sh">$ git clone https://github.com/astarte-platform/astarte-device-sdk-qt5.git
+$ cd astarte-device-sdk-qt5
+$ mkdir build
+$ cd build
+$ cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+$ make
+$ make install
+$ cd -
+$ git clone https://github.com/astarte-platform/stream-qt5-test.git
+$ cd stream-qt5-test
+$ qmake .
+$ make</code></pre><p>You can now run <code class="inline">stream-qt5-test</code> from your last build directory. Refer to its <a href="https://github.com/astarte-platform/stream-qt5-test/blob/master/README.md">README</a> (or to its sources) to learn about how to use it and which options are available.</p><h2 id="grab-your-tea" class="section-heading">
+  <a href="#grab-your-tea" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Grab your tea
+</h2>
+<p>Congratulations! Your devices or fake devices are now communicating with Astarte, and your tea should be ready by now. You can check if everything is working out by invoking AppEngine APIs to get some values. In case you are using <code class="inline">stream-qt5-test</code>, you can get the last sent value via cURL:</p><pre><code class="sh">$ curl -X GET &quot;http://localhost:4002/v1/test/devices/&lt;your device id&gt;/interfaces/org.astarteplatform.Values/realValue?limit=1&quot; -H &quot;Authorization: Bearer $(./generate-astarte-credentials -t appengine -p test_realm.key)&quot;</code></pre><p>If you get a meaningful value, congratulations - you have a working Astarte installation with your first <code class="inline">datastream</code> coming in!</p><p>Moreover, Astarte's Docker Compose also installs <a href="https://github.com/astarte-platform/astarte-dashboard">Astarte Dashboard</a>, from which you can manage your Realms and install Triggers, Interfaces and more from a Web UI. It is accessible by default at <code class="inline">http://localhost:4040/</code> - remember that if you are not exposing Astarte from <code class="inline">localhost</code>, you have to change Realm Management API's URL in Dashboard's configuration file, to be found in <code class="inline">compose/astarte-dashboard/config.json</code> in Astarte's repository. You can generate a token for Astarte Dashboard, as usual, through <code class="inline">./generate-astarte-credentials -t realm -p test_realm.key</code>. Grant a longer expiration by using the <code class="inline">-e</code> parameter to avoid being logged out too quickly.</p><p>From here on, you can use all of Astarte's APIs and features from your own installation. You can add devices, experiment with interfaces, or develop your own applications on top of Astarte's triggers or AppEngine's APIs. And have a lot of fun!</p><h2 id="cleaning-up" class="section-heading">
+  <a href="#cleaning-up" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Cleaning up
+</h2>
+<p>When you're done with your tests and developments, you can use <code class="inline">docker-compose</code> again to tear down your Astarte instance simply by issuing:</p><pre><code class="sh">$ docker-compose down</code></pre><p>Unless you add the <code class="inline">-v</code> option, persistencies will be kept and next time you will <code class="inline">docker-compose up</code> the cluster will come back in the very same state you left it last time. <code class="inline">docker-compose down -v</code> is extremely useful during development, especially if you want a clean slate for testing your applications or your routines every time.</p><h2 id="troubleshooting" class="section-heading">
+  <a href="#troubleshooting" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Troubleshooting
+</h2>
+<h3 id="could-not-generate-credentials" class="section-heading">
+  <a href="#could-not-generate-credentials" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Could not generate credentials
+</h3>
+<p>If <code class="inline">astarte-generate-credentials</code> fails with this error</p><pre><code class="makeup elixir"><span class="nc">Traceback</span><span class="w"> </span><span class="p" data-group-id="8443230330-1">(</span><span class="n">most</span><span class="w"> </span><span class="n">recent</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="n">last</span><span class="p" data-group-id="8443230330-1">)</span><span class="p">:</span><span class="w">
+  </span><span class="nc">File</span><span class="w"> </span><span class="s">&quot;./generate-astarte-credentials&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="mi">37</span><span class="p">,</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="w">
+    </span><span class="n">encoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jwt</span><span class="o">.</span><span class="n">encode</span><span class="p" data-group-id="8443230330-2">(</span><span class="n">claims</span><span class="p">,</span><span class="w"> </span><span class="n">private_key_pem</span><span class="p">,</span><span class="w"> </span><span class="n">algorithm</span><span class="o">=</span><span class="s">&quot;RS256&quot;</span><span class="p" data-group-id="8443230330-2">)</span><span class="w">
+</span><span class="ss">AttributeError</span><span class="p">:</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="sc">&#39;jwt&#39;</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">attribute</span><span class="w"> </span><span class="sc">&#39;encode&#39;</span></code></pre><p>you have to remove the conflicting <code class="inline">jwt</code> pip package by uninstalling it with <code class="inline">pip3 uninstall jwt</code>.</p><h2 id="final-notes" class="section-heading">
+  <a href="#final-notes" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Final notes
+</h2>
+<p>Running Astarte through <code class="inline">docker-compose</code> is the fastest way for going from zero to hero. However, <strong>please keep in mind this setup is unlikely to hold for long in production, and is by design broken for large installations</strong>. We can't stop you from running such a thing in production, but do so as long as you know you voided your warranty by doing so.</p><p>This method is great for development and for trying out the system. If you wish to deploy Astarte in a more robust environment, have a look at <a href="https://astarte.cloud/">Astarte Enterprise</a> or, if you want to go the DIY way, make sure that <strong>at least</strong> every service which requires persistency has reliable storage and adequate redundancy beneath it.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="080-upgrade_guide.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Upgrading the Cluster
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="001-intro_api.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Introduction
+        </span>
+      </a>
+
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>

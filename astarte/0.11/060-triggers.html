@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="Astarte v0.11.4">
+    <title>Triggers — Astarte v0.11.4</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+    <script src="dist/sidebar_items-e57538aa08.js"></script>
+      <script src="../common_vars.js"></script>
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte      </a>
+      <strong class="sidebar-projectVersion">
+        v0.11.4
+      </strong>
+    </div>
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Triggers</h1><p>Triggers in Astarte are the go-to mechanism for generating push events. In contrast with AppEngine's
+REST APIs, Triggers allow users to specify conditions upon which a custom payload is delivered to a
+recipient, using a specific <code class="inline">action</code>, which usually maps to a specific transport/protocol, such as
+HTTP.</p><p>Given this kind of flexibility, triggers are the most powerful way to push data to an external
+service, potentially without any additional customization.</p><p>Triggers can be managed from <a href="api/index.html?urls.primaryName=Realm%20Management%20API#/trigger">Realm Management
+API</a>, <code class="inline">astartectl</code> with the
+<code class="inline">astartectl realm-management triggers</code> subcommand, or Astarte Dashboard in the <code class="inline">Triggers</code> page.</p><h2 id="building-triggers" class="section-heading">
+  <a href="#building-triggers" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Building Triggers
+</h2>
+<p>Triggers can be either built manually or using Astarte Dashboard's Trigger Editor. Trigger Editor
+dynamically loads installed Interfaces in the Realm and eases trigger creation by providing not
+only linting and validation, but also dynamic resolution of Interface names.</p><p>Trigger Editor works in a very similar fashion to Interfaces Editor, and shares the same User
+Interface.</p><h3 id="format" class="section-heading">
+  <a href="#format" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Format
+</h3>
+<p>A trigger is described using a JSON document. Each trigger is defined by two main parts: <code class="inline">condition</code>
+and <code class="inline">action</code>.</p><p>This is a JSON representation of an example trigger:</p><pre><code class="json">{
+  &quot;name&quot;: &quot;example_trigger&quot;,
+  &quot;action&quot;: {
+    &quot;http_post_url&quot;: &quot;https://example.com/my_hook&quot;
+  },
+  &quot;simple_triggers&quot;: [
+    {
+      &quot;type&quot;: &quot;data_trigger&quot;,
+      &quot;on&quot;: &quot;incoming_data&quot;,
+      &quot;interface_name&quot;: &quot;org.astarte-platform.genericsensors.Values&quot;,
+      &quot;interface_major&quot;: 0,
+      &quot;match_path&quot;: &quot;/streamTest/value&quot;,
+      &quot;value_match_operator&quot;: &quot;&gt;&quot;,
+      &quot;known_value&quot;: 0.4
+    }
+  ]
+}</code></pre><p>The <code class="inline">condition</code> is represented by the <code class="inline">simple_triggers</code> array. In this release, Astarte supports
+only a single entry in the <code class="inline">simple_triggers</code> array, but support for multiple simple triggers (and
+different ways to combine them) is planned for future releases.</p><p>The <code class="inline">condition</code> in the example specifies that when data is received on the
+<code class="inline">org.astarte-platform.genericsensors.Values</code> interface on <code class="inline">/streamTest/value</code> path, if the value of said data is <code class="inline">&gt; 0.4</code>,
+then the trigger is activated. For more information about all the possible conditions, check out the
+<a href="#conditions">Conditions section</a></p><p>The <code class="inline">action</code> object describes what the result of the trigger will be. In this specific case, an HTTP
+<code class="inline">POST</code> request will be sent to <code class="inline">https://example.com/my_hook</code>, with the payload:</p><pre><code class="json">{
+  &quot;timestamp&quot;: &quot;&lt;event_timestamp&gt;&quot;,
+  &quot;device_id&quot;: &quot;&lt;device_id&gt;&quot;,
+  &quot;event&quot;: {
+    &quot;type&quot;: &quot;incoming_data&quot;,
+    &quot;interface&quot;: &quot;org.astarte-platform.genericsensors.Values&quot;,
+    &quot;path&quot;: &quot;/streamTest/value&quot;,
+    &quot;value&quot;: &lt;some_value&gt;
+  }
+}</code></pre><p>To know more about all possible actions, check the <a href="#actions">Actions section</a></p><h2 id="conditions" class="section-heading">
+  <a href="#conditions" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Conditions
+</h2>
+<p>A condition defines the event upon which an action is triggered. Conditions are expressed through
+simple triggers. Astarte monitors incoming events and triggers a corresponding action whenever there
+is a match.</p><p>Simple triggers are divided into two types: <a href="#device-triggers">Device Triggers</a> and <a href="#data-triggers">Data
+Triggers</a>.</p><h3 id="device-triggers" class="section-heading">
+  <a href="#device-triggers" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Device Triggers
+</h3>
+<p>Device triggers express conditions matching the state of a device.</p><p>This is the generic representation of a Data Trigger:</p><pre><code class="json">{
+  &quot;type&quot;: &quot;device_trigger&quot;,
+  &quot;on&quot;: &quot;&lt;device_trigger_type&gt;&quot;,
+  &quot;device_id&quot;: &quot;&lt;device_id&gt;&quot;
+}</code></pre><h4>Parameters</h4><p><code class="inline">device_trigger_type</code> can be one of the following:</p><ul><li><code class="inline">device_connected</code>: triggered when a device connects to its transport.</li><li><code class="inline">device_disconnected</code>: triggered when a device disconnects from its transport.</li></ul><p><code class="inline">device_id</code> can be a specific Device ID or <code class="inline">*</code>, meaning the trigger will be installed for all
+devices in a Realm.</p><h3 id="data-triggers" class="section-heading">
+  <a href="#data-triggers" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Data Triggers
+</h3>
+<p>Data triggers express conditions matching data coming from a device.</p><p>This is the generic representation of a Device Trigger:</p><pre><code class="json">{
+  &quot;type&quot;: &quot;data_trigger&quot;,
+  &quot;on&quot;: &quot;&lt;data_trigger_type&gt;&quot;,
+  &quot;interface_name&quot;: &quot;&lt;interface_name&gt;&quot;,
+  &quot;interface_major&quot;: &quot;&lt;interface_major&gt;&quot;,
+  &quot;match_path&quot;: &quot;&lt;match_path&gt;&quot;,
+  &quot;value_match_operator&quot;: &quot;&lt;value_match_operator&gt;&quot;,
+  &quot;known_value&quot;: &lt;known_value&gt;
+}</code></pre><p>Data triggers are installed for all devices in a Realm.</p><h4>Data Triggers Parameters</h4><p><code class="inline">data_trigger_type</code> can be one of the following:</p><ul><li><code class="inline">incoming_data</code>: verifies the condition whenever new data arrives.</li><li><code class="inline">value_stored</code>: verifies the condition whenever new data arrives, after it is saved to the
+database.</li><li><code class="inline">value_change</code>: works only with properties interface; verifies the condition whenever the
+received value is different from the previous one.</li><li><code class="inline">value_change_applied</code>: works only with properties interface; verifies the condition whenever the
+last value received is different from the last one previously received, after it is saved to the
+database.</li><li><code class="inline">path_created</code>: verifies the condition whenever a new path in a property interface is set or the
+first value is streamed on a datastream interface.</li><li><code class="inline">path_removed</code>: works only with properties interface; verifies the condition whenever a property
+path is unset.</li></ul><p><code class="inline">interface_name</code> and <code class="inline">interface_major</code> represent, respectively, the Interface name and major version
+that uniquely identify an Astarte Interface. <code class="inline">interface_name</code> can be <code class="inline">*</code> to match all interfaces; in
+that case <code class="inline">interface_major</code> is ignored and all major numbers are matched.</p><p><code class="inline">match_path</code> is the path that will be used to match the condition. It can be <code class="inline">/*</code> to match all the
+paths of an interface.</p><p><code class="inline">value_match_operator</code> is the operator used to match the incoming data against a known value. It can
+be <code class="inline">*</code> to indicate that all values should be matched (<code class="inline">known_value</code> is ignored in that case),
+otherwise it can be one of these operators: <code class="inline">==</code>, <code class="inline">!=</code>, <code class="inline">&gt;</code>, <code class="inline">&gt;=</code>, <code class="inline">&lt;</code>, <code class="inline">&lt;=</code>, <code class="inline">contains</code>,
+<code class="inline">not_contains</code>. The match is always performed with <code class="inline">&lt;incoming_value&gt; &lt;operator&gt; &lt;known_value&gt;</code>.
+<code class="inline">contains</code> and <code class="inline">not_contains</code> can be used only with type <code class="inline">string</code>, <code class="inline">binaryblob</code> and with array types.</p><p><code class="inline">known_value</code> is the value used with <code class="inline">value_match_operator</code> to perform the comparison on the
+incoming value. It must have the same type as the incoming value, except in the <code class="inline">contains</code> and
+<code class="inline">not_contains</code> case.</p><h2 id="actions" class="section-heading">
+  <a href="#actions" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Actions
+</h2>
+<p>Actions are triggered by a matching condition. An Action defines how the event should be sent to the
+outer world (e.g. an http POST on a certain URL). In addition, most actions have a Payload, which
+carries the body of the event.</p><p>Payloads are most of the time represented as text, and Astarte provides several ways to generate
+them. By default Astarte generates a JSON payload with all the relevant information of the event.
+This is also the format used when delivering payloads in Astarte Channels. The format of the payload
+can be found in the <a href="#default-action">Default action</a> section.</p><p>Astarte also provides a powerful templating mechanism for plain-text payloads based on top of
+<a href="https://mustache.github.io/">Mustache</a>. This is especially useful for integrating with third-party
+actors which require custom plain-text payloads. Keep in mind that Mustache templates are only able
+to produce <code class="inline">text/plain</code> payloads, not valid JSON.</p><h3 id="default-action" class="section-heading">
+  <a href="#default-action" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Default action
+</h3>
+<p>This is the configuration object representing the default action:</p><pre><code class="json">{
+  &quot;http_post_url&quot;: &quot;&lt;http_post_url&gt;&quot;,
+  &quot;ignore_ssl_errors&quot;: &lt;true|false&gt;
+}</code></pre><p>The default action sends an HTTP <code class="inline">POST</code> request to the specified <code class="inline">http_post_url</code>.</p><p>The <code class="inline">ignore_ssl_errors</code> key is optional and defaults to <code class="inline">false</code>. If set to <code class="inline">true</code>, any SSL error
+encountered while doing the HTTP request will be ignored. This can be useful if the trigger must
+ignore self-signed or expired certificates.</p><p>The payload of the request is JSON document with this format:</p><pre><code class="json">{
+  &quot;timestamp&quot;: &quot;&lt;timestamp&gt;&quot;,
+  &quot;device_id&quot;: &quot;&lt;device_id&gt;&quot;,
+  &quot;event&quot;: &lt;event&gt;
+}</code></pre><p><code class="inline">timestamp</code> is an UTC <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> timestamp (e.g.
+<code class="inline">&quot;2019-10-16T08:56:08.534377Z&quot;</code>) representing when the event happened.</p><p><code class="inline">device_id</code> identifies the device that triggered the event.</p><p><code class="inline">event</code> is a JSON object that has a specific structure depending on the type of the <code class="inline">simple_trigger</code>
+that generated it. Event objects are detailed below.</p><p>Additionally, the realm that originated the trigger is available in the request in the
+<code class="inline">Astarte-Realm</code> header.</p><h4>Event objects</h4><h5>DeviceConnectedEvent</h5><pre><code class="json">{
+  &quot;type&quot;: &quot;device_connected&quot;,
+  &quot;device_ip_address&quot;: &quot;&lt;device_ip_address&gt;&quot;
+}</code></pre><p><code class="inline">device_ip_address</code> is the IP address of the device.</p><h5>DeviceDisconnectedEvent</h5><pre><code class="json">{
+  &quot;type&quot;: &quot;device_disconnected&quot;
+}</code></pre><h5>IncomingDataEvent</h5><pre><code class="json">{
+  &quot;type&quot;: &quot;incoming_data&quot;,
+  &quot;interface&quot;: &quot;&lt;interface&gt;&quot;,
+  &quot;path&quot;: &quot;&lt;path&gt;&quot;,
+  &quot;value&quot;: &lt;value&gt;
+}</code></pre><p><code class="inline">interface</code> is the interface on which data was received.</p><p><code class="inline">path</code> is the path on which data was received.</p><p><code class="inline">value</code> is the received value. Its type depends on the type of the mapping it's coming from.
+<code class="inline">binaryblob</code> and <code class="inline">binaryblobarray</code> type values are encoded with Base64.</p><h5>ValueStoredEvent</h5><pre><code class="json">{
+  &quot;type&quot;: &quot;value_stored&quot;,
+  &quot;interface&quot;: &quot;&lt;interface&gt;&quot;,
+  &quot;path&quot;: &quot;&lt;path&gt;&quot;,
+  &quot;value&quot;: &lt;value&gt;
+}</code></pre><p><code class="inline">interface</code> is the interface on which data was received.</p><p><code class="inline">path</code> is the path on which data was received.</p><p><code class="inline">value</code> is the received value. Its type depends on the type of the mapping it's coming from.
+<code class="inline">binaryblob</code> and <code class="inline">binaryblobarray</code> type values are encoded with Base64.</p><h5>ValueChangeEvent</h5><pre><code class="json">{
+  &quot;type&quot;: &quot;value_change&quot;,
+  &quot;interface&quot;: &quot;&lt;interface&gt;&quot;,
+  &quot;path&quot;: &quot;&lt;path&gt;&quot;,
+  &quot;old_value&quot;: &lt;old_value&gt;,
+  &quot;new_value&quot;: &lt;new_value&gt;
+}</code></pre><p><code class="inline">interface</code> is the interface on which data was received.</p><p><code class="inline">path</code> is the path on which data was received.</p><p><code class="inline">old_value</code> is the previous value. Its type depends on the type of the mapping it's coming from.
+<code class="inline">binaryblob</code> and <code class="inline">binaryblobarray</code> type values are encoded with Base64.</p><p><code class="inline">new_value</code> is the received value. Its type depends on the type of the mapping it's coming from.
+<code class="inline">binaryblob</code> and <code class="inline">binaryblobarray</code> type values are encoded with Base64.</p><h5>ValueChangeAppliedEvent</h5><pre><code class="json">{
+  &quot;type&quot;: &quot;value_change_applied&quot;,
+  &quot;interface&quot;: &quot;&lt;interface&gt;&quot;,
+  &quot;path&quot;: &quot;&lt;path&gt;&quot;,
+  &quot;old_value&quot;: &lt;old_value&gt;,
+  &quot;new_value&quot;: &lt;new_value&gt;
+}</code></pre><p><code class="inline">interface</code> is the interface on which data was received.</p><p><code class="inline">path</code> is the path on which data was received.</p><p><code class="inline">old_value</code> is the previous value. Its type depends on the type of the mapping it's coming from.
+<code class="inline">binaryblob</code> and <code class="inline">binaryblobarray</code> type values are encoded with Base64.</p><p><code class="inline">new_value</code> is the received value. Its type depends on the type of the mapping it's coming from.
+<code class="inline">binaryblob</code> and <code class="inline">binaryblobarray</code> type values are encoded with Base64.</p><h5>PathCreatedEvent</h5><pre><code class="json">{
+  &quot;type&quot;: &quot;path_created&quot;,
+  &quot;interface&quot;: &quot;&lt;interface&gt;&quot;,
+  &quot;path&quot;: &quot;&lt;path&gt;&quot;,
+  &quot;value&quot;: &lt;value&gt;
+}</code></pre><p><code class="inline">interface</code> is the interface on which data was received.</p><p><code class="inline">path</code> is the path that has been created.</p><p><code class="inline">value</code> is the received value. Its type depends on the type of the mapping it's coming from.
+<code class="inline">binaryblob</code> and <code class="inline">binaryblobarray</code> type values are encoded with Base64.</p><h5>PathRemovedEvent</h5><pre><code class="json">{
+  &quot;type&quot;: &quot;path_removed&quot;,
+  &quot;interface&quot;: &quot;&lt;interface&gt;&quot;,
+  &quot;path&quot;: &quot;&lt;path&gt;&quot;
+}</code></pre><p><code class="inline">interface</code> is the interface on which data was received.</p><p><code class="inline">path</code> is the path that has been removed.</p><h3 id="mustache-action" class="section-heading">
+  <a href="#mustache-action" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Mustache action
+</h3>
+<p>This is the configuration object representing a Mustache action:</p><pre><code class="json">{
+  &quot;http_post_url&quot;: &quot;&lt;http_post_url&gt;&quot;,
+  &quot;template_type&quot;: &quot;mustache&quot;,
+  &quot;template&quot;: &quot;&lt;template&gt;&quot;
+  &quot;ignore_ssl_errors&quot;: &lt;true|false&gt;
+}</code></pre><p>The Mustache action sends an HTTP <code class="inline">POST</code> request to the specified <code class="inline">http_post_url</code>, with the payload
+built with the <a href="https://mustache.github.io/">Mustache</a> template specified in <code class="inline">template</code>. If the
+template contains a key inside a double curly bracket (like so: <code class="inline">{{ key }}</code>), it will be substituted
+with the actual value of that key in the event.</p><p>The basic keys that can be use to populate the template are:</p><ul><li><code class="inline">{{ realm }}</code>: the realm the trigger belongs to.</li><li><code class="inline">{{ device_id }}</code>: the device that originated the trigger.</li><li><code class="inline">{{ event_type }}</code>: the type of the received event.</li></ul><p>The <code class="inline">ignore_ssl_errors</code> key is optional and defaults to <code class="inline">false</code>. If set to <code class="inline">true</code>, any SSL error
+encountered while doing the HTTP request will be ignored. This can be useful if the trigger must
+ignore self-signed or expired certificates.</p><p>Moreover, depending on the event type, all keys that are contained in the events <a href="#event-objects">described in the
+previous section</a> are available, always by wrapping them in <code class="inline">{{ }}</code>.</p><p>The realm is also sent in the <code class="inline">Astarte-Realm</code> header.</p><h4>Example</h4><p>This is an example of a trigger that uses Mustache action.</p><pre><code class="json">{
+  &quot;name&quot;: &quot;example_mustache_trigger&quot;,
+  &quot;action&quot;: {
+    &quot;template_type&quot;: &quot;mustache&quot;,
+    &quot;template&quot;: &quot;Device {{ device_id }} just connected from IP {{ device_ip_address }}&quot;,
+    &quot;http_post_url&quot;: &quot;https://example.com/my_mustache_hook&quot;
+  },
+  &quot;simple_triggers&quot;: [
+    {
+      &quot;type&quot;: &quot;device_trigger&quot;,
+      &quot;on&quot;: &quot;device_connected&quot;,
+      &quot;device_id&quot;: &quot;*&quot;
+    }
+  ]
+}</code></pre><p>When a device is connected, the following request will be received by
+<code class="inline">https://example.com/my_mustache_hook</code>:</p><pre><code class="http">POST /my_mustache_hook HTTP/1.1
+Astarte-Realm: test
+Content-Length: 63
+Content-Type: text/plain
+Host: example.com
+User-Agent: hackney/1.13.0
+
+Device ydqBlFsGQ--xZ-_efQxuLw just connected from IP 172.18.0.1</code></pre><h2 id="relationship-with-channels" class="section-heading">
+  <a href="#relationship-with-channels" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Relationship with Channels
+</h2>
+<p>Channels are part of AppEngine, and allow users to monitor device events through WebSockets, on top
+of <a href="https://hexdocs.pm/phoenix/channels.html">Phoenix Channels</a>. Under the hood, Channels use
+transient triggers to define which kind of events will flow through a specific room.</p><div class="bottom-actions">
+  <div class="bottom-actions-item">
+      <a href="050-pairing_mechanism.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Pairing Mechanism        </span>
+      </a>
+  </div>
+  <div class="bottom-actions-item">
+      <a href="065-groups.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Groups        </span>
+      </a>
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>
