@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="Astarte v0.10.2">
+
+    <title>Querying a Device — Astarte v0.10.2</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+
+    <script src="dist/sidebar_items-61bd90a078.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+
+
+  </head>
+  <body data-type="extras">
+    <script>
+
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte
+      </a>
+      <strong class="sidebar-projectVersion">
+        v0.10.2
+      </strong>
+    </div>
+
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>Querying a Device</h1><p>Once you have your devices connected, up and running in Astarte, you can start interacting with them.</p><h2 id="using-appengine-api" class="section-heading">
+  <a href="#using-appengine-api" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Using AppEngine API
+</h2>
+<p>First things first, you can check if your device is correctly registered in Astarte, and its current status. Let's assume our Device has <code class="inline">f0VMRgIBAQAAAAAAAAAAAA</code> as its id.</p><p><em>Sample Request</em></p><pre><code class="makeup elixir"><span class="nc">GET</span><span class="w"> </span><span class="n">appengine</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span></code></pre><p><em>Sample Response</em></p><pre><code class="json">{
+    &quot;data&quot;: {
+        &quot;total_received_msgs&quot;: 221,
+        &quot;total_received_bytes&quot;: 11660,
+        &quot;last_seen_ip&quot;: &quot;203.0.113.89&quot;,
+        &quot;last_credentials_request_ip&quot;: &quot;203.0.113.201&quot;,
+        &quot;last_disconnection&quot;: &quot;2018-02-07T18:38:57.266Z&quot;,
+        &quot;last_connection&quot;: &quot;2018-02-08T09:49:26.556Z&quot;,
+        &quot;id&quot;: &quot;f0VMRgIBAQAAAAAAAAAAAA&quot;,
+        &quot;first_registration&quot;: &quot;2018-01-31T17:10:59.270Z&quot;,
+        &quot;connected&quot;: true,
+        &quot;introspection&quot; : {
+            &quot;com.example.ExampleInterface&quot; : {
+                &quot;major&quot; : 1,
+                &quot;minor&quot; : 0
+            },
+            &quot;org.example.TestInterface&quot; : {
+                &quot;major&quot; : 0,
+                &quot;minor&quot; : 2
+            }
+        }
+    }
+}</code></pre><p>A Device's status includes a number of useful information, among which whether it is connected or not to its Transport. From there on, we can check on its Introspection.</p><p><em>Sample Request</em></p><pre><code class="makeup elixir"><span class="nc">GET</span><span class="w"> </span><span class="n">appengine</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span><span class="o">/</span><span class="n">interfaces</span></code></pre><p><em>Sample Response</em></p><pre><code class="json">{
+    &quot;data&quot;: [
+        &quot;com.example.ExampleInterface&quot;,
+        &quot;com.example.TestInterface&quot;
+    ]
+}</code></pre><p>This returns the Interfaces which the device reported in its Introspection <em>and</em> which are known to the Realm.</p><p>Depending on the aggregation and ownership of the Interface, you can <code class="inline">GET</code>/<code class="inline">PUT</code>/<code class="inline">POST</code> on the interface itself or one of its mappings. Some examples are:</p><p>Get data from an <code class="inline">aggregate</code> <code class="inline">device</code> <code class="inline">properties</code> interface:</p><pre><code class="makeup elixir"><span class="nc">GET</span><span class="w"> </span><span class="n">appengine</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span><span class="o">/</span><span class="n">interfaces</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="nc">ExampleInterface</span></code></pre><p>Get last sent value from an <code class="inline">individual</code> <code class="inline">device</code> <code class="inline">datastream</code> interface:</p><pre><code class="makeup elixir"><span class="nc">GET</span><span class="w"> </span><span class="n">appengine</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span><span class="o">/</span><span class="n">interfaces</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="nc">TestInterface</span><span class="o">/</span><span class="n">myValue?</span><span class="n">limit</span><span class="o">=</span><span class="mi">1</span></code></pre><p>Set values in an <code class="inline">individual</code> <code class="inline">server</code> <code class="inline">datastream</code> interface:</p><pre><code class="makeup elixir"><span class="nc">POST</span><span class="w"> </span><span class="n">appengine</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span><span class="o">/</span><span class="n">interfaces</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="nc">OtherTestInterface</span><span class="o">/</span><span class="n">myOtherValue</span></code></pre><p>In general, to query AppEngine, the following things must be kept in mind</p><ul><li>When sending data, use <code class="inline">PUT</code> if dealing with <code class="inline">properties</code>, <code class="inline">POST</code> if dealing with <code class="inline">datastream</code>.</li><li>When <code class="inline">GET</code>ting, if you are querying an <code class="inline">aggregate</code> interface, make sure to query the interface itself rather than its mappings.</li><li>When <code class="inline">GET</code>ting <code class="inline">datastream</code>, keep in mind that AppEngine's default behavior is to return a large as possible timeseries.</li></ul><h2 id="navigating-and-retrieving-datastream-results" class="section-heading">
+  <a href="#navigating-and-retrieving-datastream-results" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Navigating and retrieving Datastream results
+</h2>
+<p>The Datastream case is significant, as it might be common to have <em>a lot</em> of values for each endpoint/interface. As such, returning all of them in a single API call is most of the times not desirable nor recommended.</p><p>To avoid putting the cluster under excessive pressure, AppEngine API is configured with a hard cap on the maximum number of returned results for each single call, with a sane default of <code class="inline">10000</code>. Although this hard cap is entirely configurable, please be aware that AppEngine API is designed to process a lot of reasonably small requests in the shortest possible time, and hence is <strong>not optimised nor strongly tested against big requests</strong>. Make sure that AppEngine API has enough resources available to cope with the maximum dataset size.</p><p>AppEngine API provides you with a variety of mechanisms to make retrieval and navigation of large data sets as smooth and efficient as possible.</p><h3 id="limit" class="section-heading">
+  <a href="#limit" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Limit
+</h3>
+<p>Adding a <code class="inline">limit=n</code> to the URL query tells AppEngine to return no more than <code class="inline">n</code> results. This acts similarly to a <code class="inline">LIMIT</code> SQL statement, but, as it stands, it does not impose a hard limit on the whole retrieved dataset but on the amount of the results displayed by the API call - see <a href="#pagination-and-time-windows">Pagination and Time Windows</a> for more details on this topic and the performance implications of different limits in queries.</p><p>If the specified <code class="inline">limit</code> is beyond the hard cap, the query won't fail, but will return at most the amount set by the hard cap, without further warnings.</p><h3 id="since-to-since-after" class="section-heading">
+  <a href="#since-to-since-after" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Since/To/Since After
+</h3>
+<p>Results can be limited to a specific time window. <code class="inline">since</code> and <code class="inline">to</code> can be set to a ISO 8601 valid timestamp to limit on an upper and lower bound the result set. This can also be combined with <code class="inline">limit</code> to make sure that no more than <code class="inline">n</code> results are returned. Also, <code class="inline">since</code> and <code class="inline">to</code> can as well be set independently to provide only an upper or lower bound.</p><p>In case you're dealing with a very large dataset and you want to dump it, it is likely that you need to go beyond what a reasonable default limit looks like. In those cases, you can use the <code class="inline">since_after</code> query parameter to retrieve parameters within a time window. <code class="inline">since_after</code> slices the time window just like <code class="inline">since</code> does, but it does not include values matching the specified timestamp, if any. This is especially useful when paginating, to start right after a returned result.</p><h3 id="pagination-and-time-windows" class="section-heading">
+  <a href="#pagination-and-time-windows" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Pagination and time windows
+</h3>
+<p>AppEngine API provides you automatically with a time window-based pagination. When <code class="inline">GET</code>ting a <code class="inline">datastream</code>, if more results are available beyond the chosen time window/limit, a <code class="inline">links</code> map will be provided, in JSON-API style, to allow the user to paginate the results accordingly using <code class="inline">since_after</code>.</p><p>You can use <code class="inline">limit</code> to determine each page's size. When specifying a valid <code class="inline">limit</code>, the <code class="inline">links</code> will keep the page size consistent over the next calls.</p><p>However, <code class="inline">limit</code> should be used wisely to lower the pressure on the cluster. Each API call maps to a query that, no matter how efficient, has a computational cost. A few mid-sized queries should <strong>always</strong> be preferred over a large amount of smaller queries. Given your cluster is configured correctly, <code class="inline">limit</code> should be omitted in most cases when paginating, and you should rather trust your cluster's hard cap to be the sweet spot in efficiency and cluster pressure.</p><h3 id="downsampling" class="section-heading">
+  <a href="#downsampling" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Downsampling
+</h3>
+<p>Especially when plotting graphs, retrieving all points in a time series isn't desirable. Astarte provides you with an implementation of the <a href="https://skemman.is/bitstream/1946/15343/3/SS_MSthesis.pdf">LTTB Downsampling Algorithm</a>, which is used to return only a fixed number of samples from a time series. When setting <code class="inline">downsample_to=n</code>, AppEngine will return a maximum of <code class="inline">n</code> results, which are the most significant over the considered time series according to the algorithm.</p><p>Due to how LTTB works, <code class="inline">downsample_to</code> <strong>must</strong> be <code class="inline">&gt;2</code>, as the algorithm will return the two ends of the considered value bucket, and <code class="inline">n-2</code> values which are the picked samples. Please refer to the <a href="https://github.com/ispirata/ex_lttb">LTTB implementation used by Astarte</a> to learn more about how this algorithm affects samples and its limitations.</p><p><code class="inline">downsample_to=x</code> can be used in conjunction with other query parameters, including <code class="inline">limit=y</code>. When doing so, Astarte will downsample to <code class="inline">x</code> samples the dataset composed of the last <code class="inline">y</code> values. Every feature previously outlined is in fact available with downsampling, including pagination - bear in mind, though, that for how the algorithm works, some options have drastically different semantic effects.</p><p>Also, the hard cap has a very different meaning in downsampling. In this case, the hard cap applies to <code class="inline">downsample_to</code> instead of <code class="inline">limit</code>. <code class="inline">limit</code> can be an arbitrarly large amount of samples taken out of the DB, and can be used mainly to alleviate pressure in case of <em>extremely</em> large datasets which would require a lot of time for being processed by LTTB - even though, most of the time, you might want to define a time window to downsample instead.</p><p>Astarte is also capable of downsampling aggregated interfaces, as long as a <code class="inline">downsample_key</code> is specified, which has to match the last token of an <code class="inline">endpoint</code> of the queried <code class="inline">interface</code> (i.e. in case the interface has a <code class="inline">/%{id}/myValue</code> mapping which should be used as the <code class="inline">downsample_key</code>, you should specify <code class="inline">downsample_key=myValue</code> in the query). When doing so, the aggregate will be downsampled using the chosen <code class="inline">endpoint</code> value as the <code class="inline">y</code> axis value, whereas its other <code class="inline">endpoints</code> will be disregarded when applying the algorithm. Please note that, no matter what <code class="inline">downsample_key</code> is used, a sample will be composed by the whole aggregation.</p><p>If there is no way an interface can be downsampled (this is true, for example, if no <code class="inline">downsample_key</code> has been specified for <code class="inline">aggregations</code>, or for types such as <code class="inline">strings</code>), AppEngine API will return a <code class="inline">4xx</code> error. In general, downsampling is a powerful mechanism with a lot of limitations which really shines when plotting. Once again, this is a fundamental factor to consider when <a href="029-interface_design_guide.html">designing your interfaces</a>.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="040-connect_device.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Connecting a Device
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="052-using_channels.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Using Astarte Channels
+        </span>
+      </a>
+
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>

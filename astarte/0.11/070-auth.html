@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="Astarte v0.11.4">
+    <title>Authentication and Authorization — Astarte v0.11.4</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+    <script src="dist/sidebar_items-e57538aa08.js"></script>
+      <script src="../common_vars.js"></script>
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte      </a>
+      <strong class="sidebar-projectVersion">
+        v0.11.4
+      </strong>
+    </div>
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Authentication and Authorization</h1><p>Authentication and authorization are crucial, as Astarte likely holds sensitive resources and is capable to send mass commands to a device fleet.</p><p>First of all: when talking about auth in Astarte, we are talking about anything which isn't a Device - those are Authenticated through <a href="050-pairing_mechanism.html">Pairing</a> and Authorized by their Transport (which uses Pairing for the Authentication policies).</p><p>Astarte's authentication/authorization stage identifies the principal through a token (with <a href="https://en.wikipedia.org/wiki/JSON_Web_Token">JWT</a> as the first class citizen), which is the only currency the platform supports.</p><h2 id="authentication-realms" class="section-heading">
+  <a href="#authentication-realms" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Authentication Realms
+</h2>
+<p>In Astarte, realms are logically separated and have completely different data partitions. This is also true in terms of authentication, as caller is always authenticated on a per-realm basis. As such, an authentication realm matches 1:1 an Astarte realm.</p><p>Superadmin APIs, such as housekeeping, are part of a different authentication realm which is defined upon cluster setup.</p><h2 id="authentication-in-astarte" class="section-heading">
+  <a href="#authentication-in-astarte" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Authentication in Astarte
+</h2>
+<p>Astarte, by design, does not have a concept of per-user authentication built in. The definition of an authentication realm is a mean to verify a token's validity, that is most likely a public key.</p><p>This makes integrating Astarte with 3rd party authentication/authorization frameworks and SSOs extremely easy, as the whole logic for addressing user management is managed out of the cluster by a dedicated party. Depending on one's use case, it is possible to use either a very simple, dedicated OAuth server for each realm, or a full fledged SSO such as <a href="http://www.keycloak.org/">Keycloak</a> which matches its authentication realms to Astarte's realms. Especially if you are aiming at the latter, make sure to read the advised <a href="#best-practices">best practices for authentication</a> afterwards.</p><h2 id="authorization" class="section-heading">
+  <a href="#authorization" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Authorization
+</h2>
+<p>Currently, Astarte supports a URL-based authorization for the API. Given that Astarte's data access APIs match the devices' topology like a tree, declaring the authorization in terms of path whitelisting gives enough flexibility to give each user the correct permissions without limitations.</p><p>As said, Astarte does not have the concept of user, and neither has a durable storage which tracks permissions. As such, it expects the authorization information to be inside the token, which is the only entity Astarte can trust - given it has been verified and authenticated through its signature.</p><p>Paths are given in form of a set of <a href="https://perldoc.perl.org/perlre.html">Perl-like Regular Expressions</a>, and on a per-API basis. This means that each API endpoint (app, realm, etc...) has its own regular expression which defines what the user can do. Moreover, each HTTP verb in an API endpoint (e.g.: GET, POST, PUT, DELETE) can have its own regular expression, to fine-grain permissions on each path.</p><p><em>Note: given Astarte's interface are either read only or write only, HTTP verb fine-graining in AppEngine API is mostly useful for preventing a user from deleting a consumer Datastream even though it has write access to it. Most of the time, using only a single regular expression with no verb fine-graining works.</em></p><p>Examples of valid regular expressions on AppEngine API are:</p><ul><li><code class="inline">POST::devices/.*/interfaces/com\\.my\\.interface/.*</code>: Allows to set individual values on the <code class="inline">com.my.interface</code> interface on any individual device in the realm.</li><li><code class="inline">.*::.*/interfaces/com\\.my\\.monitoring\\.interface.*</code>: Allows to get/set/delete either the aggregate or the individual values of the <code class="inline">com.my.monitoring.interface</code> interface on any device or device aggregation in the realm.</li><li><code class="inline">.*::devices/j0zbvbQp9ZNnanwvh4uOCw.*</code>: Allows every operation on device <code class="inline">j0zbvbQp9ZNnanwvh4uOCw</code></li><li><code class="inline">GET::devices/[a-zA-Z0-9-_]*</code>: Allows to get every individual device's status, but denies access to any additional information/operation on them.</li></ul><p>Examples of valid regular expressions on Realm Management API are:</p><ul><li><code class="inline">POST::interfaces\/.*</code>: Allows installing new interfaces in the realm.</li><li><code class="inline">GET::interfaces\/.*</code>: Allows inspecting every interface in the realm.</li><li><code class="inline">PUT::interfaces\/.*\/0</code>: Allows updating all draft interfaces in the realm.</li></ul><p>Other valid examples are:</p><ul><li><code class="inline">.*::.*</code>: Allows any operation on the given API.</li></ul><p>Both verb and path regular expressions are implicitly delimited by adding <code class="inline">^</code> before and <code class="inline">$</code> after the regular expression string. For example, if you use <code class="inline">GET::interfaces</code> as regular expression in Realm Management API, the path will be matched against <code class="inline">^GET$</code> and the path will be matched against <code class="inline">^interfaces$</code>. This way the only operation allowed will be listing all the interfaces, while all operation on <code class="inline">interfaces/</code> subpaths will be denied.</p><h3 id="token-claims-and-formats" class="section-heading">
+  <a href="#token-claims-and-formats" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Token claims and formats
+</h3>
+<p>Authorization regular expressions have to be contained in the token's claims. Only the JWT case will be considered given it is the primary currency Astarte supports. Every claim is an array of regular expressions, which act as a logical OR. A similar behavior could be of course achieved (and might be more efficient) with a singular regular expression, but for the sake of readability and simplicity it is allowed nonetheless. Of course, keeping the authorization claims simple and pragmatic helps in terms of performance.</p><p>Supported token claims are:</p><ul><li><code class="inline">a_aea</code>: Defines the regular expressions for AppEngine API</li><li><code class="inline">a_rma</code>: Defines the regular expressions for Realm Management API</li><li><code class="inline">a_ha</code>: Defines the regular expressions for Housekeeping API</li><li><code class="inline">a_pa</code>: Defines the regular expressions for Pairing API</li><li><code class="inline">a_ch</code>: Defines the regular expressions for Channels</li></ul><p>Of course, claims are considered only after a successful token verification. This means that the claim will be processed only if the caller is authenticated against the correct authentication realm  - this is especially the case for what concerns Housekeeping, which has a dedicated Authentication realm not tied to any Astarte realms.</p><p>An example of a valid token claim is:</p><pre><code class="json">{
+  &quot;a_aea&quot;: [&quot;GET::devices/[a-zA-Z0-9-_]*&quot;,
+      &quot;.*::.*/interfaces/com\\.my\\.monitoring\\.interface.*&quot;,
+      &quot;.*::devices/j0zbvbQp9ZNnanwvh4uOCw.*&quot;],
+  &quot;a_rma&quot;: [&quot;GET::.*&quot;]
+}</code></pre><p>Which allows very specific permissions on AppEngine API, and a &quot;read all&quot; on Realm Management API.</p><p>The client by default has no permission to do anything: as such, if a token is missing a claim it is simply assumed that the client isn't authorized to access that specific API. However, keeping in mind that Astarte has no concept of User, it is also true that your authentication backend might choose to emit a different token with only a subset of its real permissions to keep claims and regular expressions as pragmatic as possible. See <a href="#granular-claims">Granular Claims in Best Practices</a> for more details on this.</p><h3 id="natively-supported-tokens" class="section-heading">
+  <a href="#natively-supported-tokens" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Natively supported tokens
+</h3>
+<p>Astarte supports only <a href="https://tools.ietf.org/html/rfc7519">JWT</a> natively, which has to be signed using one of the following algorithms:</p><ul><li>ES256</li><li>ES384</li><li>ES512</li><li>PS256</li><li>PS384</li><li>PS512</li><li>RS256</li><li>RS384</li><li>RS512</li></ul><h2 id="authorization-for-rest-apis" class="section-heading">
+  <a href="#authorization-for-rest-apis" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Authorization for REST APIs
+</h2>
+<p>Valid tokens can be used for calling into Astarte's public APIs. Depending on which token mechanism is used, the HTTP call must adhere to some requirements.</p><h3 id="jwt" class="section-heading">
+  <a href="#jwt" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  JWT
+</h3>
+<p>Every API call <strong>must</strong> have an <code class="inline">Authorization: Bearer &lt;token&gt;</code> header. Not providing the token or providing a token which can't be validated for the authentication realm of the context results in a 401 reply.</p><h2 id="authorization-for-channels" class="section-heading">
+  <a href="#authorization-for-channels" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Authorization for Channels
+</h2>
+<p>A valid token should be supplied when opening the WebSocket, in the very same fashion to what happens with REST APIs. However, the claims in this token will support different verbs compared to the REST APIs, namely <code class="inline">JOIN</code> and <code class="inline">WATCH</code>. These have very specific meanings and are well explained in <a href="052-using_channels.html#authorization">Channels' User Guide</a>.</p><p>The behavior and supported tokens are equivalent to REST APIs.</p><h2 id="supported-integrations" class="section-heading">
+  <a href="#supported-integrations" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Supported integrations
+</h2>
+<p>Astarte, by default, is extremely easy to configure assuming your chosen SSO is capable of issuing JWT, as it is currently the only natively supported authentication currency. However, virtually any token-based system can be used as an auth framework for Astarte.</p><p>The main purpose of Astarte's design, however, is to keep things simple for everyone. Putting up a full-fledged SSO dedicated to Astarte is beyond the scope of this documentation, and we favor the use case where an existing SSO infrastructure is integrated with Astarte, rather than built ad-hoc.</p><p>For simple use cases and instant satisfaction, it is strongly advised to use a simpler solution, such as a dedicated OAuth server. Almost all popular languages and frameworks provide great projects which can spin up an OAuth2 server + user management in a matter of hours, from <a href="https://github.com/mustafaturan/shield">Elixir/Phoenix</a> to <a href="https://github.com/spring-cloud-samples/authserver">Java/Spring</a> to <a href="https://github.com/RichardKnop/go-oauth2-server">Go</a>.</p><p><a href="https://astarte.cloud/enterprise">Astarte's Enterprise Distribution</a> includes other add-ons, such as automation and configuration for popular SSOs.</p><h2 id="best-practices" class="section-heading">
+  <a href="#best-practices" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Best practices
+</h2>
+<p>Due to the nature of tokens, applications and SSOs must take care of emission and storage of the token themselves. In most production cases, Astarte will be part of a larger SSO infrastructure being one of the clients (this is especially true for OAuth).</p><p>Among best practices, emitting short-lived tokens should always be considered, but depending on the use case, the authentication pipeline can be further tuned to address a number of potential issues.</p><h3 id="token-exchange" class="section-heading">
+  <a href="#token-exchange" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Token exchange
+</h3>
+<p>OAuth, like other protocols supports the concept of a <a href="https://tools.ietf.org/html/draft-ietf-oauth-token-exchange-11">Token Exchange</a>. Consider a web dashboard with a logged in user. The user will, most likely, have a token which is used by its frontend to call upon the backend/APIs of the web dashboard.</p><p>For the sake of simplicity, one might include in this token the adequate claims to give the user access to Astarte, but this might not be desirable for a number of reasons outlined above. Token exchange, if supported by your SSO, provides a great way to work around this: whenever the backend or the frontend requires access to Astarte, it can invoke the token exchange mechanism of the SSO to generate a short lived token for the API call from the original authentication, which can then be used even as a single shot access mechanism.</p><h3 id="granular-claims" class="section-heading">
+  <a href="#granular-claims" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Granular claims
+</h3>
+<p>The token exchange approach can be efficiently paired with a mechanism of granular claims. Consider the use case above, and let's assume the frontend needs direct, frequent access to Astarte's APIs. Exchanging tokens too many times might put a burden on the SSO and might become impractical.</p><p>However, Astarte decouples entirely authentication and authorization - that means, if two subsequent (valid) tokens which represent the same identity have substantially different claims, it doesn't care. This is intentional, as it allows for a much more efficient pattern: the token used by an hypotetical frontend can have a subset of the user's claims - for example, allowing him to read data from its devices, whereas token exchange can be used whenever more specific operations should be performed - for example, sending some commands or data to devices.</p><p>This also addresses the objection that regular expressions can grow big or quite complicated in case users need a large number of very granular permissions. In such complex cases, the SSO can be tuned to give out only a subset of claims depending on the user's operation.</p><h3 id="token-revocation" class="section-heading">
+  <a href="#token-revocation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Token revocation
+</h3>
+<p>Token revocation isn't natively supported in Astarte for two reason: the first one is performance, as keeping a revocation list is expensive in many regards. The second is the fact that the revocation list is, most of the time, SSO specific, and a dedicated SSO integration would be required.</p><p>Rather than token revocation, a better practice is to make sure every emitted token has a short enough lifetime. However, it is possible to extend Astarte's authorization stage to support revocation, even though there are no plans to provide upstream support for that.</p><h3 id="changing-a-realm-s-validation-mean" class="section-heading">
+  <a href="#changing-a-realm-s-validation-mean" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Changing a Realm's validation mean
+</h3>
+<p>Over the lifetime of a cluster, it might be necessary to change a realm's validation mean for the most diverse reasons. By design, validation means are meant to be long lived, and changing them is supposed to be an extraordinary operation.</p><p>Astarte supports only one validation mean at a time. When the validation mean is changed, all tokens emitted which could be validated with the previous mean become invalid.</p><p>It is also possible that there might be a delay between the request of a validation mean change and its actuation. This means during this grace period tokens will be validated against the previously configured mean. As such, it is advised to treat a validation mean change as a maintenance operation for the realm. More details can be found in the Administrator Guide.</p><div class="bottom-actions">
+  <div class="bottom-actions-item">
+      <a href="065-groups.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Groups        </span>
+      </a>
+  </div>
+  <div class="bottom-actions-item">
+      <a href="080-mqtt-v1-protocol.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Astarte MQTT v1 Protocol        </span>
+      </a>
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

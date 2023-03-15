@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="Astarte v0.11.4">
+    <title>Pairing Mechanism — Astarte v0.11.4</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+    <script src="dist/sidebar_items-e57538aa08.js"></script>
+      <script src="../common_vars.js"></script>
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte      </a>
+      <strong class="sidebar-projectVersion">
+        v0.11.4
+      </strong>
+    </div>
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Pairing Mechanism</h1><p>Astarte's Pairing is a unified mechanism for <a href="035-register_device.html">Registering Devices</a> and
+obtaining <em>Transport Credentials</em>. Even though in Astarte each Transport is free to choose its own
+Authentication mechanisms and Credentials autonomously, Pairing defines a well-known mechanism for
+Registering Devices and for orchestrating the exchange of <em>Transport Credentials</em>. Pairing is the
+main endpoint which orchestrates Device Authentication in Astarte, abstracting all details.</p><h2 id="authentication-flow" class="section-heading">
+  <a href="#authentication-flow" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Authentication flow
+</h2>
+<p><img src="assets/astarte_basic_pairing_routine.svg" alt="Pairing basic flow"/></p><h2 id="credentials-secret-vs-transport-credentials" class="section-heading">
+  <a href="#credentials-secret-vs-transport-credentials" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Credentials Secret vs. Transport Credentials
+</h2>
+<p>Each device is identified by a <a href="010-design_principles.html#device-id">Device ID</a> and, on top of
+that, it has two different credentials directly associated to its ID: <em>Credentials Secret</em> and
+<em>Transport Credentials</em>. <em>Credentials Secret</em> is a shared secret between Astarte and a Device, which
+are used only to authenticate against Pairing API. Each device has a single <em>Credentials Secret</em>
+which remains valid throughout its whole lifecycle, and cannot be changed (unless operating
+manually).</p><p><em>Transport Credentials</em> are Transport-specific credentials usually orchestrated by Pairing. Pairing
+emits these Credentials through a policy which is usually imposed by the Authority emitting the
+Credentials or by Pairing itself. They are designed to be transient, revokable and reasonably
+short-lived - however, the actual behavior and their lifecycle is entirely orchestrated by the
+Authority emitting them. The emission of <em>Transport Credentials</em> can be inhibited for a specific
+Device, you can read how to do that in the <a href="040-connect_device.html#credentials-secret-pairing-and-transports">User
+Guide</a></p><p>Transports, by design, have no knowledge nor access to <em>Credentials Secret</em>, but have full authority
+over the authentication mechanism for devices. In fact, each Transport is free to choose the
+authentication mechanism which fits it best.</p><h3 id="credentials-secret-storage-recommendations" class="section-heading">
+  <a href="#credentials-secret-storage-recommendations" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Credentials Secret storage recommendations
+</h3>
+<p>As losing or disclosing a <em>Credentials Secret</em> might mean a device is compromised or requires manual
+intervention to be fixed and secured, storing it appropriately is critical.</p><p>Usually, when it comes to embedded devices, it is advised to store the <em>Credentials Secret</em> into an
+OTP, if available. Otherwise, storing it into the bootloader's variables is a viable and safe
+alternative. Other options might be having a separate, isolated storage containing <em>Credentials
+Secret</em>. In general, Astarte SDK does not provide a streamlined mechanism for retrieving
+<em>Credentials Secret</em> as the storage detail is strongly dependent on the target hardware - device
+developers should implement the safest strategy which better complies with their policies.</p><p>Tuning devices for security is out of the scope of this guide, however it is advised to make sure
+only Astarte SDK has access to <em>Credentials Secret</em>.</p><h2 id="using-ssl-certificates-as-transport-credentials" class="section-heading">
+  <a href="#using-ssl-certificates-as-transport-credentials" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Using SSL Certificates as Transport Credentials
+</h2>
+<p>Whenever possible, Transports are advised to implement their Authentication through the use of SSL
+certificates and a certificate authority by using <a href="https://en.wikipedia.org/wiki/Mutual_authentication">Mutual
+Authentication</a>, to ensure identities of the
+endpoint and the client are well-known to each other - this is especially the case with Astarte's
+MQTT Protocol on top of VerneMQ Transport.</p><p>In this case, <em>Transport Credentials</em> are a SSL Certificate, and Pairing will interact with a
+Certificate Authority. The certificate rotates depending on the emission policy of the CA and can be
+renewed and invalidated countless times over the device lifecycle. The Certificate is a transient,
+asymmetric, device-specific, non-critical Transport Credential which can be in turn used to
+authenticate against the chosen Transport.</p><p>In this case, Transports should have no knowledge nor access to secrets or Authorization details:
+they rather have to comply with the configured CA and the certificate parsing, as the Certificate
+contains all needed information for Authorization as well.</p><h3 id="mutual-ssl-authentication-flow" class="section-heading">
+  <a href="#mutual-ssl-authentication-flow" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Mutual SSL Authentication Flow
+</h3>
+<p><img src="assets/astarte_ssl_pairing_routine.svg" alt="Pairing SSL flow"/></p><p><em>Side note: the Transport usually bears the public certificate of the CA, and actually interacts
+with the CA itself only if it exposes an OCSP endpoint and the Transport is capable of understanding
+it. In case the CA exposes a CRL, the Transport just makes sure to update its CRL from the CA every
+once in a while. In both cases, Transport's only interaction with the CA is the configuration of its
+SSL endpoint.</em></p><h3 id="certificate-authority" class="section-heading">
+  <a href="#certificate-authority" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Certificate Authority
+</h3>
+<p>Pairing is designed to interact with an abstract certificate authority, given this authority is
+capable of:</p><ul><li>Emitting SSL Certificates with a custom CN (this is important in the Transport authentication
+ flow)</li><li>Revoking emitted certificates and exposing CRL/OCSP revocation information</li></ul><p>and is accessible from a 3rd party (e.g. from a REST API). By default, Astarte supports
+<a href="https://github.com/cloudflare/cfssl">Cloudflare's CFSSL</a>, and also provides a minimal installation
+in its default deploy scripts. For bigger installations, especially in terms of number of connected
+devices, it is strongly advised to use a dedicated CFSSL installation. Also, <a href="http://astarte.cloud/enterprise">Astarte
+Enterprise</a> provides a number of additional features including
+support for other external CAs.</p><h3 id="certificate-flow" class="section-heading">
+  <a href="#certificate-flow" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Certificate flow
+</h3>
+<p>During the Pairing flow, the device <strong>must</strong> generate autonomously a <a href="https://en.wikipedia.org/wiki/Certificate_signing_request">Certificate Signing Request
+(CSR)</a> which will be in turn relayed by
+Pairing to the configured Certificate Authority. Pairing will also provide the Certificate Authority
+with a custom CN, which maps to <code class="inline">&lt;realm&gt;/&lt;device id&gt;</code>.</p><p>The CA <strong>must</strong> ensure the signed certificate carries this information, as it will be used by the
+Transport to authenticate the caller inside Astarte. Pairing, in fact, will also perform sanity
+checks over the signed certificate and reject it in case the CA fails to comply.</p><h2 id="agents" class="section-heading">
+  <a href="#agents" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Agents
+</h2>
+<p>Agents are realm-level entities capable of registering a device into Astarte. Agents are a core
+concept in the Pairing mechanism, as no Device can request its Transport Credentials nor be
+authenticated against any Transport unless an Agent previously gave its consent and delivered its
+<em>Credentials Secret</em>.</p><p>The recommended configuration includes an authenticated Agent in a trusted physical environment
+(e.g.: the distribution facility of the device) which guarantees an isolated and safe routine for
+generating <em>Credentials Secret</em>. However, such a setup might not always be possible, and Astarte's
+SDK has an <em>On Board Agent</em> concept to allow a simpler registration procedure.</p><h3 id="on-board-agent" class="section-heading">
+  <a href="#on-board-agent" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  On Board Agent
+</h3>
+<p>In the <em>On Board Agent</em> use case, the device is preloaded with an <em>Agent Key</em>, a shared secret which
+is <strong>not tied to a specific Device in the realm</strong>. In fact, this secret is usually the same for all
+Devices in the same realm.</p><p>This secret will be used only once, upon the device's first interaction with Astarte (Registration),
+and can be safely discarded afterwards. This approach largely simplifies the deploy procedure, but
+leaves every device with a secret which, if retrieved, can allow an entity to register an arbitrary
+Device in the realm.</p><p>If following the <em>On Board Agent</em> approach, it is advised to store the <em>Agent Key</em> in a safe area
+inside the device and delete it after retrieving a <em>Credentials Secret</em> (some OTPs allow this
+configuration).</p><h2 id="transport-responsibility" class="section-heading">
+  <a href="#transport-responsibility" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Transport responsibility
+</h2>
+<p>Once a device obtains its <em>Transport Credentials</em>, it is then capable of connecting to the Transport
+the credentials were forged for. Transports have full responsibility in terms of authenticating the
+client, reporting and relaying its connection state to Astarte via its internal AMQP API. As such,
+it is fundamental that 3rd parties implementing new Transports not only adhere to protocol
+specifications, but also make sure to implement the authentication procedure meticolously, as a
+vulnerable Transport acts as a single point of failure of the whole system, and is capable of
+bypassing the Pairing workflow entirely.</p><p>For this very reason, we encourage users to be extremely cautious when using 3rd party Transports
+which have not been verified and hardly tested, especially when it comes to the Client
+Authentication stage.</p><p>Even though there are valid use cases where Mutual Authentication is not usable, Transports are
+advised to stick to Mutual SSL Authentication where possible. This, among other benefits, allows to
+use Pairing's core features for handling SSL Certificates.</p><h2 id="pairing-facilities" class="section-heading">
+  <a href="#pairing-facilities" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Pairing facilities
+</h2>
+<p>Pairing's Device API exposes two additional facilities: first and foremost an endpoint which bears a
+set of information about both Pairing itself and Transports the device should use or choose from.
+This endpoint is Device and Realm specific and can be found at
+<a href="api/index.html?urls.primaryName=Pairing%20API#/device/getInfo"><code class="inline">/{realm_name}/devices/{hw_id}</code></a>.
+This allows granting each Device a specific Transport configuration, which can be useful in
+installations with more than a single Transport, and automates the configuration on the Device's
+end, which knows in advance what is supported and how to access its Transport(s).</p><p>Moreover, each Transport implementation has a <code class="inline">/verify</code> endpoint where a client, authenticating with
+its <em>Credentials Secret</em>, can verify whether its <em>Transport Credentials</em> are valid or not. This, in
+case SSL is used, is especially useful for checking against revocation lists.</p><div class="bottom-actions">
+  <div class="bottom-actions-item">
+      <a href="040-interface_schema.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Interface Schema        </span>
+      </a>
+  </div>
+  <div class="bottom-actions-item">
+      <a href="060-triggers.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Triggers        </span>
+      </a>
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

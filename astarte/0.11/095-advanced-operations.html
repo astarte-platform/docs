@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="Astarte v0.11.4">
+    <title>Advanced operations — Astarte v0.11.4</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+    <script src="dist/sidebar_items-e57538aa08.js"></script>
+      <script src="../common_vars.js"></script>
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte      </a>
+      <strong class="sidebar-projectVersion">
+        v0.11.4
+      </strong>
+    </div>
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Advanced operations</h1><p>This section provides guides to perform some operations that have to be perfomed manually since they
+could result in data loss or other type of irrecoverable damage. <em>Always be careful while performing
+these operations</em></p><h2 id="manual-deletion-of-interfaces" class="section-heading">
+  <a href="#manual-deletion-of-interfaces" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Manual deletion of interfaces
+</h2>
+<p>Right now, Astarte only allows deleting draft interfaces, i.e. interfaces with major version <code class="inline">0</code> and
+not used by any device.</p><p>If you want to delete an interface that already has published data, you must proceed manually with
+the steps described below. In this guide we're going to assume that you're trying to delete the
+<code class="inline">org.astarte-platform.genericsensors.Values</code> interface in the <code class="inline">test</code> realm.</p><p>The guide requires that you have <a href="https://cassandra.apache.org/doc/latest/tools/cqlsh.html"><code class="inline">cqlsh</code></a>
+connected to the Cassandra/ScyllaDB instance that your Astarte instance is using.</p><h3 id="switch-to-the-target-keyspace" class="section-heading">
+  <a href="#switch-to-the-target-keyspace" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Switch to the target keyspace
+</h3>
+<p>The keyspace has the same name of the realm, in our case it's <code class="inline">test</code></p><pre><code class="makeup elixir"><span class="n">cqlsh</span><span class="o">&gt;</span><span class="w"> </span><span class="kn">use</span><span class="w"> </span><span class="n">test</span><span class="p">;</span></code></pre><h3 id="find-out-the-interface-id" class="section-heading">
+  <a href="#find-out-the-interface-id" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Find out the interface id
+</h3>
+<pre><code class="makeup elixir"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">SELECT</span><span class="w"> </span><span class="n">interface_id</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">interfaces</span><span class="w">
+  </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="sc">&#39;org.astarte-platform.genericsensors.Values&#39;</span><span class="w">
+  </span><span class="nc">AND</span><span class="w"> </span><span class="n">major_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span></code></pre><p><code class="inline">cqlsh</code> will reply with the interface id</p><pre><code class="makeup elixir"><span class="w"> </span><span class="n">interface_id</span><span class="w">
+</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="w">
+ </span><span class="n">c238b244</span><span class="o">-</span><span class="n">b90f</span><span class="o">-</span><span class="mi">4</span><span class="n">c6d</span><span class="o">-</span><span class="n">f276</span><span class="o">-</span><span class="mi">25768</span><span class="n">bf6abac</span></code></pre><h3 id="delete-the-interface" class="section-heading">
+  <a href="#delete-the-interface" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Delete the interface
+</h3>
+<p><em>WARNING: This is a destructive step that will erase the correlation between the Interface name and
+internal ID. Before proceeding, ensure you saved the interface ID, or you will end up with dangling
+data. Further steps in this guide will require the interface ID.</em></p><p>To delete the interface,</p><pre><code class="makeup elixir"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">DELETE</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">interfaces</span><span class="w">
+  </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="sc">&#39;org.astarte-platform.genericsensors.Values&#39;</span><span class="w">
+  </span><span class="nc">AND</span><span class="w"> </span><span class="n">major_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span></code></pre><p><em>Keep in mind that after this step, all existing devices that try to publish on this interface will
+be disconnected as soon as they try to do so.</em></p><h3 id="delete-interface-data" class="section-heading">
+  <a href="#delete-interface-data" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Delete interface data
+</h3>
+<p>The interface data is stored in a different place depending on the interface type (<code class="inline">datastream</code> or
+<code class="inline">properties</code>) and aggregation.</p><ul><li>Individual datastream interfaces store their data in the <code class="inline">individual_datastreams</code> table.</li><li>Individual properties interfaces store their data in the <code class="inline">individual_properties</code> table.</li><li>Object datastream interfaces store their data in a dedicated table which is created starting from
+the interface (e.g. an interface called <code class="inline">com.test.Sensors</code> with major version <code class="inline">1</code> creates a
+<code class="inline">com_test_sensors_v1</code> table in the realm keyspace).</li></ul><p>To delete data from object datastreams, you just need to <code class="inline">DROP</code> the table where the data is stored.</p><p>Deleting data from individual interfaces requires more steps. In this example the interface is an
+individual datastream, but the procedure for individual properties is the same, but using the
+<code class="inline">individual_properties</code> table instead.</p><p>To delete the interface data, first you have to find all the relevant primary keys</p><pre><code class="makeup elixir"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">SELECT</span><span class="w"> </span><span class="nc">DISTINCT</span><span class="w"> </span><span class="n">device_id</span><span class="p">,</span><span class="w"> </span><span class="n">interface_id</span><span class="p">,</span><span class="w"> </span><span class="n">endpoint_id</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">individual_datastreams</span><span class="w">
+  </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">interface_id</span><span class="o">=</span><span class="n">c238b244</span><span class="o">-</span><span class="n">b90f</span><span class="o">-</span><span class="mi">4</span><span class="n">c6d</span><span class="o">-</span><span class="n">f276</span><span class="o">-</span><span class="mi">25768</span><span class="n">bf6abac</span><span class="w"> </span><span class="nc">ALLOW</span><span class="w"> </span><span class="nc">FILTERING</span><span class="p">;</span></code></pre><p>This will return a set of primary keys of data belonging to that interface</p><pre><code class="makeup elixir"><span class="w"> </span><span class="n">device_id</span><span class="w">                            </span><span class="o">|</span><span class="w"> </span><span class="n">interface_id</span><span class="w">                         </span><span class="o">|</span><span class="w"> </span><span class="n">endpoint_id</span><span class="w">                          </span><span class="o">|</span><span class="w"> </span><span class="n">path</span><span class="w">
+</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">|</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">|</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">|</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">-</span><span class="w">
+ </span><span class="mi">41</span><span class="n">c1c072</span><span class="o">-</span><span class="n">d416</span><span class="o">-</span><span class="mi">4686</span><span class="o">-</span><span class="n">ba23</span><span class="o">-</span><span class="mi">673</span><span class="n">fe4ad926f</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">c238b244</span><span class="o">-</span><span class="n">b90f</span><span class="o">-</span><span class="mi">4</span><span class="n">c6d</span><span class="o">-</span><span class="n">f276</span><span class="o">-</span><span class="mi">25768</span><span class="n">bf6abac</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">33751412</span><span class="o">-</span><span class="mi">3</span><span class="n">e77</span><span class="o">-</span><span class="n">ad1f</span><span class="o">-</span><span class="n">ad57</span><span class="o">-</span><span class="mi">280</span><span class="n">cc9fad581</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">value</span><span class="w">
+ </span><span class="mi">81</span><span class="n">c60277</span><span class="o">-</span><span class="mi">4645</span><span class="o">-</span><span class="mi">441</span><span class="n">f</span><span class="o">-</span><span class="n">a49b</span><span class="o">-</span><span class="mi">66</span><span class="n">a71ce54b83</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">c238b244</span><span class="o">-</span><span class="n">b90f</span><span class="o">-</span><span class="mi">4</span><span class="n">c6d</span><span class="o">-</span><span class="n">f276</span><span class="o">-</span><span class="mi">25768</span><span class="n">bf6abac</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">33751412</span><span class="o">-</span><span class="mi">3</span><span class="n">e77</span><span class="o">-</span><span class="n">ad1f</span><span class="o">-</span><span class="n">ad57</span><span class="o">-</span><span class="mi">280</span><span class="n">cc9fad581</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">/</span><span class="n">foo</span><span class="o">/</span><span class="n">value</span><span class="w">
+ </span><span class="n">...</span></code></pre><p>After that, you have to delete all the data belonging to those primary keys</p><pre><code class="makeup elixir"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">DELETE</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">individual_datastreams</span><span class="w">
+  </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">device_id</span><span class="o">=</span><span class="mi">41</span><span class="n">c1c072</span><span class="o">-</span><span class="n">d416</span><span class="o">-</span><span class="mi">4686</span><span class="o">-</span><span class="n">ba23</span><span class="o">-</span><span class="mi">673</span><span class="n">fe4ad926f</span><span class="w">
+  </span><span class="nc">AND</span><span class="w"> </span><span class="n">interface_id</span><span class="o">=</span><span class="n">c238b244</span><span class="o">-</span><span class="n">b90f</span><span class="o">-</span><span class="mi">4</span><span class="n">c6d</span><span class="o">-</span><span class="n">f276</span><span class="o">-</span><span class="mi">25768</span><span class="n">bf6abac</span><span class="w">
+  </span><span class="nc">AND</span><span class="w"> </span><span class="n">endpoint_id</span><span class="o">=</span><span class="mi">33751412</span><span class="o">-</span><span class="mi">3</span><span class="n">e77</span><span class="o">-</span><span class="n">ad1f</span><span class="o">-</span><span class="n">ad57</span><span class="o">-</span><span class="mi">280</span><span class="n">cc9fad581</span><span class="w">
+  </span><span class="nc">AND</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="sc">&#39;/test/value&#39;</span><span class="p">;</span><span class="w">
+
+</span><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">DELETE</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">individual_datastreams</span><span class="w">
+  </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">device_id</span><span class="o">=</span><span class="mi">81</span><span class="n">c60277</span><span class="o">-</span><span class="mi">4645</span><span class="o">-</span><span class="mi">441</span><span class="n">f</span><span class="o">-</span><span class="n">a49b</span><span class="o">-</span><span class="mi">66</span><span class="n">a71ce54b83</span><span class="w">
+  </span><span class="nc">AND</span><span class="w"> </span><span class="n">interface_id</span><span class="o">=</span><span class="n">c238b244</span><span class="o">-</span><span class="n">b90f</span><span class="o">-</span><span class="mi">4</span><span class="n">c6d</span><span class="o">-</span><span class="n">f276</span><span class="o">-</span><span class="mi">25768</span><span class="n">bf6abac</span><span class="w">
+  </span><span class="nc">AND</span><span class="w"> </span><span class="n">endpoint_id</span><span class="o">=</span><span class="mi">33751412</span><span class="o">-</span><span class="mi">3</span><span class="n">e77</span><span class="o">-</span><span class="n">ad1f</span><span class="o">-</span><span class="n">ad57</span><span class="o">-</span><span class="mi">280</span><span class="n">cc9fad581</span><span class="w">
+  </span><span class="nc">AND</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="sc">&#39;/foo/value&#39;</span><span class="p">;</span><span class="w">
+</span><span class="n">...</span></code></pre><h3 id="devices-by-interface-cleanup" class="section-heading">
+  <a href="#devices-by-interface-cleanup" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <code class="inline">devices-by-interface</code> cleanup
+</h3>
+<p>If you're using this guide to remove an draft interface (i.e. with major version <code class="inline">0</code>) that can't be
+deleted since it has data on it, an additional step is required for a complete cleanup.</p><p>The information about which devices are using draft interfaces is kept in the <code class="inline">kv_store</code> table. You
+can inspect the groups with</p><pre><code class="makeup elixir"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">SELECT</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">kv_store</span><span class="p">;</span></code></pre><p>Inspecting the returned <code class="inline">group</code>s, you can easily identify which group has to be deleted, since it's
+the one with its name derived from the interface name. For example, if you're trying to remove all
+data from the <code class="inline">org.astarte-platform.genericevents.DeviceEvents v0.1</code> interface, the corresponding
+<code class="inline">group</code> in <code class="inline">kv_store</code> will be
+<code class="inline">devices-by-interface-org.astarte-platform.genericevents.DeviceEvents-v0</code>.</p><p>After you identify the group, just remove all its entries with</p><pre><code class="makeup elixir"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">DELETE</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">kv_store</span><span class="w"> </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">group</span><span class="o">=</span><span class="sc">&#39;devices-by-interface-org.astarte-platform.genericevents.DeviceEvents-v0&#39;</span><span class="p">;</span></code></pre><h3 id="conclusion" class="section-heading">
+  <a href="#conclusion" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Conclusion
+</h3>
+<p>After you end performing all the steps above, the interface will be completely removed from Astarte.
+You can then proceed to install a new interface with the same name and major version without any
+conflict. <em>Remember to remove the interface also on the device side, otherwise devices will keep
+getting disconnected if they try to publish on the deleted interface.</em></p><div class="bottom-actions">
+  <div class="bottom-actions-item">
+      <a href="090-monitoring.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Monitoring        </span>
+      </a>
+  </div>
+  <div class="bottom-actions-item">
+      <a href="010-astarte_in_5_minutes.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Astarte in 5 minutes        </span>
+      </a>
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

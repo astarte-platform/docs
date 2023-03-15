@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="Astarte v0.11.4">
+    <title>Monitoring — Astarte v0.11.4</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+    <script src="dist/sidebar_items-e57538aa08.js"></script>
+      <script src="../common_vars.js"></script>
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte      </a>
+      <strong class="sidebar-projectVersion">
+        v0.11.4
+      </strong>
+    </div>
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Monitoring</h1><p>Astarte is a complex, distributed system that may pose several challenges when deployed in production. Individual services report health and metrics to ensure production clusters can be properly monitored and proactive actions can be taken in case of faults or unexpected behavior.</p><h2 id="health-checks" class="section-heading">
+  <a href="#health-checks" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Health checks
+</h2>
+<p>Every Astarte service, whether it's an API service or not, exposes an HTTP endpoint <code class="inline">/health</code>, without versioning, on its HTTP port. By default, services use port <code class="inline">4000</code>.
+<code class="inline">/health</code> is meant to be called frequently and reports the individual health state of a service. It will return <code class="inline">200</code> in case the service is healthy, or other errors in case the service is having issues. Among those issues, there might be failure in accessing RabbitMQ/RPC communications or failure in accessing the Database.</p><h3 id="health-checks-and-kubernetes" class="section-heading">
+  <a href="#health-checks-and-kubernetes" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Health checks and Kubernetes
+</h3>
+<p>The aforementioned health checks are integrated in Kubernetes, when using Astarte Operator, as <code class="inline">LivenessProbe</code> and <code class="inline">ReadinessProbe</code>. As such, health monitoring and forced restarts are automatically handled without the need for the administrator to integrate any additional logic.</p><h2 id="service-metrics" class="section-heading">
+  <a href="#service-metrics" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Service metrics
+</h2>
+<p>Just like <code class="inline">/health</code>, every service exposes a <code class="inline">/metrics</code> endpoint. This endpoint exposes a series of metrics in <a href="https://prometheus.io/">Prometheus</a> format, which can be easily integrated and queried from any Prometheus-compatible monitoring solution. Each service, besides exposing stats on its Erlang VM, resource consumption and HTTP stats (where applicable), also exposes a number of service-specific metric, which can be queried to obtain information about Astarte's usage and behavior.</p><h3 id="authentication-and-access-to-metrics" class="section-heading">
+  <a href="#authentication-and-access-to-metrics" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Authentication and access to metrics
+</h3>
+<p><code class="inline">/metrics</code>, being Prometheus-compatible, does not implement any kind of authentication or access control. Ideally, only your scraper should have access to <code class="inline">/metrics</code>, as it can leak sensitive information and should not be exposed to the outer world.</p><p>Astarte Operator, by default, forbids access to <code class="inline">/metrics</code> through its ingress, as it assumes your scraper lives within the Kubernetes cluster or has means to access the cluster on its own. However, this behavior can be overridden through by setting <code class="inline">serveMetrics: true</code> in the <code class="inline">api</code> section. An additional parameter, <code class="inline">serveMetricsToSubnet</code>, can be specified to restrict access to <code class="inline">/metrics</code> only to source IPs in a specific subnet. It is strongly recommended to set this up in case an external scraper needs to have access to <code class="inline">/metrics</code>, to ensure access is restricted.</p><div class="bottom-actions">
+  <div class="bottom-actions-item">
+      <a href="080-upgrade_guide.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Upgrading the Cluster        </span>
+      </a>
+  </div>
+  <div class="bottom-actions-item">
+      <a href="095-advanced-operations.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Advanced operations        </span>
+      </a>
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

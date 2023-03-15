@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="Astarte v0.11.4">
+    <title>Astarte Database — Astarte v0.11.4</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+    <script src="dist/sidebar_items-e57538aa08.js"></script>
+      <script src="../common_vars.js"></script>
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte      </a>
+      <strong class="sidebar-projectVersion">
+        v0.11.4
+      </strong>
+    </div>
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Astarte Database</h1><p>Astarte leverages <a href="http://cassandra.apache.org/">Cassandra</a> to store all of its data, including data ingested from devices (which might scale to insane amounts). Cassandra offers scalability and high availability with <a href="https://www.datastax.com/apache-cassandra-leads-nosql-benchmark">good performances</a>.
+Cassandra offers linear scalability and can span from really small clusters to hundreds of nodes, without compromising on reliability.
+<a href="https://www.scylladb.com/">ScyllaDB</a> &gt;= 3.3 is also supported as a drop-in replacement when a <a href="https://www.scylladb.com/product/benchmarks/">performance boost</a> is needed.</p><p>Cassandra is also the ideal storage for large-scale data processing with <a href="http://spark.apache.org/">Apache Spark</a>.</p><p>Astarte is multi-tenant by design, with each tenant mapping to an Astarte Realm. Each Realm has its own Cassandra keyspace, which can be tuned according to Realm-specific needs (e.g.: Realms might have different replication levels). For this reason, in the scope of this section, realm and keyspace can be used as synonyms, except for the <code class="inline">astarte</code> keyspace.</p><h2 id="schema-and-keyspace-creation" class="section-heading">
+  <a href="#schema-and-keyspace-creation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Schema and Keyspace Creation
+</h2>
+<p>Astarte automatically takes care of keyspaces, tables creation and intra-version migrations (those tasks are performed by <code class="inline">astarte_housekeeping</code> or <code class="inline">astarte_realm_management</code>, depending on the context). The following documentation is just a reference about Astarte's internal statements, and is related to the release series referenced by the documentation.</p><h3 id="astarte-keyspace" class="section-heading">
+  <a href="#astarte-keyspace" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Astarte Keyspace
+</h3>
+<p>Astarte needs an <code class="inline">astarte</code> keyspace to store its own data.</p><p><code class="inline">astarte</code> keyspace and tables are created with following <a href="https://docs.datastax.com/en/cql/3.3/index.html">CQL</a> statements:</p><pre><code class="sql">CREATE KEYSPACE astarte
+  WITH replication = {'class': 'SimpleStrategy', 'replication_factor': &lt;replication factor&gt;}  AND
+    durable_writes = true;</code></pre><pre><code class="sql">CREATE TABLE astarte.realms (
+  realm_name varchar,
+
+  PRIMARY KEY (realm_name)
+);</code></pre><h3 id="realm-creation" class="section-heading">
+  <a href="#realm-creation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Realm Creation
+</h3>
+<p>Each realm needs several tables to store data for all the functionalities.
+Realm tables can be grouped in the following functionalities:</p><ul><li>Configuration &amp; key-value store</li><li>Interfaces schema</li><li>Device management</li><li>Groups management</li><li>Triggers storage</li><li>Data storage</li></ul><p>Some data storage tables might be created when required, whereas all other tables are created when a keyspace is created, using the following statements:</p><pre><code class="sql">CREATE KEYSPACE &lt;realm name&gt;
+  WITH replication = {'class': 'SimpleStrategy', 'replication_factor': :replication_factor} AND
+    durable_writes = true;</code></pre><pre><code class="sql">CREATE TABLE &lt;realm name&gt;.kv_store (
+  group varchar,
+  key varchar,
+  value blob,
+
+  PRIMARY KEY ((group), key)
+);</code></pre><pre><code class="sql">CREATE TABLE &lt;realm name&gt;.names (
+  object_name varchar,
+  object_type int,
+  object_uuid uuid,
+
+  PRIMARY KEY ((object_name), object_type)
+);</code></pre><pre><code class="sql">CREATE TABLE &lt;realm_name&gt;.devices (
+  device_id uuid,
+  aliases map&lt;ascii, varchar&gt;,
+  introspection map&lt;ascii, int&gt;,
+  introspection_minor map&lt;ascii, int&gt;,
+  old_introspection map&lt;frozen&lt;tuple&lt;ascii, int&gt;&gt;, int&gt;,
+  protocol_revision int,
+  first_registration timestamp,
+  credentials_secret ascii,
+  inhibit_credentials_request boolean,
+  cert_serial ascii,
+  cert_aki ascii,
+  first_credentials_request timestamp,
+  last_connection timestamp,
+  last_disconnection timestamp,
+  connected boolean,
+  pending_empty_cache boolean,
+  total_received_msgs bigint,
+  total_received_bytes bigint,
+  exchanged_bytes_by_interface map&lt;frozen&lt;tuple&lt;ascii, int&gt;&gt;, bigint&gt;,
+  exchanged_msgs_by_interface map&lt;frozen&lt;tuple&lt;ascii, int&gt;&gt;, bigint&gt;,
+  last_credentials_request_ip inet,
+  last_seen_ip inet,
+
+  groups map&lt;text, timeuuid&gt;,
+
+  PRIMARY KEY (device_id)
+);</code></pre><pre><code class="sql">CREATE TABLE &lt;realm name&gt;.grouped_devices (
+  group_name varchar,
+  insertion_uuid timeuuid,
+  device_id uuid,
+  PRIMARY KEY ((group_name), insertion_uuid, device_id)
+);</code></pre><pre><code class="sql">CREATE TABLE &lt;realm name&gt;.endpoints (
+  interface_id uuid,
+  endpoint_id uuid,
+  interface_name ascii,
+  interface_major_version int,
+  interface_minor_version int,
+  interface_type int,
+  endpoint ascii,
+  value_type int,
+  reliability int,
+  retention int,
+  expiry int,
+  database_retention_ttl int,
+  database_retention_policy int,
+  allow_unset boolean,
+  explicit_timestamp boolean,
+  description varchar,
+  doc varchar,
+
+  PRIMARY KEY ((interface_id), endpoint_id)
+);</code></pre><pre><code class="sql">CREATE TABLE &lt;realm name&gt;.interfaces (
+  name ascii,
+  major_version int,
+  minor_version int,
+  interface_id uuid,
+  storage_type int,
+  storage ascii,
+  type int,
+  ownership int,
+  aggregation int,
+  automaton_transitions blob,
+  automaton_accepting_states blob,
+  description varchar,
+  doc varchar,
+
+  PRIMARY KEY (name, major_version)
+);</code></pre><pre><code class="sql">CREATE TABLE &lt;realm name&gt;.individual_properties (
+  device_id uuid,
+  interface_id uuid,
+  endpoint_id uuid,
+  path varchar,
+  reception_timestamp timestamp,
+  reception_timestamp_submillis smallint,
+
+  double_value double,
+  integer_value int,
+  boolean_value boolean,
+  longinteger_value bigint,
+  string_value varchar,
+  binaryblob_value blob,
+  datetime_value timestamp,
+  doublearray_value list&lt;double&gt;,
+  integerarray_value list&lt;int&gt;,
+  booleanarray_value list&lt;boolean&gt;,
+  longintegerarray_value list&lt;bigint&gt;,
+  stringarray_value list&lt;varchar&gt;,
+  binaryblobarray_value list&lt;blob&gt;,
+  datetimearray_value list&lt;timestamp&gt;,
+
+  PRIMARY KEY((device_id, interface_id), endpoint_id, path)
+);</code></pre><pre><code class="sql">CREATE TABLE &lt;realm name&gt;.simple_triggers (
+  object_id uuid,
+  object_type int,
+  parent_trigger_id uuid,
+  simple_trigger_id uuid,
+  trigger_data blob,
+  trigger_target blob,
+
+  PRIMARY KEY ((object_id, object_type), parent_trigger_id, simple_trigger_id)
+);</code></pre><h2 id="tables" class="section-heading">
+  <a href="#tables" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Tables
+</h2>
+<h3 id="devices" class="section-heading">
+  <a href="#devices" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Devices
+</h3>
+<p>Devices table stores the list of all the devices for a certain realm and all their metadata, including the introspection, the device status and credentials information.</p><table><thead><tr><th style="text-align: left;">Column Name</th><th style="text-align: left;">Column Type</th><th style="text-align: left;">Description</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">device_id</code></td><td style="text-align: left;"><code class="inline">uuid</code></td><td style="text-align: left;">Device unique 128 bits ID.</td></tr><tr><td style="text-align: left;"><code class="inline">aliases</code></td><td style="text-align: left;"><code class="inline">map&lt;ascii, varchar&gt;</code></td><td style="text-align: left;">Alias purpose and alias map.</td></tr><tr><td style="text-align: left;"><code class="inline">introspection</code></td><td style="text-align: left;"><code class="inline">map&lt;ascii, int&gt;</code></td><td style="text-align: left;">Device interface name to interface major version map based on most recent device introspection.</td></tr><tr><td style="text-align: left;"><code class="inline">introspection_minor</code></td><td style="text-align: left;"><code class="inline">map&lt;ascii, int&gt;</code></td><td style="text-align: left;">Device interface name to interface minor version map based on most recent device introspection.</td></tr><tr><td style="text-align: left;"><code class="inline">old_introspection</code></td><td style="text-align: left;"><code class="inline">map&lt;frozen&lt;tuple&lt;ascii, int&gt;&gt;, int&gt;</code></td><td style="text-align: left;">All previous device interfaces. This column is used to keep track of all interfaces that have been used and might still have some recorded data. The column maps interface (name, major) to minor.</td></tr><tr><td style="text-align: left;"><code class="inline">protocol_revision</code></td><td style="text-align: left;"><code class="inline">int</code></td><td style="text-align: left;">Spoken Astarte MQTT v1 protocol revision.</td></tr><tr><td style="text-align: left;"><code class="inline">first_registration</code></td><td style="text-align: left;"><code class="inline">timestamp</code></td><td style="text-align: left;">First registration attempt timestamp.</td></tr><tr><td style="text-align: left;"><code class="inline">credentials_secret</code></td><td style="text-align: left;"><code class="inline">ascii</code></td><td style="text-align: left;">The bcrypt hash of the credential secret, that the device uses to obtain new credentials.</td></tr><tr><td style="text-align: left;"><code class="inline">inhibit_credentials_request</code></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;">Ban device credentials renewal, device will be able to connect to the transport up to  the credential expiry.</td></tr><tr><td style="text-align: left;"><code class="inline">cert_serial</code></td><td style="text-align: left;"><code class="inline">ascii</code></td><td style="text-align: left;">Device certificate serial used by the CA.</td></tr><tr><td style="text-align: left;"><code class="inline">cert_aki</code></td><td style="text-align: left;"><code class="inline">ascii</code></td><td style="text-align: left;">Device certificate Authority Key Identifier.</td></tr><tr><td style="text-align: left;"><code class="inline">first_credentials_request</code></td><td style="text-align: left;"><code class="inline">timestamp</code></td><td style="text-align: left;">First credentials request timestamp.</td></tr><tr><td style="text-align: left;"><code class="inline">last_connection</code></td><td style="text-align: left;"><code class="inline">timestamp</code></td><td style="text-align: left;">Most recent device connection event timestamp.</td></tr><tr><td style="text-align: left;"><code class="inline">last_disconnection</code></td><td style="text-align: left;"><code class="inline">timestamp</code></td><td style="text-align: left;">Most recent device disconnection event timestamp.</td></tr><tr><td style="text-align: left;"><code class="inline">connected</code></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;">True if the device is connected, otherwise is false.</td></tr><tr><td style="text-align: left;"><code class="inline">pending_empty_cache</code></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;">Device is in an unclean state and an empty cache message is being waited.</td></tr><tr><td style="text-align: left;"><code class="inline">total_received_msgs</code></td><td style="text-align: left;"><code class="inline">bigint</code></td><td style="text-align: left;">Count of received messages since the device registration.</td></tr><tr><td style="text-align: left;"><code class="inline">total_received_bytes</code></td><td style="text-align: left;"><code class="inline">bigint</code></td><td style="text-align: left;">Amount of received messages bytes since the device registration.</td></tr><tr><td style="text-align: left;"><code class="inline">exchanged_msgs_by_interface</code></td><td style="text-align: left;"><code class="inline">bigint</code></td><td style="text-align: left;">Count of exchanged messages since the device registration.</td></tr><tr><td style="text-align: left;"><code class="inline">exchanged_bytes_by_interface</code></td><td style="text-align: left;"><code class="inline">bigint</code></td><td style="text-align: left;">Amount of exchanged messages bytes since the device registration.</td></tr><tr><td style="text-align: left;"><code class="inline">last_credentials_request_ip</code></td><td style="text-align: left;"><code class="inline">inet</code></td><td style="text-align: left;">Device IP address used during the last credential request.</td></tr><tr><td style="text-align: left;"><code class="inline">last_seen_ip</code></td><td style="text-align: left;"><code class="inline">inet</code></td><td style="text-align: left;">Most recent device IP address.</td></tr><tr><td style="text-align: left;"><code class="inline">groups</code></td><td style="text-align: left;"><code class="inline">map&lt;text, timeuuid&gt;</code></td><td style="text-align: left;">Groups which the device belongs to, the key is the group name, and the value is its insertion timeuuid, which is used as part of the key on grouped_devices table.</td></tr></tbody></table><h2 id="schema-changes" class="section-heading">
+  <a href="#schema-changes" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Schema changes
+</h2>
+<p>This section describes the schema changes happening between different Astarte Versions.</p><p>They are divided between Astarte Keyspace (changes that affect the Astarte Keyspace), and Realm
+Keyspaces (changes that affect all realm keyspaces).</p><p>Every change is followed by the CQL statement that produces the change.</p><h3 id="from-v0-10-to-v0-11" class="section-heading">
+  <a href="#from-v0-10-to-v0-11" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  From v0.10 to v0.11
+</h3>
+<h4>Astarte Keyspace v0.11 Changes</h4><ul><li>Remove <code class="inline">astarte_schema</code> table</li></ul><pre><code class="sql">DROP TABLE astarte_schema;</code></pre><ul><li>Remove <code class="inline">replication_factor</code> column from the <code class="inline">realms</code> table</li></ul><pre><code class="sql">ALTER TABLE realms
+DROP replication_factor;</code></pre><h4>Realm Keyspaces v0.11 Changes</h4><ul><li>Add <code class="inline">grouped_devices</code> table</li></ul><pre><code class="sql">CREATE TABLE &lt;realm_name&gt;.grouped_devices (
+   group_name varchar,
+   insertion_uuid timeuuid,
+   device_id uuid,
+   PRIMARY KEY ((group_name), insertion_uuid, device_id)
+);</code></pre><ul><li>Add <code class="inline">groups</code>, <code class="inline">exchanged_bytes_by_interface</code> and <code class="inline">exchanged_msgs_by_interface</code> columns to the
+<code class="inline">devices</code> table</li></ul><pre><code class="sql">ALTER TABLE &lt;realm_name&gt;.devices
+ADD (groups map&lt;text, timeuuid&gt;,
+    exchanged_bytes_by_interface map&lt;frozen&lt;tuple&lt;ascii, int&gt;&gt;, bigint&gt;,
+    exchanged_msgs_by_interface map&lt;frozen&lt;tuple&lt;ascii, int&gt;&gt;, bigint&gt;);</code></pre><ul><li>Add <code class="inline">database_retention_ttl</code> and <code class="inline">database_retention_policy</code> columns to the <code class="inline">endpoints</code> table</li></ul><pre><code class="sql">ALTER TABLE &lt;realm_name&gt;.endpoints
+ADD (
+  database_retention_ttl int,
+  database_retention_policy int
+);</code></pre><div class="bottom-actions">
+  <div class="bottom-actions-item">
+      <a href="080-mqtt-v1-protocol.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Astarte MQTT v1 Protocol        </span>
+      </a>
+  </div>
+  <div class="bottom-actions-item">
+      <a href="001-intro_user.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Introduction        </span>
+      </a>
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>
