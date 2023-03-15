@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="Astarte v0.10.2">
+
+    <title>Interface Schema — Astarte v0.10.2</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+
+    <script src="dist/sidebar_items-61bd90a078.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+
+
+  </head>
+  <body data-type="extras">
+    <script>
+
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte
+      </a>
+      <strong class="sidebar-projectVersion">
+        v0.10.2
+      </strong>
+    </div>
+
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>Interface Schema</h1><p>The schema contains the following objects:</p><ul><li><a href="#reference-astarte-interface-schema"><code class="inline">Interface</code></a> (root object)</li><li><a href="#reference-astarte-mapping-schema"><code class="inline">Mapping</code></a></li></ul><hr class="thin"/><a name="reference-astarte-interface-schema"></a><h2 id="interface" class="section-heading">
+  <a href="#interface" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Interface
+</h2>
+<p>This schema describes how an Astarte interface should be declared</p><p><strong>Properties</strong></p><table><thead><tr><th style="text-align: left;"></th><th style="text-align: left;">Type</th><th style="text-align: left;">Description</th><th style="text-align: left;">Required</th></tr></thead><tbody><tr><td style="text-align: left;"><strong>interface_name</strong></td><td style="text-align: left;"><code class="inline">string</code></td><td style="text-align: left;">The name of the interface. This has to be an unique, alphanumeric reverse internet domain name, shorther than 128 characters.</td><td style="text-align: left;">:white_check_mark: Yes</td></tr><tr><td style="text-align: left;"><strong>version_major</strong></td><td style="text-align: left;"><code class="inline">integer</code></td><td style="text-align: left;">A Major version qualifier for this interface. Interfaces with the same id and different version_major number are deemed incompatible. It is then acceptable to redefine any property of the interface when changing the major version number.</td><td style="text-align: left;">:white_check_mark: Yes</td></tr><tr><td style="text-align: left;"><strong>version_minor</strong></td><td style="text-align: left;"><code class="inline">integer</code></td><td style="text-align: left;">A Minor version qualifier for this interface. Interfaces with the same id and major version number and different version_minor number are deemed compatible between each other. When changing the minor number, it is then only possible to insert further mappings. Any other modification might lead to incompatibilities and undefined behavior.</td><td style="text-align: left;">:white_check_mark: Yes</td></tr><tr><td style="text-align: left;"><strong>type</strong></td><td style="text-align: left;"><code class="inline">string</code></td><td style="text-align: left;">Identifies the type of this Interface. Currently two types are supported: datastream and properties. datastream should be used when dealing with streams of non-persistent data, where a single path receives updates and there's no concept of state. properties, instead, are meant to be an actual state and as such they have only a change history, and are retained.</td><td style="text-align: left;">:white_check_mark: Yes</td></tr><tr><td style="text-align: left;"><strong>ownership</strong></td><td style="text-align: left;"><code class="inline">string</code></td><td style="text-align: left;">Identifies the quality of the interface. Interfaces are meant to be unidirectional, and this property defines who's sending or receiving data. device means the device/gateway is sending data to Astarte, consumer means the device/gateway is receiving data from Astarte. Bidirectional mode is not supported, you should instantiate another interface for that.</td><td style="text-align: left;">:white_check_mark: Yes</td></tr><tr><td style="text-align: left;"><strong>aggregation</strong></td><td style="text-align: left;"><code class="inline">string</code></td><td style="text-align: left;">Identifies the aggregation of the mappings of the interface. Individual means every mapping changes state or streams data independently, whereas an object aggregation treats the interface as an object, making all the mappings changes interdependent. Choosing the right aggregation might drastically improve performances.</td><td style="text-align: left;">No, default: <code class="inline">&quot;individual&quot;</code></td></tr><tr><td style="text-align: left;"><strong>explicit_timestamp</strong></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;">Allow to set a custom timestamp, otherwise a timestamp is added when the message is received. If true explicit timestamp will also be used for sorting. This feature is only supported on datastreams.</td><td style="text-align: left;">No, default: <code class="inline">false</code></td></tr><tr><td style="text-align: left;"><strong>description</strong></td><td style="text-align: left;"><code class="inline">string</code></td><td style="text-align: left;">An optional description of the interface.</td><td style="text-align: left;">No</td></tr><tr><td style="text-align: left;"><strong>doc</strong></td><td style="text-align: left;"><code class="inline">string</code></td><td style="text-align: left;">A string containing documentation that will be injected in the generated client code.</td><td style="text-align: left;">No</td></tr><tr><td style="text-align: left;"><strong>mappings</strong></td><td style="text-align: left;"><a href="#reference-astarte-mapping-schema"><code class="inline">Astarte Mapping Schema</code></a> <code class="inline">[1-1024]</code></td><td style="text-align: left;">Mappings define the endpoint of the interface, where actual data is stored/streamed. They are defined as relative URLs (e.g. /my/path) and can be parametrized (e.g.: /%{myparam}/path). A valid interface must have no mappings clash, which means that every mapping must resolve to a unique path or collection of paths (including parametrization). Every mapping acquires type, quality and aggregation of the interface.</td><td style="text-align: left;">:white_check_mark: Yes</td></tr></tbody></table><p>Additional properties are allowed.</p><h3 id="astarte-interface-schema-interface_name-white_check_mark" class="section-heading">
+  <a href="#astarte-interface-schema-interface_name-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.interface_name :white_check_mark:
+</h3>
+<p>The name of the interface. This has to be an unique, alphanumeric reverse internet domain name, shorther than 128 characters.</p><ul><li><strong>Type</strong>: <code class="inline">string</code></li><li><strong>Required</strong>: Yes</li><li><strong>Minimum Length</strong><code class="inline">: &gt;= 1</code></li></ul><h3 id="astarte-interface-schema-version_major-white_check_mark" class="section-heading">
+  <a href="#astarte-interface-schema-version_major-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.version_major :white_check_mark:
+</h3>
+<p>A Major version qualifier for this interface. Interfaces with the same id and different version_major number are deemed incompatible. It is then acceptable to redefine any property of the interface when changing the major version number.</p><ul><li><strong>Type</strong>: <code class="inline">integer</code></li><li><strong>Required</strong>: Yes</li></ul><h3 id="astarte-interface-schema-version_minor-white_check_mark" class="section-heading">
+  <a href="#astarte-interface-schema-version_minor-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.version_minor :white_check_mark:
+</h3>
+<p>A Minor version qualifier for this interface. Interfaces with the same id and major version number and different version_minor number are deemed compatible between each other. When changing the minor number, it is then only possible to insert further mappings. Any other modification might lead to incompatibilities and undefined behavior.</p><ul><li><strong>Type</strong>: <code class="inline">integer</code></li><li><strong>Required</strong>: Yes</li></ul><h3 id="astarte-interface-schema-type-white_check_mark" class="section-heading">
+  <a href="#astarte-interface-schema-type-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.type :white_check_mark:
+</h3>
+<p>Identifies the type of this Interface. Currently two types are supported: datastream and properties. datastream should be used when dealing with streams of non-persistent data, where a single path receives updates and there's no concept of state. properties, instead, are meant to be an actual state and as such they have only a change history, and are retained.</p><ul><li><strong>Type</strong>: <code class="inline">string</code></li><li><strong>Required</strong>: Yes</li><li><strong>Allowed values</strong>:<ul><li><code class="inline">&quot;datastream&quot;</code></li><li><code class="inline">&quot;properties&quot;</code></li></ul></li></ul><h3 id="astarte-interface-schema-ownership-white_check_mark" class="section-heading">
+  <a href="#astarte-interface-schema-ownership-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.ownership :white_check_mark:
+</h3>
+<p>Identifies the quality of the interface. Interfaces are meant to be unidirectional, and this property defines who's sending or receiving data. device means the device/gateway is sending data to Astarte, consumer means the device/gateway is receiving data from Astarte. Bidirectional mode is not supported, you should instantiate another interface for that.</p><ul><li><strong>Type</strong>: <code class="inline">string</code></li><li><strong>Required</strong>: Yes</li><li><strong>Allowed values</strong>:<ul><li><code class="inline">&quot;device&quot;</code></li><li><code class="inline">&quot;server&quot;</code></li></ul></li></ul><h3 id="astarte-interface-schema-aggregation" class="section-heading">
+  <a href="#astarte-interface-schema-aggregation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.aggregation
+</h3>
+<p>Identifies the aggregation of the mappings of the interface. Individual means every mapping changes state or streams data independently, whereas an object aggregation treats the interface as an object, making all the mappings changes interdependent. Choosing the right aggregation might drastically improve performances.</p><ul><li><strong>Type</strong>: <code class="inline">string</code></li><li><strong>Required</strong>: No, default: <code class="inline">&quot;individual&quot;</code></li><li><strong>Allowed values</strong>:<ul><li><code class="inline">&quot;individual&quot;</code></li><li><code class="inline">&quot;object&quot;</code></li></ul></li></ul><h3 id="astarte-interface-schema-explicit_timestamp" class="section-heading">
+  <a href="#astarte-interface-schema-explicit_timestamp" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.explicit_timestamp
+</h3>
+<p>Allow to set a custom timestamp, otherwise a timestamp is added when the message is received. If true explicit timestamp will also be used for sorting. This feature is only supported on datastreams.</p><ul><li><strong>Type</strong>: <code class="inline">boolean</code></li><li><strong>Required</strong>: No, default: <code class="inline">false</code></li></ul><h3 id="astarte-interface-schema-description" class="section-heading">
+  <a href="#astarte-interface-schema-description" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.description
+</h3>
+<p>An optional description of the interface.</p><ul><li><strong>Type</strong>: <code class="inline">string</code></li><li><strong>Required</strong>: No</li></ul><h3 id="astarte-interface-schema-doc" class="section-heading">
+  <a href="#astarte-interface-schema-doc" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.doc
+</h3>
+<p>A string containing documentation that will be injected in the generated client code.</p><ul><li><strong>Type</strong>: <code class="inline">string</code></li><li><strong>Required</strong>: No</li></ul><h3 id="astarte-interface-schema-mappings-white_check_mark" class="section-heading">
+  <a href="#astarte-interface-schema-mappings-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.interface.schema.mappings :white_check_mark:
+</h3>
+<p>Mappings define the endpoint of the interface, where actual data is stored/streamed. They are defined as relative URLs (e.g. /my/path) and can be parametrized (e.g.: /%{myparam}/path). A valid interface must have no mappings clash, which means that every mapping must resolve to a unique path or collection of paths (including parametrization). Every mapping acquires type, quality and aggregation of the interface.</p><ul><li><strong>Type</strong>: <a href="#reference-astarte-mapping-schema"><code class="inline">Astarte Mapping Schema</code></a> <code class="inline">[1-1024]</code><ul><li>Each element in the array must be unique.</li></ul></li><li><strong>Required</strong>: Yes</li></ul><hr class="thin"/><a name="reference-astarte-mapping-schema"></a><h2 id="mapping" class="section-heading">
+  <a href="#mapping" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Mapping
+</h2>
+<p>Identifies a mapping for an interface. A mapping must consist at least of an endpoint and a type.</p><p><strong>Properties</strong></p><table><thead><tr><th style="text-align: left;"></th><th style="text-align: left;">Type</th><th style="text-align: left;">Description</th><th style="text-align: left;">Required</th></tr></thead><tbody><tr><td style="text-align: left;"><strong>endpoint</strong></td><td style="text-align: left;"><code class="inline">string</code></td><td style="text-align: left;">The template of the path. This is a UNIX-like path (e.g. /my/path) and can be parametrized. Parameters are in the %{name} form, and can be used to create interfaces which represent dictionaries of mappings. When the interface aggregation is object, an object is composed by all the mappings for one specific parameter combination.</td><td style="text-align: left;">:white_check_mark: Yes</td></tr><tr><td style="text-align: left;"><strong>type</strong></td><td style="text-align: left;"><code class="inline">string</code></td><td style="text-align: left;">Defines the type of the mapping.</td><td style="text-align: left;">:white_check_mark: Yes</td></tr><tr><td style="text-align: left;"><strong>reliability</strong></td><td style="text-align: left;"><code class="inline">string</code></td><td style="text-align: left;">Useful only with datastream. Defines whether the sent data should be considered delivered when the transport successfully sends the data (unreliable), when we know that the data has been received at least once (guaranteed) or when we know that the data has been received exactly once (unique). unreliable by default. When using reliable data, consider you might incur in additional resource usage on both the transport and the device's end.</td><td style="text-align: left;">No, default: <code class="inline">&quot;unreliable&quot;</code></td></tr><tr><td style="text-align: left;"><strong>retention</strong></td><td style="text-align: left;"><code class="inline">string</code></td><td style="text-align: left;">Useful only with datastream. Defines whether the sent data should be discarded if the transport is temporarily uncapable of delivering it (discard) or should be kept in a cache in memory (volatile) or on disk (stored), and guaranteed to be delivered in the timeframe defined by the expiry. discard by default.</td><td style="text-align: left;">No, default: <code class="inline">&quot;discard&quot;</code></td></tr><tr><td style="text-align: left;"><strong>expiry</strong></td><td style="text-align: left;"><code class="inline">integer</code></td><td style="text-align: left;">Useful when retention is stored. Defines after how many seconds a specific data entry should be kept before giving up and erasing it from the persistent cache. A value &lt;= 0 means the persistent cache never expires, and is the default.</td><td style="text-align: left;">No, default: <code class="inline">0</code></td></tr><tr><td style="text-align: left;"><strong>allow_unset</strong></td><td style="text-align: left;"><code class="inline">boolean</code></td><td style="text-align: left;">Used only with properties. Used with producers, it generates a method to unset the property. Used with consumers, it generates code to call an unset method when an empty payload is received.</td><td style="text-align: left;">No, default: <code class="inline">false</code></td></tr><tr><td style="text-align: left;"><strong>description</strong></td><td style="text-align: left;"><code class="inline">string</code></td><td style="text-align: left;">An optional description of the mapping.</td><td style="text-align: left;">No</td></tr><tr><td style="text-align: left;"><strong>doc</strong></td><td style="text-align: left;"><code class="inline">string</code></td><td style="text-align: left;">A string containing documentation that will be injected in the generated client code.</td><td style="text-align: left;">No</td></tr></tbody></table><p>Additional properties are allowed.</p><h3 id="astarte-mapping-schema-endpoint-white_check_mark" class="section-heading">
+  <a href="#astarte-mapping-schema-endpoint-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.mapping.schema.endpoint :white_check_mark:
+</h3>
+<p>The template of the path. This is a UNIX-like path (e.g. /my/path) and can be parametrized. Parameters are in the %{name} form, and can be used to create interfaces which represent dictionaries of mappings. When the interface aggregation is object, an object is composed by all the mappings for one specific parameter combination.</p><ul><li><strong>Type</strong>: <code class="inline">string</code></li><li><strong>Required</strong>: Yes</li><li><strong>Minimum Length</strong><code class="inline">: &gt;= 2</code></li></ul><h3 id="astarte-mapping-schema-type-white_check_mark" class="section-heading">
+  <a href="#astarte-mapping-schema-type-white_check_mark" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.mapping.schema.type :white_check_mark:
+</h3>
+<p>Defines the type of the mapping.</p><ul><li><strong>Type</strong>: <code class="inline">string</code></li><li><strong>Required</strong>: Yes</li><li><strong>Allowed values</strong>:<ul><li><code class="inline">&quot;double&quot;</code></li><li><code class="inline">&quot;integer&quot;</code></li><li><code class="inline">&quot;boolean&quot;</code></li><li><code class="inline">&quot;longinteger&quot;</code></li><li><code class="inline">&quot;string&quot;</code></li><li><code class="inline">&quot;binaryblob&quot;</code></li><li><code class="inline">&quot;datetime&quot;</code></li><li><code class="inline">&quot;doublearray&quot;</code></li><li><code class="inline">&quot;integerarray&quot;</code></li><li><code class="inline">&quot;booleanarray&quot;</code></li><li><code class="inline">&quot;longintegerarray&quot;</code></li><li><code class="inline">&quot;stringarray&quot;</code></li><li><code class="inline">&quot;binaryblobarray&quot;</code></li><li><code class="inline">&quot;datetimearray&quot;</code></li></ul></li></ul><h3 id="astarte-mapping-schema-reliability" class="section-heading">
+  <a href="#astarte-mapping-schema-reliability" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.mapping.schema.reliability
+</h3>
+<p>Useful only with datastream. Defines whether the sent data should be considered delivered when the transport successfully sends the data (unreliable), when we know that the data has been received at least once (guaranteed) or when we know that the data has been received exactly once (unique). unreliable by default. When using reliable data, consider you might incur in additional resource usage on both the transport and the device's end.</p><ul><li><strong>Type</strong>: <code class="inline">string</code></li><li><strong>Required</strong>: No, default: <code class="inline">&quot;unreliable&quot;</code></li><li><strong>Allowed values</strong>:<ul><li><code class="inline">&quot;unreliable&quot;</code></li><li><code class="inline">&quot;guaranteed&quot;</code></li><li><code class="inline">&quot;unique&quot;</code></li></ul></li></ul><h3 id="astarte-mapping-schema-retention" class="section-heading">
+  <a href="#astarte-mapping-schema-retention" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.mapping.schema.retention
+</h3>
+<p>Useful only with datastream. Defines whether the sent data should be discarded if the transport is temporarily uncapable of delivering it (discard) or should be kept in a cache in memory (volatile) or on disk (stored), and guaranteed to be delivered in the timeframe defined by the expiry. discard by default.</p><ul><li><strong>Type</strong>: <code class="inline">string</code></li><li><strong>Required</strong>: No, default: <code class="inline">&quot;discard&quot;</code></li><li><strong>Allowed values</strong>:<ul><li><code class="inline">&quot;discard&quot;</code></li><li><code class="inline">&quot;volatile&quot;</code></li><li><code class="inline">&quot;stored&quot;</code></li></ul></li></ul><h3 id="astarte-mapping-schema-expiry" class="section-heading">
+  <a href="#astarte-mapping-schema-expiry" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.mapping.schema.expiry
+</h3>
+<p>Useful when retention is stored. Defines after how many seconds a specific data entry should be kept before giving up and erasing it from the persistent cache. A value &lt;= 0 means the persistent cache never expires, and is the default.</p><ul><li><strong>Type</strong>: <code class="inline">integer</code></li><li><strong>Required</strong>: No, default: <code class="inline">0</code></li></ul><h3 id="astarte-mapping-schema-allow_unset" class="section-heading">
+  <a href="#astarte-mapping-schema-allow_unset" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.mapping.schema.allow_unset
+</h3>
+<p>Used only with properties. Used with producers, it generates a method to unset the property. Used with consumers, it generates code to call an unset method when an empty payload is received.</p><ul><li><strong>Type</strong>: <code class="inline">boolean</code></li><li><strong>Required</strong>: No, default: <code class="inline">false</code></li></ul><h3 id="astarte-mapping-schema-description" class="section-heading">
+  <a href="#astarte-mapping-schema-description" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.mapping.schema.description
+</h3>
+<p>An optional description of the mapping.</p><ul><li><strong>Type</strong>: <code class="inline">string</code></li><li><strong>Required</strong>: No</li></ul><h3 id="astarte-mapping-schema-doc" class="section-heading">
+  <a href="#astarte-mapping-schema-doc" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  astarte.mapping.schema.doc
+</h3>
+<p>A string containing documentation that will be injected in the generated client code.</p><ul><li><strong>Type</strong>: <code class="inline">string</code></li><li><strong>Required</strong>: No</li></ul>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="030-interface.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Interfaces
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="050-pairing_mechanism.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Pairing Mechanism
+        </span>
+      </a>
+
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>

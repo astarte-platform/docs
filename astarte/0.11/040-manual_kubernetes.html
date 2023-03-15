@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="Astarte v0.11.4">
+    <title>Manual Operator Installation — Astarte v0.11.4</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+    <script src="dist/sidebar_items-e57538aa08.js"></script>
+      <script src="../common_vars.js"></script>
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte      </a>
+      <strong class="sidebar-projectVersion">
+        v0.11.4
+      </strong>
+    </div>
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Manual Operator Installation</h1><p>In case you do not want to use <code class="inline">astartectl</code> to manage the Operator, this guide will run you through
+all the steps needed to set up Astarte Kubernetes without any external tool but <code class="inline">kubectl</code>.</p><p><em>Note: Please be aware that this method is to be used only if you have very specific reasons why not to
+use <code class="inline">astartectl</code>, for example: you're running a fork of the Operator, you're running the Operator
+outside of the cluster, or you're on the very bleeding edge.
+<code class="inline">astartectl</code> automates internally all of this guide and should be your main choice in production.</em></p><h2 id="clone-the-operator-repository" class="section-heading">
+  <a href="#clone-the-operator-repository" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Clone the Operator Repository
+</h2>
+<p>First of all, you will need to clone the Operator repository, as this is where some of the needed resources
+for the Operator are. Ensure you're cloning the right branch for the Operator Version you'd like to install.
+For example, if you want to Deploy an Operator in the 0.11 series, you would</p><pre><code class="bash">git clone -b v0.11.4 https://github.com/astarte-platform/astarte-kubernetes-operator.git</code></pre><h2 id="install-rbacs-and-crds" class="section-heading">
+  <a href="#install-rbacs-and-crds" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Install RBACs and CRDs
+</h2>
+<p>The Operator requires a number of RBAC roles to run, and will also require Astarte CRDs to be installed.</p><p>Navigate into the <code class="inline">deploy</code> directory of your local clone, and install the service account:</p><pre><code class="bash">kubectl apply -f service_account.yaml
+kubectl get ServiceAccount -n kube-system astarte-operator</code></pre><p>Then, install the Cluster Role</p><pre><code class="bash">kubectl apply -f role.yaml
+kubectl get ClusterRole astarte-operator</code></pre><p>Last but not least, install the Cluster Role Binding:</p><pre><code class="bash">kubectl apply -f role_binding.yaml
+kubectl get ClusterRoleBinding astarte-operator</code></pre><p>Once done, navigate into the <code class="inline">deploy/crds</code> directory of your local clone, and install all Astarte Custom
+Resource Definitions:</p><pre><code class="bash">kubectl create -f api.astarte-platform.org_astartes_crd.yaml
+kubectl create -f api.astarte-platform.org_astartevoyageringresses_crd.yaml
+kubectl get CustomResourceDefinition</code></pre><h3 id="caveats-for-astarte-crds" class="section-heading">
+  <a href="#caveats-for-astarte-crds" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Caveats for Astarte CRDs
+</h3>
+<p>Astarte CRDs are automatically generated and embed the OpenAPIv3 schema of the Custom Resource. For this reason, they're
+quite big in size. For this reason, using <code class="inline">kubectl apply</code> on these resources will always fail, as the annotations
+generated by <code class="inline">kubectl</code> would be beyond Kubernetes' character limit for annotations.
+To work around this, you should always install CRDs with <code class="inline">kubectl create</code> and update them with <code class="inline">kubectl replace</code>.</p><h2 id="running-the-operator-inside-the-cluster" class="section-heading">
+  <a href="#running-the-operator-inside-the-cluster" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Running the Operator inside the Cluster
+</h2>
+<p>Navigate into the <code class="inline">deploy</code> directory of your local clone. The Operator Deployment template can be found in
+<code class="inline">operator.yaml</code>. At this time, you might want to tweak the Deployment - especially for what concerns the
+image tag. Once you're ready to go, apply the Deployment to your Kubernetes cluster, and wait until it
+becomes ready.</p><pre><code class="makeup elixir"><span class="n">kubectl</span><span class="w"> </span><span class="n">apply</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="n">operator</span><span class="o">.</span><span class="n">yaml</span><span class="w">
+</span><span class="n">kubectl</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="n">deployment</span><span class="w"> </span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="n">kube</span><span class="o">-</span><span class="n">system</span><span class="w"> </span><span class="n">astarte</span><span class="o">-</span><span class="n">operator</span></code></pre><h2 id="running-the-operator-outside-the-cluster" class="section-heading">
+  <a href="#running-the-operator-outside-the-cluster" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Running the Operator outside the Cluster
+</h2>
+<p><em>Note: Running the operator outside the cluster is not advised in production. Usually, you need such a deployment
+if you plan on developing the Operator itself. However, this scenario is tested in the e2e tests, and as such
+provides the very same features of the in-cluster Deployment, which remains the go-to scenario for production.</em></p><p>To run the Operator outside the cluster, you will need the <code class="inline">operator-sdk</code> command line. Please refer to
+<a href="https://github.com/operator-framework/operator-sdk/blob/master/doc/user/install-operator-sdk.md"><code class="inline">operator-sdk</code> installation guide</a>
+to install it. Also, please make sure that the version of <code class="inline">operator-sdk</code> matches or is compatible with the version
+of the <code class="inline">operator-sdk</code> module in the Operator's <code class="inline">go.mod</code> file.</p><p>Navigate to the root directory of your clone, and run</p><pre><code class="bash">operator-sdk run --local</code></pre><p>This will bring up the Operator and connect it to your current Kubernetes context.</p><h3 id="caveats" class="section-heading">
+  <a href="#caveats" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Caveats
+</h3>
+<p>When running the Operator locally, you're bound to a single namespace, and to all limitations of <code class="inline">operator-sdk run</code>. This is
+out of the scope of this guide, and you should be confident with
+<a href="https://github.com/operator-framework/operator-sdk/blob/master/doc/user-guide.md"><code class="inline">operator-sdk</code>'s User Guide</a> if you plan
+on running the Operator outside the Cluster.</p><div class="bottom-actions">
+  <div class="bottom-actions-item">
+      <a href="030-installation_kubernetes.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Installing Astarte Operator        </span>
+      </a>
+  </div>
+  <div class="bottom-actions-item">
+      <a href="060-setup_cluster.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Setting up the Cluster        </span>
+      </a>
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="Astarte v0.11.4">
+    <title>Components — Astarte v0.11.4</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+    <script src="dist/sidebar_items-e57538aa08.js"></script>
+      <script src="../common_vars.js"></script>
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte      </a>
+      <strong class="sidebar-projectVersion">
+        v0.11.4
+      </strong>
+    </div>
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Components</h1><p>Astarte is a distributed system interacting over AMQP, as explained in <a href="010-design_principles.html">Design Principles</a>. This is an overview of its main internal services.</p><h2 id="pairing" class="section-heading">
+  <a href="#pairing" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Pairing
+</h2>
+<p>Pairing takes care of Device Authentication and Authorization. It interacts with Astarte's CA and orchestrates the way devices connect and interact with Transports. It also handles Device Registration. Agent, Device and Pairing interaction is described in detail <a href="050-pairing_mechanism.html">here</a>.</p><h2 id="data-updater-plant-dup" class="section-heading">
+  <a href="#data-updater-plant-dup" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Data Updater Plant (DUP)
+</h2>
+<p>Data Updater Plant is a replicable, scalable component which takes care of the ingestion pipeline. It gathers data from devices and orchestrates data flow amongst other components. It is, arguably, the most critical component of the system and the most resource hungry - the way DUP is deployed, replicated and configured has a tremendous impact on Astarte's performances, especially when dealing with massive data flows.</p><h2 id="trigger-engine" class="section-heading">
+  <a href="#trigger-engine" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Trigger Engine
+</h2>
+<p>Trigger Engine takes care of processing Triggers. It is a purely computational component which handles every Trigger's pipeline and triggers actions accordingly.</p><h2 id="appengine" class="section-heading">
+  <a href="#appengine" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  AppEngine
+</h2>
+<p>AppEngine is Astarte's main API endpoint for end users. AppEngine exposes a RESTful API to retrieve and send data from/to devices, according to their interfaces. Every direct device interaction can be done from here. It also exposes Channels, a WebSocket-based solution for listening to device events in real-time with Triggers' same mechanism and semantics.</p><h2 id="realm-management" class="section-heading">
+  <a href="#realm-management" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Realm Management
+</h2>
+<p>Realm Management is an <em>administrator-like</em> API for configuring a Realm. It is used for managing Interfaces, Triggers, Devices and more.</p><h2 id="housekeeping" class="section-heading">
+  <a href="#housekeeping" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Housekeeping
+</h2>
+<p>Housekeeping is the equivalent of a <em>superadmin</em> API. It is usually not accessible to the end user but rather to Astarte's administrator who, in most cases, might deny overall outside access. It allows to manage and create Realms, and perform cluster-wide maintenance actions.</p><div class="bottom-actions">
+  <div class="bottom-actions-item">
+      <a href="010-design_principles.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Design Principles        </span>
+      </a>
+  </div>
+  <div class="bottom-actions-item">
+      <a href="030-interface.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Interfaces        </span>
+      </a>
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

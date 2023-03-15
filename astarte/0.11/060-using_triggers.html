@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="Astarte v0.11.4">
+    <title>Using Triggers — Astarte v0.11.4</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+    <script src="dist/sidebar_items-e57538aa08.js"></script>
+      <script src="../common_vars.js"></script>
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte      </a>
+      <strong class="sidebar-projectVersion">
+        v0.11.4
+      </strong>
+    </div>
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Using Triggers</h1><p>Triggers allow receiving notifications when a device connects, disconnects or publishes specific
+data. More details on Triggers can be found in the <a href="060-triggers.html">Architecture Documentation</a>.</p><p>Astarte allows you to install and delete Triggers dynamically through its clients. Upon installation
+or deletion, changes to the Trigger infrastructure might take some time to propagate, and some devices
+might pick up changes at a later time. If a Trigger shows as installed, it will eventually be loaded.</p><h2 id="listing-triggers" class="section-heading">
+  <a href="#listing-triggers" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Listing Triggers
+</h2>
+<p>At any time, you can list existing Triggers in a Realm and fetch their details and definitions.</p><h3 id="listing-and-querying-triggers-using-astarte-dashboard" class="section-heading">
+  <a href="#listing-and-querying-triggers-using-astarte-dashboard" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Listing and querying Triggers using Astarte Dashboard
+</h3>
+<p>After logging in, navigate to the Triggers page using the menu on the left. The list of Triggers
+installed in the Realm will be shown in the page. Clicking on a Trigger will open the Trigger
+editor in view-only mode, showing its definition on the right panel.</p><h3 id="listing-and-querying-triggers-using-astartectl" class="section-heading">
+  <a href="#listing-and-querying-triggers-using-astartectl" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Listing and querying Triggers using astartectl
+</h3>
+<p>To list all existing Triggers in a Realm:</p><pre><code class="bash">$ astartectl realm-management triggers list
+[my_trigger other_trigger my_connection_trigger my_data_trigger]</code></pre><p>To get a Trigger definition:</p><pre><code class="bash">$ astartectl realm-management triggers show my_connection_trigger
+{
+  &quot;name&quot;: &quot;my_connection_trigger&quot;,
+  &quot;action&quot;: {
+      &quot;http_post_url&quot;: &quot;&lt;post-url&gt;&quot;
+  },
+  &quot;simple_triggers&quot;: [
+      {
+          &quot;type&quot;: &quot;device_trigger&quot;,
+          &quot;device_id&quot;: &quot;*&quot;,
+          &quot;on&quot;: &quot;device_connected&quot;
+      }
+  ]
+}</code></pre><h3 id="listing-and-querying-triggers-using-realm-management-api" class="section-heading">
+  <a href="#listing-and-querying-triggers-using-realm-management-api" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Listing and querying Triggers using Realm Management API
+</h3>
+<p>To list all existing Triggers in a Realm:</p><p><code class="inline">GET api.&lt;astarte base URL&gt;/realmmanagement/v1/&lt;realm name&gt;/triggers</code></p><pre><code class="json">{
+  &quot;data&quot;: [
+    &quot;my_trigger&quot;,
+    &quot;other_trigger&quot;,
+    &quot;my_connection_trigger&quot;,
+    &quot;my_data_trigger&quot;
+  ]
+}</code></pre><p>To get a Trigger definition:</p><p><code class="inline">GET api.&lt;astarte base URL&gt;/realmmanagement/v1/&lt;realm name&gt;/triggers/my_connection_trigger</code></p><pre><code class="json">{
+  &quot;data&quot;: {
+    &quot;name&quot;: &quot;my_connection_trigger&quot;,
+    &quot;action&quot;: {
+        &quot;http_post_url&quot;: &quot;&lt;post-url&gt;&quot;
+    },
+    &quot;simple_triggers&quot;: [
+        {
+            &quot;type&quot;: &quot;device_trigger&quot;,
+            &quot;device_id&quot;: &quot;*&quot;,
+            &quot;on&quot;: &quot;device_connected&quot;
+        }
+    ]
+  }
+}</code></pre><h2 id="installing-a-trigger" class="section-heading">
+  <a href="#installing-a-trigger" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Installing a Trigger
+</h2>
+<p>To install a Trigger, you need its JSON definition. If you have access to the Astarte Dashboard, you
+can use its Trigger Editor to build your JSON definition and install the Trigger directly. If you
+already have a JSON definition instead, you can either use <code class="inline">astartectl</code> or Realm Management APIs.</p><p>The name of the Trigger must be unique within the Realm, or an error will be returned.</p><h3 id="installing-a-trigger-using-astarte-dashboard" class="section-heading">
+  <a href="#installing-a-trigger-using-astarte-dashboard" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Installing a Trigger using Astarte Dashboard
+</h3>
+<p>After logging in, navigate to the Triggers page using the menu on the left. Click on
+&quot;Install a new Trigger...&quot; in the top-right corner. The Trigger Editor will open, and you can
+either paste/write a JSON definition, or use the declarative editor.</p><p>When you are done, click on the &quot;Install Trigger&quot; button at the bottom of the declarative editor
+to install the Trigger in the Realm.</p><h3 id="installing-a-trigger-using-astartectl" class="section-heading">
+  <a href="#installing-a-trigger-using-astartectl" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Installing a Trigger using astartectl
+</h3>
+<p>Assuming the Trigger definition is contained in <code class="inline">my_connection_trigger.json</code>,</p><pre><code class="bash">$ astartectl realm-management triggers install my_connection_trigger.json
+ok</code></pre><h3 id="installing-a-trigger-using-realm-management-apis" class="section-heading">
+  <a href="#installing-a-trigger-using-realm-management-apis" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Installing a Trigger using Realm Management APIs
+</h3>
+<p><code class="inline">POST api.&lt;astarte base URL&gt;/realmmanagement/v1/&lt;realm name&gt;/triggers</code></p><p>The POST request must have the following request body, with content type <code class="inline">application/json</code></p><pre><code class="json">{
+  &quot;data&quot;: {
+    &quot;name&quot;: &quot;my_connection_trigger&quot;,
+    &quot;action&quot;: {
+        &quot;http_post_url&quot;: &quot;&lt;post-url&gt;&quot;
+    },
+    &quot;simple_triggers&quot;: [
+        {
+            &quot;type&quot;: &quot;device_trigger&quot;,
+            &quot;device_id&quot;: &quot;*&quot;,
+            &quot;on&quot;: &quot;device_connected&quot;
+        }
+    ]
+  }
+}</code></pre><h2 id="deleting-a-trigger" class="section-heading">
+  <a href="#deleting-a-trigger" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Deleting a Trigger
+</h2>
+<p>To delete a Trigger, you need to know its name. Just like when installing a Trigger, deleting a Trigger
+might not stop the data flow out of the Trigger immediately, which will eventually terminate at some
+point.</p><h3 id="deleting-a-trigger-using-astarte-dashboard" class="section-heading">
+  <a href="#deleting-a-trigger-using-astarte-dashboard" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Deleting a Trigger using Astarte Dashboard
+</h3>
+<p>After logging in, navigate to the Triggers page using the menu on the left. Click on
+&quot;Install a new Trigger...&quot; in the top-right corner. Click on the Trigger name you want to delete.
+The Trigger Editor will open, and a &quot;Delete&quot; button will become available next to the Trigger
+name. Click on it to delete the Trigger.</p><h3 id="deleting-a-trigger-using-astartectl" class="section-heading">
+  <a href="#deleting-a-trigger-using-astartectl" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Deleting a Trigger using astartectl
+</h3>
+<pre><code class="bash">$ astartectl realm-management triggers delete my_connection_trigger
+ok</code></pre><h3 id="deleting-a-trigger-using-realm-management-apis" class="section-heading">
+  <a href="#deleting-a-trigger-using-realm-management-apis" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Deleting a Trigger using Realm Management APIs
+</h3>
+<p><code class="inline">DELETE api.&lt;astarte base URL&gt;/realmmanagement/v1/&lt;realm name&gt;/triggers/my_connection_trigger</code></p><h2 id="trigger-examples" class="section-heading">
+  <a href="#trigger-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Trigger examples
+</h2>
+<p>This section outlines two examples for the two main Trigger types (connection and data), and a
+sample payload for its HTTP Post URL action.</p><h3 id="connection-trigger" class="section-heading">
+  <a href="#connection-trigger" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Connection Trigger
+</h3>
+<p>This trigger will send a <code class="inline">POST</code> request to <code class="inline">&lt;post-url&gt;</code> every time any device connects to its
+transport.</p><p>This is the JSON representation of the trigger:</p><pre><code class="json">{
+    &quot;name&quot;: &quot;my_connection_trigger&quot;,
+    &quot;action&quot;: {
+        &quot;http_post_url&quot;: &quot;&lt;post-url&gt;&quot;
+    },
+    &quot;simple_triggers&quot;: [
+        {
+            &quot;type&quot;: &quot;device_trigger&quot;,
+            &quot;device_id&quot;: &quot;*&quot;,
+            &quot;on&quot;: &quot;device_connected&quot;
+        }
+    ]
+}</code></pre><p>If the Trigger is installed, when a device connects, <code class="inline">&lt;post-url&gt;</code> will receive the following JSON payload:</p><pre><code class="json">{
+  &quot;timestamp&quot;: &quot;&lt;timestamp&gt;&quot;,
+  &quot;device_id&quot;: &quot;&lt;device_id&gt;&quot;,
+  &quot;event&quot;: {
+    &quot;type&quot;: &quot;device_connected&quot;,
+    &quot;device_ip_address&quot;: &quot;&lt;device_ip_address&gt;&quot;
+  }
+}</code></pre><h3 id="data-trigger" class="section-heading">
+  <a href="#data-trigger" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Data Trigger
+</h3>
+<p>This trigger will send a <code class="inline">POST</code> request to <code class="inline">&lt;post-url&gt;</code> every time a device sends data to the
+<code class="inline">org.astarte-platform.genericsensors.Values</code> major version <code class="inline">0</code> interface on the <code class="inline">/streamTest/value</code> path.</p><p>This is the JSON representation of the trigger</p><pre><code class="json">{
+    &quot;name&quot;: &quot;my_data_trigger&quot;,
+    &quot;action&quot;: {
+        &quot;http_post_url&quot;: &quot;&lt;post-url&gt;&quot;
+    },
+    &quot;simple_triggers&quot;: [
+        {
+            &quot;type&quot;: &quot;data_trigger&quot;,
+            &quot;on&quot;: &quot;incoming_data&quot;,
+            &quot;interface_name&quot;: &quot;org.astarte-platform.genericsensors.Values&quot;,
+            &quot;interface_major&quot;: 0,
+            &quot;match_path&quot;: &quot;/streamTest/value&quot;,
+            &quot;value_match_operator&quot;: &quot;*&quot;
+        }
+    ]
+}</code></pre><p>If the Trigger is installed, when a device sends data to the interface/path defined above,
+<code class="inline">&lt;post-url&gt;</code> will receive the following JSON payload:</p><pre><code class="json">{
+  &quot;timestamp&quot;: &quot;&lt;timestamp&gt;&quot;,
+  &quot;device_id&quot;: &quot;&lt;device_id&gt;&quot;,
+  &quot;event&quot;: {
+    &quot;type&quot;: &quot;incoming_data&quot;,
+    &quot;interface&quot;: &quot;org.astarte-platform.genericsensors.Values&quot;,
+    &quot;path&quot;: &quot;/streamTest/value&quot;,
+    &quot;value&quot;: &lt;value&gt;
+  }
+}</code></pre><div class="bottom-actions">
+  <div class="bottom-actions-item">
+      <a href="052-using_channels.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Using Astarte Channels        </span>
+      </a>
+  </div>
+  <div class="bottom-actions-item">
+      <a href="065-managing-groups.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Managing Groups        </span>
+      </a>
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="Astarte v0.11.4">
+    <title>Upgrading the Cluster — Astarte v0.11.4</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+    <script src="dist/sidebar_items-e57538aa08.js"></script>
+      <script src="../common_vars.js"></script>
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte      </a>
+      <strong class="sidebar-projectVersion">
+        v0.11.4
+      </strong>
+    </div>
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Upgrading the Cluster</h1><p>Upgrading an Astarte Cluster is meant to be a completely managed operation, as the Operator encapsulates
+all the needed logic for a clean Upgrade. Manual Upgrades are not supported and out of the scope of this
+guide - if you're maintaining a non-operator installation, you will need to understand all the manual steps
+for Upgrade for each Astarte component, which are explained in Release notes. However, the only supported
+mean of Upgrade remains the Operator.</p><h2 id="upgrading-through-astartectl" class="section-heading">
+  <a href="#upgrading-through-astartectl" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Upgrading through astartectl
+</h2>
+<p><code class="inline">astartectl</code> features an <code class="inline">astartectl cluster instances upgrade</code> command which can upgrade both <code class="inline">astartectl</code>
+and non-<code class="inline">astartectl</code> Managed Installations alike. When using a Profile, though, the upgrade procedure will
+also script any changes to the CR the profile carries over among versions (if needed), ensuring that the
+process is smooth enough.</p><p>To upgrade, run</p><pre><code class="bash">astartectl cluster instances upgrade &lt;instance name&gt;</code></pre><p>You can optionally add an Astarte version as the second parameter - otherwise, <code class="inline">astartectl</code> will try to
+upgrade to the latest stable release.</p><p><code class="inline">astartectl</code> will interactively prompt you a number of questions depending on the operation, and will start
+the upgrade procedure. Please note that depending on the upgrade, the operation might require a downtime.</p><h2 id="upgrading-by-modifying-the-cr" class="section-heading">
+  <a href="#upgrading-by-modifying-the-cr" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Upgrading by modifying the CR
+</h2>
+<p>If you do not want to use <code class="inline">astartectl</code>, you will need to upgrade by modifying the CR manually. Usually,
+this boils down to bumping the <code class="inline">version</code> field in the spec - however, you should read all release notes
+carefully to know if any other changes to the CR are required.</p><p>Once you apply the changes to the Resource, the Operator will take over and perform the Upgrade.</p><div class="bottom-actions">
+  <div class="bottom-actions-item">
+      <a href="070-manage_realms.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Managing Realms        </span>
+      </a>
+  </div>
+  <div class="bottom-actions-item">
+      <a href="090-monitoring.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Monitoring        </span>
+      </a>
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="Astarte v0.11.4">
+    <title>Registering a Device — Astarte v0.11.4</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+    <script src="dist/sidebar_items-e57538aa08.js"></script>
+      <script src="../common_vars.js"></script>
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte      </a>
+      <strong class="sidebar-projectVersion">
+        v0.11.4
+      </strong>
+    </div>
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Registering a Device</h1><p>Devices are Astarte's main entities for exchanging data. Even though a Device usually represents the
+physical Device communicating with Astarte, they might as well be mapped to other entities, such as
+individual sensors or aggregated gateways. A Device always belongs to a Realm and is identified by a
+<a href="010-design_principles.html#device-id">Device ID</a>, which has to be unique at least within its Realm.</p><p>Devices communicate with Astarte through Transports - in most installations, this means through an
+MQTT Broker (VerneMQ with Astarte's plugin). Before this happens, though, Devices must obtain
+credentials for accessing their Transport and, most of all, make themselves known to Astarte. This
+happens through the Registration process.</p><p>In Astarte, Registering a device means obtaining an unique <em>Credentials Secret</em> (Registration
+Credentials), univocally associated to a Device ID, through a well-known workflow and pipeline. If
+you are not familiar with these concepts, please refer to <a href="050-pairing_mechanism.html">Pairing
+Architecture</a> to learn more about Pairing's workflow basics.</p><p>The <em>Credentials Secret</em> can then be used by the Device for accessing Pairing API and getting
+information and Credentials for its Transport. As such, registration happens <strong>only once</strong> during a
+Device's lifecycle, and is a security-sensitive process. As such, this process is usually carried
+over (in production scenarios) through an <em>Agent</em>.</p><h2 id="registration-agent" class="section-heading">
+  <a href="#registration-agent" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Registration Agent
+</h2>
+<p>An <em>Agent</em>'s purpose is to perform Registration on behalf of a Device. <em>Agents</em> should be the only
+components in your infrastructure with enough credentials to access <a href="api/index.html?urls.primaryName=Pairing%20API#/agent">Pairing's Agent
+APIs</a> (as a rule of thumb, it is a bad idea to
+give access to Pairing API to anything which isn't an Agent).</p><p>When setting up an Astarte project, it is fundamental to define beforehand how your Devices will be
+registered and hence where your Agent(s) will belong. There's two main ways for implementing an
+Agent, even though in production scenarios <em>On Board Agents</em> are <strong>strongly discouraged</strong> as they
+expose a single point of failure in terms of a Realm's whole fleet security.</p><h3 id="on-board-agent" class="section-heading">
+  <a href="#on-board-agent" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  On Board Agent
+</h3>
+<p><em>Please keep in mind that On Board Agents are not advised in production, as a single compromised
+device/token might compromise the Registration routine for your entire fleet. They should be used
+only in non-critical use cases or during testing and development.</em></p><p>On Board Agents are provided as a feature by Astarte's SDK, and hide the detail of Device
+registration by integrating an Agent into the SDK itself. This allows to deliver the same
+credentials to each device belonging to a Realm. Of course, this also opens up a single point of
+failure in the whole fleet's security, as Credentials aren't tied to a specific device - as such, if
+compromised, they might allow an attacker to register an arbitrary device into a Realm, unless other
+policies prevent him from doing so.</p><p>To create a On Board Agent, you simply need to emit a long-enough lived token from your Realm's
+private key with access to <a href="api/index.html?urls.primaryName=Pairing%20API#/agent">Pairing's Agent
+APIs</a>. This token should then be delivered to
+your devices and provided to the SDK in order to carry over the Registration. The SDK will do this
+automatically and without any need for additional code, as long as you set the <code class="inline">agentKey</code>
+configuration key to a meaningful value, and no <em>Credentials Secret</em> has been set.</p><h3 id="3rd-party-agent" class="section-heading">
+  <a href="#3rd-party-agent" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  3rd Party Agent
+</h3>
+<p>A more secure approach to the Registration process is having a 3rd Party agent. In such a case, an
+external component is in charge of requesting a <em>Credentials Secret</em> to Pairing and delivering it to
+the target Device.</p><p>This approach has a number of benefits: in terms of Security, the Agent uses a short-lived token and
+can follow the Realm's authentication workflow just like any other application. For what concerns
+daily operations, the Agent can implement any arbitrary logic to make a decision on whether a Device
+should be registered or not.</p><p>In such cases, Devices have an out-of-band communication mechanism with the Agent in which the
+Credentials are exchanged. Usually, these cases fall under two main categories:</p><h4>&quot;Local&quot; or &quot;Plant&quot; Agents</h4><p>In this scenario, devices are imprinted with their <em>Credentials Secret</em> in the production plant. The
+Device might not even be connected to the Internet, whereas the machine running the Agent has access
+to the target Astarte Cluster and adequate Credentials for Registration.</p><p>Once the Agent acquires the Device ID of the Device which should be registered, it issues the
+request to Astarte's Pairing API and obtains the Device's <em>Credentials Secret</em>. At this stage, the
+Agent is in charge of delivering the <em>Credentials Secret</em> to the Device the way it sees fit. As a
+best practice, the <em>Credentials Secret</em> should then be saved to an OTP area or a dedicated secure
+storage in the device to prevent tampering or accidental loss.</p><p>Even though this is arguably the most secure mechanism available for Registering a Device, it might
+not fit every use case as the Device will be irrevocabily assigned to a specific Astarte Cluster and
+a specific Realm in that Cluster before it even connects.</p><h4>&quot;Remote&quot; Agents</h4><p>If your use case demands more flexibility, Registering a Device in a plant might not fit your
+Device's lifecycle. This could be likely if, for example, Realm or Cluster assignment should be done
+dynamically once the Device reaches its final user.</p><p>In this case, this role is usually delegated to an external web application acting as an Agent. In
+this case, it's up to the user setting up all mechanisms for delivering the <em>Credentials Secret</em> to
+the Device, which includes securing the communication channel. On the other hand, this allows an
+extremely flexible approach to Registration, which can be implemented through an entirely custom
+logic.</p><h2 id="credentials-secret-lifecycle" class="section-heading">
+  <a href="#credentials-secret-lifecycle" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Credentials Secret Lifecycle
+</h2>
+<p><em>Credentials Secrets</em> are meant to be immutable - as such, they should be handled with extreme care.
+<em>Credentials Secrets</em> are used only for interacting with Pairing, hence to obtain Credentials for a
+Transport which, on the other hand, are meant to be volatile.</p><p>A Device can be Registered an arbitrary number of times before its <em>Credentials Secret</em> is used for
+the first time for interacting with Pairing. This is done to ensure the entire Registration process,
+including any kind of external custom logic of the Agents, has been carried over successfully,
+allowing a de-facto &quot;retry&quot; until there's certainty the Device has access to its <em>Credentials
+Secret</em>. Please note that when Registering a Device, a new <em>Credentials Secret</em> is generated every
+time.</p><h2 id="unregistering-a-device" class="section-heading">
+  <a href="#unregistering-a-device" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Unregistering a device
+</h2>
+<p>Once the <em>Credentials Secret</em> is used for retrieving Credentials for a Transport for the first time,
+Astarte prevents further registration of the same Device again.</p><p>If there's the need of registering the device again (e.g.: a Device has been tampered and got back
+to its plant with its previous <em>Credentials Secret</em> compromised), it is possible to explicitly
+unregister the device to obtain a new <em>Credentials Secret</em> using <a href="api/index.html?urls.primaryName=Pairing%20API#/agent/unregisterDevice">Pairing's Agent
+APIs</a> or with <code class="inline">astartectl</code>
+(see the output of <code class="inline">astartectl pairing agent unregister -h</code> for more documentation).</p><div class="bottom-actions">
+  <div class="bottom-actions-item">
+      <a href="030-manage_interfaces.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Managing Interfaces        </span>
+      </a>
+  </div>
+  <div class="bottom-actions-item">
+      <a href="040-connect_device.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Connecting a Device        </span>
+      </a>
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

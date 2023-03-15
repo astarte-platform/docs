@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.24.2">
+    <meta name="project" content="Astarte v0.11.4">
+    <title>Managing Interfaces — Astarte v0.11.4</title>
+    <link rel="stylesheet" href="dist/elixir-a172fe91e725dcb259e2.css" />
+    <script src="dist/sidebar_items-e57538aa08.js"></script>
+      <script src="../common_vars.js"></script>
+    <script async src="dist/app-f27ff079945e43879c46.js"></script>
+  </head>
+  <body data-type="extras">
+    <script>
+      try {
+        if (localStorage.getItem('night-mode') === 'true') {
+          document.body.classList.add('night-mode');
+        }
+      } catch (error) { }
+    </script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName">
+Astarte      </a>
+      <strong class="sidebar-projectVersion">
+        v0.11.4
+      </strong>
+    </div>
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+
+<h1>Managing Interfaces</h1><p><a href="030-interface.html">Interfaces</a> define how data is exchanged over Astarte. For a Device to be capable of exchanging data into its Realm, its interfaces have to be registered into the Realm first. Let's walk over the whole process.</p><p>It is assumed that you have read the <a href="029-interface_design_guide.html">Interface design guide</a> before, to avoid bad surprises once your fleet starts rolling.</p><h2 id="querying-interfaces" class="section-heading">
+  <a href="#querying-interfaces" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Querying Interfaces
+</h2>
+<h3 id="listing-interfaces" class="section-heading">
+  <a href="#listing-interfaces" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Listing Interfaces
+</h3>
+<p>You can list all installed interfaces in a given Realm. This will return all the valid installed Interface names, without any versioning.</p><h4>List Interfaces using astartectl</h4><pre><code class="bash">$ astartectl realm-management interfaces list
+[com.my.Interface1 com.my.Interface2 com.my.Interface3]</code></pre><h4>List Interfaces using Astarte Dashboard</h4><p>From your Dashboard, after logging in, click on &quot;Interfaces&quot; in the left menu.</p><h4>List Interfaces using Realm Management API</h4><p><code class="inline">GET &lt;astarte base API URL&gt;/realmmanagement/v1/test/interfaces</code></p><pre><code class="json">{&quot;data&quot;: [&quot;com.my.Interface1&quot;,&quot;com.my.Interface2&quot;,&quot;com.my.Interface3&quot;]}</code></pre><h3 id="listing-major-versions-for-an-interface" class="section-heading">
+  <a href="#listing-major-versions-for-an-interface" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Listing Major Versions for an Interface
+</h3>
+<p>For each installed Interface, there can be any number of Major versions installed. This information can be retrieved by listing the available Major versions for a specific interface.</p><p>In a realm, only the latest minor version of each major version of an Interface is kept. This can be done due to the fact that Semantic Versioning implies a new minor version doesn't introduce any breaking change (e.g.: deleting or renaming a mapping), and as such querying an older version of an interface using a newer one as a model is always compatible - some mappings might be empty, as expected, and will be disregarded. Astarte ensures upon Interface installation for this constraint, and as such you can always query the latest minor version of an Interface safely.</p><h4>List Versions using astartectl</h4><pre><code class="bash">$ astartectl realm-management interfaces versions com.my.Interface1
+[0 1 2]</code></pre><h4>List Versions using Astarte Dashboard</h4><p>In the Dashboard's Interface page, click on any Interface name. A drop-down will appear, showing installed major versions for that Interface name.</p><h4>List Versions using Realm Management API</h4><p><code class="inline">GET &lt;astarte base API URL&gt;/realmmanagement/v1/test/interfaces/com.my.Interface1</code></p><pre><code class="json">{&quot;data&quot;: [0,1,2]}</code></pre><h4>Getting an Interface Definition</h4><p>Astarte allows you to retrieve the Interface Definition for a given Name and Major Version pair. The definition is in the standard Interface JSON format.</p><h3 id="get-interface-definition-using-astartectl" class="section-heading">
+  <a href="#get-interface-definition-using-astartectl" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Get Interface Definition using astartectl
+</h3>
+<pre><code class="bash">$ astartectl realm-management interfaces show com.my.Interface1 0
+{
+  &quot;data&quot;: {
+    &quot;version_minor&quot;: 2,
+    &quot;version_major&quot;: 0,
+    &quot;type&quot;: &quot;properties&quot;,
+    &quot;ownership&quot;: &quot;device&quot;,
+    &quot;mappings&quot;: [
+      {
+        &quot;type&quot;: &quot;integer&quot;,
+        &quot;path&quot;: &quot;/myValue&quot;,
+        &quot;description&quot;: &quot;This is quite an important value.&quot;
+      },
+      {
+        &quot;type&quot;: &quot;integer&quot;,
+        &quot;path&quot;: &quot;/myBetterValue&quot;,
+        &quot;description&quot;: &quot;A better revision, introduced in minor 2, supported only by some devices&quot;
+      },
+      {
+        &quot;type&quot;: &quot;boolean&quot;,
+        &quot;path&quot;: &quot;/awesome&quot;,
+        &quot;allow_unset&quot;: true,
+        &quot;description&quot;: &quot;Introduced in minor 1, tells you if the device is awesome. Optional.&quot;
+      }
+    ],
+    &quot;interface_name&quot;: &quot;com.my.Interface1&quot;
+  }
+}</code></pre><h3 id="get-interface-definition-using-astarte-dashboard" class="section-heading">
+  <a href="#get-interface-definition-using-astarte-dashboard" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Get Interface Definition using Astarte Dashboard
+</h3>
+<p>From the Interfaces page, click on an Interface name, and click on the Major version for which you'd like to see the definition. The Interfaces Editor window will open, with the Interface definition in the text box on the right. From the Editor page, it is also possible to add new mappings to the Interface and bump it to a new Minor.</p><h3 id="get-interface-definition-using-realm-management-api" class="section-heading">
+  <a href="#get-interface-definition-using-realm-management-api" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Get Interface Definition using Realm Management API
+</h3>
+<p><code class="inline">GET &lt;astarte base API URL&gt;/realmmanagement/v1/test/interfaces/com.my.Interface1/0</code></p><pre><code class="json">{
+  &quot;data&quot;: {
+    &quot;version_minor&quot;: 2,
+    &quot;version_major&quot;: 0,
+    &quot;type&quot;: &quot;properties&quot;,
+    &quot;ownership&quot;: &quot;device&quot;,
+    &quot;mappings&quot;: [
+      {
+        &quot;type&quot;: &quot;integer&quot;,
+        &quot;path&quot;: &quot;/myValue&quot;,
+        &quot;description&quot;: &quot;This is quite an important value.&quot;
+      },
+      {
+        &quot;type&quot;: &quot;integer&quot;,
+        &quot;path&quot;: &quot;/myBetterValue&quot;,
+        &quot;description&quot;: &quot;A better revision, introduced in minor 2, supported only by some devices&quot;
+      },
+      {
+        &quot;type&quot;: &quot;boolean&quot;,
+        &quot;path&quot;: &quot;/awesome&quot;,
+        &quot;allow_unset&quot;: true,
+        &quot;description&quot;: &quot;Introduced in minor 1, tells you if the device is awesome. Optional.&quot;
+      }
+    ],
+    &quot;interface_name&quot;: &quot;com.my.Interface1&quot;
+  }
+}</code></pre><h2 id="installing-updating-an-interface" class="section-heading">
+  <a href="#installing-updating-an-interface" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Installing/Updating an interface
+</h2>
+<p>Interfaces are supposed to change over time, and are dynamic. As such, they can be installed and updated. Interface installation means adding either a whole new Interface (as in: an Interface with a new name), or a new major version of an already known Interface. Interface update means updating a specific, existing interface name/major version with a new minor version.</p><p>When designing interfaces, it is strongly advised to use Astarte Interface Editor. The Editor is embedded into any Astarte Dashboard installation but, in case your Astarte installation does not provide you with a Dashboard, you can use <a href="https://interfaces-editor.astarte-platform.org">Astarte Interface Editor public online instance</a>. Use it to write and validate your definitions, and install the resulting JSON file through either <code class="inline">astartectl</code> or Realm Management APIs.</p><h3 id="synchronizing-interfaces-using-astartectl" class="section-heading">
+  <a href="#synchronizing-interfaces-using-astartectl" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Synchronizing interfaces using astartectl
+</h3>
+<p><code class="inline">astartectl</code> provides a handy <code class="inline">sync</code> command that, given a list of Interface files, will synchronize the state of the Astarte Realm with your local interfaces. It is handy in those cases where your Realm has several interfaces, and you're storing Interfaces in a common place, such as a Git Repository - this is the average case for Astarte-based applications/clouds.</p><p>Assuming you have a set of Interface files in your folder all with the <code class="inline">.json</code> extension, invoking <code class="inline">astartectl realm-management interfaces sync</code> will result in something like this:</p><pre><code class="bash">$ astartectl realm-management interfaces sync *.json
+Will install interface com.my.Interface1 version 0.2
+Will install interface com.my.Interface2 version 1.1
+Will update interface com.my.Interface3 to version 1.4
+
+Do you want to continue? [y/n] y
+Interface com.my.Interface1 installed successfully
+Interface com.my.Interface2 installed successfully
+Interface com.my.Interface3 updated successfully to version 1.4</code></pre><p>After invocation, your Astarte Realm will be up to date with all Interfaces in your local directory.</p><p><em>Note: <code class="inline">astartectl realm-management interfaces sync</code> currently synchronizes Interfaces only from your local machine to the Realm, and not the other way round. In case the Realm has a more recent version of an interface compared to your local files, or it has some interfaces which are not referenced by your local files, no action will be taken.</em></p><h3 id="install-an-interface-using-astarte-dashboard" class="section-heading">
+  <a href="#install-an-interface-using-astarte-dashboard" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Install an Interface using Astarte Dashboard
+</h3>
+<p>Access the Editor by going to the Interfaces page, and clicking on &quot;Install a New Interface...&quot; in the top-right corner. The Editor will open. From there, you can either paste in an existing JSON definition, which will be validated and will update the left-screen declarative Editor, or you can build a whole new Interface from scratch.</p><p>Once you're done, hit the &quot;Install Interface&quot; button at the bottom of the declarative Editor (left side) to install the Interface in the Realm.</p><h3 id="install-an-interface-using-astartectl" class="section-heading">
+  <a href="#install-an-interface-using-astartectl" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Install an Interface using astartectl
+</h3>
+<p>First of all, ensure that you have the Interface you'd like to install saved in a file on your local machine. We will assume the interface is available as <code class="inline">interface1.json</code>.</p><pre><code class="bash">$ astartectl realm-management interfaces install interface1.json
+ok</code></pre><h3 id="install-an-interface-using-realm-management-api" class="section-heading">
+  <a href="#install-an-interface-using-realm-management-api" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Install an Interface using Realm Management API
+</h3>
+<p>Realm Management currently implements a completely asynchronous API for Interface installation - as such, the only feedback received by the API is that the Interface is valid and the request was accepted by the backend. However, this is no guarantee that the Interface will be installed successfully. As a best practice, it is advised to either wait a few seconds in between Realm Management API invocations, or verify through a <code class="inline">GET</code> operation whether the Interface has been installed or not.</p><p><code class="inline">POST &lt;astarte base API URL&gt;/realmmanagement/v1/test/interfaces</code></p><p>The POST request must have the following request body, with content type <code class="inline">application/json</code></p><pre><code class="json">{
+  &quot;data&quot;: {
+    &quot;version_minor&quot;: 2,
+    &quot;version_major&quot;: 0,
+    &quot;type&quot;: &quot;properties&quot;,
+    &quot;ownership&quot;: &quot;device&quot;,
+    &quot;mappings&quot;: [
+      {
+        &quot;type&quot;: &quot;integer&quot;,
+        &quot;path&quot;: &quot;/myValue&quot;,
+        &quot;description&quot;: &quot;This is quite an important value.&quot;
+      },
+      {
+        &quot;type&quot;: &quot;integer&quot;,
+        &quot;path&quot;: &quot;/myBetterValue&quot;,
+        &quot;description&quot;: &quot;A better revision, introduced in minor 2, supported only by some devices&quot;
+      },
+      {
+        &quot;type&quot;: &quot;boolean&quot;,
+        &quot;path&quot;: &quot;/awesome&quot;,
+        &quot;allow_unset&quot;: true,
+        &quot;description&quot;: &quot;Introduced in minor 1, tells you if the device is awesome. Optional.&quot;
+      }
+    ],
+    &quot;interface_name&quot;: &quot;com.my.Interface1&quot;
+  }
+}</code></pre><p>The call will return either <code class="inline">201 Created</code> or an error. Most common failure cases are:</p><ul><li>The interface/major combination already exists in the Realm</li><li>The interface schema fails validation</li></ul><p>In any case, the API returns details on what caused the error and how to solve it through Astarte's standard error reply schema.</p><h3 id="update-an-interface-using-astartectl" class="section-heading">
+  <a href="#update-an-interface-using-astartectl" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Update an Interface using astartectl
+</h3>
+<p>First of all, ensure that you have the Interface you'd like to update saved in a file on your local machine. We will assume the interface is available as <code class="inline">interface1_3.json</code>.</p><pre><code class="bash">$ astartectl realm-management interfaces update interface1_3.json
+ok</code></pre><h3 id="update-an-interface-using-astarte-dashboard" class="section-heading">
+  <a href="#update-an-interface-using-astarte-dashboard" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Update an Interface using Astarte Dashboard
+</h3>
+<p>Go to the Interfaces page, click on the Interface Name you'd like to update, and click on the Major version which is referred by your upgrade (e.g.: if you're updating from 1.2 to 1.3, you want to click on Major Version 1). The Editor will appear, populated with the currently installed Interface definition. Paste in your updated JSON file, or use the declarative editor to make your changes. The editor will be limited to Semantic Version-compatible operations (as in - adding new mappings).</p><p>Once you're done, hit the &quot;Apply Changes&quot; button at the bottom of the declarative Editor (left side) to update the Interface in the Realm.</p><h3 id="update-an-interface-using-realm-management-api" class="section-heading">
+  <a href="#update-an-interface-using-realm-management-api" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Update an Interface using Realm Management API
+</h3>
+<p>To update an existing interface, issue a <code class="inline">PUT</code> <code class="inline">/interfaces/&lt;name&gt;/&lt;major&gt;</code> endpoint of the realm with the very same semantics as the Installation procedure. The call will return either <code class="inline">201 Created</code> or an error. Apart from the very same errors that could be triggered upon installation, Update will also fail if the interface doesn't provide a compatible upgrade path from the previously installed minor.</p><h2 id="interfaces-lifecycle" class="section-heading">
+  <a href="#interfaces-lifecycle" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Interfaces lifecycle
+</h2>
+<p>Interfaces are versioned through a semantic versioning-like mechanism. A Realm can hold any number of interfaces and any number of major versions of a single interface. It holds, however, only the latest installed minor version of each major version, due to the inherent compatibility of Semantic Versioning.</p><p>There is no significant cost in adding a non-aggregated interface to a Realm or updating a non-aggregated interface frequently - keep in mind, however, that you might incur in <a href="#dangling-data">dangling data</a> in your devices if you don't plan your interface update strategy accurately. For what concerns Aggregated interfaces, instead, there is <a href="029-interface_design_guide.html#aggregation-makes-a-difference">an inherent cost which might end up in putting pressure on your Cluster</a>.</p><p>Once an interface has been installed in a Realm, it can't be uninstalled without performing manual operations on Astarte's DB, unless its major version number is <code class="inline">0</code>. This is a safety measure to prevent dangling data from appearing in the cluster. For this reason, when developing an Astarte-based interface, it is strongly advised to keep its major number to <code class="inline">0</code> to allow quick changes at the expense of data loss.</p><p>Please note, however, that deleting a major <code class="inline">0</code> interface is possible if the Realm has no devices left declaring that specific interface in their introspection. This is done to avoid forever dangling data and potential consistency errors. This limitation might be lifted in the future through a mass-deletion mechanism, but there is no guarantee this will ever be done. It is advised to test new interfaces on a limited number of devices to ease operations.</p><h2 id="realm-vs-device-interface-relationship" class="section-heading">
+  <a href="#realm-vs-device-interface-relationship" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Realm vs. Device Interface relationship
+</h2>
+<p>There is a clear difference between how Interfaces are managed in a Realm and its Devices (e.g.: the device Introspection). Whereas a Realm can have any number of versions of a single interface, a Device is allowed to expose in its introspection only a single, specific version of an Interface.</p><p>In general, Realm interfaces are kept as a shared agreement between its entities, but when it comes to interacting with a Device, the Realm honors its introspection (as long as the Device declares interfaces the Realm is knowledgeable about).</p><p>As such, installing an interface in a Realm is a completely safe and non-disruptive operation: by design, Devices aren't aware of which interfaces a Realm supports, and Realms don't impose any interface versioning on a Device.</p><h2 id="caveats" class="section-heading">
+  <a href="#caveats" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Caveats
+</h2>
+<p>Due to how minor versions work, it is responsibility of the end user to prevent accidental data loss due to missing data. Every mapping declared in a new minor release <em>must</em> be assumed as optional, as there is no guarantee that a Device will be able to publish (or receive) data on that specific mapping.</p><p>Minor version bumps work great in case they represents additional, optional features which might be available on an arbitrarly large subset of Devices implementing that interface's major version, and are not necessary or fundamental for normal operations. If that is not the case, consider a major version update or a whole new interface instead.</p><p>Also, please keep in mind that designing interfaces in the right way, especially being as atomic as reasonably possible, helps a lot in preventing situations where a minor interface update can't be done without disrupting operations. Again, the <a href="029-interface_design_guide.html">Interface design guide</a> covers this topic extensively.</p><h2 id="dangling-data" class="section-heading">
+  <a href="#dangling-data" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Dangling data
+</h2>
+<p>In several situations, it is possible to have dangling data inside Astarte. This happens by design, as the liquid nature of a Device makes it possible for data to be stored in interfaces no longer present in its introspection.</p><p>Astarte does not delete data unless requested explicitly: as such, data remains available inside its database, but potentially inaccessible through the cluster's APIs and standard mechanism.</p><p>As of the current version, Astarte has no mechanism for retrieving and acting upon a device's dangling data - this is a limitation that will be lifted in future releases with additions to the current API.</p><h3 id="interface-major-version-change" class="section-heading">
+  <a href="#interface-major-version-change" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Interface major version change
+</h3>
+<p>If a device upgrades one of its interfaces to a new major version, the previous interface is <em>parked</em> and its data remains dangling. Every API call, trigger, or reference to the interface will always target the major version declared in the introspection, regardless of the fact that a more recent version might have been installed in the realm.</p><h3 id="interface-deletion-from-device" class="section-heading">
+  <a href="#interface-deletion-from-device" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Interface deletion from device
+</h3>
+<p>A device might arbitrarly decide to remove an interface from its introspection. In such a case, Astarte won't return any data and will consider all data previously pushed to said interface inaccessible. In case the interface comes back again in the introspection, previously pushed data will be available as if nothing happened.</p><div class="bottom-actions">
+  <div class="bottom-actions-item">
+      <a href="029-interface_design_guide.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Interface Design Guide        </span>
+      </a>
+  </div>
+  <div class="bottom-actions-item">
+      <a href="035-register_device.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Registering a Device        </span>
+      </a>
+  </div>
+</div>
+
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.24.2) for the
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
+          </span>
+          <span class="line">
+            Designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>
