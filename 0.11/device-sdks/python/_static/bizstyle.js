@@ -23,7 +23,7 @@ const initialiseBizStyle = () => {
 }
 
 window.addEventListener("resize",
-  () => (document.querySelector("li.nav-item-0 a").innerText = (window.innerWidth <= 776) ? "Top" : "Astarte Device SDK Python 0.10.0a6 documentation")
+  () => (document.querySelector("li.nav-item-0 a").innerText = (window.innerWidth <= 776) ? "Top" : "Astarte Device SDK Python 0.11.0 documentation")
 )
 
 if (document.readyState !== "loading") initialiseBizStyle()
