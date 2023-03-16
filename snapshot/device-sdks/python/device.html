@@ -192,6 +192,45 @@ by using json.loads() on an Interface file.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="device.device.Device.add_interface_from_file">
+<span class="sig-name descname"><span class="pre">add_interface_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device.Device.add_interface_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds an interface to the device</p>
+<p>This will add an interface definition to the device. It has to be called before
+<a class="reference internal" href="#device.device.Device.connect" title="device.device.Device.connect"><code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code></a>, as it will be used for building the device introspection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interface_file</strong> (<em>Path</em>) – An absolute path to an Astarte interface json file.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>FileNotFoundError</strong> – If specified file does not exists.</p></li>
+<li><p><strong>TypeError</strong> – If speficied file is not a .json file.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device.Device.add_interfaces_from_dir">
+<span class="sig-name descname"><span class="pre">add_interfaces_from_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interfaces_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device.Device.add_interfaces_from_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a series of interfaces to the device</p>
+<p>This will add all the interfaces contained in the provided folder to the device.
+It has to be called before <a class="reference internal" href="#device.device.Device.connect" title="device.device.Device.connect"><code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code></a>, as it will be used for building the device
+introspection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interfaces_dir</strong> (<em>Path</em>) – An absolute path to an a folder containing some Astarte interface .json files.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>FileNotFoundError</strong> – If specified directory does not exists.</p></li>
+<li><p><strong>NotADirectoryError</strong> – If speficied directory exists but it’s not a directory.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="device.device.Device.connect">
 <span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device.Device.connect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connects the Device asynchronously.</p>
@@ -913,6 +952,8 @@ Pairing API.</p></li>
 <li><a class="reference internal" href="#device.device.Device.on_disconnected"><code class="docutils literal notranslate"><span class="pre">Device.on_disconnected</span></code></a></li>
 <li><a class="reference internal" href="#device.device.Device.on_data_received"><code class="docutils literal notranslate"><span class="pre">Device.on_data_received</span></code></a></li>
 <li><a class="reference internal" href="#device.device.Device.add_interface"><code class="docutils literal notranslate"><span class="pre">Device.add_interface()</span></code></a></li>
+<li><a class="reference internal" href="#device.device.Device.add_interface_from_file"><code class="docutils literal notranslate"><span class="pre">Device.add_interface_from_file()</span></code></a></li>
+<li><a class="reference internal" href="#device.device.Device.add_interfaces_from_dir"><code class="docutils literal notranslate"><span class="pre">Device.add_interfaces_from_dir()</span></code></a></li>
 <li><a class="reference internal" href="#device.device.Device.connect"><code class="docutils literal notranslate"><span class="pre">Device.connect()</span></code></a></li>
 <li><a class="reference internal" href="#device.device.Device.disconnect"><code class="docutils literal notranslate"><span class="pre">Device.disconnect()</span></code></a></li>
 <li><a class="reference internal" href="#device.device.Device.get_device_id"><code class="docutils literal notranslate"><span class="pre">Device.get_device_id()</span></code></a></li>
