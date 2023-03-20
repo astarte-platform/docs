@@ -4,32 +4,54 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="generator" content="ExDoc v0.29.0">
     <meta name="project" content="astarte_flow v0.1.0">
+
     <title>Blocks — astarte_flow v0.1.0</title>
-    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-bd4933fc8a.js"></script>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-BD4933FC.js"></script>
+
       <script src="docs_config.js"></script>
-    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
   </head>
-  <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
 <div class="main">
 
-<button class="sidebar-button sidebar-toggle">
-  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
 </button>
 
 <section class="sidebar">
   <form class="sidebar-search" action="search.html">
     <button type="submit" class="search-button" aria-label="Submit Search">
-      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
     </button>
     <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
-      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
     </button>
     <label class="search-label">
-      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
     </label>
   </form>
 
@@ -39,36 +61,55 @@
   </div>
 
   <div class="sidebar-header">
+
+      <a href="0001-overview.html">
+        <img src="assets/logo.png" alt="astarte_flow" class="sidebar-projectImage">
+      </a>
+
     <div class="sidebar-projectDetails">
-      <a href="0001-overview.html" class="sidebar-projectName">
-astarte_flow      </a>
-      <strong class="sidebar-projectVersion">
+      <a href="0001-overview.html" class="sidebar-projectName" translate="no">
+astarte_flow
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
         v0.1.0
       </strong>
     </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Guides</a></li>
+
+        <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+    </ul>
   </div>
 
-  <ul class="sidebar-listNav">
-    <li><a id="extras-list" href="#full-list">Guides</a></li>
-
-      <li><a id="modules-list" href="#full-list">Modules</a></li>
-
-  </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
 </section>
 
 <section class="content">
+  <output role="status" id="toast"></output>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
 
-<h1>Blocks</h1><p>Astarte Flow base computation unit is a block and their purpose is consuming, producing and
+
+  <span>Blocks</span>
+</h1>
+
+<p>Astarte Flow base computation unit is a block and their purpose is consuming, producing and
 processing messages.</p><p>Blocks are used as pipelines building blocks by chaining them together, in order to define a
 logical computation topology.</p><p>There are 3 kinds of blocks that play different roles in a pipeline:</p><ul><li>Producer (Source): they produce messages from events coming from the outside world</li><li>Consumer (Sink): they output data from Astarte Flow to the outside world</li><li>Producer &amp; Consumer (Transform / Process): they transform messages</li></ul><h1>Blocks Configuration</h1><p>Blocks behavior depends on their configuration, that can be changed by setting some properties (
 e.g. <code class="inline">to_json</code> block has a <code class="inline">pretty</code> boolean property which allows deciding wether JSON output is
 human readable (pretty) or not).</p><h2 id="validation" class="section-heading">
-  <a href="#validation" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#validation" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">validation</p>
+  </a>
   Validation
 </h2>
 <p>Blocks configuration is validated against its <a href="https://json-schema.org/">JSON Schema</a>, therefore a
@@ -76,39 +117,48 @@ new block implementation requires writing a JSON Schema for it.</p><h1>Implement
 <a href="https://github.com/astarte-platform/astarte_flow_sdk_python">Python</a>), which is the best option
 for implementing custom complex algorithms</li><li>As a chain of existing blocks (a pipeline), that is the go-to solution when a block can be
 implemented by just chaining blocks together</li><li>As a <a href="(https://www.lua.org/manual/5.2/)">Lua 5.2</a> script, that is the idea solution for small
-adjustments and simple data transformations, such as applying a conversion formula</li><li>As an <a href="https://elixir-lang.org/">Elixir</a> module, that is how built-in blocks are implemented</li></ul>      <footer class="footer">
+adjustments and simple data transformations, such as applying a conversion formula</li><li>As an <a href="https://elixir-lang.org/">Elixir</a> module, that is how built-in blocks are implemented</li></ul>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="0002-flow-messages.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Astarte Flow Messages
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="0004-pipelines.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Pipelines
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
         <p>
-          <span class="line">
-            Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
-            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
-          </span>
-          <span class="line">
-            Designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
-          </span>
-        </p>
-        <p>
-            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button night-mode-toggle">
-            Toggle night mode
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
-          </button>
-          <button class="line footer-button tooltips-toggle">
-            <span class="tooltips-option-disable">Disable tooltips</span>
-            <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
         </p>
       </footer>
     </div>
   </div>
 </section>
 </div>
+
+
   </body>
 </html>
-

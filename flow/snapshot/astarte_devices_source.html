@@ -4,32 +4,54 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="generator" content="ExDoc v0.29.0">
     <meta name="project" content="astarte_flow v0.1.0">
+
     <title>astarte_devices_source — astarte_flow v0.1.0</title>
-    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-bd4933fc8a.js"></script>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-BD4933FC.js"></script>
+
       <script src="docs_config.js"></script>
-    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
   </head>
-  <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
 <div class="main">
 
-<button class="sidebar-button sidebar-toggle">
-  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
 </button>
 
 <section class="sidebar">
   <form class="sidebar-search" action="search.html">
     <button type="submit" class="search-button" aria-label="Submit Search">
-      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
     </button>
     <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
-      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
     </button>
     <label class="search-label">
-      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
     </label>
   </form>
 
@@ -39,55 +61,80 @@
   </div>
 
   <div class="sidebar-header">
+
+      <a href="0001-overview.html">
+        <img src="assets/logo.png" alt="astarte_flow" class="sidebar-projectImage">
+      </a>
+
     <div class="sidebar-projectDetails">
-      <a href="0001-overview.html" class="sidebar-projectName">
-astarte_flow      </a>
-      <strong class="sidebar-projectVersion">
+      <a href="0001-overview.html" class="sidebar-projectName" translate="no">
+astarte_flow
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
         v0.1.0
       </strong>
     </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Guides</a></li>
+
+        <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+    </ul>
   </div>
 
-  <ul class="sidebar-listNav">
-    <li><a id="extras-list" href="#full-list">Guides</a></li>
-
-      <li><a id="modules-list" href="#full-list">Modules</a></li>
-
-  </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
 </section>
 
 <section class="content">
+  <output role="status" id="toast"></output>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
 
-<h1>astarte_devices_source</h1><ul><li>type: producer</li><li>output: any type of message</li></ul><p>Producer block that generates messages by consuming events coming from Astarte devices. This block
+
+  <span>astarte_devices_source</span>
+</h1>
+
+<ul><li>type: producer</li><li>output: any type of message</li></ul><p>Producer block that generates messages by consuming events coming from Astarte devices. This block
 must be combined with Astarte <a href="https://docs.astarte-platform.org/1.0/060-triggers.html#amqp-0-9-1-actions">AMQP
 Triggers</a> which allow
 Device events to be routed to an AMQP exchange, while the block takes care of consuming those events
 and transforming them to Flow <a href="0002-flow-messages.html">messages</a>.</p><p><em>Note: currently only <code class="inline">incoming_data</code> triggers on scalar interfaces (i.e. no arrays) are supported</em></p><h1>Properties</h1><ul><li><code class="inline">realm</code>: the Realm which is generating the events (required, string)</li><li><code class="inline">amqp_exchange</code>: the exchange where the events are being published (required, string)</li><li><code class="inline">amqp_routing_key</code>: the routing key used to bind the consumer queue to the exchange (required,
 string)</li><li><code class="inline">target_devices</code>: a list of Device IDs. If present, only events coming from these devices will
 generate a message (optional, array of strings)</li></ul><h2 id="realm" class="section-heading">
-  <a href="#realm" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#realm" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">realm</p>
+  </a>
   <code class="inline">realm</code>
 </h2>
 <p>The Realm that is generating the events. This is also used to enforce the exchange name format (see
 below)</p><h2 id="amqp_exchange" class="section-heading">
-  <a href="#amqp_exchange" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#amqp_exchange" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">amqp_exchange</p>
+  </a>
   <code class="inline">amqp_exchange</code>
 </h2>
 <p>The exchange where the events are being published. This must match the exchange that was used while
 setting up the AMQP trigger, as this block will bind a queue to that exchange (possibly using the
 configured <code class="inline">amqp_routing_key</code>).</p><p>This exchange name must follow the same restrictions that are present in Astarte triggers, namely it
-must match this regular expression</p><pre><code class="nohighlight makeup elixir"><span class="o">^</span><span class="n">astarte_events_</span><span class="err">$</span><span class="n">realm_</span><span class="p" data-group-id="6761706676-1">[</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="nc">Z0</span><span class="o">-</span><span class="mi">9</span><span class="bp">_</span><span class="err">\</span><span class="o">.</span><span class="err">\</span><span class="p">:</span><span class="p" data-group-id="6761706676-1">]</span><span class="o">+</span><span class="err">$</span></code></pre><p>where <code class="inline">$realm</code> must be substituted with the provided <code class="inline">realm</code>.</p><h2 id="amqp_routing_key" class="section-heading">
-  <a href="#amqp_routing_key" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+must match this regular expression</p><pre><code class="makeup elixir" translate="no"><span class="o">^</span><span class="n">astarte_events_</span><span class="err">$</span><span class="n">realm_</span><span class="p" data-group-id="6362351791-1">[</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="nc">Z0</span><span class="o">-</span><span class="mi">9</span><span class="bp">_</span><span class="err">\</span><span class="o">.</span><span class="err">\</span><span class="p">:</span><span class="p" data-group-id="6362351791-1">]</span><span class="o">+</span><span class="err">$</span></code></pre><p>where <code class="inline">$realm</code> must be substituted with the provided <code class="inline">realm</code>.</p><h2 id="amqp_routing_key" class="section-heading">
+  <a href="#amqp_routing_key" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">amqp_routing_key</p>
+  </a>
   <code class="inline">amqp_routing_key</code>
 </h2>
 <p>The routing key used to bind the queue to the <code class="inline">amqp_exchange</code>. This must match the
 <code class="inline">amqp_routing_key</code> used in the AMQP trigger.</p><h2 id="target_devices" class="section-heading">
-  <a href="#target_devices" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#target_devices" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">target_devices</p>
+  </a>
   <code class="inline">target_devices</code>
 </h2>
 <p>A list of target Device IDs (e.g. <code class="inline">[&quot;BWh_mWEATIumVX8asPgxag&quot;, &quot;A4QR-S9FTrahKiJihYAetA&quot;]</code>). If it's
@@ -107,58 +154,67 @@ numeric types, where there can be some instances where a <code class="inline">do
 with <code class="inline">integer</code> type.</li><li><code class="inline">timestamp</code>: contains the timestamp (in microseconds) of the event. If the source interface
 supports <code class="inline">explicit_timestamp</code>, the timestamp is the one explicitly sent from the device, otherwise
 it's the reception timestamp.</li></ul><h1>Examples</h1><p>The following example uses <code class="inline">astarte_devices_source</code> block to generate messages coming from the
-<code class="inline">test</code> Realm on the <code class="inline">org.astarte-platform.genericsensors.Values</code> interface.</p><pre><code class="nohighlight makeup elixir"><span class="n">astarte_devices_source</span><span class="w">
-  </span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="1518086242-1">(</span><span class="s">&quot;test&quot;</span><span class="p" data-group-id="1518086242-1">)</span><span class="w">
-  </span><span class="o">.</span><span class="n">amqp_exchange</span><span class="p" data-group-id="1518086242-2">(</span><span class="s">&quot;astarte_events_test_1&quot;</span><span class="p" data-group-id="1518086242-2">)</span><span class="w">
-</span><span class="p" data-group-id="1518086242-3">[</span><span class="n">...</span><span class="p" data-group-id="1518086242-3">]</span></code></pre><p>To make the example work, the following trigger must be installed in Astarte in the <code class="inline">test</code> Realm:</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="1347279228-1">{</span><span class="w">
+<code class="inline">test</code> Realm on the <code class="inline">org.astarte-platform.genericsensors.Values</code> interface.</p><pre><code class="makeup elixir" translate="no"><span class="n">astarte_devices_source</span><span class="w">
+  </span><span class="o">.</span><span class="n">realm</span><span class="p" data-group-id="4463689292-1">(</span><span class="s">&quot;test&quot;</span><span class="p" data-group-id="4463689292-1">)</span><span class="w">
+  </span><span class="o">.</span><span class="n">amqp_exchange</span><span class="p" data-group-id="4463689292-2">(</span><span class="s">&quot;astarte_events_test_1&quot;</span><span class="p" data-group-id="4463689292-2">)</span><span class="w">
+</span><span class="p" data-group-id="4463689292-3">[</span><span class="n">...</span><span class="p" data-group-id="4463689292-3">]</span></code></pre><p>To make the example work, the following trigger must be installed in Astarte in the <code class="inline">test</code> Realm:</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="2801107134-1">{</span><span class="w">
   </span><span class="ss">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example_trigger&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="ss">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1347279228-2">{</span><span class="w">
+  </span><span class="ss">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2801107134-2">{</span><span class="w">
     </span><span class="ss">&quot;amqp_exchange&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;astarte_events_test_1&quot;</span><span class="p">,</span><span class="w">
     </span><span class="ss">&quot;amqp_message_expiration_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
     </span><span class="ss">&quot;amqp_message_persistent&quot;</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="w">
-  </span><span class="p" data-group-id="1347279228-2">}</span><span class="p">,</span><span class="w">
-  </span><span class="ss">&quot;simple_triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1347279228-3">[</span><span class="w">
-    </span><span class="p" data-group-id="1347279228-4">{</span><span class="w">
+  </span><span class="p" data-group-id="2801107134-2">}</span><span class="p">,</span><span class="w">
+  </span><span class="ss">&quot;simple_triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2801107134-3">[</span><span class="w">
+    </span><span class="p" data-group-id="2801107134-4">{</span><span class="w">
       </span><span class="ss">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;data_trigger&quot;</span><span class="p">,</span><span class="w">
       </span><span class="ss">&quot;on&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;incoming_data&quot;</span><span class="p">,</span><span class="w">
       </span><span class="ss">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;org.astarte-platform.genericsensors.Values&quot;</span><span class="p">,</span><span class="w">
       </span><span class="ss">&quot;interface_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="ss">&quot;match_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/*&quot;</span><span class="w">
-    </span><span class="p" data-group-id="1347279228-4">}</span><span class="w">
-  </span><span class="p" data-group-id="1347279228-3">]</span><span class="w">
-</span><span class="p" data-group-id="1347279228-1">}</span></code></pre>      <footer class="footer">
+    </span><span class="p" data-group-id="2801107134-4">}</span><span class="w">
+  </span><span class="p" data-group-id="2801107134-3">]</span><span class="w">
+</span><span class="p" data-group-id="2801107134-1">}</span></code></pre>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="0020-pipeline-editor.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Pipeline Editor
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="container.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+container
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
         <p>
-          <span class="line">
-            Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
-            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
-          </span>
-          <span class="line">
-            Designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
-          </span>
-        </p>
-        <p>
-            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button night-mode-toggle">
-            Toggle night mode
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
-          </button>
-          <button class="line footer-button tooltips-toggle">
-            <span class="tooltips-option-disable">Disable tooltips</span>
-            <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
         </p>
       </footer>
     </div>
   </div>
 </section>
 </div>
+
+
   </body>
 </html>
-

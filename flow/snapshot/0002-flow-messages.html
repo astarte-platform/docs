@@ -4,32 +4,54 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="generator" content="ExDoc v0.29.0">
     <meta name="project" content="astarte_flow v0.1.0">
+
     <title>Astarte Flow Messages — astarte_flow v0.1.0</title>
-    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-bd4933fc8a.js"></script>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-BD4933FC.js"></script>
+
       <script src="docs_config.js"></script>
-    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
   </head>
-  <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
 <div class="main">
 
-<button class="sidebar-button sidebar-toggle">
-  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
 </button>
 
 <section class="sidebar">
   <form class="sidebar-search" action="search.html">
     <button type="submit" class="search-button" aria-label="Submit Search">
-      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
     </button>
     <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
-      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
     </button>
     <label class="search-label">
-      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
     </label>
   </form>
 
@@ -39,36 +61,57 @@
   </div>
 
   <div class="sidebar-header">
+
+      <a href="0001-overview.html">
+        <img src="assets/logo.png" alt="astarte_flow" class="sidebar-projectImage">
+      </a>
+
     <div class="sidebar-projectDetails">
-      <a href="0001-overview.html" class="sidebar-projectName">
-astarte_flow      </a>
-      <strong class="sidebar-projectVersion">
+      <a href="0001-overview.html" class="sidebar-projectName" translate="no">
+astarte_flow
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
         v0.1.0
       </strong>
     </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Guides</a></li>
+
+        <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+    </ul>
   </div>
 
-  <ul class="sidebar-listNav">
-    <li><a id="extras-list" href="#full-list">Guides</a></li>
-
-      <li><a id="modules-list" href="#full-list">Modules</a></li>
-
-  </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
 </section>
 
 <section class="content">
+  <output role="status" id="toast"></output>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
 
-<h1>Astarte Flow Messages</h1><p>Astarte Flow main focus is messages processing.</p><h2 id="message-structure" class="section-heading">
-  <a href="#message-structure" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+
+  <span>Astarte Flow Messages</span>
+</h1>
+
+<p>Astarte Flow main focus is messages processing.</p><h2 id="message-structure" class="section-heading">
+  <a href="#message-structure" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">message-structure</p>
+  </a>
   Message Structure
 </h2>
 <ul><li><code class="inline">:key</code>: a unicode string that identifies the <a href="0006-streams.html">stream</a> the message belongs to.</li><li><code class="inline">:metadata</code>: additional message metadata as a map with string key and string value.</li><li><code class="inline">:type</code>: message <a href="#data-and-types">data type</a> (e.g. integer, real, boolean, etc...).</li><li><code class="inline">:subtype</code>: a string that represents the subtype, that is a mimetype for binaries.</li><li><code class="inline">:timestamp</code>: timestamp in microseconds from <a href="https://en.wikipedia.org/wiki/Unix_time">Epoch</a> UTC.</li><li><code class="inline">:data</code>: the message payload.</li></ul><h2 id="data-and-types" class="section-heading">
-  <a href="#data-and-types" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#data-and-types" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">data-and-types</p>
+  </a>
   Data and Types
 </h2>
 <p>Messages are a convenient envelope around values, which are strongly typed.</p><p>There are 6 different base types, which are the smallest building block:</p><ul><li><code class="inline">integer</code>: unlimited integer numbers such as <code class="inline">-1</code>, <code class="inline">0</code> and <code class="inline">282174488599599500573849980909</code></li><li><code class="inline">real</code>: double precision floating point numbers. NaNs and other special values are not allowed</li><li><code class="inline">boolean</code>: either <code class="inline">true</code> or <code class="inline">false</code>.</li><li><code class="inline">datetime</code>: timestamps with microsecond precision.</li><li><code class="inline">binary</code>: any sequence of bytes, such as <code class="inline">&quot;Hello&quot;</code>, <code class="inline">&lt;&lt;0x00, 0x01, 0xFF&gt;&gt;</code> and <code class="inline">&lt;&lt;&gt;&gt;</code></li><li><code class="inline">string</code>: any unicode string, such as <code class="inline">&quot;Hello&quot;</code> and <code class="inline">&quot;文字列&quot;</code></li></ul><p>Each of the previous base types has an array counterpart, such as integer array (e.g. <code class="inline">[1, 2, 3]</code>)
@@ -76,34 +119,44 @@ or string array (e.g. <code class="inline">[&quot;hello&quot;, &quot;world]</cod
 However array of arrays are not allowed, therefore <code class="inline">[[1, 2], [3, 4]]</code> is invalid. Heterogeneous
 arrays are not supported as well, hence <code class="inline">[1, &quot;hello&quot;, true]</code> is invalid.</p><p>Map type, with any number of keys, is supported. Keys can be any arbitrary string, while
 any base type or array type is supported as values (hence nested maps are not allowed, e.g.
-<code class="inline">{&quot;a&quot;: {&quot;b&quot;: true}}</code> is invalid). Astarte Flow typing system disallow any kind of recursive type.</p><p>The following is a valid map:</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="7598526075-1">{</span><span class="w">
+<code class="inline">{&quot;a&quot;: {&quot;b&quot;: true}}</code> is invalid). Astarte Flow typing system disallow any kind of recursive type.</p><p>The following is a valid map:</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="7858687216-1">{</span><span class="w">
   </span><span class="ss">&quot;one&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="ss">&quot;sky is blue&quot;</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span><span class="w">
   </span><span class="ss">&quot;green&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;緑&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="ss">&quot;coords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7598526075-2">[</span><span class="mf">1.1</span><span class="p">,</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w"> </span><span class="mf">1.3</span><span class="p" data-group-id="7598526075-2">]</span><span class="p" data-group-id="7598526075-1">}</span><span class="w">
+  </span><span class="ss">&quot;coords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7858687216-2">[</span><span class="mf">1.1</span><span class="p">,</span><span class="w"> </span><span class="mf">1.2</span><span class="p">,</span><span class="w"> </span><span class="mf">1.3</span><span class="p" data-group-id="7858687216-2">]</span><span class="p" data-group-id="7858687216-1">}</span><span class="w">
 </span><span class="err">}</span></code></pre><h2 id="key" class="section-heading">
-  <a href="#key" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#key" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">key</p>
+  </a>
   Key
 </h2>
 <p>Each message has a key, the key identifies the stream which the message belongs to.
 Keys can be any non empty string, Astarte Flow will take care of consistent sharding on keys.</p><h2 id="timestamp" class="section-heading">
-  <a href="#timestamp" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#timestamp" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">timestamp</p>
+  </a>
   Timestamp
 </h2>
 <p>Each message has a timestamp with microsecond precision, timestamps are generally related to the event
 that generated the message. For instance when the message represents a sensor measurement,
 timestamp will likely be the measurement timestamp (since
 <a href="https://en.wikipedia.org/wiki/Unix_time">UTC Epoch</a>).</p><h2 id="subtype" class="section-heading">
-  <a href="#subtype" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#subtype" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">subtype</p>
+  </a>
   Subtype
 </h2>
 <p>Messages have a special metadata which is subtype, that is useful when type is binary.
 Subtype should be used to keep track of the binary mimetype (such as <code class="inline">&quot;application/json&quot;</code>).</p><h2 id="metadata" class="section-heading">
-  <a href="#metadata" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#metadata" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">metadata</p>
+  </a>
   Metadata
 </h2>
 <p>Metadata is an optional map, which stores user defined metadata. Both key and values must be strings.</p><h2 id="json-encoding" class="section-heading">
-  <a href="#json-encoding" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#json-encoding" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">json-encoding</p>
+  </a>
   JSON Encoding
 </h2>
 <p>The preferred wire-level encoding of messages is JSON, which is used for exchanging messages with
@@ -136,39 +189,48 @@ future versions might use different schemas.</p><p>The following is an example o
   &quot;subtype&quot;: {
     &quot;b&quot;: &quot;text/plain&quot;
   }
-}</code></pre>      <footer class="footer">
+}</code></pre>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="0001-overview.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Overview
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="0003-blocks.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Blocks
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
         <p>
-          <span class="line">
-            Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
-            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
-          </span>
-          <span class="line">
-            Designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
-          </span>
-        </p>
-        <p>
-            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button night-mode-toggle">
-            Toggle night mode
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
-          </button>
-          <button class="line footer-button tooltips-toggle">
-            <span class="tooltips-option-disable">Disable tooltips</span>
-            <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
         </p>
       </footer>
     </div>
   </div>
 </section>
 </div>
+
+
   </body>
 </html>
-

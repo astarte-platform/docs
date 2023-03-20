@@ -4,32 +4,54 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="generator" content="ExDoc v0.29.0">
     <meta name="project" content="astarte_flow v0.1.0">
+
     <title>mqtt_sink — astarte_flow v0.1.0</title>
-    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-bd4933fc8a.js"></script>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-BD4933FC.js"></script>
+
       <script src="docs_config.js"></script>
-    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
   </head>
-  <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
 <div class="main">
 
-<button class="sidebar-button sidebar-toggle">
-  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
 </button>
 
 <section class="sidebar">
   <form class="sidebar-search" action="search.html">
     <button type="submit" class="search-button" aria-label="Submit Search">
-      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
     </button>
     <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
-      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
     </button>
     <label class="search-label">
-      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
     </label>
   </form>
 
@@ -39,115 +61,159 @@
   </div>
 
   <div class="sidebar-header">
+
+      <a href="0001-overview.html">
+        <img src="assets/logo.png" alt="astarte_flow" class="sidebar-projectImage">
+      </a>
+
     <div class="sidebar-projectDetails">
-      <a href="0001-overview.html" class="sidebar-projectName">
-astarte_flow      </a>
-      <strong class="sidebar-projectVersion">
+      <a href="0001-overview.html" class="sidebar-projectName" translate="no">
+astarte_flow
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
         v0.1.0
       </strong>
     </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Guides</a></li>
+
+        <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+    </ul>
   </div>
 
-  <ul class="sidebar-listNav">
-    <li><a id="extras-list" href="#full-list">Guides</a></li>
-
-      <li><a id="modules-list" href="#full-list">Modules</a></li>
-
-  </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
 </section>
 
 <section class="content">
+  <output role="status" id="toast"></output>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
 
-<h1>mqtt_sink</h1><ul><li>type: consumer</li><li>input: binary messages</li></ul><p>This is a consumer block that takes data from an incoming message and publishes it using an
+
+  <span>mqtt_sink</span>
+</h1>
+
+<ul><li>type: consumer</li><li>input: binary messages</li></ul><p>This is a consumer block that takes data from an incoming message and publishes it using an
 <a href="https://mqtt.org/">MQTT</a> connection.</p><p>This block supports only incoming messages with type <code class="inline">binary</code>, so serialization of different message
 types must be handled in a preceding block.</p><p>This block has been implemented using the <a href="https://elixir-lang.org/">Elixir</a> <a href="https://hexdocs.pm/tortoise/introduction.html">tortoise MQTT client
 application</a>.</p><h1>Properties</h1><ul><li><code class="inline">broker_url</code>: The URL of the broker the source will connect to. (required, string)</li><li><code class="inline">client_id</code>: The client id used to connect. Defaults to a random string. (optional, string)</li><li><code class="inline">ignore_ssl_errors</code>: If true, accept invalid certificates (e.g. self-signed) when using SSL.
  (optional, boolean, default: <code class="inline">false</code>)</li><li><code class="inline">username</code>: Username used to authenticate to the broker. (optional, string)</li><li><code class="inline">password</code>: Password used to authenticate to the broker. (optional, string)</li><li><code class="inline">ca_cert_pem</code>: PEM encoded CA certificate. (optional, string)</li><li><code class="inline">client_cert_pem</code>: PEM encoded client certificate, used for mutual SSL authentication.
 (optional, string)</li><li><code class="inline">private_key_pem</code>: PEM encoded private key, used for mutual SSL authentication. (optional,
 string)</li><li><code class="inline">qos</code>: The QoS used when publishing (optional, integer, default: <code class="inline">0</code>)</li></ul><h2 id="broker_url" class="section-heading">
-  <a href="#broker_url" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#broker_url" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">broker_url</p>
+  </a>
   <code class="inline">broker_url</code>
 </h2>
 <p>The URL of the broker the source will connect to. The transport will be deduced by the URL: if
 <code class="inline">mqtts://</code> is used, SSL transport will be used, if <code class="inline">mqtt://</code> is used, TCP transport will be used.</p><h2 id="client_id" class="section-heading">
-  <a href="#client_id" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#client_id" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">client_id</p>
+  </a>
   <code class="inline">client_id</code>
 </h2>
 <p>The client id used to connect. Defaults to a random string.</p><h2 id="ignore_ssl_errors" class="section-heading">
-  <a href="#ignore_ssl_errors" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#ignore_ssl_errors" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">ignore_ssl_errors</p>
+  </a>
   <code class="inline">ignore_ssl_errors</code>
 </h2>
 <p>If true, accept invalid certificates (e.g.
 <a href="https://en.wikipedia.org/wiki/Self-signed_certificate">self-signed</a>) when using SSL.</p><h2 id="username" class="section-heading">
-  <a href="#username" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#username" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">username</p>
+  </a>
   <code class="inline">username</code>
 </h2>
 <p>Username used to authenticate to the broker.</p><h2 id="password" class="section-heading">
-  <a href="#password" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#password" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">password</p>
+  </a>
   <code class="inline">password</code>
 </h2>
 <p>Password used to authenticate to the broker.</p><h2 id="ca_cert_pem" class="section-heading">
-  <a href="#ca_cert_pem" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#ca_cert_pem" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">ca_cert_pem</p>
+  </a>
   <code class="inline">ca_cert_pem</code>
 </h2>
 <p>A PEM encoded CA certificate. If not provided, the default CA trust store provided by <code class="inline">:certifi</code>
 will be used.</p><h2 id="client_cert_pem" class="section-heading">
-  <a href="#client_cert_pem" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#client_cert_pem" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">client_cert_pem</p>
+  </a>
   <code class="inline">client_cert_pem</code>
 </h2>
 <p>A PEM encoded client certificate, used for mutual SSL authentication. If this is provided, also
 <code class="inline">private_key_pem</code> must be provided.</p><h2 id="private_key_pem" class="section-heading">
-  <a href="#private_key_pem" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#private_key_pem" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">private_key_pem</p>
+  </a>
   <code class="inline">private_key_pem</code>
 </h2>
 <p>A PEM encoded private key, used for mutual SSL authentication. If this is provided, also
 <code class="inline">client_cert_pem</code> must be provided.</p><h2 id="qos" class="section-heading">
-  <a href="#qos" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#qos" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">qos</p>
+  </a>
   <code class="inline">qos</code>
 </h2>
 <p>The MQTT QoS used when publishing. Defaults to <code class="inline">0</code>, possible valid values are <code class="inline">0</code>, <code class="inline">1</code> or <code class="inline">2</code>.</p><h1>Accepted input message</h1><p>This block supports only messages with a <code class="inline">binary</code> type. Serialization must be explicitly handled in
 another block. Messages with a different type are discarded by the block.</p><p>The message fields are used as follows:</p><ul><li><code class="inline">key</code> becomes the MQTT topic for the published message</li><li><code class="inline">data</code> is used as message payload</li><li><code class="inline">type</code> must always be <code class="inline">binary</code>, otherwise the message is discarded</li></ul><h1>Examples</h1><p>This example uses the <code class="inline">mqtt_sink</code> block to connect to an MQTT broker with host <code class="inline">example.com</code> on port
-<code class="inline">8883</code> and publish incoming messages with QoS 1</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="3965334480-1">[</span><span class="n">...</span><span class="p" data-group-id="3965334480-1">]</span><span class="w">
+<code class="inline">8883</code> and publish incoming messages with QoS 1</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="6226450572-1">[</span><span class="n">...</span><span class="p" data-group-id="6226450572-1">]</span><span class="w">
 </span><span class="o">|</span><span class="w"> </span><span class="n">mqtt_sink</span><span class="w">
-  </span><span class="o">.</span><span class="n">broker_url</span><span class="p" data-group-id="3965334480-2">(</span><span class="s">&quot;mqtts://example.com:8883&quot;</span><span class="p" data-group-id="3965334480-2">)</span><span class="w">
-  </span><span class="o">.</span><span class="n">qos</span><span class="p" data-group-id="3965334480-3">(</span><span class="mi">1</span><span class="p" data-group-id="3965334480-3">)</span></code></pre>      <footer class="footer">
+  </span><span class="o">.</span><span class="n">broker_url</span><span class="p" data-group-id="6226450572-2">(</span><span class="s">&quot;mqtts://example.com:8883&quot;</span><span class="p" data-group-id="6226450572-2">)</span><span class="w">
+  </span><span class="o">.</span><span class="n">qos</span><span class="p" data-group-id="6226450572-3">(</span><span class="mi">1</span><span class="p" data-group-id="6226450572-3">)</span></code></pre>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="modbus_tcp_source.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+modbus_tcp_source
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="mqtt_source.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+mqtt_source
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
         <p>
-          <span class="line">
-            Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
-            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
-          </span>
-          <span class="line">
-            Designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
-          </span>
-        </p>
-        <p>
-            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button night-mode-toggle">
-            Toggle night mode
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
-          </button>
-          <button class="line footer-button tooltips-toggle">
-            <span class="tooltips-option-disable">Disable tooltips</span>
-            <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
         </p>
       </footer>
     </div>
   </div>
 </section>
 </div>
+
+
   </body>
 </html>
-

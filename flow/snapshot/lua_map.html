@@ -4,32 +4,54 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="generator" content="ExDoc v0.29.0">
     <meta name="project" content="astarte_flow v0.1.0">
+
     <title>lua_map — astarte_flow v0.1.0</title>
-    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-bd4933fc8a.js"></script>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-BD4933FC.js"></script>
+
       <script src="docs_config.js"></script>
-    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
   </head>
-  <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
 <div class="main">
 
-<button class="sidebar-button sidebar-toggle">
-  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
 </button>
 
 <section class="sidebar">
   <form class="sidebar-search" action="search.html">
     <button type="submit" class="search-button" aria-label="Submit Search">
-      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
     </button>
     <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
-      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
     </button>
     <label class="search-label">
-      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
     </label>
   </form>
 
@@ -39,42 +61,63 @@
   </div>
 
   <div class="sidebar-header">
+
+      <a href="0001-overview.html">
+        <img src="assets/logo.png" alt="astarte_flow" class="sidebar-projectImage">
+      </a>
+
     <div class="sidebar-projectDetails">
-      <a href="0001-overview.html" class="sidebar-projectName">
-astarte_flow      </a>
-      <strong class="sidebar-projectVersion">
+      <a href="0001-overview.html" class="sidebar-projectName" translate="no">
+astarte_flow
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
         v0.1.0
       </strong>
     </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Guides</a></li>
+
+        <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+    </ul>
   </div>
 
-  <ul class="sidebar-listNav">
-    <li><a id="extras-list" href="#full-list">Guides</a></li>
-
-      <li><a id="modules-list" href="#full-list">Modules</a></li>
-
-  </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
 </section>
 
 <section class="content">
+  <output role="status" id="toast"></output>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
 
-<h1>lua_map</h1><ul><li>type: producer_consumer</li><li>accepted input: any kind of message</li><li>output: transformed input message</li></ul><p>This is a producer and consumer block that takes an incoming message and it transforms it using the
+
+  <span>lua_map</span>
+</h1>
+
+<ul><li>type: producer_consumer</li><li>accepted input: any kind of message</li><li>output: transformed input message</li></ul><p>This is a producer and consumer block that takes an incoming message and it transforms it using the
 given Lua script.</p><p>This block supports <a href="https://www.lua.org/manual/5.2/">Lua 5.2</a> scripts (
 <a href="https://github.com/rvirding/luerl">luerl scripting engine</a> is used under the hood). The incoming
 message will be provided to the script as <code class="inline">message</code>.</p><p>This block name is not related to the map abstract data type and it should be not confused with it,
 instead it is related to the function (our script) application to a sequence of items (the
 messages).</p><h1>Properties</h1><ul><li><code class="inline">script</code>: Lua script. (required, string)</li><li><code class="inline">config</code>: Lua script configuration object. (optional, object)</li></ul><h2 id="script" class="section-heading">
-  <a href="#script" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#script" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">script</p>
+  </a>
   <code class="inline">script</code>
 </h2>
 <p>A Lua <a href="https://www.lua.org/manual/5.2/">Lua 5.2</a> script. The most simple script is
 <code class="inline">&quot;return message;&quot;</code> which returns an unmodified message.</p><p>See also <a href="https://github.com/rvirding/luerl/wiki">luerl documentation</a>.</p><h2 id="config" class="section-heading">
-  <a href="#config" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#config" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">config</p>
+  </a>
   <code class="inline">config</code>
 </h2>
 <p>Any object. Config parameter is meant as a method to provide parameters to the Lua script, without
@@ -82,48 +125,57 @@ hard-coding them. It can be accessed using <code class="inline">config</code>.</
 Missing message attributes are taken from the input message, therefore some fields are kept
 unchanged.</p><h1>Examples</h1><p>The following example uses <code class="inline">lua_map</code> block for Fahrenheit to Celsius degrees conversion. A key
 prefix is provided through <code class="inline">config</code> object and prepended to the string <code class="inline">&quot;/celsius&quot;</code>.
-All other existing message attributes are taken as-is from the input message.</p><pre><code class="nohighlight makeup elixir"><span class="p" data-group-id="1388364100-1">[</span><span class="n">...</span><span class="p" data-group-id="1388364100-1">]</span><span class="w">
+All other existing message attributes are taken as-is from the input message.</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="6176714727-1">[</span><span class="n">...</span><span class="p" data-group-id="6176714727-1">]</span><span class="w">
 </span><span class="o">|</span><span class="w"> </span><span class="n">lua_map</span><span class="w">
-  </span><span class="o">.</span><span class="n">script</span><span class="p" data-group-id="1388364100-2">(</span><span class="s">&quot;&quot;&quot;
+  </span><span class="o">.</span><span class="n">script</span><span class="p" data-group-id="6176714727-2">(</span><span class="s">&quot;&quot;&quot;
     new_message = {};
     new_message.key = config.prefix .. &quot;/celsius&quot;;
     new_message.data = (message.data - 32) / 1.8;
     return new_message;
-  &quot;&quot;&quot;</span><span class="p" data-group-id="1388364100-2">)</span><span class="w">
-  </span><span class="o">.</span><span class="n">config</span><span class="p" data-group-id="1388364100-3">(</span><span class="err">$</span><span class="p" data-group-id="1388364100-4">{</span><span class="n">config</span><span class="p" data-group-id="1388364100-4">}</span><span class="p" data-group-id="1388364100-3">)</span><span class="w">
-</span><span class="p" data-group-id="1388364100-5">[</span><span class="n">...</span><span class="p" data-group-id="1388364100-5">]</span></code></pre>      <footer class="footer">
+  &quot;&quot;&quot;</span><span class="p" data-group-id="6176714727-2">)</span><span class="w">
+  </span><span class="o">.</span><span class="n">config</span><span class="p" data-group-id="6176714727-3">(</span><span class="err">$</span><span class="p" data-group-id="6176714727-4">{</span><span class="n">config</span><span class="p" data-group-id="6176714727-4">}</span><span class="p" data-group-id="6176714727-3">)</span><span class="w">
+</span><span class="p" data-group-id="6176714727-5">[</span><span class="n">...</span><span class="p" data-group-id="6176714727-5">]</span></code></pre>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="json_path_map.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+json_path_map
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="modbus_tcp_source.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+modbus_tcp_source
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
         <p>
-          <span class="line">
-            Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
-            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
-          </span>
-          <span class="line">
-            Designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
-          </span>
-        </p>
-        <p>
-            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button night-mode-toggle">
-            Toggle night mode
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
-          </button>
-          <button class="line footer-button tooltips-toggle">
-            <span class="tooltips-option-disable">Disable tooltips</span>
-            <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
         </p>
       </footer>
     </div>
   </div>
 </section>
 </div>
+
+
   </body>
 </html>
-

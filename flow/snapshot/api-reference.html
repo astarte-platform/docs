@@ -4,32 +4,54 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="generator" content="ExDoc v0.29.0">
     <meta name="project" content="astarte_flow v0.1.0">
+
     <title>API Reference — astarte_flow v0.1.0</title>
-    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-bd4933fc8a.js"></script>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-BD4933FC.js"></script>
+
       <script src="docs_config.js"></script>
-    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
   </head>
-  <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
 <div class="main">
 
-<button class="sidebar-button sidebar-toggle">
-  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
 </button>
 
 <section class="sidebar">
   <form class="sidebar-search" action="search.html">
     <button type="submit" class="search-button" aria-label="Submit Search">
-      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
     </button>
     <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
-      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
     </button>
     <label class="search-label">
-      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
     </label>
   </form>
 
@@ -39,519 +61,719 @@
   </div>
 
   <div class="sidebar-header">
+
+      <a href="0001-overview.html">
+        <img src="assets/logo.png" alt="astarte_flow" class="sidebar-projectImage">
+      </a>
+
     <div class="sidebar-projectDetails">
-      <a href="0001-overview.html" class="sidebar-projectName">
-astarte_flow      </a>
-      <strong class="sidebar-projectVersion">
+      <a href="0001-overview.html" class="sidebar-projectName" translate="no">
+astarte_flow
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
         v0.1.0
       </strong>
     </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Guides</a></li>
+
+        <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+    </ul>
   </div>
 
-  <ul class="sidebar-listNav">
-    <li><a id="extras-list" href="#full-list">Guides</a></li>
-
-      <li><a id="modules-list" href="#full-list">Modules</a></li>
-
-  </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
 </section>
 
 <section class="content">
+  <output role="status" id="toast"></output>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
-
 <h1>
-  API Reference <small class="app-vsn">astarte_flow v0.1.0</small>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+  <span>API Reference <small class="app-vsn">astarte_flow v0.1.0</small></span>
 </h1>
+
 
   <section class="details-list">
     <h2 id="modules" class="section-heading">
-  <a href="#modules" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#modules" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">modules</p>
+  </a>
   Modules
 </h2>
 
     <div class="summary">
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Auth.html">Astarte.Flow.Auth</a>
+    <a href="Astarte.Flow.Auth.html" translate="no">Astarte.Flow.Auth</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Auth.AstartePublicKeyProvider.html">Astarte.Flow.Auth.AstartePublicKeyProvider</a>
+    <a href="Astarte.Flow.Auth.AstartePublicKeyProvider.html" translate="no">Astarte.Flow.Auth.AstartePublicKeyProvider</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Auth.FilesystemPublicKeyProvider.html">Astarte.Flow.Auth.FilesystemPublicKeyProvider</a>
+    <a href="Astarte.Flow.Auth.FilesystemPublicKeyProvider.html" translate="no">Astarte.Flow.Auth.FilesystemPublicKeyProvider</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Auth.Guardian.html">Astarte.Flow.Auth.Guardian</a>
+    <a href="Astarte.Flow.Auth.Guardian.html" translate="no">Astarte.Flow.Auth.Guardian</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Auth.Guardian.Plug.html">Astarte.Flow.Auth.Guardian.Plug</a>
+    <a href="Astarte.Flow.Auth.Guardian.Plug.html" translate="no">Astarte.Flow.Auth.Guardian.Plug</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Auth.RealmPublicKeyProvider.html">Astarte.Flow.Auth.RealmPublicKeyProvider</a>
+    <a href="Astarte.Flow.Auth.RealmPublicKeyProvider.html" translate="no">Astarte.Flow.Auth.RealmPublicKeyProvider</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Auth.User.html">Astarte.Flow.Auth.User</a>
+    <a href="Astarte.Flow.Auth.User.html" translate="no">Astarte.Flow.Auth.User</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.html">Astarte.Flow.Blocks</a>
+    <a href="Astarte.Flow.Blocks.html" translate="no">Astarte.Flow.Blocks</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.Block.html">Astarte.Flow.Blocks.Block</a>
+    <a href="Astarte.Flow.Blocks.Block.html" translate="no">Astarte.Flow.Blocks.Block</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.Container.html">Astarte.Flow.Blocks.Container</a>
+    <a href="Astarte.Flow.Blocks.Container.html" translate="no">Astarte.Flow.Blocks.Container</a>
+
   </div>
+
     <div class="summary-synopsis"><p>This is a producer_consumer block that sends messages to a Docker container.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.Container.RabbitMQClient.html">Astarte.Flow.Blocks.Container.RabbitMQClient</a>
+    <a href="Astarte.Flow.Blocks.Container.RabbitMQClient.html" translate="no">Astarte.Flow.Blocks.Container.RabbitMQClient</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.DETSStorage.html">Astarte.Flow.Blocks.DETSStorage</a>
+    <a href="Astarte.Flow.Blocks.DETSStorage.html" translate="no">Astarte.Flow.Blocks.DETSStorage</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.DefaultBlocks.html">Astarte.Flow.Blocks.DefaultBlocks</a>
+    <a href="Astarte.Flow.Blocks.DefaultBlocks.html" translate="no">Astarte.Flow.Blocks.DefaultBlocks</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.DeviceEventsProducer.html">Astarte.Flow.Blocks.DeviceEventsProducer</a>
+    <a href="Astarte.Flow.Blocks.DeviceEventsProducer.html" translate="no">Astarte.Flow.Blocks.DeviceEventsProducer</a>
+
   </div>
+
     <div class="summary-synopsis"><p>This is a producer block that generates messages by polling consuming from an AMQP queue
 that contains a stream of <code class="inline">Astarte.Core.Triggers.SimpleEvents.SimpleEvent</code> generated by
 Data Updater Plant.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.DeviceEventsProducer.EventsDecoder.html">Astarte.Flow.Blocks.DeviceEventsProducer.EventsDecoder</a>
+    <a href="Astarte.Flow.Blocks.DeviceEventsProducer.EventsDecoder.html" translate="no">Astarte.Flow.Blocks.DeviceEventsProducer.EventsDecoder</a>
+
   </div>
+
     <div class="summary-synopsis"><p>This module handles the decoding of Astarte Events and their transformation
 to Astarte Flow Messages</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.DeviceEventsProducer.RabbitMQClient.html">Astarte.Flow.Blocks.DeviceEventsProducer.RabbitMQClient</a>
+    <a href="Astarte.Flow.Blocks.DeviceEventsProducer.RabbitMQClient.html" translate="no">Astarte.Flow.Blocks.DeviceEventsProducer.RabbitMQClient</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.DynamicVirtualDevicePool.html">Astarte.Flow.Blocks.DynamicVirtualDevicePool</a>
+    <a href="Astarte.Flow.Blocks.DynamicVirtualDevicePool.html" translate="no">Astarte.Flow.Blocks.DynamicVirtualDevicePool</a>
+
   </div>
+
     <div class="summary-synopsis"><p>This is a consumer block that takes <code class="inline">data</code> from incoming <code class="inline">Message</code>s and publishes it as an Astarte device,
 interpreting the <code class="inline">key</code> as &lt;realm&gt;/&lt;device_id&gt;/&lt;interface&gt;&lt;path&gt;.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.DynamicVirtualDevicePool.CredentialsStorage.html">Astarte.Flow.Blocks.DynamicVirtualDevicePool.CredentialsStorage</a>
+    <a href="Astarte.Flow.Blocks.DynamicVirtualDevicePool.CredentialsStorage.html" translate="no">Astarte.Flow.Blocks.DynamicVirtualDevicePool.CredentialsStorage</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.DynamicVirtualDevicePool.DETSCredentialsStorage.html">Astarte.Flow.Blocks.DynamicVirtualDevicePool.DETSCredentialsStorage</a>
+    <a href="Astarte.Flow.Blocks.DynamicVirtualDevicePool.DETSCredentialsStorage.html" translate="no">Astarte.Flow.Blocks.DynamicVirtualDevicePool.DETSCredentialsStorage</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.Filter.html">Astarte.Flow.Blocks.Filter</a>
+    <a href="Astarte.Flow.Blocks.Filter.html" translate="no">Astarte.Flow.Blocks.Filter</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.Filter.Config.html">Astarte.Flow.Blocks.Filter.Config</a>
+    <a href="Astarte.Flow.Blocks.Filter.Config.html" translate="no">Astarte.Flow.Blocks.Filter.Config</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.FilterFunctions.html">Astarte.Flow.Blocks.FilterFunctions</a>
+    <a href="Astarte.Flow.Blocks.FilterFunctions.html" translate="no">Astarte.Flow.Blocks.FilterFunctions</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.HttpSink.html">Astarte.Flow.Blocks.HttpSink</a>
+    <a href="Astarte.Flow.Blocks.HttpSink.html" translate="no">Astarte.Flow.Blocks.HttpSink</a>
+
   </div>
+
     <div class="summary-synopsis"><p>This is a consumer block that takes <code class="inline">data</code> from incoming <code class="inline">Message</code> and makes a POST request
 to the configured URL containing <code class="inline">data</code>. This block supports only incoming messages with type <code class="inline">:binary</code>,
 so serialization to binary format must be handled in a separate block before the message arrives here.
 The <code class="inline">subtype</code> of the message, if present, is added as <code class="inline">Content-Type</code> header.
 Additionally, static headers can be added to the POST requests with the initial configuration.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.HttpSource.html">Astarte.Flow.Blocks.HttpSource</a>
+    <a href="Astarte.Flow.Blocks.HttpSource.html" translate="no">Astarte.Flow.Blocks.HttpSource</a>
+
   </div>
+
     <div class="summary-synopsis"><p>This is a producer block that generates messages by polling HTTP URLs with a GET request.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.JsonMapper.html">Astarte.Flow.Blocks.JsonMapper</a>
+    <a href="Astarte.Flow.Blocks.JsonMapper.html" translate="no">Astarte.Flow.Blocks.JsonMapper</a>
+
   </div>
+
     <div class="summary-synopsis"><p>This is a map block that takes <code class="inline">data</code> from incoming <code class="inline">Message</code> and makes a Message having a JSON
 serialized payload. The <code class="inline">subtype</code> of the message  is set to &quot;application/json&quot; and the <code class="inline">type</code> is
 <code class="inline">:binary</code>.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.JsonPathMapper.html">Astarte.Flow.Blocks.JsonPathMapper</a>
+    <a href="Astarte.Flow.Blocks.JsonPathMapper.html" translate="no">Astarte.Flow.Blocks.JsonPathMapper</a>
+
   </div>
+
     <div class="summary-synopsis"><p>Transforms the incoming JSON message using the configured JSON template which makes use of
 JSONPath to extract data from the incoming message.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.JsonPathMapper.JsonTemplate.html">Astarte.Flow.Blocks.JsonPathMapper.JsonTemplate</a>
+    <a href="Astarte.Flow.Blocks.JsonPathMapper.JsonTemplate.html" translate="no">Astarte.Flow.Blocks.JsonPathMapper.JsonTemplate</a>
+
   </div>
+
     <div class="summary-synopsis"><p>Implements a simple logic less templating system that allows to write map templates with a syntax
 that resembles mustache syntax, that can be used for JSON templating.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.LuaMapper.html">Astarte.Flow.Blocks.LuaMapper</a>
+    <a href="Astarte.Flow.Blocks.LuaMapper.html" translate="no">Astarte.Flow.Blocks.LuaMapper</a>
+
   </div>
+
     <div class="summary-synopsis"><p>This is a map block that takes an incoming <code class="inline">Message</code> and it transforms it using given Lua script.
 This block supports Lua 5.3 scripts. The incoming message will be provided to the script as
 <code class="inline">message</code></p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.MapSplitter.html">Astarte.Flow.Blocks.MapSplitter</a>
+    <a href="Astarte.Flow.Blocks.MapSplitter.html" translate="no">Astarte.Flow.Blocks.MapSplitter</a>
+
   </div>
+
     <div class="summary-synopsis"><p>Breaks a map message into several messages, one for each map item.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.ModbusTCPSource.html">Astarte.Flow.Blocks.ModbusTCPSource</a>
+    <a href="Astarte.Flow.Blocks.ModbusTCPSource.html" translate="no">Astarte.Flow.Blocks.ModbusTCPSource</a>
+
   </div>
+
     <div class="summary-synopsis"><p>An Astarte Flow source that produces data by polling a Modbus device. This block
 is built to poll a single Modbus slave, if you want to poll multiple slaves you
 must instantiate multiple flows changing the slave id.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.MqttSink.html">Astarte.Flow.Blocks.MqttSink</a>
+    <a href="Astarte.Flow.Blocks.MqttSink.html" translate="no">Astarte.Flow.Blocks.MqttSink</a>
+
   </div>
+
     <div class="summary-synopsis"><p>An Astarte Flow consumer that publishes MQTT messages from incoming Flow
 messages.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.MqttSource.html">Astarte.Flow.Blocks.MqttSource</a>
+    <a href="Astarte.Flow.Blocks.MqttSource.html" translate="no">Astarte.Flow.Blocks.MqttSource</a>
+
   </div>
+
     <div class="summary-synopsis"><p>An Astarte Flow source that produces data from an MQTT connection.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.RandomProducer.html">Astarte.Flow.Blocks.RandomProducer</a>
+    <a href="Astarte.Flow.Blocks.RandomProducer.html" translate="no">Astarte.Flow.Blocks.RandomProducer</a>
+
   </div>
+
     <div class="summary-synopsis"><p>Producer module that generates random messages of a specific type with a fixed key. The supported types are <code class="inline">:integer</code>, <code class="inline">:real</code> and <code class="inline">:boolean</code>.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.Sorter.html">Astarte.Flow.Blocks.Sorter</a>
+    <a href="Astarte.Flow.Blocks.Sorter.html" translate="no">Astarte.Flow.Blocks.Sorter</a>
+
   </div>
+
     <div class="summary-synopsis"><p>This block is a stateful realtime block, which reorders an out of order sequence of messages,
 and optionally removes any duplicate message.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.Sorter.Config.html">Astarte.Flow.Blocks.Sorter.Config</a>
+    <a href="Astarte.Flow.Blocks.Sorter.Config.html" translate="no">Astarte.Flow.Blocks.Sorter.Config</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.Sorter.State.html">Astarte.Flow.Blocks.Sorter.State</a>
+    <a href="Astarte.Flow.Blocks.Sorter.State.html" translate="no">Astarte.Flow.Blocks.Sorter.State</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.Storage.html">Astarte.Flow.Blocks.Storage</a>
+    <a href="Astarte.Flow.Blocks.Storage.html" translate="no">Astarte.Flow.Blocks.Storage</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.UpdateMetadata.html">Astarte.Flow.Blocks.UpdateMetadata</a>
+    <a href="Astarte.Flow.Blocks.UpdateMetadata.html" translate="no">Astarte.Flow.Blocks.UpdateMetadata</a>
+
   </div>
+
     <div class="summary-synopsis"><p>This is a producer-consumer block that modifies the <code class="inline">metadata</code> field of
 incoming <code class="inline">Message</code>s by inserting, updating or removing keys using a static
 configuration.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Blocks.VirtualDevicePool.html">Astarte.Flow.Blocks.VirtualDevicePool</a>
+    <a href="Astarte.Flow.Blocks.VirtualDevicePool.html" translate="no">Astarte.Flow.Blocks.VirtualDevicePool</a>
+
   </div>
+
     <div class="summary-synopsis"><p>This is a consumer block that takes <code class="inline">data</code> from incoming <code class="inline">Message</code>s and publishes it as an Astarte device,
 interpreting the <code class="inline">key</code> as &lt;realm&gt;/&lt;device_id&gt;/&lt;interface&gt;&lt;path&gt;.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Compat.html">Astarte.Flow.Compat</a>
+    <a href="Astarte.Flow.Compat.html" translate="no">Astarte.Flow.Compat</a>
+
   </div>
+
     <div class="summary-synopsis"><p>This module provides compatibility helpers to support multiple formats of configuration
 during the deprecation period.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Config.html">Astarte.Flow.Config</a>
+    <a href="Astarte.Flow.Config.html" translate="no">Astarte.Flow.Config</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Config.XandraNodes.html">Astarte.Flow.Config.XandraNodes</a>
+    <a href="Astarte.Flow.Config.XandraNodes.html" translate="no">Astarte.Flow.Config.XandraNodes</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Flows.html">Astarte.Flow.Flows</a>
+    <a href="Astarte.Flow.Flows.html" translate="no">Astarte.Flow.Flows</a>
+
   </div>
+
     <div class="summary-synopsis"><p>The Flows context.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Flows.DETSStorage.html">Astarte.Flow.Flows.DETSStorage</a>
+    <a href="Astarte.Flow.Flows.DETSStorage.html" translate="no">Astarte.Flow.Flows.DETSStorage</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Flows.Flow.html">Astarte.Flow.Flows.Flow</a>
+    <a href="Astarte.Flow.Flows.Flow.html" translate="no">Astarte.Flow.Flows.Flow</a>
+
   </div>
+
     <div class="summary-synopsis"><p>This module implements an embedded_schema representing a Flow and also
 the GenServer responsible of starting and monitoring the Flow.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Flows.Flow.State.html">Astarte.Flow.Flows.Flow.State</a>
+    <a href="Astarte.Flow.Flows.Flow.State.html" translate="no">Astarte.Flow.Flows.Flow.State</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Flows.Storage.html">Astarte.Flow.Flows.Storage</a>
+    <a href="Astarte.Flow.Flows.Storage.html" translate="no">Astarte.Flow.Flows.Storage</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.K8s.html">Astarte.Flow.K8s</a>
+    <a href="Astarte.Flow.K8s.html" translate="no">Astarte.Flow.K8s</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.K8s.ContainerBlock.html">Astarte.Flow.K8s.ContainerBlock</a>
+    <a href="Astarte.Flow.K8s.ContainerBlock.html" translate="no">Astarte.Flow.K8s.ContainerBlock</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Message.html">Astarte.Flow.Message</a>
+    <a href="Astarte.Flow.Message.html" translate="no">Astarte.Flow.Message</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.PipelineBuilder.Error.html">Astarte.Flow.PipelineBuilder.Error</a>
+    <a href="Astarte.Flow.PipelineBuilder.Error.html" translate="no">Astarte.Flow.PipelineBuilder.Error</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Pipelines.html">Astarte.Flow.Pipelines</a>
+    <a href="Astarte.Flow.Pipelines.html" translate="no">Astarte.Flow.Pipelines</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Pipelines.DETSStorage.html">Astarte.Flow.Pipelines.DETSStorage</a>
+    <a href="Astarte.Flow.Pipelines.DETSStorage.html" translate="no">Astarte.Flow.Pipelines.DETSStorage</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Pipelines.Pipeline.html">Astarte.Flow.Pipelines.Pipeline</a>
+    <a href="Astarte.Flow.Pipelines.Pipeline.html" translate="no">Astarte.Flow.Pipelines.Pipeline</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.Pipelines.Storage.html">Astarte.Flow.Pipelines.Storage</a>
+    <a href="Astarte.Flow.Pipelines.Storage.html" translate="no">Astarte.Flow.Pipelines.Storage</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.Flow.RestoreFlowsTask.html">Astarte.Flow.RestoreFlowsTask</a>
+    <a href="Astarte.Flow.RestoreFlowsTask.html" translate="no">Astarte.Flow.RestoreFlowsTask</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.html">Astarte.FlowWeb</a>
+    <a href="Astarte.FlowWeb.html" translate="no">Astarte.FlowWeb</a>
+
   </div>
+
     <div class="summary-synopsis"><p>The entrypoint for defining your web interface, such
 as controllers, views, channels and so on.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.BlockController.html">Astarte.FlowWeb.BlockController</a>
+    <a href="Astarte.FlowWeb.BlockController.html" translate="no">Astarte.FlowWeb.BlockController</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.BlockView.html">Astarte.FlowWeb.BlockView</a>
+    <a href="Astarte.FlowWeb.BlockView.html" translate="no">Astarte.FlowWeb.BlockView</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.ChangesetView.html">Astarte.FlowWeb.ChangesetView</a>
+    <a href="Astarte.FlowWeb.ChangesetView.html" translate="no">Astarte.FlowWeb.ChangesetView</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.Endpoint.html">Astarte.FlowWeb.Endpoint</a>
+    <a href="Astarte.FlowWeb.Endpoint.html" translate="no">Astarte.FlowWeb.Endpoint</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.ErrorHelpers.html">Astarte.FlowWeb.ErrorHelpers</a>
+    <a href="Astarte.FlowWeb.ErrorHelpers.html" translate="no">Astarte.FlowWeb.ErrorHelpers</a>
+
   </div>
+
     <div class="summary-synopsis"><p>Conveniences for translating and building error messages.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.ErrorView.html">Astarte.FlowWeb.ErrorView</a>
+    <a href="Astarte.FlowWeb.ErrorView.html" translate="no">Astarte.FlowWeb.ErrorView</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.FallbackController.html">Astarte.FlowWeb.FallbackController</a>
+    <a href="Astarte.FlowWeb.FallbackController.html" translate="no">Astarte.FlowWeb.FallbackController</a>
+
   </div>
+
     <div class="summary-synopsis"><p>Translates controller action results into valid <a href="https://hexdocs.pm/plug/1.10.3/Plug.Conn.html"><code class="inline">Plug.Conn</code></a> responses.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.FlowController.html">Astarte.FlowWeb.FlowController</a>
+    <a href="Astarte.FlowWeb.FlowController.html" translate="no">Astarte.FlowWeb.FlowController</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.FlowView.html">Astarte.FlowWeb.FlowView</a>
+    <a href="Astarte.FlowWeb.FlowView.html" translate="no">Astarte.FlowWeb.FlowView</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.Gettext.html">Astarte.FlowWeb.Gettext</a>
+    <a href="Astarte.FlowWeb.Gettext.html" translate="no">Astarte.FlowWeb.Gettext</a>
+
   </div>
+
     <div class="summary-synopsis"><p>A module providing Internationalization with a gettext-based API.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.HealthPlug.html">Astarte.FlowWeb.HealthPlug</a>
+    <a href="Astarte.FlowWeb.HealthPlug.html" translate="no">Astarte.FlowWeb.HealthPlug</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.MetricsPlug.html">Astarte.FlowWeb.MetricsPlug</a>
+    <a href="Astarte.FlowWeb.MetricsPlug.html" translate="no">Astarte.FlowWeb.MetricsPlug</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.PipelineController.html">Astarte.FlowWeb.PipelineController</a>
+    <a href="Astarte.FlowWeb.PipelineController.html" translate="no">Astarte.FlowWeb.PipelineController</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.PipelineView.html">Astarte.FlowWeb.PipelineView</a>
+    <a href="Astarte.FlowWeb.PipelineView.html" translate="no">Astarte.FlowWeb.PipelineView</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.Plug.AuthorizePath.html">Astarte.FlowWeb.Plug.AuthorizePath</a>
+    <a href="Astarte.FlowWeb.Plug.AuthorizePath.html" translate="no">Astarte.FlowWeb.Plug.AuthorizePath</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.Plug.GuardianAuthorizePath.html">Astarte.FlowWeb.Plug.GuardianAuthorizePath</a>
+    <a href="Astarte.FlowWeb.Plug.GuardianAuthorizePath.html" translate="no">Astarte.FlowWeb.Plug.GuardianAuthorizePath</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.Plug.VerifyHeader.html">Astarte.FlowWeb.Plug.VerifyHeader</a>
+    <a href="Astarte.FlowWeb.Plug.VerifyHeader.html" translate="no">Astarte.FlowWeb.Plug.VerifyHeader</a>
+
   </div>
+
     <div class="summary-synopsis"><p>This is a wrapper around <a href="https://hexdocs.pm/guardian/2.1.1/Guardian.Plug.VerifyHeader.html"><code class="inline">Guardian.Plug.VerifyHeader</code></a> that allows to recover
 the JWT public key dynamically using informations contained in the connection</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.Router.html">Astarte.FlowWeb.Router</a>
+    <a href="Astarte.FlowWeb.Router.html" translate="no">Astarte.FlowWeb.Router</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.Router.Helpers.html">Astarte.FlowWeb.Router.Helpers</a>
+    <a href="Astarte.FlowWeb.Router.Helpers.html" translate="no">Astarte.FlowWeb.Router.Helpers</a>
+
   </div>
+
     <div class="summary-synopsis"><p>Module with named helpers generated from Astarte.FlowWeb.Router.</p></div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.Telemetry.html">Astarte.FlowWeb.Telemetry</a>
+    <a href="Astarte.FlowWeb.Telemetry.html" translate="no">Astarte.FlowWeb.Telemetry</a>
+
   </div>
+
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="Astarte.FlowWeb.UserSocket.html">Astarte.FlowWeb.UserSocket</a>
+    <a href="Astarte.FlowWeb.UserSocket.html" translate="no">Astarte.FlowWeb.UserSocket</a>
+
   </div>
+
 </div>
+
     </div>
   </section>
 
+
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="0001-overview.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Overview
+        </span>
+      </a>
+
+  </div>
+</div>
       <footer class="footer">
+
         <p>
-          <span class="line">
-            Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
-            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
-          </span>
-          <span class="line">
-            Designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
-          </span>
-        </p>
-        <p>
-            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button night-mode-toggle">
-            Toggle night mode
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
-          </button>
-          <button class="line footer-button tooltips-toggle">
-            <span class="tooltips-option-disable">Disable tooltips</span>
-            <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
         </p>
       </footer>
     </div>
   </div>
 </section>
 </div>
+
+
   </body>
 </html>
-

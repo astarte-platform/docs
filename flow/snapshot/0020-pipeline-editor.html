@@ -4,32 +4,54 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.23.0">
+    <meta name="generator" content="ExDoc v0.29.0">
     <meta name="project" content="astarte_flow v0.1.0">
+
     <title>Pipeline Editor — astarte_flow v0.1.0</title>
-    <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-bd4933fc8a.js"></script>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-BD4933FC.js"></script>
+
       <script src="docs_config.js"></script>
-    <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
   </head>
-  <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
 <div class="main">
 
-<button class="sidebar-button sidebar-toggle">
-  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
 </button>
 
 <section class="sidebar">
   <form class="sidebar-search" action="search.html">
     <button type="submit" class="search-button" aria-label="Submit Search">
-      <span class="icon-search" aria-hidden="true" title="Submit search"></span>
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
     </button>
     <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
-      <span class="icon-cross" aria-hidden="true" title="Cancel search"></span>
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
     </button>
     <label class="search-label">
-      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
     </label>
   </form>
 
@@ -39,64 +61,93 @@
   </div>
 
   <div class="sidebar-header">
+
+      <a href="0001-overview.html">
+        <img src="assets/logo.png" alt="astarte_flow" class="sidebar-projectImage">
+      </a>
+
     <div class="sidebar-projectDetails">
-      <a href="0001-overview.html" class="sidebar-projectName">
-astarte_flow      </a>
-      <strong class="sidebar-projectVersion">
+      <a href="0001-overview.html" class="sidebar-projectName" translate="no">
+astarte_flow
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
         v0.1.0
       </strong>
     </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Guides</a></li>
+
+        <li><a id="modules-list-link" href="#full-list">Modules</a></li>
+
+
+    </ul>
   </div>
 
-  <ul class="sidebar-listNav">
-    <li><a id="extras-list" href="#full-list">Guides</a></li>
-
-      <li><a id="modules-list" href="#full-list">Modules</a></li>
-
-  </ul>
   <div class="gradient"></div>
   <ul id="full-list" class="sidebar-fullList"></ul>
 </section>
 
 <section class="content">
+  <output role="status" id="toast"></output>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
 
-<h1>Pipeline Editor</h1><p>The Pipeline Editor is a visual tool designed to facilitate the construction of
+
+  <span>Pipeline Editor</span>
+</h1>
+
+<p>The Pipeline Editor is a visual tool designed to facilitate the construction of
 <a href="0004-pipelines.html">Pipelines</a>. It is integrated in Astarte Dashboard and automatically opens up
 when you head to create a new pipeline.</p><h2 id="overview" class="section-heading">
-  <a href="#overview" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#overview" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">overview</p>
+  </a>
   Overview
 </h2>
 <p>In Astarte Dashboard, go to the Pipelines section and head to create a new pipeline. You should now
 be able to see the visual editor, below the field to specify the pipeline's name.</p><p>The visual editor itself is composed of two parts:</p><ul><li>A sidebar listing all available <a href="0003-blocks.html">Blocks</a>, grouped together by type</li><li>An empty space where you can drag &amp; drop blocks, connecting them together to effectively design a
 pipeline</li></ul><h3 id="linking-blocks-together" class="section-heading">
-  <a href="#linking-blocks-together" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#linking-blocks-together" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">linking-blocks-together</p>
+  </a>
   Linking blocks together
 </h3>
 <p>Each visual block has up to two handles, In and Out, that represent the block's input and output
 respectively. You can link two blocks together by dragging a block's Out handle to the other block's
-In handle. Once two blocks are linked you should see a persistent line that connects them.</p><p>The number of handles a block has depends upon the block's type:</p><ul><li><code class="inline">Producer</code> blocks have the Out handle</li><li><code class="inline">Consumer</code> blocks have the In handle</li><li><code class="inline">Producer &amp; Consumer</code> blocks have both the In and Out handle</li></ul><p>Thus, a valid pipeline starts with a Producer block and ends with a Consumer block.</p><p><img src="assets/images/pipeline-editor-visual-graph.png" alt="Pipeline Editor with a graph of linked blocks"></img></p><h3 id="block-settings" class="section-heading">
-  <a href="#block-settings" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+In handle. Once two blocks are linked you should see a persistent line that connects them.</p><p>The number of handles a block has depends upon the block's type:</p><ul><li><code class="inline">Producer</code> blocks have the Out handle</li><li><code class="inline">Consumer</code> blocks have the In handle</li><li><code class="inline">Producer &amp; Consumer</code> blocks have both the In and Out handle</li></ul><p>Thus, a valid pipeline starts with a Producer block and ends with a Consumer block.</p><p><img src="assets/images/pipeline-editor-visual-graph.png" alt="Pipeline Editor with a graph of linked blocks"/></p><h3 id="block-settings" class="section-heading">
+  <a href="#block-settings" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">block-settings</p>
+  </a>
   Block settings
 </h3>
 <p>Each visual block might display a Settings icon in case some options are to be defined for the
 block. Clicking on the icon will open a form where such options can be specified. You can then click
-on the <strong>Apply settings</strong> button to save the configuration and close the form's modal.</p><p><img src="assets/images/pipeline-editor-block-options.png" alt="Modal form to edit a block&#39;s options"></img></p><h3 id="generating-the-pipeline-s-source" class="section-heading">
-  <a href="#generating-the-pipeline-s-source" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+on the <strong>Apply settings</strong> button to save the configuration and close the form's modal.</p><p><img src="assets/images/pipeline-editor-block-options.png" alt="Modal form to edit a block&#39;s options"/></p><h3 id="generating-the-pipeline-s-source" class="section-heading">
+  <a href="#generating-the-pipeline-s-source" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">generating-the-pipeline-s-source</p>
+  </a>
   Generating the pipeline's source
 </h3>
 <p>Once the blocks are configured and linked together, this visual representation can be transformed
 into a proper <a href="0010-defining-a-pipeline.html">Pipeline's source</a>.</p><p>At the bottom right corner of the visual editor, the <strong>Generate pipeline source</strong> button serves the
 purpose of translating the graph into source code. If the pipeline's graph present no issues, the
 visual tool is hidden and you should see a form to complete the pipeline's definition, with the
-pipeline's source field already pre-compiled.</p><p><img src="assets/images/pipeline-editor-pipeline-source.png" alt="Pipeline definition with source"></img></p><h2 id="limitations" class="section-heading">
-  <a href="#limitations" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+pipeline's source field already pre-compiled.</p><p><img src="assets/images/pipeline-editor-pipeline-source.png" alt="Pipeline definition with source"/></p><h2 id="limitations" class="section-heading">
+  <a href="#limitations" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">limitations</p>
+  </a>
   Limitations
 </h2>
 <p>There are some constraints you should be aware of while building pipelines:</p><ul><li>Multiple producer blocks are not supported, i.e. a pipeline must have exactly one initial block</li><li>Each block cannot have more than one Out connection</li><li>There cannot be blocks forming a loop inside a pipeline</li><li>A pipeline cannot be composed of more than 50 blocks</li></ul><h2 id="known-issues" class="section-heading">
-  <a href="#known-issues" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  <a href="#known-issues" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">known-issues</p>
+  </a>
   Known issues
 </h2>
 <p>There are currently some issues that you should be aware of while building pipelines.</p><p>Regarding a block's options in the visual editor:</p><ul><li>Properties with the shape of map / object are not yet supported. For instance, if you need to
@@ -108,39 +159,48 @@ source. You should double check that a Lua script definition starts with <code c
 block have options that can be configured, you should open the block's setting at least once to
 ensure there are no missing options that should be configured.</li><li>When saving a pipeline, only a basic validation is done on its source. If you modify a pipeline's
 source by hand, you should double-check with the documentation to ensure that the source contains
-valid blocks with valid configurations.</li></ul>      <footer class="footer">
+valid blocks with valid configurations.</li></ul>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="0010-defining-a-pipeline.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Defining a Pipeline
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="astarte_devices_source.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+astarte_devices_source
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
         <p>
-          <span class="line">
-            Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.23.0) for the
-            <a href="https://elixir-lang.org" title="Elixir" target="_blank">Elixir programming language</a>.
-          </span>
-          <span class="line">
-            Designed by
-            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
-          </span>
-        </p>
-        <p>
-            <a href="api-reference.html" title="API reference" class="line footer-button">API Reference</a>
-          <button class="line footer-button display-shortcuts-help">
-            Display keyboard shortcuts
-          </button>
-          <button class="line footer-button night-mode-toggle">
-            Toggle night mode
-          </button>
-          <button class="line footer-button display-quick-switch">
-            Go to a HexDocs package
-          </button>
-          <button class="line footer-button tooltips-toggle">
-            <span class="tooltips-option-disable">Disable tooltips</span>
-            <span class="tooltips-option-enable">Enable tooltips</span>
-          </button>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
         </p>
       </footer>
     </div>
   </div>
 </section>
 </div>
+
+
   </body>
 </html>
-
