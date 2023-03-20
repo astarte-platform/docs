@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.29.0">
+    <meta name="project" content="Astarte v1.0.4">
+
+    <title>Managing Groups — Astarte v1.0.4</title>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-4BB83433.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName" translate="no">
+Astarte
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
+        v1.0.4
+      </strong>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://git.ispirata.com/Astarte-NG/pages/user/065-managing-groups.md#L1" title="View Source" class="view-source" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span>Managing Groups</span>
+</h1>
+
+<p>Devices can be divided in groups to provide group-specific access to the APIs.</p><p>The examples below will use <code class="inline">astartectl</code> but you can achieve the same results using AppEngine API.</p><h2 id="reserved-group-prefixes" class="section-heading">
+  <a href="#reserved-group-prefixes" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">reserved-group-prefixes</p>
+  </a>
+  Reserved group prefixes
+</h2>
+<p>Some prefixes are reserved for internal use. It's not possible to create groups with a name starting
+with the <code class="inline">~</code> and <code class="inline">@</code> characters.</p><h2 id="creating-a-group" class="section-heading">
+  <a href="#creating-a-group" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">creating-a-group</p>
+  </a>
+  Creating a group
+</h2>
+<p>You can create a group with astartectl with this command</p><pre><code class="makeup bash" translate="no"><span class="">astartectl appengine groups create mygroup &lt;device_identifier&gt;,&lt;device_identifier&gt;
+</span></code></pre><p><code class="inline">device_identifier</code> can be a Device ID or an Alias, and you can put multiple devices by separating
+them with a comma.</p><p>You can check the group was created by listing groups in your realm</p><pre><code class="makeup bash" translate="no"><span class="">astartectl appengine groups list
+</span></code></pre><h2 id="adding-or-removing-a-device-to-from-a-group" class="section-heading">
+  <a href="#adding-or-removing-a-device-to-from-a-group" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">adding-or-removing-a-device-to-from-a-group</p>
+  </a>
+  Adding or removing a device to/from a group
+</h2>
+<p>Once you created a group, you can add or remove devices from it.</p><p>To add a device, use:</p><pre><code class="makeup bash" translate="no"><span class="">astartectl appengine groups devices add &lt;device_identifier&gt;
+</span></code></pre><p>To remove a device, use:</p><pre><code class="makeup bash" translate="no"><span class="">astartectl appengine groups devices remove &lt;device_identifier&gt;
+</span></code></pre><p>Keep in mind that a group exists as long as it has at least one device in it, so if you remove the
+last device from a group, the group will cease to exist.</p><p>You can always check which devices are in a group with:</p><pre><code class="makeup bash" translate="no"><span class="">astartectl appengine groups devices list
+</span></code></pre><h2 id="accessing-devices-in-a-group-with-astarte-appengine-api" class="section-heading">
+  <a href="#accessing-devices-in-a-group-with-astarte-appengine-api" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">accessing-devices-in-a-group-with-astarte-appengine-api</p>
+  </a>
+  Accessing Devices in a group with Astarte AppEngine API
+</h2>
+<p>Once a device is in a group, you can access to its data on this URL:</p><p><code class="inline">https://&lt;astarte-api&gt;/appengine/v1/groups/&lt;group_name&gt;/devices/&lt;device_id&gt;</code></p><p>The hierarchy is exactly the same that is found under</p><p><code class="inline">https://&lt;astarte-api&gt;/appengine/v1/devices/&lt;device-id&gt;</code></p><p>which is <a href="api/index.html?urls.primaryName=AppEngine API#/">documented here</a>, but this makes it
+possible to emit a JWT that only allows access to devices belonging to a specific group.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="060-using_triggers.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Using Triggers
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="070-connect_application.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Connect 3rd party applications
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
+        <p>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>
