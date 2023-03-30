@@ -1,0 +1,15 @@
+{
+  "name": "Astarte Kubernetes Operator APIs",
+  "short_name": "Astarte Kubernetes Operator APIs",
+  "start_url": "/astarte-kubernetes-operator/snapshot/",
+  "scope": "/astarte-kubernetes-operator/snapshot/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/astarte-kubernetes-operator/snapshot/favicon.svg",
+      "sizes": "512x512"
+    }
+  ]
+}
