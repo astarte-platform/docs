@@ -420,7 +420,7 @@ astarte_err_t astarte_hwid_get_id(&amp;hw_id);</code></pre>
               You can refer to the
               <a
                 class="link"
-                href="https://docs.astarte-platform.org/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/registerDevice"
+                href="https://docs.astarte-platform.org/astarte/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/registerDevice"
               >
                 Astarte API for device registration</a
               >
@@ -429,7 +429,7 @@ astarte_err_t astarte_hwid_get_id(&amp;hw_id);</code></pre>
             <p class="text-black-50 fs-5 pb-2 fw-light">C (ESP32):</p>
             <pre
               class="code-container"
-            ><code class="c">astarte_pairing_config cfg = 
+            ><code class="c">astarte_pairing_config cfg =
 {
     .base_url = &amp;base_astarte_url;
     .jwt = &amp;jwt_token;
@@ -437,7 +437,7 @@ astarte_err_t astarte_hwid_get_id(&amp;hw_id);</code></pre>
     .hw_id = &amp;device_id;
     .credentials_secret = &amp;credentials_secret;
 };
-            
+
 astarte_err_t err = astarte_pairing_register_device(&amp;astarte_pairing_config);</code></pre>
 
             <h3 id="device-unregistration" class="text-secondary fw-bold pb-2">
@@ -460,14 +460,14 @@ astarte_err_t err = astarte_pairing_register_device(&amp;astarte_pairing_config)
               , the
               <a
                 class="link code-inline"
-                href="https://docs.astarte-platform.org/snapshot/015-astarte_dashboard.html"
+                href="https://docs.astarte-platform.org/astarte/latest/015-astarte_dashboard.html"
               >
                 <code class="inline">Astarte Dashboard</code></a
               >
               ), or the
               <a
                 class="link"
-                href="https://docs.astarte-platform.org/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/unregisterDevice"
+                href="https://docs.astarte-platform.org/astarte/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/unregisterDevice"
               >
                 Astarte API for device unregistration</a
               >.
@@ -517,13 +517,13 @@ astarte_err_t err = astarte_pairing_register_device(&amp;astarte_pairing_config)
     .connection_event_callback = astarte_connection_events_handler,
     .disconnection_event_callback = astarte_disconnection_events_handler,
 };
-          
+
 astarte_device_handle_t device = astarte_device_init(&amp;cfg);
 if (!device) {
     ESP_LOGE(TAG, &quot;Failed to init astarte device&quot;);
     return;
 }
-          
+
 astarte_device_add_interface(device, &amp;device_example_interface);
 if (astarte_device_start(device) != ASTARTE_OK) {
     ESP_LOGE(TAG, &quot;Failed to start astarte device&quot;);
@@ -575,7 +575,7 @@ if (astarte_device_start(device) != ASTARTE_OK) {
             <pre class="code-container"><code class="c">struct timeval tv;
 gettimeofday(&amp;tv, NULL);
 uint64_t ts = tv-&gt;tv_sec * 1000 + tv-&gt;tv_usec / 1000;
-          
+
 astarte_err_t err = astarte_device_stream_double_with_timestamp(device, &quot;org.astarte-platform.genericsensors.Values&quot;, &quot;/test0/value&quot;, 0.3, ts, 0);</code></pre>
 
             <h3
@@ -617,11 +617,11 @@ astarte_bson_serializer_append_double(&amp;bs, &quot;long&quot;, 11.8765254);
 astarte_bson_serializer_append_end_of_document(&amp;bs);
 int size;
 const void *coord = astarte_bson_serializer_get_document(&amp;bs, &amp;size);
-          
+
 struct timeval tv;
 gettimeofday(&amp;tv, NULL);
 uint64_t ts = tv-&gt;tv_sec * 1000 + tv-&gt;tv_usec / 1000;
-          
+
 astarte_device_stream_aggregate_with_timestamp(device, &quot;com.example.GPS&quot;, &quot;/coords&quot;, coords, ts, 0);</code></pre>
 
             <h3
@@ -658,7 +658,7 @@ astarte_device_stream_aggregate_with_timestamp(device, &quot;com.example.GPS&quo
               class="code-container"
             ><code class="c">// set property (one function for each type)
 astarte_device_set_string_property(device, &quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;, &quot;foobar&quot;);
-          
+
 // unset property
 astarte_device_unset_path(device, &quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;);</code></pre>
           </div>
@@ -696,7 +696,7 @@ astarte_device_unset_path(device, &quot;org.astarte-platform.genericsensors.Avai
               You can refer to the
               <a
                 class="link"
-                href="https://docs.astarte-platform.org/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/registerDevice"
+                href="https://docs.astarte-platform.org/astarte/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/registerDevice"
               >
                 Astarte API for device registration</a
               >
@@ -727,14 +727,14 @@ astarte_device_unset_path(device, &quot;org.astarte-platform.genericsensors.Avai
               , the
               <a
                 class="link code-inline"
-                href="https://docs.astarte-platform.org/snapshot/015-astarte_dashboard.html"
+                href="https://docs.astarte-platform.org/astarte/latest/015-astarte_dashboard.html"
               >
                 <code class="inline">Astarte Dashboard</code></a
               >
               ), or the
               <a
                 class="link"
-                href="https://docs.astarte-platform.org/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/unregisterDevice"
+                href="https://docs.astarte-platform.org/astarte/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/unregisterDevice"
               >
                 Astarte API for device unregistration</a
               >.
@@ -782,10 +782,10 @@ astarte_device_unset_path(device, &quot;org.astarte-platform.genericsensors.Avai
               class="code-container"
             ><code class="c++">// declare device options and interfaces
 m_sdk = new AstarteDeviceSDK(QDir::currentPath() + QStringLiteral(&quot;./examples/device_sdk.conf&quot;).arg(deviceId), QDir::currentPath() + QStringLiteral(&quot;./examples/interfaces&quot;), deviceId.toLatin1());
-          
+
 // initialize device
 connect(m_sdk-&gt;init(), &amp;Hemera::Operation::finished, this, &amp;AstarteStreamQt5Test::checkInitResult);
-          
+
 // set data handlers
 connect(m_sdk, &amp;AstarteDeviceSDK::dataReceived, this, &amp;AstarteStreamQt5Test::handleIncomingData)</code></pre>
 
@@ -905,7 +905,7 @@ m_sdk-&gt;sendData(&quot;com.example.GPS&quot;, &quot;/coords&quot;, coords, QDa
               class="code-container"
             ><code class="c++">// set property (same as datastream)
 m_sdk-&gt;sendData(m_interface, m_path, value, QDateTime::currentDateTime());
-          
+
 // unset property
 m_sdk-&gt;sendUnset(m_interface, m_path);</code></pre>
           </div>
@@ -935,7 +935,7 @@ m_sdk-&gt;sendUnset(m_interface, m_path);</code></pre>
             <pre class="code-container">
 <code class="makeup elixir"><span class="c1"># random id</span><span class="w">
 </span><span class="n">device_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">:crypto</span><span class="o">.</span><span class="n">strong_rand_bytes</span><span class="p" data-group-id="2635890481-1">(</span><span class="mi">16</span><span class="p" data-group-id="2635890481-1">)</span><span class="w"></span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Base</span><span class="o">.</span><span class="n">url_encode64</span><span class="p" data-group-id="2635890481-2">(</span><span class="ss">padding</span><span class="p">:</span><span class="w"> </span><span class="no">false</span><span class="p" data-group-id="2635890481-2">)</span><span class="w">
-    
+
 </span><span class="c1">#deterministic id</span><span class="w">
 </span><span class="n">device_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">UUID</span><span class="o">.</span><span class="n">uuid5</span><span class="p" data-group-id="2635890481-3">(</span><span class="n">namespace_uuid</span><span class="p">,</span><span class="w"> </span><span class="n">payload</span><span class="p">,</span><span class="w"> </span><span class="ss">:raw</span><span class="p" data-group-id="2635890481-3">)</span><span class="w">
         </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Astarte.Core.Device</span><span class="o">.</span><span class="n">encode_device_id</span><span class="p" data-group-id="2635890481-4">(</span><span class="p" data-group-id="2635890481-4">)</span></code></pre>
@@ -953,7 +953,7 @@ m_sdk-&gt;sendUnset(m_interface, m_path);</code></pre>
               You can refer to the
               <a
                 class="link"
-                href="https://docs.astarte-platform.org/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/registerDevice"
+                href="https://docs.astarte-platform.org/astarte/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/registerDevice"
               >
                 Astarte API for device registration</a
               >
@@ -984,14 +984,14 @@ m_sdk-&gt;sendUnset(m_interface, m_path);</code></pre>
               , the
               <a
                 class="link code-inline"
-                href="https://docs.astarte-platform.org/snapshot/015-astarte_dashboard.html"
+                href="https://docs.astarte-platform.org/astarte/latest/015-astarte_dashboard.html"
               >
                 <code class="inline">Astarte Dashboard</code></a
               >
               ), or the
               <a
                 class="link"
-                href="https://docs.astarte-platform.org/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/unregisterDevice"
+                href="https://docs.astarte-platform.org/astarte/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/unregisterDevice"
               >
                 Astarte API for device unregistration</a
               >.
@@ -1200,7 +1200,7 @@ m_sdk-&gt;sendUnset(m_interface, m_path);</code></pre>
             </p>
             <pre class="code-container"><code class="go">// Random id
 random_id, err := GenerateRandomAstarteId()
-          
+
 // Namespaced id
 namespaced_id, err := GetNamespacedAstarteDeviceID(namespaceUuid,payload)</code></pre>
 
@@ -1217,7 +1217,7 @@ namespaced_id, err := GetNamespacedAstarteDeviceID(namespaceUuid,payload)</code>
               You can refer to the
               <a
                 class="link"
-                href="https://docs.astarte-platform.org/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/registerDevice"
+                href="https://docs.astarte-platform.org/astarte/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/registerDevice"
               >
                 Astarte API for device registration</a
               >
@@ -1257,14 +1257,14 @@ namespaced_id, err := GetNamespacedAstarteDeviceID(namespaceUuid,payload)</code>
               , the
               <a
                 class="link code-inline"
-                href="https://docs.astarte-platform.org/snapshot/015-astarte_dashboard.html"
+                href="https://docs.astarte-platform.org/astarte/latest/015-astarte_dashboard.html"
               >
                 <code class="inline">Astarte Dashboard</code></a
               >
               ), or the
               <a
                 class="link"
-                href="https://docs.astarte-platform.org/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/unregisterDevice"
+                href="https://docs.astarte-platform.org/astarte/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/unregisterDevice"
               >
                 Astarte API for device unregistration</a
               >.
@@ -1329,7 +1329,7 @@ namespaced_id, err := GetNamespacedAstarteDeviceID(namespaceUuid,payload)</code>
         fmt.Println(err.Error())
         os.Exit(1)
     }
-          
+
     // Load interface - fix this path(s) to load the right interface
     byteValue, err := ioutil.ReadFile(&quot;/examples/interfaces/com.example.Interface.json&quot;)
     if err != nil {
@@ -1341,17 +1341,17 @@ namespaced_id, err := GetNamespacedAstarteDeviceID(namespaceUuid,payload)</code>
         fmt.Println(err.Error())
         os.Exit(1)
     }
-          
+
     if err = d.AddInterface(iface); err != nil {
         fmt.Println(err.Error())
         os.Exit(1)
     }
-          
+
     // Set up callbacks
     d.OnConnectionStateChanged = func(d *device.Device, state bool) {
         fmt.Printf(&quot;Device connection state: %t\n&quot;, state)
     }
-          
+
     // Connect the device and listen to the connection status channel
     c := make(chan error)
     d.Connect(c)
@@ -1476,7 +1476,7 @@ d.SendAggregateMessageWithTimestamp(&quot;com.example.GPS&quot;, &quot;/coords&q
             <p class="text-black-50 fs-5 pb-2 fw-light">Go:</p>
             <pre class="code-container"><code class="go">// set property
 d.SetProperty(&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;, &quot;foobar&quot;)
-          
+
 // unset property
 d.UnsetProperty(&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;)</code></pre>
           </div>
@@ -1500,7 +1500,7 @@ d.UnsetProperty(&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;
             <p class="text-black-50 fs-5 pb-2 fw-light">Java/Android:</p>
             <pre class="code-container"><code class="java">// Random id
 String randomID = AstarteDeviceIdUtils.generateId();
-          
+
 // Namespaced id
 String deviceID = AstarteDeviceIdUtils.generateId(namespaceUuid, payload);</code></pre>
 
@@ -1517,7 +1517,7 @@ String deviceID = AstarteDeviceIdUtils.generateId(namespaceUuid, payload);</code
               You can refer to the
               <a
                 class="link"
-                href="https://docs.astarte-platform.org/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/registerDevice"
+                href="https://docs.astarte-platform.org/astarte/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/registerDevice"
               >
                 Astarte API for device registration</a
               >
@@ -1549,14 +1549,14 @@ String credentialsSecret = astartePairingService.registerDevice(jwt_token, devic
               , the
               <a
                 class="link code-inline"
-                href="https://docs.astarte-platform.org/snapshot/015-astarte_dashboard.html"
+                href="https://docs.astarte-platform.org/astarte/latest/015-astarte_dashboard.html"
               >
                 <code class="inline">Astarte Dashboard</code></a
               >
               ), or the
               <a
                 class="link"
-                href="https://docs.astarte-platform.org/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/unregisterDevice"
+                href="https://docs.astarte-platform.org/astarte/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/unregisterDevice"
               >
                 Astarte API for device unregistration</a
               >.
@@ -1612,10 +1612,10 @@ AstarteDevice device =
         new ExampleInterfaceProvider(),
         pairingUrl,
         connectionSource);
-          
+
 // ExampleMessageListener listens for device connection, disconnection and failure.
 device.setAstarteMessageListener(new ExampleMessageListener());
-          
+
 // Connect the device
 device.connect();
           </code></pre>
@@ -1705,7 +1705,7 @@ Map&lt;String, Double&gt; coords = new HashMap&lt;String, Double&gt;()
         put(&quot;long&quot;, 11.8765254);
     }
 };
-          
+
 exampleGPSInterface.streamData(&quot;/coords&quot;, coords, DateTime.now());</code></pre>
 
             <h3
@@ -1740,7 +1740,7 @@ exampleGPSInterface.streamData(&quot;/coords&quot;, coords, DateTime.now());</co
             <p class="text-black-50 fs-5 pb-2 fw-light">Java:</p>
             <pre class="code-container"><code class="java">// set property
 availableSensorsInterface.setProperty(&quot;/sensor0/name&quot;, &quot;foobar&quot;);
-          
+
 // unset property
 propertyInterface.unsetProperty(&quot;/sensor0/name&quot;);</code></pre>
           </div>
@@ -1778,7 +1778,7 @@ propertyInterface.unsetProperty(&quot;/sensor0/name&quot;);</code></pre>
               You can refer to the
               <a
                 class="link"
-                href="https://docs.astarte-platform.org/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/registerDevice"
+                href="https://docs.astarte-platform.org/astarte/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/registerDevice"
               >
                 Astarte API for device registration</a
               >
@@ -1813,14 +1813,14 @@ propertyInterface.unsetProperty(&quot;/sensor0/name&quot;);</code></pre>
               , the
               <a
                 class="link code-inline"
-                href="https://docs.astarte-platform.org/snapshot/015-astarte_dashboard.html"
+                href="https://docs.astarte-platform.org/astarte/latest/015-astarte_dashboard.html"
               >
                 <code class="inline">Astarte Dashboard</code></a
               >
               ), or the
               <a
                 class="link"
-                href="https://docs.astarte-platform.org/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/unregisterDevice"
+                href="https://docs.astarte-platform.org/astarte/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/unregisterDevice"
               >
                 Astarte API for device unregistration</a
               >.
@@ -1869,13 +1869,13 @@ propertyInterface.unsetProperty(&quot;/sensor0/name&quot;);</code></pre>
               class="code-container"
             ><code class="python"># declare device options
 device = Device(device_id, realm, credentials_secret, pairing_base_url)
-          
+
 # load device interfaces
 device.add_interface(json.loads(&quot;/examples/interfaces/com.example.Interface.json&quot;))
-          
+
 #register a callback that will be invoked everytime the device successfully connects
 device.on_connected(callback)
-          
+
 #connect the device asynchronously
 device.connect()</code></pre>
 
@@ -1995,7 +1995,7 @@ device.send_aggregate(&quot;com.example.GPS&quot;, &quot;/coords&quot;, coords, 
               class="code-container"
             ><code class="python"># set property (same as datastream)
 device.send(&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;, &quot;foobar&quot;)
-          
+
 # unset property
 device.unset_property(&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;)</code></pre>
           </div>
@@ -2019,7 +2019,7 @@ device.unset_property(&quot;org.astarte-platform.genericsensors.AvailableSensors
             <p class="text-black-50 fs-5 pb-2 fw-light">Rust:</p>
             <pre class="code-container"><code class="rust">/// Random id
 let random_uuid = astarte_sdk::registration::generate_random_uuid();
-                  
+
 ///Namespaced id
 let namespaced_id = astarte_sdk::registration::generate_uuid(namespaceUuid, &amp;payload);</code></pre>
             <h3
@@ -2035,7 +2035,7 @@ let namespaced_id = astarte_sdk::registration::generate_uuid(namespaceUuid, &amp
               You can refer to the
               <a
                 class="link"
-                href="https://docs.astarte-platform.org/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/registerDevice"
+                href="https://docs.astarte-platform.org/astarte/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/registerDevice"
               >
                 Astarte API for device registration</a
               >
@@ -2068,14 +2068,14 @@ let namespaced_id = astarte_sdk::registration::generate_uuid(namespaceUuid, &amp
               , the
               <a
                 class="link code-inline"
-                href="https://docs.astarte-platform.org/snapshot/015-astarte_dashboard.html"
+                href="https://docs.astarte-platform.org/astarte/latest/015-astarte_dashboard.html"
               >
                 <code class="inline">Astarte Dashboard</code></a
               >
               ), or the
               <a
                 class="link"
-                href="https://docs.astarte-platform.org/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/unregisterDevice"
+                href="https://docs.astarte-platform.org/astarte/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/unregisterDevice"
               >
                 Astarte API for device unregistration</a
               >.
@@ -2272,7 +2272,7 @@ device.send(&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &q
 /// send data with an explicit timestamp
 let timestamp = Utc.timestamp(1537449422, 0);
 device.send_with_timestamp(&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;, &quot;foobar&quot;, timestamp).await?;
-          
+
 /// unset property
 device.unset(&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;, &quot;/sensor0/name&quot;).await?;</code></pre>
           </div>
