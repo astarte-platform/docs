@@ -227,7 +227,13 @@ up to 1024 items and each item must respect the limits of its scalar type (<em>i
 <code class="inline">stringarray</code> must be at most 65535 bytes long, each binary blob in a <code class="inline">binaryblobarray</code> must be
 shorter than 64 KiB.</li></ul><p>Make sure that the differences between two distinct interface names are not limited to the casing or
 the presence of hyphens. This situation leads to a collision in the interface names which brings to
-an error in the interface installation process.</p><p>A valid interface must resolve a path univocally to a single endpoint. Take the following example:</p><pre><code class="json">    [...]
+an error in the interface installation process.</p><h3 id="limitations" class="section-heading">
+  <a href="#limitations" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">limitations</p>
+  </a>
+  Limitations
+</h3>
+<p>A valid interface must resolve a path univocally to a single endpoint. Take the following example:</p><pre><code class="json">    [...]
     &quot;mappings&quot;: [
         {
             &quot;endpoint&quot;: &quot;/%{itemIndex}/value&quot;,
@@ -264,7 +270,10 @@ of a valid aggregated interface mapping:</p><pre><code class="json">    [...]
             &quot;endpoint&quot;: &quot;/%{itemIndex}/otherValue&quot;,
             &quot;type&quot;: &quot;string&quot;
         },
-    [...]</code></pre><h2 id="aggregation" class="section-heading">
+    [...]</code></pre><p>Additional limitations (which stem from the MQTT protocol specification) can be outlined. When using
+parametric endpoints, the actual values used in place of parameter placeholders must fulfill the
+following requirements:</p><ul><li>endpoint parameters must be UTF-8 encoded strings;</li><li>endpoint parameters must not contain the following characters: <code class="inline">+</code> and <code class="inline">#</code>. In particular, those
+characters are treated as wildcards for MQTT topics and therefore must be avoided;</li><li>endpoint parameters must not contain the <code class="inline">/</code> character.</li></ul><h2 id="aggregation" class="section-heading">
   <a href="#aggregation" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">aggregation</p>
   </a>
