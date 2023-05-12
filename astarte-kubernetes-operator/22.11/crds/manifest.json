@@ -1,14 +1,14 @@
 {
   "name": "Astarte Kubernetes Operator APIs",
   "short_name": "Astarte Kubernetes Operator APIs",
-  "start_url": "/astarte-kubernetes-operator/22.11/",
-  "scope": "/astarte-kubernetes-operator/22.11/",
+  "start_url": "/astarte-kubernetes-operator/22.11/crds/",
+  "scope": "/astarte-kubernetes-operator/22.11/crds/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "/astarte-kubernetes-operator/22.11/favicon.svg",
+      "src": "/astarte-kubernetes-operator/22.11/crds/favicon.svg",
       "sizes": "512x512"
     }
   ]
