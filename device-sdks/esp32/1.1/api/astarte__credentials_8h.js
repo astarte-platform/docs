@@ -3,6 +3,8 @@ var astarte__credentials_8h =
     [ "astarte_credentials_storage_functions_t", "structastarte__credentials__storage__functions__t.html", "structastarte__credentials__storage__functions__t" ],
     [ "astarte_credentials_context_t", "structastarte__credentials__context__t.html", "structastarte__credentials__context__t" ],
     [ "ASTARTE_CREDENTIALS_DEFAULT_NVS_PARTITION", "astarte__credentials_8h.html#ad8fb32a41ae8ae4c46f00b8215906de9", null ],
+    [ "CERT_LENGTH", "astarte__credentials_8h.html#a9854fc939bc85e8624705300e701bb5b", null ],
+    [ "CN_LENGTH", "astarte__credentials_8h.html#ae469a6d943e73a5eed5fd91047e21b87", null ],
     [ "astarte_credentials_exists_t", "astarte__credentials_8h.html#a4f270586763cd1a2bfd88d06a52829af", null ],
     [ "astarte_credentials_fetch_t", "astarte__credentials_8h.html#ab6685c8de89c1e68ab9dee1568ff839a", null ],
     [ "astarte_credentials_remove_t", "astarte__credentials_8h.html#aac272f5750cd731dee67326278572350", null ],
