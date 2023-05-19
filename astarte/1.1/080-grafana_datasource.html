@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.29.0">
+    <meta name="project" content="Astarte v1.1.0-alpha.0">
+
+    <title>Astarte Datasource Plugin for Grafana — Astarte v1.1.0-alpha.0</title>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-58764854.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName" translate="no">
+Astarte
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
+        v1.1.0-alpha.0
+      </strong>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://git.ispirata.com/Astarte-NG/pages/user/080-grafana_datasource.md#L1" title="View Source" class="view-source" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span>Astarte Datasource Plugin for Grafana</span>
+</h1>
+
+<p>Astarte Datasource Plugin conveys data from Astarte to
+<a href="https://github.com/grafana/grafana">Grafana</a>, the open-source platform for
+monitoring and observability, developed by <a href="https://grafana.com/">Grafana Labs</a>.
+Actual data visualisation is provided by Grafana via its
+<a href="https://grafana.com/grafana/plugins/?type=panel">plugins</a>.</p><p>You can browse the source code of this plugin on its
+<a href="https://github.com/astarte-platform/grafana-astarte-datasource">GitHub repository</a>.</p><p><img src="assets/astarte-grafana-dashboard-overview.png" alt="Sample Grafana dashboard"/></p><h2 id="try-it" class="section-heading">
+  <a href="#try-it" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">try-it</p>
+  </a>
+  Try it!
+</h2>
+<p>When deploying locally using <code class="inline">docker-compose</code> as mentioned in the
+<a href="https://docs.astarte-platform.org/astarte/1.1/010-astarte_in_5_minutes.html#install-astarte">Astarte in 5 mins
+tutorial</a>,
+Astarte Datasource Plugin will be automatically installed. You may then access Grafana
+by visiting <a href="http://localhost:3000">http://localhost:3000</a>.</p><p>When first logging into Grafana, you will be prompted to change default
+credentials user <code class="inline">admin</code>, password: <code class="inline">admin</code>.</p><h1>Configure the datasource</h1><p>In order to get data from Astarte, you will need to create a new datasource
+referring to your own Astarte instance.</p><p><img src="assets/astarte-grafana-add-datasource.png" alt="Add a Grafana Datasource"/></p><p>You will need to provide Astarte API URLs, the realm name and Astarte AppEngine token.</p><p><img src="assets/astarte-grafana-datasource-fields.png" alt="Datasource configuration fields"/></p><p>Save the configuration by clicking on Save &amp; Test</p><h2 id="setting-up-a-graph" class="section-heading">
+  <a href="#setting-up-a-graph" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">setting-up-a-graph</p>
+  </a>
+  Setting up a graph
+</h2>
+<p>After successfully configuring your datasources, you will be able to select
+them as a source for your graph as depicted below.</p><p><img src="assets/astarte-grafana-device-query.png" alt="Configure a device query"/></p><p>You will then be able to choose which device and interface data should be retrieved from.</p><h2 id="data-manipulation" class="section-heading">
+  <a href="#data-manipulation" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">data-manipulation</p>
+  </a>
+  Data manipulation
+</h2>
+<p>Grafana offers data-aggregation features, for more information check the official
+<a href="https://grafana.com/docs/grafana/latest/panels/transformations">Grafana documentation</a></p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="070-connect_application.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Connect 3rd party applications
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="090-troubleshooting.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Troubleshooting
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
+        <p>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>

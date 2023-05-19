@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.29.0">
+    <meta name="project" content="Astarte v1.1.0-alpha.0">
+
+    <title>Astarte Dashboard — Astarte v1.1.0-alpha.0</title>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-58764854.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+      <a href="http://astarte-platform.org">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+
+    <div class="sidebar-projectDetails">
+      <a href="http://astarte-platform.org" class="sidebar-projectName" translate="no">
+Astarte
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
+        v1.1.0-alpha.0
+      </strong>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://git.ispirata.com/Astarte-NG/pages/user/015-astarte_dashboard.md#L1" title="View Source" class="view-source" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span>Astarte Dashboard</span>
+</h1>
+
+<p>Astarte provides a built-in UI that can be used for managing Interfaces, Devices, and Triggers. The
+Dashboard simplifies the development phases of applications that make use of Astarte, as well as
+troubleshooting activities.</p><p>You can browse the source code of the Dashboard software on its
+<a href="https://github.com/astarte-platform/astarte-dashboard">GitHub repository</a>.</p><h2 id="introduction" class="section-heading">
+  <a href="#introduction" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">introduction</p>
+  </a>
+  Introduction
+</h2>
+<p>The Astarte Dashboard is a Single Page Application that provides users with an overview of their
+Realm and a user-friendy way of managing it on any web browser. The Dashboard is designed to be a
+quick and easy way to give you immediate feedback on your work and as a quick and intuitive way to
+configure your realm. It is not designed to be operated by end-users, rather by infrastructure
+maintainers, owners who need information on the system status, and those working on projects based
+on Astarte. It is shipped by default with the Astarte standard distribution.</p><p>The Dashboard is a graphical client for Astarte APIs; it shares similar features with the CLI client
+<a href="https://github.com/astarte-platform/astartectl">astartectl</a>, the command-line utility to manage
+Astarte.</p><p>The Dashboard helps you manage:</p><ul><li><a href="015-astarte_dashboard.html#triggers">Triggers</a></li><li><a href="015-astarte_dashboard.html#interfaces">Interfaces</a></li><li><a href="015-astarte_dashboard.html#devices">Devices</a></li><li><a href="015-astarte_dashboard.html#groups">Groups</a></li><li><a href="015-astarte_dashboard.html#realm-settings">Realm Settings</a></li></ul><p>In case your Astarte distribution comes packaged with the
+<a href="https://docs.astarte-platform.org/flow/snapshot">Flow framework</a>, the Dashboard is probably
+configured to manage Flow resources as well.</p><ul><li><a href="015-astarte_dashboard.html#blocks">Blocks</a></li><li><a href="015-astarte_dashboard.html#pipelines">Pipelines</a></li><li><a href="015-astarte_dashboard.html#flows">Flows</a></li></ul><p>Please note that the Flow framework is not available for use in a docker-compose environment since
+it relies on Kubernetes APIs to operate.</p><h3 id="how-to-access-it" class="section-heading">
+  <a href="#how-to-access-it" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">how-to-access-it</p>
+  </a>
+  How to access it
+</h3>
+<p>Depending on how you are using Astarte, here is where you can find the Dashboard:</p><ul><li>Docker-compose: if you are using a local instance of Astarte via <code class="inline">docker-compose</code>, you will find
+it by pointing your browser to the default address <code class="inline">http://localhost:4040/</code>. To login, fill in the
+name of your realm and a valid JWT token: if you possess the realm private key, as it is the case
+if you followed the <a href="010-astarte_in_5_minutes.html">Astarte in 5 minutes</a> guide, you can generate
+the token with the command <code class="inline">astartectl utils gen-jwt all-realm-apis -k &lt;private_key&gt;</code>.</li><li>Astarte Cloud: if you are using our managed Astarte option, you can hop onto our
+<a href="https://console.astarte.cloud/realms">Console</a>, find or create your realm and click the Dashboard
+button.</li><li>Kubernetes cluster: in this case, if the Dashboard is enabled, it can be usually found at
+<code class="inline">dashboard.&lt;base Astarte URL&gt;</code>. Refer to your system administrator for more details.</li></ul><h2 id="main-overview" class="section-heading">
+  <a href="#main-overview" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">main-overview</p>
+  </a>
+  Main overview
+</h2>
+<p>Upon successful login, the main screen is the home page that provides an overview of the realm
+status and resources.</p><p><img src="assets/astarte-dashboard-realm-overview.png" alt="Astarte Dashboard with a realm overview"/></p><h3 id="api-status" class="section-heading">
+  <a href="#api-status" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">api-status</p>
+  </a>
+  API Status
+</h3>
+<p>The API Status gives you general information about the status of services:</p><ul><li><p><strong>Realm Management</strong> is an <em>administrator-like</em> API for configuring a Realm. It is used for
+managing Interfaces and Triggers.</p></li><li><p><strong>AppEngine</strong> is Astarte's main API endpoint for end-users. AppEngine exposes a RESTful API to
+retrieve and send data from/to devices, according to their interfaces. Every direct device
+interaction can be done from here. It also exposes Channels, a WebSocket-based solution for
+listening to device events in real-time with the same mechanism and semantics used by Triggers.</p></li><li><p><strong>Pairing</strong> takes care of Device Authentication and Authorization. It interacts with Astarte's CA
+and orchestrates the way devices connect and interact with Transports. It also handles Device
+Registration. Agent, Device and Pairing interaction is described in detail
+<a href="050-pairing_mechanism.html">here</a>.</p></li><li><p><strong>Flow</strong> is the API endpoint for Astarte Flow, used for managing Blocks, Pipelines, and Flows.</p></li></ul><p>Possible statuses are:</p><ol><li>This service is operating normally.</li><li>This service appears offline.</li></ol><p>A general status on API health is also present in the app's sidebar, thus always providing a
+feedback regardless of which page you are currently visiting.</p><h3 id="realm-resources" class="section-heading">
+  <a href="#realm-resources" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">realm-resources</p>
+  </a>
+  Realm resources
+</h3>
+<p>Within the main overview, a brief summary is available as well for the existing resources of the
+realm: registered and connected devices, installed interfaces, and installed triggers.</p><p>More detailed overviews of each resource are available in the dedicated Dashboard sections,
+accessible via the navigation links in the Dashboard's side menu.</p><h2 id="interfaces" class="section-heading">
+  <a href="#interfaces" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">interfaces</p>
+  </a>
+  Interfaces
+</h2>
+<p><a href="030-manage_interfaces.html">Interfaces</a> are a core concept of Astarte which defines how data is
+exchanged between Astarte and its peers.</p><p>You can navigate to this section thanks to the side menu of the Dashboard. A list of all installed
+interfaces is displayed, together with their major versions.</p><p><img src="assets/astarte-dashboard-interfaces.png" alt="Astarte Dashboard, interface list"/></p><h3 id="installing-interfaces" class="section-heading">
+  <a href="#installing-interfaces" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">installing-interfaces</p>
+  </a>
+  Installing interfaces
+</h3>
+<p>From the Interface list, clicking on the <strong>Install a new interface</strong> button will load up the
+<strong>Interface Editor</strong>, an interactive tool that you can use to configure your interfaces.</p><p>The Interface Editor provides you with two ways to define your interfaces: on the left panel, a
+graphical frontend, while on the right panel you may input a JSON definition to achieve the same
+result. Each panel updates automatically whenever the other is changed.</p><p><img src="assets/astarte-dashboard-interface-editor.png" alt="Astarte Dashboard, Interface Editor"/></p><p>While defining a new interface, the Interface Editor will help you in supplying the right options
+and filling in mandatory entries such as:</p><ul><li>Name: an arbitrary name, formatted in reversed DNS casing.</li><li>Major and Minor versions: based on <a href="https://semver.org/">Semantic Versioning</a>.</li><li>Type: indicates whether data is streamed continuously (<code class="inline">datastream</code>) or is stateful and persistent
+(<code class="inline">properties</code>).</li><li>Ownership: the write-only allowed actor. All the other actors are read-only.</li><li>Mappings: a list of endpoints that represent the data structure, following REST controller
+semantics.</li></ul><p>You can learn more about Interface definitions in their
+<a href="030-interface.html">documentation's section</a>.</p><p>Note that when creating interface drafts, or for testing purposes in general, it is recommended to
+use <code class="inline">0</code> as the major version: to prevent data loss, Astarte allows only interfaces where
+<code class="inline">major_version</code> equals <code class="inline">0</code> to be deleted.</p><h3 id="managing-interfaces" class="section-heading">
+  <a href="#managing-interfaces" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">managing-interfaces</p>
+  </a>
+  Managing interfaces
+</h3>
+<p>From the Interface list, you can select an interface to load and view its details in the Interface
+Editor. Clicking on the name of the interface will select its latest revision; clicking on a
+specific major of the interface will select the latest revision for that major. Note that interface
+revisions follow the <a href="https://semver.org/">Semantic Versioning</a> convention.</p><p>Once the Interface Editor is loaded you can review, update or delete the definition of the
+interface.</p><p>Note that to prevent data loss, Astarte allows only interfaces where <code class="inline">major_version</code> equals <code class="inline">0</code> to
+be deleted.</p><p>For similar reasons, when updating the definition of an interface, the Interface Editor will not
+allow you to change core properties on a <code class="inline">minor</code> version update. If you need to apply substantial
+changes, you can define and install a new <code class="inline">major</code> version for the interface.</p><h2 id="triggers" class="section-heading">
+  <a href="#triggers" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">triggers</p>
+  </a>
+  Triggers
+</h2>
+<p><a href="060-using_triggers.html">Triggers</a> in Astarte are the go-to mechanism for generating push events.</p><p>You can navigate to this section thanks to the side menu of the Dashboard. A list of all installed
+triggers is displayed.</p><p><img src="assets/astarte-dashboard-triggers.png" alt="Astarte Dashboard, trigger list"/></p><h3 id="installing-triggers" class="section-heading">
+  <a href="#installing-triggers" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">installing-triggers</p>
+  </a>
+  Installing triggers
+</h3>
+<p>From the Trigger list, clicking on the <strong>Install a new trigger</strong> button will load up the <strong>Trigger
+Editor</strong>, an interactive tool that you can use to configure your triggers. It works in a very
+similar fashion to Interface Editor and shares the same User Interface.</p><p>The Trigger Editor provides you with two ways to define your triggers: on the left panel, a
+graphical frontend, while on the right panel you may input a JSON definition to achieve the same
+result. Each panel updates automatically whenever the other is changed.</p><p>The graphical tool dynamically loads installed Interfaces in the Realm and eases trigger creation by
+providing not only linting and validation, but also dynamic resolution of Interface names.</p><p><img src="assets/astarte-dashboard-trigger-editor.png" alt="Astarte Dashboard, Trigger Editor"/></p><p>You can learn more about Trigger definitions in their <a href="060-triggers.html">documentation's section</a>.</p><p>Note that due to how triggers work, you should install the trigger before a device connects. Doing
+otherwise will cause the trigger to kick in at a later time, and as such no events will be streamed
+for a while.</p><h3 id="managing-triggers" class="section-heading">
+  <a href="#managing-triggers" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">managing-triggers</p>
+  </a>
+  Managing triggers
+</h3>
+<p>From the Trigger list, you can select a trigger to load and view its details in the Trigger Editor.</p><p>Once the Trigger Editor is loaded you can review the definition of the trigger.</p><p>You can also delete the trigger instance by clicking on the <strong>Delete trigger</strong> button.</p><h2 id="devices" class="section-heading">
+  <a href="#devices" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">devices</p>
+  </a>
+  Devices
+</h2>
+<p>Devices are Astarte's main entities for exchanging data.</p><p>You can navigate to this section thanks to the side menu of the Dashboard. A list of all registered
+devices is displayed.</p><p><img src="assets/astarte-dashboard-devices.png" alt="Astarte Dashboard, device list"/></p><p>Each device in the list is displayed together with info regarding its <em>status</em> and the <em>last
+connection event</em>. The status is represented by a grey dot if the device never connected to Astarte,
+a green dot if it is currently connected, a red dot if it is currently disconnected. The last
+connection event reports, if available, the date of the last connection or disconnection.</p><p>A filter section is present on the side of the list to aid the search for specific devices,
+filtering the list by device ID, name, connection status, or configured attributes.</p><h3 id="registering-a-device" class="section-heading">
+  <a href="#registering-a-device" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">registering-a-device</p>
+  </a>
+  Registering a device
+</h3>
+<p>From the Device list, new devices may be registered by clicking on the <strong>Register a new device</strong>
+button which will take you to the registration page.</p><p>Here you can proceed with the registration of the device by:</p><ul><li>providing a device ID: either by generating a random ID or by specifying a <code class="inline">Name</code> and
+<code class="inline">Namespace UUID</code> to generate the ID in a deterministic fashion.</li><li>optionally declaring the initial <em>introspection</em> of the device: this is an indication of the list
+of interfaces that the device will use to exchange data.</li></ul><p>You can learn more about Devices and the registration process in their
+<a href="035-register_device.html">documentation's section</a>.</p><h3 id="device-status-and-details" class="section-heading">
+  <a href="#device-status-and-details" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">device-status-and-details</p>
+  </a>
+  Device status and details
+</h3>
+<p>From the Device list, you can select a device to navigate to its dedicated page.</p><p>Here you can review and manage different info about your device.</p><h4>Device Info</h4><ul><li><strong>Device Info</strong>: displays info such as the device ID and the device Name alias, if set. It reports
+whether the device is currently connected or disconnected, or if it was never connected. From this
+section you can also momentarily <strong>Inhibit credentials</strong> for the device, preventing it to obtain
+access to Astarte; or you can directly <strong>Wipe credential secret</strong> of the device, a permanent
+action which will require to register the device again to have a new Credential Secret.</li><li><strong>Aliases</strong>: where you can manage custom aliases for the device. Note that setting a <code class="inline">name</code> alias
+will provide a name for the device.</li><li><strong>Attributes</strong>: a dedicated section to attach arbitrary info to the device, in a key-value form.</li><li><strong>Groups</strong>: where you can review and manage the Groups the device belongs to.</li><li><strong>Interfaces</strong>: a list of all currently and previously used interfaces. Clicking on an interface's
+name will load a dedicated page to review data exchanged by the device through that interface.</li><li><strong>Stats</strong>: a rundown on exchanged data via different interfaces. Here you can review, in both
+visual and numeric form, the quantity of bytes and messages the device is exchanging over each
+interface. This way you can always know at a glance which interfaces are the busiest and how
+chatty your device is.</li><li><strong>Status Events</strong>: here is info collected by Astarte regarding the IP addresses involved in the
+connections of the device to Astarte, the dates of first registration and credentials request, and
+the dates of last connection and disconnection, if available.</li><li><strong>Live Events</strong>: a section that reports live events regarding the device. It makes use of
+<a href="052-using_channels.html">Astarte Channels</a> and displays the connections, exchanged data, and
+errors of the device, as they happen in real-time.</li></ul><h2 id="groups" class="section-heading">
+  <a href="#groups" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">groups</p>
+  </a>
+  Groups
+</h2>
+<p><a href="065-managing-groups.html">Groups</a> are logical collections of devices to ease the management and
+querying of devices.</p><p>You can navigate to this section thanks to the side menu of the Dashboard. A list of all existing
+groups is displayed, together with the number of total and connected devices for each group.</p><h3 id="creating-a-group" class="section-heading">
+  <a href="#creating-a-group" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">creating-a-group</p>
+  </a>
+  Creating a group
+</h3>
+<p>From the Group list, clicking on the <strong>Create a new group</strong> button will load a dedicated page to
+setup the new group.</p><p>You are required to specify a name for the group and to select at least one device that will belong
+to it. Indeed, note that a group must contain at least one device to exist.</p><p>To confirm the creation of the new group, click the <strong>Create group</strong> button.</p><h3 id="managing-groups" class="section-heading">
+  <a href="#managing-groups" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">managing-groups</p>
+  </a>
+  Managing groups
+</h3>
+<p>From the Group list, you can select a group to view its configuration on a dedicated page. Here you
+can review the list of devices that belong to it.</p><p>To remove a device from a group, click on the Delete icon next to it.</p><p>To add a device to a group, you can first navigate to the device's page and then add it to a group
+from there.</p><p>To delete a group, remove all devices that belong to it and the group will automatically cease to
+exist.</p><h2 id="blocks" class="section-heading">
+  <a href="#blocks" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">blocks</p>
+  </a>
+  Blocks
+</h2>
+<p><a href="https://docs.astarte-platform.org/flow/snapshot/0003-blocks.html">Blocks</a> are computation units
+that can be chained together to define a logical computation topology.</p><p>You can navigate to this section thanks to the side menu of the Dashboard. Here is a list of all
+existing blocks, both custom and native ones: the former ones are those defined by you, the latter
+ones are those provided by Astarte and are displayed with a <code class="inline">native</code> label.</p><h3 id="creating-blocks" class="section-heading">
+  <a href="#creating-blocks" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">creating-blocks</p>
+  </a>
+  Creating blocks
+</h3>
+<p>From the Block list, clicking on the <strong>Create</strong> button will load a dedicated page to define a new
+block.</p><p>Here you can define the block by specifying:</p><ul><li>A <code class="inline">name</code> for the block.</li><li>A <code class="inline">type</code>, between <code class="inline">Producer</code>, <code class="inline">Consumer</code> or <code class="inline">Producer &amp; Consumer</code>, depending on how the block
+should treat messages and connect to other blocks.</li><li>A <code class="inline">schema</code>, reporting the JSON Schema definition of how a configuration should look like for the
+block.</li><li>A <code class="inline">source</code>, containing the implementation of the block, written in the
+<a href="https://docs.astarte-platform.org/flow/snapshot/0010-defining-a-pipeline.html">DSL format</a> for
+Pipelines.</li></ul><p>Confirm the creation of the block by clicking on the <strong>Create new block</strong> button.</p><p>To learn more about block definition you can read their
+<a href="https://docs.astarte-platform.org/flow/snapshot/0003-blocks.html">documentation's section</a>.</p><h3 id="managing-blocks" class="section-heading">
+  <a href="#managing-blocks" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">managing-blocks</p>
+  </a>
+  Managing blocks
+</h3>
+<p>From the Block list, you can select a block to view its definition in a dedicated page.</p><p>Here you can review the details of the block such as the block type, the schema and, if it is a
+custom block, its source.</p><p>To delete a block, click on the <strong>Delete block</strong> button. Note that you cannot delete <code class="inline">native</code> blocks
+provided by Astarte.</p><h2 id="pipelines" class="section-heading">
+  <a href="#pipelines" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">pipelines</p>
+  </a>
+  Pipelines
+</h2>
+<p>A <a href="https://docs.astarte-platform.org/flow/snapshot/0004-pipelines.html">Pipeline</a> is a computation
+blueprint (therefore a description) built as a chain of blocks.</p><p>You can navigate to this section thanks to the side menu of the Dashboard. Here is a list of all
+existing pipelines from which you can review, manage and
+<a href="015-astarte_dashboard.html#instantiating-flows">instantiate</a> them.</p><h3 id="creating-pipelines" class="section-heading">
+  <a href="#creating-pipelines" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">creating-pipelines</p>
+  </a>
+  Creating pipelines
+</h3>
+<p>From the Pipeline list, clicking on the <strong>Create</strong> button will load up the <strong>Pipeline Editor</strong> page,
+an interactive tool that you can use to configure your pipeline.</p><p>The Pipeline Editor is composed of two parts:</p><ul><li>A sidebar listing all available Blocks, grouped by type</li><li>A space where you can drag &amp; drop blocks, connecting them to effectively design a pipeline</li></ul><p>You can read more about the Pipeline Editor on the
+<a href="https://docs.astarte-platform.org/flow/snapshot/0020-pipeline-editor.html">dedicated documentation</a>.</p><p>Once you have designed your pipeline, you can review and specify its:</p><ul><li><code class="inline">name</code></li><li><code class="inline">source</code>, containing the implementation of the pipeline, written in the
+<a href="https://docs.astarte-platform.org/flow/snapshot/0010-defining-a-pipeline.html">DSL format</a> for
+Pipelines.</li><li><code class="inline">schema</code>, reporting the JSON Schema definition of how a configuration should look like for the
+pipeline.</li><li><code class="inline">description</code>, explaining the scope and supposed usage of the pipeline.</li></ul><p>Then hit the <strong>Create new pipeline</strong> button to confirm the definition of the pipeline.</p><h3 id="managing-pipelines" class="section-heading">
+  <a href="#managing-pipelines" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">managing-pipelines</p>
+  </a>
+  Managing pipelines
+</h3>
+<p>From the Pipeline list, you can select a pipeline to view its definition in a dedicated page.</p><p>Here you can review the details of the pipeline such as the pipeline description, its schema, and
+its source.</p><p>To delete a pipeline, click on the <strong>Delete pipeline</strong> button.</p><h2 id="flows" class="section-heading">
+  <a href="#flows" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">flows</p>
+  </a>
+  Flows
+</h2>
+<p><a href="https://docs.astarte-platform.org/flow/snapshot/0005-flows.html">Flows</a> are specific instances of a
+pipeline, created providing concrete values to the parametric configuration of a pipeline.</p><p>You can navigate to this section thanks to the side menu of the Dashboard. Here is a list of all
+existing flows. Each flow reports its current status and the pipeline it originated from.</p><p>To review the details of a Flow, click on its name to load up the dedicated page.</p><p>To delete a flow, click on the Delete icon next to it.</p><h3 id="instantiating-flows" class="section-heading">
+  <a href="#instantiating-flows" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">instantiating-flows</p>
+  </a>
+  Instantiating flows
+</h3>
+<p>From the Pipeline list, clicking on the <strong>Instantiate</strong> button of a Pipeline will load the Flow
+configuration page; from there you can supply a name and a configuration for the flow before hitting
+the <strong>Instantiate Flow</strong> button to confirm.</p><h2 id="realm-settings" class="section-heading">
+  <a href="#realm-settings" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">realm-settings</p>
+  </a>
+  Realm Settings
+</h2>
+<p>You can navigate to this section thanks to the side menu of the Dashboard. Here you can review and
+update settings for your realm.</p><p>You can update the public key of the realm, which is useful if you mean to use a new private key to
+generate auth tokens. Please note that it is a permanent action and Astarte will prevent
+interactions that use auth tokens generated with the previous key.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="010-interacting_with_astarte.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Interacting with Astarte
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="020-accessing_and_exploring_a_realm.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Accessing and Exploring a Realm
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
+        <p>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>
