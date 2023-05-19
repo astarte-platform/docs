@@ -212,8 +212,8 @@ by using json.loads() on an Interface file.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>FileNotFoundError</strong> – If specified file does not exists.</p></li>
-<li><p><strong>TypeError</strong> – If speficied file is not a .json file.</p></li>
+<li><p><a class="reference internal" href="#device.exceptions.InterfaceFileNotFoundError" title="device.exceptions.InterfaceFileNotFoundError"><strong>InterfaceFileNotFoundError</strong></a> – If the provided interface file does not exists.</p></li>
+<li><p><a class="reference internal" href="#device.exceptions.InterfaceFileDecodeError" title="device.exceptions.InterfaceFileDecodeError"><strong>InterfaceFileDecodeError</strong></a> – If speficied file is not a parsable .json file.</p></li>
 </ul>
 </dd>
 </dl>
@@ -231,10 +231,7 @@ introspection.</p>
 <dd class="field-odd"><p><strong>interfaces_dir</strong> (<em>Path</em>) – An absolute path to an a folder containing some Astarte interface .json files.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>FileNotFoundError</strong> – If specified directory does not exists.</p></li>
-<li><p><strong>NotADirectoryError</strong> – If speficied directory exists but it’s not a directory.</p></li>
-</ul>
+<dd class="field-even"><p><a class="reference internal" href="#device.exceptions.InterfaceFileNotFoundError" title="device.exceptions.InterfaceFileNotFoundError"><strong>InterfaceFileNotFoundError</strong></a> – If specified directory does not exists.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -319,7 +316,7 @@ which will be registered as the timestamp for the value.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>TypeError</strong> – If the interface or the payload are not compatible.</p>
+<dd class="field-even"><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><strong>ValidationError</strong></a> – If the interface or the payload are not compatible.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -339,7 +336,7 @@ will be registered as the timestamp for the value.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>TypeError</strong> – If the interface or the payload are not compatible.</p>
+<dd class="field-even"><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><strong>ValidationError</strong></a> – If the interface or the payload are not compatible.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -356,7 +353,7 @@ will be registered as the timestamp for the value.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>TypeError</strong> – If the interface is of type datastream.</p>
+<dd class="field-even"><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><strong>ValidationError</strong></a> – If the interface is of type datastream.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -402,6 +399,78 @@ will be registered as the timestamp for the value.</p></li>
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">DeviceAlreadyRegisteredError</span></span><a class="headerlink" href="#device.exceptions.DeviceAlreadyRegisteredError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
 <p>Exception raised in case a Device being registered has already been registered.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.InterfaceFileDecodeError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">InterfaceFileDecodeError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.InterfaceFileDecodeError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
+<p>Exception raised when an interface .json file is not correctly formatted.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">msg</span> <span class="pre">--</span> <span class="pre">A</span> <span class="pre">message</span> <span class="pre">error</span> <span class="pre">carrying</span> <span class="pre">further</span> <span class="pre">details</span></span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.InterfaceFileNotFoundError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">InterfaceFileNotFoundError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.InterfaceFileNotFoundError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
+<p>Exception raised when a file containing an interface definition does not exists.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">msg</span> <span class="pre">--</span> <span class="pre">A</span> <span class="pre">message</span> <span class="pre">error</span> <span class="pre">carrying</span> <span class="pre">further</span> <span class="pre">details</span></span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.InterfaceNotFoundError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">InterfaceNotFoundError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.InterfaceNotFoundError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
+<p>Exception raised when an interface is not found in the device introspection.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">msg</span> <span class="pre">--</span> <span class="pre">A</span> <span class="pre">message</span> <span class="pre">error</span> <span class="pre">carrying</span> <span class="pre">further</span> <span class="pre">details</span></span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.JWTGenerationError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">JWTGenerationError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.JWTGenerationError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
+<p>Exception raised when the generation of a Jason Web Token has failed.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">msg</span> <span class="pre">--</span> <span class="pre">A</span> <span class="pre">message</span> <span class="pre">error</span> <span class="pre">carrying</span> <span class="pre">further</span> <span class="pre">details</span></span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.PersistencyDirectoryNotFoundError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">PersistencyDirectoryNotFoundError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.PersistencyDirectoryNotFoundError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
+<p>Exception raised when the provided persistency directory is not found.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">body</span> <span class="pre">--</span> <span class="pre">the</span> <span class="pre">body</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">API</span> <span class="pre">reply,</span> <span class="pre">which</span> <span class="pre">may</span> <span class="pre">carry</span> <span class="pre">further</span> <span class="pre">details</span></span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.ValidationError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">ValidationError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.ValidationError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
+<p>Exception raised when validation has failed.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">msg</span> <span class="pre">--</span> <span class="pre">A</span> <span class="pre">message</span> <span class="pre">error</span> <span class="pre">carrying</span> <span class="pre">further</span> <span class="pre">details</span></span></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </section>
@@ -487,10 +556,10 @@ independent set of individual members.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="device.interface.Interface.mappings">
 <span class="sig-name descname"><span class="pre">mappings</span></span><a class="headerlink" href="#device.interface.Interface.mappings" title="Permalink to this definition">¶</a></dt>
-<dd><p>Interface mapping list</p>
+<dd><p>Interface mapping dictionary, keys are the endpoint of each mapping</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#device.mapping.Mapping" title="device.mapping.Mapping">Mapping</a></p>
+<dd class="field-odd"><p>dict(<a class="reference internal" href="#device.mapping.Mapping" title="device.mapping.Mapping">Mapping</a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -537,7 +606,7 @@ independent set of individual members.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="device.interface.Interface.validate">
-<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#device.interface.Interface.validate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><span class="pre">ValidationError</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#device.interface.Interface.validate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Interface Data validation</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -548,11 +617,10 @@ independent set of individual members.</p>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><em>bool</em> – Success of the validation operation</p></li>
-<li><p><em>str</em> – Error message if success is False</p></li>
-</ul>
-</p>
+<dd class="field-even"><p>None in case of successful validation, ValidationError otherwise</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError">ValidationError</a> or None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -758,7 +826,7 @@ Properties are always published using QoS 2.</p>
 </table>
 <dl class="py method">
 <dt class="sig sig-object py" id="device.mapping.Mapping.validate">
-<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MapType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#device.mapping.Mapping.validate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MapType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><span class="pre">ValidationError</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#device.mapping.Mapping.validate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mapping data validation</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -768,11 +836,10 @@ Properties are always published using QoS 2.</p>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><em>bool</em> – Success of the validation operation</p></li>
-<li><p><em>str</em> – Error message if success is False</p></li>
-</ul>
-</p>
+<dd class="field-even"><p>None in case of successful validation, ValidationError otherwise</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError">ValidationError</a> or None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -980,6 +1047,12 @@ Pairing API.</p></li>
 <li><a class="reference internal" href="#device.exceptions.AstarteError"><code class="docutils literal notranslate"><span class="pre">AstarteError</span></code></a></li>
 <li><a class="reference internal" href="#device.exceptions.AuthorizationError"><code class="docutils literal notranslate"><span class="pre">AuthorizationError</span></code></a></li>
 <li><a class="reference internal" href="#device.exceptions.DeviceAlreadyRegisteredError"><code class="docutils literal notranslate"><span class="pre">DeviceAlreadyRegisteredError</span></code></a></li>
+<li><a class="reference internal" href="#device.exceptions.InterfaceFileDecodeError"><code class="docutils literal notranslate"><span class="pre">InterfaceFileDecodeError</span></code></a></li>
+<li><a class="reference internal" href="#device.exceptions.InterfaceFileNotFoundError"><code class="docutils literal notranslate"><span class="pre">InterfaceFileNotFoundError</span></code></a></li>
+<li><a class="reference internal" href="#device.exceptions.InterfaceNotFoundError"><code class="docutils literal notranslate"><span class="pre">InterfaceNotFoundError</span></code></a></li>
+<li><a class="reference internal" href="#device.exceptions.JWTGenerationError"><code class="docutils literal notranslate"><span class="pre">JWTGenerationError</span></code></a></li>
+<li><a class="reference internal" href="#device.exceptions.PersistencyDirectoryNotFoundError"><code class="docutils literal notranslate"><span class="pre">PersistencyDirectoryNotFoundError</span></code></a></li>
+<li><a class="reference internal" href="#device.exceptions.ValidationError"><code class="docutils literal notranslate"><span class="pre">ValidationError</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-device.interface">device.interface module</a><ul>
