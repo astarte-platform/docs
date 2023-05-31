@@ -1,1 +1,0 @@
-navigator.serviceWorker&&navigator.serviceWorker.register("/astarte-kubernetes-operator/snapshot/sw.js",{scope:"/astarte-kubernetes-operator/snapshot/"})
