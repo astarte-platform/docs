@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.29.0">
+    <meta name="project" content="Astarte Operator v23.5.0-dev">
+
+    <title>Prerequisites — Astarte Operator v23.5.0-dev</title>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-73F4688A.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/23.5/">
+        <img src="assets/logo.png" alt="Astarte Operator" class="sidebar-projectImage">
+      </a>
+
+    <div class="sidebar-projectDetails">
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/23.5/" class="sidebar-projectName" translate="no">
+Astarte Operator
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
+        v23.5.0-dev
+      </strong>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/release-23.5/docs/documentation/pages/administrator/020-prerequisites.md#L1" title="View Source" class="view-source" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span>Prerequisites</span>
+</h1>
+
+<p>As much as Astarte's Operator is capable of creating a completely self-contained installation,
+there's a number of prerequisites to be fulfilled depending on the use case.</p><h2 id="on-your-machine" class="section-heading">
+  <a href="#on-your-machine" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">on-your-machine</p>
+  </a>
+  On your machine
+</h2>
+<p>The following tools are required within your local machine:</p><ul><li><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a>: must be compatible with your
+target Kubernetes version,</li><li><a href="https://github.com/astarte-platform/astartectl">astartectl</a>: your version must be the same of the
+Astarte Operator running in your cluster,</li><li><a href="https://helm.sh/">helm</a>: v3 is required.</li></ul><h2 id="nginx" class="section-heading">
+  <a href="#nginx" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">nginx</p>
+  </a>
+  NGINX
+</h2>
+<p>Astarte currently features only one supported Managed Ingress, based on
+<a href="https://nginx.org/en/">NGINX</a>. NGINX provides routing, SSL termination and more,
+and as of today is the preferred/advised way to run Astarte in production.</p><p>Astarte Operator is capable of interacting with NGINX through its dedicated
+<code class="inline">AstarteDefaultIngress</code> resource, as long as an <a href="https://kubernetes.github.io/ingress-nginx/">NGINX ingress
+controller</a> is installed. Installing the ingress
+controller is as simple as running a few <code class="inline">helm</code> commands:</p><pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+</span><span class="gp unselectable">$ </span><span class="">helm repo update
+</span><span class="gp unselectable">$ </span><span class="">helm install ingress-nginx ingress-nginx/ingress-nginx -n ingress-nginx \
+</span><span class="">    --set controller.service.externalTrafficPolicy=Local \
+</span><span class="">    --create-namespace
+</span></code></pre><p>Please, be aware that trying to deploy multiple ingress controllers in your cluster may result in all
+of them trying simultaneously to handle the Astarte ingress resource. Consider using ingress classes
+for avoiding confusing situations as outlined
+<a href="https://kubernetes.github.io/ingress-nginx/user-guide/multiple-ingress/">here</a>.</p><p>In the end, you won't need to create NGINX ingresses yourself: the Astarte Operator itself will take
+care of this task.</p><h2 id="voyager-deprecated" class="section-heading">
+  <a href="#voyager-deprecated" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">voyager-deprecated</p>
+  </a>
+  Voyager (deprecated)
+</h2>
+<p>Until Astarte v1.0.0, the only supported Managed Ingress was the
+<a href="https://github.com/appscode/voyager">Voyager</a> based <code class="inline">AstarteVoyagerIngress</code>. Starting from Dec the
+31st 2021, according to the <a href="https://blog.byte.builders/post/voyager-v2021.09.15/">Voyager
+announcement</a>, the support for Voyager will be
+dropped as stated <a href="https://github.com/astarte-platform/astarte/issues/613">here</a>. An alternative
+NGINX based Managed Ingress has been developed to replace the Voyager based solution (for reference,
+see the previous section).</p><h2 id="cert-manager" class="section-heading">
+  <a href="#cert-manager" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">cert-manager</p>
+  </a>
+  cert-manager
+</h2>
+<p>Astarte requires <a href="https://cert-manager.io/"><code class="inline">cert-manager</code></a> to be installed in the cluster in its
+default configuration (installed in namespace <code class="inline">cert-manager</code> as <code class="inline">cert-manager</code>). If you are using
+<code class="inline">cert-manager</code> in your cluster already you don't need to take any action - otherwise, you will need
+to install it.</p><p>Astarte is actively tested with <code class="inline">cert-manager</code> 1.7, but should work with any 1.0+ releases of
+<code class="inline">cert-manager</code>. If your <code class="inline">cert-manager</code> release is outdated, please consider upgrading to a newer
+version according to <a href="https://cert-manager.io/docs/installation/upgrading/">this guide</a>.</p><p><a href="https://cert-manager.io/docs/installation/"><code class="inline">cert-manager</code> documentation</a> details all needed steps
+to have a working instance on your cluster. However, in case you won't be using <code class="inline">cert-manager</code> for
+other components beyond Astarte or, in general, if you don't have very specific requirements, it is
+advised to install it through its Helm chart. To do so, run the following commands:</p><pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">helm repo add jetstack https://charts.jetstack.io
+</span><span class="gp unselectable">$ </span><span class="">helm repo update
+</span><span class="gp unselectable">$ </span><span class="">kubectl create namespace cert-manager
+</span><span class="gp unselectable">$ </span><span class="">helm install \
+</span><span class="">  cert-manager jetstack/cert-manager \
+</span><span class="">  --namespace cert-manager \
+</span><span class="">  --version v1.7.0 \
+</span><span class="">  --set installCRDs=true
+</span></code></pre><p>This will install <code class="inline">cert-manager</code> 1.7.0 and its CRDs in the cluster.</p><h2 id="external-cassandra-scylla" class="section-heading">
+  <a href="#external-cassandra-scylla" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">external-cassandra-scylla</p>
+  </a>
+  External Cassandra / Scylla
+</h2>
+<p>In production deployments, it is strongly advised to have a separate Cassandra cluster interacting
+with the Kubernetes installation. This is due to the fact that Cassandra Administration is a
+critical topic, especially with mission critical workloads.</p><p>Astarte Operator includes only basic management of Cassandra, which is deprecated since v1.0 and as
+such it should not be relied upon when dealing with production environments. Furthermore, in the
+near future, Cassandra support is planned to be removed from Astarte Operator in favor of the
+adoption of a dedicated Kubernetes Operator (e.g. <a href="https://operator.docs.scylladb.com/stable/generic.html">Scylla
+Operator</a>).</p><p>In case an external Cassandra cluster is deployed, be aware that Astarte lives on the assumption it
+will be the only application managing the Cluster - as such, it is strongly advised to have a
+dedicated cluster for Astarte.</p><h2 id="kubernetes-and-external-components" class="section-heading">
+  <a href="#kubernetes-and-external-components" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">kubernetes-and-external-components</p>
+  </a>
+  Kubernetes and external components
+</h2>
+<p>When deploying external components, it is important to take in consideration how Kubernetes behaves
+with the underlying infrastructure. Most modern Cloud Providers have a concept of Virtual Private
+Cloud, by which the internal Kubernetes Network stack directly integrates with their Network stack.
+This, in short, enables deploying Pods in a shared private network, in which other components (such
+as Virtual Machines) can be deployed.</p><p>This is the preferred, advised and supported configuration. In this scenario, there's literally no
+difference between interacting with a VM or a Pod, enabling a hybrid infrastructure without having
+to pay the performance cost.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="010-system_requirements.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+System Requirements
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="030-installation_kubernetes.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Installing Astarte Operator
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
+        <p>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>
