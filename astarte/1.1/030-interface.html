@@ -5,9 +5,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.29.0">
-    <meta name="project" content="Astarte v1.1.0-alpha.0">
+    <meta name="project" content="Astarte v1.1.0-rc.0">
 
-    <title>Interfaces — Astarte v1.1.0-alpha.0</title>
+    <title>Interfaces — Astarte v1.1.0-rc.0</title>
     <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
@@ -62,16 +62,16 @@
 
   <div class="sidebar-header">
 
-      <a href="http://astarte-platform.org">
+      <a href="https://docs.astarte-platform.org/astarte/1.0/">
         <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
       </a>
 
     <div class="sidebar-projectDetails">
-      <a href="http://astarte-platform.org" class="sidebar-projectName" translate="no">
+      <a href="https://docs.astarte-platform.org/astarte/1.0/" class="sidebar-projectName" translate="no">
 Astarte
       </a>
       <strong class="sidebar-projectVersion" translate="no">
-        v1.1.0-alpha.0
+        v1.1.0-rc.0
       </strong>
     </div>
     <ul class="sidebar-listNav">
@@ -97,7 +97,7 @@ Astarte
 </button>
 
 
-    <a href="https://git.ispirata.com/Astarte-NG/pages/architecture/030-interface.md#L1" title="View Source" class="view-source" rel="help">
+    <a href="https://github.com/astarte-platform/astarte/blob/release-1.0/doc/pages/architecture/030-interface.md#L1" title="View Source" class="view-source" rel="help">
       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
       <span class="sr-only">View Source</span>
     </a>
@@ -227,7 +227,13 @@ up to 1024 items and each item must respect the limits of its scalar type (<em>i
 <code class="inline">stringarray</code> must be at most 65535 bytes long, each binary blob in a <code class="inline">binaryblobarray</code> must be
 shorter than 64 KiB.</li></ul><p>Make sure that the differences between two distinct interface names are not limited to the casing or
 the presence of hyphens. This situation leads to a collision in the interface names which brings to
-an error in the interface installation process.</p><p>A valid interface must resolve a path univocally to a single endpoint. Take the following example:</p><pre><code class="json">    [...]
+an error in the interface installation process.</p><h3 id="limitations" class="section-heading">
+  <a href="#limitations" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">limitations</p>
+  </a>
+  Limitations
+</h3>
+<p>A valid interface must resolve a path univocally to a single endpoint. Take the following example:</p><pre><code class="json">    [...]
     &quot;mappings&quot;: [
         {
             &quot;endpoint&quot;: &quot;/%{itemIndex}/value&quot;,
@@ -264,7 +270,10 @@ of a valid aggregated interface mapping:</p><pre><code class="json">    [...]
             &quot;endpoint&quot;: &quot;/%{itemIndex}/otherValue&quot;,
             &quot;type&quot;: &quot;string&quot;
         },
-    [...]</code></pre><h2 id="aggregation" class="section-heading">
+    [...]</code></pre><p>Additional limitations (which stem from the MQTT protocol specification) can be outlined. When using
+parametric endpoints, the actual values used in place of parameter placeholders must fulfill the
+following requirements:</p><ul><li>endpoint parameters must be UTF-8 encoded strings;</li><li>endpoint parameters must not contain the following characters: <code class="inline">+</code> and <code class="inline">#</code>. In particular, those
+characters are treated as wildcards for MQTT topics and therefore must be avoided;</li><li>endpoint parameters must not contain the <code class="inline">/</code> character.</li></ul><h2 id="aggregation" class="section-heading">
   <a href="#aggregation" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">aggregation</p>
   </a>

@@ -5,9 +5,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.29.0">
-    <meta name="project" content="Astarte v1.1.0-alpha.0">
+    <meta name="project" content="Astarte v1.1.0-rc.0">
 
-    <title>Astarte in 5 minutes — Astarte v1.1.0-alpha.0</title>
+    <title>Astarte in 5 minutes — Astarte v1.1.0-rc.0</title>
     <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
@@ -62,16 +62,16 @@
 
   <div class="sidebar-header">
 
-      <a href="http://astarte-platform.org">
+      <a href="https://docs.astarte-platform.org/astarte/1.0/">
         <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
       </a>
 
     <div class="sidebar-projectDetails">
-      <a href="http://astarte-platform.org" class="sidebar-projectName" translate="no">
+      <a href="https://docs.astarte-platform.org/astarte/1.0/" class="sidebar-projectName" translate="no">
 Astarte
       </a>
       <strong class="sidebar-projectVersion" translate="no">
-        v1.1.0-alpha.0
+        v1.1.0-rc.0
       </strong>
     </div>
     <ul class="sidebar-listNav">
@@ -97,7 +97,7 @@ Astarte
 </button>
 
 
-    <a href="https://git.ispirata.com/Astarte-NG/pages/tutorials/010-astarte_in_5_minutes.md#L1" title="View Source" class="view-source" rel="help">
+    <a href="https://github.com/astarte-platform/astarte/blob/release-1.0/doc/pages/tutorials/010-astarte_in_5_minutes.md#L1" title="View Source" class="view-source" rel="help">
       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
       <span class="sr-only">View Source</span>
     </a>
@@ -134,7 +134,7 @@ Ubuntu 18.04 and macOS 10.15 Catalina, but any other modern operating system sho
   Install Astarte
 </h2>
 <p>To get our Astarte instance running as fast as possible, we will install Astarte's standalone distribution. It includes a tunable Docker Compose which brings up Astarte and every companion service needed for it to work. To do so, simply clone Astarte's main repository and use its scripts to bring it up:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">git clone https://github.com/astarte-platform/astarte.git &amp;&amp; cd astarte
-</span><span class="gp unselectable">$ </span><span class="">docker run -v $(pwd)/compose:/compose astarte/docker-compose-initializer:1.1.0-alpha.0
+</span><span class="gp unselectable">$ </span><span class="">docker run -v $(pwd)/compose:/compose astarte/docker-compose-initializer:1.1.0-rc.0
 </span><span class="gp unselectable">$ </span><span class="">docker-compose pull
 </span><span class="gp unselectable">$ </span><span class="">docker-compose up -d
 </span></code></pre><p><code class="inline">docker-compose-initializer</code> will generate a root CA for devices, a key pair for Housekeeping, and a self-signed certificate for the broker (note: this is a <em>really</em> bad idea in production). You can tune the compose file further to use legitimate certificates and custom keys, but this is out of the scope of this tutorial.</p><p>Compose might take some time to bring everything up, but usually within a minute from the containers creation Astarte will be ready.
@@ -196,8 +196,8 @@ or from another machine or device on the same network.</p><h3 id="using-a-contai
   </a>
   Using a container for stream-qt5-test
 </h3>
-<p>Astarte's <code class="inline">stream-qt5-test</code> can be pulled from Docker Hub with:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">docker pull astarte/astarte-stream-qt5-test:v1.1.0-alpha.0
-</span></code></pre><p>Its most basic invocation (from your <code class="inline">astarte</code> repository tree) is:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">docker run --net=&quot;host&quot; -e &quot;DEVICE_ID=$(astartectl utils device-id generate-random)&quot; -e &quot;PAIRING_URL=http://api.astarte.localhost/pairing&quot; -e &quot;REALM=test&quot; -e &quot;PAIRING_JWT=$(astartectl utils gen-jwt pairing -k test_private.pem)&quot; -e &quot;IGNORE_SSL_ERRORS=true&quot; astarte/astarte-stream-qt5-test:v1.1.0-alpha.0
+<p>Astarte's <code class="inline">stream-qt5-test</code> can be pulled from Docker Hub with:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">docker pull astarte/astarte-stream-qt5-test:v1.0.4
+</span></code></pre><p>Its most basic invocation (from your <code class="inline">astarte</code> repository tree) is:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">docker run --net=&quot;host&quot; -e &quot;DEVICE_ID=$(astartectl utils device-id generate-random)&quot; -e &quot;PAIRING_URL=http://api.astarte.localhost/pairing&quot; -e &quot;REALM=test&quot; -e &quot;PAIRING_JWT=$(astartectl utils gen-jwt pairing -k test_private.pem)&quot; -e &quot;IGNORE_SSL_ERRORS=true&quot; astarte/astarte-stream-qt5-test:v1.0.4
 </span></code></pre><p>This will generate a random datastream from a brand new, random Device ID. You can tweak those parameters to whatever suits you better by having a look at the Dockerfile. You can spawn any number of instances you like, or you can have the same Device ID send longer streams of data by saving the container's persistency through a Docker Volume. If you wish to do so, simply add <code class="inline">-v /persistency:&lt;your persistency path&gt;</code> to your <code class="inline">docker run</code> invocation.</p><p>Refer to <code class="inline">stream-qt5-test</code> <a href="https://github.com/astarte-platform/stream-qt5-test/blob/release-1.1/README.md">README</a> for more details on which variables can be passed to the container.</p><p>Also, please note that the <code class="inline">--net=&quot;host&quot;</code> parameter is required to make <code class="inline">localhost</code> work. If this is not desirable, you can change <code class="inline">PAIRING_URL</code> to an host reachable from within the container network. Obviously, that parameter isn't required if you're running the container on a different machine and <code class="inline">PAIRING_URL</code> is pointing to a different URL.</p><h2 id="grab-your-tea" class="section-heading">
   <a href="#grab-your-tea" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">grab-your-tea</p>
