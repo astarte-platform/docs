@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.29.0">
+    <meta name="project" content="Astarte v1.2.0-dev">
+
+    <title>Monitoring — Astarte v1.2.0-dev</title>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-58764854.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+      <a href="https://docs.astarte-platform.org/astarte/1.0/">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+
+    <div class="sidebar-projectDetails">
+      <a href="https://docs.astarte-platform.org/astarte/1.0/" class="sidebar-projectName" translate="no">
+Astarte
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
+        v1.2.0-dev
+      </strong>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://github.com/astarte-platform/astarte/blob/release-1.0/doc/pages/administrator/090-monitoring.md#L1" title="View Source" class="view-source" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span>Monitoring</span>
+</h1>
+
+<p>Astarte is a complex, distributed system that may pose several challenges when deployed in production. Individual services report health and metrics to ensure production clusters can be properly monitored and proactive actions can be taken in case of faults or unexpected behavior.</p><h2 id="health-checks" class="section-heading">
+  <a href="#health-checks" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">health-checks</p>
+  </a>
+  Health checks
+</h2>
+<p>Every Astarte service, whether it's an API service or not, exposes an HTTP endpoint <code class="inline">/health</code>, without versioning, on its HTTP port. By default, services use port <code class="inline">4000</code>.
+<code class="inline">/health</code> is meant to be called frequently and reports the individual health state of a service. It will return <code class="inline">200</code> in case the service is healthy, or other errors in case the service is having issues. Among those issues, there might be failure in accessing RabbitMQ/RPC communications or failure in accessing the Database.</p><h3 id="health-checks-and-kubernetes" class="section-heading">
+  <a href="#health-checks-and-kubernetes" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">health-checks-and-kubernetes</p>
+  </a>
+  Health checks and Kubernetes
+</h3>
+<p>The aforementioned health checks are integrated in Kubernetes, when using Astarte Operator, as <code class="inline">LivenessProbe</code> and <code class="inline">ReadinessProbe</code>. As such, health monitoring and forced restarts are automatically handled without the need for the administrator to integrate any additional logic.</p><h2 id="service-metrics" class="section-heading">
+  <a href="#service-metrics" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">service-metrics</p>
+  </a>
+  Service metrics
+</h2>
+<p>Just like <code class="inline">/health</code>, every service exposes a <code class="inline">/metrics</code> endpoint. This endpoint exposes a series of metrics in <a href="https://prometheus.io/">Prometheus</a> format, which can be easily integrated and queried from any Prometheus-compatible monitoring solution. Each service, besides exposing stats on its Erlang VM, resource consumption and HTTP stats (where applicable), also exposes a number of service-specific metric, which can be queried to obtain information about Astarte's usage and behavior.</p><h3 id="authentication-and-access-to-metrics" class="section-heading">
+  <a href="#authentication-and-access-to-metrics" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">authentication-and-access-to-metrics</p>
+  </a>
+  Authentication and access to metrics
+</h3>
+<p><code class="inline">/metrics</code>, being Prometheus-compatible, does not implement any kind of authentication or access control. Ideally, only your scraper should have access to <code class="inline">/metrics</code>, as it can leak sensitive information and should not be exposed to the outer world.</p><p>Astarte Operator, by default, forbids access to <code class="inline">/metrics</code> through its ingress, as it assumes your scraper lives within the Kubernetes cluster or has means to access the cluster on its own. However, this behavior can be overridden through by setting <code class="inline">serveMetrics: true</code> in the <code class="inline">api</code> section. An additional parameter, <code class="inline">serveMetricsToSubnet</code>, can be specified to restrict access to <code class="inline">/metrics</code> only to source IPs in a specific subnet. It is strongly recommended to set this up in case an external scraper needs to have access to <code class="inline">/metrics</code>, to ensure access is restricted.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="070-manage_realms.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Managing Realms
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="095-advanced-operations.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Advanced operations
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
+        <p>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>
