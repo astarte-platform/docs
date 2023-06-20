@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['astarte_5fbson_5fserializer_5fappend_5fbinary_168',['astarte_bson_serializer_append_binary',['../astarte__bson__serializer_8h.html#a1d03dc87bd3f253ac12890ce87a2c0b6',1,'astarte_bson_serializer.h']]],
+  ['astarte_5fbson_5fserializer_5fappend_5fbinary_168',['astarte_bson_serializer_append_binary',['../astarte__bson__serializer_8h.html#a0e30a36925fa76c18a8074555573a533',1,'astarte_bson_serializer.h']]],
   ['astarte_5fbson_5fserializer_5fappend_5fbinary_5farray_169',['astarte_bson_serializer_append_binary_array',['../astarte__bson__serializer_8h.html#add053e7a292cf55f75b96dcf3ba81972',1,'astarte_bson_serializer.h']]],
   ['astarte_5fbson_5fserializer_5fappend_5fboolean_170',['astarte_bson_serializer_append_boolean',['../astarte__bson__serializer_8h.html#ae95137bab989537574c24155d0e197f5',1,'astarte_bson_serializer.h']]],
   ['astarte_5fbson_5fserializer_5fappend_5fboolean_5farray_171',['astarte_bson_serializer_append_boolean_array',['../astarte__bson__serializer_8h.html#afe5e3d2a0892c759daa9ab7a9704d0b8',1,'astarte_bson_serializer.h']]],
@@ -17,10 +17,10 @@ var searchData=
   ['astarte_5fbson_5fserializer_5fappend_5fstring_182',['astarte_bson_serializer_append_string',['../astarte__bson__serializer_8h.html#a427fe5cb7b15784bbf90548037519589',1,'astarte_bson_serializer.h']]],
   ['astarte_5fbson_5fserializer_5fappend_5fstring_5farray_183',['astarte_bson_serializer_append_string_array',['../astarte__bson__serializer_8h.html#a8f3e827c0fa5dfe8f0b3c20cf1fb4a02',1,'astarte_bson_serializer.h']]],
   ['astarte_5fbson_5fserializer_5fdestroy_184',['astarte_bson_serializer_destroy',['../astarte__bson__serializer_8h.html#af8ffcf290284362c92c832158cb8d09f',1,'astarte_bson_serializer.h']]],
-  ['astarte_5fbson_5fserializer_5fdocument_5fsize_185',['astarte_bson_serializer_document_size',['../astarte__bson__serializer_8h.html#a537e9d23c5e3b4b91461f68dfa2475d6',1,'astarte_bson_serializer.h']]],
-  ['astarte_5fbson_5fserializer_5fget_5fdocument_186',['astarte_bson_serializer_get_document',['../astarte__bson__serializer_8h.html#aef6096700e62fb7858c3e83f3e432d67',1,'astarte_bson_serializer.h']]],
+  ['astarte_5fbson_5fserializer_5fdocument_5fsize_185',['astarte_bson_serializer_document_size',['../astarte__bson__serializer_8h.html#a64cdaf3794e21a9a6197055ee4783156',1,'astarte_bson_serializer.h']]],
+  ['astarte_5fbson_5fserializer_5fget_5fdocument_186',['astarte_bson_serializer_get_document',['../astarte__bson__serializer_8h.html#a3cbc940220cc591c39f83b6b7f862c01',1,'astarte_bson_serializer.h']]],
   ['astarte_5fbson_5fserializer_5finit_187',['astarte_bson_serializer_init',['../astarte__bson__serializer_8h.html#a4c8f849d0e08e226467a3f5ce880e1ab',1,'astarte_bson_serializer.h']]],
-  ['astarte_5fbson_5fserializer_5fwrite_5fdocument_188',['astarte_bson_serializer_write_document',['../astarte__bson__serializer_8h.html#a00a35c5c8e3993b7317e06833c56bbc4',1,'astarte_bson_serializer.h']]],
+  ['astarte_5fbson_5fserializer_5fwrite_5fdocument_188',['astarte_bson_serializer_write_document',['../astarte__bson__serializer_8h.html#a2ce55066ef697a0bd0475ba6e38e7a20',1,'astarte_bson_serializer.h']]],
   ['astarte_5fcredentials_5fcreate_5fcsr_189',['astarte_credentials_create_csr',['../astarte__credentials_8h.html#a4c156ec09670b219275fd55fd70f7a71',1,'astarte_credentials.h']]],
   ['astarte_5fcredentials_5fcreate_5fkey_190',['astarte_credentials_create_key',['../astarte__credentials_8h.html#a3d7d614e71f6074cd24245ff62994dc0',1,'astarte_credentials.h']]],
   ['astarte_5fcredentials_5fdelete_5fcertificate_191',['astarte_credentials_delete_certificate',['../astarte__credentials_8h.html#a87a32a961f2cdaeb9b8ad756a356c195',1,'astarte_credentials.h']]],

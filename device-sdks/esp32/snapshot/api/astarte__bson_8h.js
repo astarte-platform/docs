@@ -1,7 +1,7 @@
 var astarte__bson_8h =
 [
     [ "astarte_bson_check_validity", "astarte__bson_8h.html#ab417a9579833bcc98c148cb09344d04e", null ],
-    [ "astarte_bson_document_size", "astarte__bson_8h.html#af8d3e2c45bb97e87a0522fb2b0f732a8", null ],
+    [ "astarte_bson_document_size", "astarte__bson_8h.html#abb1c3700d243ff41988615c5b2230189", null ],
     [ "astarte_bson_first_item", "astarte__bson_8h.html#ad6b6593e2747ce333e58708327515ef6", null ],
     [ "astarte_bson_key", "astarte__bson_8h.html#a81a142ba2003acbe820cd3abe0c69a33", null ],
     [ "astarte_bson_key_lookup", "astarte__bson_8h.html#a00413b6c2f0dc8f3ec3d94ed199f70e7", null ],
