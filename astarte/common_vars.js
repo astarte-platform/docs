@@ -4,11 +4,11 @@ var versionNodes = [
         url: "https://docs.astarte-platform.org/astarte/snapshot"
     },
     {
-        version: "v1.1 (alpha)", // TODO: Remove alpha when a stable version is released
+        version: "v1.1 (latest stable)",
         url: "https://docs.astarte-platform.org/astarte/1.1"
     },
     {
-        version: "v1.0 (latest stable)",
+        version: "v1.0 (stable)",
         url: "https://docs.astarte-platform.org/astarte/1.0"
     },
     {
