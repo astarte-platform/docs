@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-58764854.js"></script>
+    <script src="dist/sidebar_items-96A54C0A.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -147,14 +147,16 @@ You can reach Astarte at the following addresses:</p><ul><li><code class="inline
 <p>Now that we have our instance up and running, we can start setting up a Realm for our device. We'll call our Realm <code class="inline">test</code>. Given we have no SSO or Authentication mechanism set up, we're just going to generate a public key to sign our JWTs with. You can create one with <code class="inline">astartectl</code>:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">astartectl utils gen-keypair test
 </span></code></pre><p>Also, we will need a JWT token to authenticate against Housekeeping. <code class="inline">generate-compose-files.sh</code> created a keypair automatically, which is in <code class="inline">compose/astarte-keys/housekeeping_{private,public}.pem</code>. To perform all of our Astarte interactions, we will use <code class="inline">astartectl</code>.</p><p>Use <code class="inline">astartectl</code> to create a new Realm:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">astartectl housekeeping realms create test --astarte-url http://api.astarte.localhost --realm-public-key test_public.pem -k compose/astarte-keys/housekeeping_private.pem
 </span></code></pre><p>This creates a <code class="inline">test</code> realm, which should be ready to be used almost immediately. To ensure your realm is available and ready, check if it exists in Astarte by issuing:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">astartectl housekeeping realms ls --astarte-url http://api.astarte.localhost -k compose/astarte-keys/housekeeping_private.pem
-</span></code></pre><h2 id="install-an-interface" class="section-heading">
-  <a href="#install-an-interface" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">install-an-interface</p>
+</span></code></pre><h2 id="install-interfaces" class="section-heading">
+  <a href="#install-interfaces" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">install-interfaces</p>
   </a>
-  Install an interface
+  Install interfaces
 </h2>
-<p>We will use <a href="https://github.com/astarte-platform/stream-qt5-test">Astarte's Qt5 Stream Generator</a> to feed data into Astarte. However before starting, we will have to install <code class="inline">org.astarte-platform.genericsensors.Values</code> interface into our new realm. To do that, we can use <code class="inline">astartectl</code> again:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">astartectl realm-management interfaces sync standard-interfaces/org.astarte-platform.genericsensors.Values.json standard-interfaces/org.astarte-platform.genericcommands.ServerCommands.json --astarte-url http://api.astarte.localhost -r test -k test_private.pem -y
-</span></code></pre><p>Now <code class="inline">org.astarte-platform.genericsensors.Values</code> should show up among our available interfaces:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">astartectl realm-management interfaces ls --astarte-url http://api.astarte.localhost -r test -k test_private.pem
+<p>We will use <a href="https://github.com/astarte-platform/stream-qt5-test">Astarte's Qt5 Stream Generator</a>
+to feed data into Astarte. However before starting, we will have to install the <code class="inline">org.astarte- platform.genericsensors.Values</code> and the <code class="inline">org.astarte-platform.genericcommands.ServerCommands</code>
+interfaces into our new realm. To do that, we can use <code class="inline">astartectl</code> again:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">astartectl realm-management interfaces sync standard-interfaces/org.astarte-platform.genericsensors.Values.json standard-interfaces/org.astarte-platform.genericcommands.ServerCommands.json --astarte-url http://api.astarte.localhost -r test -k test_private.pem -y
+</span></code></pre><p>Now <code class="inline">org.astarte-platform.genericsensors.Values</code> and <code class="inline">org.astarte- platform.genericcommands.ServerCommands</code> should show up among our available interfaces:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">astartectl realm-management interfaces ls --astarte-url http://api.astarte.localhost -r test -k test_private.pem
 </span></code></pre><p>Our Astarte instance is now ready for our devices.</p><h2 id="install-a-trigger" class="section-heading">
   <a href="#install-a-trigger" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">install-a-trigger</p>
@@ -196,8 +198,8 @@ or from another machine or device on the same network.</p><h3 id="using-a-contai
   </a>
   Using a container for stream-qt5-test
 </h3>
-<p>Astarte's <code class="inline">stream-qt5-test</code> can be pulled from Docker Hub with:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">docker pull astarte/astarte-stream-qt5-test:v1.0.4
-</span></code></pre><p>Its most basic invocation (from your <code class="inline">astarte</code> repository tree) is:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">docker run --net=&quot;host&quot; -e &quot;DEVICE_ID=$(astartectl utils device-id generate-random)&quot; -e &quot;PAIRING_URL=http://api.astarte.localhost/pairing&quot; -e &quot;REALM=test&quot; -e &quot;PAIRING_JWT=$(astartectl utils gen-jwt pairing -k test_private.pem)&quot; -e &quot;IGNORE_SSL_ERRORS=true&quot; astarte/astarte-stream-qt5-test:v1.0.4
+<p>Astarte's <code class="inline">stream-qt5-test</code> can be pulled from Docker Hub with:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">docker pull astarte/astarte-stream-qt5-test:1.0.4
+</span></code></pre><p>Its most basic invocation (from your <code class="inline">astarte</code> repository tree) is:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">docker run --net=&quot;host&quot; -e &quot;DEVICE_ID=$(astartectl utils device-id generate-random)&quot; -e &quot;PAIRING_URL=http://api.astarte.localhost/pairing&quot; -e &quot;REALM=test&quot; -e &quot;PAIRING_JWT=$(astartectl utils gen-jwt pairing -k test_private.pem)&quot; -e &quot;IGNORE_SSL_ERRORS=true&quot; astarte/astarte-stream-qt5-test:1.0.4
 </span></code></pre><p>This will generate a random datastream from a brand new, random Device ID. You can tweak those parameters to whatever suits you better by having a look at the Dockerfile. You can spawn any number of instances you like, or you can have the same Device ID send longer streams of data by saving the container's persistency through a Docker Volume. If you wish to do so, simply add <code class="inline">-v /persistency:&lt;your persistency path&gt;</code> to your <code class="inline">docker run</code> invocation.</p><p>Refer to <code class="inline">stream-qt5-test</code> <a href="https://github.com/astarte-platform/stream-qt5-test/blob/release-1.1/README.md">README</a> for more details on which variables can be passed to the container.</p><p>Also, please note that the <code class="inline">--net=&quot;host&quot;</code> parameter is required to make <code class="inline">localhost</code> work. If this is not desirable, you can change <code class="inline">PAIRING_URL</code> to an host reachable from within the container network. Obviously, that parameter isn't required if you're running the container on a different machine and <code class="inline">PAIRING_URL</code> is pointing to a different URL.</p><h2 id="grab-your-tea" class="section-heading">
   <a href="#grab-your-tea" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">grab-your-tea</p>
