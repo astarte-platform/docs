@@ -3,7 +3,6 @@ var astarte_8h =
     [ "ASTARTE_DEVICE_SDK_MAJOR", "astarte_8h.html#a87ca690d387dbf587ef20f47b8364fed", null ],
     [ "ASTARTE_DEVICE_SDK_MINOR", "astarte_8h.html#a17b08951504142422e80e649a55fba31", null ],
     [ "ASTARTE_DEVICE_SDK_PATCH", "astarte_8h.html#a8923e4732262e68be4c5ac5ca1c8929d", null ],
-    [ "astarte_err_t", "astarte_8h.html#a781f0a08bff9db2517442bc243f5efde", null ],
     [ "astarte_err_t", "astarte_8h.html#a8c619a744449aa507f5e6dedebffea23", [
       [ "ASTARTE_OK", "astarte_8h.html#a8c619a744449aa507f5e6dedebffea23ac89e7efe721137fb00c7ea84314c5144", null ],
       [ "ASTARTE_ERR", "astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a425117467cbed07e158966a5f4ea666b", null ],

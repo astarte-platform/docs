@@ -128,9 +128,9 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ada4e51f3ebd37db75bc23f094b91e49c"><td class="memItemLeft" align="right" valign="top"><a id="ada4e51f3ebd37db75bc23f094b91e49c"></a>
-typedef struct astarte_device_t *&#160;</td><td class="memItemRight" valign="bottom"><b>astarte_device_handle_t</b></td></tr>
-<tr class="separator:ada4e51f3ebd37db75bc23f094b91e49c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e6066c46bfa43d8aa10dac5bc5d16ea"><td class="memItemLeft" align="right" valign="top"><a id="a8e6066c46bfa43d8aa10dac5bc5d16ea"></a>
+typedef struct astarte_device *&#160;</td><td class="memItemRight" valign="bottom"><b>astarte_device_handle_t</b></td></tr>
+<tr class="separator:a8e6066c46bfa43d8aa10dac5bc5d16ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ff127c7fc09dc12b5ad79a0bfceed1b"><td class="memItemLeft" align="right" valign="top"><a id="a9ff127c7fc09dc12b5ad79a0bfceed1b"></a>
 typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><b>astarte_device_data_event_callback_t</b>) (<a class="el" href="structastarte__device__data__event__t.html">astarte_device_data_event_t</a> *event)</td></tr>
 <tr class="separator:a9ff127c7fc09dc12b5ad79a0bfceed1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -910,7 +910,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>astarte_bson_serializer_init(&amp;bs); astarte_bson_serializer_append_double(&amp;bs, "co2", 4.0); astarte_bson_serializer_append_double(&amp;bs, "temperature", 20.0); astarte_bson_serializer_append_double(&amp;bs, "humidity", 77.2); astarte_bson_serializer_append_end_of_document(&amp;bs); int size; const void *document = astarte_bson_serializer_get_document(&amp;bs, &amp;size); </p><dl class="params"><dt>Parameters</dt><dd>
+<p>astarte_bson_serializer_handle_t bs = <a class="el" href="astarte__bson__serializer_8h.html#ab3e816c58415635205fe6480e8c78f73" title="create a new instance of the BSON serializer.">astarte_bson_serializer_new()</a>; astarte_bson_serializer_append_double(bs, "co2", 4.0); astarte_bson_serializer_append_double(bs, "temperature", 20.0); astarte_bson_serializer_append_double(bs, "humidity", 77.2); astarte_bson_serializer_append_end_of_document(bs); int size; const void *document = astarte_bson_serializer_get_document(bs, &amp;size); // Use the returned buffer before destroy call astarte_bson_serializer_destroy(bs);</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">qos</td><td>The MQTT QoS to be used for the publish (0, 1 or 2). </td></tr>
   </table>
@@ -980,7 +981,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>astarte_bson_serializer_init(&amp;bs); astarte_bson_serializer_append_double(&amp;bs, "co2", 4.0); astarte_bson_serializer_append_double(&amp;bs, "temperature", 20.0); astarte_bson_serializer_append_double(&amp;bs, "humidity", 77.2); astarte_bson_serializer_append_end_of_document(&amp;bs); int size; const void *document = astarte_bson_serializer_get_document(&amp;bs, &amp;size); </p><dl class="params"><dt>Parameters</dt><dd>
+<p>astarte_bson_serializer_handle_t bs = <a class="el" href="astarte__bson__serializer_8h.html#ab3e816c58415635205fe6480e8c78f73" title="create a new instance of the BSON serializer.">astarte_bson_serializer_new()</a>; astarte_bson_serializer_append_double(bs, "co2", 4.0); astarte_bson_serializer_append_double(bs, "temperature", 20.0); astarte_bson_serializer_append_double(bs, "humidity", 77.2); astarte_bson_serializer_append_end_of_document(bs); int size; const void *document = astarte_bson_serializer_get_document(bs, &amp;size); // Use the returned buffer before destroy call astarte_bson_serializer_destroy(bs);</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ts_epoch_millis</td><td>The timestamp of the datastream. This is useful only on mappings with explicit_timestamp set to true and it's represented as milliseconds since epoch. A value of ASTARTE_INVALID_TIMESTAMP is ignored. </td></tr>
     <tr><td class="paramname">qos</td><td>The MQTT QoS to be used for the publish (0, 1 or 2). </td></tr>
