@@ -854,8 +854,25 @@ Properties are always published using QoS 2.</p>
 </tbody>
 </table>
 <dl class="py method">
-<dt class="sig sig-object py" id="device.mapping.Mapping.validate">
-<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MapType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><span class="pre">ValidationError</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#device.mapping.Mapping.validate" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="device.mapping.Mapping.validate_path">
+<span class="sig-name descname"><span class="pre">validate_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><span class="pre">ValidationError</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#device.mapping.Mapping.validate_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mapping data validation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>Str</em>) – Path to validate.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None in case of successful validation, ValidationError otherwise</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError">ValidationError</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.mapping.Mapping.validate_payload">
+<span class="sig-name descname"><span class="pre">validate_payload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MapType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><span class="pre">ValidationError</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#device.mapping.Mapping.validate_payload" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mapping data validation</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1121,7 +1138,8 @@ Pairing API.</p></li>
 <li><a class="reference internal" href="#device.mapping.Mapping.type"><code class="docutils literal notranslate"><span class="pre">Mapping.type</span></code></a></li>
 <li><a class="reference internal" href="#device.mapping.Mapping.explicit_timestamp"><code class="docutils literal notranslate"><span class="pre">Mapping.explicit_timestamp</span></code></a></li>
 <li><a class="reference internal" href="#device.mapping.Mapping.reliability"><code class="docutils literal notranslate"><span class="pre">Mapping.reliability</span></code></a></li>
-<li><a class="reference internal" href="#device.mapping.Mapping.validate"><code class="docutils literal notranslate"><span class="pre">Mapping.validate()</span></code></a></li>
+<li><a class="reference internal" href="#device.mapping.Mapping.validate_path"><code class="docutils literal notranslate"><span class="pre">Mapping.validate_path()</span></code></a></li>
+<li><a class="reference internal" href="#device.mapping.Mapping.validate_payload"><code class="docutils literal notranslate"><span class="pre">Mapping.validate_payload()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#device.mapping.type_strings"><code class="docutils literal notranslate"><span class="pre">type_strings</span></code></a></li>
