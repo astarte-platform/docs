@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['type_141',['type',['../structastarte__interface__t.html#a7a02b772033a5730651ddc93a42c848c',1,'astarte_interface_t']]],
-  ['type_5fdatastream_142',['TYPE_DATASTREAM',['../astarte__interface_8h.html#a5bc39e30e5f3291498195dac025388f8a3e4e46e992433e2101b2624c549bc3c0',1,'astarte_interface.h']]],
-  ['type_5fproperties_143',['TYPE_PROPERTIES',['../astarte__interface_8h.html#a5bc39e30e5f3291498195dac025388f8a8e2d2f7fbc3959527ca289772fb9e742',1,'astarte_interface.h']]]
+  ['ownership_171',['ownership',['../structastarte__interface__t.html#a7291f1852025f8b126ac3bb892853d76',1,'astarte_interface_t']]],
+  ['ownership_5fdevice_172',['OWNERSHIP_DEVICE',['../astarte__interface_8h.html#ab500ca5a223d2a6a1df8843fda23fa82a424d08cb9b23b27a9c41ec6a5c76e1aa',1,'astarte_interface.h']]],
+  ['ownership_5fserver_173',['OWNERSHIP_SERVER',['../astarte__interface_8h.html#ab500ca5a223d2a6a1df8843fda23fa82afe5eff5d9794bd8f6daa84a6f740058a',1,'astarte_interface.h']]]
 ];

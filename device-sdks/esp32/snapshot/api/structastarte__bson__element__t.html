@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Astarte Device SDK ESP32: astarte_device_data_event_t Struct Reference</title>
+<title>Astarte Device SDK ESP32: astarte_bson_element_t Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('structastarte__device__data__event__t.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('structastarte__bson__element__t.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -83,51 +83,79 @@ $(document).ready(function(){initNavTree('structastarte__device__data__event__t.
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">astarte_device_data_event_t Struct Reference</div>  </div>
+<div class="title">astarte_bson_element_t Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="dynheader">
-Collaboration diagram for astarte_device_data_event_t:</div>
-<div class="dyncontent">
-<div class="center"><img src="structastarte__device__data__event__t__coll__graph.png" border="0" usemap="#aastarte__device__data__event__t_coll__map" alt="Collaboration graph"/></div>
-<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a6c6b8d6a90bcc76b43c0a375116daf46"><td class="memItemLeft" align="right" valign="top"><a id="a6c6b8d6a90bcc76b43c0a375116daf46"></a>
-const void *bson_value&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> ((deprecated(&quot;Please use bson_element with the functions from astarte_bson_deserializer.h&quot;)))</td></tr>
-<tr class="separator:a6c6b8d6a90bcc76b43c0a375116daf46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01983d55762f7685c883094fafdeab0c"><td class="memItemLeft" align="right" valign="top"><a id="a01983d55762f7685c883094fafdeab0c"></a>
-int bson_value_type&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> ((deprecated(&quot;Please use bson_element with the functions from astarte_bson_deserializer.h&quot;)))</td></tr>
-<tr class="separator:a01983d55762f7685c883094fafdeab0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a74f613f3a9867f8ca9481dcaa70b0c42"><td class="memItemLeft" align="right" valign="top"><a id="a74f613f3a9867f8ca9481dcaa70b0c42"></a>
-astarte_device_handle_t&#160;</td><td class="memItemRight" valign="bottom"><b>device</b></td></tr>
-<tr class="separator:a74f613f3a9867f8ca9481dcaa70b0c42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d0505ac5af4065c5b797115a31135b9"><td class="memItemLeft" align="right" valign="top"><a id="a1d0505ac5af4065c5b797115a31135b9"></a>
-const char *&#160;</td><td class="memItemRight" valign="bottom"><b>interface_name</b></td></tr>
-<tr class="separator:a1d0505ac5af4065c5b797115a31135b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba09438e8ec8d49ccf823b894661fc50"><td class="memItemLeft" align="right" valign="top"><a id="aba09438e8ec8d49ccf823b894661fc50"></a>
-const char *&#160;</td><td class="memItemRight" valign="bottom"><b>path</b></td></tr>
-<tr class="separator:aba09438e8ec8d49ccf823b894661fc50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24fe5b4509b5ad7d7cc8f6036a6c1617"><td class="memItemLeft" align="right" valign="top"><a id="a24fe5b4509b5ad7d7cc8f6036a6c1617"></a>
-<a class="el" href="structastarte__bson__element__t.html">astarte_bson_element_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>bson_element</b></td></tr>
-<tr class="separator:a24fe5b4509b5ad7d7cc8f6036a6c1617"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0228bd4b095dc48fb927529b1646003e"><td class="memItemLeft" align="right" valign="top"><a id="a0228bd4b095dc48fb927529b1646003e"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
+<tr class="separator:a0228bd4b095dc48fb927529b1646003e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07022e2f2525b6a643c0eaa30d43ec21"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__bson__element__t.html#a07022e2f2525b6a643c0eaa30d43ec21">name</a></td></tr>
+<tr class="separator:a07022e2f2525b6a643c0eaa30d43ec21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3b3cce7d06df8f02ecead339bd2d46c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__bson__element__t.html#ae3b3cce7d06df8f02ecead339bd2d46c">name_len</a></td></tr>
+<tr class="separator:ae3b3cce7d06df8f02ecead339bd2d46c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0eb013cb5c93a7d42a80fc889f18841e"><td class="memItemLeft" align="right" valign="top">const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__bson__element__t.html#a0eb013cb5c93a7d42a80fc889f18841e">value</a></td></tr>
+<tr class="separator:a0eb013cb5c93a7d42a80fc889f18841e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Field Documentation</h2>
+<a id="a07022e2f2525b6a643c0eaa30d43ec21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07022e2f2525b6a643c0eaa30d43ec21">&#9670;&nbsp;</a></span>name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* astarte_bson_element_t::name</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Element type, see <a class="el" href="astarte__bson__types_8h.html" title="Astarte BSON types definitions.">astarte_bson_types.h</a> for the available types </p>
+
+</div>
+</div>
+<a id="ae3b3cce7d06df8f02ecead339bd2d46c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3b3cce7d06df8f02ecead339bd2d46c">&#9670;&nbsp;</a></span>name_len</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t astarte_bson_element_t::name_len</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>String containing the element name </p>
+
+</div>
+</div>
+<a id="a0eb013cb5c93a7d42a80fc889f18841e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0eb013cb5c93a7d42a80fc889f18841e">&#9670;&nbsp;</a></span>value</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const void* astarte_bson_element_t::value</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Length in bytes of the element name, not including the null terminator </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>/home/runner/work/astarte-device-sdk-esp32/astarte-device-sdk-esp32/astarte-device-sdk-esp32/include/<a class="el" href="astarte__device_8h_source.html">astarte_device.h</a></li>
+<li>/home/runner/work/astarte-device-sdk-esp32/astarte-device-sdk-esp32/astarte-device-sdk-esp32/include/<a class="el" href="astarte__bson__deserializer_8h_source.html">astarte_bson_deserializer.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="structastarte__device__data__event__t.html">astarte_device_data_event_t</a></li>
+    <li class="navelem"><a class="el" href="structastarte__bson__element__t.html">astarte_bson_element_t</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

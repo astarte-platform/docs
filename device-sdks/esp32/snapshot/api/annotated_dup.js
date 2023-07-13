@@ -1,5 +1,7 @@
 var annotated_dup =
 [
+    [ "astarte_bson_document_t", "structastarte__bson__document__t.html", "structastarte__bson__document__t" ],
+    [ "astarte_bson_element_t", "structastarte__bson__element__t.html", "structastarte__bson__element__t" ],
     [ "astarte_credentials_context_t", "structastarte__credentials__context__t.html", "structastarte__credentials__context__t" ],
     [ "astarte_credentials_storage_functions_t", "structastarte__credentials__storage__functions__t.html", "structastarte__credentials__storage__functions__t" ],
     [ "astarte_device_config_t", "structastarte__device__config__t.html", "structastarte__device__config__t" ],

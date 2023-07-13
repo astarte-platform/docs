@@ -1,16 +1,16 @@
 var astarte__bson_8h =
 [
-    [ "astarte_bson_check_validity", "astarte__bson_8h.html#add543bc891c3519974cf445ee0e9ae02", null ],
-    [ "astarte_bson_document_size", "astarte__bson_8h.html#abb1c3700d243ff41988615c5b2230189", null ],
-    [ "astarte_bson_first_item", "astarte__bson_8h.html#ad6b6593e2747ce333e58708327515ef6", null ],
-    [ "astarte_bson_key", "astarte__bson_8h.html#a81a142ba2003acbe820cd3abe0c69a33", null ],
-    [ "astarte_bson_key_lookup", "astarte__bson_8h.html#a00413b6c2f0dc8f3ec3d94ed199f70e7", null ],
-    [ "astarte_bson_next_item", "astarte__bson_8h.html#a75d24fec704440e43fc92bb4ba862325", null ],
-    [ "astarte_bson_value_to_binary", "astarte__bson_8h.html#af4c5e2f3c4c84413ce8f81f3e23bba14", null ],
-    [ "astarte_bson_value_to_document", "astarte__bson_8h.html#a36af06acef52b2389ca679772ed93ac2", null ],
-    [ "astarte_bson_value_to_double", "astarte__bson_8h.html#abe467c96255e97f66814d304d0c53ed0", null ],
-    [ "astarte_bson_value_to_int32", "astarte__bson_8h.html#a0bbc24e4c85187891ae713a8dde0dc8b", null ],
-    [ "astarte_bson_value_to_int64", "astarte__bson_8h.html#ae739d573a43da96010fa9691f28c4b4d", null ],
-    [ "astarte_bson_value_to_int8", "astarte__bson_8h.html#aa96a0f33b3a0daa82f59094771f9dd57", null ],
-    [ "astarte_bson_value_to_string", "astarte__bson_8h.html#abadce630d538acd8b20a5f03c9ea991c", null ]
+    [ "astarte_bson_check_validity", "astarte__bson_8h.html#ad131e7c45d5f1a49757e0c3e72ea2f11", null ],
+    [ "astarte_bson_document_size", "astarte__bson_8h.html#ac971da6732e1b8e52cad0ebb587a683d", null ],
+    [ "astarte_bson_first_item", "astarte__bson_8h.html#a08da989159c8e8fc7c921992b5fbf26d", null ],
+    [ "astarte_bson_key", "astarte__bson_8h.html#a84866314b5faa06714a4bead620c5475", null ],
+    [ "astarte_bson_key_lookup", "astarte__bson_8h.html#ab9e0487f82f4995379cf18427d55ef9c", null ],
+    [ "astarte_bson_next_item", "astarte__bson_8h.html#a4b234427800c8b0a3c95208b24e0e9ce", null ],
+    [ "astarte_bson_value_to_binary", "astarte__bson_8h.html#a3eee15fbc5bdc8732d276b1783459367", null ],
+    [ "astarte_bson_value_to_document", "astarte__bson_8h.html#a2cbba0ea6d0890971c641099994a0ae0", null ],
+    [ "astarte_bson_value_to_double", "astarte__bson_8h.html#ab6174504691340c0c635ed597c04f3ef", null ],
+    [ "astarte_bson_value_to_int32", "astarte__bson_8h.html#a7c31733f453f243cb957b1455f962864", null ],
+    [ "astarte_bson_value_to_int64", "astarte__bson_8h.html#a350ab2d1981c3271768173e80a0e8db2", null ],
+    [ "astarte_bson_value_to_int8", "astarte__bson_8h.html#aebd094dabebbd20159f4efc788c19de8", null ],
+    [ "astarte_bson_value_to_string", "astarte__bson_8h.html#ac3b42121b1c7d5e7e51a7dba87b7b21d", null ]
 ];
