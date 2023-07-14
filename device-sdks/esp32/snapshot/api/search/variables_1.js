@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['major_5fversion_320',['major_version',['../structastarte__interface__t.html#a33ec47e66c1275cf212da1fe43ac3721',1,'astarte_interface_t']]],
-  ['minor_5fversion_321',['minor_version',['../structastarte__interface__t.html#acccfb28c547f4501c6cd7872be8bdd2c',1,'astarte_interface_t']]]
+  ['list_345',['list',['../structastarte__bson__document__t.html#afd11bd94c38b8dfce7c49d32360d6dcb',1,'astarte_bson_document_t']]],
+  ['list_5fsize_346',['list_size',['../structastarte__bson__document__t.html#aeaf43bdf416e11b739ca454a9897b98a',1,'astarte_bson_document_t']]]
 ];

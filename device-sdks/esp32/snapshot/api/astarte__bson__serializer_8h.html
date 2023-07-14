@@ -83,8 +83,9 @@ $(document).ready(function(){initNavTree('astarte__bson__serializer_8h.html','')
 
 <div class="header">
   <div class="summary">
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">astarte_bson_serializer.h File Reference</div>  </div>
 </div><!--header-->
@@ -104,14 +105,24 @@ Include dependency graph for astarte_bson_serializer.h:</div>
 </div>
 <p><a href="astarte__bson__serializer_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:ae399fbfe17df69c3aa223a07e105d43b"><td class="memItemLeft" align="right" valign="top"><a id="ae399fbfe17df69c3aa223a07e105d43b"></a>
-typedef struct astarte_bson_serializer *&#160;</td><td class="memItemRight" valign="bottom"><b>astarte_bson_serializer_handle_t</b></td></tr>
-<tr class="separator:ae399fbfe17df69c3aa223a07e105d43b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__byte__array__t.html">astarte_byte_array_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__bson__serializer__t.html">astarte_bson_serializer_handle_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a5c80971154ed9f23f3f6ce5ed52f9e8c"><td class="memItemLeft" align="right" valign="top"><a id="a5c80971154ed9f23f3f6ce5ed52f9e8c"></a>
+struct <a class="el" href="structastarte__byte__array__t.html">astarte_byte_array_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> ((deprecated(&quot;This sould never be used directly, use astarte_bson_serializer_handle_t&quot;)))</td></tr>
+<tr class="separator:a5c80971154ed9f23f3f6ce5ed52f9e8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ca866c32c26620608986bb6e353190d"><td class="memItemLeft" align="right" valign="top"><a id="a7ca866c32c26620608986bb6e353190d"></a>
+struct <a class="el" href="structastarte__bson__serializer__t.html">astarte_bson_serializer_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> ((deprecated(&quot;Use the new typedefined astarte_bson_serializer_handle_t&quot;)))</td></tr>
+<tr class="separator:a7ca866c32c26620608986bb6e353190d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae76d19fefc8451bd92eeb3a382275872"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__bson__serializer_8h.html#ae76d19fefc8451bd92eeb3a382275872">astarte_bson_serializer_init</a> (astarte_bson_serializer_handle_t bson) __attribute__((deprecated(&quot;Use <a class="el" href="astarte__bson__serializer_8h.html#ab3e816c58415635205fe6480e8c78f73">astarte_bson_serializer_new</a> instead&quot;)))</td></tr>
+<tr class="memdesc:ae76d19fefc8451bd92eeb3a382275872"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialize given BSON serializer.  <a href="astarte__bson__serializer_8h.html#ae76d19fefc8451bd92eeb3a382275872">More...</a><br /></td></tr>
+<tr class="separator:ae76d19fefc8451bd92eeb3a382275872"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3e816c58415635205fe6480e8c78f73"><td class="memItemLeft" align="right" valign="top">astarte_bson_serializer_handle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__bson__serializer_8h.html#ab3e816c58415635205fe6480e8c78f73">astarte_bson_serializer_new</a> (void)</td></tr>
 <tr class="memdesc:ab3e816c58415635205fe6480e8c78f73"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a new instance of the BSON serializer.  <a href="astarte__bson__serializer_8h.html#ab3e816c58415635205fe6480e8c78f73">More...</a><br /></td></tr>
 <tr class="separator:ab3e816c58415635205fe6480e8c78f73"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,6 +186,21 @@ Functions</h2></td></tr>
 <tr class="memitem:a7afd85479d08da849e20118f05a0bdbe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__bson__serializer_8h.html#a7afd85479d08da849e20118f05a0bdbe">astarte_bson_serializer_append_boolean_array</a> (astarte_bson_serializer_handle_t bson, const char *name, const bool *arr, int count)</td></tr>
 <tr class="memdesc:a7afd85479d08da849e20118f05a0bdbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a boolean array  <a href="astarte__bson__serializer_8h.html#a7afd85479d08da849e20118f05a0bdbe">More...</a><br /></td></tr>
 <tr class="separator:a7afd85479d08da849e20118f05a0bdbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ad721fc6ca6a3d6ba3bc506576622aab0"><td class="memItemLeft" align="right" valign="top"><a id="ad721fc6ca6a3d6ba3bc506576622aab0"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>capacity</b></td></tr>
+<tr class="separator:ad721fc6ca6a3d6ba3bc506576622aab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a854352f53b148adc24983a58a1866d66"><td class="memItemLeft" align="right" valign="top"><a id="a854352f53b148adc24983a58a1866d66"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>size</b></td></tr>
+<tr class="separator:a854352f53b148adc24983a58a1866d66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c5f4ef732286b78e31ec8d1cb238215"><td class="memItemLeft" align="right" valign="top"><a id="a2c5f4ef732286b78e31ec8d1cb238215"></a>
+uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><b>buf</b></td></tr>
+<tr class="separator:a2c5f4ef732286b78e31ec8d1cb238215"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a677b4bc5743c631a53577c96a1a41f21"><td class="memItemLeft" align="right" valign="top"><a id="a677b4bc5743c631a53577c96a1a41f21"></a>
+struct <a class="el" href="structastarte__byte__array__t.html">astarte_byte_array_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ba</b></td></tr>
+<tr class="separator:a677b4bc5743c631a53577c96a1a41f21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Astarte BSON serializer functions. </p>
@@ -1022,6 +1048,32 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Reference to the internal buffer. </dd></dl>
+
+</div>
+</div>
+<a id="ae76d19fefc8451bd92eeb3a382275872"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae76d19fefc8451bd92eeb3a382275872">&#9670;&nbsp;</a></span>astarte_bson_serializer_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void astarte_bson_serializer_init </td>
+          <td>(</td>
+          <td class="paramtype">astarte_bson_serializer_handle_t&#160;</td>
+          <td class="paramname"><em>bson</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initialize given BSON serializer. </p>
+<p>This function has to be called to initialize and allocate memory for a serializer instance. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">bson</td><td>the astarte_bson_serializer_handle_t that will be initialized. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

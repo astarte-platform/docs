@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['value_326',['value',['../structastarte__bson__element__t.html#a0eb013cb5c93a7d42a80fc889f18841e',1,'astarte_bson_element_t']]]
+  ['type_352',['type',['../structastarte__interface__t.html#a7a02b772033a5730651ddc93a42c848c',1,'astarte_interface_t']]]
 ];

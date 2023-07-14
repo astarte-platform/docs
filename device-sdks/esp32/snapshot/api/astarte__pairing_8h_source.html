@@ -99,42 +99,47 @@ $(document).ready(function(){initNavTree('astarte__pairing_8h_source.html',''); 
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structastarte__pairing__config__t.html">   19</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structastarte__pairing__config.html">   19</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structastarte__pairing__config.html">astarte_pairing_config</a></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *base_url;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *jwt;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *realm;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *hw_id;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *credentials_secret;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;} <a class="code" href="structastarte__pairing__config__t.html">astarte_pairing_config_t</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;} __attribute__((deprecated(<span class="stringliteral">&quot;Please use astarte_pairing_config_t&quot;</span>)));</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="astarte__pairing_8h.html#ad02ca271316c01fc7a80715c5ece2e86">   42</a></span>&#160;<a class="code" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> <a class="code" href="astarte__pairing_8h.html#ad02ca271316c01fc7a80715c5ece2e86">astarte_pairing_get_credentials_secret</a>(</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">const</span> <a class="code" href="structastarte__pairing__config__t.html">astarte_pairing_config_t</a> *config, <span class="keywordtype">char</span> *out, <span class="keywordtype">size_t</span> length);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="astarte__pairing_8h.html#ac4a552a2b51eb41f7c9f693712458554">   52</a></span>&#160;<a class="code" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> <a class="code" href="astarte__pairing_8h.html#ac4a552a2b51eb41f7c9f693712458554">astarte_pairing_register_device</a>(<span class="keyword">const</span> <a class="code" href="structastarte__pairing__config__t.html">astarte_pairing_config_t</a> *config);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="astarte__pairing_8h.html#af6d3d9612598125518f14cdd229e89ba">   64</a></span>&#160;<a class="code" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> <a class="code" href="astarte__pairing_8h.html#af6d3d9612598125518f14cdd229e89ba">astarte_pairing_get_mqtt_v1_credentials</a>(</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">const</span> <a class="code" href="structastarte__pairing__config__t.html">astarte_pairing_config_t</a> *config, <span class="keyword">const</span> <span class="keywordtype">char</span> *csr, <span class="keywordtype">char</span> *out, <span class="keywordtype">size_t</span> length);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="astarte__pairing_8h.html#ad1026fc994695f706cbda2f4a7adf8a8">   76</a></span>&#160;<a class="code" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> <a class="code" href="astarte__pairing_8h.html#ad1026fc994695f706cbda2f4a7adf8a8">astarte_pairing_get_mqtt_v1_broker_url</a>(</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">const</span> <a class="code" href="structastarte__pairing__config__t.html">astarte_pairing_config_t</a> *config, <span class="keywordtype">char</span> *out, <span class="keywordtype">size_t</span> length);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#pragma GCC diagnostic push</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#pragma GCC diagnostic ignored &quot;-Wdeprecated-declarations&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structastarte__pairing__config.html">astarte_pairing_config</a> astarte_pairing_config_t;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#pragma GCC diagnostic pop</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="astarte__pairing_8h.html#ad02ca271316c01fc7a80715c5ece2e86">   48</a></span>&#160;<a class="code" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> <a class="code" href="astarte__pairing_8h.html#ad02ca271316c01fc7a80715c5ece2e86">astarte_pairing_get_credentials_secret</a>(</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">const</span> astarte_pairing_config_t *config, <span class="keywordtype">char</span> *out, <span class="keywordtype">size_t</span> length);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="astarte__pairing_8h.html#ac4a552a2b51eb41f7c9f693712458554">   59</a></span>&#160;<a class="code" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> <a class="code" href="astarte__pairing_8h.html#ac4a552a2b51eb41f7c9f693712458554">astarte_pairing_register_device</a>(<span class="keyword">const</span> astarte_pairing_config_t *config);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="astarte__pairing_8h.html#af6d3d9612598125518f14cdd229e89ba">   72</a></span>&#160;<a class="code" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> <a class="code" href="astarte__pairing_8h.html#af6d3d9612598125518f14cdd229e89ba">astarte_pairing_get_mqtt_v1_credentials</a>(</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">const</span> astarte_pairing_config_t *config, <span class="keyword">const</span> <span class="keywordtype">char</span> *csr, <span class="keywordtype">char</span> *out, <span class="keywordtype">size_t</span> length);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="astarte__pairing_8h.html#ad1026fc994695f706cbda2f4a7adf8a8">   85</a></span>&#160;<a class="code" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> <a class="code" href="astarte__pairing_8h.html#ad1026fc994695f706cbda2f4a7adf8a8">astarte_pairing_get_mqtt_v1_broker_url</a>(</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">const</span> astarte_pairing_config_t *config, <span class="keywordtype">char</span> *out, <span class="keywordtype">size_t</span> length);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aastarte_8h_html"><div class="ttname"><a href="astarte_8h.html">astarte.h</a></div><div class="ttdoc">Astarte types and defines.</div></div>
 <div class="ttc" id="aastarte_8h_html_a8c619a744449aa507f5e6dedebffea23"><div class="ttname"><a href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a></div><div class="ttdeci">astarte_err_t</div><div class="ttdoc">Astarte return codes.</div><div class="ttdef"><b>Definition:</b> astarte.h:28</div></div>
 <div class="ttc" id="aastarte__pairing_8h_html_ac4a552a2b51eb41f7c9f693712458554"><div class="ttname"><a href="astarte__pairing_8h.html#ac4a552a2b51eb41f7c9f693712458554">astarte_pairing_register_device</a></div><div class="ttdeci">astarte_err_t astarte_pairing_register_device(const astarte_pairing_config_t *config)</div><div class="ttdoc">register a device.</div></div>
 <div class="ttc" id="aastarte__pairing_8h_html_ad02ca271316c01fc7a80715c5ece2e86"><div class="ttname"><a href="astarte__pairing_8h.html#ad02ca271316c01fc7a80715c5ece2e86">astarte_pairing_get_credentials_secret</a></div><div class="ttdeci">astarte_err_t astarte_pairing_get_credentials_secret(const astarte_pairing_config_t *config, char *out, size_t length)</div><div class="ttdoc">get the credentials secret.</div></div>
 <div class="ttc" id="aastarte__pairing_8h_html_ad1026fc994695f706cbda2f4a7adf8a8"><div class="ttname"><a href="astarte__pairing_8h.html#ad1026fc994695f706cbda2f4a7adf8a8">astarte_pairing_get_mqtt_v1_broker_url</a></div><div class="ttdeci">astarte_err_t astarte_pairing_get_mqtt_v1_broker_url(const astarte_pairing_config_t *config, char *out, size_t length)</div><div class="ttdoc">get the Astarte MQTT v1 broker URL.</div></div>
 <div class="ttc" id="aastarte__pairing_8h_html_af6d3d9612598125518f14cdd229e89ba"><div class="ttname"><a href="astarte__pairing_8h.html#af6d3d9612598125518f14cdd229e89ba">astarte_pairing_get_mqtt_v1_credentials</a></div><div class="ttdeci">astarte_err_t astarte_pairing_get_mqtt_v1_credentials(const astarte_pairing_config_t *config, const char *csr, char *out, size_t length)</div><div class="ttdoc">obtain a new Astarte MQTT v1 certificate.</div></div>
-<div class="ttc" id="astructastarte__pairing__config__t_html"><div class="ttname"><a href="structastarte__pairing__config__t.html">astarte_pairing_config_t</a></div><div class="ttdef"><b>Definition:</b> astarte_pairing.h:20</div></div>
+<div class="ttc" id="astructastarte__pairing__config_html"><div class="ttname"><a href="structastarte__pairing__config.html">astarte_pairing_config</a></div><div class="ttdef"><b>Definition:</b> astarte_pairing.h:20</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

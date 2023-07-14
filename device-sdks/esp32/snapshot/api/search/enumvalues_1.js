@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ownership_5fdevice_351',['OWNERSHIP_DEVICE',['../astarte__interface_8h.html#ab500ca5a223d2a6a1df8843fda23fa82a424d08cb9b23b27a9c41ec6a5c76e1aa',1,'astarte_interface.h']]],
-  ['ownership_5fserver_352',['OWNERSHIP_SERVER',['../astarte__interface_8h.html#ab500ca5a223d2a6a1df8843fda23fa82afe5eff5d9794bd8f6daa84a6f740058a',1,'astarte_interface.h']]]
+  ['type_5fdatastream_359',['TYPE_DATASTREAM',['../astarte__interface_8h.html#a5bc39e30e5f3291498195dac025388f8a3e4e46e992433e2101b2624c549bc3c0',1,'astarte_interface.h']]],
+  ['type_5fproperties_360',['TYPE_PROPERTIES',['../astarte__interface_8h.html#a5bc39e30e5f3291498195dac025388f8a8e2d2f7fbc3959527ca289772fb9e742',1,'astarte_interface.h']]]
 ];

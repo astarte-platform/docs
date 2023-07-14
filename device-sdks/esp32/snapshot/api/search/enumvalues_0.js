@@ -1,24 +1,5 @@
 var searchData=
 [
-  ['astarte_5ferr_330',['ASTARTE_ERR',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a425117467cbed07e158966a5f4ea666b',1,'astarte.h']]],
-  ['astarte_5ferr_5falready_5fexists_331',['ASTARTE_ERR_ALREADY_EXISTS',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a88190220a0fb1aa5ff2ce5e444d01fce',1,'astarte.h']]],
-  ['astarte_5ferr_5fapi_332',['ASTARTE_ERR_API',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23ae10907321ddf0f2364b7eac25047f55e',1,'astarte.h']]],
-  ['astarte_5ferr_5fauth_333',['ASTARTE_ERR_AUTH',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a82de41c505aaa77069523c0255fd874d',1,'astarte.h']]],
-  ['astarte_5ferr_5fdevice_5fnot_5fready_334',['ASTARTE_ERR_DEVICE_NOT_READY',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23ae1eed2193d09e917242ee14f67669239',1,'astarte.h']]],
-  ['astarte_5ferr_5fesp_5fsdk_335',['ASTARTE_ERR_ESP_SDK',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23ab8de1ce692b6ede8eaee54b2a2385c7e',1,'astarte.h']]],
-  ['astarte_5ferr_5fhttp_336',['ASTARTE_ERR_HTTP',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a6254410c0f4d610c6994f60381a27e85',1,'astarte.h']]],
-  ['astarte_5ferr_5finvalid_5finterface_5fpath_337',['ASTARTE_ERR_INVALID_INTERFACE_PATH',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a8ca4c46f237fe1658ad507a35759b09d',1,'astarte.h']]],
-  ['astarte_5ferr_5finvalid_5finterface_5fversion_338',['ASTARTE_ERR_INVALID_INTERFACE_VERSION',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a4958df8730ba597a7d21ddba1453c64d',1,'astarte.h']]],
-  ['astarte_5ferr_5finvalid_5fintrospection_339',['ASTARTE_ERR_INVALID_INTROSPECTION',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a94f6b5ce42584672189f2d3ad988b7fb',1,'astarte.h']]],
-  ['astarte_5ferr_5finvalid_5fqos_340',['ASTARTE_ERR_INVALID_QOS',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23afe75bb95b1e020d382639d18d01124eb',1,'astarte.h']]],
-  ['astarte_5ferr_5fio_341',['ASTARTE_ERR_IO',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a908e101d3b6bd9ee7d4498f646628784',1,'astarte.h']]],
-  ['astarte_5ferr_5fmbed_5ftls_342',['ASTARTE_ERR_MBED_TLS',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23ab02cdebf5478950b8ce47157196f1f9b',1,'astarte.h']]],
-  ['astarte_5ferr_5fno_5fjwt_343',['ASTARTE_ERR_NO_JWT',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a75103e956d9c310647f70477f2fbcd70',1,'astarte.h']]],
-  ['astarte_5ferr_5fnot_5ffound_344',['ASTARTE_ERR_NOT_FOUND',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a05f5844fc3238a1c1c4492ae54d91ec9',1,'astarte.h']]],
-  ['astarte_5ferr_5fnvs_345',['ASTARTE_ERR_NVS',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a0275c64d8e4c737207b6fc0a70fa56ca',1,'astarte.h']]],
-  ['astarte_5ferr_5fnvs_5fnot_5finitialized_346',['ASTARTE_ERR_NVS_NOT_INITIALIZED',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a2a3a08c0e41c9cc3beaa74435aca52e6',1,'astarte.h']]],
-  ['astarte_5ferr_5fout_5fof_5fmemory_347',['ASTARTE_ERR_OUT_OF_MEMORY',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23ad01ce2e37613f8e289b1b687d68aa1cb',1,'astarte.h']]],
-  ['astarte_5ferr_5fpartition_5fscheme_348',['ASTARTE_ERR_PARTITION_SCHEME',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a9d7f931ba41fdfcd99f0f64f46dbf6bf',1,'astarte.h']]],
-  ['astarte_5ferr_5fpublish_349',['ASTARTE_ERR_PUBLISH',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23a2fe1092cb206aacd1aa92e621b110ed4',1,'astarte.h']]],
-  ['astarte_5fok_350',['ASTARTE_OK',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23ac89e7efe721137fb00c7ea84314c5144',1,'astarte.h']]]
+  ['ownership_5fdevice_357',['OWNERSHIP_DEVICE',['../astarte__interface_8h.html#ab500ca5a223d2a6a1df8843fda23fa82a424d08cb9b23b27a9c41ec6a5c76e1aa',1,'astarte_interface.h']]],
+  ['ownership_5fserver_358',['OWNERSHIP_SERVER',['../astarte__interface_8h.html#ab500ca5a223d2a6a1df8843fda23fa82afe5eff5d9794bd8f6daa84a6f740058a',1,'astarte_interface.h']]]
 ];

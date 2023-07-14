@@ -9,11 +9,9 @@ var astarte__credentials_8h =
     [ "astarte_credentials_fetch_t", "astarte__credentials_8h.html#aa2e27d25151306b3fb7053f9fafb7e2e", null ],
     [ "astarte_credentials_remove_t", "astarte__credentials_8h.html#a23171e3ce7f063da13d885aed399cc28", null ],
     [ "astarte_credentials_store_t", "astarte__credentials_8h.html#ae0fc973ca22736180c60981fa416a912", null ],
-    [ "credential_type_t", "astarte__credentials_8h.html#ad21bac5d5c20920fc4e009ec4e720896", [
-      [ "ASTARTE_CREDENTIALS_CSR", "astarte__credentials_8h.html#ad21bac5d5c20920fc4e009ec4e720896a202ed271a1c0f0718f59aab689db9c94", null ],
-      [ "ASTARTE_CREDENTIALS_KEY", "astarte__credentials_8h.html#ad21bac5d5c20920fc4e009ec4e720896a4bb7834b38434a7c6660f1c867185861", null ],
-      [ "ASTARTE_CREDENTIALS_CERTIFICATE", "astarte__credentials_8h.html#ad21bac5d5c20920fc4e009ec4e720896a05b013cc086638ae6e13fa7d340f3c2a", null ]
-    ] ],
+    [ "credential_type_t", "astarte__credentials_8h.html#a5743c17789e25b9cc7127ebb58b4a257", null ],
+    [ "credential_type_t", "astarte__credentials_8h.html#ad21bac5d5c20920fc4e009ec4e720896", null ],
+    [ "__attribute__", "astarte__credentials_8h.html#a3e557e93792f7ae4539efbdaa3b00477", null ],
     [ "astarte_credentials_create_csr", "astarte__credentials_8h.html#a4c156ec09670b219275fd55fd70f7a71", null ],
     [ "astarte_credentials_create_key", "astarte__credentials_8h.html#a3d7d614e71f6074cd24245ff62994dc0", null ],
     [ "astarte_credentials_delete_certificate", "astarte__credentials_8h.html#a87a32a961f2cdaeb9b8ad756a356c195", null ],
@@ -39,5 +37,9 @@ var astarte__credentials_8h =
     [ "astarte_credentials_set_storage_context", "astarte__credentials_8h.html#a56af6f4e93f18d8dd420b88003614c4b", null ],
     [ "astarte_credentials_set_stored_credentials_secret", "astarte__credentials_8h.html#a86600c5d614c8bd08975d18f81a60000", null ],
     [ "astarte_credentials_store", "astarte__credentials_8h.html#a66c1f534646ea0c6ee387a3ec76766bc", null ],
-    [ "astarte_credentials_use_nvs_storage", "astarte__credentials_8h.html#ae13318e9de26d3e2d52d838ccd271671", null ]
+    [ "astarte_credentials_use_nvs_storage", "astarte__credentials_8h.html#ae13318e9de26d3e2d52d838ccd271671", null ],
+    [ "__attribute__", "astarte__credentials_8h.html#a915d267a2bbc20bb20ab02b6fdac8628", null ],
+    [ "ASTARTE_CREDENTIALS_CERTIFICATE", "astarte__credentials_8h.html#a8d0b4e3b727e0cf84d9fb1377863d7ca", null ],
+    [ "ASTARTE_CREDENTIALS_CSR", "astarte__credentials_8h.html#a169dddf7a0f83f285801e4c2ecfc1682", null ],
+    [ "ASTARTE_CREDENTIALS_KEY", "astarte__credentials_8h.html#ada75e6daf2fc3fc9da1c33da24cce4d9", null ]
 ];
