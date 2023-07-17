@@ -129,12 +129,12 @@ struct <a class="el" href="structastarte__bson__serializer__t.html">astarte_bson
 <tr class="memitem:a16d798a63ac712148a17c2bc66ca09fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__bson__serializer_8h.html#a16d798a63ac712148a17c2bc66ca09fb">astarte_bson_serializer_destroy</a> (astarte_bson_serializer_handle_t bson)</td></tr>
 <tr class="memdesc:a16d798a63ac712148a17c2bc66ca09fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">destroy given BSON serializer instance.  <a href="astarte__bson__serializer_8h.html#a16d798a63ac712148a17c2bc66ca09fb">More...</a><br /></td></tr>
 <tr class="separator:a16d798a63ac712148a17c2bc66ca09fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e17dd6f2586953ec7499e8aff6bf3b5"><td class="memItemLeft" align="right" valign="top">const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__bson__serializer_8h.html#a7e17dd6f2586953ec7499e8aff6bf3b5">astarte_bson_serializer_get_document</a> (astarte_bson_serializer_handle_t bson, size_t *size)</td></tr>
-<tr class="memdesc:a7e17dd6f2586953ec7499e8aff6bf3b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">getter for the BSON serializer internal buffer.  <a href="astarte__bson__serializer_8h.html#a7e17dd6f2586953ec7499e8aff6bf3b5">More...</a><br /></td></tr>
-<tr class="separator:a7e17dd6f2586953ec7499e8aff6bf3b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90e0749280ebc45979aa15c14c90099f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__bson__serializer_8h.html#a90e0749280ebc45979aa15c14c90099f">astarte_bson_serializer_write_document</a> (astarte_bson_serializer_handle_t bson, void *out_buf, int out_buf_len, size_t *out_doc_size)</td></tr>
-<tr class="memdesc:a90e0749280ebc45979aa15c14c90099f"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy BSON serializer internal buffer to a different buffer.  <a href="astarte__bson__serializer_8h.html#a90e0749280ebc45979aa15c14c90099f">More...</a><br /></td></tr>
-<tr class="separator:a90e0749280ebc45979aa15c14c90099f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70741f4ae13b1b464d6c57d7edcb6b3c"><td class="memItemLeft" align="right" valign="top">const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__bson__serializer_8h.html#a70741f4ae13b1b464d6c57d7edcb6b3c">astarte_bson_serializer_get_document</a> (astarte_bson_serializer_handle_t bson, int *size)</td></tr>
+<tr class="memdesc:a70741f4ae13b1b464d6c57d7edcb6b3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">getter for the BSON serializer internal buffer.  <a href="astarte__bson__serializer_8h.html#a70741f4ae13b1b464d6c57d7edcb6b3c">More...</a><br /></td></tr>
+<tr class="separator:a70741f4ae13b1b464d6c57d7edcb6b3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a541992c266ce383a66a3e35f0e796d34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__bson__serializer_8h.html#a541992c266ce383a66a3e35f0e796d34">astarte_bson_serializer_write_document</a> (astarte_bson_serializer_handle_t bson, void *out_buf, int out_buf_len, int *out_doc_size)</td></tr>
+<tr class="memdesc:a541992c266ce383a66a3e35f0e796d34"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy BSON serializer internal buffer to a different buffer.  <a href="astarte__bson__serializer_8h.html#a541992c266ce383a66a3e35f0e796d34">More...</a><br /></td></tr>
+<tr class="separator:a541992c266ce383a66a3e35f0e796d34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5432a871e11f395cf93642dde3c7ce6"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte__bson__serializer_8h.html#aa5432a871e11f395cf93642dde3c7ce6">astarte_bson_serializer_document_size</a> (astarte_bson_serializer_handle_t bson)</td></tr>
 <tr class="memdesc:aa5432a871e11f395cf93642dde3c7ce6"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the document size  <a href="astarte__bson__serializer_8h.html#aa5432a871e11f395cf93642dde3c7ce6">More...</a><br /></td></tr>
 <tr class="separator:aa5432a871e11f395cf93642dde3c7ce6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1013,8 +1013,8 @@ struct <a class="el" href="structastarte__byte__array__t.html">astarte_byte_arra
 
 </div>
 </div>
-<a id="a7e17dd6f2586953ec7499e8aff6bf3b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e17dd6f2586953ec7499e8aff6bf3b5">&#9670;&nbsp;</a></span>astarte_bson_serializer_get_document()</h2>
+<a id="a70741f4ae13b1b464d6c57d7edcb6b3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70741f4ae13b1b464d6c57d7edcb6b3c">&#9670;&nbsp;</a></span>astarte_bson_serializer_get_document()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1028,7 +1028,7 @@ struct <a class="el" href="structastarte__byte__array__t.html">astarte_byte_arra
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramtype">int *&#160;</td>
           <td class="paramname"><em>size</em>&#160;</td>
         </tr>
         <tr>
@@ -1098,8 +1098,8 @@ struct <a class="el" href="structastarte__byte__array__t.html">astarte_byte_arra
 
 </div>
 </div>
-<a id="a90e0749280ebc45979aa15c14c90099f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a90e0749280ebc45979aa15c14c90099f">&#9670;&nbsp;</a></span>astarte_bson_serializer_write_document()</h2>
+<a id="a541992c266ce383a66a3e35f0e796d34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a541992c266ce383a66a3e35f0e796d34">&#9670;&nbsp;</a></span>astarte_bson_serializer_write_document()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1125,7 +1125,7 @@ struct <a class="el" href="structastarte__byte__array__t.html">astarte_byte_arra
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramtype">int *&#160;</td>
           <td class="paramname"><em>out_doc_size</em>&#160;</td>
         </tr>
         <tr>
