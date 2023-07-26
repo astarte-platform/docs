@@ -12,6 +12,14 @@ device.crypto module
    :undoc-members:
    :show-inheritance:
 
+device.database module
+----------------------
+
+.. automodule:: device.database
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 device.device module
 --------------------
 

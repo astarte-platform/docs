@@ -126,11 +126,177 @@
 </dd></dl>
 
 </section>
+<section id="module-device.database">
+<span id="device-database-module"></span><h2>device.database module<a class="headerlink" href="#module-device.database" title="Permalink to this heading">¶</a></h2>
+<p>API for an SQLite database to be used for Astarte properties persistency.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="device.database.AstarteDatabase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.database.</span></span><span class="sig-name descname"><span class="pre">AstarteDatabase</span></span><a class="headerlink" href="#device.database.AstarteDatabase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Abstract class for a database that can be used to provide persistency to the properties.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabase.clear">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabase.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fully clear the database of all the properties.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabase.delete_prop">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete_prop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabase.delete_prop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a property from the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interface</strong> (<em>str</em>) – The interface name.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – The path to the property endpoint.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabase.load_all_props">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_all_props</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">object</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#device.database.AstarteDatabase.load_all_props" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load all the properties stored in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list containing all the propeties stored in the database.
+Each element of the list is a tuple in the format:
+(interface, interface major version, path, value)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[tuple[str, int, str, object]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabase.load_prop">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_prop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">major</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">object</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabase.load_prop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a property from the database. If a property is found but the major version does not
+match, the property in the database will be deleted and None will be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interface</strong> (<em>str</em>) – The interface name.</p></li>
+<li><p><strong>major</strong> (<em>int</em>) – The major version for the interface.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – The path to the property endpoint.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The property value if the property is present and the provided interface major
+version matches the interface version stored in the database. None otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>object | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabase.store_prop">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">store_prop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">major</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabase.store_prop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store a property value in the database. It will overwrite the previous value where present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interface</strong> (<em>str</em>) – The interface name.</p></li>
+<li><p><strong>major</strong> (<em>int</em>) – The major version for the interface.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – The path to the property endpoint.</p></li>
+<li><p><strong>value</strong> (<em>object</em>) – The new value for the property.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="device.database.AstarteDatabaseSQLite">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.database.</span></span><span class="sig-name descname"><span class="pre">AstarteDatabaseSQLite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.database.AstarteDatabaseSQLite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.database.AstarteDatabase" title="device.database.AstarteDatabase"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteDatabase</span></code></a></p>
+<p>An implementation for the abstract AstarteDatabase class. This implementation uses the standard
+SQLite library of python to implement property persistency.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabaseSQLite.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabaseSQLite.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fully clear the database of all the properties.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabaseSQLite.delete_prop">
+<span class="sig-name descname"><span class="pre">delete_prop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabaseSQLite.delete_prop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a property from the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interface</strong> (<em>str</em>) – See documentation in AstarteDatabase.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – See documentation in AstarteDatabase.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabaseSQLite.load_all_props">
+<span class="sig-name descname"><span class="pre">load_all_props</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">object</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#device.database.AstarteDatabaseSQLite.load_all_props" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load all the properties stored in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>See documentation in AstarteDatabase.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[tuple[str, int, str, object]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabaseSQLite.load_prop">
+<span class="sig-name descname"><span class="pre">load_prop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">major</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">object</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabaseSQLite.load_prop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a property from the database. If a property is found but the major version does not
+match, the property in the database will be deleted and None will be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interface</strong> (<em>str</em>) – See documentation in AstarteDatabase.</p></li>
+<li><p><strong>major</strong> (<em>int</em>) – See documentation in AstarteDatabase.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – See documentation in AstarteDatabase.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>See documentation in AstarteDatabase.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>object | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabaseSQLite.store_prop">
+<span class="sig-name descname"><span class="pre">store_prop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">major</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabaseSQLite.store_prop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store a property value in the database. It will overwrite the previous value where present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interface</strong> (<em>str</em>) – See documentation in AstarteDatabase.</p></li>
+<li><p><strong>major</strong> (<em>int</em>) – See documentation in AstarteDatabase.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – See documentation in AstarteDatabase.</p></li>
+<li><p><strong>value</strong> (<em>object</em>) – See documentation in AstarteDatabase.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
 <section id="module-device.device">
 <span id="device-device-module"></span><h2>device.device module<a class="headerlink" href="#module-device.device" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="device.device.Device">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device.</span></span><span class="sig-name descname"><span class="pre">Device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credentials_secret</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistency_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">asyncio.AbstractEventLoop</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device.Device" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device.</span></span><span class="sig-name descname"><span class="pre">Device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credentials_secret</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistency_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#device.database.AstarteDatabase" title="device.database.AstarteDatabase"><span class="pre">AstarteDatabase</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">asyncio.AbstractEventLoop</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device.Device" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Basic class to define an Astarte Device.</p>
 <p>Device represents an Astarte Device. It is the base class used for managing the Device
@@ -1163,6 +1329,25 @@ Pairing API.</p></li>
 <li><a class="reference internal" href="#device.crypto.device_has_certificate"><code class="docutils literal notranslate"><span class="pre">device_has_certificate()</span></code></a></li>
 <li><a class="reference internal" href="#device.crypto.generate_csr"><code class="docutils literal notranslate"><span class="pre">generate_csr()</span></code></a></li>
 <li><a class="reference internal" href="#device.crypto.import_device_certificate"><code class="docutils literal notranslate"><span class="pre">import_device_certificate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-device.database">device.database module</a><ul>
+<li><a class="reference internal" href="#device.database.AstarteDatabase"><code class="docutils literal notranslate"><span class="pre">AstarteDatabase</span></code></a><ul>
+<li><a class="reference internal" href="#device.database.AstarteDatabase.clear"><code class="docutils literal notranslate"><span class="pre">AstarteDatabase.clear()</span></code></a></li>
+<li><a class="reference internal" href="#device.database.AstarteDatabase.delete_prop"><code class="docutils literal notranslate"><span class="pre">AstarteDatabase.delete_prop()</span></code></a></li>
+<li><a class="reference internal" href="#device.database.AstarteDatabase.load_all_props"><code class="docutils literal notranslate"><span class="pre">AstarteDatabase.load_all_props()</span></code></a></li>
+<li><a class="reference internal" href="#device.database.AstarteDatabase.load_prop"><code class="docutils literal notranslate"><span class="pre">AstarteDatabase.load_prop()</span></code></a></li>
+<li><a class="reference internal" href="#device.database.AstarteDatabase.store_prop"><code class="docutils literal notranslate"><span class="pre">AstarteDatabase.store_prop()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#device.database.AstarteDatabaseSQLite"><code class="docutils literal notranslate"><span class="pre">AstarteDatabaseSQLite</span></code></a><ul>
+<li><a class="reference internal" href="#device.database.AstarteDatabaseSQLite.clear"><code class="docutils literal notranslate"><span class="pre">AstarteDatabaseSQLite.clear()</span></code></a></li>
+<li><a class="reference internal" href="#device.database.AstarteDatabaseSQLite.delete_prop"><code class="docutils literal notranslate"><span class="pre">AstarteDatabaseSQLite.delete_prop()</span></code></a></li>
+<li><a class="reference internal" href="#device.database.AstarteDatabaseSQLite.load_all_props"><code class="docutils literal notranslate"><span class="pre">AstarteDatabaseSQLite.load_all_props()</span></code></a></li>
+<li><a class="reference internal" href="#device.database.AstarteDatabaseSQLite.load_prop"><code class="docutils literal notranslate"><span class="pre">AstarteDatabaseSQLite.load_prop()</span></code></a></li>
+<li><a class="reference internal" href="#device.database.AstarteDatabaseSQLite.store_prop"><code class="docutils literal notranslate"><span class="pre">AstarteDatabaseSQLite.store_prop()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-device.device">device.device module</a><ul>
