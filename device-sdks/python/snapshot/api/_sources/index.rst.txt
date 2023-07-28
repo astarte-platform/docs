@@ -1,21 +1,16 @@
-.. Astarte Device SDK Python documentation master file, created by
-   sphinx-quickstart on Mon Mar 14 16:58:11 2022.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Welcome to Astarte Device SDK Python's documentation!
-=====================================================
+.. Astarte Device SDK Python documentation master file.
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :caption: Contents
+   :maxdepth: 1
+   :hidden:
 
    modules
+
 .. mdinclude:: ../README.md
 
-Indices and tables
+Indices
 ==================
 
 * :ref:`genindex`
 * :ref:`modindex`
-* :ref:`search`
