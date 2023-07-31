@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>astarte &mdash; Astarte Device SDK Python 0.12.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="device package" href="device.html" />
+    <link rel="prev" title="Astarte Python Device SDK" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Astarte Device SDK Python
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.12
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">astarte</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="device.html">device package</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Astarte Device SDK Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>astarte</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="astarte">
+<h1>astarte<a class="headerlink" href="#astarte" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="device.html">device package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="device.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="device.html#module-device.crypto">device.crypto module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.crypto.certificate_is_valid"><code class="docutils literal notranslate"><span class="pre">certificate_is_valid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.crypto.device_has_certificate"><code class="docutils literal notranslate"><span class="pre">device_has_certificate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.crypto.generate_csr"><code class="docutils literal notranslate"><span class="pre">generate_csr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.crypto.import_device_certificate"><code class="docutils literal notranslate"><span class="pre">import_device_certificate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="device.html#module-device.database">device.database module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.database.AstarteDatabase"><code class="docutils literal notranslate"><span class="pre">AstarteDatabase</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabase.clear"><code class="docutils literal notranslate"><span class="pre">AstarteDatabase.clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabase.delete_prop"><code class="docutils literal notranslate"><span class="pre">AstarteDatabase.delete_prop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabase.load_all_props"><code class="docutils literal notranslate"><span class="pre">AstarteDatabase.load_all_props()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabase.load_prop"><code class="docutils literal notranslate"><span class="pre">AstarteDatabase.load_prop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabase.store_prop"><code class="docutils literal notranslate"><span class="pre">AstarteDatabase.store_prop()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.database.AstarteDatabaseSQLite"><code class="docutils literal notranslate"><span class="pre">AstarteDatabaseSQLite</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabaseSQLite.clear"><code class="docutils literal notranslate"><span class="pre">AstarteDatabaseSQLite.clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabaseSQLite.delete_prop"><code class="docutils literal notranslate"><span class="pre">AstarteDatabaseSQLite.delete_prop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabaseSQLite.load_all_props"><code class="docutils literal notranslate"><span class="pre">AstarteDatabaseSQLite.load_all_props()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabaseSQLite.load_prop"><code class="docutils literal notranslate"><span class="pre">AstarteDatabaseSQLite.load_prop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabaseSQLite.store_prop"><code class="docutils literal notranslate"><span class="pre">AstarteDatabaseSQLite.store_prop()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="device.html#module-device.device">device.device module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.device.Device"><code class="docutils literal notranslate"><span class="pre">Device</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.device.Device.on_connected"><code class="docutils literal notranslate"><span class="pre">Device.on_connected</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.device.Device.on_disconnected"><code class="docutils literal notranslate"><span class="pre">Device.on_disconnected</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.device.Device.on_data_received"><code class="docutils literal notranslate"><span class="pre">Device.on_data_received</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.device.Device.add_interface"><code class="docutils literal notranslate"><span class="pre">Device.add_interface()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.device.Device.add_interface_from_file"><code class="docutils literal notranslate"><span class="pre">Device.add_interface_from_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.device.Device.add_interfaces_from_dir"><code class="docutils literal notranslate"><span class="pre">Device.add_interfaces_from_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.device.Device.connect"><code class="docutils literal notranslate"><span class="pre">Device.connect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.device.Device.disconnect"><code class="docutils literal notranslate"><span class="pre">Device.disconnect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.device.Device.get_device_id"><code class="docutils literal notranslate"><span class="pre">Device.get_device_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.device.Device.is_connected"><code class="docutils literal notranslate"><span class="pre">Device.is_connected()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.device.Device.remove_interface"><code class="docutils literal notranslate"><span class="pre">Device.remove_interface()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.device.Device.send"><code class="docutils literal notranslate"><span class="pre">Device.send()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.device.Device.send_aggregate"><code class="docutils literal notranslate"><span class="pre">Device.send_aggregate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.device.Device.unset_property"><code class="docutils literal notranslate"><span class="pre">Device.unset_property()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="device.html#module-device.exceptions">device.exceptions module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.exceptions.APIError"><code class="docutils literal notranslate"><span class="pre">APIError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.exceptions.AstarteError"><code class="docutils literal notranslate"><span class="pre">AstarteError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.exceptions.AuthorizationError"><code class="docutils literal notranslate"><span class="pre">AuthorizationError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.exceptions.DeviceAlreadyRegisteredError"><code class="docutils literal notranslate"><span class="pre">DeviceAlreadyRegisteredError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.exceptions.InterfaceFileDecodeError"><code class="docutils literal notranslate"><span class="pre">InterfaceFileDecodeError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.exceptions.InterfaceFileNotFoundError"><code class="docutils literal notranslate"><span class="pre">InterfaceFileNotFoundError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.exceptions.InterfaceNotFoundError"><code class="docutils literal notranslate"><span class="pre">InterfaceNotFoundError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.exceptions.JWTGenerationError"><code class="docutils literal notranslate"><span class="pre">JWTGenerationError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.exceptions.PersistencyDirectoryNotFoundError"><code class="docutils literal notranslate"><span class="pre">PersistencyDirectoryNotFoundError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.exceptions.ValidationError"><code class="docutils literal notranslate"><span class="pre">ValidationError</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="device.html#module-device.interface">device.interface module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.interface.Interface"><code class="docutils literal notranslate"><span class="pre">Interface</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.interface.Interface.name"><code class="docutils literal notranslate"><span class="pre">Interface.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.interface.Interface.version_major"><code class="docutils literal notranslate"><span class="pre">Interface.version_major</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.interface.Interface.version_minor"><code class="docutils literal notranslate"><span class="pre">Interface.version_minor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.interface.Interface.type"><code class="docutils literal notranslate"><span class="pre">Interface.type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.interface.Interface.ownership"><code class="docutils literal notranslate"><span class="pre">Interface.ownership</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.interface.Interface.aggregation"><code class="docutils literal notranslate"><span class="pre">Interface.aggregation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.interface.Interface.mappings"><code class="docutils literal notranslate"><span class="pre">Interface.mappings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.interface.Interface.get_mapping"><code class="docutils literal notranslate"><span class="pre">Interface.get_mapping()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.interface.Interface.get_reliability"><code class="docutils literal notranslate"><span class="pre">Interface.get_reliability()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.interface.Interface.is_aggregation_object"><code class="docutils literal notranslate"><span class="pre">Interface.is_aggregation_object()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.interface.Interface.is_property_endpoint_resettable"><code class="docutils literal notranslate"><span class="pre">Interface.is_property_endpoint_resettable()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.interface.Interface.is_server_owned"><code class="docutils literal notranslate"><span class="pre">Interface.is_server_owned()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.interface.Interface.is_type_properties"><code class="docutils literal notranslate"><span class="pre">Interface.is_type_properties()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.interface.Interface.validate"><code class="docutils literal notranslate"><span class="pre">Interface.validate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.interface.Interface.validate_object_complete"><code class="docutils literal notranslate"><span class="pre">Interface.validate_object_complete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.interface.Interface.validate_path"><code class="docutils literal notranslate"><span class="pre">Interface.validate_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.interface.Interface.validate_payload"><code class="docutils literal notranslate"><span class="pre">Interface.validate_payload()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="device.html#module-device.introspection">device.introspection module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.introspection.Introspection"><code class="docutils literal notranslate"><span class="pre">Introspection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.introspection.Introspection.add_interface"><code class="docutils literal notranslate"><span class="pre">Introspection.add_interface()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.introspection.Introspection.get_all_interfaces"><code class="docutils literal notranslate"><span class="pre">Introspection.get_all_interfaces()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.introspection.Introspection.get_all_server_owned_interfaces"><code class="docutils literal notranslate"><span class="pre">Introspection.get_all_server_owned_interfaces()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.introspection.Introspection.get_interface"><code class="docutils literal notranslate"><span class="pre">Introspection.get_interface()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.introspection.Introspection.remove_interface"><code class="docutils literal notranslate"><span class="pre">Introspection.remove_interface()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="device.html#module-device.mapping">device.mapping module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.mapping.MapType"><code class="docutils literal notranslate"><span class="pre">MapType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.mapping.Mapping"><code class="docutils literal notranslate"><span class="pre">Mapping</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.mapping.Mapping.endpoint"><code class="docutils literal notranslate"><span class="pre">Mapping.endpoint</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.mapping.Mapping.type"><code class="docutils literal notranslate"><span class="pre">Mapping.type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.mapping.Mapping.explicit_timestamp"><code class="docutils literal notranslate"><span class="pre">Mapping.explicit_timestamp</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.mapping.Mapping.reliability"><code class="docutils literal notranslate"><span class="pre">Mapping.reliability</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.mapping.Mapping.validate_path"><code class="docutils literal notranslate"><span class="pre">Mapping.validate_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.mapping.Mapping.validate_payload"><code class="docutils literal notranslate"><span class="pre">Mapping.validate_payload()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.mapping.Mapping.validate_timestamp"><code class="docutils literal notranslate"><span class="pre">Mapping.validate_timestamp()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="device.html#module-device.pairing_handler">device.pairing_handler module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.pairing_handler.generate_device_id"><code class="docutils literal notranslate"><span class="pre">generate_device_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.pairing_handler.generate_random_device_id"><code class="docutils literal notranslate"><span class="pre">generate_random_device_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.pairing_handler.obtain_device_certificate"><code class="docutils literal notranslate"><span class="pre">obtain_device_certificate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.pairing_handler.obtain_device_transport_information"><code class="docutils literal notranslate"><span class="pre">obtain_device_transport_information()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.pairing_handler.register_device_with_jwt_token"><code class="docutils literal notranslate"><span class="pre">register_device_with_jwt_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.pairing_handler.register_device_with_private_key"><code class="docutils literal notranslate"><span class="pre">register_device_with_private_key()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="device.html#module-device">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="device.html" class="btn btn-neutral float-right" title="device package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Astarte Python Device SDK" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021-2022, SECOMind.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
