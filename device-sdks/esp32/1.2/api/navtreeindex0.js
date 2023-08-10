@@ -200,7 +200,7 @@ var NAVTREEINDEX0 =
 "astarte__device_8h_source.html":[2,0,0,6],
 "astarte__hwid_8h.html":[2,0,0,7],
 "astarte__hwid_8h.html#a609cf3c7198e177e822bb09b0c85c2b3":[2,0,0,7,1],
-"astarte__hwid_8h.html#afb8c259ebde9715948e37b2480aa7ebe":[2,0,0,7,0],
+"astarte__hwid_8h.html#a6fdf8c975250010a3458f489e2fe9352":[2,0,0,7,0],
 "astarte__hwid_8h_source.html":[2,0,0,7],
 "astarte__interface_8h.html":[2,0,0,8],
 "astarte__interface_8h.html#a5bc39e30e5f3291498195dac025388f8":[2,0,0,8,2],

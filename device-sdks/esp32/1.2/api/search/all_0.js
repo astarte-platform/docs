@@ -153,7 +153,7 @@ var searchData=
   ['astarte_5ferr_5fpublish_150',['ASTARTE_ERR_PUBLISH',['../astarte_8h.html#a669c8b32e8df940541fa3de09e3600af',1,'astarte.h']]],
   ['astarte_5ferr_5ft_151',['astarte_err_t',['../astarte_8h.html#a8c619a744449aa507f5e6dedebffea23',1,'astarte.h']]],
   ['astarte_5fhwid_2eh_152',['astarte_hwid.h',['../astarte__hwid_8h.html',1,'']]],
-  ['astarte_5fhwid_5fencode_153',['astarte_hwid_encode',['../astarte__hwid_8h.html#afb8c259ebde9715948e37b2480aa7ebe',1,'astarte_hwid.h']]],
+  ['astarte_5fhwid_5fencode_153',['astarte_hwid_encode',['../astarte__hwid_8h.html#a6fdf8c975250010a3458f489e2fe9352',1,'astarte_hwid.h']]],
   ['astarte_5fhwid_5fget_5fid_154',['astarte_hwid_get_id',['../astarte__hwid_8h.html#a609cf3c7198e177e822bb09b0c85c2b3',1,'astarte_hwid.h']]],
   ['astarte_5finterface_2eh_155',['astarte_interface.h',['../astarte__interface_8h.html',1,'']]],
   ['astarte_5finterface_5fownership_5ft_156',['astarte_interface_ownership_t',['../astarte__interface_8h.html#ab500ca5a223d2a6a1df8843fda23fa82',1,'astarte_interface.h']]],
