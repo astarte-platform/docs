@@ -7,7 +7,8 @@
 Resource Types #    Astarte  AstarteList  AstarteVoyagerIngress  AstarteVoyagerIngressList  Flow  FlowList  Astarte #  Astarte is the Schema for the astartes API
 Appears in:
   AstarteList     Field Description     apiVersion string api.">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="" />
 <meta property="og:description" content="API Reference #  Packages #    api.astarte-platform.org/v1alpha1  api.astarte-platform.org/v1alpha2  ingress.astarte-platform.org/v1alpha1  api.astarte-platform.org/v1alpha1 #  Package v1alpha1 contains API Schema definitions for the api v1alpha1 API group
 Resource Types #    Astarte  AstarteList  AstarteVoyagerIngress  AstarteVoyagerIngressList  Flow  FlowList  Astarte #  Astarte is the Schema for the astartes API
@@ -20,10 +21,10 @@ Appears in:
 
 <title>Index | Astarte Kubernetes Operator APIs</title>
 <link rel="manifest" href="/astarte-kubernetes-operator/23.5/crds/manifest.json">
-<link rel="icon" href="/astarte-kubernetes-operator/23.5/crds/favicon.png" type="image/x-icon">
+<link rel="icon" href="/astarte-kubernetes-operator/23.5/crds/favicon.png" >
 <link rel="stylesheet" href="/astarte-kubernetes-operator/23.5/crds/book.min.f8de3645fe00591b41524aee174e19edd98a22255a2930a0cdc82a94835ba387.css" integrity="sha256-&#43;N42Rf4AWRtBUkruF04Z7dmKIiVaKTCgzcgqlINbo4c=" crossorigin="anonymous">
   <script defer src="/astarte-kubernetes-operator/23.5/crds/flexsearch.min.js"></script>
-  <script defer src="/astarte-kubernetes-operator/23.5/crds/en.search.min.d95178d4d4c81a25e47e12b54a3d47d87e02803ecb40bf8d9086b5c639b36b5b.js" integrity="sha256-2VF41NTIGiXkfhK1Sj1H2H4CgD7LQL&#43;NkIa1xjmza1s=" crossorigin="anonymous"></script>
+  <script defer src="/astarte-kubernetes-operator/23.5/crds/en.search.min.0c431c13434cb5ab46c80d7b5bd51d87c58451bc5b5054ad8341c88f0734f435.js" integrity="sha256-DEMcE0NMtatGyA17W9Udh8WEUbxbUFStg0HIjwc09DU=" crossorigin="anonymous"></script>
 
   <script defer src="/astarte-kubernetes-operator/23.5/crds/sw.min.1245178ab4fe88a5fafd98a3c084befdb26810dca31692c551ee16cb8062afe7.js" integrity="sha256-EkUXirT&#43;iKX6/ZijwIS&#43;/bJoENyjFpLFUe4Wy4Bir&#43;c=" crossorigin="anonymous"></script>
 <!--
@@ -5779,7 +5780,7 @@ https://github.com/alex-shpak/hugo-book
 </tr>
 <tr>
 <td><code>serveMetrics</code> <em>boolean</em></td>
-<td>When true, all /metrics endpoints for Astarte services will be served by the Ingress. Beware this might be a security hole. You can control which IPs can access /metrics with serveMetricsToSubnet. Default: false.</td>
+<td>When true, all /metrics endpoints for Astarte services will be served by a dedicated metrics ingress. Metrics can be gathered by querying the /metrics/<service-name> path. Beware this might be a security hole. You can control which IPs can access /metrics with serveMetricsToSubnet. Default: false.</td>
 </tr>
 <tr>
 <td><code>serveMetricsToSubnet</code> <em>string</em></td>
