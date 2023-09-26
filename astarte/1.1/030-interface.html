@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-96A54C0A.js"></script>
+    <script src="dist/sidebar_items-2FE4F16F.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -168,7 +168,7 @@ the last part of the Interface name, which should be CamelCase.</p><p>Valid exam
 persistent state or synchronization. As a rule of thumb, <code class="inline">datastream</code> interfaces should be used when
 dealing with values such as sensor samples, commands and events. <code class="inline">datastream</code> are stored as time
 series in the database, making them suitable for time span filtering and any other common time
-series operation, and they are not idempotent in the REST API semantics.</p><p>Due to their nature, <code class="inline">datastream</code> interfaces have a number of <a href="#datastream-specific features">additional
+series operation, and they are not idempotent in the REST API semantics.</p><p>Due to their nature, <code class="inline">datastream</code> interfaces have a number of <a href="#datastream-specific-features">additional
 properties</a> which fine tune their behavior.</p><h3 id="properties" class="section-heading">
   <a href="#properties" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">properties</p>
@@ -334,7 +334,7 @@ case, the provided timestamp is used for indexing.</li><li><code class="inline">
 whether data should be considered delivered when the transport successfully sends the data
 regardless of the outcome (<code class="inline">unreliable</code>), when data has been received at least once by the
 recipient (<code class="inline">guaranteed</code>) or when data has been received exactly once by the recipient (<code class="inline">unique</code>).
-When using <code class="inline">reliable</code> data, consider you might incur in additional resource usage on both the
+When using reliable data, consider you might incur in additional resource usage on both the
 transport and the device's end.</li><li><code class="inline">retention</code>: Each mapping can have a <code class="inline">discard</code> (default), <code class="inline">volatile</code>, <code class="inline">stored</code> retention. This
 defines whether data should be discarded if the transport is temporarily uncapable of delivering
 it (<code class="inline">discard</code>), should be kept in a cache in memory (<code class="inline">volatile</code>) or on disk (<code class="inline">stored</code>), and
