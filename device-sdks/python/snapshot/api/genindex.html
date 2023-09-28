@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Index &mdash; Astarte Device SDK Python 0.12.0 documentation</title>
+  <title>Index &mdash; Astarte device SDK Python 0.12.0 documentation</title>
   
 
   
@@ -53,7 +53,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> Astarte Device SDK Python
+            <a href="index.html" class="icon icon-home"> Astarte device SDK Python
           
 
           
@@ -106,7 +106,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Astarte Device SDK Python</a>
+          <a href="index.html">Astarte device SDK Python</a>
         
       </nav>
 
@@ -182,20 +182,22 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="device.html#device.device.Device.add_interface">add_interface() (device.device.Device method)</a>
-
-      <ul>
-        <li><a href="device.html#device.introspection.Introspection.add_interface">(device.introspection.Introspection method)</a>
+      <li><a href="device.html#device.introspection.Introspection.add_interface">add_interface() (device.introspection.Introspection method)</a>
 </li>
-      </ul></li>
       <li><a href="device.html#device.device.Device.add_interface_from_file">add_interface_from_file() (device.device.Device method)</a>
 </li>
-      <li><a href="device.html#device.device.Device.add_interfaces_from_dir">add_interfaces_from_dir() (device.device.Device method)</a>
+      <li><a href="device.html#device.device.Device.add_interface_from_json">add_interface_from_json() (device.device.Device method)</a>
+
+      <ul>
+        <li><a href="device.html#device.device_mqtt.DeviceMqtt.add_interface_from_json">(device.device_mqtt.DeviceMqtt method)</a>
 </li>
-      <li><a href="device.html#device.interface.Interface.aggregation">aggregation (device.interface.Interface attribute)</a>
+      </ul></li>
+      <li><a href="device.html#device.device.Device.add_interfaces_from_dir">add_interfaces_from_dir() (device.device.Device method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="device.html#device.interface.Interface.aggregation">aggregation (device.interface.Interface attribute)</a>
+</li>
       <li><a href="device.html#device.exceptions.APIError">APIError</a>
 </li>
       <li><a href="device.html#device.database.AstarteDatabase">AstarteDatabase (class in device.database)</a>
@@ -223,7 +225,11 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="device.html#device.device.Device.connect">connect() (device.device.Device method)</a>
+
+      <ul>
+        <li><a href="device.html#device.device_mqtt.DeviceMqtt.connect">(device.device_mqtt.DeviceMqtt method)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -267,6 +273,13 @@
 </li>
       </ul></li>
       <li>
+    device.device_mqtt
+
+      <ul>
+        <li><a href="device.html#module-device.device_mqtt">module</a>
+</li>
+      </ul></li>
+      <li>
     device.exceptions
 
       <ul>
@@ -307,8 +320,14 @@
 </li>
       <li><a href="device.html#device.exceptions.DeviceAlreadyRegisteredError">DeviceAlreadyRegisteredError</a>
 </li>
-      <li><a href="device.html#device.device.Device.disconnect">disconnect() (device.device.Device method)</a>
+      <li><a href="device.html#device.device_mqtt.DeviceMqtt">DeviceMqtt (class in device.device_mqtt)</a>
 </li>
+      <li><a href="device.html#device.device.Device.disconnect">disconnect() (device.device.Device method)</a>
+
+      <ul>
+        <li><a href="device.html#device.device_mqtt.DeviceMqtt.disconnect">(device.device_mqtt.DeviceMqtt method)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -339,7 +358,7 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="device.html#device.introspection.Introspection.get_all_server_owned_interfaces">get_all_server_owned_interfaces() (device.introspection.Introspection method)</a>
 </li>
-      <li><a href="device.html#device.device.Device.get_device_id">get_device_id() (device.device.Device method)</a>
+      <li><a href="device.html#device.device_mqtt.DeviceMqtt.get_device_id">get_device_id() (device.device_mqtt.DeviceMqtt method)</a>
 </li>
       <li><a href="device.html#device.introspection.Introspection.get_interface">get_interface() (device.introspection.Introspection method)</a>
 </li>
@@ -369,7 +388,7 @@
 </li>
       <li><a href="device.html#device.interface.Interface.is_aggregation_object">is_aggregation_object() (device.interface.Interface method)</a>
 </li>
-      <li><a href="device.html#device.device.Device.is_connected">is_connected() (device.device.Device method)</a>
+      <li><a href="device.html#device.device_mqtt.DeviceMqtt.is_connected">is_connected() (device.device_mqtt.DeviceMqtt method)</a>
 </li>
       <li><a href="device.html#device.interface.Interface.is_property_endpoint_resettable">is_property_endpoint_resettable() (device.interface.Interface method)</a>
 </li>
@@ -429,6 +448,8 @@
 </li>
         <li><a href="device.html#module-device.device">device.device</a>
 </li>
+        <li><a href="device.html#module-device.device_mqtt">device.device_mqtt</a>
+</li>
         <li><a href="device.html#module-device.exceptions">device.exceptions</a>
 </li>
         <li><a href="device.html#module-device.interface">device.interface</a>
@@ -458,13 +479,13 @@
 </li>
       <li><a href="device.html#device.pairing_handler.obtain_device_transport_information">obtain_device_transport_information() (in module device.pairing_handler)</a>
 </li>
-      <li><a href="device.html#device.device.Device.on_connected">on_connected (device.device.Device attribute)</a>
+      <li><a href="device.html#device.device_mqtt.DeviceMqtt.on_connected">on_connected (device.device_mqtt.DeviceMqtt attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="device.html#device.device.Device.on_data_received">on_data_received (device.device.Device attribute)</a>
 </li>
-      <li><a href="device.html#device.device.Device.on_disconnected">on_disconnected (device.device.Device attribute)</a>
+      <li><a href="device.html#device.device_mqtt.DeviceMqtt.on_disconnected">on_disconnected (device.device_mqtt.DeviceMqtt attribute)</a>
 </li>
       <li><a href="device.html#device.interface.Interface.ownership">ownership (device.interface.Interface attribute)</a>
 </li>
@@ -486,13 +507,15 @@
 </li>
       <li><a href="device.html#device.pairing_handler.register_device_with_private_key">register_device_with_private_key() (in module device.pairing_handler)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="device.html#device.mapping.Mapping.reliability">reliability (device.mapping.Mapping attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="device.html#device.device.Device.remove_interface">remove_interface() (device.device.Device method)</a>
 
       <ul>
+        <li><a href="device.html#device.device_mqtt.DeviceMqtt.remove_interface">(device.device_mqtt.DeviceMqtt method)</a>
+</li>
         <li><a href="device.html#device.introspection.Introspection.remove_interface">(device.introspection.Introspection method)</a>
 </li>
       </ul></li>

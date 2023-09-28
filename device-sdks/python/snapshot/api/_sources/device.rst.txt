@@ -28,6 +28,14 @@ device.device module
    :undoc-members:
    :show-inheritance:
 
+device.device\_mqtt module
+--------------------------
+
+.. automodule:: device.device_mqtt
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 device.exceptions module
 ------------------------
 

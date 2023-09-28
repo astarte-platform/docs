@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>device package &mdash; Astarte Device SDK Python 0.12.0 documentation</title>
+  <title>device package &mdash; Astarte device SDK Python 0.12.0 documentation</title>
   
 
   
@@ -55,7 +55,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> Astarte Device SDK Python
+            <a href="index.html" class="icon icon-home"> Astarte device SDK Python
           
 
           
@@ -109,6 +109,10 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-device.device">device.device module</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#device.device.Device"><code class="docutils literal notranslate"><span class="pre">Device</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-device.device_mqtt">device.device_mqtt module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#device.device_mqtt.DeviceMqtt"><code class="docutils literal notranslate"><span class="pre">DeviceMqtt</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-device.exceptions">device.exceptions module</a><ul>
@@ -166,7 +170,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Astarte Device SDK Python</a>
+          <a href="index.html">Astarte device SDK Python</a>
         
       </nav>
 
@@ -387,7 +391,7 @@ version matches the interface version stored in the database. None otherwise.</p
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.database.</span></span><span class="sig-name descname"><span class="pre">AstarteDatabaseSQLite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.database.AstarteDatabaseSQLite" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#device.database.AstarteDatabase" title="device.database.AstarteDatabase"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteDatabase</span></code></a></p>
 <p>An implementation for the abstract AstarteDatabase class. This implementation uses the standard
-SQLite library of python to implement property persistency.</p>
+SQLite library of Python to implement property persistency.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="device.database.AstarteDatabaseSQLite.clear">
 <span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabaseSQLite.clear" title="Permalink to this definition">¶</a></dt>
@@ -467,54 +471,28 @@ match, the property in the database will be deleted and None will be returned.</
 <span id="device-device-module"></span><h2>device.device module<a class="headerlink" href="#module-device.device" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="device.device.Device">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device.</span></span><span class="sig-name descname"><span class="pre">Device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credentials_secret</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistency_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AstarteDatabase</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AbstractEventLoop</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device.Device" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Basic class to define an Astarte Device.</p>
-<p>Device represents an Astarte Device. It is the base class used for managing the Device
-lifecycle and data. Users should instantiate a Device with the right credentials and connect
-it to the configured instance to start working with it.</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device.</span></span><span class="sig-name descname"><span class="pre">Device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AbstractEventLoop</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device.Device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Abstract class defining the minumum APIs for an Astarte device implementation.</p>
+<p>This class is agnostic of a transport layer. It should be used to implement transport specific
+children classes.</p>
 <p><strong>Threading and Concurrency</strong></p>
-<p>This SDK uses paho-mqtt under the hood to provide Transport connectivity. As such,
-it is bound by paho-mqtt’s behaviors in terms of threading. When a Device connects,
-a new thread is spawned and an event loop is run there to manage all the connection events.</p>
-<p>This SDK spares the user from this detail - on the other hand, when configuring callbacks,
-threading has to be taken into account. When creating a Device, it is possible to specify an
-asyncio.loop() to automatically manage this detail. When a loop is specified, all callbacks
-will be called in the context of that loop, guaranteeing thread-safety and making sure that
-the user does not have to take any further action beyond consuming the callback.</p>
+<p>When configuring callbacks, threading has to be taken into account, as depending on the
+transport implementation it might be required to run them on a different thread from the device
+class. When creating a device, it is possible to specify an asyncio.loop() to automatically
+manage this detail. When a loop is specified, all callbacks will be called in the context of
+that loop, guaranteeing thread-safety and making sure that the user does not have to take any
+further action beyond consuming the callback.</p>
 <p>When a loop is not specified, callbacks are invoked just as standard Python functions. This
 inevitably means that the user will have to take into account the fact that the callback will
-be invoked in the Thread of the MQTT connection. In particular, blocking the execution of
-that thread might cause deadlocks and, in general, malfunctions in the SDK. For this reason, the
-usage of asyncio is strongly recommended.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="device.device.Device.on_connected">
-<span class="sig-name descname"><span class="pre">on_connected</span></span><a class="headerlink" href="#device.device.Device.on_connected" title="Permalink to this definition">¶</a></dt>
-<dd><p>A function that will be invoked everytime the device successfully connects.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Callable[[<a class="reference internal" href="#device.device.Device" title="device.device.Device">Device</a>], None]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="device.device.Device.on_disconnected">
-<span class="sig-name descname"><span class="pre">on_disconnected</span></span><a class="headerlink" href="#device.device.Device.on_disconnected" title="Permalink to this definition">¶</a></dt>
-<dd><p>A function that will be invoked everytime the device disconnects. The int parameter bears
-the disconnect reason.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Callable[[<a class="reference internal" href="#device.device.Device" title="device.device.Device">Device</a>, int], None]</p>
-</dd>
-</dl>
-</dd></dl>
-
+be invoked in the same thread a the transport implementation. In particular, blocking the
+execution of the transport thread might cause deadlocks and, in general, malfunctions in the
+SDK. For this reason, the usage of asyncio is strongly recommended.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="device.device.Device.on_data_received">
 <span class="sig-name descname"><span class="pre">on_data_received</span></span><a class="headerlink" href="#device.device.Device.on_data_received" title="Permalink to this definition">¶</a></dt>
 <dd><p>A function that will be invoked everytime data is received from Astarte. Parameters are
-the Device itself, the Interface name, the Interface path, and the payload. The payload
+the device itself, the Interface name, the Interface path, and the payload. The payload
 will reflect the type defined in the Interface.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
@@ -524,34 +502,33 @@ will reflect the type defined in the Interface.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="device.device.Device.add_interface">
-<span class="sig-name descname"><span class="pre">add_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_definition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device.Device.add_interface" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds an Interface to the Device</p>
-<p>This will add an Interface definition to the Device. It has to be called before
-<a class="reference internal" href="#device.device.Device.connect" title="device.device.Device.connect"><code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code></a>, as it will be used for building the Device Introspection.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>interface_definition</strong> (<em>dict</em>) – An Astarte Interface definition in the form of a Python dictionary. Usually obtained
-by using json.loads() on an Interface file.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="device.device.Device.add_interface_from_file">
 <span class="sig-name descname"><span class="pre">add_interface_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device.Device.add_interface_from_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds an interface to the device</p>
-<p>This will add an interface definition to the device. It has to be called before
-<a class="reference internal" href="#device.device.Device.connect" title="device.device.Device.connect"><code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code></a>, as it will be used for building the device introspection.</p>
+<dd><p>Adds an interface to the device, from a json file.</p>
+<p>It has to be called before <a class="reference internal" href="#device.device.Device.connect" title="device.device.Device.connect"><code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code></a>, as it will be used for building the device
+introspection.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>interface_file</strong> (<em>Path</em>) – An absolute path to an Astarte interface json file.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><a class="reference internal" href="#device.exceptions.InterfaceFileNotFoundError" title="device.exceptions.InterfaceFileNotFoundError"><strong>InterfaceFileNotFoundError</strong></a> – If the provided interface file does not exists.</p></li>
-<li><p><a class="reference internal" href="#device.exceptions.InterfaceFileDecodeError" title="device.exceptions.InterfaceFileDecodeError"><strong>InterfaceFileDecodeError</strong></a> – If speficied file is not a parsable .json file.</p></li>
+<li><p><a class="reference internal" href="#device.exceptions.InterfaceFileNotFoundError" title="device.exceptions.InterfaceFileNotFoundError"><strong>InterfaceFileNotFoundError</strong></a> – If specified file does not exists.</p></li>
+<li><p><a class="reference internal" href="#device.exceptions.InterfaceFileDecodeError" title="device.exceptions.InterfaceFileDecodeError"><strong>InterfaceFileDecodeError</strong></a> – If specified file is not a valid json file.</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device.Device.add_interface_from_json">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_interface_from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device.Device.add_interface_from_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds an interface to the device.</p>
+<p>It has to be called before <a class="reference internal" href="#device.device.Device.connect" title="device.device.Device.connect"><code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code></a>, as it will be used for building the device
+introspection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interface_json</strong> (<em>dict</em>) – Description of the interface obtained through <cite>json.loads()</cite> or similar methods.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -559,13 +536,12 @@ by using json.loads() on an Interface file.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="device.device.Device.add_interfaces_from_dir">
 <span class="sig-name descname"><span class="pre">add_interfaces_from_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interfaces_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device.Device.add_interfaces_from_dir" title="Permalink to this definition">¶</a></dt>
-<dd><p>Adds a series of interfaces to the device</p>
-<p>This will add all the interfaces contained in the provided folder to the device.
-It has to be called before <a class="reference internal" href="#device.device.Device.connect" title="device.device.Device.connect"><code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code></a>, as it will be used for building the device
+<dd><p>Adds a series of interfaces to the device, from a directory containing json files.</p>
+<p>It has to be called before <a class="reference internal" href="#device.device.Device.connect" title="device.device.Device.connect"><code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code></a>, as it will be used for building the device
 introspection.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>interfaces_dir</strong> (<em>Path</em>) – An absolute path to an a folder containing some Astarte interface .json files.</p>
+<dd class="field-odd"><p><strong>interfaces_dir</strong> (<em>Path</em>) – An absolute path to an a folder containing some Astarte interface json files.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="#device.exceptions.InterfaceFileNotFoundError" title="device.exceptions.InterfaceFileNotFoundError"><strong>InterfaceFileNotFoundError</strong></a> – If specified directory does not exists.</p>
@@ -575,64 +551,26 @@ introspection.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="device.device.Device.connect">
-<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device.Device.connect" title="Permalink to this definition">¶</a></dt>
-<dd><p>Connects the Device asynchronously.</p>
-<p>When calling connect, a new connection thread is spawned and the Device will start a
-connection routine. The function might return before the Device connects: you want to
-use the on_connected callback to ensure you are notified upon connection.</p>
-<p>In case the Device gets disconnected unexpectedly, it will try to reconnect indefinitely
-until disconnect() is called.</p>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device.Device.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connects the device to Astarte.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="device.device.Device.disconnect">
-<span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device.Device.disconnect" title="Permalink to this definition">¶</a></dt>
-<dd><p>Disconnects the Device asynchronously.</p>
-<p>When calling disconnect, the connection thread is requested to terminate the
-disconnection, and the thread is stopped when the disconnection happens.
-The function might return before the Device connects: you want to use the on_disconnected
-callback to ensure you are notified upon connection. When doing so, check the return
-code parameter: if it is 0, it means the disconnection happened following an explicit
-disconnection request.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="device.device.Device.get_device_id">
-<span class="sig-name descname"><span class="pre">get_device_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#device.device.Device.get_device_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the Device ID of the Device.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The Id of the device</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="device.device.Device.is_connected">
-<span class="sig-name descname"><span class="pre">is_connected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#device.device.Device.is_connected" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns whether the Device is currently connected.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The device connection status.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device.Device.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnects the device from Astarte.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="device.device.Device.remove_interface">
-<span class="sig-name descname"><span class="pre">remove_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device.Device.remove_interface" title="Permalink to this definition">¶</a></dt>
-<dd><p>Removes an Interface from the Device</p>
-<p>Removes an Interface definition from the Device. It has to be called before
-<a class="reference internal" href="#device.device.Device.connect" title="device.device.Device.connect"><code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code></a>, as it will be used for building the Device Introspection.</p>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">remove_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device.Device.remove_interface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes an Interface from the device.</p>
+<p>Removes an Interface definition from the device. It has to be called before
+<a class="reference internal" href="#device.device.Device.connect" title="device.device.Device.connect"><code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code></a>, as it will be used for building the device introspection.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>interface_name</strong> (<em>str</em>) – The name of an Interface previously added with <a class="reference internal" href="#device.device.Device.add_interface" title="device.device.Device.add_interface"><code class="xref py py-func docutils literal notranslate"><span class="pre">add_interface()</span></code></a>.</p>
+<dd class="field-odd"><p><strong>interface_name</strong> (<em>str</em>) – The name of an Interface previously added with one of the <cite>add_interface(s)_from_*</cite>
+functions.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -654,8 +592,8 @@ which will be registered as the timestamp for the value.</p></li>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><a class="reference internal" href="#device.exceptions.InterfaceNotFoundError" title="device.exceptions.InterfaceNotFoundError"><strong>InterfaceNotFoundError</strong></a> – If the interface is not declared in the introspection</p></li>
-<li><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><strong>ValidationError</strong></a> – If the interface or the payload are not compatible.</p></li>
+<li><p><a class="reference internal" href="#device.exceptions.InterfaceNotFoundError" title="device.exceptions.InterfaceNotFoundError"><strong>InterfaceNotFoundError</strong></a> – If the specified interface is not declared in the introspection.</p></li>
+<li><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><strong>ValidationError</strong></a> – If the interface or payload validation was unsuccessful.</p></li>
 </ul>
 </dd>
 </dl>
@@ -664,7 +602,7 @@ which will be registered as the timestamp for the value.</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="device.device.Device.send_aggregate">
 <span class="sig-name descname"><span class="pre">send_aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interface_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device.Device.send_aggregate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sends an aggregate message to an interface</p>
+<dd><p>Sends an aggregate message to an interface.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -677,8 +615,8 @@ will be registered as the timestamp for the value.</p></li>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><a class="reference internal" href="#device.exceptions.InterfaceNotFoundError" title="device.exceptions.InterfaceNotFoundError"><strong>InterfaceNotFoundError</strong></a> – If the interface is not declared in the introspection</p></li>
-<li><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><strong>ValidationError</strong></a> – If the interface or the payload are not compatible.</p></li>
+<li><p><a class="reference internal" href="#device.exceptions.InterfaceNotFoundError" title="device.exceptions.InterfaceNotFoundError"><strong>InterfaceNotFoundError</strong></a> – If the specified interface is not declared in the introspection.</p></li>
+<li><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><strong>ValidationError</strong></a> – If the interface or payload validation was unsuccessful.</p></li>
 </ul>
 </dd>
 </dl>
@@ -697,9 +635,133 @@ will be registered as the timestamp for the value.</p></li>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><a class="reference internal" href="#device.exceptions.InterfaceNotFoundError" title="device.exceptions.InterfaceNotFoundError"><strong>InterfaceNotFoundError</strong></a> – If the interface is not declared in the introspection</p></li>
-<li><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><strong>ValidationError</strong></a> – If the interface is of type datastream.</p></li>
+<li><p><a class="reference internal" href="#device.exceptions.InterfaceNotFoundError" title="device.exceptions.InterfaceNotFoundError"><strong>InterfaceNotFoundError</strong></a> – If the specified interface is not declared in the introspection.</p></li>
+<li><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><strong>ValidationError</strong></a> – If the interface validation was unsuccessful.</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-device.device_mqtt">
+<span id="device-device-mqtt-module"></span><h2>device.device_mqtt module<a class="headerlink" href="#module-device.device_mqtt" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device_mqtt.</span></span><span class="sig-name descname"><span class="pre">DeviceMqtt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credentials_secret</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistency_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AstarteDatabase</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AbstractEventLoop</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Device</span></code></p>
+<p>Astarte device implementation using the MQTT transport protocol.</p>
+<p><strong>Threading and Concurrency</strong></p>
+<p>This SDK uses paho-mqtt under the hood to provide Transport connectivity. As such,
+it is bound by paho-mqtt’s behaviors in terms of threading. When a device connects,
+a new thread is spawned and an event loop is run there to manage all the connection events.</p>
+<p>This SDK spares the user from this detail - on the other hand, when configuring callbacks,
+threading has to be taken into account. When creating a device, it is possible to specify an
+asyncio.loop() to automatically manage this detail. When a loop is specified, all callbacks
+will be called in the context of that loop, guaranteeing thread-safety and making sure that
+the user does not have to take any further action beyond consuming the callback.</p>
+<p>When a loop is not specified, callbacks are invoked just as standard Python functions. This
+inevitably means that the user will have to take into account the fact that the callback will
+be invoked in the Thread of the MQTT connection. In particular, blocking the execution of
+that thread might cause deadlocks and, in general, malfunctions in the SDK. For this reason, the
+usage of asyncio is strongly recommended.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt.on_connected">
+<span class="sig-name descname"><span class="pre">on_connected</span></span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt.on_connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function that will be invoked everytime the device successfully connects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Callable[[<a class="reference internal" href="#device.device_mqtt.DeviceMqtt" title="device.device_mqtt.DeviceMqtt">DeviceMqtt</a>], None]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt.on_disconnected">
+<span class="sig-name descname"><span class="pre">on_disconnected</span></span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt.on_disconnected" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function that will be invoked everytime the device disconnects. The int parameter bears
+the disconnect reason.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Callable[[<a class="reference internal" href="#device.device_mqtt.DeviceMqtt" title="device.device_mqtt.DeviceMqtt">DeviceMqtt</a>, int], None]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt.add_interface_from_json">
+<span class="sig-name descname"><span class="pre">add_interface_from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt.add_interface_from_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>See parent class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interface_json</strong> (<em>dict</em>) – See parent class.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connects the device asynchronously.</p>
+<p>When calling connect, a new connection thread is spawned and the device will start a
+connection routine. The function might return before the device connects: you want to
+use the on_connected callback to ensure you are notified upon connection.</p>
+<p>In case the device gets disconnected unexpectedly, it will try to reconnect indefinitely
+until disconnect() is called.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#device.exceptions.APIError" title="device.exceptions.APIError"><strong>APIError</strong></a> – When the obtained broker URL is invalid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt.disconnect">
+<span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnects the device.</p>
+<p>When calling disconnect, the connection thread is requested to terminate the
+connection, and the thread is stopped when the disconnection happens.
+This function won’t return before the device has been disconnected. Calling this function
+should result in the callback on_disconnected being called with return code parameter 0,
+meaning the disconnection happened following an explicit disconnection request.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt.get_device_id">
+<span class="sig-name descname"><span class="pre">get_device_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt.get_device_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the device ID of the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The ID of the device</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt.is_connected">
+<span class="sig-name descname"><span class="pre">is_connected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt.is_connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether the device is currently connected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The device connection status.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt.remove_interface">
+<span class="sig-name descname"><span class="pre">remove_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt.remove_interface" title="Permalink to this definition">¶</a></dt>
+<dd><p>See parent class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interface_name</strong> (<em>str</em>) – See parent class.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -744,7 +806,7 @@ will be registered as the timestamp for the value.</p></li>
 <dt class="sig sig-object py" id="device.exceptions.DeviceAlreadyRegisteredError">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">DeviceAlreadyRegisteredError</span></span><a class="headerlink" href="#device.exceptions.DeviceAlreadyRegisteredError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
-<p>Exception raised in case a Device being registered has already been registered.</p>
+<p>Exception raised in case a device being registered has already been registered.</p>
 </dd></dl>
 
 <dl class="py exception">
@@ -1092,8 +1154,8 @@ with the same name but different major/minor are not supported.</p>
 <dt class="sig sig-object py" id="device.introspection.Introspection.add_interface">
 <span class="sig-name descname"><span class="pre">add_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_definition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.introspection.Introspection.add_interface" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds an Interface to the Introspection</p>
-<p>This will add an Interface definition to the Device. It has to be called before
-<code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code>, as it will be used for building the Device Introspection.</p>
+<p>This will add an Interface definition to the device. It has to be called before
+<code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code>, as it will be used for building the device Introspection.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>interface_definition</strong> (<em>dict</em>) – An Astarte Interface definition in the form of a Python dictionary. Usually obtained
@@ -1105,7 +1167,7 @@ by using json.loads() on an Interface file.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="device.introspection.Introspection.get_all_interfaces">
 <span class="sig-name descname"><span class="pre">get_all_interfaces</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">astarte.device.interface.Interface</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#device.introspection.Introspection.get_all_interfaces" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve all the list of all Interfaces in Device’s Introspection</p>
+<dd><p>Retrieve all the list of all Interfaces in device’s Introspection</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The list of all Interfaces in the Introspection</p>
@@ -1119,7 +1181,7 @@ by using json.loads() on an Interface file.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="device.introspection.Introspection.get_all_server_owned_interfaces">
 <span class="sig-name descname"><span class="pre">get_all_server_owned_interfaces</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">astarte.device.interface.Interface</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#device.introspection.Introspection.get_all_server_owned_interfaces" title="Permalink to this definition">¶</a></dt>
-<dd><p>Retrieve all the list of all Interfaces in Device’s Introspection with server ownership</p>
+<dd><p>Retrieve all the list of all Interfaces in device’s Introspection with server ownership</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The list of all Interfaces in the Introspection that have ownership “server”</p>
@@ -1151,8 +1213,8 @@ by using json.loads() on an Interface file.</p>
 <dt class="sig sig-object py" id="device.introspection.Introspection.remove_interface">
 <span class="sig-name descname"><span class="pre">remove_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.introspection.Introspection.remove_interface" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes an Interface from the Introspection</p>
-<p>Removes an Interface definition from the Device. It has to be called before
-<code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code>, as it will be used for building the Device Introspection.</p>
+<p>Removes an Interface definition from the device. It has to be called before
+<code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code>, as it will be used for building the device Introspection.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>interface_name</strong> (<em>str</em>) – The name of an Interface previously added with <a class="reference internal" href="#device.introspection.Introspection.add_interface" title="device.introspection.Introspection.add_interface"><code class="xref py py-func docutils literal notranslate"><span class="pre">add_interface()</span></code></a>.</p>
@@ -1168,7 +1230,7 @@ by using json.loads() on an Interface file.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="device.mapping.MapType">
 <span class="sig-prename descclassname"><span class="pre">device.mapping.</span></span><span class="sig-name descname"><span class="pre">MapType</span></span><a class="headerlink" href="#device.mapping.MapType" title="Permalink to this definition">¶</a></dt>
-<dd><p>Mapping type to python type mapping</p>
+<dd><p>Mapping type to Python type mapping</p>
 <p>alias of <code class="xref py py-obj docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>]]</p>
 </dd></dl>
 
@@ -1356,7 +1418,7 @@ Properties are always published using QoS 2.</p>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>the generated device Id, using the standard Astarte Device ID encoding (base64
+<dd class="field-even"><p>the generated device Id, using the standard Astarte device ID encoding (base64
 urlencoding without padding).</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
@@ -1372,7 +1434,7 @@ urlencoding without padding).</p>
 Pay attention that each time this value is different and the use in production is discouraged.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>the generated device Id, using the standard Astarte Device ID encoding (base64
+<dd class="field-odd"><p>the generated device Id, using the standard Astarte device ID encoding (base64
 urlencoding without padding).</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -1437,16 +1499,16 @@ urlencoding without padding).</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="device.pairing_handler.register_device_with_jwt_token">
 <span class="sig-prename descclassname"><span class="pre">device.pairing_handler.</span></span><span class="sig-name descname"><span class="pre">register_device_with_jwt_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jwt_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#device.pairing_handler.register_device_with_jwt_token" title="Permalink to this definition">¶</a></dt>
-<dd><p>Registers a Device against an Astarte instance/realm with a JWT Token</p>
-<p>Returns the Credentials secret for the Device</p>
+<dd><p>Registers a device against an Astarte instance/realm with a JWT Token</p>
+<p>Returns the Credentials secret for the device</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>device_id</strong> (<em>str</em>) – The Device ID to register.</p></li>
-<li><p><strong>realm</strong> (<em>str</em>) – The Realm in which to register the Device.</p></li>
+<li><p><strong>device_id</strong> (<em>str</em>) – The device ID to register.</p></li>
+<li><p><strong>realm</strong> (<em>str</em>) – The Realm in which to register the device.</p></li>
 <li><p><strong>jwt_token</strong> (<em>str</em>) – A JWT Token to Authenticate against Pairing API. The token must have access to Pairing
 API and to the agent API paths.</p></li>
-<li><p><strong>pairing_base_url</strong> (<em>str</em>) – The Base URL of Pairing API of the Astarte Instance the Device will be registered in.</p></li>
+<li><p><strong>pairing_base_url</strong> (<em>str</em>) – The Base URL of Pairing API of the Astarte Instance the device will be registered in.</p></li>
 <li><p><strong>ignore_ssl_errors</strong> (<em>bool</em>) – Useful if you’re registering a device into a test instance of Astarte with self-signed
 certificates. It is not recommended to leave this <cite>true</cite> in production.
 Defaults to <cite>false</cite>, if <cite>true</cite> SSL errors will be ignored when registering a device.</p></li>
@@ -1464,16 +1526,16 @@ Defaults to <cite>false</cite>, if <cite>true</cite> SSL errors will be ignored 
 <dl class="py function">
 <dt class="sig sig-object py" id="device.pairing_handler.register_device_with_private_key">
 <span class="sig-prename descclassname"><span class="pre">device.pairing_handler.</span></span><span class="sig-name descname"><span class="pre">register_device_with_private_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">private_key_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#device.pairing_handler.register_device_with_private_key" title="Permalink to this definition">¶</a></dt>
-<dd><p>Registers a Device against an Astarte instance/realm with a Private Key</p>
-<p>Returns the Credentials secret for the Device</p>
+<dd><p>Registers a device against an Astarte instance/realm with a Private Key</p>
+<p>Returns the Credentials secret for the device</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>device_id</strong> (<em>str</em>) – The Device ID to register.</p></li>
-<li><p><strong>realm</strong> (<em>str</em>) – The Realm in which to register the Device.</p></li>
+<li><p><strong>device_id</strong> (<em>str</em>) – The device ID to register.</p></li>
+<li><p><strong>realm</strong> (<em>str</em>) – The Realm in which to register the device.</p></li>
 <li><p><strong>private_key_file</strong> (<em>str</em>) – Path to the Private Key file for the Realm. It will be used to Authenticate against
 Pairing API.</p></li>
-<li><p><strong>pairing_base_url</strong> (<em>str</em>) – The Base URL of Pairing API of the Astarte Instance the Device will be registered in.</p></li>
+<li><p><strong>pairing_base_url</strong> (<em>str</em>) – The Base URL of Pairing API of the Astarte Instance the device will be registered in.</p></li>
 <li><p><strong>ignore_ssl_errors</strong> (<em>str</em>) – Set to True to ignore SSL errors</p></li>
 </ul>
 </dd>

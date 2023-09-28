@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Astarte Python Device SDK &mdash; Astarte Device SDK Python 0.12.0 documentation</title>
+  <title>Astarte Python device SDK &mdash; Astarte device SDK Python 0.12.0 documentation</title>
   
 
   
@@ -55,7 +55,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> Astarte Device SDK Python
+            <a href="#" class="icon icon-home"> Astarte device SDK Python
           
 
           
@@ -108,7 +108,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">Astarte Device SDK Python</a>
+          <a href="#">Astarte device SDK Python</a>
         
       </nav>
 
@@ -141,7 +141,7 @@
     
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Astarte Python Device SDK</li>
+      <li>Astarte Python device SDK</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -167,8 +167,8 @@ Copyright 2023 SECO Mind Srl
 
 SPDX-License-Identifier: Apache-2.0
 --><section id="astarte-python-device-sdk">
-<h1>Astarte Python Device SDK<a class="headerlink" href="#astarte-python-device-sdk" title="Permalink to this heading">¶</a></h1>
-<p>Python Device SDK for <a class="reference external" href="https://github.com/astarte-platform/astarte">Astarte</a>. Create Astarte Devices
+<h1>Astarte Python device SDK<a class="headerlink" href="#astarte-python-device-sdk" title="Permalink to this heading">¶</a></h1>
+<p>Python device SDK for <a class="reference external" href="https://github.com/astarte-platform/astarte">Astarte</a>. Create Astarte Devices
 and Simulators with Python3.
 It integrates with asyncio to ensure a smooth developer experience and to hide complex details
 regarding threading and MQTT interactions.</p>
@@ -184,10 +184,10 @@ regarding threading and MQTT interactions.</p>
 <section id="create-a-device">
 <h3>Create a device<a class="headerlink" href="#create-a-device" title="Permalink to this heading">¶</a></h3>
 <p>Initializing an instance of a device can be performed in three steps, as seen below.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astarte.device</span> <span class="kn">import</span> <span class="n">Device</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astarte.device</span> <span class="kn">import</span> <span class="n">DeviceMqtt</span>
 
 <span class="c1"># Create the device instance</span>
-<span class="n">device</span> <span class="o">=</span> <span class="n">Device</span><span class="p">(</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">DeviceMqtt</span><span class="p">(</span>
     <span class="n">device_id</span><span class="o">=</span><span class="s2">&quot;device id&quot;</span><span class="p">,</span>
     <span class="n">realm</span><span class="o">=</span><span class="s2">&quot;realm&quot;</span><span class="p">,</span>
     <span class="n">credentials_secret</span><span class="o">=</span><span class="s2">&quot;credentials secret&quot;</span><span class="p">,</span>
@@ -207,7 +207,7 @@ regarding threading and MQTT interactions.</p>
 <section id="publish-data-from-device">
 <h3>Publish data from device<a class="headerlink" href="#publish-data-from-device" title="Permalink to this heading">¶</a></h3>
 <p>Publishing new values can be performed using the <code class="docutils literal notranslate"><span class="pre">send</span></code> and <code class="docutils literal notranslate"><span class="pre">send_aggregate</span></code> functions.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astarte.device</span> <span class="kn">import</span> <span class="n">Device</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astarte.device</span> <span class="kn">import</span> <span class="n">DeviceMqtt</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
 
 <span class="c1"># ... Create a device and connect it to Astarte ...</span>
@@ -235,9 +235,9 @@ regarding threading and MQTT interactions.</p>
 <h3>Receive a server publication<a class="headerlink" href="#receive-a-server-publication" title="Permalink to this heading">¶</a></h3>
 <p>The device automatically polls for new messages. The user can use a call back function to process
 received data. Callback functions are also available for connect/disconnect events.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astarte.device</span> <span class="kn">import</span> <span class="n">Device</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astarte.device</span> <span class="kn">import</span> <span class="n">DeviceMqtt</span>
 
-<span class="k">def</span> <span class="nf">my_callback</span><span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="n">Device</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">my_callback</span><span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="n">DeviceMqtt</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Received message for </span><span class="si">{</span><span class="n">name</span><span class="si">}{</span><span class="n">path</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">payload</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># ... Create a device and connect it to Astarte ...</span>

@@ -1,4 +1,4 @@
-.. Astarte Device SDK Python documentation master file.
+.. Astarte device SDK Python documentation master file.
 
 .. toctree::
    :caption: Contents
