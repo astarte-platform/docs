@@ -118,7 +118,7 @@ Astarte
   astarte.interface.schema.interface_name ✔
 </h3>
 <p>The name of the interface. This has to be an unique, alphanumeric reverse internet domain name,
-shorther than 128 characters.</p><ul><li><strong>Type</strong>: <code class="inline">string</code></li><li><strong>Required</strong>: Yes</li><li><strong>Minimum Length</strong><code class="inline">: &gt;= 1</code></li></ul><h3 id="astarte-interface-schema-version_major" class="section-heading">
+shorther than 128 characters.</p><ul><li><strong>Type</strong>: <code class="inline">string</code></li><li><strong>Required</strong>: Yes</li><li><strong>Minimum Length</strong><code class="inline">: &gt;= 1</code></li><li><strong>Allowed Pattern</strong>: <code class="inline">^([a-zA-Z][a-zA-Z0-9]*.([a-zA-Z0-9][a-zA-Z0-9-]*.)*)?[a-zA-Z][a-zA-Z0-9]*$</code></li></ul><h3 id="astarte-interface-schema-version_major" class="section-heading">
   <a href="#astarte-interface-schema-version_major" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">astarte-interface-schema-version_major</p>
   </a>
@@ -199,7 +199,7 @@ aggregation of the interface.</p><ul><li><strong>Type</strong>: <a href="#refere
 <p>The template of the path. This is a UNIX-like path (e.g. /my/path) and can be parametrized.
 Parameters are in the %{name} form, and can be used to create interfaces which represent
 dictionaries of mappings. When the interface aggregation is object, an object is composed by all the
-mappings for one specific parameter combination.</p><ul><li><strong>Type</strong>: <code class="inline">string</code></li><li><strong>Required</strong>: Yes</li><li><strong>Minimum Length</strong><code class="inline">: &gt;= 2</code></li></ul><h3 id="astarte-mapping-schema-type" class="section-heading">
+mappings for one specific parameter combination.</p><ul><li><strong>Type</strong>: <code class="inline">string</code></li><li><strong>Required</strong>: Yes</li><li><strong>Minimum Length</strong><code class="inline">: &gt;= 2</code></li><li><strong>Allowed Pattern</strong>: <code class="inline">^(/(%{([a-zA-Z_][a-zA-Z0-9_]*)}|[a-zA-Z_][a-zA-Z0-9_]*)){1,64}$</code></li></ul><h3 id="astarte-mapping-schema-type" class="section-heading">
   <a href="#astarte-mapping-schema-type" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">astarte-mapping-schema-type</p>
   </a>
