@@ -1043,7 +1043,7 @@ struct <a class="el" href="structastarte__byte__array__t.html">astarte_byte_arra
 <p>This function might be used to get internal buffer without any data copy. The returned buffer will be invalid after serializer destruction. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">bson</td><td>a valid handle for the serializer instance. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">size</td><td>the size of the internal buffer. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">size</td><td>the size of the internal buffer. Optional, pass NULL if not used. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1142,7 +1142,7 @@ struct <a class="el" href="structastarte__byte__array__t.html">astarte_byte_arra
     <tr><td class="paramdir">[in]</td><td class="paramname">bson</td><td>a valid handle for the serializer instance. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">out_buf</td><td>destination buffer, previously allocated. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">out_buf_len</td><td>destination buffer length. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">out_doc_size</td><td>BSON document size (that is &lt;= out_buf_len). </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">out_doc_size</td><td>BSON document size (that is &lt;= out_buf_len). Optional, pass NULL if not used. </td></tr>
   </table>
   </dd>
 </dl>
