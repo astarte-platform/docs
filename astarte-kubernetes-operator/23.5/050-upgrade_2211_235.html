@@ -7,7 +7,7 @@
     <meta name="generator" content="ExDoc v0.29.0">
     <meta name="project" content="Astarte Operator v23.5.0">
 
-    <title>Upgrade v0.10-v0.11 — Astarte Operator v23.5.0</title>
+    <title>Upgrade v22.11.x-23.5x — Astarte Operator v23.5.0</title>
     <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
@@ -97,56 +97,62 @@ Astarte Operator
 </button>
 
 
-    <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/release-23.5/docs/documentation/pages/upgrade/010-upgrade_010_011.md#L1" title="View Source" class="view-source" rel="help">
+    <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/release-23.5/docs/documentation/pages/upgrade/050-upgrade_2211_235.md#L1" title="View Source" class="view-source" rel="help">
       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
       <span class="sr-only">View Source</span>
     </a>
 
-  <span>Upgrade v0.10-v0.11</span>
+  <span>Upgrade v22.11.x-23.5x</span>
 </h1>
 
-<p>The upgrade procedure for both Astarte and Astarte Operator <code class="inline">v0.10</code> is handled by <code class="inline">astartectl</code>,
-which is the tool to be employed to upgrade from <code class="inline">v0.10</code> to <code class="inline">v0.11</code>.</p><h2 id="upgrade-astarte-operator" class="section-heading">
+<p>This page describes the required steps to upgrade your Astarte cluster from <code class="inline">v22.11.x</code> to
+<code class="inline">v23.5.x</code>. Your Astarte instance will <strong>not</strong> need to be upgraded.</p><p>Starting from the Astarte Operator <code class="inline">v22.11</code> release, the old <code class="inline">api.astarte-platform.org/v1alpha1</code>
+APIs are deprecated and will be removed in the next release (<code class="inline">v23.11</code>).</p><p>In the following, the upgrade path is described.</p><p>The upcoming sections will cover the following topics:</p><ul><li>upgrading the Astarte Operator,</li></ul><p>Before starting with the upgrade procedure it is strongly advised to <a href="095-advanced-operations.html#backup-your-astarte-resources">backup your Astarte
+resources</a>.</p><h2 id="upgrade-astarte-operator" class="section-heading">
   <a href="#upgrade-astarte-operator" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">upgrade-astarte-operator</p>
   </a>
   Upgrade Astarte Operator
 </h2>
-<p>To upgrade the Operator, use the dedicated <code class="inline">upgrade-operator</code> command:</p><pre><code class="makeup bash" translate="no"><span class="">astartectl cluster upgrade-operator
-</span></code></pre><p>This command upgrades the Operator to the last <code class="inline">v0.11.x</code> version available. However, for specific and
-non-standard use cases, the <code class="inline">--version</code> switch is provided to allow the user to specify the version
-to upgrade to. </p><p>We highly encourage you to follow the standard approach and to land to the last <code class="inline">v0.11.x</code> version
-available.</p><h2 id="upgrade-astarte" class="section-heading">
-  <a href="#upgrade-astarte" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">upgrade-astarte</p>
-  </a>
-  Upgrade Astarte
-</h2>
-<p>To upgrade Astarte use the dedicated command:</p><pre><code class="makeup bash" translate="no"><span class="">astartectl cluster instances upgrade &lt;your-astarte-release-name&gt;
-</span></code></pre><p>The command upgrades your Astarte instance to the last <code class="inline">0.11.x</code> version available. The Astarte
-version to upgrade to can be set by the user. Please, see <code class="inline">astartectl cluster instances upgrade --help</code> for further details.</p><p>Unless you have specific reasons, it is highly recommended upgrading Astarte to the last <code class="inline">0.11</code>
-version available.</p>
+<p>The Astarte Operator upgrade procedure is handled by Helm.</p><p>The current section assumes that the Operator's chart landing version is <code class="inline">v23.5.x</code>. It is <strong>your
+responsibility</strong> referencing the proper <code class="inline">v23.5.x</code> chart using the <code class="inline">--version</code> flag when running
+<code class="inline">helm</code> commands.</p><p>Please, make sure that the values you set for both the Operator's name and namespace match the
+naming you already adopted when installing the Operator. A wrong naming can lead to a malfunctioning
+Astarte cluster.</p><p>For standard deployments the following variables should be ok. However, it is your responsibility
+checking that the values you set are consistent with your setup:</p><pre><code class="makeup bash" translate="no"><span class="">export ASTARTE_OP_RELEASE_NAME=astarte-operator
+</span><span class="">export ASTARTE_OP_RELEASE_NAMESPACE=astarte-operator
+</span><span class="">export ASTARTE_OP_CHART_VERSION=&lt;23.5.x&gt;
+</span></code></pre><p>Update your local Helm charts:</p><pre><code class="makeup bash" translate="no"><span class="">helm repo update
+</span></code></pre><p>To upgrade the Operator use the dedicated <code class="inline">helm upgrade</code> command:</p><pre><code class="makeup bash" translate="no"><span class="">helm upgrade $ASTARTE_OP_RELEASE_NAME astarte/astarte-operator -n $ASTARTE_OP_RELEASE_NAMESPACE \
+</span><span class="">  --version $ASTARTE_OP_CHART_VERSION
+</span></code></pre><p>The optional <code class="inline">--version</code> switch allows to specify the version to upgrade to - when not specified,
+the latest version will be fetched and used.</p><p>By design, Astarte Operator's Helm charts cannot univocally be mapped to Operator's releases in a
+one-to-one relationship. However each chart is tied to a specific Operator's version, which is user
+configurable.</p><p>Therefore, upgrading a chart leads to an Operator's upgrade if and only if the Operator's tag
+referenced by the chart is changed. You can check the Operator's tag bound to the chart simply
+running:</p><pre><code class="makeup bash" translate="no"><span class="">helm show values astarte/astarte-operator
+</span></code></pre><p>As usual, you can use the <code class="inline">--version</code> flag to point to a specific chart version.</p>
 <div class="bottom-actions">
   <div class="bottom-actions-item">
 
-      <a href="000-upgrade_index.html" class="bottom-actions-button" rel="prev">
+      <a href="040-upgrade_10x_2211.html" class="bottom-actions-button" rel="prev">
         <span class="subheader">
           ← Previous Page
         </span>
         <span class="title">
-Upgrade Procedures
+Upgrade v1.0.x-v22.11.x
         </span>
       </a>
 
   </div>
   <div class="bottom-actions-item">
 
-      <a href="020-upgrade_011_10.html" class="bottom-actions-button" rel="next">
+      <a href="001-intro_crds.html" class="bottom-actions-button" rel="next">
         <span class="subheader">
           Next Page →
         </span>
         <span class="title">
-Upgrade v0.11-v1.0
+Introduction
         </span>
       </a>
 
