@@ -112,6 +112,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-device.device_mqtt">device.device_mqtt module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#device.device_mqtt.ConnectionState"><code class="docutils literal notranslate"><span class="pre">ConnectionState</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#device.device_mqtt.DeviceMqtt"><code class="docutils literal notranslate"><span class="pre">DeviceMqtt</span></code></a></li>
 </ul>
 </li>
@@ -120,6 +121,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#device.exceptions.AstarteError"><code class="docutils literal notranslate"><span class="pre">AstarteError</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#device.exceptions.AuthorizationError"><code class="docutils literal notranslate"><span class="pre">AuthorizationError</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#device.exceptions.DeviceAlreadyRegisteredError"><code class="docutils literal notranslate"><span class="pre">DeviceAlreadyRegisteredError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.exceptions.DeviceConnectingError"><code class="docutils literal notranslate"><span class="pre">DeviceConnectingError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.exceptions.DeviceDisconnectedError"><code class="docutils literal notranslate"><span class="pre">DeviceDisconnectedError</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#device.exceptions.InterfaceFileDecodeError"><code class="docutils literal notranslate"><span class="pre">InterfaceFileDecodeError</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#device.exceptions.InterfaceFileNotFoundError"><code class="docutils literal notranslate"><span class="pre">InterfaceFileNotFoundError</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#device.exceptions.InterfaceNotFoundError"><code class="docutils literal notranslate"><span class="pre">InterfaceNotFoundError</span></code></a></li>
@@ -331,6 +334,17 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabase.delete_props_from_interface">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete_props_from_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabase.delete_props_from_interface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete all the properties from the database belonging to an interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interface</strong> (<em>str</em>) – The interface name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="device.database.AstarteDatabase.load_all_props">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_all_props</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">object</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#device.database.AstarteDatabase.load_all_props" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load all the properties stored in the database.</p>
@@ -409,6 +423,17 @@ SQLite library of Python to implement property persistency.</p>
 <li><p><strong>interface</strong> (<em>str</em>) – See documentation in AstarteDatabase.</p></li>
 <li><p><strong>path</strong> (<em>str</em>) – See documentation in AstarteDatabase.</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabaseSQLite.delete_props_from_interface">
+<span class="sig-name descname"><span class="pre">delete_props_from_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabaseSQLite.delete_props_from_interface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete all the properties from the database belonging to an interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interface</strong> (<em>str</em>) – See documentation in AstarteDatabase.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -525,8 +550,6 @@ introspection.</p>
 <dt class="sig sig-object py" id="device.device.Device.add_interface_from_json">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_interface_from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device.Device.add_interface_from_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds an interface to the device.</p>
-<p>It has to be called before <a class="reference internal" href="#device.device.Device.connect" title="device.device.Device.connect"><code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code></a>, as it will be used for building the device
-introspection.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>interface_json</strong> (<em>dict</em>) – Description of the interface obtained through <cite>json.loads()</cite> or similar methods.</p>
@@ -566,8 +589,6 @@ introspection.</p>
 <dt class="sig sig-object py" id="device.device.Device.remove_interface">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">remove_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device.Device.remove_interface" title="Permalink to this definition">¶</a></dt>
 <dd><p>Removes an Interface from the device.</p>
-<p>Removes an Interface definition from the device. It has to be called before
-<a class="reference internal" href="#device.device.Device.connect" title="device.device.Device.connect"><code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code></a>, as it will be used for building the device introspection.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>interface_name</strong> (<em>str</em>) – The name of an Interface previously added with one of the <cite>add_interface(s)_from_*</cite>
@@ -649,6 +670,28 @@ will be registered as the timestamp for the value.</p></li>
 <section id="module-device.device_mqtt">
 <span id="device-device-mqtt-module"></span><h2>device.device_mqtt module<a class="headerlink" href="#module-device.device_mqtt" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
+<dt class="sig sig-object py" id="device.device_mqtt.ConnectionState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device_mqtt.</span></span><span class="sig-name descname"><span class="pre">ConnectionState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_mqtt.ConnectionState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Possible connection states for a device.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.device_mqtt.ConnectionState.CONNECTED">
+<span class="sig-name descname"><span class="pre">CONNECTED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#device.device_mqtt.ConnectionState.CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.device_mqtt.ConnectionState.CONNECTING">
+<span class="sig-name descname"><span class="pre">CONNECTING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#device.device_mqtt.ConnectionState.CONNECTING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.device_mqtt.ConnectionState.DISCONNECTED">
+<span class="sig-name descname"><span class="pre">DISCONNECTED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#device.device_mqtt.ConnectionState.DISCONNECTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device_mqtt.</span></span><span class="sig-name descname"><span class="pre">DeviceMqtt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credentials_secret</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistency_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AstarteDatabase</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AbstractEventLoop</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Device</span></code></p>
@@ -697,6 +740,9 @@ the disconnect reason.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>interface_json</strong> (<em>dict</em>) – See parent class.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#device.exceptions.DeviceConnectingError" title="device.exceptions.DeviceConnectingError"><strong>DeviceConnectingError</strong></a> – When attempting to add an interface while the device if performing a connection.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -764,6 +810,12 @@ meaning the disconnection happened following an explicit disconnection request.<
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>interface_name</strong> (<em>str</em>) – See parent class.</p>
 </dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#device.exceptions.DeviceConnectingError" title="device.exceptions.DeviceConnectingError"><strong>DeviceConnectingError</strong></a> – When attempting to add an interface while the device if performing a connection.</p></li>
+<li><p><a class="reference internal" href="#device.exceptions.InterfaceNotFoundError" title="device.exceptions.InterfaceNotFoundError"><strong>InterfaceNotFoundError</strong></a> – When the provided interface can’t be found in the device introspection.</p></li>
+</ul>
+</dd>
 </dl>
 </dd></dl>
 
@@ -808,6 +860,31 @@ meaning the disconnection happened following an explicit disconnection request.<
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">DeviceAlreadyRegisteredError</span></span><a class="headerlink" href="#device.exceptions.DeviceAlreadyRegisteredError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
 <p>Exception raised in case a device being registered has already been registered.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.DeviceConnectingError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">DeviceConnectingError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.DeviceConnectingError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
+<p>Exception raised when an operation is attempted while the device MQTT client has been
+started but is not yet connected.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">msg</span> <span class="pre">--</span> <span class="pre">A</span> <span class="pre">message</span> <span class="pre">error</span> <span class="pre">carrying</span> <span class="pre">further</span> <span class="pre">details</span></span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.DeviceDisconnectedError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">DeviceDisconnectedError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.DeviceDisconnectedError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
+<p>Exception raised if attempting a send while the device is disconnected from Astarte.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">msg</span> <span class="pre">--</span> <span class="pre">A</span> <span class="pre">message</span> <span class="pre">error</span> <span class="pre">carrying</span> <span class="pre">further</span> <span class="pre">details</span></span></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py exception">

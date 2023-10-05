@@ -181,6 +181,7 @@
 <li class="toctree-l3"><a class="reference internal" href="device.html#device.database.AstarteDatabase"><code class="docutils literal notranslate"><span class="pre">AstarteDatabase</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabase.clear"><code class="docutils literal notranslate"><span class="pre">AstarteDatabase.clear()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabase.delete_prop"><code class="docutils literal notranslate"><span class="pre">AstarteDatabase.delete_prop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabase.delete_props_from_interface"><code class="docutils literal notranslate"><span class="pre">AstarteDatabase.delete_props_from_interface()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabase.load_all_props"><code class="docutils literal notranslate"><span class="pre">AstarteDatabase.load_all_props()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabase.load_prop"><code class="docutils literal notranslate"><span class="pre">AstarteDatabase.load_prop()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabase.store_prop"><code class="docutils literal notranslate"><span class="pre">AstarteDatabase.store_prop()</span></code></a></li>
@@ -189,6 +190,7 @@
 <li class="toctree-l3"><a class="reference internal" href="device.html#device.database.AstarteDatabaseSQLite"><code class="docutils literal notranslate"><span class="pre">AstarteDatabaseSQLite</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabaseSQLite.clear"><code class="docutils literal notranslate"><span class="pre">AstarteDatabaseSQLite.clear()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabaseSQLite.delete_prop"><code class="docutils literal notranslate"><span class="pre">AstarteDatabaseSQLite.delete_prop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabaseSQLite.delete_props_from_interface"><code class="docutils literal notranslate"><span class="pre">AstarteDatabaseSQLite.delete_props_from_interface()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabaseSQLite.load_all_props"><code class="docutils literal notranslate"><span class="pre">AstarteDatabaseSQLite.load_all_props()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabaseSQLite.load_prop"><code class="docutils literal notranslate"><span class="pre">AstarteDatabaseSQLite.load_prop()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="device.html#device.database.AstarteDatabaseSQLite.store_prop"><code class="docutils literal notranslate"><span class="pre">AstarteDatabaseSQLite.store_prop()</span></code></a></li>
@@ -213,6 +215,12 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="device.html#module-device.device_mqtt">device.device_mqtt module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.device_mqtt.ConnectionState"><code class="docutils literal notranslate"><span class="pre">ConnectionState</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.device_mqtt.ConnectionState.CONNECTED"><code class="docutils literal notranslate"><span class="pre">ConnectionState.CONNECTED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.device_mqtt.ConnectionState.CONNECTING"><code class="docutils literal notranslate"><span class="pre">ConnectionState.CONNECTING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="device.html#device.device_mqtt.ConnectionState.DISCONNECTED"><code class="docutils literal notranslate"><span class="pre">ConnectionState.DISCONNECTED</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="device.html#device.device_mqtt.DeviceMqtt"><code class="docutils literal notranslate"><span class="pre">DeviceMqtt</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="device.html#device.device_mqtt.DeviceMqtt.on_connected"><code class="docutils literal notranslate"><span class="pre">DeviceMqtt.on_connected</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="device.html#device.device_mqtt.DeviceMqtt.on_disconnected"><code class="docutils literal notranslate"><span class="pre">DeviceMqtt.on_disconnected</span></code></a></li>
@@ -231,6 +239,8 @@
 <li class="toctree-l3"><a class="reference internal" href="device.html#device.exceptions.AstarteError"><code class="docutils literal notranslate"><span class="pre">AstarteError</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="device.html#device.exceptions.AuthorizationError"><code class="docutils literal notranslate"><span class="pre">AuthorizationError</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="device.html#device.exceptions.DeviceAlreadyRegisteredError"><code class="docutils literal notranslate"><span class="pre">DeviceAlreadyRegisteredError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.exceptions.DeviceConnectingError"><code class="docutils literal notranslate"><span class="pre">DeviceConnectingError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html#device.exceptions.DeviceDisconnectedError"><code class="docutils literal notranslate"><span class="pre">DeviceDisconnectedError</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="device.html#device.exceptions.InterfaceFileDecodeError"><code class="docutils literal notranslate"><span class="pre">InterfaceFileDecodeError</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="device.html#device.exceptions.InterfaceFileNotFoundError"><code class="docutils literal notranslate"><span class="pre">InterfaceFileNotFoundError</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="device.html#device.exceptions.InterfaceNotFoundError"><code class="docutils literal notranslate"><span class="pre">InterfaceNotFoundError</span></code></a></li>
