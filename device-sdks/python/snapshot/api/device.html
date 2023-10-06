@@ -497,36 +497,11 @@ match, the property in the database will be deleted and None will be returned.</
 <span id="device-device-module"></span><h2>device.device module<a class="headerlink" href="#module-device.device" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="device.device.Device">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device.</span></span><span class="sig-name descname"><span class="pre">Device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AbstractEventLoop</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device.Device" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device.</span></span><span class="sig-name descname"><span class="pre">Device</span></span><a class="headerlink" href="#device.device.Device" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
 <p>Abstract class defining the minumum APIs for an Astarte device implementation.</p>
 <p>This class is agnostic of a transport layer. It should be used to implement transport specific
 children classes.</p>
-<p><strong>Threading and Concurrency</strong></p>
-<p>When configuring callbacks, threading has to be taken into account, as depending on the
-transport implementation it might be required to run them on a different thread from the device
-class. When creating a device, it is possible to specify an asyncio.loop() to automatically
-manage this detail. When a loop is specified, all callbacks will be called in the context of
-that loop, guaranteeing thread-safety and making sure that the user does not have to take any
-further action beyond consuming the callback.</p>
-<p>When a loop is not specified, callbacks are invoked just as standard Python functions. This
-inevitably means that the user will have to take into account the fact that the callback will
-be invoked in the same thread a the transport implementation. In particular, blocking the
-execution of the transport thread might cause deadlocks and, in general, malfunctions in the
-SDK. For this reason, the usage of asyncio is strongly recommended.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="device.device.Device.on_data_received">
-<span class="sig-name descname"><span class="pre">on_data_received</span></span><a class="headerlink" href="#device.device.Device.on_data_received" title="Permalink to this definition">¶</a></dt>
-<dd><p>A function that will be invoked everytime data is received from Astarte. Parameters are
-the device itself, the Interface name, the Interface path, and the payload. The payload
-will reflect the type defined in the Interface.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Callable[[<a class="reference internal" href="#device.device.Device" title="device.device.Device">Device</a>, string, string, object], None]</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="device.device.Device.add_interface_from_file">
 <span class="sig-name descname"><span class="pre">add_interface_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device.Device.add_interface_from_file" title="Permalink to this definition">¶</a></dt>
@@ -583,6 +558,20 @@ introspection.</p>
 <dt class="sig sig-object py" id="device.device.Device.disconnect">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device.Device.disconnect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disconnects the device from Astarte.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device.Device.is_connected">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_connected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#device.device.Device.is_connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns whether the device is currently connected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The device connection status.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -645,6 +634,31 @@ will be registered as the timestamp for the value.</p></li>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="device.device.Device.set_events_callbacks">
+<span class="sig-name descname"><span class="pre">set_events_callbacks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on_connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#device.device.Device" title="device.device.Device"><span class="pre">Device</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_data_received</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#device.device.Device" title="device.device.Device"><span class="pre">Device</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">object</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_disconnected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#device.device.Device" title="device.device.Device"><span class="pre">Device</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AbstractEventLoop</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device.Device.set_events_callbacks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Can be used to set various callbacks to user provided functions.</p>
+<p>note:: All parameters default to None. Meaning that all unspeficied callbacks will be
+disabled. Same for the event loop.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>on_connected</strong> (<em>Callable</em><em>[</em><em>[</em><a class="reference internal" href="#device.device.Device" title="device.device.Device"><em>Device</em></a><em>]</em><em>, </em><em>None</em><em>] </em><em>| </em><em>None</em>) – A function that will be invoked everytime the device is connected.</p></li>
+<li><p><strong>on_data_received</strong> (<em>Callable</em><em>[</em><em>[</em><a class="reference internal" href="#device.device.Device" title="device.device.Device"><em>Device</em></a><em>, </em><em>string</em><em>, </em><em>string</em><em>, </em><em>object</em><em>]</em><em>, </em><em>None</em><em>] </em><em>| </em><em>None</em>) – A function that will be invoked everytime data is received from Astarte. Parameters are
+the device itself, the Interface name, the Interface path, and the payload. The payload
+will reflect the type defined in the Interface.</p></li>
+<li><p><strong>on_disconnected</strong> (<em>Callable</em><em>[</em><em>[</em><a class="reference internal" href="#device.device.Device" title="device.device.Device"><em>Device</em></a><em>]</em><em>, </em><em>None</em><em>] </em><em>| </em><em>None</em>) – A function that will be invoked everytime the device experiences a disconnection event.
+The int parameter bears the disconnect reason. With 0 being a graceful disconnection.</p></li>
+<li><p><strong>loop</strong> (<em>asyncio.AbstractEventLoop</em><em> | </em><em>None</em>) – An optional loop which will be used for invoking the callbacks. When this is not None,
+the device will call any specified callback through loop.call_soon_threadsafe, ensuring
+that the callbacks will be run in thread the loop belongs to. Usually, you want
+to set this to get_running_loop(). When not sent, callbacks will be invoked as a
+standard function - keep in mind this means your callbacks might create deadlocks.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="device.device.Device.unset_property">
 <span class="sig-name descname"><span class="pre">unset_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interface_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device.Device.unset_property" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unset the specified property on an interface.</p>
@@ -693,46 +707,24 @@ will be registered as the timestamp for the value.</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device_mqtt.</span></span><span class="sig-name descname"><span class="pre">DeviceMqtt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credentials_secret</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistency_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AstarteDatabase</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AbstractEventLoop</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device_mqtt.</span></span><span class="sig-name descname"><span class="pre">DeviceMqtt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credentials_secret</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistency_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AstarteDatabase</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Device</span></code></p>
 <p>Astarte device implementation using the MQTT transport protocol.</p>
 <p><strong>Threading and Concurrency</strong></p>
-<p>This SDK uses paho-mqtt under the hood to provide Transport connectivity. As such,
-it is bound by paho-mqtt’s behaviors in terms of threading. When a device connects,
-a new thread is spawned and an event loop is run there to manage all the connection events.</p>
+<p>This SDK uses paho-mqtt under the hood as a transport layer. As such, it is bound by
+paho-mqtt’s behavior in terms of threading. When a device connects, a new thread is spawned
+and an event loop is run there to manage all the connection events.</p>
 <p>This SDK spares the user from this detail - on the other hand, when configuring callbacks,
-threading has to be taken into account. When creating a device, it is possible to specify an
-asyncio.loop() to automatically manage this detail. When a loop is specified, all callbacks
-will be called in the context of that loop, guaranteeing thread-safety and making sure that
-the user does not have to take any further action beyond consuming the callback.</p>
+threading has to be taken into account. When configuring the callback functions, it is
+possible to specify an asyncio.loop() to automatically manage this detail. When a loop is
+specified, all callbacks will be called in the context of that loop, guaranteeing
+thread-safety and making sure that the user does not have to take any further action beyond
+consuming the callback.</p>
 <p>When a loop is not specified, callbacks are invoked just as standard Python functions. This
-inevitably means that the user will have to take into account the fact that the callback will
-be invoked in the Thread of the MQTT connection. In particular, blocking the execution of
-that thread might cause deadlocks and, in general, malfunctions in the SDK. For this reason, the
-usage of asyncio is strongly recommended.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt.on_connected">
-<span class="sig-name descname"><span class="pre">on_connected</span></span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt.on_connected" title="Permalink to this definition">¶</a></dt>
-<dd><p>A function that will be invoked everytime the device successfully connects.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Callable[[<a class="reference internal" href="#device.device_mqtt.DeviceMqtt" title="device.device_mqtt.DeviceMqtt">DeviceMqtt</a>], None]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt.on_disconnected">
-<span class="sig-name descname"><span class="pre">on_disconnected</span></span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt.on_disconnected" title="Permalink to this definition">¶</a></dt>
-<dd><p>A function that will be invoked everytime the device disconnects. The int parameter bears
-the disconnect reason.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Callable[[<a class="reference internal" href="#device.device_mqtt.DeviceMqtt" title="device.device_mqtt.DeviceMqtt">DeviceMqtt</a>, int], None]</p>
-</dd>
-</dl>
-</dd></dl>
-
+inevitably means that the user will have to take into account the fact that the callback
+will be invoked in the thread of the MQTT connection. In particular, blocking the execution
+of that thread might cause deadlocks and, in general, malfunctions in the SDK. For this
+reason, the usage of asyncio is strongly recommended.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt.add_interface_from_json">
 <span class="sig-name descname"><span class="pre">add_interface_from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt.add_interface_from_json" title="Permalink to this definition">¶</a></dt>

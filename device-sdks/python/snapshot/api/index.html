@@ -193,7 +193,6 @@ regarding threading and MQTT interactions.</p>
     <span class="n">credentials_secret</span><span class="o">=</span><span class="s2">&quot;credentials secret&quot;</span><span class="p">,</span>
     <span class="n">pairing_base_url</span><span class="o">=</span><span class="s2">&quot;pairing url&quot;</span><span class="p">,</span>
     <span class="n">persistency_dir</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span>
-    <span class="n">loop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">ignore_ssl_errors</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="c1"># Add a single interface from a .json file</span>
@@ -243,7 +242,7 @@ received data. Callback functions are also available for connect/disconnect even
 <span class="c1"># ... Create a device and connect it to Astarte ...</span>
 
 <span class="c1"># Setup the callback</span>
-<span class="n">device</span><span class="o">.</span><span class="n">on_data_received</span> <span class="o">=</span> <span class="n">my_callback</span>
+<span class="n">device</span><span class="o">.</span><span class="n">set_events_callbacks</span><span class="p">(</span><span class="n">on_data_received</span><span class="o">=</span><span class="n">my_callback</span><span class="p">)</span>
 
 <span class="c1"># Keep the program running</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
