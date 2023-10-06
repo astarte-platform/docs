@@ -1,8 +1,0 @@
-org.astarteplatform.devicesdk
-org.astarteplatform.devicesdk.android
-org.astarteplatform.devicesdk.crypto
-org.astarteplatform.devicesdk.generic
-org.astarteplatform.devicesdk.protocol
-org.astarteplatform.devicesdk.transport
-org.astarteplatform.devicesdk.transport.mqtt
-org.astarteplatform.devicesdk.util
