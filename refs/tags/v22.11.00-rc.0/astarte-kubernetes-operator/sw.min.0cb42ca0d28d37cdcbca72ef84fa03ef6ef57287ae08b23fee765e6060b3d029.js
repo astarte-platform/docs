@@ -1,1 +1,0 @@
-navigator.serviceWorker&&navigator.serviceWorker.register("/refs/tags/v22.11.00-rc.0/astarte-kubernetes-operator/sw.js",{scope:"/refs/tags/v22.11.00-rc.0/astarte-kubernetes-operator/"})

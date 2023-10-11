@@ -1,7 +1,0 @@
-astarte
-=======
-
-.. toctree::
-   :maxdepth: 4
-
-   device
