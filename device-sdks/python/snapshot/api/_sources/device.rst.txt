@@ -28,6 +28,14 @@ device.device module
    :undoc-members:
    :show-inheritance:
 
+device.device\_grpc module
+--------------------------
+
+.. automodule:: device.device_grpc
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 device.device\_mqtt module
 --------------------------
 
