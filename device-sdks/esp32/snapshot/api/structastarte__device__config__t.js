@@ -1,5 +1,6 @@
 var structastarte__device__config__t =
 [
+    [ "callbacks_user_data", "structastarte__device__config__t.html#abe57dff6c1426e99973e0fa0cd648033", null ],
     [ "connection_event_callback", "structastarte__device__config__t.html#afe46ab6dac8ea735513287c5a189d4ae", null ],
     [ "credentials_secret", "structastarte__device__config__t.html#a0d023e29e0c5ac2038d0ddec97c8cdd7", null ],
     [ "data_event_callback", "structastarte__device__config__t.html#a84f22dd4990a5a76900226cb651a0eaa", null ],
