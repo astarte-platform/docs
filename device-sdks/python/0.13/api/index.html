@@ -1,0 +1,310 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Astarte Python device SDK &mdash; Astarte device SDK Python 0.12.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="astarte" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> Astarte device SDK Python
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.12
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">astarte</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Astarte device SDK Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Astarte Python device SDK</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="toctree-wrapper compound">
+</div>
+<!--
+Copyright 2023 SECO Mind Srl
+
+SPDX-License-Identifier: Apache-2.0
+--><section id="astarte-python-device-sdk">
+<h1>Astarte Python device SDK<a class="headerlink" href="#astarte-python-device-sdk" title="Permalink to this heading">¶</a></h1>
+<p>Python device SDK for <a class="reference external" href="https://github.com/astarte-platform/astarte">Astarte</a>. Create Astarte Devices
+and Simulators with Python3.
+It integrates with asyncio to ensure a smooth developer experience and to hide complex details
+regarding threading and MQTT interactions.</p>
+<section id="how-to-get-with-pip">
+<h2>How to get with Pip<a class="headerlink" href="#how-to-get-with-pip" title="Permalink to this heading">¶</a></h2>
+<p>The Astarte device SDK can be obtained by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">astarte</span><span class="o">-</span><span class="n">device</span><span class="o">-</span><span class="n">sdk</span>
+</pre></div>
+</div>
+</section>
+<section id="basic-usage">
+<h2>Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this heading">¶</a></h2>
+<section id="create-a-device">
+<h3>Create a device<a class="headerlink" href="#create-a-device" title="Permalink to this heading">¶</a></h3>
+<p>Initializing an instance of a device can be performed in three steps, as seen below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astarte.device</span> <span class="kn">import</span> <span class="n">DeviceMqtt</span>
+
+<span class="c1"># Create the device instance</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">DeviceMqtt</span><span class="p">(</span>
+    <span class="n">device_id</span><span class="o">=</span><span class="s2">&quot;device id&quot;</span><span class="p">,</span>
+    <span class="n">realm</span><span class="o">=</span><span class="s2">&quot;realm&quot;</span><span class="p">,</span>
+    <span class="n">credentials_secret</span><span class="o">=</span><span class="s2">&quot;credentials secret&quot;</span><span class="p">,</span>
+    <span class="n">pairing_base_url</span><span class="o">=</span><span class="s2">&quot;pairing url&quot;</span><span class="p">,</span>
+    <span class="n">persistency_dir</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span>
+    <span class="n">ignore_ssl_errors</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="c1"># Add a single interface from a .json file</span>
+<span class="n">device</span><span class="o">.</span><span class="n">add_interface_from_file</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;interfaces/path/file.json&quot;</span><span class="p">))</span>
+<span class="c1"># Use `device.add_interfaces_from_dir(Path(&quot;interfaces/path&quot;))` instead to add all the interfaces in a directory</span>
+<span class="c1"># Connect to Astarte</span>
+<span class="n">device</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="publish-data-from-device">
+<h3>Publish data from device<a class="headerlink" href="#publish-data-from-device" title="Permalink to this heading">¶</a></h3>
+<p>Publishing new values can be performed using the <code class="docutils literal notranslate"><span class="pre">send</span></code> and <code class="docutils literal notranslate"><span class="pre">send_aggregate</span></code> functions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astarte.device</span> <span class="kn">import</span> <span class="n">DeviceMqtt</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+
+<span class="c1"># ... Create a device and connect it to Astarte ...</span>
+
+<span class="c1"># Send an individual datastream or a property</span>
+<span class="n">device</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
+    <span class="n">interface_name</span><span class="o">=</span><span class="s2">&quot;datastream_interface&quot;</span><span class="p">,</span>
+    <span class="n">interface_path</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;/path/name&quot;</span><span class="p">,</span>
+    <span class="n">payload</span><span class="o">=</span><span class="s2">&quot;payload&quot;</span><span class="p">,</span>
+    <span class="n">timestamp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Send an aggregated object datastream</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;endpoint1&quot;</span><span class="p">:</span> <span class="s2">&quot;value1&quot;</span><span class="p">,</span> <span class="s2">&quot;endpoint2&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">}</span>
+<span class="n">device</span><span class="o">.</span><span class="n">send_aggregate</span><span class="p">(</span>
+    <span class="n">interface_name</span><span class="o">=</span><span class="s2">&quot;aggregate_interface&quot;</span><span class="p">,</span>
+    <span class="n">interface_path</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;/path/name&quot;</span><span class="p">,</span>
+    <span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
+    <span class="n">timestamp</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="receive-a-server-publication">
+<h3>Receive a server publication<a class="headerlink" href="#receive-a-server-publication" title="Permalink to this heading">¶</a></h3>
+<p>The device automatically polls for new messages. The user can use a call back function to process
+received data. Callback functions are also available for connect/disconnect events.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astarte.device</span> <span class="kn">import</span> <span class="n">DeviceMqtt</span>
+
+<span class="k">def</span> <span class="nf">my_callback</span><span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="n">DeviceMqtt</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Received message for </span><span class="si">{</span><span class="n">name</span><span class="si">}{</span><span class="n">path</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">payload</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># ... Create a device and connect it to Astarte ...</span>
+
+<span class="c1"># Setup the callback</span>
+<span class="n">device</span><span class="o">.</span><span class="n">set_events_callbacks</span><span class="p">(</span><span class="n">on_data_received</span><span class="o">=</span><span class="n">my_callback</span><span class="p">)</span>
+
+<span class="c1"># Keep the program running</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="indices">
+<h1>Indices<a class="headerlink" href="#indices" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="modules.html" class="btn btn-neutral float-right" title="astarte" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021-2022, SECOMind.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
