@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-58764854.js"></script>
+    <script src="dist/sidebar_items-2FE4F16F.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -122,8 +122,8 @@ Astarte
 </h2>
 <p>Docker version &gt;= 19 is recommended:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">docker -v
 </span><span class="">Docker version 19.03.8
-</span></code></pre><p>Docker compose version &gt;= 1.17 is recommended:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">docker-compose -v
-</span><span class="">docker compose version 1.17.1, build unknown
+</span></code></pre><p>Docker compose version &gt;= 2.21 is recommended:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">docker compose version
+</span><span class="">Docker Compose version v2.21.0
 </span></code></pre><p>astartectl &gt;= 22.11 is recommended:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">astartectl version
 </span><span class="">astartectl 22.11.02
 </span></code></pre><p>This procedure has been tested on several systems, and is validated and maintained against
@@ -135,10 +135,10 @@ Ubuntu 22.04 and macOS 10.15 Catalina, but any other modern operating system sho
 </h2>
 <p>To get our Astarte instance running as fast as possible, we will install Astarte's standalone distribution. It includes a tunable Docker Compose which brings up Astarte and every companion service needed for it to work. To do so, simply clone Astarte's main repository and use its scripts to bring it up:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">git clone https://github.com/astarte-platform/astarte.git &amp;&amp; cd astarte
 </span><span class="gp unselectable">$ </span><span class="">docker run -v $(pwd)/compose:/compose astarte/docker-compose-initializer:snapshot
-</span><span class="gp unselectable">$ </span><span class="">docker-compose pull
-</span><span class="gp unselectable">$ </span><span class="">docker-compose up -d
+</span><span class="gp unselectable">$ </span><span class="">docker compose pull
+</span><span class="gp unselectable">$ </span><span class="">docker compose up -d
 </span></code></pre><p><code class="inline">docker-compose-initializer</code> will generate a root CA for devices, a key pair for Housekeeping, and a self-signed certificate for the broker (note: this is a <em>really</em> bad idea in production). You can tune the compose file further to use legitimate certificates and custom keys, but this is out of the scope of this tutorial.</p><p>Compose might take some time to bring everything up, but usually within a minute from the containers creation Astarte will be ready.
-You can reach Astarte at the following addresses:</p><ul><li><code class="inline">api.astarte.localhost</code>: Astarte API, in detail:<ul><li><code class="inline">api.astarte.localhost/appengine</code>: AppEngine</li><li><code class="inline">api.astarte.localhost/housekeeping</code>: Housekeeping</li><li><code class="inline">api.astarte.localhost/pairing</code>: Pairing</li><li><code class="inline">api.astarte.localhost/realmmanagement</code>: Realm Management</li></ul></li><li><code class="inline">broker.astarte.localhost</code>: VerneMQ broker</li><li><code class="inline">dashboard.astarte.localhost</code>: Astarte Dashboard</li></ul><p>Moreover, Compose will forward the following ports to your machine:</p><ul><li><code class="inline">80</code>: HTTP</li><li><code class="inline">8883</code>: MQTTS</li></ul><p>To check everything went fine, use <code class="inline">docker ps</code> to verify relevant containers are up: Astarte itself, VerneMQ, CFSSL, RabbitMQ and ScyllaDB should be now running on your system. If any of them isn't up and running, <code class="inline">docker ps -a</code> should show it stopped or failed. In those cases, it is advised to issue <code class="inline">docker-compose up -d</code> again to fix potential temporary failures.</p><h2 id="create-a-realm" class="section-heading">
+You can reach Astarte at the following addresses:</p><ul><li><code class="inline">api.astarte.localhost</code>: Astarte API, in detail:<ul><li><code class="inline">api.astarte.localhost/appengine</code>: AppEngine</li><li><code class="inline">api.astarte.localhost/housekeeping</code>: Housekeeping</li><li><code class="inline">api.astarte.localhost/pairing</code>: Pairing</li><li><code class="inline">api.astarte.localhost/realmmanagement</code>: Realm Management</li></ul></li><li><code class="inline">broker.astarte.localhost</code>: VerneMQ broker</li><li><code class="inline">dashboard.astarte.localhost</code>: Astarte Dashboard</li></ul><p>Moreover, Compose will forward the following ports to your machine:</p><ul><li><code class="inline">80</code>: HTTP</li><li><code class="inline">8883</code>: MQTTS</li></ul><p>To check everything went fine, use <code class="inline">docker ps</code> to verify relevant containers are up: Astarte itself, VerneMQ, CFSSL, RabbitMQ and ScyllaDB should be now running on your system. If any of them isn't up and running, <code class="inline">docker ps -a</code> should show it stopped or failed. In those cases, it is advised to issue <code class="inline">docker compose up -d</code> again to fix potential temporary failures.</p><h2 id="create-a-realm" class="section-heading">
   <a href="#create-a-realm" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">create-a-realm</p>
   </a>
@@ -147,14 +147,16 @@ You can reach Astarte at the following addresses:</p><ul><li><code class="inline
 <p>Now that we have our instance up and running, we can start setting up a Realm for our device. We'll call our Realm <code class="inline">test</code>. Given we have no SSO or Authentication mechanism set up, we're just going to generate a public key to sign our JWTs with. You can create one with <code class="inline">astartectl</code>:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">astartectl utils gen-keypair test
 </span></code></pre><p>Also, we will need a JWT token to authenticate against Housekeeping. <code class="inline">generate-compose-files.sh</code> created a keypair automatically, which is in <code class="inline">compose/astarte-keys/housekeeping_{private,public}.pem</code>. To perform all of our Astarte interactions, we will use <code class="inline">astartectl</code>.</p><p>Use <code class="inline">astartectl</code> to create a new Realm:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">astartectl housekeeping realms create test --astarte-url http://api.astarte.localhost --realm-public-key test_public.pem -k compose/astarte-keys/housekeeping_private.pem
 </span></code></pre><p>This creates a <code class="inline">test</code> realm, which should be ready to be used almost immediately. To ensure your realm is available and ready, check if it exists in Astarte by issuing:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">astartectl housekeeping realms ls --astarte-url http://api.astarte.localhost -k compose/astarte-keys/housekeeping_private.pem
-</span></code></pre><h2 id="install-an-interface" class="section-heading">
-  <a href="#install-an-interface" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">install-an-interface</p>
+</span></code></pre><h2 id="install-interfaces" class="section-heading">
+  <a href="#install-interfaces" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">install-interfaces</p>
   </a>
-  Install an interface
+  Install interfaces
 </h2>
-<p>We will use <a href="https://github.com/astarte-platform/stream-qt5-test">Astarte's Qt5 Stream Generator</a> to feed data into Astarte. However before starting, we will have to install <code class="inline">org.astarte-platform.genericsensors.Values</code> interface into our new realm. To do that, we can use <code class="inline">astartectl</code> again:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">astartectl realm-management interfaces sync standard-interfaces/org.astarte-platform.genericsensors.Values.json standard-interfaces/org.astarte-platform.genericcommands.ServerCommands.json --astarte-url http://api.astarte.localhost -r test -k test_private.pem -y
-</span></code></pre><p>Now <code class="inline">org.astarte-platform.genericsensors.Values</code> should show up among our available interfaces:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">astartectl realm-management interfaces ls --astarte-url http://api.astarte.localhost -r test -k test_private.pem
+<p>We will use <a href="https://github.com/astarte-platform/stream-qt5-test">Astarte's Qt5 Stream Generator</a>
+to feed data into Astarte. However before starting, we will have to install the <code class="inline">org.astarte- platform.genericsensors.Values</code> and the <code class="inline">org.astarte-platform.genericcommands.ServerCommands</code>
+interfaces into our new realm. To do that, we can use <code class="inline">astartectl</code> again:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">astartectl realm-management interfaces sync standard-interfaces/org.astarte-platform.genericsensors.Values.json standard-interfaces/org.astarte-platform.genericcommands.ServerCommands.json --astarte-url http://api.astarte.localhost -r test -k test_private.pem -y
+</span></code></pre><p>Now <code class="inline">org.astarte-platform.genericsensors.Values</code> and <code class="inline">org.astarte- platform.genericcommands.ServerCommands</code> should show up among our available interfaces:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">astartectl realm-management interfaces ls --astarte-url http://api.astarte.localhost -r test -k test_private.pem
 </span></code></pre><p>Our Astarte instance is now ready for our devices.</p><h2 id="install-a-trigger" class="section-heading">
   <a href="#install-a-trigger" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">install-a-trigger</p>
@@ -211,14 +213,14 @@ or from another machine or device on the same network.</p><h3 id="using-a-contai
   </a>
   Cleaning up
 </h2>
-<p>When you're done with your tests and developments, you can use <code class="inline">docker-compose</code> again to tear down your Astarte instance simply by issuing:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">docker-compose down
-</span></code></pre><p>Unless you add the <code class="inline">-v</code> option, persistencies will be kept and next time you will <code class="inline">docker-compose up</code> the cluster will come back in the very same state you left it last time. <code class="inline">docker-compose down -v</code> is extremely useful during development, especially if you want a clean slate for testing your applications or your routines every time.</p><h2 id="final-notes" class="section-heading">
+<p>When you're done with your tests and developments, you can use <code class="inline">docker compose</code> again to tear down your Astarte instance simply by issuing:</p><pre><code class="makeup sh" translate="no"><span class="gp unselectable">$ </span><span class="">docker compose down
+</span></code></pre><p>Unless you add the <code class="inline">-v</code> option, persistencies will be kept and next time you will <code class="inline">docker compose up</code> the cluster will come back in the very same state you left it last time. <code class="inline">docker compose down -v</code> is extremely useful during development, especially if you want a clean slate for testing your applications or your routines every time.</p><h2 id="final-notes" class="section-heading">
   <a href="#final-notes" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">final-notes</p>
   </a>
   Final notes
 </h2>
-<p>Running Astarte through <code class="inline">docker-compose</code> is the fastest way for going from zero to hero. However, <strong>please keep in mind this setup is unlikely to hold for long in production, and is by design broken for large installations</strong>. We can't stop you from running such a thing in production, but do so as long as you know you voided your warranty by doing so.</p><p>This method is great for development and for trying out the system. If you wish to deploy Astarte in a more robust environment, have a look at <a href="https://astarte.cloud/">Astarte Enterprise</a> or, if you want to go the DIY way, make sure that <strong>at least</strong> every service which requires persistency has reliable storage and adequate redundancy beneath it.</p>
+<p>Running Astarte through <code class="inline">docker compose</code> is the fastest way for going from zero to hero. However, <strong>please keep in mind this setup is unlikely to hold for long in production, and is by design broken for large installations</strong>. We can't stop you from running such a thing in production, but do so as long as you know you voided your warranty by doing so.</p><p>This method is great for development and for trying out the system. If you wish to deploy Astarte in a more robust environment, have a look at <a href="https://astarte.cloud/">Astarte Enterprise</a> or, if you want to go the DIY way, make sure that <strong>at least</strong> every service which requires persistency has reliable storage and adequate redundancy beneath it.</p>
 <div class="bottom-actions">
   <div class="bottom-actions-item">
 
