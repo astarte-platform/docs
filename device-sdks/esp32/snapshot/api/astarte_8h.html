@@ -132,6 +132,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a09ff4c8f358046acff33351742e7299a"><td class="memItemLeft" align="right" valign="top"><a id="a09ff4c8f358046acff33351742e7299a"></a>
 enum <a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>__attribute__</b> ((deprecated(&quot;Please use the typedef <a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&quot;)))</td></tr>
 <tr class="separator:a09ff4c8f358046acff33351742e7299a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f8f7cf526c69086607a3af4b10f89da"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="astarte_8h.html#a1f8f7cf526c69086607a3af4b10f89da">astarte_err_to_name</a> (<a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> code)</td></tr>
+<tr class="memdesc:a1f8f7cf526c69086607a3af4b10f89da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns string for astarte_err_t error codes.  <a href="astarte_8h.html#a1f8f7cf526c69086607a3af4b10f89da">More...</a><br /></td></tr>
+<tr class="separator:a1f8f7cf526c69086607a3af4b10f89da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -195,6 +198,35 @@ Variables</h2></td></tr>
 
 <p>Astarte return codes. </p>
 <p>@detail Astarte Device SDK return codes. ASTARTE_OK is always returned when no errors occurred. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a1f8f7cf526c69086607a3af4b10f89da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f8f7cf526c69086607a3af4b10f89da">&#9670;&nbsp;</a></span>astarte_err_to_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* astarte_err_to_name </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>&#160;</td>
+          <td class="paramname"><em>code</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns string for astarte_err_t error codes. </p>
+<p>This function finds the error code in a pre-generated lookup-table and returns its string representation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>astarte_err_t error code </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>string error message </dd></dl>
 
 </div>
 </div>
