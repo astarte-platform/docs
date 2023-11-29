@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-2FE4F16F.js"></script>
+    <script src="dist/sidebar_items-37BEC2D5.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -113,7 +113,43 @@ Astarte
 </h2>
 <p>When creating a new Cluster, Astarte Operator also creates a brand new keypair and stores it in
 the cluster. To retrieve it (assuming you deployed an instance named <code class="inline">astarte</code> in namespace <code class="inline">astarte</code>):</p><pre><code class="makeup bash" translate="no"><span class="">kubectl get secret -n astarte astarte-housekeeping-private-key -o=jsonpath={.data.private-key} | base64 -d &gt; housekeeping.key
-</span></code></pre><p>You can then use <code class="inline">housekeeping.key</code> to authenticate against Housekeeping API.</p><h2 id="work-in-progress" class="section-heading">
+</span></code></pre><p>You can then use <code class="inline">housekeeping.key</code> to authenticate against Housekeeping API.</p><h2 id="device-limit-in-a-realm" class="section-heading">
+  <a href="#device-limit-in-a-realm" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">device-limit-in-a-realm</p>
+  </a>
+  Device limit in a Realm
+</h2>
+<p>While there is no limit on the number of Devices registered in a Realm, it is possible to impose
+an upper bound using the <code class="inline">&lt;astarte base API URL&gt;/housekeeping/v1/realms/&lt;realm name&gt;</code> API.
+By default, such an upper bound does not exist. The limit can be retrieved, updated or removed
+(meaning that any number of registered Devices is allowed).</p><h3 id="setting-updating-or-removing-the-limit-on-the-number-of-registered-devices-in-a-realm" class="section-heading">
+  <a href="#setting-updating-or-removing-the-limit-on-the-number-of-registered-devices-in-a-realm" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">setting-updating-or-removing-the-limit-on-the-number-of-registered-devices-in-a-realm</p>
+  </a>
+  Setting, updating or removing the limit on the number of registered Devices in a Realm
+</h3>
+<p><code class="inline">PATCH &lt;astarte base API URL&gt;/housekeeping/v1/realms/&lt;realm name&gt;</code></p><p>The HTTP payload of the request must have the following format:</p><pre><code class="json">{
+    &quot;data&quot;: {
+        &quot;device_registration_limit&quot;: &lt;value&gt;
+    }
+}</code></pre><p>To set or update the limit, the value must be a non negative integer.
+If the value is less than the number of currently registered devices, no devices will be
+removed, but it will not be possible to register new devices.
+When it is set, trying to register more Devices past the limit will result in an error.
+To remove the limit, the value must be <code class="inline">null</code>.</p><h3 id="fetching-the-limit-on-the-number-of-registered-devices-in-a-realm" class="section-heading">
+  <a href="#fetching-the-limit-on-the-number-of-registered-devices-in-a-realm" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">fetching-the-limit-on-the-number-of-registered-devices-in-a-realm</p>
+  </a>
+  Fetching the limit on the number of registered Devices in a Realm
+</h3>
+<p><code class="inline">GET &lt;astarte base API URL&gt;/housekeeping/v1/realms/&lt;realm name&gt;</code></p><p>The HTTP payload of the response will have the following format:</p><pre><code class="json">{
+  &quot;data&quot;: {
+    &quot;realm_name&quot;: &lt;realm name&gt;,
+    &quot;jwt_public_key_pem&quot;: &lt;realm public key&gt;,
+    &quot;replication_factor&quot;: &lt;realm replication factor&gt;,
+    &quot;device_registration_limit&quot;: &lt;realm device registration limit&gt;
+  }
+}</code></pre><p>If no limit is currently set, the value of the <code class="inline">&quot;device_registration_limit&quot;</code> field will be <code class="inline">null</code>.</p><h2 id="work-in-progress" class="section-heading">
   <a href="#work-in-progress" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">work-in-progress</p>
   </a>

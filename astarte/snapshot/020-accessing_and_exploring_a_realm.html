@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-2FE4F16F.js"></script>
+    <script src="dist/sidebar_items-37BEC2D5.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -105,7 +105,21 @@ Astarte
   <span>Accessing and Exploring a Realm</span>
 </h1>
 
-<p>In Astarte, a Realm is a logical partition which holds a number of devices and an Authentication Realm </p>
+<p>In Astarte, a Realm is a logical partition which holds a number of devices and an Authentication
+Realm.</p><p>The <a href="015-astarte_dahsboard">Astarte Dashboard</a> allows you to explore all resources of a given Realm,
+such as e.g. Interfaces, Triggers, Devices, Groups etc...</p><h2 id="device-limit-in-a-realm" class="section-heading">
+  <a href="#device-limit-in-a-realm" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">device-limit-in-a-realm</p>
+  </a>
+  Device limit in a Realm
+</h2>
+<p>While there is no limit on the number of Devices registered in a Realm, it is possible that an
+upper bound has been set in the Realm configuration using the <a href="/api/index.html?urls.primaryName=Housekeeping API">Housekeeping API</a>.
+When it is set, trying to register more Devices past the limit will result in an error.
+The limit can be retrieved from Realm Management with</p><p><code class="inline">GET &lt;astarte base API URL&gt;/realmmanagement/v1/&lt;realm name&gt;/config/device_registration_limit</code></p><p>The HTTP payload of the response will have the following format:</p><pre><code class="json">{
+    &quot;data&quot;: &lt;value&gt;
+}</code></pre><p>If such a limit is set, the value will be a non negative integer.
+If not, the value will be <code class="inline">null</code>.</p>
 <div class="bottom-actions">
   <div class="bottom-actions-item">
 
