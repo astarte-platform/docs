@@ -101,7 +101,7 @@ $(document).ready(function(){initNavTree('astarte_8h_source.html',''); initResiz
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="astarte_8h.html#a669c8b32e8df940541fa3de09e3600af">   18</a></span>&#160;<span class="preprocessor">#define ASTARTE_DEVICE_SDK_PATCH 99</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="astarte_8h.html#a0b358dbb99a96c030163478b9a7f2076">   19</a></span>&#160; </div>
 <div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="astarte_8h.html#adb464dc7ecd2b74564436f78daee105f">   20</a></span>&#160;<span class="comment">// clang-format off</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="astarte_8h.html#a335e24a6b0cbd448da060a05cc4b6bc2">   21</a></span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">   27</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="astarte_8h.html#a8fd9b6e4a53fdcd78788ee61b0783718">ASTARTE_OK</a> = 0, </div>
@@ -124,23 +124,25 @@ $(document).ready(function(){initNavTree('astarte_8h_source.html',''); initResiz
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="astarte_8h.html#a38dbb80a8d2d34298b9de2c4582d0165">ASTARTE_ERR_DEVICE_NOT_READY</a> = 17, </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="astarte_8h.html#a669c8b32e8df940541fa3de09e3600af">ASTARTE_ERR_PUBLISH</a> = 18, </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="astarte_8h.html#a0b358dbb99a96c030163478b9a7f2076">ASTARTE_ERR_INVALID_INTROSPECTION</a> = 19, </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="astarte_8h.html#adb464dc7ecd2b74564436f78daee105f">ASTARTE_ERR_INVALID_INTERFACE_VERSION</a> = 20 </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;} __attribute__((deprecated(<span class="stringliteral">&quot;Please use the typedef astarte_err_t&quot;</span>)));</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">// clang-format on</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#pragma GCC diagnostic push</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#pragma GCC diagnostic ignored &quot;-Wdeprecated-declarations&quot;</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> <a class="code" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#pragma GCC diagnostic pop</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="astarte_8h.html#a1f8f7cf526c69086607a3af4b10f89da">   68</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="astarte_8h.html#a1f8f7cf526c69086607a3af4b10f89da">astarte_err_to_name</a>(<a class="code" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> code);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="astarte_8h.html#adb464dc7ecd2b74564436f78daee105f">ASTARTE_ERR_INVALID_INTERFACE_VERSION</a> = 20, </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="astarte_8h.html#a335e24a6b0cbd448da060a05cc4b6bc2">ASTARTE_ERR_CONFLICTING_INTERFACE</a> = 21 </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;} __attribute__((deprecated(<span class="stringliteral">&quot;Please use the typedef astarte_err_t&quot;</span>)));</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">// clang-format on</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#pragma GCC diagnostic push</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#pragma GCC diagnostic ignored &quot;-Wdeprecated-declarations&quot;</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> <a class="code" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#pragma GCC diagnostic pop</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="astarte_8h.html#a1f8f7cf526c69086607a3af4b10f89da">   69</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="astarte_8h.html#a1f8f7cf526c69086607a3af4b10f89da">astarte_err_to_name</a>(<a class="code" href="astarte_8h.html#a8c619a744449aa507f5e6dedebffea23">astarte_err_t</a> code);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aastarte_8h_html_a04caec5c8d0c13c131e07f6b1016c148"><div class="ttname"><a href="astarte_8h.html#a04caec5c8d0c13c131e07f6b1016c148">ASTARTE_ERR_NOT_FOUND</a></div><div class="ttdeci">ASTARTE_ERR_NOT_FOUND</div><div class="ttdef"><b>Definition:</b> astarte.h:2</div></div>
 <div class="ttc" id="aastarte_8h_html_a0857e2277687c12f35c9371538c4f532"><div class="ttname"><a href="astarte_8h.html#a0857e2277687c12f35c9371538c4f532">ASTARTE_ERR_NO_JWT</a></div><div class="ttdeci">ASTARTE_ERR_NO_JWT</div><div class="ttdef"><b>Definition:</b> astarte.h:3</div></div>
 <div class="ttc" id="aastarte_8h_html_a0b358dbb99a96c030163478b9a7f2076"><div class="ttname"><a href="astarte_8h.html#a0b358dbb99a96c030163478b9a7f2076">ASTARTE_ERR_INVALID_INTROSPECTION</a></div><div class="ttdeci">ASTARTE_ERR_INVALID_INTROSPECTION</div><div class="ttdef"><b>Definition:</b> astarte.h:19</div></div>
 <div class="ttc" id="aastarte_8h_html_a1f8f7cf526c69086607a3af4b10f89da"><div class="ttname"><a href="astarte_8h.html#a1f8f7cf526c69086607a3af4b10f89da">astarte_err_to_name</a></div><div class="ttdeci">const char * astarte_err_to_name(astarte_err_t code)</div><div class="ttdoc">Returns string for astarte_err_t error codes.</div></div>
+<div class="ttc" id="aastarte_8h_html_a335e24a6b0cbd448da060a05cc4b6bc2"><div class="ttname"><a href="astarte_8h.html#a335e24a6b0cbd448da060a05cc4b6bc2">ASTARTE_ERR_CONFLICTING_INTERFACE</a></div><div class="ttdeci">ASTARTE_ERR_CONFLICTING_INTERFACE</div><div class="ttdef"><b>Definition:</b> astarte.h:21</div></div>
 <div class="ttc" id="aastarte_8h_html_a38dbb80a8d2d34298b9de2c4582d0165"><div class="ttname"><a href="astarte_8h.html#a38dbb80a8d2d34298b9de2c4582d0165">ASTARTE_ERR_DEVICE_NOT_READY</a></div><div class="ttdeci">ASTARTE_ERR_DEVICE_NOT_READY</div><div class="ttdef"><b>Definition:</b> astarte.h:17</div></div>
 <div class="ttc" id="aastarte_8h_html_a39b19119dcf50a432768a70d9f21a26a"><div class="ttname"><a href="astarte_8h.html#a39b19119dcf50a432768a70d9f21a26a">ASTARTE_ERR_NVS_NOT_INITIALIZED</a></div><div class="ttdeci">ASTARTE_ERR_NVS_NOT_INITIALIZED</div><div class="ttdef"><b>Definition:</b> astarte.h:11</div></div>
 <div class="ttc" id="aastarte_8h_html_a3d4a77f789d0e3c0e455fd39a49f312b"><div class="ttname"><a href="astarte_8h.html#a3d4a77f789d0e3c0e455fd39a49f312b">ASTARTE_ERR_ALREADY_EXISTS</a></div><div class="ttdeci">ASTARTE_ERR_ALREADY_EXISTS</div><div class="ttdef"><b>Definition:</b> astarte.h:7</div></div>

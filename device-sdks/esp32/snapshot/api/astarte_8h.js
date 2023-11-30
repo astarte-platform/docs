@@ -11,6 +11,7 @@ var astarte_8h =
     [ "ASTARTE_ERR_ALREADY_EXISTS", "astarte_8h.html#a3d4a77f789d0e3c0e455fd39a49f312b", null ],
     [ "ASTARTE_ERR_API", "astarte_8h.html#a49f09308f65bb49973dc83cf98e4eebc", null ],
     [ "ASTARTE_ERR_AUTH", "astarte_8h.html#afee9f550d6f3da6cec293a1d2749c63c", null ],
+    [ "ASTARTE_ERR_CONFLICTING_INTERFACE", "astarte_8h.html#a335e24a6b0cbd448da060a05cc4b6bc2", null ],
     [ "ASTARTE_ERR_DEVICE_NOT_READY", "astarte_8h.html#a38dbb80a8d2d34298b9de2c4582d0165", null ],
     [ "ASTARTE_ERR_ESP_SDK", "astarte_8h.html#ad79edfd7289c43ca30eb968f58ded5d3", null ],
     [ "ASTARTE_ERR_HTTP", "astarte_8h.html#aed21ca5ed051b414b70aa9865f940ea2", null ],
