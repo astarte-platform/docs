@@ -19,6 +19,7 @@ var astarte_8h =
     [ "ASTARTE_ERR_INVALID_INTERFACE_VERSION", "astarte_8h.html#adb464dc7ecd2b74564436f78daee105f", null ],
     [ "ASTARTE_ERR_INVALID_INTROSPECTION", "astarte_8h.html#a0b358dbb99a96c030163478b9a7f2076", null ],
     [ "ASTARTE_ERR_INVALID_QOS", "astarte_8h.html#ab5e7621a654e249d4d2e61f0740f2dce", null ],
+    [ "ASTARTE_ERR_INVALID_SIZE", "astarte_8h.html#abcb5a1dd50e60d97b2b5619fdd487ef4", null ],
     [ "ASTARTE_ERR_IO", "astarte_8h.html#a79ee74b69ecd9e1244c995f3b4fea945", null ],
     [ "ASTARTE_ERR_MBED_TLS", "astarte_8h.html#a65118f20d67b06c9d6d15569b485debf", null ],
     [ "ASTARTE_ERR_NO_JWT", "astarte_8h.html#a0857e2277687c12f35c9371538c4f532", null ],
