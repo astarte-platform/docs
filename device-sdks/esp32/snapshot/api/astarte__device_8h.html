@@ -399,7 +399,7 @@ Functions</h2></td></tr>
 <p>Example:</p>
 <p>uuid_t uuid_ns; if (uuid_from_string("de40ff58-5696-4b35-a6d6-0cc7280bcd56", uuid_ns) != 0) { ESP_LOGE(TAG, "Error while parsing namespace UUID"); }</p>
 <p>uuid_t device_uuid; const char *unique_data = "my_unique_data" uuid_generate_v5(uuid_ns, unique_data, strlen(unique_data), device_uuid);</p>
-<p>char hwid[32]; astarte_hwid_encode(hwid, sizeof(hwid), device_uuid);</p>
+<p>char hwid[32] = { 0 }; astarte_hwid_encode(hwid, sizeof(hwid), device_uuid);</p>
 <p><a class="el" href="structastarte__device__config__t.html">astarte_device_config_t</a> cfg = { .data_event_callback = astarte_data_events_handler, .hwid = hwid, };</p>
 <dl class="section return"><dt>Returns</dt><dd>The handle to the device, NULL if an error occurred. </dd></dl>
 
