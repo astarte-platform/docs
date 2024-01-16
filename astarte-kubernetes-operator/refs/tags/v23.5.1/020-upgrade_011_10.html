@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.29.0">
+    <meta name="project" content="Astarte Operator v23.5.1">
+
+    <title>Upgrade v0.11-v1.0 — Astarte Operator v23.5.1</title>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-3AF50CD1.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/23.5/">
+        <img src="assets/logo.png" alt="Astarte Operator" class="sidebar-projectImage">
+      </a>
+
+    <div class="sidebar-projectDetails">
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/23.5/" class="sidebar-projectName" translate="no">
+Astarte Operator
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
+        v23.5.1
+      </strong>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/release-23.5/docs/documentation/pages/upgrade/020-upgrade_011_10.md#L1" title="View Source" class="view-source" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span>Upgrade v0.11-v1.0</span>
+</h1>
+
+<h2 id="upgrade-astarte-operator" class="section-heading">
+  <a href="#upgrade-astarte-operator" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">upgrade-astarte-operator</p>
+  </a>
+  Upgrade Astarte Operator
+</h2>
+<p>The upgrade procedure from v0.11 to v1.0 requires some manual intervention as the deployment and
+handling of the Operator's lifecycle has changed: if v0.11 is entirely handled with <code class="inline">astartectl</code>,
+v1.0 employs Helm charts.</p><p>Helm is intended to be used as the operator's lifecycle management tool, thus make sure you are
+ready with a working <a href="https://helm.sh/docs/intro/install/">Helm installation</a>.</p><h3 id="migrate-ca-certificate-and-key" class="section-heading">
+  <a href="#migrate-ca-certificate-and-key" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">migrate-ca-certificate-and-key</p>
+  </a>
+  Migrate CA certificate and key
+</h3>
+<p>Currently you have to manually migrate the CA certificate and private key to the new installation.
+This is critical since the devices in your realm have certificates signed with those CA credentials,
+and if the CA certificate changes all devices will have invalid credentials and will have to request
+new credentials.</p><p><code class="inline">tar</code> must be installed onto your machine in order to successfully complete this step.</p><p>Export the following enviroment variables and ensure they matches the name of the corresponding
+components within your cluster:</p><ul><li><code class="inline">ASTARTE_RELEASE_NAME</code>: the name of the Astarte instance deployed in your cluster,</li><li><code class="inline">ASTARTE_RELEASE_NAMESPACE</code>: the namespace in which your Astarte instance resides.</li></ul><p>For instance, if you followed the standard naming conventions while installing Astarte it should be
+sufficient setting the following values:</p><pre><code class="makeup bash" translate="no"><span class="">export ASTARTE_RELEASE_NAME=astarte
+</span><span class="">export ASTARTE_RELEASE_NAMESPACE=astarte
+</span></code></pre><p>However, <strong>it is your responsibility checking that these values match the ones of your cluster</strong>.</p><p>Now, migrate the CA certificates and key:</p><pre><code class="makeup bash" translate="no"><span class="">kubectl cp $ASTARTE_RELEASE_NAMESPACE/$ASTARTE_RELEASE_NAME-cfssl-0:/data/ca-key.pem tls.key
+</span><span class="">kubectl cp $ASTARTE_RELEASE_NAMESPACE/$ASTARTE_RELEASE_NAME-cfssl-0:/data/ca.pem tls.crt
+</span><span class="">kubectl create secret tls $ASTARTE_RELEASE_NAME-devices-ca -n $ASTARTE_RELEASE_NAMESPACE \
+</span><span class="">  --cert=tls.crt --key=tls.key
+</span></code></pre><h3 id="remove-astarte-operator-v0-11" class="section-heading">
+  <a href="#remove-astarte-operator-v0-11" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">remove-astarte-operator-v0-11</p>
+  </a>
+  Remove Astarte Operator v0.11
+</h3>
+<p>Remove the Operator's Service Account, Cluster Roles and Cluster Role Bindings:</p><pre><code class="makeup bash" translate="no"><span class="">kubectl delete serviceaccounts -n kube-system astarte-operator
+</span><span class="">kubectl delete clusterroles.rbac.authorization.k8s.io astarte-operator
+</span><span class="">kubectl delete clusterrolebindings.rbac.authorization.k8s.io astarte-operator
+</span></code></pre><p>Delete the Operator's deployment:</p><pre><code class="makeup bash" translate="no"><span class="">kubectl delete deployments.app -n kube-system astarte-operator
+</span></code></pre><p><strong>DO NOT</strong> delete Astarte's CRDs! This will lead to the deletion of the entire Astarte deployment
+with a consequent data loss.</p><h3 id="install-cert-manager" class="section-heading">
+  <a href="#install-cert-manager" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">install-cert-manager</p>
+  </a>
+  Install cert-manager
+</h3>
+<p>Please, before proceeding to the next steps make sure to be compliant with the new requirements for
+<code class="inline">v1.0</code>, i.e. if <code class="inline">cert-manager</code> is not installed yet, run the following commands:</p><pre><code class="makeup bash" translate="no"><span class="">helm repo add jetstack https://charts.jetstack.io
+</span><span class="">helm repo update
+</span><span class="">kubectl create namespace cert-manager
+</span><span class="">helm install \
+</span><span class="">  cert-manager jetstack/cert-manager \
+</span><span class="">  --namespace cert-manager \
+</span><span class="">  --version v1.7.0 \
+</span><span class="">  --set installCRDs=true
+</span></code></pre><h3 id="add-astarte-operator-s-helm-chart-repository" class="section-heading">
+  <a href="#add-astarte-operator-s-helm-chart-repository" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">add-astarte-operator-s-helm-chart-repository</p>
+  </a>
+  Add Astarte Operator's Helm Chart Repository
+</h3>
+<p>To restore the Operator's functionalities with v1.0, the first step is adding the Astarte Operator's
+Helm chart repository:</p><pre><code class="makeup bash" translate="no"><span class="">helm repo add astarte https://helm.astarte-platform.org
+</span><span class="">helm repo update
+</span></code></pre><h3 id="prepare-the-cluster-to-the-operator-v1-0-installation" class="section-heading">
+  <a href="#prepare-the-cluster-to-the-operator-v1-0-installation" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">prepare-the-cluster-to-the-operator-v1-0-installation</p>
+  </a>
+  Prepare the Cluster to the Operator v1.0 Installation
+</h3>
+<p>Set some environment variables that will come handy for the upcoming migration procedure:</p><ul><li><code class="inline">ASTARTE_OP_TEMPLATE_DIR</code> is the target directory in which the chart templates will be generated,</li><li><code class="inline">ASTARTE_OP_RELEASE_NAME</code> is the name of the Astarte Operator deployment,</li><li><code class="inline">ASTARTE_OP_RELEASE_NAMESPACE</code> is the namespace in which the Astarte Operator will reside.</li></ul><p>You can change the following values at your preference. However, the following values should be ok
+for the large majority of use cases.</p><p>Note that you are responsible for checking that <code class="inline">ASTARTE_OP_RELEASE_NAMESPACE</code> exists within the
+cluster.</p><pre><code class="makeup bash" translate="no"><span class="">export ASTARTE_OP_TEMPLATE_DIR=/tmp
+</span><span class="">export ASTARTE_OP_RELEASE_NAME=astarte-operator
+</span><span class="">export ASTARTE_OP_RELEASE_NAMESPACE=kube-system
+</span></code></pre><p>Generate the Helm templates with the following:</p><pre><code class="makeup bash" translate="no"><span class="">helm template $ASTARTE_OP_RELEASE_NAME astarte/astarte-operator \
+</span><span class="">    --namespace $ASTARTE_OP_RELEASE_NAMESPACE \
+</span><span class="">    --output-dir $ASTARTE_OP_TEMPLATE_DIR
+</span></code></pre><p>The outcome of this command consists of a series of <code class="inline">yaml</code> files located in
+<code class="inline">$ASTARTE_OP_TEMPLATE_DIR/astarte-operator/templates</code>.</p><p>Leveraging the templating capabilities of Helm, the generated templates can be customized according
+to your needs. For instance, if you want to refer to a particular Operator's tag all you have to do
+is to append <code class="inline">--set image.tag=&lt;the-required-tag&gt;</code> to the previous command. To check all the
+configurable values run <code class="inline">helm show values astarte/astarte-operator</code>.</p><p>Before moving on, make sure that <code class="inline">gawk</code> is installed on your host machine. If you are on OSX,
+running the following command will be sufficient:</p><pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">brew install gawk
+</span></code></pre><p>while on any Debian based OS run:</p><pre><code class="makeup bash" translate="no"><span class=""># apt install gawk
+</span></code></pre><p>Now it's time to prepare the cluster to allow the new operator installation by means of the
+templates generated in the previous step.</p><p>The following tasks will be performed:</p><ul><li>replacement of the Astarte's and AstarteVoyagerIngress' CRDs with their updated versions,</li><li>installation of the Flow's CRD,</li><li>installation of the Operator's RBACs,</li><li>installation of the Operator's Webhooks,</li><li>annotation of the installed resources as to allow Helm to manipulate and take control of them.</li></ul><p>This <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/master/hack/upgrade-operator-011-10.sh">bash
+script</a>
+takes care of handling the aforementioned tasks. Download it and, assuming you saved it as
+<code class="inline">upgrade-operator-011-10.sh</code>, run the following:</p><pre><code class="makeup bash" translate="no"><span class="">bash path/to/your/upgrade-operator-011-10.sh \
+</span><span class="">    -d $ASTARTE_OP_TEMPLATE_DIR \
+</span><span class="">    -n $ASTARTE_OP_RELEASE_NAME \
+</span><span class="">    -N $ASTARTE_OP_RELEASE_NAMESPACE
+</span></code></pre><p>In a more concise way you can perform the same task simply executing:</p><pre><code class="makeup bash" translate="no"><span class="">ASTARTE_OP_UPGRADE_SCRIPT_URL=https://raw.githubusercontent.com/astarte-platform/astarte-kubernetes-operator/master/hack/upgrade-operator-011-10.sh
+</span><span class="">curl -fsSL $ASTARTE_OP_UPGRADE_SCRIPT_URL &gt; /tmp/upgrade-operator-011-10.sh
+</span><span class="">bash /tmp/upgrade-operator-011-10.sh \
+</span><span class="">    -d $ASTARTE_OP_TEMPLATE_DIR \
+</span><span class="">    -n $ASTARTE_OP_RELEASE_NAME \
+</span><span class="">    -N $ASTARTE_OP_RELEASE_NAMESPACE
+</span></code></pre><h3 id="install-astarte-operator-v1-0" class="section-heading">
+  <a href="#install-astarte-operator-v1-0" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">install-astarte-operator-v1-0</p>
+  </a>
+  Install Astarte Operator v1.0
+</h3>
+<p>Now it's time to install the Astarte Operator v1.0.</p><p>If during the <a href="#prepare-the-cluster-to-the-operator-v1-0-installation">preparation of the cluster</a>
+you customized the chart values with the <code class="inline">--set</code> flag, please take care of setting the same values
+accordingly while installing Astarte Operator.</p><p>To install the Operator, simply run:</p><pre><code class="makeup bash" translate="no"><span class="">helm install $ASTARTE_OP_RELEASE_NAME astarte/astarte-operator -n $ASTARTE_OP_RELEASE_NAMESPACE \
+</span><span class="">    --skip-crds
+</span></code></pre><p>Note that the <code class="inline">--skip-crds</code> flag is required as, following the migration path, we already
+updated/installed the required CRDs.</p><p>Version <code class="inline">1.0.0</code> is a safe landing version to perform the upgrade to. Upgrading to a more recent
+version may lead to a broken state with possible catastrophic aftermaths: if you choose to follow
+this path, make sure you know what you are doing. However deviating from the upgrade path outlined
+within the current page is strongly discouraged.</p><p>After the successful migration to v1.0, please upgrade to a more recent Operator's versions
+following the instructions outlined in the <a href="./030-upgrade_100_10x.html">Upgrade Operator
+v1.0.0-v1.0.x</a> section.</p><h3 id="caveats-and-breaking-changes-v0-11-v1-0" class="section-heading">
+  <a href="#caveats-and-breaking-changes-v0-11-v1-0" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">caveats-and-breaking-changes-v0-11-v1-0</p>
+  </a>
+  Caveats and Breaking Changes v0.11-v1.0
+</h3>
+<p>Operator v1.0 introduced some breaking changes with respect to v0.11, which are <strong>relevant if you
+deployed your own Ingress instead of relying on AstarteVoyagerIngress</strong>.</p><p>With the upgrade to v1.0, some of the services were renamed:</p><pre><code class="makeup bash" translate="no"><span class="">$ASTARTE_RELEASE_NAME-appengine        --&gt; $ASTARTE_RELEASE_NAME-appengine-api
+</span><span class="">$ASTARTE_RELEASE_NAME-housekeeping     --&gt; $ASTARTE_RELEASE_NAME-housekeeping-api
+</span><span class="">$ASTARTE_RELEASE_NAME-pairing          --&gt; $ASTARTE_RELEASE_NAME-pairing-api
+</span><span class="">$ASTARTE_RELEASE_NAME-realm-management --&gt; $ASTARTE_RELEASE_NAME-realm-management-api
+</span></code></pre><p>If you deployed your own Ingress, it is your responsibility renaming your services to ensure the
+cluster to be fully operational.</p><h2 id="upgrade-astarte" class="section-heading">
+  <a href="#upgrade-astarte" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">upgrade-astarte</p>
+  </a>
+  Upgrade Astarte
+</h2>
+<p>Once you migrated Astarte Operator from v0.11 to v1.0, it is time to upgrade your Astarte instance.
+To do so, simply edit the Astarte resource in the cluster updating the <code class="inline">version</code> field to the
+one you want to upgrate to.</p><p>Open the yaml file describing the Astarte resource with:</p><pre><code class="makeup bash" translate="no"><span class="">kubectl edit astarte -n astarte
+</span></code></pre><p>Find the <code class="inline">version</code> field in the Astarte Spec section and change it according to your needs. Once the
+yaml file will be saved, the Operator will take over ensuring the reconciliation of your Astarte
+instance to the requested version.</p><h3 id="caveats" class="section-heading">
+  <a href="#caveats" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">caveats</p>
+  </a>
+  Caveats
+</h3>
+<h4>CFSSL leftover persistent volume</h4><p>Astarte v0.11 employs a persistent volume to store CA certificate and private key, while upgrading
+to v1.0 involves a change in how device certificates are stored as, behind the scenes, these data
+are held as a Kubernetes TLS secret.</p><p>Following the Kubernetes conventions, the formerly used persistent volume and its corresponding
+claim are left within the cluster even if not used anymore.</p><p>If you followed the procedure described <a href="#migrate-ca-certificate-and-key">here</a> you are free to
+remove the CFSSL persistent volume and claim without the need for your devices to request new
+credentials.</p><h4>AppEngine <code class="inline">/socket</code> route removal</h4><p>The <code class="inline">/socket</code> endpoint exposed by AppEngine to interact with Astarte Channels, which was already
+deprecated in Astarte v0.11, has been removed. You must use the new route <code class="inline">/v1/socket</code>
+instead.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="010-upgrade_010_011.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Upgrade v0.10-v0.11
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="030-upgrade_100_10x.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Upgrade v1.0.0-v1.0.x
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
+        <p>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>

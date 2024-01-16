@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.29.0">
+    <meta name="project" content="Astarte Operator v23.5.1">
+
+    <title>Setting up the Cluster — Astarte Operator v23.5.1</title>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-3AF50CD1.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/23.5/">
+        <img src="assets/logo.png" alt="Astarte Operator" class="sidebar-projectImage">
+      </a>
+
+    <div class="sidebar-projectDetails">
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/23.5/" class="sidebar-projectName" translate="no">
+Astarte Operator
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
+        v23.5.1
+      </strong>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/release-23.5/docs/documentation/pages/administrator/060-setup_cluster.md#L1" title="View Source" class="view-source" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span>Setting up the Cluster</span>
+</h1>
+
+<p>Once the Astarte Operator <a href="030-installation_kubernetes.html">has been installed</a>, and any prerequisite
+<a href="020-prerequisites.html">has been fulfilled</a>, you can move forward and deploy an Astarte Cluster.</p><h2 id="using-a-standard-astarte-cr" class="section-heading">
+  <a href="#using-a-standard-astarte-cr" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">using-a-standard-astarte-cr</p>
+  </a>
+  Using a standard Astarte CR
+</h2>
+<p>The standard way of deploying an Astarte instance is by creating your own Astarte Custom Resource.
+This gives you an high degree of customization, allowing you to tweak any single parameter in the
+Astarte setup.</p><p>The main Astarte CRD is extensively documented and the available fields can be inspected
+<a href="https://docs.astarte-platform.org/snapshot/astarte-kubernetes-operator/">here</a>.</p><p>To create your Astarte resource, just create your Astarte Custom Resource, which will look something
+like this:</p><pre><code class="yaml">apiVersion: api.astarte-platform.org/v1alpha1
+kind: Astarte
+metadata:
+  name: astarte
+  namespace: astarte
+spec:
+  # This is the most minimal set of reasonable configuration to spin up an Astarte
+  # instance with reasonable defaults and enough control over the deployment.
+  version: 1.0.1
+  api:
+    host: &quot;api.astarte.yourdomain.com&quot; # MANDATORY
+  rabbitmq:
+    resources:
+      requests:
+        cpu: 300m
+        memory: 512M
+      limits:
+        cpu: 1
+        memory: 1000M
+  # this configuration deploys cassandra in cluster. This is not advised for production environments
+  cassandra:
+    maxHeapSize: 1024M
+    heapNewSize: 256M
+    storage:
+      size: 30Gi
+    resources:
+      requests:
+        cpu: 1
+        memory: 1024M
+      limits:
+        cpu: 2
+        memory: 2048M
+  vernemq:
+    host: &quot;broker.astarte.yourdomain.com&quot;
+    sslListener: true
+    sslListenerCertSecretName: &lt;your-tls-secret&gt;
+    resources:
+      requests:
+        cpu: 200m
+        memory: 1024M
+      limits:
+        cpu: 1000m
+        memory: 2048M
+  cfssl:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128M
+      limits:
+        cpu: 200m
+        memory: 256M
+    storage:
+      size: 2Gi
+  components:
+    # Global resource allocation. Automatically allocates resources to components weighted in a
+    # reasonable way.
+    resources:
+      requests:
+        cpu: 1200m
+        memory: 3072M
+      limits:
+        cpu: 3000m
+        memory: 6144M</code></pre><p>Starting from Astarte v1.0.1, traffic coming to the broker is TLS terminated ad VerneMQ level. The
+two fields controlling this features, namely <code class="inline">sslListener</code> and <code class="inline">sslListenerCertSecretName</code> can be
+found within the <code class="inline">vernemq</code> section of the Astarte CR. In a nutshell, their meaning is:</p><ul><li><code class="inline">sslListener</code> controls whether TLS termination is enabled at VerneMQ level or not,</li><li><code class="inline">sslListenerCertSecretName</code> is the name of TLS secret used for TLS termination (more on how to
+deal with Astarte certificates <a href="050-handling_certificates.html">here</a>). When <code class="inline">sslListener</code> is
+true, the secret name <strong>must</strong> be set.</li></ul><p>You can simply apply this resource in your Kubernetes cluster with <code class="inline">kubectl apply -f &lt;astarte-cr.yaml&gt;</code>. The Operator will take over from there.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="050-handling_certificates.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Handling Astarte certificates
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="064-setup_astartedefaultingress.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Setting up the Astarte Default Ingress
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
+        <p>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>
