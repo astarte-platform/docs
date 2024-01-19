@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-3AF50CD1.js"></script>
+    <script src="dist/sidebar_items-9623BB62.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -113,7 +113,7 @@ issue</a> for more
 information).</p><p>Starting from the Astarte Operator <code class="inline">v22.11</code> release, the old <code class="inline">api.astarte-platform.org/v1alpha1</code>
 APIs are deprecated and will be removed in the next release.</p><p>In the following, the upgrade path is described.</p><p>The upcoming sections will cover the following topics:</p><ul><li>upgrading the Astarte Operator,</li><li>making sure that the Astarte, AstarteVoyagerIngress and Flow CR are stored using <code class="inline">v1alpha2</code> API
 version,</li><li>upgrading the Astarte, AstarteVoyagerIngress and Flow CRDs to have only <code class="inline">v1alpha2</code> as storage
-version.</li></ul><p>Before starting with the upgrade procedure it is strongly advised to <a href="095-advanced-operations.html#backup-your-astarte-resources">backup your Astarte
+version.</li></ul><p>Before starting with the upgrade procedure it is strongly advised to <a href="095-advanced_operations.html#backup-your-astarte-resources">backup your Astarte
 resources</a>.</p><h2 id="upgrade-astarte-operator" class="section-heading">
   <a href="#upgrade-astarte-operator" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">upgrade-astarte-operator</p>
@@ -170,13 +170,13 @@ spec:
 status:
   ...</code></pre><p>Once the yaml file is applied, the Operator will take over ensuring the reconciliation of your
 Flow instance. This will in turn change the version in which the Flow CR is stored in
-Kubernetes to <code class="inline">api.astarte-platform.org/v1alpha2</code>.</p><h2 id="make-sure-astartevoyageringress-is-stored-using-the-api-astarte-platform-org-v1alpha2" class="section-heading">
-  <a href="#make-sure-astartevoyageringress-is-stored-using-the-api-astarte-platform-org-v1alpha2" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">make-sure-astartevoyageringress-is-stored-using-the-api-astarte-platform-org-v1alpha2</p>
+Kubernetes to <code class="inline">api.astarte-platform.org/v1alpha2</code>.</p><h2 id="make-sure-the-apiversion-of-astartevoyageringress-is-api-astarte-platform-org-v1alpha2" class="section-heading">
+  <a href="#make-sure-the-apiversion-of-astartevoyageringress-is-api-astarte-platform-org-v1alpha2" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">make-sure-the-apiversion-of-astartevoyageringress-is-api-astarte-platform-org-v1alpha2</p>
   </a>
-  Make sure AstarteVoyagerIngress is stored using the <code class="inline">api.astarte-platform.org/v1alpha2</code>
+  Make sure the apiVersion of AstarteVoyagerIngress is <code class="inline">api.astarte-platform.org/v1alpha2</code>
 </h2>
-<p>apiVersion</p><p><strong>The AstarteVoyagerIngress is deprecated and will be removed starting from Astarte Operator
+<p><strong>The AstarteVoyagerIngress is deprecated and will be removed starting from Astarte Operator
 v23.5.0.</strong>
 <strong>Please consider <a href="066-migrate_to_astartedefaultingress.html">switching to the new
 AstarteDefaultIngress</a>.</strong></p><p>If you already have dropped the AstarteVoyagerIngress, you can skip this section.</p><p>To do so, simply edit the AstarteVoyagerIngress resource in the cluster.
