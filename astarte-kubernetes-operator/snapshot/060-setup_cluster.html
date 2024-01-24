@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-6C163D0E.js"></script>
+    <script src="dist/sidebar_items-9623BB62.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -115,7 +115,7 @@ Astarte Operator
 <p>The standard way of deploying an Astarte instance is by creating your own Astarte Custom Resource.
 This gives you an high degree of customization, allowing you to tweak any single parameter in the
 Astarte setup.</p><p>The main Astarte CRD is extensively documented and the available fields can be inspected
-<a href="https://docs.astarte-platform.org/snapshot/astarte-kubernetes-operator/">here</a>.</p><p>To create your Astarte resource, just create your Astarte Custom Resource, which will look something
+<a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/snapshot/crds/index.html">here</a>.</p><p>To create your Astarte resource, just create your Astarte Custom Resource, which will look something
 like this:</p><pre><code class="yaml">apiVersion: api.astarte-platform.org/v1alpha1
 kind: Astarte
 metadata:
@@ -124,7 +124,7 @@ metadata:
 spec:
   # This is the most minimal set of reasonable configuration to spin up an Astarte
   # instance with reasonable defaults and enough control over the deployment.
-  version: 1.0.1
+  version: 1.1.1
   api:
     host: &quot;api.astarte.yourdomain.com&quot; # MANDATORY
   rabbitmq:

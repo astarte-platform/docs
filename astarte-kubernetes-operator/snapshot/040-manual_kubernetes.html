@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-6C163D0E.js"></script>
+    <script src="dist/sidebar_items-9623BB62.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -106,7 +106,7 @@ Astarte Operator
 </h1>
 
 <p>In case you do not want to use <code class="inline">helm</code> to manage the Operator, this guide will run you through
-all the steps needed to set up Astarte Kubernetes.</p><p>To come along with this guide, the following components are required:</p><ul><li><a href="https://sdk.operatorframework.io/docs/installation/install-operator-sdk/"><code class="inline">operator-sdk</code></a></li><li><a href="https://kubectl.docs.kubernetes.io/installation/kustomize/"><code class="inline">kustomize</code></a></li></ul><p>Please make sure that the version of <code class="inline">operator-sdk</code> matches the version used by the Astarte
+all the steps needed to set up Astarte Kubernetes.</p><p>To come along with this guide, the following components are required:</p><ul><li><a href="https://sdk.operatorframework.io/docs/installation/"><code class="inline">operator-sdk</code></a></li><li><a href="https://kubectl.docs.kubernetes.io/installation/kustomize/"><code class="inline">kustomize</code></a></li></ul><p>Please make sure that the version of <code class="inline">operator-sdk</code> matches the version used by the Astarte
 Operator (the detail can be found within the <a href="https://github.com/astarte-platform/astarte-kubernetes-operator">project's
 CHANGELOG</a>).</p><p>Moreover, please make sure that the cluster kubectl is pointing to is the one you want to target
 with the installation.</p><p><em>Note: Please be aware that this method is to be used only if you have very specific reasons why not
@@ -150,18 +150,8 @@ a deployment if you plan on developing the Operator itself. However, this scenar
 e2e tests, and as such provides the very same features of the in-cluster Deployment, which remains
 the go-to scenario for production.</em></p><p>From the root directory of your clone, run:</p><pre><code class="makeup bash" translate="no"><span class="">make run ENABLE_WEBHOOKS=false
 </span></code></pre><p>This will bring up the Operator (with all the webhooks disabled) and connect it to your current
-Kubernetes context.</p><p>In case you need to run the Operator with webhooks, please refer to the <a href="https://v0-19-x.sdk.operatorframework.io/docs/golang/webhooks/#run-locally">Operator-SDK
-documentation</a>.</p><h3 id="caveats" class="section-heading">
-  <a href="#caveats" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">caveats</p>
-  </a>
-  Caveats
-</h3>
-<p>When running the Operator locally, you're bound to a single namespace, and to all limitations of
-<code class="inline">operator-sdk run</code>. This is out of the scope of this guide, and you should be confident with
-<a href="https://github.com/operator-framework/operator-sdk/blob/master/doc/user-guide.md"><code class="inline">operator-sdk</code>'s User
-Guide</a> if you plan
-on running the Operator outside the Cluster.</p>
+Kubernetes context.</p><p>Please, refer to the <a href="https://sdk.operatorframework.io/docs/">OperatorSDK documentation</a> to have
+further insights on this scenario.</p>
 <div class="bottom-actions">
   <div class="bottom-actions-item">
 
