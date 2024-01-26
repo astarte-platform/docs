@@ -24,7 +24,7 @@ AstarteList Field Description apiVersion string api.astarte-platform.org/v1alpha
 <link rel="icon" href="/astarte-kubernetes-operator/snapshot/crds/favicon.png" >
 <link rel="stylesheet" href="/astarte-kubernetes-operator/snapshot/crds/book.min.f8de3645fe00591b41524aee174e19edd98a22255a2930a0cdc82a94835ba387.css" integrity="sha256-&#43;N42Rf4AWRtBUkruF04Z7dmKIiVaKTCgzcgqlINbo4c=" crossorigin="anonymous">
   <script defer src="/astarte-kubernetes-operator/snapshot/crds/flexsearch.min.js"></script>
-  <script defer src="/astarte-kubernetes-operator/snapshot/crds/en.search.min.c918327e0681030c74b5c836a898953dd2d2432abba03b6c287225cc265dd4b1.js" integrity="sha256-yRgyfgaBAwx0tcg2qJiVPdLSQyq7oDtsKHIlzCZd1LE=" crossorigin="anonymous"></script>
+  <script defer src="/astarte-kubernetes-operator/snapshot/crds/en.search.min.0ea0550bbadcd7fa3f88e9d276d4f98c96efdee4ede5af84118555d554bdf982.js" integrity="sha256-DqBVC7rc1/o/iOnSdtT5jJbv3uTt5a&#43;EEYVV1VS9&#43;YI=" crossorigin="anonymous"></script>
 
   <script defer src="/astarte-kubernetes-operator/snapshot/crds/sw.min.4b5ef9c7e1ff366bef1c56ce1503a3de90f3be6896e8b6d7765eaa81260e58c3.js" integrity="sha256-S175x&#43;H/NmvvHFbOFQOj3pDzvmiW6LbXdl6qgSYOWMM=" crossorigin="anonymous"></script>
 <!--
@@ -362,33 +362,13 @@ https://github.com/alex-shpak/hugo-book
   AstarteCFSSLCARootConfigSigningCAConstraintSpec
   <a class="anchor" href="#astartecfsslcarootconfigsigningcaconstraintspec">#</a>
 </h4>
+<p><em>Underlying type:</em> <em>
+  <a href="#struct%7bk8sioapimachinerypkgapismetav1typemeta-%22json:%5c%22,inline%5c%22%22;-maxpathlen-int-%22json:%5c%22max_path_len%5c%22%22;-isca-bool-%22json:%5c%22is_ca%5c%22%22;-maxpathlenzero-bool-%22json:%5c%22max_path_len_zero%5c%22%22%7d">struct{k8s.io/apimachinery/pkg/apis/meta/v1.TypeMeta &ldquo;json:&quot;,inline&quot;&rdquo;; MaxPathLen int &ldquo;json:&quot;max_path_len&quot;&rdquo;; IsCA bool &ldquo;json:&quot;is_ca&quot;&rdquo;; MaxPathLenZero bool &ldquo;json:&quot;max_path_len_zero&quot;&rdquo;}</a></em></p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#astartecfsslcarootconfigsigningdefaultspec">AstarteCFSSLCARootConfigSigningDefaultSpec</a></li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>max_path_len</code> <em>integer</em></td>
-<td></td>
-</tr>
-<tr>
-<td><code>is_ca</code> <em>boolean</em></td>
-<td></td>
-</tr>
-<tr>
-<td><code>max_path_len_zero</code> <em>boolean</em></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h4 id="astartecfsslcarootconfigsigningdefaultspec">
   AstarteCFSSLCARootConfigSigningDefaultSpec
   <a class="anchor" href="#astartecfsslcarootconfigsigningdefaultspec">#</a>
@@ -883,7 +863,7 @@ https://github.com/alex-shpak/hugo-book
   AstarteClusterHealth
   <a class="anchor" href="#astarteclusterhealth">#</a>
 </h4>
-<p><em>Underlying type:</em> <code>string</code></p>
+<p><em>Underlying type:</em> <em>string</em></p>
 <p>AstarteClusterHealth represents the overall health of the cluster</p>
 <p><em>Appears in:</em></p>
 <ul>
@@ -962,6 +942,8 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#astartedashboardconfigspec">AstarteDashboardConfigSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#astartedashboardspec">AstarteDashboardSpec</a></li>
 </ul>
 <table>
 <thead>
@@ -1100,8 +1082,32 @@ https://github.com/alex-shpak/hugo-book
 <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
 </tr>
 <tr>
-<td><code>Config</code> <em>
-  <a href="/astarte-kubernetes-operator/snapshot/crds/#astartedashboardconfigspec">AstarteDashboardConfigSpec</a></em></td>
+<td><code>realmManagementApiUrl</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>appEngineApiUrl</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>pairingApiUrl</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>flowApiUrl</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>defaultRealm</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>defaultAuth</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>auth</code> <em>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#astartedashboardconfigauthspec">AstarteDashboardConfigAuthSpec</a> array</em></td>
 <td></td>
 </tr>
 </tbody>
@@ -1568,7 +1574,8 @@ https://github.com/alex-shpak/hugo-book
 </thead>
 <tbody>
 <tr>
-<td><code>size</code> <em>Quantity</em></td>
+<td><code>size</code> <em>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#quantity">Quantity</a></em></td>
 <td></td>
 </tr>
 <tr>
@@ -2712,8 +2719,8 @@ https://github.com/alex-shpak/hugo-book
 <td>Defines the amount of non-container blocks in the Flow</td>
 </tr>
 <tr>
-<td><code>nativeBlocksResources</code> <em>object (keys:
-  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcename-v1-core">ResourceName</a>, values:Quantity)</em></td>
+<td><code>nativeBlocksResources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcelist-v1-core">ResourceList</a></em></td>
 <td>Defines the overall resources consumed by Native Blocks</td>
 </tr>
 <tr>
@@ -2732,7 +2739,7 @@ https://github.com/alex-shpak/hugo-book
   FlowState
   <a class="anchor" href="#flowstate">#</a>
 </h4>
-<p><em>Underlying type:</em> <code>string</code></p>
+<p><em>Underlying type:</em> <em>string</em></p>
 <p>FlowState describes the global state of a Flow</p>
 <p><em>Appears in:</em></p>
 <ul>
@@ -2771,8 +2778,8 @@ https://github.com/alex-shpak/hugo-book
 <td>Represents the total number of Ready Container Blocks in the Flow. In a healthy Flow, this matches the number of Total Container Blocks.</td>
 </tr>
 <tr>
-<td><code>resources</code> <em>object (keys:
-  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcename-v1-core">ResourceName</a>, values:Quantity)</em></td>
+<td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcelist-v1-core">ResourceList</a></em></td>
 <td>The overall resources allocated in the cluster for this Block</td>
 </tr>
 <tr>
@@ -2823,43 +2830,14 @@ https://github.com/alex-shpak/hugo-book
   RabbitMQConfig
   <a class="anchor" href="#rabbitmqconfig">#</a>
 </h4>
+<p><em>Underlying type:</em> <em>
+  <a href="#struct%7bk8sioapimachinerypkgapismetav1typemeta-%22json:%5c%22,inline%5c%22%22;-host-string-%22json:%5c%22host%5c%22%22;-port-int16-%22json:%5c%22port,omitempty%5c%22%22;-ssl-*bool-%22json:%5c%22ssl,omitempty%5c%22%22;-username-string-%22json:%5c%22username%5c%22%22;-password-string-%22json:%5c%22password%5c%22%22%7d">struct{k8s.io/apimachinery/pkg/apis/meta/v1.TypeMeta &ldquo;json:&quot;,inline&quot;&rdquo;; Host string &ldquo;json:&quot;host&quot;&rdquo;; Port int16 &ldquo;json:&quot;port,omitempty&quot;&rdquo;; SSL *bool &ldquo;json:&quot;ssl,omitempty&quot;&rdquo;; Username string &ldquo;json:&quot;username&quot;&rdquo;; Password string &ldquo;json:&quot;password&quot;&rdquo;}</a></em></p>
 <p>RabbitMQConfig represents configuration for RabbitMQ</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#rabbitmqdataprovider">RabbitMQDataProvider</a></li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>host</code> <em>string</em></td>
-<td></td>
-</tr>
-<tr>
-<td><code>port</code> <em>integer</em></td>
-<td></td>
-</tr>
-<tr>
-<td><code>ssl</code> <em>
-  <a href="/astarte-kubernetes-operator/snapshot/crds/#bool">bool</a></em></td>
-<td></td>
-</tr>
-<tr>
-<td><code>username</code> <em>string</em></td>
-<td></td>
-</tr>
-<tr>
-<td><code>password</code> <em>string</em></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h4 id="rabbitmqdataprovider">
   RabbitMQDataProvider
   <a class="anchor" href="#rabbitmqdataprovider">#</a>
@@ -2898,35 +2876,19 @@ https://github.com/alex-shpak/hugo-book
   RabbitMQExchange
   <a class="anchor" href="#rabbitmqexchange">#</a>
 </h4>
+<p><em>Underlying type:</em> <em>
+  <a href="#struct%7bk8sioapimachinerypkgapismetav1typemeta-%22json:%5c%22,inline%5c%22%22;-name-string-%22json:%5c%22name%5c%22%22;-routingkey-string-%22json:%5c%22routingkey%5c%22%22%7d">struct{k8s.io/apimachinery/pkg/apis/meta/v1.TypeMeta &ldquo;json:&quot;,inline&quot;&rdquo;; Name string &ldquo;json:&quot;name&quot;&rdquo;; RoutingKey string &ldquo;json:&quot;routingKey&quot;&rdquo;}</a></em></p>
 <p>RabbitMQExchange is a representation of a RabbitMQ Exchange</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#rabbitmqdataprovider">RabbitMQDataProvider</a></li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>name</code> <em>string</em></td>
-<td></td>
-</tr>
-<tr>
-<td><code>routingKey</code> <em>string</em></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h4 id="reconciliationphase">
   ReconciliationPhase
   <a class="anchor" href="#reconciliationphase">#</a>
 </h4>
-<p><em>Underlying type:</em> <code>string</code></p>
+<p><em>Underlying type:</em> <em>string</em></p>
 <p>ReconciliationPhase describes the reconciliation phase the Resource is in</p>
 <p><em>Appears in:</em></p>
 <ul>
@@ -3118,33 +3080,13 @@ https://github.com/alex-shpak/hugo-book
   AstarteCFSSLCARootConfigSigningCAConstraintSpec
   <a class="anchor" href="#astartecfsslcarootconfigsigningcaconstraintspec-1">#</a>
 </h4>
+<p><em>Underlying type:</em> <em>
+  <a href="#struct%7bk8sioapimachinerypkgapismetav1typemeta-%22json:%5c%22,inline%5c%22%22;-maxpathlen-int-%22json:%5c%22max_path_len%5c%22%22;-isca-bool-%22json:%5c%22is_ca%5c%22%22;-maxpathlenzero-bool-%22json:%5c%22max_path_len_zero%5c%22%22%7d">struct{k8s.io/apimachinery/pkg/apis/meta/v1.TypeMeta &ldquo;json:&quot;,inline&quot;&rdquo;; MaxPathLen int &ldquo;json:&quot;max_path_len&quot;&rdquo;; IsCA bool &ldquo;json:&quot;is_ca&quot;&rdquo;; MaxPathLenZero bool &ldquo;json:&quot;max_path_len_zero&quot;&rdquo;}</a></em></p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#astartecfsslcarootconfigsigningdefaultspec">AstarteCFSSLCARootConfigSigningDefaultSpec</a></li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>max_path_len</code> <em>integer</em></td>
-<td></td>
-</tr>
-<tr>
-<td><code>is_ca</code> <em>boolean</em></td>
-<td></td>
-</tr>
-<tr>
-<td><code>max_path_len_zero</code> <em>boolean</em></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h4 id="astartecfsslcarootconfigsigningdefaultspec-1">
   AstarteCFSSLCARootConfigSigningDefaultSpec
   <a class="anchor" href="#astartecfsslcarootconfigsigningdefaultspec-1">#</a>
@@ -3639,7 +3581,7 @@ https://github.com/alex-shpak/hugo-book
   AstarteClusterHealth
   <a class="anchor" href="#astarteclusterhealth-1">#</a>
 </h4>
-<p><em>Underlying type:</em> <code>string</code></p>
+<p><em>Underlying type:</em> <em>string</em></p>
 <p>AstarteClusterHealth represents the overall health of the cluster</p>
 <p><em>Appears in:</em></p>
 <ul>
@@ -3718,6 +3660,8 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#astartedashboardconfigspec">AstarteDashboardConfigSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#astartedashboardspec">AstarteDashboardSpec</a></li>
 </ul>
 <table>
 <thead>
@@ -3856,8 +3800,32 @@ https://github.com/alex-shpak/hugo-book
 <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
 </tr>
 <tr>
-<td><code>Config</code> <em>
-  <a href="/astarte-kubernetes-operator/snapshot/crds/#astartedashboardconfigspec">AstarteDashboardConfigSpec</a></em></td>
+<td><code>realmManagementApiUrl</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>appEngineApiUrl</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>pairingApiUrl</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>flowApiUrl</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>defaultRealm</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>defaultAuth</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>auth</code> <em>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#astartedashboardconfigauthspec">AstarteDashboardConfigAuthSpec</a> array</em></td>
 <td></td>
 </tr>
 </tbody>
@@ -4257,7 +4225,8 @@ https://github.com/alex-shpak/hugo-book
 <td></td>
 </tr>
 <tr>
-<td><code>tlsRef</code> <em>LocalTypedReference</em></td>
+<td><code>tlsRef</code> <em>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#localtypedreference">LocalTypedReference</a></em></td>
 <td></td>
 </tr>
 <tr>
@@ -4323,7 +4292,8 @@ https://github.com/alex-shpak/hugo-book
 </thead>
 <tbody>
 <tr>
-<td><code>size</code> <em>Quantity</em></td>
+<td><code>size</code> <em>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#quantity">Quantity</a></em></td>
 <td></td>
 </tr>
 <tr>
@@ -4996,7 +4966,8 @@ https://github.com/alex-shpak/hugo-book
 <td></td>
 </tr>
 <tr>
-<td><code>tlsRef</code> <em>LocalTypedReference</em></td>
+<td><code>tlsRef</code> <em>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#localtypedreference">LocalTypedReference</a></em></td>
 <td></td>
 </tr>
 <tr>
@@ -5064,7 +5035,8 @@ https://github.com/alex-shpak/hugo-book
 <td></td>
 </tr>
 <tr>
-<td><code>tlsRef</code> <em>LocalTypedReference</em></td>
+<td><code>tlsRef</code> <em>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#localtypedreference">LocalTypedReference</a></em></td>
 <td></td>
 </tr>
 <tr>
@@ -5465,8 +5437,8 @@ https://github.com/alex-shpak/hugo-book
 <td>Defines the amount of non-container blocks in the Flow</td>
 </tr>
 <tr>
-<td><code>nativeBlocksResources</code> <em>object (keys:
-  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcename-v1-core">ResourceName</a>, values:Quantity)</em></td>
+<td><code>nativeBlocksResources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcelist-v1-core">ResourceList</a></em></td>
 <td>Defines the overall resources consumed by Native Blocks</td>
 </tr>
 <tr>
@@ -5485,7 +5457,7 @@ https://github.com/alex-shpak/hugo-book
   FlowState
   <a class="anchor" href="#flowstate-1">#</a>
 </h4>
-<p><em>Underlying type:</em> <code>string</code></p>
+<p><em>Underlying type:</em> <em>string</em></p>
 <p>FlowState describes the global state of a Flow</p>
 <p><em>Appears in:</em></p>
 <ul>
@@ -5524,8 +5496,8 @@ https://github.com/alex-shpak/hugo-book
 <td>Represents the total number of Ready Container Blocks in the Flow. In a healthy Flow, this matches the number of Total Container Blocks.</td>
 </tr>
 <tr>
-<td><code>resources</code> <em>object (keys:
-  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcename-v1-core">ResourceName</a>, values:Quantity)</em></td>
+<td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcelist-v1-core">ResourceList</a></em></td>
 <td>The overall resources allocated in the cluster for this Block</td>
 </tr>
 <tr>
@@ -5576,43 +5548,14 @@ https://github.com/alex-shpak/hugo-book
   RabbitMQConfig
   <a class="anchor" href="#rabbitmqconfig-1">#</a>
 </h4>
+<p><em>Underlying type:</em> <em>
+  <a href="#struct%7bk8sioapimachinerypkgapismetav1typemeta-%22json:%5c%22,inline%5c%22%22;-host-string-%22json:%5c%22host%5c%22%22;-port-int16-%22json:%5c%22port,omitempty%5c%22%22;-ssl-*bool-%22json:%5c%22ssl,omitempty%5c%22%22;-username-string-%22json:%5c%22username%5c%22%22;-password-string-%22json:%5c%22password%5c%22%22%7d">struct{k8s.io/apimachinery/pkg/apis/meta/v1.TypeMeta &ldquo;json:&quot;,inline&quot;&rdquo;; Host string &ldquo;json:&quot;host&quot;&rdquo;; Port int16 &ldquo;json:&quot;port,omitempty&quot;&rdquo;; SSL *bool &ldquo;json:&quot;ssl,omitempty&quot;&rdquo;; Username string &ldquo;json:&quot;username&quot;&rdquo;; Password string &ldquo;json:&quot;password&quot;&rdquo;}</a></em></p>
 <p>RabbitMQConfig represents configuration for RabbitMQ</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#rabbitmqdataprovider">RabbitMQDataProvider</a></li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>host</code> <em>string</em></td>
-<td></td>
-</tr>
-<tr>
-<td><code>port</code> <em>integer</em></td>
-<td></td>
-</tr>
-<tr>
-<td><code>ssl</code> <em>
-  <a href="/astarte-kubernetes-operator/snapshot/crds/#bool">bool</a></em></td>
-<td></td>
-</tr>
-<tr>
-<td><code>username</code> <em>string</em></td>
-<td></td>
-</tr>
-<tr>
-<td><code>password</code> <em>string</em></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h4 id="rabbitmqdataprovider-1">
   RabbitMQDataProvider
   <a class="anchor" href="#rabbitmqdataprovider-1">#</a>
@@ -5651,35 +5594,19 @@ https://github.com/alex-shpak/hugo-book
   RabbitMQExchange
   <a class="anchor" href="#rabbitmqexchange-1">#</a>
 </h4>
+<p><em>Underlying type:</em> <em>
+  <a href="#struct%7bk8sioapimachinerypkgapismetav1typemeta-%22json:%5c%22,inline%5c%22%22;-name-string-%22json:%5c%22name%5c%22%22;-routingkey-string-%22json:%5c%22routingkey%5c%22%22%7d">struct{k8s.io/apimachinery/pkg/apis/meta/v1.TypeMeta &ldquo;json:&quot;,inline&quot;&rdquo;; Name string &ldquo;json:&quot;name&quot;&rdquo;; RoutingKey string &ldquo;json:&quot;routingKey&quot;&rdquo;}</a></em></p>
 <p>RabbitMQExchange is a representation of a RabbitMQ Exchange</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#rabbitmqdataprovider">RabbitMQDataProvider</a></li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>name</code> <em>string</em></td>
-<td></td>
-</tr>
-<tr>
-<td><code>routingKey</code> <em>string</em></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h4 id="reconciliationphase-1">
   ReconciliationPhase
   <a class="anchor" href="#reconciliationphase-1">#</a>
 </h4>
-<p><em>Underlying type:</em> <code>string</code></p>
+<p><em>Underlying type:</em> <em>string</em></p>
 <p>ReconciliationPhase describes the reconciliation phase the Resource is in</p>
 <p><em>Appears in:</em></p>
 <ul>
