@@ -22,9 +22,10 @@ AstarteList Field Description apiVersion string api.astarte-platform.org/v1alpha
 <title>Index | Astarte Kubernetes Operator APIs</title>
 <link rel="manifest" href="/astarte-kubernetes-operator/23.5/crds/manifest.json">
 <link rel="icon" href="/astarte-kubernetes-operator/23.5/crds/favicon.png" >
+<link rel="canonical" href="https://docs.astarte-platform.org/astarte-kubernetes-operator/23.5/crds/">
 <link rel="stylesheet" href="/astarte-kubernetes-operator/23.5/crds/book.min.f8de3645fe00591b41524aee174e19edd98a22255a2930a0cdc82a94835ba387.css" integrity="sha256-&#43;N42Rf4AWRtBUkruF04Z7dmKIiVaKTCgzcgqlINbo4c=" crossorigin="anonymous">
   <script defer src="/astarte-kubernetes-operator/23.5/crds/flexsearch.min.js"></script>
-  <script defer src="/astarte-kubernetes-operator/23.5/crds/en.search.min.f6bcc6d625c50413818ab11859c91406ab6bca475106c169f20b6eb06ebf01e6.js" integrity="sha256-9rzG1iXFBBOBirEYWckUBqtrykdRBsFp8gtusG6/AeY=" crossorigin="anonymous"></script>
+  <script defer src="/astarte-kubernetes-operator/23.5/crds/en.search.min.18492830a89a7b5a0221fcb10fb1eee4013825fbe83af6815d0deae590cc7ea5.js" integrity="sha256-GEkoMKiae1oCIfyxD7Hu5AE4JfvoOvaBXQ3q5ZDMfqU=" crossorigin="anonymous"></script>
 
   <script defer src="/astarte-kubernetes-operator/23.5/crds/sw.min.1245178ab4fe88a5fafd98a3c084befdb26810dca31692c551ee16cb8062afe7.js" integrity="sha256-EkUXirT&#43;iKX6/ZijwIS&#43;/bJoENyjFpLFUe4Wy4Bir&#43;c=" crossorigin="anonymous"></script>
 <!--
@@ -962,6 +963,8 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>
   <a href="/astarte-kubernetes-operator/23.5/crds/#astartedashboardconfigspec">AstarteDashboardConfigSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/23.5/crds/#astartedashboardspec">AstarteDashboardSpec</a></li>
 </ul>
 <table>
 <thead>
@@ -1100,8 +1103,32 @@ https://github.com/alex-shpak/hugo-book
 <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
 </tr>
 <tr>
-<td><code>Config</code> <em>
-  <a href="/astarte-kubernetes-operator/23.5/crds/#astartedashboardconfigspec">AstarteDashboardConfigSpec</a></em></td>
+<td><code>realmManagementApiUrl</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>appEngineApiUrl</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>pairingApiUrl</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>flowApiUrl</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>defaultRealm</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>defaultAuth</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>auth</code> <em>
+  <a href="/astarte-kubernetes-operator/23.5/crds/#astartedashboardconfigauthspec">AstarteDashboardConfigAuthSpec</a> array</em></td>
 <td></td>
 </tr>
 </tbody>
@@ -3718,6 +3745,8 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li>
   <a href="/astarte-kubernetes-operator/23.5/crds/#astartedashboardconfigspec">AstarteDashboardConfigSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/23.5/crds/#astartedashboardspec">AstarteDashboardSpec</a></li>
 </ul>
 <table>
 <thead>
@@ -3856,8 +3885,32 @@ https://github.com/alex-shpak/hugo-book
 <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
 </tr>
 <tr>
-<td><code>Config</code> <em>
-  <a href="/astarte-kubernetes-operator/23.5/crds/#astartedashboardconfigspec">AstarteDashboardConfigSpec</a></em></td>
+<td><code>realmManagementApiUrl</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>appEngineApiUrl</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>pairingApiUrl</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>flowApiUrl</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>defaultRealm</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>defaultAuth</code> <em>string</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>auth</code> <em>
+  <a href="/astarte-kubernetes-operator/23.5/crds/#astartedashboardconfigauthspec">AstarteDashboardConfigAuthSpec</a> array</em></td>
 <td></td>
 </tr>
 </tbody>
