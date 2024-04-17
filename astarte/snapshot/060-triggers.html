@@ -258,9 +258,10 @@ ignore self-signed or expired certificates.</p><p>Please, beware that some http 
 a JSON document with this format:</p><pre><code class="json">{
   &quot;timestamp&quot;: &quot;&lt;timestamp&gt;&quot;,
   &quot;device_id&quot;: &quot;&lt;device_id&gt;&quot;,
+  &quot;trigger_name&quot;: &quot;&lt;trigger_name&gt;&quot;,
   &quot;event&quot;: &lt;event&gt;
 }</code></pre><p><code class="inline">timestamp</code> is an UTC <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> timestamp (e.g.
-<code class="inline">&quot;2019-10-16T08:56:08.534377Z&quot;</code>) representing when the event happened.</p><p><code class="inline">device_id</code> identifies the device that triggered the event.</p><p><code class="inline">event</code> is a JSON object that has a specific structure depending on the type of the <code class="inline">simple_trigger</code>
+<code class="inline">&quot;2019-10-16T08:56:08.534377Z&quot;</code>) representing when the event happened.</p><p><code class="inline">device_id</code> identifies the device that triggered the event.</p><p><code class="inline">trigger_name</code> identifies the trigger that fired the event.</p><p><code class="inline">event</code> is a JSON object that has a specific structure depending on the type of the <code class="inline">simple_trigger</code>
 that generated it. Event objects are detailed below.</p><p>Additionally, the realm that originated the trigger is available in the request in the
 <code class="inline">Astarte-Realm</code> header.</p><h5>Event objects</h5><h6>DeviceConnectedEvent</h6><pre><code class="json">{
   &quot;type&quot;: &quot;device_connected&quot;,
@@ -323,7 +324,7 @@ represented as string. In that case, the key is prepended with the <code class="
 }</code></pre><p>The Mustache action sends an HTTP request to the specified <code class="inline">http_url</code>, with the payload
 built with the <a href="https://mustache.github.io/">Mustache</a> template specified in <code class="inline">template</code>. If the
 template contains a key inside a double curly bracket (like so: <code class="inline">{{ key }}</code>), it will be substituted
-with the actual value of that key in the event.</p><p>The basic keys that can be use to populate the template are:</p><ul><li><code class="inline">{{ realm }}</code>: the realm the trigger belongs to.</li><li><code class="inline">{{ device_id }}</code>: the device that originated the trigger.</li><li><code class="inline">{{ event_type }}</code>: the type of the received event.</li></ul><p>The <code class="inline">ignore_ssl_errors</code> key is optional and defaults to <code class="inline">false</code>. If set to <code class="inline">true</code>, any SSL error
+with the actual value of that key in the event.</p><p>The basic keys that can be use to populate the template are:</p><ul><li><code class="inline">{{ realm }}</code>: the realm the trigger belongs to.</li><li><code class="inline">{{ device_id }}</code>: the device that originated the trigger.</li><li><code class="inline">{{ trigger_name }}</code>: the trigger name.</li><li><code class="inline">{{ event_type }}</code>: the type of the received event.</li></ul><p>The <code class="inline">ignore_ssl_errors</code> key is optional and defaults to <code class="inline">false</code>. If set to <code class="inline">true</code>, any SSL error
 encountered while doing the HTTP request will be ignored. This can be useful if the trigger must
 ignore self-signed or expired certificates.</p><p>Moreover, depending on the event type, all keys that are contained in the events <a href="#event-objects">described in the
 previous section</a> are available, always by wrapping them in <code class="inline">{{ }}</code>.</p><p>The realm is also sent in the <code class="inline">Astarte-Realm</code> header.</p><h5>Example</h5><p>This is an example of a trigger that uses Mustache action.</p><pre><code class="json">{
