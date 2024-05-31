@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.29.0">
+    <meta name="project" content="Astarte v1.2.0-dev">
+
+    <title>Device errors — Astarte v1.2.0-dev</title>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-AF02B419.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+      <a href="https://docs.astarte-platform.org/astarte/1.0/">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+
+    <div class="sidebar-projectDetails">
+      <a href="https://docs.astarte-platform.org/astarte/1.0/" class="sidebar-projectName" translate="no">
+Astarte
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
+        v1.2.0-dev
+      </strong>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://github.com/astarte-platform/astarte/blob/release-1.0/doc/pages/user/045-device_errors.md#L1" title="View Source" class="view-source" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span>Device errors</span>
+</h1>
+
+<p>This page details the errors that can affect a device while it's sending data. The user can monitor
+device errors by installing a <a href="060-triggers.html#device-triggers">device trigger</a> on <code class="inline">device_error</code>
+or checking the Devices tab in the Astarte Dashboard. The same errors are also provided as log
+messages on Data Updater Plant.</p><h2 id="write_on_server_owned_interface" class="section-heading">
+  <a href="#write_on_server_owned_interface" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">write_on_server_owned_interface</p>
+  </a>
+  <code class="inline">write_on_server_owned_interface</code>
+</h2>
+<p>The device is trying to write on a server owned interface. The device can only push data on device
+owned interfaces.</p><h2 id="invalid_interface" class="section-heading">
+  <a href="#invalid_interface" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">invalid_interface</p>
+  </a>
+  <code class="inline">invalid_interface</code>
+</h2>
+<p>The interface name received in the message is invalid.</p><h2 id="invalid_path" class="section-heading">
+  <a href="#invalid_path" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">invalid_path</p>
+  </a>
+  <code class="inline">invalid_path</code>
+</h2>
+<p>The path received in the message is invalid. This might happen when a path does not have a valid
+path format or it's not a valid UTF-8 string.</p><h2 id="mapping_not_found" class="section-heading">
+  <a href="#mapping_not_found" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">mapping_not_found</p>
+  </a>
+  <code class="inline">mapping_not_found</code>
+</h2>
+<p>The path received in the message can't be found in the interface mappings. This could be the result
+of the device having a more recent version of the inteface than the one installed in the realm or an
+interface with the same name and version but different contents.</p><h2 id="interface_loading_failed" class="section-heading">
+  <a href="#interface_loading_failed" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">interface_loading_failed</p>
+  </a>
+  <code class="inline">interface_loading_failed</code>
+</h2>
+<p>The target interface was not found in the database. Usually this means the interface is not
+installed in the realm, but the error can also derive from the database being temporarily
+unavailable.</p><h2 id="ambiguous_path" class="section-heading">
+  <a href="#ambiguous_path" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">ambiguous_path</p>
+  </a>
+  <code class="inline">ambiguous_path</code>
+</h2>
+<p>The path received in the message can't be mapped univocally on a mapping. This is often the result
+of an incomplete path.</p><h2 id="undecodable_bson_payload" class="section-heading">
+  <a href="#undecodable_bson_payload" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">undecodable_bson_payload</p>
+  </a>
+  <code class="inline">undecodable_bson_payload</code>
+</h2>
+<p>The payload of the message can't be decoded as BSON.</p><h2 id="unexpected_value_type" class="section-heading">
+  <a href="#unexpected_value_type" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">unexpected_value_type</p>
+  </a>
+  <code class="inline">unexpected_value_type</code>
+</h2>
+<p>The value of the message does not have the expected type (<em>e.g.</em> the mapping expects a string value
+but an integer value was received instead).</p><h2 id="value_size_exceeded" class="section-heading">
+  <a href="#value_size_exceeded" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">value_size_exceeded</p>
+  </a>
+  <code class="inline">value_size_exceeded</code>
+</h2>
+<p>The value of the message exceeds the maximum size of its type. The size limitations of the types are
+documented <a href="030-interface.html#supported-data-types">here</a>.</p><h2 id="unexpected_object_key" class="section-heading">
+  <a href="#unexpected_object_key" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">unexpected_object_key</p>
+  </a>
+  <code class="inline">unexpected_object_key</code>
+</h2>
+<p>An object aggregated value with an unexpected key was received.</p><h2 id="invalid_introspection" class="section-heading">
+  <a href="#invalid_introspection" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">invalid_introspection</p>
+  </a>
+  <code class="inline">invalid_introspection</code>
+</h2>
+<p>The introspection sent from the device can't be parsed correctly. The introspection format is
+documented <a href="080-mqtt-v1-protocol.html#introspection">here</a>.</p><h2 id="unexpected_control_message" class="section-heading">
+  <a href="#unexpected_control_message" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">unexpected_control_message</p>
+  </a>
+  <code class="inline">unexpected_control_message</code>
+</h2>
+<p>The device sent a message on an unhandled control path. The supported control paths are detailed in
+the <a href="080-mqtt-v1-protocol.html#introspection">protocol documentation</a>.</p><h2 id="device_session_not_found" class="section-heading">
+  <a href="#device_session_not_found" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">device_session_not_found</p>
+  </a>
+  <code class="inline">device_session_not_found</code>
+</h2>
+<p>Data Updater Plant failed to push data towards the device. This could result from the device being
+currently offline and not having a persistent session on the MQTT broker or from the device not
+having all the <a href="https://docs.astarte-platform.org/astarte/1.0/080-mqtt-v1-protocol.html#mqtt-topics-overview">MQTT subscriptions required by the Astarte
+protocol</a></p><h2 id="resend_interface_properties_failed" class="section-heading">
+  <a href="#resend_interface_properties_failed" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">resend_interface_properties_failed</p>
+  </a>
+  <code class="inline">resend_interface_properties_failed</code>
+</h2>
+<p>Data Updater Plant failed to resend the properties of an interface. This could result from the
+device declaring a uninstalled properties interface in its introspection right before an emptyCache.</p><h2 id="empty_cache_error" class="section-heading">
+  <a href="#empty_cache_error" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">empty_cache_error</p>
+  </a>
+  <code class="inline">empty_cache_error</code>
+</h2>
+<p>The empty cache operation for a device failed. This could result from a temporary database failure.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="040-connect_device.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Connecting a Device
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="050-query_device.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Querying a Device
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
+        <p>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>
