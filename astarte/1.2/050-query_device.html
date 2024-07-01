@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-AF02B419.js"></script>
+    <script src="dist/sidebar_items-301DBDB5.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -291,7 +291,25 @@ When <a href="052-using_channels.html">using Astarte Channels</a> the REST API s
   </a>
   Exporting Devices Data with astartectl
 </h3>
-<p>The previous feature makes <code class="inline">astartectl</code> extremely useful when it comes to export or dump data. Moreover, <code class="inline">get-samples</code> features a <code class="inline">--output</code> option, which allows to print the results in different formats, such as <code class="inline">json</code> or <code class="inline">CSV</code>. This way, exporting values becomes extremely easy, as <code class="inline">get-samples</code> can easily tap into an Interface's entire data set and print it into a CSV file.</p>
+<p>The previous feature makes <code class="inline">astartectl</code> extremely useful when it comes to export or dump data. Moreover, <code class="inline">get-samples</code> features a <code class="inline">--output</code> option, which allows to print the results in different formats, such as <code class="inline">json</code> or <code class="inline">CSV</code>. This way, exporting values becomes extremely easy, as <code class="inline">get-samples</code> can easily tap into an Interface's entire data set and print it into a CSV file.</p><h2 id="deleting-a-device" class="section-heading">
+  <a href="#deleting-a-device" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">deleting-a-device</p>
+  </a>
+  Deleting a Device
+</h2>
+<p>If you want to entirely remove a device from your realm along with its data, it is possible to do so with the
+device deletion API.
+Note that the Astarte API also allows for the unregistration and the inhibition of a specific device, which
+should be enough in most use cases and do not cause any data loss.</p><blockquote><p>[!IMPORTANT]
+Once the deletion of a device is started, all data related to the device will be lost.</p></blockquote><h3 id="device-deletion-using-realm-management-api" class="section-heading">
+  <a href="#device-deletion-using-realm-management-api" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">device-deletion-using-realm-management-api</p>
+  </a>
+  Device deletion using Realm Management API
+</h3>
+<p>Let's assume our Device has <code class="inline">f0VMRgIBAQAAAAAAAAAAAA</code> as its id.
+To delete it, use the following API. The deletion operation is asynchronous and can take up to 15 minutes.
+During the process, you device status will appear as &quot;In deletion&quot;.</p><p><code class="inline">DELETE api.&lt;your astarte domain&gt;/realmmanagement/v1/test/devices/f0VMRgIBAQAAAAAAAAAAAA</code></p>
 <div class="bottom-actions">
   <div class="bottom-actions-item">
 

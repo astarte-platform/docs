@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-AF02B419.js"></script>
+    <script src="dist/sidebar_items-301DBDB5.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -197,9 +197,8 @@ disconnected if they try to publish on the deleted interface.</em></p><hr class=
   </a>
   Manual deletion of a device
 </h2>
-<p>Currently, the Astarte API allows for the unregistration and the inhibition of a specific device. If
-you want to entirely delete a device from your realm along with its data, a manual procedure is
-required.</p><p>This section assumes:</p><ul><li>that <code class="inline">cqlsh</code> is connected to the Cassandra/ScyllaDB instance that your Astarte is using;</li><li>that <code class="inline">astartectl</code> is installed on your machine.</li></ul><p><strong><em>Please keep in mind that this is a destructive procedure. Before moving on, ensure you saved your
+<p>Starting from Astarte 1.2, a device can be deleted using Realm Management API (see <a href="user/050-query_device.html#deleting-a-device">here</a>).
+The following manual procedure remains for historical reasons.</p><p>This section assumes:</p><ul><li>that <code class="inline">cqlsh</code> is connected to the Cassandra/ScyllaDB instance that your Astarte is using;</li><li>that <code class="inline">astartectl</code> is installed on your machine.</li></ul><p><strong><em>Please keep in mind that this is a destructive procedure. Before moving on, ensure you saved your
 device ID or you might end up with dangling data and possibly a damaged Astarte deployment.</em></strong></p><h3 id="retrieve-the-device-uuid" class="section-heading">
   <a href="#retrieve-the-device-uuid" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">retrieve-the-device-uuid</p>
