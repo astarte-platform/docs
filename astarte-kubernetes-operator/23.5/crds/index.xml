@@ -4,15 +4,8 @@
     <title>Astarte Kubernetes Operator APIs</title>
     <link>https://docs.astarte-platform.org/astarte-kubernetes-operator/23.5/crds/</link>
     <description>Recent content on Astarte Kubernetes Operator APIs</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <atom:link href="https://docs.astarte-platform.org/astarte-kubernetes-operator/23.5/crds/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title></title>
-      <link>https://docs.astarte-platform.org/astarte-kubernetes-operator/23.5/crds/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://docs.astarte-platform.org/astarte-kubernetes-operator/23.5/crds/</guid>
-      <description>API Reference # Packages # api.astarte-platform.org/v1alpha1 api.astarte-platform.org/v1alpha2 ingress.astarte-platform.org/v1alpha1 api.astarte-platform.org/v1alpha1 # Package v1alpha1 contains API Schema definitions for the api v1alpha1 API group&#xA;Resource Types # Astarte AstarteList AstarteVoyagerIngress AstarteVoyagerIngressList Flow FlowList Astarte # Astarte is the Schema for the astartes API&#xA;Appears in:&#xA;AstarteList Field Description apiVersion string api.astarte-platform.org/v1alpha1 kind string Astarte metadata ObjectMeta Refer to Kubernetes API documentation for fields of metadata. spec AstarteSpec status AstarteStatus AstarteAPISpec # Appears in:</description>
-    </item>
   </channel>
 </rss>
