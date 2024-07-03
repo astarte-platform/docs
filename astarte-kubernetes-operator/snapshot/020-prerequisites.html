@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-9623BB62.js"></script>
+    <script src="dist/sidebar_items-CEE643DA.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -134,7 +134,17 @@ controller is as simple as running a few <code class="inline">helm</code> comman
 of them trying simultaneously to handle the Astarte ingress resource. Consider using ingress classes
 for avoiding confusing situations as outlined
 <a href="https://kubernetes.github.io/ingress-nginx/user-guide/multiple-ingress/">here</a>.</p><p>In the end, you won't need to create NGINX ingresses yourself: the Astarte Operator itself will take
-care of this task.</p><h2 id="voyager-deprecated" class="section-heading">
+care of this task.</p><h2 id="rabbitmq" class="section-heading">
+  <a href="#rabbitmq" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">rabbitmq</p>
+  </a>
+  RabbitMQ
+</h2>
+<p>For production environments, consider using RabbitMQ deployed by the [RabbitMQ Cluster Operator]
+(<a href="https://www.rabbitmq.com/kubernetes/operator/operator-overview">https://www.rabbitmq.com/kubernetes/operator/operator-overview</a>) or any other managed solution that 
+you prefer. The Astarte Operator includes only basic management of RabbitMQ, which is deprecated since 
+v24.5 and as such it should not be relied upon when dealing with production environments. Futher details 
+can be found <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/issues/287">here</a>.</p><h2 id="voyager-deprecated" class="section-heading">
   <a href="#voyager-deprecated" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">voyager-deprecated</p>
   </a>
