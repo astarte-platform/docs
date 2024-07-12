@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.29.0">
+    <meta name="project" content="Astarte v1.2.0-dev">
+
+    <title>Development Guide — Astarte v1.2.0-dev</title>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-6658E9A7.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+      <a href="https://docs.astarte-platform.org/astarte/1.0/">
+        <img src="assets/logo.png" alt="Astarte" class="sidebar-projectImage">
+      </a>
+
+    <div class="sidebar-projectDetails">
+      <a href="https://docs.astarte-platform.org/astarte/1.0/" class="sidebar-projectName" translate="no">
+Astarte
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
+        v1.2.0-dev
+      </strong>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://github.com/astarte-platform/astarte/blob/release-1.0/doc/pages/development-guide/001-dev_guide.md#L1" title="View Source" class="view-source" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span>Development Guide</span>
+</h1>
+
+<p>Welcome to Astarte! To learn more about contributing to the <a href="https://www.github.com/astarte-platform/astarte">Astarte project</a>, check out the <a href="https://github.com/astarte-platform/astarte/blob/master/CONTRIBUTING.md">Contributor's Guide</a>.</p><p>This guide is focused on writing and testing changes to Astarte. It assumes basic knowledge in the following areas:</p><ul><li>You have read the <a href="https://github.com/astarte-platform/astarte/blob/master/CONTRIBUTING.md">contributing guidelines</a> for the project</li><li>You are familiar with basic Astarte concepts such as Realms, Interfaces, Devices and Triggers. If you are not, you can learn more on the <a href="001-intro_architecture.html">documentation</a>!</li><li>You have already run at least once <a href="010-astarte_in_5_minutes.html">Astarte in 5 minutes</a></li><li>If you plan to work on the code, you have some knowledge of Elixir and Docker</li></ul><h2 id="where-to-start" class="section-heading">
+  <a href="#where-to-start" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">where-to-start</p>
+  </a>
+  Where to start?
+</h2>
+<p>To make your contribution, let's first identify where to do it.</p><h3 id="code" class="section-heading">
+  <a href="#code" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">code</p>
+  </a>
+  Code
+</h3>
+<p>In general, you will probably touch one of the Astarte components.
+Astarte is made up of a number of different microservices: <a href="020-components.html">here</a> you can find a quick summary of each.</p><p>Moreover, components that expose an API (Housekeeping, Pairing, Realm Management) are split in an API service and a backend one. All of those are located in the <a href="https://www.github.com/astarte-platform/astarte">main Astarte repository</a> on Github, in the <code class="inline">apps</code> directory.</p><p>Finally, Astarte is backed by three libraries:</p><ul><li><a href="https://github.com/astarte-platform/astarte_core">Astarte Core</a>: contains definitions common to the application, e.g. Realm name, Device ID validity, Interface definitions etc.</li><li><a href="https://github.com/astarte-platform/astarte_rpc">Astarte RPC</a>: contains all the Protobufs and code used in the internal RPC mechanism. In most cases, RPCs are between an API component and the related backend.</li><li><a href="https://github.com/astarte-platform/astarte_data_access">Astarte Data Access</a>: contains some interactions with the database that are common to all Astarte services, e.g. queries for interface values.</li></ul><h3 id="documentation" class="section-heading">
+  <a href="#documentation" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">documentation</p>
+  </a>
+  Documentation
+</h3>
+<p>Documentation is automatically generated from files in the <code class="inline">doc/pages</code> subdirectory of the <a href="https://www.github.com/astarte-platform/astarte">main Astarte repository</a> on Github.
+It is written in Github-flavored markdown.</p><h3 id="tooling" class="section-heading">
+  <a href="#tooling" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">tooling</p>
+  </a>
+  Tooling
+</h3>
+<p>The main Astarte repo contains a number of tools that can be used everyday when interacting with Astarte. They are found in the <code class="inline">tools</code> directory subdirectory of the <a href="https://www.github.com/astarte-platform/astarte">main Astarte repository</a> on Github:</p><ul><li>Astarte Device Fleet Simulator: create a fleet of virtual devices. Mainly used for load testing</li><li>Astarte E2E: a tool that sends data from a virtual device and checks the resulting value in Astarte using triggers. Mainly used for monitoring</li><li>Astarte Import and Astarte Export: used to load/export data into/from Astarte</li></ul><h2 id="setting-up-elixir" class="section-heading">
+  <a href="#setting-up-elixir" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">setting-up-elixir</p>
+  </a>
+  Setting up Elixir
+</h2>
+<p>In order to install and manage Elixir (and Erlang), we recommend using either the <a href="https://asdf-vm.com/">asdf</a> runtime version manager or the <a href="https://nixos.org/">nix</a> package manager.</p><h3 id="using-asdf" class="section-heading">
+  <a href="#using-asdf" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">using-asdf</p>
+  </a>
+  Using asdf
+</h3>
+<p>From inside the main Astarte directory, install the Elixir and Erlang asdf plugins</p><pre><code class="makeup bash" translate="no"><span class="">asdf plugin add erlang
+</span><span class="">asdf plugin add elixir
+</span></code></pre><p>Then install Elang/OTP and Elixir with</p><pre><code class="makeup bash" translate="no"><span class="">asdf install
+</span></code></pre><h3 id="using-nix" class="section-heading">
+  <a href="#using-nix" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">using-nix</p>
+  </a>
+  Using nix
+</h3>
+<p>From inside the main Astarte directory, just run</p><ul><li><code class="inline">nix develop</code>, if you are using flakes</li><li><code class="inline">nix-shell</code>, if not</li></ul><h2 id="can-i-use-an-elixir-repl-to-help-me-during-development" class="section-heading">
+  <a href="#can-i-use-an-elixir-repl-to-help-me-during-development" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">can-i-use-an-elixir-repl-to-help-me-during-development</p>
+  </a>
+  Can I use an Elixir REPL to help me during development?
+</h2>
+<p>Sure thing! However, usually Astarte services do need some context around them.
+Refer to the following <a href="#testing-a-single-component">&quot;Testing a single component&quot;</a> paragraph for dependencies, then you can start your application with an interactive shell by replacing <a href="https://hexdocs.pm/mix/Mix.Tasks.Test.html"><code class="inline">mix test</code></a> with <code class="inline">iex -S mix</code></p><h2 id="ok-i-made-changes-what-now" class="section-heading">
+  <a href="#ok-i-made-changes-what-now" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">ok-i-made-changes-what-now</p>
+  </a>
+  Ok, I made changes, what now?
+</h2>
+<p>Once you got your hands dirty, is time to test them.
+You can test changes to a single component, or run E2E tests if more than one service is involved.</p><p>Remember that a contribution should always include tests for the new functionality or the fix.
+We use the <a href="https://hexdocs.pm/ex_unit/ExUnit.html">ExUnit</a> framework for unit testing.
+Work is under way to add property-based testing too! </p><h3 id="testing-a-single-component" class="section-heading">
+  <a href="#testing-a-single-component" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">testing-a-single-component</p>
+  </a>
+  Testing a single component
+</h3>
+<p>In general, you will have to bring up a RabbitMQ and a Scylla instance (not all services need both: API services will not need access to the database).
+You can do so by running</p><pre><code class="makeup bash" translate="no"><span class="">docker run --rm -p 5672:5672 -p 15672:15672 rabbitmq:management
+</span><span class="">docker run --rm -p 9042:9042 scylladb/scylla
+</span></code></pre><p>Then, you can run test in the component directory with</p><pre><code class="makeup bash" translate="no"><span class="">RABBITMQ_HOST=localhost CASSANDRA_NODES=localhost mix test --exclude wip
+</span></code></pre><blockquote><p>[!NOTE]
+Some services are a bit special (for now!) and might need a little more setup for testing.</p><ul><li>AppEngine API needs the AMQP exchange <code class="inline">astarte_events</code> to be declared:
+after having started RabbitMQ, run the following lines to declare it:<pre><code class="makeup bash" translate="no"><span class="">  docker exec $RABBITMQ_CONTAINER_NAME rabbitmqadmin declare exchange name=astarte_events type=direct
+</span></code></pre></li></ul></blockquote><blockquote><ul><li>Pairing needs a CFSSL instance available and exposed on port 8080: you can run<pre><code class="makeup bash" translate="no"><span class=""> docker run --net=host -p 8080/tcp ispirata/docker-alpine-cfssl-autotest:astarte
+</span></code></pre></li></ul><p>and then test using</p><pre><code class="makeup bash" translate="no"><span class=""> RABBITMQ_HOST=localhost CASSANDRA_NODES=localhost CFSSL_API_URL=http://localhost:8080 mix test --exclude wip
+</span></code></pre></blockquote><h3 id="e2e-testing" class="section-heading">
+  <a href="#e2e-testing" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">e2e-testing</p>
+  </a>
+  E2E testing
+</h3>
+<p>docker compose is the quick-and-dirty way to spin up a development instance of Astarte.
+You can do so just by running <code class="inline">docker compose up -d</code> in the main Astarte directory.
+You can rebuild the service you’re working on with <code class="inline">docker compose build $SERVICE_NAME</code>,
+or edit the <code class="inline">docker-compose.yml</code> file to change the service image name.
+The first time you're running Astarte, you will have to run</p><pre><code class="makeup bash" translate="no"><span class="">docker run -v $(pwd)/compose:/compose astarte/docker-compose-initializer:snapshot
+</span></code></pre><p>in order to set up the Housekeeping keypair, the devices root CA and a certificate for the broker.</p><p>Then, you can use the following commands to manage Astarte services:</p><ul><li><code class="inline">docker compose up -d</code> starts all containers in detached mode</li><li><code class="inline">docker compose down $SERVICE_NAME -v</code> stops and cleans the service you’re working on</li><li><code class="inline">docker compose up $SERVICE_NAME --build</code> rebuilds the service and restarts it. If you don’t need to tail logs, you may add <code class="inline">-d</code></li></ul><h2 id="useful-commands" class="section-heading">
+  <a href="#useful-commands" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">useful-commands</p>
+  </a>
+  Useful commands
+</h2>
+<p>Now, some commands you might find helpful to set up a realm:</p><ul><li>Create a realm keypair:
+<code class="inline">astartectl utils gen-keypair $REALM_NAME</code></li><li>Create a Realm:
+<code class="inline">astartectl housekeeping realms create $REALM_NAME -u http://api.astarte.localhost --housekeeping-key ./compose/astarte-keys/housekeeping_private.pem --realm-private-key $REALM_PRIVATE_KEY_FILE</code></li><li>Install a list of Interfaces in a Realm:
+<code class="inline">astartectl realm-management interfaces sync $(find $INTERFACE_DIRECTORY -name '*.json') -u http://api.astarte.localhost -r $REALM_NAME -k $REALM_PRIVATE_KEY_FILE</code></li><li>Create a JWT wth claims on AppEngine, Pairing and RealmManagement APIs:
+<code class="inline">astartectl utils gen-jwt all-realm-apis -k $REALM_PRIVATE_KEY_FILE</code></li><li>Start a virtual device:
+<code class="inline">docker run --net=&quot;host&quot; -e &quot;DEVICE_ID=$(astartectl utils device-id generate-random)&quot; -e &quot;PAIRING_URL=http://api.astarte.localhost/pairing&quot; -e &quot;REALM=$REALM_NAME&quot; -e &quot;PAIRING_JWT=$(astartectl utils gen-jwt pairing -k $REALM_PRIVATE_KEY_FILE)&quot; -e &quot;IGNORE_SSL_ERRORS=true&quot; astarte/astarte-stream-qt5-test:1.0.4</code><ul><li>In this case, two interfaces need to be already installed in your realm: <code class="inline">org.astarte-platform.genericsensors.Values</code> and <code class="inline">org.astarte-platform.genericcommands.ServerCommands</code></li><li>You can find them in the <code class="inline">standard-interfaces</code> directory in the Astarte repo</li></ul></li></ul><h3 id="sending-data-from-astarte-to-a-device" class="section-heading">
+  <a href="#sending-data-from-astarte-to-a-device" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">sending-data-from-astarte-to-a-device</p>
+  </a>
+  Sending data from Astarte to a device
+</h3>
+<p>Using <code class="inline">astartectl</code> you can send messages to a device. For example:</p><ul><li>Publish a (server-owned) datastream:
+<code class="inline">astartectl appengine devices publish-datastream $DEVICE_ID $SERVER_OWNED_DATASTREAM_INTERFACE $PATH $VALUE -r $REALM_NAME -k $REALM_PRIVATE_KEY_FILE -u &quot;http://api.astarte.localhost/&quot;</code></li><li>Set a (server-owned) property:
+<code class="inline">astartectl appengine devices set-property $DEVICE_ID $SERVER_OWNED_PROPERTY_INTERFACE $PATH $VALUE -r $REALM_NAME -k $REALM_PRIVATE_KEY_FILE -u &quot;http://api.astarte.localhost/&quot;</code></li></ul><h2 id="virtual-devices" class="section-heading">
+  <a href="#virtual-devices" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">virtual-devices</p>
+  </a>
+  Virtual devices
+</h2>
+<p>If you want to have more flexibility with a virtual device, you can use an SDK (<a href="https://docs.astarte-platform.org/device-sdks/index.html">https://docs.astarte-platform.org/device-sdks/index.html</a>).</p><p>To register a device, use the Astarte Dashboard at <code class="inline">http://dashboard.astarte.localhost/</code> and create a device.
+Save the Device ID and the Credentials Secret for the device, and use them for connecting to Astarte.</p><h3 id="example-using-the-elixir-sdk" class="section-heading">
+  <a href="#example-using-the-elixir-sdk" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">example-using-the-elixir-sdk</p>
+  </a>
+  Example: using the Elixir SDK
+</h3>
+<p>Assuming you have a valid Device ID and the related Credentials Secret, you can use the <a href="https://github.com/astarte-platform/astarte-device-sdk-elixir">Astarte Device Elixir SDK</a> to connect a virtual device.</p><p>Clone the project, move inside the directory and start a iEx shell:</p><pre><code class="makeup bash" translate="no"><span class="">git clone https://github.com/astarte-platform/astarte-device-sdk-elixir.git
+</span><span class="">cd astarte-device-sdk-elixir
+</span><span class="">iex -S mix
+</span></code></pre><p>Now you can use the following commands to connect to Astarte:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># Options to configure the device. &lt;THESE&gt; are placeholders for actual values.</span><span class="w">
+</span><span class="n">opts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="7484053730-1">[</span><span class="ss">pairing_url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://api.astarte.localhost/pairing&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">realm</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_REALM&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">device_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_DEVICE_ID&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">interface_provider</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_INTERFACES_DIRECTORY&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">credentials_secret</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_CREDENTIALS_SECRET&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">ignore_ssl_errors</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="7484053730-1">]</span><span class="w">
+
+</span><span class="c1"># Start the virtual device</span><span class="w">
+</span><span class="p" data-group-id="7484053730-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">pid</span><span class="p" data-group-id="7484053730-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Astarte.Device</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="7484053730-3">(</span><span class="n">opts</span><span class="p" data-group-id="7484053730-3">)</span><span class="w">
+
+</span><span class="c1"># Send a (device-owned) datastream</span><span class="w">
+</span><span class="nc">Astarte.Device</span><span class="o">.</span><span class="n">send_datastream</span><span class="p" data-group-id="7484053730-4">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;A_DEVICE_OWNED_DATASTREAM_INTERFACE&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;A_PATH&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;</span><span class="nc">A_VALUE</span><span class="o">&gt;</span><span class="p" data-group-id="7484053730-4">)</span><span class="w">
+
+</span><span class="c1"># Set a (device-owned) property</span><span class="w">
+</span><span class="nc">Astarte.Device</span><span class="o">.</span><span class="n">set_property</span><span class="p" data-group-id="7484053730-5">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;A_DEVICE_OWNED_PROPERTY_INTERFACE&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;A_PATH&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;</span><span class="nc">A_VALUE</span><span class="o">&gt;</span><span class="p" data-group-id="7484053730-5">)</span></code></pre>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="001-intro_architecture.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Introduction
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
+        <p>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>
