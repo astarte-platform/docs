@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.29.0">
+    <meta name="project" content="Astarte Operator v24.5.0-rc.1">
+
+    <title>Handling Astarte certificates — Astarte Operator v24.5.0-rc.1</title>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-D242FC1E.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/24.5/">
+        <img src="assets/logo.png" alt="Astarte Operator" class="sidebar-projectImage">
+      </a>
+
+    <div class="sidebar-projectDetails">
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/24.5/" class="sidebar-projectName" translate="no">
+Astarte Operator
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
+        v24.5.0-rc.1
+      </strong>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/release-24.5/docs/documentation/pages/administrator/050-handling_certificates.md#L1" title="View Source" class="view-source" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span>Handling Astarte certificates</span>
+</h1>
+
+<p>Astarte heavily requires SSL in a number of interactions, even though this can be bypassed with
+<code class="inline">ssl: false</code>.</p><p>In general, there are two alternative scenarios when dealing with certificates:</p><ul><li>you already purchased SSL certificates for your domains,</li><li>you want your certificates to be handled by Let's Encrypt through cert-manager.</li></ul><p>The two alternative procedures for securing your Astarte deployment are outlined in the following
+sections.</p><h2 id="use-your-own-certificates" class="section-heading">
+  <a href="#use-your-own-certificates" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">use-your-own-certificates</p>
+  </a>
+  Use your own certificates
+</h2>
+<p>If you already own certificates for your domains, all it's needed is creating a TLS secret in the
+namespace in which Astarte resides. Assuming that the certificate and key are saved respectively as
+<code class="inline">cert.pem</code> and <code class="inline">privkey.pem</code>, simply run:</p><pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">kubectl create secret tls astarte-tls-cert -n astarte \
+</span><span class="">  --cert=cert.pem --key=privkey.pem
+</span></code></pre><h2 id="use-let-s-encrypt-certificates-with-cert-manager" class="section-heading">
+  <a href="#use-let-s-encrypt-certificates-with-cert-manager" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">use-let-s-encrypt-certificates-with-cert-manager</p>
+  </a>
+  Use Let's Encrypt certificates with cert-manager
+</h2>
+<p>The process of obtaining a TLS certificate from Let's Encrypt is handled by cert-manager using a
+cluster issuer. The issuer will query the Let's Encrypt API and handles the challenge to confirm
+that you are the right owner of the specified domain. Two types of challenges are supported, namely
+DNS01 and HTTP01.</p><p>Ensure all the <a href="020-prerequisites.html">prerequisites</a> are satisfied and that both cert-manager and
+the NGINX ingress controller are deployed within your cluster. If you haven't installed them yet,
+you can do it with these simple commands:</p><ul><li>install cert-manager:<pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">helm repo add jetstack https://charts.jetstack.io
+</span><span class="gp unselectable">$ </span><span class="">helm repo update
+</span><span class="gp unselectable">$ </span><span class="">kubectl create namespace cert-manager
+</span><span class="gp unselectable">$ </span><span class="">helm install \
+</span><span class="">  cert-manager jetstack/cert-manager \
+</span><span class="">  --namespace cert-manager \
+</span><span class="">  --version v1.7.0 \
+</span><span class="">  --set installCRDs=true
+</span></code></pre></li><li>install NGINX ingress controller:<pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+</span><span class="gp unselectable">$ </span><span class="">helm repo update
+</span><span class="gp unselectable">$ </span><span class="">helm install ingress-nginx ingress-nginx/ingress-nginx -n ingress-nginx \
+</span><span class="">    --set controller.service.externalTrafficPolicy=Local \
+</span><span class="">    --create-namespace
+</span></code></pre></li></ul><h3 id="http01-challenge" class="section-heading">
+  <a href="#http01-challenge" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">http01-challenge</p>
+  </a>
+  HTTP01 Challenge
+</h3>
+<p>The current section outlines the procedure for setting up a ClusterIssuer to solve the HTTP01
+challenge.</p><h4>Find the external IP assigned to the ingress controller</h4><p>Knowing the external IP of the NGINX ingress controller is crucial for solving the HTTP01 challenge.
+You can find the external IP under the <code class="inline">EXTERNAL-IP</code> field when inspecting the output of the
+following command:</p><pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">kubectl get svc -n ingress-nginx ingress-nginx-controller
+</span></code></pre><h4>Configure your DNS</h4><p>Once the external IP of the ingress controller is known, make sure all your Astarte domains point to
+the NGINX Ingress controller IP. In particular, the list of the domains is:</p><ul><li><code class="inline">api.your-domain.example.com</code></li><li><code class="inline">dashboard.your-domain.example.com</code> (if deployed)</li><li><code class="inline">broker.your-domain.example.com</code></li></ul><h4>Create a ClusterIssuer</h4><p>Define a ClusterIssuer and save it as <code class="inline">cluster-issuer.yaml</code>:</p><pre><code class="yaml">apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: your-email@email.com
+    privateKeySecretRef:
+      name: letsencrypt
+    solvers:
+    - http01:
+        ingress:
+          class: nginx</code></pre><p>Then, apply the resource with the following:</p><pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">kubectl apply -f cluster-issuer.yaml
+</span></code></pre><h4>Create a Certificate resource</h4><p>Once the ClusterIssuer has been created, add a <code class="inline">Certificate</code> resource in the Astarte namespace
+referencing the <code class="inline">ClusterIssuer</code>, and save it as <code class="inline">certificate.yaml</code>:</p><pre><code class="yaml">apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: astarte-default-ingress-certificate
+  namespace: astarte
+spec:
+  dnsNames:
+    - &lt;your-dns.names&gt;
+  secretName: astarte-tls-cert
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer</code></pre><p>Then, apply the <code class="inline">Certificate</code> resource:</p><pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">kubectl apply -f certificate.yaml
+</span></code></pre><h4>Wait the HTTP challenge to complete</h4><p>As soon as the HTTP challenge completes, a Kubernetes secret of type <code class="inline">kubernetes.io/tls</code> called
+<code class="inline">astarte-tls-cert</code> will be created in the <code class="inline">astarte</code> namespace. Now you can reference the TLS secret
+in both the Astarte and AstarteDefaultIngress resources where required.</p><h3 id="dns01-challenge" class="section-heading">
+  <a href="#dns01-challenge" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">dns01-challenge</p>
+  </a>
+  DNS01 challenge
+</h3>
+<p>The current section describes the procedure for setting up a <code class="inline">ClusterIssuer</code> to use Google CloudDNS
+to solve the DNS01 challenge. Therefore, when needed, the rest of this section will make use of the
+<code class="inline">gcloud CLI</code>.</p><p>If your Astarte deployment is hosted by another cloud provider, please refer to the cert-manager
+specific <a href="https://cert-manager.io/docs/configuration/acme/dns01/">documentation</a>.</p><h4>Define a DNS Zone for your project</h4><p>First, ensure that a <strong>DNS Zone is already defined for your project</strong>. If this requirement is not
+satisfied, this <a href="https://cloud.google.com/dns/docs/zones">page</a> provides guidance for the creation
+of the DNS Zone for a project hosted on Google Cloud. If your cluster is hosted by any other cloud
+provider, please ensure to follow the needed steps to fulfill the requirement.</p><h4>Set up a Service Account with privileges of DNS Administrator</h4><p>To set up a service account with privileges of DNS Administrator, run the following command:</p><pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">PROJECT_ID=&lt;your-project-id&gt;
+</span><span class="gp unselectable">$ </span><span class="">gcloud iam service-accounts create dns01-solver --display-name &quot;dns01-solver&quot;
+</span><span class="gp unselectable">$ </span><span class="">gcloud projects add-iam-policy-binding $PROJECT_ID \
+</span><span class="">    --member serviceAccount:dns01-solver@$PROJECT_ID.iam.gserviceaccount.com \
+</span><span class="">    --role roles/dns.admin
+</span></code></pre><h4>Create a Service Account secret</h4><p>To access the service account, cert-manager uses a key stored in a Kubernetes Secret. Therefore,
+create a key and download it as a json file:</p><pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">gcloud iam service-accounts keys create key.json \
+</span><span class="">    --iam-account dns01-solver@$PROJECT_ID.iam.gserviceaccount.com
+</span></code></pre><p>and create a secret named <code class="inline">clouddns-dns01-solver-svc-acct</code> in the <code class="inline">cert-manager</code> namespace from the
+<code class="inline">key.json</code> file:</p><pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">kubectl create secret generic -n cert-manager \
+</span><span class="">    clouddns-dns01-solver-svc-acct \
+</span><span class="">   --from-file=key.json
+</span></code></pre><h4>Create a ClusterIssuer that uses CloudDNS</h4><p>Define a <code class="inline">ClusterIssuer</code> resource which uses the secret, and save it as <code class="inline">cluster-issuer.yaml</code>:</p><pre><code class="yaml">apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-dns-cluster-issuer
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: your-email@email.com
+    privateKeySecretRef:
+      # Secret resource that will be used to store the account's private key.
+      name: letsencrypt-cluster-issuer-key
+    solvers:
+    - dns01:
+        cloudDNS:
+          # The ID of the GCP project
+          project: &lt;your-project-id&gt;
+          # This is the secret used to access the service account
+          serviceAccountSecretRef:
+            name: clouddns-dns01-solver-svc-acct
+            key: key.json</code></pre><p>Apply the resource simply running the following:</p><pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">kubectl apply -f cluster-issuer.yaml
+</span></code></pre><h4>Create a Certificate resource</h4><p>Once the ClusterIssuer has been created, add a <code class="inline">Certificate</code> resource in the Astarte namespace
+referencing the <code class="inline">ClusterIssuer</code>, and save it as <code class="inline">certificate.yaml</code>:</p><pre><code class="yaml">apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: astarte-default-ingress-certificate
+  namespace: astarte
+spec:
+  dnsNames:
+    - &lt;your-dns.names&gt;
+  secretName: astarte-tls-cert
+  issuerRef:
+    name: letsencrypt-dns-cluster-issuer
+    kind: ClusterIssuer</code></pre><p>Thus, apply the <code class="inline">Certificate</code> resource:</p><pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">kubectl apply -f certificate.yaml
+</span></code></pre><h4>Wait the DNS challenge to complete</h4><p>As soon as the DNS challenge completes, a Kubernetes secret of type <code class="inline">kubernetes.io/tls</code> called
+<code class="inline">astarte-tls-cert</code> will be created in the <code class="inline">astarte</code> namespace. Now you can reference the TLS secret
+in both the Astarte and AstarteDefaultIngress resources where required.</p><h2 id="conclusions" class="section-heading">
+  <a href="#conclusions" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">conclusions</p>
+  </a>
+  Conclusions
+</h2>
+<p>The current page describes how to handle SSL certificates for securing your Astarte instance. In
+particular the following use cases are analyzed:</p><ul><li>certificates have already been purchased and needs to be properly deployed,</li><li>let cert-manager generate and handle certificates in the following cases:<ul><li>solving HTTP01 ACME challenges,</li><li>solving DNS01 ACME challenges.</li></ul></li></ul><p>At the end of each procedure you will end up with a Kubernetes TLS secret, named <code class="inline">astarte-tls-cert</code>,
+deployed in the Astarte namespace. Reference the secret in your Astarte and AstarteDefaultIngress
+resources where required to secure your Astarte deployment.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="040-manual_kubernetes.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Manual Operator Installation
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="060-setup_cluster.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Setting up the Cluster
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
+        <p>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>

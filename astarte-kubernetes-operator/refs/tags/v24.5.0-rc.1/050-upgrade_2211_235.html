@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.29.0">
+    <meta name="project" content="Astarte Operator v24.5.0-rc.1">
+
+    <title>Upgrade v22.11.x-23.5x — Astarte Operator v24.5.0-rc.1</title>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-D242FC1E.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/24.5/">
+        <img src="assets/logo.png" alt="Astarte Operator" class="sidebar-projectImage">
+      </a>
+
+    <div class="sidebar-projectDetails">
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/24.5/" class="sidebar-projectName" translate="no">
+Astarte Operator
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
+        v24.5.0-rc.1
+      </strong>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/release-24.5/docs/documentation/pages/upgrade/050-upgrade_2211_235.md#L1" title="View Source" class="view-source" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span>Upgrade v22.11.x-23.5x</span>
+</h1>
+
+<p>This page describes the required steps to upgrade your Astarte cluster from <code class="inline">v22.11.x</code> to
+<code class="inline">v23.5.x</code>. Your Astarte instance will <strong>not</strong> need to be upgraded.</p><p>Starting from the Astarte Operator <code class="inline">v22.11</code> release, the old <code class="inline">api.astarte-platform.org/v1alpha1</code>
+APIs are deprecated and will be removed in the next release (<code class="inline">v24.5</code>).</p><p>In the following, the upgrade path is described.</p><p>The upcoming sections will cover the following topics:</p><ul><li>upgrading the Astarte Operator,</li></ul><p>Before starting with the upgrade procedure it is strongly advised to <a href="095-advanced_operations.html#backup-your-astarte-resources">backup your Astarte
+resources</a>.</p><h2 id="upgrade-astarte-operator" class="section-heading">
+  <a href="#upgrade-astarte-operator" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">upgrade-astarte-operator</p>
+  </a>
+  Upgrade Astarte Operator
+</h2>
+<p>The Astarte Operator upgrade procedure is handled by Helm.</p><p>The current section assumes that the Operator's chart landing version is <code class="inline">v23.5.x</code>. It is <strong>your
+responsibility</strong> referencing the proper <code class="inline">v23.5.x</code> chart using the <code class="inline">--version</code> flag when running
+<code class="inline">helm</code> commands.</p><p>Please, make sure that the values you set for both the Operator's name and namespace match the
+naming you already adopted when installing the Operator. A wrong naming can lead to a malfunctioning
+Astarte cluster.</p><p>For standard deployments the following variables should be ok. However, it is your responsibility
+checking that the values you set are consistent with your setup:</p><pre><code class="makeup bash" translate="no"><span class="">export ASTARTE_OP_RELEASE_NAME=astarte-operator
+</span><span class="">export ASTARTE_OP_RELEASE_NAMESPACE=astarte-operator
+</span><span class="">export ASTARTE_OP_CHART_VERSION=&lt;23.5.x&gt;
+</span></code></pre><p>Update your local Helm charts:</p><pre><code class="makeup bash" translate="no"><span class="">helm repo update
+</span></code></pre><p>To upgrade the Operator use the dedicated <code class="inline">helm upgrade</code> command:</p><pre><code class="makeup bash" translate="no"><span class="">helm upgrade $ASTARTE_OP_RELEASE_NAME astarte/astarte-operator -n $ASTARTE_OP_RELEASE_NAMESPACE \
+</span><span class="">  --version $ASTARTE_OP_CHART_VERSION
+</span></code></pre><p>The optional <code class="inline">--version</code> switch allows to specify the version to upgrade to - when not specified,
+the latest version will be fetched and used.</p><p>By design, Astarte Operator's Helm charts cannot univocally be mapped to Operator's releases in a
+one-to-one relationship. However each chart is tied to a specific Operator's version, which is user
+configurable.</p><p>Therefore, upgrading a chart leads to an Operator's upgrade if and only if the Operator's tag
+referenced by the chart is changed. You can check the Operator's tag bound to the chart simply
+running:</p><pre><code class="makeup bash" translate="no"><span class="">helm show values astarte/astarte-operator
+</span></code></pre><p>As usual, you can use the <code class="inline">--version</code> flag to point to a specific chart version.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="040-upgrade_10x_2211.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Upgrade v1.0.x-v22.11.x
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="060-upgrade_235_245.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Upgrade v23.5.x-v24.5.x
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
+        <p>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>
