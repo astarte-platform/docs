@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.29.0">
+    <meta name="project" content="Astarte Operator v24.5.0">
+
+    <title>Manual Operator Installation — Astarte Operator v24.5.0</title>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-69B0E325.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/24.5/">
+        <img src="assets/logo.png" alt="Astarte Operator" class="sidebar-projectImage">
+      </a>
+
+    <div class="sidebar-projectDetails">
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/24.5/" class="sidebar-projectName" translate="no">
+Astarte Operator
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
+        v24.5.0
+      </strong>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/release-24.5/docs/documentation/pages/administrator/040-manual_kubernetes.md#L1" title="View Source" class="view-source" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span>Manual Operator Installation</span>
+</h1>
+
+<p>In case you do not want to use <code class="inline">helm</code> to manage the Operator, this guide will run you through
+all the steps needed to set up Astarte Kubernetes.</p><p>To come along with this guide, the following components are required:</p><ul><li><a href="https://sdk.operatorframework.io/docs/installation/"><code class="inline">operator-sdk</code></a></li><li><a href="https://kubectl.docs.kubernetes.io/installation/kustomize/"><code class="inline">kustomize</code></a></li></ul><p>Please make sure that the version of <code class="inline">operator-sdk</code> matches the version used by the Astarte
+Operator (the detail can be found within the <a href="https://github.com/astarte-platform/astarte-kubernetes-operator">project's
+CHANGELOG</a>).</p><p>Moreover, please make sure that the cluster kubectl is pointing to is the one you want to target
+with the installation.</p><p><em>Note: Please be aware that this method is to be used only if you have very specific reasons why not
+to use <code class="inline">helm</code>, for example: you're running a fork of the Operator, you're running the Operator
+outside of the cluster, or you're on the very bleeding edge.
+<code class="inline">helm</code> automates internally all of this guide and should be your main choice in production.</em></p><h2 id="clone-the-operator-repository" class="section-heading">
+  <a href="#clone-the-operator-repository" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">clone-the-operator-repository</p>
+  </a>
+  Clone the Operator Repository
+</h2>
+<p>First of all, you will need to clone the Operator repository, as this is where some of the needed
+resources for the Operator are. Ensure you're cloning the right branch for the Operator Version
+you'd like to install, in this case <code class="inline">release-1.0</code>:</p><pre><code class="makeup bash" translate="no"><span class="">git clone https://github.com/astarte-platform/astarte-kubernetes-operator.git
+</span><span class="">cd astarte-kubernetes-operator
+</span></code></pre><h2 id="install-rbacs-and-crds" class="section-heading">
+  <a href="#install-rbacs-and-crds" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">install-rbacs-and-crds</p>
+  </a>
+  Install RBACs and CRDs
+</h2>
+<p>The Operator requires a number of RBAC roles to run, and will also require Astarte CRDs to be
+installed.</p><p>To install all the required components, simply run:</p><pre><code class="makeup bash" translate="no"><span class="">make install
+</span></code></pre><h2 id="running-the-operator-inside-the-cluster" class="section-heading">
+  <a href="#running-the-operator-inside-the-cluster" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">running-the-operator-inside-the-cluster</p>
+  </a>
+  Running the Operator inside the Cluster
+</h2>
+<p>Running the Operator inside the cluster is as simple as executing the following:</p><pre><code class="makeup bash" translate="no"><span class="">make deploy
+</span></code></pre><p>Actually, the above command does more than just deploying the Operator, as it also install RBACs,
+CRDs. The deployment therefore can be performed in just one command.</p><p>To check if the deployment is successful:</p><pre><code class="makeup bash" translate="no"><span class="">kubectl get deployment -n astarte-operator astarte-operator
+</span></code></pre><h2 id="running-the-operator-outside-the-cluster" class="section-heading">
+  <a href="#running-the-operator-outside-the-cluster" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">running-the-operator-outside-the-cluster</p>
+  </a>
+  Running the Operator outside the Cluster
+</h2>
+<p><em>Note: Running the operator outside the cluster is not advised in production. Usually, you need such
+a deployment if you plan on developing the Operator itself. However, this scenario is tested in the
+e2e tests, and as such provides the very same features of the in-cluster Deployment, which remains
+the go-to scenario for production.</em></p><p>From the root directory of your clone, run:</p><pre><code class="makeup bash" translate="no"><span class="">make run ENABLE_WEBHOOKS=false
+</span></code></pre><p>This will bring up the Operator (with all the webhooks disabled) and connect it to your current
+Kubernetes context.</p><p>Please, refer to the <a href="https://sdk.operatorframework.io/docs/">OperatorSDK documentation</a> to have
+further insights on this scenario.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="030-installation_kubernetes.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Installing Astarte Operator
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="050-handling_certificates.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Handling Astarte certificates
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
+        <p>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>
