@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-D242FC1E.js"></script>
+    <script src="dist/sidebar_items-69B0E325.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -144,19 +144,7 @@ care of this task.</p><h2 id="rabbitmq" class="section-heading">
 (<a href="https://www.rabbitmq.com/kubernetes/operator/operator-overview">https://www.rabbitmq.com/kubernetes/operator/operator-overview</a>) or any other managed solution that 
 you prefer. The Astarte Operator includes only basic management of RabbitMQ, which is deprecated since 
 v24.5 and as such it should not be relied upon when dealing with production environments. Futher details 
-can be found <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/issues/287">here</a>.</p><h2 id="voyager-deprecated" class="section-heading">
-  <a href="#voyager-deprecated" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">voyager-deprecated</p>
-  </a>
-  Voyager (deprecated)
-</h2>
-<p>Until Astarte v1.0.0, the only supported Managed Ingress was the
-<a href="https://github.com/appscode/voyager">Voyager</a> based <code class="inline">AstarteVoyagerIngress</code>. Starting from Dec the
-31st 2021, according to the <a href="https://blog.byte.builders/post/voyager-v2021.09.15/">Voyager
-announcement</a>, the support for Voyager will be
-dropped as stated <a href="https://github.com/astarte-platform/astarte/issues/613">here</a>. An alternative
-NGINX based Managed Ingress has been developed to replace the Voyager based solution (for reference,
-see the previous section).</p><h2 id="cert-manager" class="section-heading">
+can be found <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/issues/287">here</a>.</p><h2 id="cert-manager" class="section-heading">
   <a href="#cert-manager" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">cert-manager</p>
   </a>
@@ -176,9 +164,9 @@ advised to install it through its Helm chart. To do so, run the following comman
 </span><span class="gp unselectable">$ </span><span class="">helm install \
 </span><span class="">  cert-manager jetstack/cert-manager \
 </span><span class="">  --namespace cert-manager \
-</span><span class="">  --version v1.13.3 \
+</span><span class="">  --version v1.14.7 \
 </span><span class="">  --set installCRDs=true
-</span></code></pre><p>This will install <code class="inline">cert-manager</code> 1.13.3 and its CRDs in the cluster.</p><h2 id="external-cassandra-scylla" class="section-heading">
+</span></code></pre><p>This will install <code class="inline">cert-manager</code> and its CRDs in the cluster.</p><h2 id="external-cassandra-scylla" class="section-heading">
   <a href="#external-cassandra-scylla" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">external-cassandra-scylla</p>
   </a>

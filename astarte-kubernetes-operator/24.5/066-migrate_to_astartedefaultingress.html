@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-D242FC1E.js"></script>
+    <script src="dist/sidebar_items-69B0E325.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -105,8 +105,10 @@ Astarte Operator
   <span>Migrating to the Astarte Default Ingress</span>
 </h1>
 
-<p>If your Astarte deployment is still being served by the deprecated AstarteVoyagerIngress, it is
-highly advised to move to the new managed ingress, namely, the AstarteDefaultIngress.</p><p>The current page focuses on describing the procedure for migrating your ingress with ease, simply
+<p>The support for AstarteVoyagerIngress has been dropped. If your Astarte deployment is still being
+served by the AstarteVoyagerIngress, it is necessary to move to the new managed ingress,
+namely, the AstarteDefaultIngress. As an alternative, you can setup your custom ingress (however,
+this scenario is not covered by the present documentation).</p><p>The current page focuses on describing the procedure for migrating your ingress with ease, simply
 employing <code class="inline">astartectl</code>.</p><p>Please, make sure you have read the entirety of this page and to understand all the concepts and the
 implications before performing the actual migration.</p><h2 id="prerequisites-and-preliminary-checks" class="section-heading">
   <a href="#prerequisites-and-preliminary-checks" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
@@ -195,12 +197,12 @@ parts.</p>
 <div class="bottom-actions">
   <div class="bottom-actions-item">
 
-      <a href="065-setup_astartevoyageringress.html" class="bottom-actions-button" rel="prev">
+      <a href="064-setup_astartedefaultingress.html" class="bottom-actions-button" rel="prev">
         <span class="subheader">
           ← Previous Page
         </span>
         <span class="title">
-Setting up the Astarte Voyager Ingress
+Setting up the Astarte Default Ingress
         </span>
       </a>
 
