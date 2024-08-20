@@ -69,7 +69,11 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-device.device_grpc">device.device_grpc module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#device.device_grpc.AstarteClientCallDetails"><code class="docutils literal notranslate"><span class="pre">AstarteClientCallDetails</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.device_grpc.AstarteUnaryStreamInterceptor"><code class="docutils literal notranslate"><span class="pre">AstarteUnaryStreamInterceptor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.device_grpc.AstarteUnaryUnaryInterceptor"><code class="docutils literal notranslate"><span class="pre">AstarteUnaryUnaryInterceptor</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#device.device_grpc.DeviceGrpc"><code class="docutils literal notranslate"><span class="pre">DeviceGrpc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.device_grpc.add_node_id_in_metadata"><code class="docutils literal notranslate"><span class="pre">add_node_id_in_metadata()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-device.device_mqtt">device.device_mqtt module</a><ul>
@@ -635,6 +639,69 @@ standard function - keep in mind this means your callbacks might create deadlock
 <section id="module-device.device_grpc">
 <span id="device-device-grpc-module"></span><h2>device.device_grpc module<a class="headerlink" href="#module-device.device_grpc" title="Link to this heading"></a></h2>
 <dl class="py class">
+<dt class="sig sig-object py" id="device.device_grpc.AstarteClientCallDetails">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device_grpc.</span></span><span class="sig-name descname"><span class="pre">AstarteClientCallDetails</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credentials</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_ready</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compression</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_grpc.AstarteClientCallDetails" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.device_grpc.AstarteClientCallDetails" title="device.device_grpc.AstarteClientCallDetails"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteClientCallDetails</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ClientCallDetails</span></code></p>
+<p>Astarte implementation for gRPC client call details.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="device.device_grpc.AstarteUnaryStreamInterceptor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device_grpc.</span></span><span class="sig-name descname"><span class="pre">AstarteUnaryStreamInterceptor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_grpc.AstarteUnaryStreamInterceptor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">UnaryStreamClientInterceptor</span></code></p>
+<p>Astarte implementation for a gRPC unary-stream client interceptor.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_grpc.AstarteUnaryStreamInterceptor.intercept_unary_stream">
+<span class="sig-name descname"><span class="pre">intercept_unary_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">continuation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_call_details</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_grpc.AstarteUnaryStreamInterceptor.intercept_unary_stream" title="Link to this definition"></a></dt>
+<dd><p>Implementation for the abstract interceptor method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>continuation</strong> (<em>Any</em>) – See parent class.</p></li>
+<li><p><strong>client_call_details</strong> (<em>Any</em>) – See parent class.</p></li>
+<li><p><strong>request</strong> (<em>Any</em>) – See parent class.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>See the parent class.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="device.device_grpc.AstarteUnaryUnaryInterceptor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device_grpc.</span></span><span class="sig-name descname"><span class="pre">AstarteUnaryUnaryInterceptor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_grpc.AstarteUnaryUnaryInterceptor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">UnaryUnaryClientInterceptor</span></code></p>
+<p>Astarte implementation for a gRPC unary-unary client interceptor.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_grpc.AstarteUnaryUnaryInterceptor.intercept_unary_unary">
+<span class="sig-name descname"><span class="pre">intercept_unary_unary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">continuation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_call_details</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_grpc.AstarteUnaryUnaryInterceptor.intercept_unary_unary" title="Link to this definition"></a></dt>
+<dd><p>Implementation for the abstract interceptor method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>continuation</strong> (<em>Any</em>) – See parent class.</p></li>
+<li><p><strong>client_call_details</strong> (<em>Any</em>) – See parent class.</p></li>
+<li><p><strong>request</strong> (<em>Any</em>) – See parent class.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>See the parent class.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="device.device_grpc.DeviceGrpc">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device_grpc.</span></span><span class="sig-name descname"><span class="pre">DeviceGrpc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server_addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_grpc.DeviceGrpc" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Device</span></code></p>
@@ -709,6 +776,28 @@ reason, the usage of asyncio is strongly recommended.</p>
 </dl>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="device.device_grpc.add_node_id_in_metadata">
+<span class="sig-prename descclassname"><span class="pre">device.device_grpc.</span></span><span class="sig-name descname"><span class="pre">add_node_id_in_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_call_details</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">grpc._interceptor._ClientCallDetails</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_grpc.add_node_id_in_metadata" title="Link to this definition"></a></dt>
+<dd><p>Add an Astarte message hub ID to che grpc client call details as a metadata fields.</p>
+<p>Note: This function doesn’t perform in place changes to client_call_details. It returns a
+totally new set of client call details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_id</strong> (<em>str</em>) – The node ID to add.</p></li>
+<li><p><strong>client_call_details</strong> (<em>Any</em>) – The client call details to modify.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The new client call details.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>grpc._interceptor._ClientCallDetails</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
