@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-2FE4F16F.js"></script>
+    <script src="dist/sidebar_items-11367B01.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -109,7 +109,8 @@ Astarte
 sent from Devices. Astarte leverages <a href="https://hexdocs.pm/phoenix/channels.html">Phoenix Channels</a> to
 provide such a thing over <a href="https://en.wikipedia.org/wiki/WebSocket">WebSockets</a> in AppEngine API.
 WebSockets can be used natively from a Web Browser and follow the same authentication pattern as a
-standard HTTP call.</p><p>Astarte Channels define a semantic on top of Phoenix Channels which allows read-only monitoring of
+standard HTTP call.</p><p>The AppEngine API for Astarte Channels is located at the URL:
+<code class="inline">ws://&lt;astarte-base-url&gt;/appengine/v1/socket/websocket</code>.</p><p>Astarte Channels define a semantic on top of Phoenix Channels which allows read-only monitoring of
 <code class="inline">device</code> Interfaces. Authentication and Authorization over Channels happens in the very same way as
 <code class="inline">AppEngine</code>, and the <code class="inline">a_ch</code> claim in the token is respected when joining rooms and installing
 triggers. See <a href="070-auth.html">Authentication and Authorization</a> for more details on Auth semantics
