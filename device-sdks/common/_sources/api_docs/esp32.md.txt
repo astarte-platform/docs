@@ -1,0 +1,11 @@
+# Esp32 APIs documentation
+
+Find the Esp32 documentation at the following links:
+```{toctree}
+:maxdepth: 1
+Esp32 v1.3 APIs <https://docs.astarte-platform.org/device-sdks/esp32/1.3/api>
+Esp32 v1.2 APIs <https://docs.astarte-platform.org/device-sdks/esp32/1.2/api>
+Esp32 v1.1 APIs <https://docs.astarte-platform.org/device-sdks/esp32/1.1/api>
+Esp32 v1.0 APIs <https://docs.astarte-platform.org/device-sdks/esp32/1.0/api>
+
+```

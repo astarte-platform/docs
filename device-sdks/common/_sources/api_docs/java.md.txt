@@ -1,0 +1,9 @@
+# Java APIs documentation
+
+Find the Java documentation at the following links:
+```{toctree}
+:maxdepth: 1
+Java v1.1 APIs <https://docs.astarte-platform.org/device-sdks/java/1.1/api>
+Java v1.0 APIs <https://docs.astarte-platform.org/device-sdks/java/1.0/api>
+
+```
