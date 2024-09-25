@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['data_0',['data',['../structastarte__individual__t.html#ac3600e69c18ec70fa080874fd33bfc59',1,'astarte_individual_t']]],
+  ['data_5fevent_1',['data_event',['../structastarte__device__datastream__individual__event__t.html#aa44d5e20adebf2addfda07c2bef70486',1,'astarte_device_datastream_individual_event_t::data_event'],['../structastarte__device__datastream__object__event__t.html#ae4613258159f961caf95c3dffee037e1',1,'astarte_device_datastream_object_event_t::data_event'],['../structastarte__device__property__set__event__t.html#a3ea6702bf0164b9f2efaf1e6a0c0d158',1,'astarte_device_property_set_event_t::data_event']]],
+  ['datastream_5findividual_5fcbk_2',['datastream_individual_cbk',['../structastarte__device__config__t.html#a237cae37e7df1620eb99abf2ec1df6d3',1,'astarte_device_config_t']]],
+  ['datastream_5fobject_5fcbk_3',['datastream_object_cbk',['../structastarte__device__config__t.html#af0c9faddc8e9dcc1d7647c25f1c2277e',1,'astarte_device_config_t']]],
+  ['definitions_20generation_4',['definitions generation',['../index.html#autotoc_md14',1,'Build time interface definitions generation'],['../index.html#autotoc_md13',1,'Interface definitions generation']]],
+  ['dependencies_5',['Exporting zephyr environment and installing python dependencies',['../index.html#autotoc_md6',1,'']]],
+  ['dependency_20in_20an_20application_6',['Using the library as a dependency in an application',['../index.html#autotoc_md2',1,'']]],
+  ['device_7',['device',['../structastarte__device__connection__event__t.html#a0e95777dc85382885c6d79ec33eaa2eb',1,'astarte_device_connection_event_t::device'],['../structastarte__device__disconnection__event__t.html#afc6c84c3353767621cea1207f800619c',1,'astarte_device_disconnection_event_t::device'],['../structastarte__device__data__event__t.html#a74f613f3a9867f8ca9481dcaa70b0c42',1,'astarte_device_data_event_t::device']]],
+  ['device_20api_20for_20zephyr_8',['Astarte device API for Zephyr',['../index.html',1,'']]],
+  ['device_20architecture_9',['device architecture',['../md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd62dcd5f0d5ffd154d1c7edffea463ce9.html#autotoc_md20',1,'Astarte device architecture'],['../md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd62dcd5f0d5ffd154d1c7edffea463ce9.html',1,'Astarte-device-architecture']]],
+  ['device_20connectivity_20state_20machine_10',['Device connectivity state machine',['../md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd62dcd5f0d5ffd154d1c7edffea463ce9.html#autotoc_md21',1,'']]],
+  ['device_20id_11',['Device ID',['../group__device__id.html',1,'']]],
+  ['device_20library_12',['Astarte device library',['../group__astarte__device__sdk.html',1,'']]],
+  ['device_20management_13',['Device management',['../group__device.html',1,'']]],
+  ['device_20pairing_14',['Device pairing',['../group__pairing.html',1,'']]],
+  ['device_20sdk_20zephyr_15',['Astarte Device SDK Zephyr',['../index.html#autotoc_md0',1,'']]],
+  ['device_2eh_16',['device.h',['../device_8h.html',1,'']]],
+  ['device_5fid_17',['device_id',['../structastarte__device__config__t.html#a8055b3ed754b0090171ab06652aa32a0',1,'astarte_device_config_t']]],
+  ['device_5fid_2eh_18',['device_id.h',['../device__id_8h.html',1,'']]],
+  ['disconnection_5fcbk_19',['disconnection_cbk',['../structastarte__device__config__t.html#a44aa16175e8482dbc0dc484daf3b3406',1,'astarte_device_config_t']]],
+  ['documentation_20',['documentation',['../index.html#autotoc_md19',1,'Architectural documentation'],['../index.html#autotoc_md17',1,'Build doxygen documentation']]],
+  ['doxygen_20documentation_21',['Build doxygen documentation',['../index.html#autotoc_md17',1,'']]]
+];
