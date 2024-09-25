@@ -6,11 +6,11 @@ SPDX-License-Identifier: Apache-2.0
 
 # Get started with Zephyr
 
-Follow this guide to get started with the Astarte device SDK for the Zephyr framework.
+Follow this guide to start with the Astarte device SDK for the Zephyr framework.
 
-We will assume you already set up Zephyr and are starting with a fresh empty project.
-Your starting project should initialize networking using an appropriate physical layer and
-you should have added a set of TLS certificates appropriate to reach the Astarte servers.
+We will assume you have already set up Zephyr and are starting with a fresh empty project.
+Your starting project should initialize networking using an appropriate physical layer and you
+should have added a set of TLS certificates appropriate to reach the Astarte servers.
 
 ## Add the Astarte device SDK as a dependency
 
@@ -35,7 +35,7 @@ Second, a new entry should be added to the projects list:
       west-commands: scripts/west-commands.yml
       import: true
 ```
-Remember to run `west update` after performing changes to the manifest file.
+Remember to run `west update` after changing the manifest file.
 
 In addition, the Astarte device library `Kconfig` should be added to the `Kconfig` file of the
 application.
@@ -45,7 +45,7 @@ rsource "../../astarte-device-sdk-zephyr/Kconfig"
 This will add the configuration options of the example module to the application.
 
 Last, install the dependencies for the west extensions required by the Astarte device, by running
-this command in your zephyr workspace.
+this command in your Zephyr workspace.
 ```bash
 pip install -r ./astarte-device-sdk-zephyr/scripts/requirements.txt
 ```
@@ -53,7 +53,7 @@ pip install -r ./astarte-device-sdk-zephyr/scripts/requirements.txt
 ## Minimal configuration options for the Astarte device
 
 A minimal set of Zephyr functionalities should be enabled for the Astarte device to work.
-Modules such as MbedTLS, base64, MQTT provide necessary functionality.
+Modules such as MbedTLS, base64, and MQTT provide the necessary functionality.
 
 ```conf
 # ... Hardware dependent networking configuration ...
@@ -137,18 +137,15 @@ CONFIG_MBEDTLS_ECP_ALL_ENABLED=y
 
 ## Generate a device ID
 
-Each Astarte device is uniquely identified within an Astarte instance using a device ID.
-Device IDs can be generated deterministically, starting from user defined information or
-randomly.
+Each Astarte device is uniquely identified within an Astarte instance using a device ID. Device IDs
+can be generated deterministically, starting from user-defined information or randomly.
 
 If you already have a device ID and a credential secret skip to
 [Generating the interfaces headers](#generating-the-interfaces-headers).
 This step is only useful when registering the device through the APIs using the JWT token.
-When registering a device using an alternative method the device ID should be provided by
-the user.
+When registering a device using an alternative method the device ID should be provided by the user.
 
-To generate a random device ID use the function `astarte_device_id_generate_random` as shown
-below.
+To generate a random device ID use the function `astarte_device_id_generate_random` as shown below.
 ```C
 #include <astarte_device_sdk/device_id.h>
 #include <astarte_device_sdk/result.h>
@@ -167,11 +164,11 @@ void main(void) {
 
 ## Registering a device
 
-In order for a device to connect to Astarte a registration procedure is required. This registration
-will produce a device specific credential secret that will be used when connecting to Astarte.
-The Zephyr Astarte device SDKs provides utilities to perform a device registration directly on
-the device. Those utilities require a registration JWT to be loaded on the device. Such JWT should
-be discarded following the registration procedure.
+For a device to connect to Astarte a registration procedure is required. This registration will
+produce a device-specific credential secret that will be used when connecting to Astarte. The Zephyr
+Astarte device SDKs provide utilities to perform a device registration directly on the device.
+Those utilities require a registration JWT to be loaded on the device. Such JWT should be discarded
+following the registration procedure.
 
 This step is only useful when registering the device through the APIs using the JWT token.
 Registration of a device can also be performed outside the device in the Astarte instance using
@@ -207,9 +204,9 @@ void main(void) {
 Each device should define a set of interfaces, defined as introspection, that will be used to
 communicate with the Astarte instance.
 
-Since the Astarte interfaces are defined in json files, we provide a Python script that
-automatically performs the conversion to a compatible C header. It has been configured
-as a west extension for this zephyr module.
+Since the Astarte interfaces are defined in JSON files, we provide a Python script that
+automatically performs the conversion to a compatible C header. It has been configured as a west
+extension for this Zephyr module.
 
 Assuming all the interface files are contained in a `json_interfaces` folder it can be run as
 follows.
@@ -218,7 +215,7 @@ west generate-interfaces --output_dir ./generated_interfaces ./json_interfaces
 ```
 The `generated_interfaces` folder should be added to the include search path in the CMake
 configuration for your application.
-Furthermore the sources in the `generated_interfaces` folder should be added to your application
+Furthermore, the sources in the `generated_interfaces` folder should be added to your application
 CMake target.
 ```
 FILE(GLOB generated_interfaces_src ${CMAKE_CURRENT_LIST_DIR}/../generated_interfaces/*.c)
@@ -234,10 +231,10 @@ target_include_directories(app PRIVATE ${CMAKE_CURRENT_LIST_DIR}/../generated_in
 Now that we obtained a credential secret we can create a new device instance.
 
 The Astarte device SDK uses callbacks to communicate to the user that some event has occurred.
-Such callbacks should be configured prior to instantiating the device and connecting to Astarte.
+Such callbacks should be configured before instantiating the device and connecting to Astarte.
 Several callbacks can be optionally configured. A connection callback, an individual data received
 callback, an object data received callback, and set property received callback, an unset property
-received callback and a disconnection callback.
+received callback, and a disconnection callback.
 
 ```C
 #include <astarte_device_sdk/interface.h>
@@ -293,9 +290,9 @@ void main(void) {
 
 ## Connecting and polling the device
 
-After device initialization the device will need to be connected explicitly and polled regularly
-to ensure processing of MQTT messages.
-Ideally a separated thread should be used for polling and transmission.
+After device initialization, the device will need to be connected explicitly and polled regularly
+to ensure the processing of MQTT messages.
+Ideally, a separate thread should be used for polling and transmission.
 ```C
 #include <astarte_device_sdk/device.h>
 #include <astarte_device_sdk/result.h>
@@ -353,7 +350,7 @@ aggregation type.
 In Astarte interfaces with `individual` aggregation, each mapping is treated as an independent value
 and is managed individually.
 
-The snippet bellow shows how to send a value that will be inserted into the `"/boolean_endpoint"`
+The snippet below shows how to send a value that will be inserted into the `"/boolean_endpoint"`
 datastream, that is part of `"org.astarteplatform.zephyr.examples.DeviceDatastream"` datastream
 interface.
 
@@ -407,9 +404,9 @@ static void device_tx_thread_entry_point(void *device_handle, void *unused1, voi
 In Astarte interfaces with `object` aggregation, Astarte expects the owner to send all of the
 interface's mappings at the same time, packed in a single message.
 
-The following snippet shows how to send a value for an object aggregated interface. In this
-examples, fourteen different data types will be sent together and will be inserted into the
-`"/sensor24"` datastream which is defined by the `"/%{sensor_id}"` endpoint, that is part of
+The following snippet shows how to send a value for an object-aggregated interface. In this example,
+fourteen different data types will be sent together and will be inserted into the `"/sensor24"`
+datastream which is defined by the `"/%{sensor_id}"` endpoint, which is part of
 `"org.astarteplatform.zephyr.examples.DeviceDatastream"` datastream interface.
 
 ```C
@@ -493,18 +490,19 @@ static void device_tx_thread_entry_point(void *device_handle, void *unused1, voi
 
 ## Setting and unsetting properties
 
-Interfaces of `property` type represent a persistent, stateful, synchronized state with no concept
-of history or timestamping. From a programming point of view, setting and unsetting properties of
-device-owned interface is rather similar to sending messages on datastream interfaces.
+Interfaces of the `property` type represent a persistent, stateful, synchronized state with no
+concept of history or timestamping. From a programming point of view, setting and unsetting
+properties of device-owned interfaces is rather similar to sending messages on datastream
+interfaces.
 
 In this simple get started persistency for the properties has been disabled. See the more complete
-code examples in the GitHub repository for more information on how to set up the appropriate
-flash partition.
+code examples in the GitHub repository for more information on how to set up the appropriate flash
+partition.
 
 ## Disconnecting the device
 
 The Astarte device can be gracefully disconnected by Astarte using the disconnect function.
-This function will trigger a callback to one of the user defined functions.
+This function will trigger a callback to one of the user-defined functions.
 
 ```C
 #include <astarte_device_sdk/device.h>

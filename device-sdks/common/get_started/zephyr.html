@@ -226,6 +226,7 @@
 <li class="toctree-l3"><a class="reference external" href="https://docs.astarte-platform.org/device-sdks/esp32/1.0/api">Esp32 v1.0 APIs</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.astarte-platform.org/device-sdks/zephyr/0.7/api">Zephyr APIs</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../api_docs/java.html">Java APIs</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of Java APIs</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference external" href="https://docs.astarte-platform.org/device-sdks/java/1.1/api">Java v1.1 APIs</a></li>
 <li class="toctree-l3"><a class="reference external" href="https://docs.astarte-platform.org/device-sdks/java/1.0/api">Java v1.0 APIs</a></li>
@@ -282,10 +283,10 @@ SPDX-License-Identifier: Apache-2.0
 -->
 <section id="get-started-with-zephyr">
 <h1>Get started with Zephyr<a class="headerlink" href="#get-started-with-zephyr" title="Link to this heading">¶</a></h1>
-<p>Follow this guide to get started with the Astarte device SDK for the Zephyr framework.</p>
-<p>We will assume you already set up Zephyr and are starting with a fresh empty project.
-Your starting project should initialize networking using an appropriate physical layer and
-you should have added a set of TLS certificates appropriate to reach the Astarte servers.</p>
+<p>Follow this guide to start with the Astarte device SDK for the Zephyr framework.</p>
+<p>We will assume you have already set up Zephyr and are starting with a fresh empty project.
+Your starting project should initialize networking using an appropriate physical layer and you
+should have added a set of TLS certificates appropriate to reach the Astarte servers.</p>
 <section id="add-the-astarte-device-sdk-as-a-dependency">
 <h2>Add the Astarte device SDK as a dependency<a class="headerlink" href="#add-the-astarte-device-sdk-as-a-dependency" title="Link to this heading">¶</a></h2>
 <p>To add this module as a dependency to an application the application’s manifest file should be
@@ -309,7 +310,7 @@ First, a new remote should be added:</p>
       import: true
 </pre></div>
 </div>
-<p>Remember to run <code class="docutils literal notranslate"><span class="pre">west</span> <span class="pre">update</span></code> after performing changes to the manifest file.</p>
+<p>Remember to run <code class="docutils literal notranslate"><span class="pre">west</span> <span class="pre">update</span></code> after changing the manifest file.</p>
 <p>In addition, the Astarte device library <code class="docutils literal notranslate"><span class="pre">Kconfig</span></code> should be added to the <code class="docutils literal notranslate"><span class="pre">Kconfig</span></code> file of the
 application.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rsource</span> <span class="s2">&quot;../../astarte-device-sdk-zephyr/Kconfig&quot;</span>
@@ -317,7 +318,7 @@ application.</p>
 </div>
 <p>This will add the configuration options of the example module to the application.</p>
 <p>Last, install the dependencies for the west extensions required by the Astarte device, by running
-this command in your zephyr workspace.</p>
+this command in your Zephyr workspace.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>./astarte-device-sdk-zephyr/scripts/requirements.txt
 </pre></div>
 </div>
@@ -325,7 +326,7 @@ this command in your zephyr workspace.</p>
 <section id="minimal-configuration-options-for-the-astarte-device">
 <h2>Minimal configuration options for the Astarte device<a class="headerlink" href="#minimal-configuration-options-for-the-astarte-device" title="Link to this heading">¶</a></h2>
 <p>A minimal set of Zephyr functionalities should be enabled for the Astarte device to work.
-Modules such as MbedTLS, base64, MQTT provide necessary functionality.</p>
+Modules such as MbedTLS, base64, and MQTT provide the necessary functionality.</p>
 <div class="highlight-conf notranslate"><div class="highlight"><pre><span></span># ... Hardware dependent networking configuration ...
 
 # Astarte device SDK
@@ -408,16 +409,13 @@ CONFIG_MBEDTLS_ECP_ALL_ENABLED=y
 </section>
 <section id="generate-a-device-id">
 <h2>Generate a device ID<a class="headerlink" href="#generate-a-device-id" title="Link to this heading">¶</a></h2>
-<p>Each Astarte device is uniquely identified within an Astarte instance using a device ID.
-Device IDs can be generated deterministically, starting from user defined information or
-randomly.</p>
+<p>Each Astarte device is uniquely identified within an Astarte instance using a device ID. Device IDs
+can be generated deterministically, starting from user-defined information or randomly.</p>
 <p>If you already have a device ID and a credential secret skip to
 <a class="reference internal" href="#generating-the-interfaces-headers">Generating the interfaces headers</a>.
 This step is only useful when registering the device through the APIs using the JWT token.
-When registering a device using an alternative method the device ID should be provided by
-the user.</p>
-<p>To generate a random device ID use the function <code class="docutils literal notranslate"><span class="pre">astarte_device_id_generate_random</span></code> as shown
-below.</p>
+When registering a device using an alternative method the device ID should be provided by the user.</p>
+<p>To generate a random device ID use the function <code class="docutils literal notranslate"><span class="pre">astarte_device_id_generate_random</span></code> as shown below.</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/device_id.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/result.h&gt;</span>
 
@@ -436,11 +434,11 @@ below.</p>
 </section>
 <section id="registering-a-device">
 <h2>Registering a device<a class="headerlink" href="#registering-a-device" title="Link to this heading">¶</a></h2>
-<p>In order for a device to connect to Astarte a registration procedure is required. This registration
-will produce a device specific credential secret that will be used when connecting to Astarte.
-The Zephyr Astarte device SDKs provides utilities to perform a device registration directly on
-the device. Those utilities require a registration JWT to be loaded on the device. Such JWT should
-be discarded following the registration procedure.</p>
+<p>For a device to connect to Astarte a registration procedure is required. This registration will
+produce a device-specific credential secret that will be used when connecting to Astarte. The Zephyr
+Astarte device SDKs provide utilities to perform a device registration directly on the device.
+Those utilities require a registration JWT to be loaded on the device. Such JWT should be discarded
+following the registration procedure.</p>
 <p>This step is only useful when registering the device through the APIs using the JWT token.
 Registration of a device can also be performed outside the device in the Astarte instance using
 tools such as <a class="reference external" href="https://github.com/astarte-platform/astartectl">astartectl</a>, the
@@ -473,9 +471,9 @@ The JWT should be specified in the Kconfig option <code class="docutils literal 
 <h2>Generating the interfaces headers<a class="headerlink" href="#generating-the-interfaces-headers" title="Link to this heading">¶</a></h2>
 <p>Each device should define a set of interfaces, defined as introspection, that will be used to
 communicate with the Astarte instance.</p>
-<p>Since the Astarte interfaces are defined in json files, we provide a Python script that
-automatically performs the conversion to a compatible C header. It has been configured
-as a west extension for this zephyr module.</p>
+<p>Since the Astarte interfaces are defined in JSON files, we provide a Python script that
+automatically performs the conversion to a compatible C header. It has been configured as a west
+extension for this Zephyr module.</p>
 <p>Assuming all the interface files are contained in a <code class="docutils literal notranslate"><span class="pre">json_interfaces</span></code> folder it can be run as
 follows.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>west<span class="w"> </span>generate-interfaces<span class="w"> </span>--output_dir<span class="w"> </span>./generated_interfaces<span class="w"> </span>./json_interfaces
@@ -483,7 +481,7 @@ follows.</p>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">generated_interfaces</span></code> folder should be added to the include search path in the CMake
 configuration for your application.
-Furthermore the sources in the <code class="docutils literal notranslate"><span class="pre">generated_interfaces</span></code> folder should be added to your application
+Furthermore, the sources in the <code class="docutils literal notranslate"><span class="pre">generated_interfaces</span></code> folder should be added to your application
 CMake target.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>FILE(GLOB generated_interfaces_src ${CMAKE_CURRENT_LIST_DIR}/../generated_interfaces/*.c)
 target_sources(app PRIVATE ${generated_interfaces_src})
@@ -499,10 +497,10 @@ instance for the device to use them.</p>
 <h2>Instantiating a device<a class="headerlink" href="#instantiating-a-device" title="Link to this heading">¶</a></h2>
 <p>Now that we obtained a credential secret we can create a new device instance.</p>
 <p>The Astarte device SDK uses callbacks to communicate to the user that some event has occurred.
-Such callbacks should be configured prior to instantiating the device and connecting to Astarte.
+Such callbacks should be configured before instantiating the device and connecting to Astarte.
 Several callbacks can be optionally configured. A connection callback, an individual data received
 callback, an object data received callback, and set property received callback, an unset property
-received callback and a disconnection callback.</p>
+received callback, and a disconnection callback.</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/interface.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/device.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/result.h&gt;</span>
@@ -557,9 +555,9 @@ received callback and a disconnection callback.</p>
 </section>
 <section id="connecting-and-polling-the-device">
 <h2>Connecting and polling the device<a class="headerlink" href="#connecting-and-polling-the-device" title="Link to this heading">¶</a></h2>
-<p>After device initialization the device will need to be connected explicitly and polled regularly
-to ensure processing of MQTT messages.
-Ideally a separated thread should be used for polling and transmission.</p>
+<p>After device initialization, the device will need to be connected explicitly and polled regularly
+to ensure the processing of MQTT messages.
+Ideally, a separate thread should be used for polling and transmission.</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/device.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/result.h&gt;</span>
 
@@ -615,7 +613,7 @@ aggregation type.</p>
 <h3>Streaming individual data<a class="headerlink" href="#streaming-individual-data" title="Link to this heading">¶</a></h3>
 <p>In Astarte interfaces with <code class="docutils literal notranslate"><span class="pre">individual</span></code> aggregation, each mapping is treated as an independent value
 and is managed individually.</p>
-<p>The snippet bellow shows how to send a value that will be inserted into the <code class="docutils literal notranslate"><span class="pre">&quot;/boolean_endpoint&quot;</span></code>
+<p>The snippet below shows how to send a value that will be inserted into the <code class="docutils literal notranslate"><span class="pre">&quot;/boolean_endpoint&quot;</span></code>
 datastream, that is part of <code class="docutils literal notranslate"><span class="pre">&quot;org.astarteplatform.zephyr.examples.DeviceDatastream&quot;</span></code> datastream
 interface.</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/device.h&gt;</span>
@@ -667,9 +665,9 @@ interface.</p>
 <h3>Streaming aggregated data<a class="headerlink" href="#streaming-aggregated-data" title="Link to this heading">¶</a></h3>
 <p>In Astarte interfaces with <code class="docutils literal notranslate"><span class="pre">object</span></code> aggregation, Astarte expects the owner to send all of the
 interface’s mappings at the same time, packed in a single message.</p>
-<p>The following snippet shows how to send a value for an object aggregated interface. In this
-examples, fourteen different data types will be sent together and will be inserted into the
-<code class="docutils literal notranslate"><span class="pre">&quot;/sensor24&quot;</span></code> datastream which is defined by the <code class="docutils literal notranslate"><span class="pre">&quot;/%{sensor_id}&quot;</span></code> endpoint, that is part of
+<p>The following snippet shows how to send a value for an object-aggregated interface. In this example,
+fourteen different data types will be sent together and will be inserted into the <code class="docutils literal notranslate"><span class="pre">&quot;/sensor24&quot;</span></code>
+datastream which is defined by the <code class="docutils literal notranslate"><span class="pre">&quot;/%{sensor_id}&quot;</span></code> endpoint, which is part of
 <code class="docutils literal notranslate"><span class="pre">&quot;org.astarteplatform.zephyr.examples.DeviceDatastream&quot;</span></code> datastream interface.</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/device.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/object.h&gt;</span>
@@ -753,17 +751,18 @@ examples, fourteen different data types will be sent together and will be insert
 </section>
 <section id="setting-and-unsetting-properties">
 <h2>Setting and unsetting properties<a class="headerlink" href="#setting-and-unsetting-properties" title="Link to this heading">¶</a></h2>
-<p>Interfaces of <code class="docutils literal notranslate"><span class="pre">property</span></code> type represent a persistent, stateful, synchronized state with no concept
-of history or timestamping. From a programming point of view, setting and unsetting properties of
-device-owned interface is rather similar to sending messages on datastream interfaces.</p>
+<p>Interfaces of the <code class="docutils literal notranslate"><span class="pre">property</span></code> type represent a persistent, stateful, synchronized state with no
+concept of history or timestamping. From a programming point of view, setting and unsetting
+properties of device-owned interfaces is rather similar to sending messages on datastream
+interfaces.</p>
 <p>In this simple get started persistency for the properties has been disabled. See the more complete
-code examples in the GitHub repository for more information on how to set up the appropriate
-flash partition.</p>
+code examples in the GitHub repository for more information on how to set up the appropriate flash
+partition.</p>
 </section>
 <section id="disconnecting-the-device">
 <h2>Disconnecting the device<a class="headerlink" href="#disconnecting-the-device" title="Link to this heading">¶</a></h2>
 <p>The Astarte device can be gracefully disconnected by Astarte using the disconnect function.
-This function will trigger a callback to one of the user defined functions.</p>
+This function will trigger a callback to one of the user-defined functions.</p>
 <div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/device.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/result.h&gt;</span>
 

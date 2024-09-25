@@ -15,6 +15,7 @@ The APIs documentation can be found here:
 :maxdepth: 1
 Python APIs <api_docs/python.md>
 Esp32 APIs <api_docs/esp32.md>
+Zephyr APIs <https://docs.astarte-platform.org/device-sdks/zephyr/0.7/api>
 Java APIs <api_docs/java.md>
 Rust APIs <https://docs.rs/astarte-device-sdk/latest/astarte_device_sdk/>
 Go APIs <https://pkg.go.dev/github.com/astarte-platform/astarte-device-sdk-go/>
