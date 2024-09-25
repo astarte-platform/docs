@@ -26,4 +26,5 @@ get_started/go.md
 get_started/java_android.md
 get_started/python.md
 get_started/rust.md
+get_started/zephyr.md
 ```
