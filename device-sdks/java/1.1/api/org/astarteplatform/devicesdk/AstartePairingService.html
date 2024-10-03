@@ -155,9 +155,10 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>protected java.util.List&lt;<a href="../../../org/astarteplatform/devicesdk/transport/AstarteTransport.html" title="class in org.astarteplatform.devicesdk.transport">AstarteTransport</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstartePairingService.html#reloadTransports-java.lang.String-org.astarteplatform.devicesdk.crypto.AstarteCryptoStore-java.lang.String-">reloadTransports</a></span>(java.lang.String&nbsp;credentialSecret,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstartePairingService.html#reloadTransports-java.lang.String-org.astarteplatform.devicesdk.crypto.AstarteCryptoStore-java.lang.String-boolean-">reloadTransports</a></span>(java.lang.String&nbsp;credentialSecret,
                 <a href="../../../org/astarteplatform/devicesdk/crypto/AstarteCryptoStore.html" title="interface in org.astarteplatform.devicesdk.crypto">AstarteCryptoStore</a>&nbsp;cryptoStore,
-                java.lang.String&nbsp;deviceId)</code>&nbsp;</td>
+                java.lang.String&nbsp;deviceId,
+                boolean&nbsp;ignoreSSLErrors)</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>protected java.security.cert.Certificate</code></td>
@@ -230,7 +231,7 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a name="reloadTransports-java.lang.String-org.astarteplatform.devicesdk.crypto.AstarteCryptoStore-java.lang.String-">
+<a name="reloadTransports-java.lang.String-org.astarteplatform.devicesdk.crypto.AstarteCryptoStore-java.lang.String-boolean-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -238,7 +239,8 @@ extends java.lang.Object</pre>
 <h4>reloadTransports</h4>
 <pre>protected&nbsp;java.util.List&lt;<a href="../../../org/astarteplatform/devicesdk/transport/AstarteTransport.html" title="class in org.astarteplatform.devicesdk.transport">AstarteTransport</a>&gt;&nbsp;reloadTransports(java.lang.String&nbsp;credentialSecret,
                                                             <a href="../../../org/astarteplatform/devicesdk/crypto/AstarteCryptoStore.html" title="interface in org.astarteplatform.devicesdk.crypto">AstarteCryptoStore</a>&nbsp;cryptoStore,
-                                                            java.lang.String&nbsp;deviceId)
+                                                            java.lang.String&nbsp;deviceId,
+                                                            boolean&nbsp;ignoreSSLErrors)
                                                      throws <a href="../../../org/astarteplatform/devicesdk/AstartePairingException.html" title="class in org.astarteplatform.devicesdk">AstartePairingException</a></pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>

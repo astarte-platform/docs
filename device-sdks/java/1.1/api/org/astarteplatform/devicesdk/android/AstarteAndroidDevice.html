@@ -157,6 +157,15 @@ extends <a href="../../../../org/astarteplatform/devicesdk/AstartePairableDevice
                     java.lang.String&nbsp;pairingBaseUrl,
                     Context&nbsp;context)</code>&nbsp;</td>
 </tr>
+<tr class="rowColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../org/astarteplatform/devicesdk/android/AstarteAndroidDevice.html#AstarteAndroidDevice-java.lang.String-java.lang.String-java.lang.String-org.astarteplatform.devicesdk.AstarteInterfaceProvider-java.lang.String-Context-boolean-">AstarteAndroidDevice</a></span>(java.lang.String&nbsp;deviceId,
+                    java.lang.String&nbsp;astarteRealm,
+                    java.lang.String&nbsp;credentialSecret,
+                    <a href="../../../../org/astarteplatform/devicesdk/AstarteInterfaceProvider.html" title="interface in org.astarteplatform.devicesdk">AstarteInterfaceProvider</a>&nbsp;interfaceProvider,
+                    java.lang.String&nbsp;pairingBaseUrl,
+                    Context&nbsp;context,
+                    boolean&nbsp;ignoreSSLErrors)</code>&nbsp;</td>
+</tr>
 </table>
 </li>
 </ul>
@@ -204,7 +213,7 @@ extends <a href="../../../../org/astarteplatform/devicesdk/AstartePairableDevice
 <a name="AstarteAndroidDevice-java.lang.String-java.lang.String-java.lang.String-org.astarteplatform.devicesdk.AstarteInterfaceProvider-java.lang.String-Context-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>AstarteAndroidDevice</h4>
 <pre>public&nbsp;AstarteAndroidDevice(java.lang.String&nbsp;deviceId,
@@ -213,6 +222,28 @@ extends <a href="../../../../org/astarteplatform/devicesdk/AstartePairableDevice
                             <a href="../../../../org/astarteplatform/devicesdk/AstarteInterfaceProvider.html" title="interface in org.astarteplatform.devicesdk">AstarteInterfaceProvider</a>&nbsp;interfaceProvider,
                             java.lang.String&nbsp;pairingBaseUrl,
                             Context&nbsp;context)
+                     throws org.json.JSONException,
+                            <a href="../../../../org/astarteplatform/devicesdk/protocol/AstarteInvalidInterfaceException.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteInvalidInterfaceException</a></pre>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>org.json.JSONException</code></dd>
+<dd><code><a href="../../../../org/astarteplatform/devicesdk/protocol/AstarteInvalidInterfaceException.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteInvalidInterfaceException</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="AstarteAndroidDevice-java.lang.String-java.lang.String-java.lang.String-org.astarteplatform.devicesdk.AstarteInterfaceProvider-java.lang.String-Context-boolean-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>AstarteAndroidDevice</h4>
+<pre>public&nbsp;AstarteAndroidDevice(java.lang.String&nbsp;deviceId,
+                            java.lang.String&nbsp;astarteRealm,
+                            java.lang.String&nbsp;credentialSecret,
+                            <a href="../../../../org/astarteplatform/devicesdk/AstarteInterfaceProvider.html" title="interface in org.astarteplatform.devicesdk">AstarteInterfaceProvider</a>&nbsp;interfaceProvider,
+                            java.lang.String&nbsp;pairingBaseUrl,
+                            Context&nbsp;context,
+                            boolean&nbsp;ignoreSSLErrors)
                      throws org.json.JSONException,
                             <a href="../../../../org/astarteplatform/devicesdk/protocol/AstarteInvalidInterfaceException.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteInvalidInterfaceException</a></pre>
 <dl>

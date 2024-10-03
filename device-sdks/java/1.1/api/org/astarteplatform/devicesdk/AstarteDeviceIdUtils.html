@@ -17,6 +17,12 @@
     catch(err) {
     }
 //-->
+var methods = {"i0":9,"i1":9};
+var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
+var altColor = "altColor";
+var rowColor = "rowColor";
+var tableTab = "tableTab";
+var activeTableTab = "activeTableTab";
 </script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
@@ -68,14 +74,14 @@
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li>Constr&nbsp;|&nbsp;</li>
-<li><a href="#methods.inherited.from.class.java.lang.Object">Method</a></li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li>Constr&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
 <a name="skip.navbar.top">
@@ -101,31 +107,126 @@
 <li class="blockList">
 <hr>
 <br>
-<pre>public static class <span class="typeNameLabel">AstarteDeviceIdUtils</span>
+<pre>public class <span class="typeNameLabel">AstarteDeviceIdUtils</span>
 extends java.lang.Object</pre>
 <div class="block">The class helps to generate an unique Astarte deviceId</div>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../serialized-form.html#org.astarteplatform.devicesdk.AstarteDeviceIdUtils">Serialized Form</a></dd>
-</dl>
 </li>
 </ul>
 </div>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor.summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstarteDeviceIdUtils.html#AstarteDeviceIdUtils--">AstarteDeviceIdUtils</a></span>()</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
 <!-- ========== METHOD SUMMARY =========== -->
 <ul class="blockList">
 <li class="blockList"><a name="method.summary">
 <!--   -->
 </a>
 <h3>Method Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr id="i0" class="altColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstarteDeviceIdUtils.html#generateId--">generateId</a></span>()</code>
+<div class="block">Generate a device Id in a random way based on UUIDv4.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/astarteplatform/devicesdk/AstarteDeviceIdUtils.html#generateId-java.util.UUID-java.lang.String-">generateId</a></span>(java.util.UUID&nbsp;namespace,
+          java.lang.String&nbsp;uniqueData)</code>
+<div class="block">Generate a device Id based on UUID namespace identifier and a uniqueData.</div>
+</td>
+</tr>
+</table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
 <code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor.detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="AstarteDeviceIdUtils--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>AstarteDeviceIdUtils</h4>
+<pre>public&nbsp;AstarteDeviceIdUtils()</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="generateId--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>generateId</h4>
+<pre>public static&nbsp;java.lang.String&nbsp;generateId()</pre>
+<div class="block">Generate a device Id in a random way based on UUIDv4.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the generated device Id, using the standard Astarte Device ID encoding (base64
+     urlencoding without padding).</dd>
+</dl>
+</li>
+</ul>
+<a name="generateId-java.util.UUID-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>generateId</h4>
+<pre>public static&nbsp;java.lang.String&nbsp;generateId(java.util.UUID&nbsp;namespace,
+                                          java.lang.String&nbsp;uniqueData)</pre>
+<div class="block">Generate a device Id based on UUID namespace identifier and a uniqueData.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the generated device Id, using the standard Astarte Device ID encoding (base64
+     urlencoding without padding).</dd>
+</dl>
+</li>
 </ul>
 </li>
 </ul>
@@ -181,14 +282,14 @@ extends java.lang.Object</pre>
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li>Constr&nbsp;|&nbsp;</li>
-<li><a href="#methods.inherited.from.class.java.lang.Object">Method</a></li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li>Constr&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
 <a name="skip.navbar.bottom">

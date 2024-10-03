@@ -146,11 +146,12 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static <a href="../../../../org/astarteplatform/devicesdk/transport/AstarteTransport.html" title="class in org.astarteplatform.devicesdk.transport">AstarteTransport</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/astarteplatform/devicesdk/transport/AstarteTransportFactory.html#createAstarteTransportFromPairing-org.astarteplatform.devicesdk.protocol.AstarteProtocolType-java.lang.String-java.lang.String-org.json.JSONObject-org.astarteplatform.devicesdk.crypto.AstarteCryptoStore-">createAstarteTransportFromPairing</a></span>(<a href="../../../../org/astarteplatform/devicesdk/protocol/AstarteProtocolType.html" title="enum in org.astarteplatform.devicesdk.protocol">AstarteProtocolType</a>&nbsp;protocolType,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/astarteplatform/devicesdk/transport/AstarteTransportFactory.html#createAstarteTransportFromPairing-org.astarteplatform.devicesdk.protocol.AstarteProtocolType-java.lang.String-java.lang.String-org.json.JSONObject-org.astarteplatform.devicesdk.crypto.AstarteCryptoStore-boolean-">createAstarteTransportFromPairing</a></span>(<a href="../../../../org/astarteplatform/devicesdk/protocol/AstarteProtocolType.html" title="enum in org.astarteplatform.devicesdk.protocol">AstarteProtocolType</a>&nbsp;protocolType,
                                  java.lang.String&nbsp;astarteRealm,
                                  java.lang.String&nbsp;deviceId,
                                  org.json.JSONObject&nbsp;protocolData,
-                                 <a href="../../../../org/astarteplatform/devicesdk/crypto/AstarteCryptoStore.html" title="interface in org.astarteplatform.devicesdk.crypto">AstarteCryptoStore</a>&nbsp;cryptoStore)</code>&nbsp;</td>
+                                 <a href="../../../../org/astarteplatform/devicesdk/crypto/AstarteCryptoStore.html" title="interface in org.astarteplatform.devicesdk.crypto">AstarteCryptoStore</a>&nbsp;cryptoStore,
+                                 boolean&nbsp;ignoreSSLErrors)</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -191,7 +192,7 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="createAstarteTransportFromPairing-org.astarteplatform.devicesdk.protocol.AstarteProtocolType-java.lang.String-java.lang.String-org.json.JSONObject-org.astarteplatform.devicesdk.crypto.AstarteCryptoStore-">
+<a name="createAstarteTransportFromPairing-org.astarteplatform.devicesdk.protocol.AstarteProtocolType-java.lang.String-java.lang.String-org.json.JSONObject-org.astarteplatform.devicesdk.crypto.AstarteCryptoStore-boolean-">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -201,7 +202,8 @@ extends java.lang.Object</pre>
                                                                  java.lang.String&nbsp;astarteRealm,
                                                                  java.lang.String&nbsp;deviceId,
                                                                  org.json.JSONObject&nbsp;protocolData,
-                                                                 <a href="../../../../org/astarteplatform/devicesdk/crypto/AstarteCryptoStore.html" title="interface in org.astarteplatform.devicesdk.crypto">AstarteCryptoStore</a>&nbsp;cryptoStore)</pre>
+                                                                 <a href="../../../../org/astarteplatform/devicesdk/crypto/AstarteCryptoStore.html" title="interface in org.astarteplatform.devicesdk.crypto">AstarteCryptoStore</a>&nbsp;cryptoStore,
+                                                                 boolean&nbsp;ignoreSSLErrors)</pre>
 </li>
 </ul>
 </li>

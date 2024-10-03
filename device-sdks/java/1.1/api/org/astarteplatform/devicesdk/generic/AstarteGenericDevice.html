@@ -150,13 +150,14 @@ extends <a href="../../../../org/astarteplatform/devicesdk/AstartePairableDevice
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../org/astarteplatform/devicesdk/generic/AstarteGenericDevice.html#AstarteGenericDevice-java.lang.String-java.lang.String-java.lang.String-org.astarteplatform.devicesdk.AstarteInterfaceProvider-java.lang.String-org.astarteplatform.devicesdk.AstartePropertyStorage-org.astarteplatform.devicesdk.transport.AstarteFailedMessageStorage-">AstarteGenericDevice</a></span>(java.lang.String&nbsp;deviceId,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../org/astarteplatform/devicesdk/generic/AstarteGenericDevice.html#AstarteGenericDevice-java.lang.String-java.lang.String-java.lang.String-org.astarteplatform.devicesdk.AstarteInterfaceProvider-java.lang.String-org.astarteplatform.devicesdk.AstartePropertyStorage-org.astarteplatform.devicesdk.transport.AstarteFailedMessageStorage-boolean-">AstarteGenericDevice</a></span>(java.lang.String&nbsp;deviceId,
                     java.lang.String&nbsp;astarteRealm,
                     java.lang.String&nbsp;credentialSecret,
                     <a href="../../../../org/astarteplatform/devicesdk/AstarteInterfaceProvider.html" title="interface in org.astarteplatform.devicesdk">AstarteInterfaceProvider</a>&nbsp;interfaceProvider,
                     java.lang.String&nbsp;pairingBaseUrl,
                     <a href="../../../../org/astarteplatform/devicesdk/AstartePropertyStorage.html" title="interface in org.astarteplatform.devicesdk">AstartePropertyStorage</a>&nbsp;propertyStorage,
-                    <a href="../../../../org/astarteplatform/devicesdk/transport/AstarteFailedMessageStorage.html" title="interface in org.astarteplatform.devicesdk.transport">AstarteFailedMessageStorage</a>&nbsp;failedMessageStorage)</code>&nbsp;</td>
+                    <a href="../../../../org/astarteplatform/devicesdk/transport/AstarteFailedMessageStorage.html" title="interface in org.astarteplatform.devicesdk.transport">AstarteFailedMessageStorage</a>&nbsp;failedMessageStorage,
+                    boolean&nbsp;ignoreSSLErrors)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../org/astarteplatform/devicesdk/generic/AstarteGenericDevice.html#AstarteGenericDevice-java.lang.String-java.lang.String-java.lang.String-org.astarteplatform.devicesdk.AstarteInterfaceProvider-java.lang.String-com.j256.ormlite.support.ConnectionSource-">AstarteGenericDevice</a></span>(java.lang.String&nbsp;deviceId,
@@ -165,6 +166,15 @@ extends <a href="../../../../org/astarteplatform/devicesdk/AstartePairableDevice
                     <a href="../../../../org/astarteplatform/devicesdk/AstarteInterfaceProvider.html" title="interface in org.astarteplatform.devicesdk">AstarteInterfaceProvider</a>&nbsp;interfaceProvider,
                     java.lang.String&nbsp;pairingBaseUrl,
                     com.j256.ormlite.support.ConnectionSource&nbsp;connectionSource)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../org/astarteplatform/devicesdk/generic/AstarteGenericDevice.html#AstarteGenericDevice-java.lang.String-java.lang.String-java.lang.String-org.astarteplatform.devicesdk.AstarteInterfaceProvider-java.lang.String-com.j256.ormlite.support.ConnectionSource-boolean-">AstarteGenericDevice</a></span>(java.lang.String&nbsp;deviceId,
+                    java.lang.String&nbsp;astarteRealm,
+                    java.lang.String&nbsp;credentialSecret,
+                    <a href="../../../../org/astarteplatform/devicesdk/AstarteInterfaceProvider.html" title="interface in org.astarteplatform.devicesdk">AstarteInterfaceProvider</a>&nbsp;interfaceProvider,
+                    java.lang.String&nbsp;pairingBaseUrl,
+                    com.j256.ormlite.support.ConnectionSource&nbsp;connectionSource,
+                    boolean&nbsp;ignoreSSLErrors)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -235,7 +245,33 @@ extends <a href="../../../../org/astarteplatform/devicesdk/AstartePairableDevice
 </dl>
 </li>
 </ul>
-<a name="AstarteGenericDevice-java.lang.String-java.lang.String-java.lang.String-org.astarteplatform.devicesdk.AstarteInterfaceProvider-java.lang.String-org.astarteplatform.devicesdk.AstartePropertyStorage-org.astarteplatform.devicesdk.transport.AstarteFailedMessageStorage-">
+<a name="AstarteGenericDevice-java.lang.String-java.lang.String-java.lang.String-org.astarteplatform.devicesdk.AstarteInterfaceProvider-java.lang.String-com.j256.ormlite.support.ConnectionSource-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>AstarteGenericDevice</h4>
+<pre>public&nbsp;AstarteGenericDevice(java.lang.String&nbsp;deviceId,
+                            java.lang.String&nbsp;astarteRealm,
+                            java.lang.String&nbsp;credentialSecret,
+                            <a href="../../../../org/astarteplatform/devicesdk/AstarteInterfaceProvider.html" title="interface in org.astarteplatform.devicesdk">AstarteInterfaceProvider</a>&nbsp;interfaceProvider,
+                            java.lang.String&nbsp;pairingBaseUrl,
+                            com.j256.ormlite.support.ConnectionSource&nbsp;connectionSource,
+                            boolean&nbsp;ignoreSSLErrors)
+                     throws org.json.JSONException,
+                            <a href="../../../../org/astarteplatform/devicesdk/protocol/AstarteInvalidInterfaceException.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteInvalidInterfaceException</a>,
+                            <a href="../../../../org/astarteplatform/devicesdk/AstartePropertyStorageException.html" title="class in org.astarteplatform.devicesdk">AstartePropertyStorageException</a>,
+                            java.sql.SQLException</pre>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>org.json.JSONException</code></dd>
+<dd><code><a href="../../../../org/astarteplatform/devicesdk/protocol/AstarteInvalidInterfaceException.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteInvalidInterfaceException</a></code></dd>
+<dd><code><a href="../../../../org/astarteplatform/devicesdk/AstartePropertyStorageException.html" title="class in org.astarteplatform.devicesdk">AstartePropertyStorageException</a></code></dd>
+<dd><code>java.sql.SQLException</code></dd>
+</dl>
+</li>
+</ul>
+<a name="AstarteGenericDevice-java.lang.String-java.lang.String-java.lang.String-org.astarteplatform.devicesdk.AstarteInterfaceProvider-java.lang.String-org.astarteplatform.devicesdk.AstartePropertyStorage-org.astarteplatform.devicesdk.transport.AstarteFailedMessageStorage-boolean-">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -247,7 +283,8 @@ extends <a href="../../../../org/astarteplatform/devicesdk/AstartePairableDevice
                             <a href="../../../../org/astarteplatform/devicesdk/AstarteInterfaceProvider.html" title="interface in org.astarteplatform.devicesdk">AstarteInterfaceProvider</a>&nbsp;interfaceProvider,
                             java.lang.String&nbsp;pairingBaseUrl,
                             <a href="../../../../org/astarteplatform/devicesdk/AstartePropertyStorage.html" title="interface in org.astarteplatform.devicesdk">AstartePropertyStorage</a>&nbsp;propertyStorage,
-                            <a href="../../../../org/astarteplatform/devicesdk/transport/AstarteFailedMessageStorage.html" title="interface in org.astarteplatform.devicesdk.transport">AstarteFailedMessageStorage</a>&nbsp;failedMessageStorage)
+                            <a href="../../../../org/astarteplatform/devicesdk/transport/AstarteFailedMessageStorage.html" title="interface in org.astarteplatform.devicesdk.transport">AstarteFailedMessageStorage</a>&nbsp;failedMessageStorage,
+                            boolean&nbsp;ignoreSSLErrors)
                      throws org.json.JSONException,
                             <a href="../../../../org/astarteplatform/devicesdk/protocol/AstarteInvalidInterfaceException.html" title="class in org.astarteplatform.devicesdk.protocol">AstarteInvalidInterfaceException</a></pre>
 <dl>
