@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-6658E9A7.js"></script>
+    <script src="dist/sidebar_items-A77C7890.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -272,8 +272,8 @@ of a valid aggregated interface mapping:</p><pre><code class="json">    [...]
         },
     [...]</code></pre><p>Additional limitations (which stem from the MQTT protocol specification) can be outlined. When using
 parametric endpoints, the actual values used in place of parameter placeholders must fulfill the
-following requirements:</p><ul><li>endpoint parameters must be UTF-8 encoded strings;</li><li>endpoint parameters must not contain the following characters: <code class="inline">+</code> and <code class="inline">#</code>. In particular, those
-characters are treated as wildcards for MQTT topics and therefore must be avoided;</li><li>endpoint parameters must not contain the <code class="inline">/</code> character.</li></ul><h2 id="aggregation" class="section-heading">
+following requirements:</p><ul><li>endpoint parameters must be non-empty UTF-8 encoded strings;</li><li>endpoint parameters must not contain the following characters: <code class="inline">+</code> and <code class="inline">#</code>. Those characters are
+treated as wildcards for MQTT topics and therefore must be avoided;</li><li>endpoint parameters must not contain the <code class="inline">/</code> character.</li></ul><h2 id="aggregation" class="section-heading">
   <a href="#aggregation" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">aggregation</p>
   </a>
