@@ -95,7 +95,6 @@ CONFIG_BASE64=y
 
 # Enable system hashmaps
 CONFIG_SYS_HASH_MAP=y
-CONFIG_SYS_HASH_FUNC32=y
 
 # Sockets
 CONFIG_NET_SOCKETS=y
