@@ -116,6 +116,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#device.pairing_handler.obtain_device_transport_information"><code class="docutils literal notranslate"><span class="pre">obtain_device_transport_information()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#device.pairing_handler.register_device_with_jwt_token"><code class="docutils literal notranslate"><span class="pre">register_device_with_jwt_token()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#device.pairing_handler.register_device_with_private_key"><code class="docutils literal notranslate"><span class="pre">register_device_with_private_key()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.pairing_handler.verify_device_certificate"><code class="docutils literal notranslate"><span class="pre">verify_device_certificate()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-device">Module contents</a></li>
@@ -159,11 +160,18 @@
 <span id="device-crypto-module"></span><h2>device.crypto module<a class="headerlink" href="#module-device.crypto" title="Link to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="device.crypto.certificate_is_valid">
-<span class="sig-prename descclassname"><span class="pre">device.crypto.</span></span><span class="sig-name descname"><span class="pre">certificate_is_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crypto_store_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#device.crypto.certificate_is_valid" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">device.crypto.</span></span><span class="sig-name descname"><span class="pre">certificate_is_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credentials_secret</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crypto_store_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#device.crypto.certificate_is_valid" title="Link to this definition"></a></dt>
 <dd><p>Utility function that checks the certificate validity</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>crypto_store_dir</strong> (<em>str</em>) – Path to the folder where crypto information are stored</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device_id</strong> (<em>str</em>) – The device ID</p></li>
+<li><p><strong>realm</strong> (<em>str</em>) – The Astarte realm where the device is registered</p></li>
+<li><p><strong>pairing_base_url</strong> (<em>str</em>) – The base URL for the Astarte pairing APIs</p></li>
+<li><p><strong>credentials_secret</strong> (<em>str</em>) – The credentials secret for the device in the given realm</p></li>
+<li><p><strong>ignore_ssl_errors</strong> (<em>str</em>) – Set to True to ignore SSL errors</p></li>
+<li><p><strong>crypto_store_dir</strong> (<em>str</em>) – Path to the folder where crypto information are stored</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if the certificate is valid, False otherwise.</p>
@@ -176,11 +184,18 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="device.crypto.device_has_certificate">
-<span class="sig-prename descclassname"><span class="pre">device.crypto.</span></span><span class="sig-name descname"><span class="pre">device_has_certificate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crypto_store_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#device.crypto.device_has_certificate" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">device.crypto.</span></span><span class="sig-name descname"><span class="pre">device_has_certificate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credentials_secret</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crypto_store_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#device.crypto.device_has_certificate" title="Link to this definition"></a></dt>
 <dd><p>Utility function that checks if a certificate is present for the device</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>crypto_store_dir</strong> (<em>str</em>) – Path to the folder where crypto information is stored</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device_id</strong> (<em>str</em>) – The device ID</p></li>
+<li><p><strong>realm</strong> (<em>str</em>) – The Astarte realm where the device is registered</p></li>
+<li><p><strong>pairing_base_url</strong> (<em>str</em>) – The base URL for the Astarte pairing APIs</p></li>
+<li><p><strong>credentials_secret</strong> (<em>str</em>) – The credentials secret for the device in the given realm</p></li>
+<li><p><strong>ignore_ssl_errors</strong> (<em>str</em>) – Set to True to ignore SSL errors</p></li>
+<li><p><strong>crypto_store_dir</strong> (<em>str</em>) – Path to the folder where crypto information is stored</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if the certificate is present, False otherwise</p>
@@ -1694,6 +1709,36 @@ Pairing API.</p></li>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="device.pairing_handler.verify_device_certificate">
+<span class="sig-prename descclassname"><span class="pre">device.pairing_handler.</span></span><span class="sig-name descname"><span class="pre">verify_device_certificate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credentials_secret</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cert_pem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#device.pairing_handler.verify_device_certificate" title="Link to this definition"></a></dt>
+<dd><p>Utility function that verifies the validity of a device certificate with Astarte</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device_id</strong> (<em>str</em>) – The device ID</p></li>
+<li><p><strong>realm</strong> (<em>str</em>) – The Astarte realm where the device is registered</p></li>
+<li><p><strong>pairing_base_url</strong> (<em>str</em>) – The base URL for the Astarte pairing APIs</p></li>
+<li><p><strong>credentials_secret</strong> (<em>str</em>) – The credentials secret for the device in the given realm</p></li>
+<li><p><strong>ignore_ssl_errors</strong> (<em>str</em>) – Set to True to ignore SSL errors</p></li>
+<li><p><strong>cert_pem</strong> (<em>str</em>) – Certificate to verify in the PEM format</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#device.exceptions.AuthorizationError" title="device.exceptions.AuthorizationError"><strong>AuthorizationError</strong></a> – If the authentication provided was not correct</p></li>
+<li><p><a class="reference internal" href="#device.exceptions.APIError" title="device.exceptions.APIError"><strong>APIError</strong></a> – If a generic Error was returned by the APIs</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the certificate is valid, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
 </dd>
 </dl>
 </dd></dl>
