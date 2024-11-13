@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"structastarte__mapping__t.html":[3,0,5,0],
 "structastarte__mapping__t.html#a3abbe5bda6cc7d69093152668d3e3d83":[3,0,5,0,5],
 "structastarte__mapping__t.html#a4bd17be64545131f12f35e95afd57d03":[3,0,5,0,3],
 "structastarte__mapping__t.html#a71ce5d082e9c2ceef80b4a4705689f43":[3,0,5,0,1],

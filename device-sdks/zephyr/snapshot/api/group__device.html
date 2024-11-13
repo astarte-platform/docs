@@ -194,9 +194,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga6639c512b2ef5365bbdda9d31dfc277e" id="r_ga6639c512b2ef5365bbdda9d31dfc277e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga6639c512b2ef5365bbdda9d31dfc277e">astarte_device_connect</a> (<a class="el" href="#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device)</td></tr>
 <tr class="memdesc:ga6639c512b2ef5365bbdda9d31dfc277e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect a device to Astarte.  <br /></td></tr>
 <tr class="separator:ga6639c512b2ef5365bbdda9d31dfc277e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3d40df49c6119ab071b87cd40a645aad" id="r_ga3d40df49c6119ab071b87cd40a645aad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga3d40df49c6119ab071b87cd40a645aad">astarte_device_disconnect</a> (<a class="el" href="#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device)</td></tr>
-<tr class="memdesc:ga3d40df49c6119ab071b87cd40a645aad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect the Astarte device instance.  <br /></td></tr>
-<tr class="separator:ga3d40df49c6119ab071b87cd40a645aad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac0fdf93a511677f8d7f9e970886dff5c" id="r_gac0fdf93a511677f8d7f9e970886dff5c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gac0fdf93a511677f8d7f9e970886dff5c">astarte_device_disconnect</a> (<a class="el" href="#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device, k_timeout_t timeout)</td></tr>
+<tr class="memdesc:gac0fdf93a511677f8d7f9e970886dff5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect the Astarte device instance.  <br /></td></tr>
+<tr class="separator:gac0fdf93a511677f8d7f9e970886dff5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9dcc2121b96a3d2cc570afbf897cb0b3" id="r_ga9dcc2121b96a3d2cc570afbf897cb0b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga9dcc2121b96a3d2cc570afbf897cb0b3">astarte_device_force_disconnect</a> (<a class="el" href="#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device)</td></tr>
+<tr class="memdesc:ga9dcc2121b96a3d2cc570afbf897cb0b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Force a disconnection for the Astarte device instance.  <br /></td></tr>
+<tr class="separator:ga9dcc2121b96a3d2cc570afbf897cb0b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4800793bbb8e4b76b01c21f96eb848e0" id="r_ga4800793bbb8e4b76b01c21f96eb848e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga4800793bbb8e4b76b01c21f96eb848e0">astarte_device_poll</a> (<a class="el" href="#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device)</td></tr>
 <tr class="memdesc:ga4800793bbb8e4b76b01c21f96eb848e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poll data from Astarte.  <br /></td></tr>
 <tr class="separator:ga4800793bbb8e4b76b01c21f96eb848e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -405,7 +408,9 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Destroy the Astarte device instance. </p>
-<dl class="section note"><dt>Note</dt><dd>The device handle will become invalid after this operation.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The device handle will become invalid after this operation. </dd>
+<dd>
+If the device is connected when calling this function it will be forcefully disconnected.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">device</td><td>Device instance to be destroyed. </td></tr>
@@ -416,8 +421,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga3d40df49c6119ab071b87cd40a645aad" name="ga3d40df49c6119ab071b87cd40a645aad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga3d40df49c6119ab071b87cd40a645aad">&#9670;&#160;</a></span>astarte_device_disconnect()</h2>
+<a id="gac0fdf93a511677f8d7f9e970886dff5c" name="gac0fdf93a511677f8d7f9e970886dff5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac0fdf93a511677f8d7f9e970886dff5c">&#9670;&#160;</a></span>astarte_device_disconnect()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -425,13 +430,46 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a> astarte_device_disconnect </td>
           <td>(</td>
+          <td class="paramtype"><a class="el" href="#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a></td>          <td class="paramname"><span class="paramname"><em>device</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">k_timeout_t</td>          <td class="paramname"><span class="paramname"><em>timeout</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Disconnect the Astarte device instance. </p>
+<p>This function will block until all QoS 1/2 pending messages have been successfully transmitted for a <code>timeout</code> hass been reached. </p><dl class="section note"><dt>Note</dt><dd>It will be possible to re-connect the device after disconnection.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">device</td><td>Device instance to be disconnected. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>Timeout for the disconnection. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ASTARTE_RESULT_OK if successful, otherwise an error code. </dd></dl>
+
+</div>
+</div>
+<a id="ga9dcc2121b96a3d2cc570afbf897cb0b3" name="ga9dcc2121b96a3d2cc570afbf897cb0b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9dcc2121b96a3d2cc570afbf897cb0b3">&#9670;&#160;</a></span>astarte_device_force_disconnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a> astarte_device_force_disconnect </td>
+          <td>(</td>
           <td class="paramtype"><a class="el" href="#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a></td>          <td class="paramname"><span class="paramname"><em>device</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Disconnect the Astarte device instance. </p>
+<p>Force a disconnection for the Astarte device instance. </p>
+<p>This function will disconnect the device from the Astarte device, ignoring any pending messages if present. The function will be non blocking and the disconnection immediate.</p>
 <dl class="section note"><dt>Note</dt><dd>It will be possible to re-connect the device after disconnection.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -691,7 +729,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Nov 7 2024 16:08:21 for Astarte device API for Zephyr by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Wed Nov 13 2024 08:20:21 for Astarte device API for Zephyr by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>

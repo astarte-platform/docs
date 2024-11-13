@@ -131,7 +131,8 @@ $(function(){initNavTree('device_8h.html',''); initResizable(true); });
 
 <p>Device management.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="astarte_8h_source.html">astarte_device_sdk/astarte.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;zephyr/kernel.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="astarte_8h_source.html">astarte_device_sdk/astarte.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="device__id_8h_source.html">astarte_device_sdk/device_id.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="individual_8h_source.html">astarte_device_sdk/individual.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="interface_8h_source.html">astarte_device_sdk/interface.h</a>&quot;</code><br />
@@ -203,9 +204,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga6639c512b2ef5365bbdda9d31dfc277e" id="r_ga6639c512b2ef5365bbdda9d31dfc277e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__device.html#ga6639c512b2ef5365bbdda9d31dfc277e">astarte_device_connect</a> (<a class="el" href="group__device.html#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device)</td></tr>
 <tr class="memdesc:ga6639c512b2ef5365bbdda9d31dfc277e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect a device to Astarte.  <br /></td></tr>
 <tr class="separator:ga6639c512b2ef5365bbdda9d31dfc277e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3d40df49c6119ab071b87cd40a645aad" id="r_ga3d40df49c6119ab071b87cd40a645aad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__device.html#ga3d40df49c6119ab071b87cd40a645aad">astarte_device_disconnect</a> (<a class="el" href="group__device.html#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device)</td></tr>
-<tr class="memdesc:ga3d40df49c6119ab071b87cd40a645aad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect the Astarte device instance.  <br /></td></tr>
-<tr class="separator:ga3d40df49c6119ab071b87cd40a645aad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac0fdf93a511677f8d7f9e970886dff5c" id="r_gac0fdf93a511677f8d7f9e970886dff5c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__device.html#gac0fdf93a511677f8d7f9e970886dff5c">astarte_device_disconnect</a> (<a class="el" href="group__device.html#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device, k_timeout_t timeout)</td></tr>
+<tr class="memdesc:gac0fdf93a511677f8d7f9e970886dff5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect the Astarte device instance.  <br /></td></tr>
+<tr class="separator:gac0fdf93a511677f8d7f9e970886dff5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9dcc2121b96a3d2cc570afbf897cb0b3" id="r_ga9dcc2121b96a3d2cc570afbf897cb0b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__device.html#ga9dcc2121b96a3d2cc570afbf897cb0b3">astarte_device_force_disconnect</a> (<a class="el" href="group__device.html#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device)</td></tr>
+<tr class="memdesc:ga9dcc2121b96a3d2cc570afbf897cb0b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Force a disconnection for the Astarte device instance.  <br /></td></tr>
+<tr class="separator:ga9dcc2121b96a3d2cc570afbf897cb0b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4800793bbb8e4b76b01c21f96eb848e0" id="r_ga4800793bbb8e4b76b01c21f96eb848e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__device.html#ga4800793bbb8e4b76b01c21f96eb848e0">astarte_device_poll</a> (<a class="el" href="group__device.html#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device)</td></tr>
 <tr class="memdesc:ga4800793bbb8e4b76b01c21f96eb848e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poll data from Astarte.  <br /></td></tr>
 <tr class="separator:ga4800793bbb8e4b76b01c21f96eb848e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -230,7 +234,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_2e5d9197a3dfa3393eec53f63f41e30c.html">astarte_device_sdk</a></li><li class="navelem"><a class="el" href="device_8h.html">device.h</a></li>
-    <li class="footer">Generated on Thu Nov 7 2024 16:08:21 for Astarte device API for Zephyr by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Wed Nov 13 2024 08:20:21 for Astarte device API for Zephyr by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>
