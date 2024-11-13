@@ -1,0 +1,28 @@
+var class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport =
+[
+    [ "AstarteTransport", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#acacd943773ce56f572c7e409ce34dee6", null ],
+    [ "Connect", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#abef4c92f6403782c637ab6ab42d488b4", null ],
+    [ "Disconnect", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#aecc4310a9e691cfe8d6b8652302bbc63", null ],
+    [ "GetAstarteFailedMessageStorage", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#a8d9b79454eed9f397dca27f6a4655e00", null ],
+    [ "GetAstarteProtocolType", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#ab0e446054bd8e8ce15270709d9651b60", null ],
+    [ "GetAstarteTransportEventListener", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#ad43ed91b63a0ce7e760c52ebb5a23e07", null ],
+    [ "GetDevice", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#a4f247b0b9eae697d32430de83df7420c", null ],
+    [ "IsConnected", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#a066b28c7c1ca7fe1420a7cfca716cd2e", null ],
+    [ "ResendAllProperties", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#ac3bb8b595e19ffa4afb4c688354e7470", null ],
+    [ "SendAggregate", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#a1ecf4a895af21c4a713f7af7b3681a87", null ],
+    [ "SendIndividualValue", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#a0b0cd233623af6d1bc5e4b78ff547416", null ],
+    [ "SendIndividualValue", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#a1b4c4c6e93f1137e30a10200e6dd5a01", null ],
+    [ "SendIntrospection", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#a2454248b13340ca24d2a2014d705c1d3", null ],
+    [ "SetAstarteTransportEventListener", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#abda7c73e1a8b4f4db13d060fa6b85727", null ],
+    [ "SetDevice", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#ad17f75f1d774469b85078acb323b3998", null ],
+    [ "SetFailedMessageStorage", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#a2979259015056f930d06a4ae4cfbdd4a", null ],
+    [ "SetMessageListener", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#a2e9b2334bd8a0ac6e78c1aa56e5fe651", null ],
+    [ "SetPropertyStorage", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#a1d0161926f790b2fbdbd9450fa964323", null ],
+    [ "StartResenderTask", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#accd8a4cb9f7685f067458416c0b97197", null ],
+    [ "_astartePropertyStorage", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#af76b7afbb51d023345a1f7af4886c6ae", null ],
+    [ "_astarteTransportEventListener", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#abe89184c477fcaabc5c15fdbc6673453", null ],
+    [ "_failedMessageStorage", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#a24e6cc139aaf1e4894dd21514ee5ebf0", null ],
+    [ "_introspectionSent", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#aa0688bf65e332b7d1af20c1ebbe0d1e5", null ],
+    [ "_messageListener", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#adfe1db7712a85b04d84574fe6e8f9575", null ],
+    [ "Device", "class_astarte_device_s_d_k_c_sharp_1_1_transport_1_1_astarte_transport.html#aa24374985470e6988b28c5f0cb610fed", null ]
+];
