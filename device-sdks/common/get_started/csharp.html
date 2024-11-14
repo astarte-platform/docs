@@ -179,7 +179,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -240,7 +240,11 @@
 <li class="toctree-l3"><a class="reference external" href="https://docs.astarte-platform.org/device-sdks/java/1.0/api">Java v1.0 APIs</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference external" href="https://docs.astarte-platform.org/device-sdks/csharp/snapshot/api">Csharp APIs</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../api_docs/csharp.html">Csharp APIs</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of Csharp APIs</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference external" href="https://docs.astarte-platform.org/device-sdks/csharp/snapshot/api">Csharp snapshot APIs</a></li>
+<li class="toctree-l3"><a class="reference external" href="https://docs.astarte-platform.org/device-sdks/csharp/0.7/api">Csharp v0.7 APIs</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference external" href="https://docs.rs/astarte-device-sdk/latest/astarte_device_sdk/">Rust APIs</a></li>
 <li class="toctree-l2"><a class="reference external" href="https://pkg.go.dev/github.com/astarte-platform/astarte-device-sdk-go/">Go APIs</a></li>
 </ul>
@@ -279,19 +283,202 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
           <!---
-  Copyright 2024 SECO Mind Srl
-  SPDX-License-Identifier: Apache-2.0
+    Copyright 2024 SECO Mind Srl
+
+    SPDX-License-Identifier: Apache-2.0
 -->
 <section id="get-started-with-csharp">
 <h1>Get started with CSharp<a class="headerlink" href="#get-started-with-csharp" title="Link to this heading">¶</a></h1>
 <p>Follow this guide to get started with the Astarte device SDK for the CSharp programming language.</p>
+<section id="generating-a-device-id">
+<h2>Generating a device ID<a class="headerlink" href="#generating-a-device-id" title="Link to this heading">¶</a></h2>
+<p>A device ID will be required to uniquely identify a device in an Astarte instance. Some of the Astarte device SDKs provide utilities to generate a deterministic or random device identifier, in some cases based on hardware information.</p>
+<p>This step is only useful when registering a device using a JWT token and the provided Astarte device SDKs registration APIs. Registration of a device can also be performed outside the device in the Astarte instance. In such cases, the device ID should be obtained via astartectl, or the Astarte dashboard. The device ID should then be loaded manually on the device.</p>
+<p>A device ID can be generated randomly:</p>
+<div class="highlight-CSharp notranslate"><div class="highlight"><pre><span></span><span class="kt">string</span><span class="w"> </span><span class="n">deviceId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AstarteDeviceIdUtils</span><span class="p">.</span><span class="n">GenerateId</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Or in a deterministic way:</p>
+<div class="highlight-CSharp notranslate"><div class="highlight"><pre><span></span><span class="n">Guid</span><span class="w"> </span><span class="n">nameSpace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Guid</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="s">&quot;f79ad91f-c638-4889-ae74-9d001a3b4cf8&quot;</span><span class="p">);</span>
+<span class="kt">string</span><span class="w"> </span><span class="n">macAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;98:75:a8:0d:96:db&quot;</span><span class="p">;</span>
+<span class="n">deviceId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AstarteDeviceIdUtils</span><span class="p">.</span><span class="n">GenerateId</span><span class="p">(</span><span class="n">nameSpace</span><span class="p">,</span><span class="w"> </span><span class="n">macAddress</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="registering-a-device">
+<h2>Registering a device<a class="headerlink" href="#registering-a-device" title="Link to this heading">¶</a></h2>
+<p>First, generate JWT using astartectl:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">astartectl</span> <span class="n">utils</span> <span class="n">gen</span><span class="o">-</span><span class="n">jwt</span> <span class="n">pairing</span> <span class="o">-</span><span class="n">k</span> <span class="o">&lt;</span><span class="n">private</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">file</span><span class="o">&gt;.</span><span class="n">pem</span>
+</pre></div>
+</div>
+<p>Then use said token to register the device:</p>
+<div class="highlight-CSharp notranslate"><div class="highlight"><pre><span></span><span class="kt">string</span><span class="w"> </span><span class="n">credentialsSecret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AstartePairingService</span><span class="p">(</span><span class="n">pairingUrl</span><span class="p">,</span><span class="w"> </span><span class="n">realm</span><span class="p">).</span><span class="n">RegisterDeviceWithJwtToken</span><span class="p">(</span><span class="n">deviceId</span><span class="p">,</span><span class="w"> </span><span class="n">jwt</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="instantiating-and-connecting-a-new-device">
+<h2>Instantiating and connecting a new device<a class="headerlink" href="#instantiating-and-connecting-a-new-device" title="Link to this heading">¶</a></h2>
+<div class="highlight-CSharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Device creation</span>
+<span class="c1">// connectionSource allows to connect to a db for persistency</span>
+<span class="c1">// The interfaces supported by the device are populated by ExampleInterfaceProvider</span>
+<span class="n">AstarteDevice</span><span class="w"> </span><span class="n">myDevice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span>
+<span class="w">                        </span><span class="n">deviceId</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">realm</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">credentialsSecret</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">interfaceProvider</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">pairingUrl</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">cryptoStoreDir</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromMilliseconds</span><span class="p">(</span><span class="m">500</span><span class="p">));</span>
+
+<span class="c1">// ExampleMessageListener listens for device connection, disconnection and failure.</span>
+<span class="n">myDevice</span><span class="p">.</span><span class="n">SetAstarteMessageListener</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ExampleMessageListener</span><span class="p">());</span>
+
+<span class="c1">// Connect the device</span>
+<span class="k">await</span><span class="w"> </span><span class="n">myDevice</span><span class="p">.</span><span class="n">Connect</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+<section id="streaming-data">
+<h2>Streaming data<a class="headerlink" href="#streaming-data" title="Link to this heading">¶</a></h2>
+<p>All Astarte Device SDKs include primitives for sending data to a remote Astarte instance. Streaming of data could be performed for device-owned interfaces of individual or object aggregation type.</p>
+<section id="streaming-individual-data">
+<h3>Streaming individual data<a class="headerlink" href="#streaming-individual-data" title="Link to this heading">¶</a></h3>
+<p>In Astarte interfaces with individual aggregation, each mapping is treated as an independent value and is managed individually.</p>
+<p>The snippet below shows how to send a value that will be inserted into the “/test0/value” datastream which is defined by the “/%{sensor_id}/value” parametric endpoint, that is part of the “org.astarte-platform.genericsensors.Values” datastream interface.</p>
+<div class="highlight-CSharp notranslate"><div class="highlight"><pre><span></span><span class="n">AstarteDeviceDatastreamInterface</span><span class="w"> </span><span class="n">valuesInterface</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                </span><span class="p">(</span><span class="n">AstarteDeviceDatastreamInterface</span><span class="p">)</span><span class="n">myDevice</span><span class="p">.</span><span class="n">GetInterface</span><span class="p">(</span><span class="n">valuesInterfaceName</span><span class="p">);</span>
+
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Random</span><span class="p">.</span><span class="n">Shared</span><span class="p">.</span><span class="n">NextDouble</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Streaming value: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">value</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">valuesInterface</span><span class="p">.</span><span class="n">StreamData</span><span class="p">(</span><span class="s">$&quot;/{sensorUuid}/value&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">value</span><span class="p">,</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="streaming-aggregated-data">
+<h3>Streaming aggregated data<a class="headerlink" href="#streaming-aggregated-data" title="Link to this heading">¶</a></h3>
+<p>In Astarte interfaces with object aggregation, Astarte expects the owner to send all of the interface’s mappings at the same time, packed in a single message.</p>
+<p>The following snippet shows how to send a value for an object aggregated interface. In this example, lat and long will be sent together and will be inserted into the “/coords” datastream which is defined by the “/coords” endpoint, that is part of the “com.example.GPS” datastream interface.</p>
+<div class="highlight-CSharp notranslate"><div class="highlight"><pre><span></span><span class="n">AstarteDeviceAggregateDatastreamInterface</span><span class="w"> </span><span class="n">aggregateInterface</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="p">(</span><span class="n">AstarteDeviceAggregateDatastreamInterface</span><span class="p">)</span><span class="n">myDevice</span><span class="p">.</span><span class="n">GetInterface</span><span class="p">(</span><span class="n">geolocationInterfaceName</span><span class="p">);</span>
+
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">        </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">gpsValues</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;latitude&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Random</span><span class="p">.</span><span class="n">Shared</span><span class="p">.</span><span class="n">NextDouble</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;longitude&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Random</span><span class="p">.</span><span class="n">Shared</span><span class="p">.</span><span class="n">NextDouble</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;altitude&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Random</span><span class="p">.</span><span class="n">Shared</span><span class="p">.</span><span class="n">NextDouble</span><span class="p">()</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;accuracy&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Random</span><span class="p">.</span><span class="n">Shared</span><span class="p">.</span><span class="n">NextDouble</span><span class="p">()</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;altitudeAccuracy&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Random</span><span class="p">.</span><span class="n">Shared</span><span class="p">.</span><span class="n">NextDouble</span><span class="p">()</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;heading&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Random</span><span class="p">.</span><span class="n">Shared</span><span class="p">.</span><span class="n">NextDouble</span><span class="p">()</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;speed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Random</span><span class="p">.</span><span class="n">Shared</span><span class="p">.</span><span class="n">NextDouble</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Streaming object:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">JsonConvert</span><span class="p">.</span><span class="n">SerializeObject</span><span class="p">(</span><span class="n">gpsValues</span><span class="p">));</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="n">aggregateInterface</span><span class="p">.</span><span class="n">StreamData</span><span class="p">(</span><span class="s">$&quot;/{sensor_id}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">gpsValues</span><span class="p">,</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="setting-and-unsetting-properties">
+<h2>Setting and unsetting properties<a class="headerlink" href="#setting-and-unsetting-properties" title="Link to this heading">¶</a></h2>
+<p>Interfaces of property type represent a persistent, stateful, synchronized state with no concept of history or timestamping. From a programming point of view, setting and unsetting properties of device-owned interface is rather similar to sending messages on datastream interfaces.</p>
+<p>The following snippet shows how to set a value that will be inserted into the “/sensor0/name” property which is defined by the “/%{sensor_id}/name” parametric endpoint, that is part of the “org.astarte-platform.genericsensors.AvailableSensors” device-owned properties interface.</p>
+<p>It should be noted how a property should be marked as unsettable in its interface definition to be able to use the unsetting method on it.</p>
+<p>Set property:</p>
+<div class="highlight-CSharp notranslate"><div class="highlight"><pre><span></span><span class="n">AstarteDevicePropertyInterface</span><span class="w"> </span><span class="n">availableSensorsInterface</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="p">(</span><span class="n">AstarteDevicePropertyInterface</span><span class="p">)</span><span class="n">myDevice</span><span class="p">.</span><span class="n">GetInterface</span><span class="p">(</span><span class="n">availableSensorsInterfaceName</span><span class="p">);</span>
+
+<span class="n">availableSensorsInterface</span><span class="p">.</span><span class="n">SetProperty</span><span class="p">(</span><span class="s">$&quot;/{sensorUuid}/name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;randomThermometer&quot;</span><span class="p">);</span>
+<span class="n">availableSensorsInterface</span><span class="p">.</span><span class="n">SetProperty</span><span class="p">(</span><span class="s">$&quot;/{sensorUuid}/unit&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;°C&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Unset property:</p>
+<div class="highlight-CSharp notranslate"><div class="highlight"><pre><span></span><span class="n">AstarteDevicePropertyInterface</span><span class="w"> </span><span class="n">availableSensorsInterface</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="p">(</span><span class="n">AstarteDevicePropertyInterface</span><span class="p">)</span><span class="n">myDevice</span><span class="p">.</span><span class="n">GetInterface</span><span class="p">(</span><span class="n">availableSensorsInterfaceName</span><span class="p">);</span>
+
+<span class="n">availableSensorsInterface</span><span class="p">.</span><span class="n">UnsetProperty</span><span class="p">(</span><span class="s">&quot;/myPath/name&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="receive-data-on-server-owner-interface">
+<h2>Receive data on server owner interface<a class="headerlink" href="#receive-data-on-server-owner-interface" title="Link to this heading">¶</a></h2>
+<p>In Astarte interfaces with server owner interface, Astarte sends data to connected devices. If a device is offline when data is sent, it receives the messages as soon as it reconnects to Astarte.</p>
+<p>This section provides instructions on how to receive data on the server’s owner interface using the Astarte Device SDK for C#.</p>
+<div class="highlight-CSharp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">AstarteDeviceSDKCSharp.Protocol</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">AstarteDeviceSDKCSharp.Protocol.AstarteEvents</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Newtonsoft.Json</span><span class="p">;</span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">AstarteDeviceSDKExample</span>
+<span class="p">{</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ExampleGlobalEventListener</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">AstarteGlobalEventListener</span>
+<span class="w">        </span><span class="p">{</span>
+
+<span class="w">        </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="receiving-on-server-owned-datastream-interface-with-individual-aggregation">
+<h3>Receiving on server owned datastream interface with individual aggregation<a class="headerlink" href="#receiving-on-server-owned-datastream-interface-with-individual-aggregation" title="Link to this heading">¶</a></h3>
+<div class="highlight-CSharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ValueReceived</span><span class="p">(</span><span class="n">AstarteDatastreamEvent</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span>
+<span class="w">        </span><span class="s">$&quot;Received datastream value on interface {e.GetInterfaceName()}, &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">        </span><span class="s">$&quot;path: {e.GetPath()}, &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">        </span><span class="s">$&quot;value: {e.GetValue()}&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="receiving-on-server-owned-datastream-interface-with-object-aggregation">
+<h3>Receiving on server owned datastream interface with object aggregation<a class="headerlink" href="#receiving-on-server-owned-datastream-interface-with-object-aggregation" title="Link to this heading">¶</a></h3>
+<div class="highlight-CSharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ValueReceived</span><span class="p">(</span><span class="n">AstarteAggregateDatastreamEvent</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span>
+<span class="w">        </span><span class="s">$&quot;Received aggregate datastream object on interface {e.GetInterfaceName()}, &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">        </span><span class="s">$&quot;value: {JsonConvert.SerializeObject(e.GetValues())}&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="receiving-set-on-a-server-owned-properties-interface">
+<h3>Receiving set on a server owned properties interface<a class="headerlink" href="#receiving-set-on-a-server-owned-properties-interface" title="Link to this heading">¶</a></h3>
+<div class="highlight-CSharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">PropertyReceived</span><span class="p">(</span><span class="n">AstartePropertyEvent</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span>
+<span class="w">        </span><span class="s">$&quot;Received property on interface {e.GetInterfaceName()}, &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">        </span><span class="s">$&quot;path: {e.GetPath()}, &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">        </span><span class="s">$&quot;value: {e.GetValue()}&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="receiving-unset-on-a-server-owned-properties-interface">
+<h3>Receiving unset on a server owned properties interface<a class="headerlink" href="#receiving-unset-on-a-server-owned-properties-interface" title="Link to this heading">¶</a></h3>
+<div class="highlight-CSharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">PropertyUnset</span><span class="p">(</span><span class="n">AstartePropertyEvent</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span>
+<span class="w">        </span><span class="s">$&quot;Received unset on interface {e.GetInterfaceName()}, &quot;</span><span class="w"> </span><span class="o">+</span>
+<span class="w">        </span><span class="s">$&quot;path: {e.GetPath()}&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
         </article>
@@ -337,8 +524,42 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Get started with CSharp</a><ul>
+<li><a class="reference internal" href="#generating-a-device-id">Generating a device ID</a></li>
+<li><a class="reference internal" href="#registering-a-device">Registering a device</a></li>
+<li><a class="reference internal" href="#instantiating-and-connecting-a-new-device">Instantiating and connecting a new device</a></li>
+<li><a class="reference internal" href="#streaming-data">Streaming data</a><ul>
+<li><a class="reference internal" href="#streaming-individual-data">Streaming individual data</a></li>
+<li><a class="reference internal" href="#streaming-aggregated-data">Streaming aggregated data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#setting-and-unsetting-properties">Setting and unsetting properties</a></li>
+<li><a class="reference internal" href="#receive-data-on-server-owner-interface">Receive data on server owner interface</a><ul>
+<li><a class="reference internal" href="#receiving-on-server-owned-datastream-interface-with-individual-aggregation">Receiving on server owned datastream interface with individual aggregation</a></li>
+<li><a class="reference internal" href="#receiving-on-server-owned-datastream-interface-with-object-aggregation">Receiving on server owned datastream interface with object aggregation</a></li>
+<li><a class="reference internal" href="#receiving-set-on-a-server-owned-properties-interface">Receiving set on a server owned properties interface</a></li>
+<li><a class="reference internal" href="#receiving-unset-on-a-server-owned-properties-interface">Receiving unset on a server owned properties interface</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
