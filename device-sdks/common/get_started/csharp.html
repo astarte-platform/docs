@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Get started with Zephyr" href="zephyr.html" /><link rel="prev" title="Get started with Python" href="python.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Features definition" href="../features_def.html" /><link rel="prev" title="Get started with Zephyr" href="zephyr.html" />
 
     <link rel="shortcut icon" href="../_static/mascotte.svg"/><!-- Generated with Sphinx 8.0.2 and Furo 2024.08.06 -->
-        <title>Get started with Rust - Astarte SDKs documentation</title>
+        <title>Get started with CSharp - Astarte SDKs documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -179,7 +179,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -207,9 +207,9 @@
 <li class="toctree-l2"><a class="reference internal" href="go.html">Get started with Go</a></li>
 <li class="toctree-l2"><a class="reference internal" href="java_android.html">Get started with Java (Android)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="python.html">Get started with Python</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Get started with Rust</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rust.html">Get started with Rust</a></li>
 <li class="toctree-l2"><a class="reference internal" href="zephyr.html">Get started with Zephyr</a></li>
-<li class="toctree-l2"><a class="reference internal" href="csharp.html">Get started with CSharp</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Get started with CSharp</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../features_def.html">Features definition</a></li>
@@ -265,7 +265,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="../_sources/get_started/rust.md.txt" title="View this page">
+  <a class="muted-link" href="../_sources/get_started/csharp.md.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -279,148 +279,19 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <!--
-Copyright 2024 SECO Mind Srl
-
-SPDX-License-Identifier: Apache-2.0
+          <!---
+  Copyright 2024 SECO Mind Srl
+  SPDX-License-Identifier: Apache-2.0
 -->
-<section id="get-started-with-rust">
-<h1>Get started with Rust<a class="headerlink" href="#get-started-with-rust" title="Link to this heading">¶</a></h1>
-<p>Follow this guide to get started with the Astarte device SDK for the Rust programming language.</p>
-<section id="generating-a-device-id">
-<h2>Generating a device ID<a class="headerlink" href="#generating-a-device-id" title="Link to this heading">¶</a></h2>
-<p>A device ID will be required to uniquely identify a device in an Astarte instance.
-Some of the Astarte device SDKs provide utilities to generate a deterministic or random device
-identifier, in some cases based on hardware information.</p>
-<p>This step is only useful when registering a device using a JWT token and the provided Astarte device
-SDKs registration APIs. Registration of a device can also be performed outside the device in the
-Astarte instance. In such cases the device ID should be obtained via
-<a class="reference external" href="https://github.com/astarte-platform/astartectl">astartectl</a>, or the
-<a class="reference external" href="https://docs.astarte-platform.org/astarte/latest/015-astarte_dashboard.html">Astarte dashboard</a>.
-The device ID should then be loaded manually on the device.</p>
-<p>A device ID can be generate randomly:</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="n">random_uuid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">astarte_sdk</span><span class="p">::</span><span class="n">registration</span><span class="p">::</span><span class="n">generate_random_uuid</span><span class="p">();</span>
-</pre></div>
-</div>
-<p>Or in a deterministic way:</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="n">namespaced_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">astarte_sdk</span><span class="p">::</span><span class="n">registration</span><span class="p">::</span><span class="n">generate_uuid</span><span class="p">(</span><span class="n">namespaceUuid</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">payload</span><span class="p">);</span>
-</pre></div>
-</div>
-</section>
-<section id="registering-a-device">
-<h2>Registering a device<a class="headerlink" href="#registering-a-device" title="Link to this heading">¶</a></h2>
-<p>In order for a device to connect to Astarte a registration procedure is required. This registration
-will produce a device specific credential secret that will be used when connecting to Astarte.
-Some of the Astarte device SDKs provide utilities to perform a device registration directly on
-the device. Those APIs will require a registration JWT to be uploaded to the device. Such JWT should
-be discarded following the registration procedure.</p>
-<p>This step is only useful when registering the device through the APIs using the JWT token.
-Registration of a device can also be performed outside the device in the Astarte instance using
-tools such as <a class="reference external" href="https://github.com/astarte-platform/astartectl">astartectl</a>, the
-<a class="reference external" href="https://docs.astarte-platform.org/astarte/latest/015-astarte_dashboard.html">Astarte dashboard</a>,
-or the dedicated
-<a class="reference external" href="https://docs.astarte-platform.org/astarte/latest/api/index.html?urls.primaryName=Pairing%20API">Astarte API for device registration</a>.
-The generated credential secret should then be loaded manually on the device.</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span><span class="w"> </span><span class="n">credentials_secret</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="n">astarte_sdk</span><span class="p">::</span><span class="n">registration</span><span class="p">::</span><span class="n">register_device</span><span class="p">(</span><span class="o">&amp;</span><span class="n">jwt_token</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pairing_url</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">realm</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">device_id</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
-</pre></div>
-</div>
-</section>
-<section id="instantiating-and-connecting-a-new-device">
-<h2>Instantiating and connecting a new device<a class="headerlink" href="#instantiating-and-connecting-a-new-device" title="Link to this heading">¶</a></h2>
-<p>Now that we obtained both a device ID and a credential secret we can create a new device instance.
-Some of the SDKs will connect instantly as soon as the device is instantiated while others will
-require a call to a <code class="docutils literal notranslate"><span class="pre">connect</span></code> function.
-Furthermore, depending on the SDK the introspection of the device might be defined while
-instantiating the device or between instantiation and connection.</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="c1">// declare device options</span>
-<span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">sdk_options</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="n">AstarteOptions</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">realm</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">device_id</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">credentials_secret</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">pairing_url</span><span class="p">);</span>
-
-<span class="c1">// load interfaces from a directory</span>
-<span class="n">sdk_options</span>
-<span class="w">    </span><span class="p">.</span><span class="n">add_interface_files</span><span class="p">(</span><span class="s">&quot;./examples/interfaces&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
-
-<span class="c1">// instance and connect the device.</span>
-<span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AstarteDeviceSdk</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sdk_options</span><span class="p">).</span><span class="k">await</span><span class="p">.</span><span class="n">unwrap</span><span class="p">();</span>
-</pre></div>
-</div>
-</section>
-<section id="streaming-data">
-<h2>Streaming data<a class="headerlink" href="#streaming-data" title="Link to this heading">¶</a></h2>
-<p>All Astarte Device SDKs include primitives for sending data to a remote Astarte instance.
-Streaming of data could be performed for device owned interfaces of <code class="docutils literal notranslate"><span class="pre">individual</span></code> or <code class="docutils literal notranslate"><span class="pre">object</span></code>
-aggregation type.</p>
-<section id="streaming-individual-data">
-<h3>Streaming individual data<a class="headerlink" href="#streaming-individual-data" title="Link to this heading">¶</a></h3>
-<p>In Astarte interfaces with <code class="docutils literal notranslate"><span class="pre">individual</span></code> aggregation, each mapping is treated as an independent value
-and is managed individually.</p>
-<p>The snippet bellow shows how to send a value that will be inserted into the <code class="docutils literal notranslate"><span class="pre">&quot;/test0/value&quot;</span></code>
-datastream which is defined by <code class="docutils literal notranslate"><span class="pre">&quot;/%{sensor_id}/value&quot;</span></code> parametric endpoint, that is part of
-<code class="docutils literal notranslate"><span class="pre">&quot;org.astarte-platform.genericsensors.Values&quot;</span></code> datastream interface.</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="sd">/// send data without an explicit timestamp</span>
-<span class="n">device</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="s">&quot;org.astarte-platform.genericsensors.Values&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/test0/value&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">).</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
-
-<span class="sd">/// send data with an explicit timestamp</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Utc</span><span class="p">.</span><span class="n">timestamp</span><span class="p">(</span><span class="mi">1537449422</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="n">device</span><span class="p">.</span><span class="n">send_with_timestamp</span><span class="p">(</span><span class="s">&quot;org.astarte-platform.genericsensors.Values&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/test0/value&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">timestamp</span><span class="p">).</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
-</pre></div>
-</div>
-</section>
-<section id="streaming-aggregated-data">
-<h3>Streaming aggregated data<a class="headerlink" href="#streaming-aggregated-data" title="Link to this heading">¶</a></h3>
-<p>In Astarte interfaces with <code class="docutils literal notranslate"><span class="pre">object</span></code> aggregation, Astarte expects the owner to send all of the
-interface’s mappings at the same time, packed in a single message.</p>
-<p>The following snippet shows how to send a value for an object aggregated interface. In this
-examples, <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">long</span></code> will be sent together and will be inserted into the <code class="docutils literal notranslate"><span class="pre">&quot;/coords&quot;</span></code>
-datastream which is defined by the <code class="docutils literal notranslate"><span class="pre">&quot;/coords&quot;</span></code> endpoint, that is part of <code class="docutils literal notranslate"><span class="pre">&quot;com.example.GPS&quot;</span></code>
-datastream interface.</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="k">use</span><span class="w"> </span><span class="n">astarte_device_sdk_derive</span><span class="p">::</span><span class="n">AstarteAggregate</span><span class="p">;</span>
-<span class="sd">/// Coords must derive AstarteAggregate</span>
-<span class="cp">#[derive(AstarteAggregate)]</span>
-<span class="k">struct</span><span class="w"> </span><span class="nc">Coords</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">lat</span><span class="p">:</span><span class="w"> </span><span class="kt">f64</span><span class="p">,</span>
-<span class="w">    </span><span class="n">long</span><span class="p">:</span><span class="w"> </span><span class="kt">f64</span><span class="p">,</span>
-<span class="p">}</span>
-<span class="p">[</span><span class="o">..</span><span class="p">.]</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">coords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Coords</span><span class="p">{</span><span class="n">lat</span><span class="p">:</span><span class="w">  </span><span class="mf">45.409627</span><span class="p">,</span><span class="w"> </span><span class="n">long</span><span class="p">:</span><span class="w"> </span><span class="mf">11.8765254</span><span class="p">};</span>
-
-<span class="c1">// stream data with an explicit timestamp</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Utc</span><span class="p">.</span><span class="n">timestamp</span><span class="p">(</span><span class="mi">1537449422</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="n">device</span><span class="p">.</span><span class="n">send_object_with_timestamp</span><span class="p">(</span><span class="s">&quot;com.example.GPS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/coords&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">coords</span><span class="p">,</span><span class="w"> </span><span class="n">timestamp</span><span class="p">).</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
-
-<span class="c1">// stream data without an explicit timestamp</span>
-<span class="n">device</span><span class="p">.</span><span class="n">send_object</span><span class="p">(</span><span class="s">&quot;com.example.GPS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/coords&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">coords</span><span class="p">).</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="setting-and-unsetting-properties">
-<h2>Setting and unsetting properties<a class="headerlink" href="#setting-and-unsetting-properties" title="Link to this heading">¶</a></h2>
-<p>Interfaces of <code class="docutils literal notranslate"><span class="pre">property</span></code> type represent a persistent, stateful, synchronized state with no concept
-of history or timestamping. From a programming point of view, setting and unsetting properties of
-device-owned interface is rather similar to sending messages on datastream interfaces.</p>
-<p>The following snippet shows how to set a value that will be inserted into the <code class="docutils literal notranslate"><span class="pre">&quot;/sensor0/name&quot;</span></code>
-property which is defined by <code class="docutils literal notranslate"><span class="pre">&quot;/%{sensor_id}/name&quot;</span></code> parametric endpoint, that is part of <code class="docutils literal notranslate"><span class="pre">&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;</span></code> device-owned properties interface.</p>
-<p>It should be noted how a property should be marked as unsettable in its interface definition to
-be able to use the unsetting method on it.</p>
-<p>Set property:</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="n">device</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="s">&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/sensor0/name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foobar&quot;</span><span class="p">).</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
-</pre></div>
-</div>
-<p>Unset property:</p>
-<div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="n">device</span><span class="p">.</span><span class="n">unset</span><span class="p">(</span><span class="s">&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/sensor0/name&quot;</span><span class="p">).</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
-</pre></div>
-</div>
-</section>
+<section id="get-started-with-csharp">
+<h1>Get started with CSharp<a class="headerlink" href="#get-started-with-csharp" title="Link to this heading">¶</a></h1>
+<p>Follow this guide to get started with the Astarte device SDK for the CSharp programming language.</p>
 </section>
 
         </article>
@@ -428,23 +299,23 @@ be able to use the unsetting method on it.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="zephyr.html">
+          <a class="next-page" href="../features_def.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Get started with Zephyr</div>
+                <div class="title">Features definition</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="python.html">
+          <a class="prev-page" href="zephyr.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Get started with Python</div>
+                <div class="title">Get started with Zephyr</div>
                 
               </div>
             </a>
@@ -466,35 +337,8 @@ be able to use the unsetting method on it.</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Get started with Rust</a><ul>
-<li><a class="reference internal" href="#generating-a-device-id">Generating a device ID</a></li>
-<li><a class="reference internal" href="#registering-a-device">Registering a device</a></li>
-<li><a class="reference internal" href="#instantiating-and-connecting-a-new-device">Instantiating and connecting a new device</a></li>
-<li><a class="reference internal" href="#streaming-data">Streaming data</a><ul>
-<li><a class="reference internal" href="#streaming-individual-data">Streaming individual data</a></li>
-<li><a class="reference internal" href="#streaming-aggregated-data">Streaming aggregated data</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#setting-and-unsetting-properties">Setting and unsetting properties</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

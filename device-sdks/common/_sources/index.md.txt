@@ -40,7 +40,7 @@ At the moment the following SDKs are available:
 | **C** | Espressif | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-esp32) | [API docs](https://docs.astarte-platform.org/device-sdks/esp32/latest/api/) | [Get started](get_started/c_esp32.md) |
 | **C** | Zephyr | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-zephyr) | [API docs](https://docs.astarte-platform.org/device-sdks/zephyr/latest/api/) | [Get started](get_started/zephyr.md) |
 | **C++** | Qt5 | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-qt5) | | [Get started](get_started/cpp_qt5.md) |
-| **C#** | | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-csharp) | [API docs](https://docs.astarte-platform.org/device-sdks/csharp/snapshot/api/) | |
+| **C#** | | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-csharp) | [API docs](https://docs.astarte-platform.org/device-sdks/csharp/snapshot/api/) | [Get started](get_started/csharp.md) |
 | **Elixir** | | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-elixir) | | [Get started](get_started/elixir.md) |
 | **Go** | | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-go) | [API docs](https://pkg.go.dev/github.com/astarte-platform/astarte-device-sdk-go) | [Get started](get_started/go.md) |
 | **Java** | Android/Generic | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-java) | [API docs](https://docs.astarte-platform.org/device-sdks/java/latest/api/) | [Get started](get_started/java_android.md) |
