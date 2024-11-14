@@ -1,0 +1,6 @@
+var class_astarte_device_s_d_k_c_sharp_1_1_migrations_1_1_add_astarte_failed_message_astarte_failed_message_entry_table =
+[
+    [ "BuildTargetModel", "class_astarte_device_s_d_k_c_sharp_1_1_migrations_1_1_add_astarte_failed_message_astarte_failed_message_entry_table.html#aa18b3e8c370307a1a4067d9407375442", null ],
+    [ "Down", "class_astarte_device_s_d_k_c_sharp_1_1_migrations_1_1_add_astarte_failed_message_astarte_failed_message_entry_table.html#a97c59442ea06716531b9d26772db06e7", null ],
+    [ "Up", "class_astarte_device_s_d_k_c_sharp_1_1_migrations_1_1_add_astarte_failed_message_astarte_failed_message_entry_table.html#acb73b6cddbd8e73125be223fb625da4c", null ]
+];

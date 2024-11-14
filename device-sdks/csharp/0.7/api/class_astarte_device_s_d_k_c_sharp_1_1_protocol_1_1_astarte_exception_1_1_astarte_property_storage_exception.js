@@ -1,0 +1,4 @@
+var class_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_exception_1_1_astarte_property_storage_exception =
+[
+    [ "AstartePropertyStorageException", "class_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_exception_1_1_astarte_property_storage_exception.html#a1df6010cce925e4247c8b5cef407f7a6", null ]
+];

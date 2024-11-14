@@ -1,0 +1,4 @@
+var interface_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_events_1_1_i_astarte_datastream_event_listener =
+[
+    [ "ValueReceived", "interface_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_events_1_1_i_astarte_datastream_event_listener.html#a5868e73356c662766d31a194c2f55006", null ]
+];
