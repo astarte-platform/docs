@@ -1,0 +1,9 @@
+# Zephyr APIs documentation
+
+Find the Zephyr documentation at the following links:
+```{toctree}
+:maxdepth: 1
+Zephyr snapshot APIs <https://docs.astarte-platform.org/device-sdks/zephyr/snapshot/api>
+Zephyr v0.7 APIs <https://docs.astarte-platform.org/device-sdks/zephyr/0.7/api>
+
+```

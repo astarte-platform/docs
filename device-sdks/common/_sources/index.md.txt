@@ -34,20 +34,18 @@ They can be easily integrated into new or existing IoT projects written in any o
 languages or platforms.
 
 At the moment the following SDKs are available:
-* C
-  * ESP 32: check it out on [github](https://github.com/astarte-platform/astarte-device-sdk-esp32)
-    or read the [API docs](https://docs.astarte-platform.org/device-sdks/esp32/latest/api/).
-* C++
-  * Qt5: check it out on [github](https://github.com/astarte-platform/astarte-device-sdk-qt5).
-* Elixir: check it out on [github](https://github.com/astarte-platform/astarte-device-sdk-elixir).
-* Go: check it out on [github](https://github.com/astarte-platform/astarte-device-sdk-go).
-* Java (Android or generic): check it out on
-  [github](https://github.com/astarte-platform/astarte-device-sdk-java) or read the
-  [API docs](https://docs.astarte-platform.org/device-sdks/java/latest/api/).
-* Python: check it out on [github](https://github.com/astarte-platform/astarte-device-sdk-python)
-  or read the [API docs](https://docs.astarte-platform.org/device-sdks/python/latest/api/).
-* Rust: check it out on [github](https://github.com/astarte-platform/astarte-device-sdk-rust)
-  or read the [API docs](https://docs.rs/astarte-device-sdk/latest/astarte_device_sdk/).
+
+| Language | Platform | Source code | Documentation | Guide |
+| -------- | -------- | ----------- | ------------- | ----- |
+| **C** | Espressif | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-esp32) | [API docs](https://docs.astarte-platform.org/device-sdks/esp32/latest/api/) | [Get started](get_started/c_esp32.md) |
+| **C** | Zephyr | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-zephyr) | [API docs](https://docs.astarte-platform.org/device-sdks/zephyr/latest/api/) | [Get started](get_started/zephyr.md) |
+| **C++** | Qt5 | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-qt5) | | [Get started](get_started/cpp_qt5.md) |
+| **C#** | | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-csharp) | [API docs](https://docs.astarte-platform.org/device-sdks/csharp/snapshot/api/) | |
+| **Elixir** | | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-elixir) | | [Get started](get_started/elixir.md) |
+| **Go** | | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-go) | [API docs](https://pkg.go.dev/github.com/astarte-platform/astarte-device-sdk-go) | [Get started](get_started/go.md) |
+| **Java** | Android/Generic | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-java) | [API docs](https://docs.astarte-platform.org/device-sdks/java/latest/api/) | [Get started](get_started/java_android.md) |
+| **Python** | | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-python) | [API docs](https://docs.astarte-platform.org/device-sdks/python/latest/api/) | [Get started](get_started/python.md) |
+| **Rust** | | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-rust) | [API docs](https://docs.rs/astarte-device-sdk/latest/astarte_device_sdk/) | [Get started](get_started/rust.md) |
 
 Further languages and platforms will be supported in the near future.
 [Requests for new SDKs](https://github.com/astarte-platform/astarte/issues) are welcome.
