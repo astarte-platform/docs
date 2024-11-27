@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.29.0">
-    <meta name="project" content="Astarte Operator v24.5.0-dev">
+    <meta name="project" content="Astarte Operator v24.11.0-dev">
 
-    <title>Setting up the Astarte Default Ingress — Astarte Operator v24.5.0-dev</title>
+    <title>Setting up the Astarte Default Ingress — Astarte Operator v24.11.0-dev</title>
     <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-CEE643DA.js"></script>
+    <script src="dist/sidebar_items-69B0E325.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -62,16 +62,16 @@
 
   <div class="sidebar-header">
 
-      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/24.5/">
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/snapshot/">
         <img src="assets/logo.png" alt="Astarte Operator" class="sidebar-projectImage">
       </a>
 
     <div class="sidebar-projectDetails">
-      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/24.5/" class="sidebar-projectName" translate="no">
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/snapshot/" class="sidebar-projectName" translate="no">
 Astarte Operator
       </a>
       <strong class="sidebar-projectVersion" translate="no">
-        v24.5.0-dev
+        v24.11.0-dev
       </strong>
     </div>
     <ul class="sidebar-listNav">
@@ -97,7 +97,7 @@ Astarte Operator
 </button>
 
 
-    <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/release-24.5/docs/documentation/pages/administrator/064-setup_astartedefaultingress.md#L1" title="View Source" class="view-source" rel="help">
+    <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/master/docs/documentation/pages/administrator/064-setup_astartedefaultingress.md#L1" title="View Source" class="view-source" rel="help">
       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
       <span class="sr-only">View Source</span>
     </a>
@@ -107,11 +107,10 @@ Astarte Operator
 
 <p>Once your Cluster <a href="060-setup_cluster.html">is up and running</a>, to expose it to the outer world you
 need to set up an Ingress. Currently, the <strong>only managed and supported Ingress</strong> is based upon
-<a href="https://nginx.org/en/">NGINX</a>, and this guide will cover only this specific case.</p><p>Please, note that the previously supported Voyager based ingress is deprecated and should not be
-used (see the <a href="https://blog.byte.builders/post/voyager-v2021.09.15/">Voyager announcement</a> and the
-related Astarte <a href="https://github.com/astarte-platform/astarte/issues/613">issue</a> for further
-details).</p><p>If you want to migrate away from AstarteVoyagerIngress to the new AstarteDefaultIngress, please
-refer to the procedure outlined <a href="066-migrate_to_astartedefaultingress.html">here</a>.</p><h2 id="prerequisites" class="section-heading">
+<a href="https://nginx.org/en/">NGINX</a>, and this guide will cover only this specific case.</p><p>Please, note that the support for the Voyager based ingress (i.e.: AstarteVoyagerIngress) has been
+removed as of v24.5.0. If you want to migrate away from AstarteVoyagerIngress to the new
+AstarteDefaultIngress, please refer to the procedure outlined
+<a href="066-migrate_to_astartedefaultingress.html">here</a>.</p><h2 id="prerequisites" class="section-heading">
   <a href="#prerequisites" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">prerequisites</p>
   </a>
@@ -247,12 +246,12 @@ Setting up the Cluster
   </div>
   <div class="bottom-actions-item">
 
-      <a href="065-setup_astartevoyageringress.html" class="bottom-actions-button" rel="next">
+      <a href="066-migrate_to_astartedefaultingress.html" class="bottom-actions-button" rel="next">
         <span class="subheader">
           Next Page →
         </span>
         <span class="title">
-Setting up the Astarte Voyager Ingress
+Migrating to the Astarte Default Ingress
         </span>
       </a>
 
