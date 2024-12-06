@@ -8,6 +8,7 @@ SPDX-License-Identifier: Apache-2.0
 :hidden: true
 :maxdepth: 1
 get_started.md
+astarte_quick_instance.md
 features_def.md
 api_docs.md
 ```

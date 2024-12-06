@@ -7,11 +7,12 @@ SPDX-License-Identifier: Apache-2.0
 # Getting started guide
 
 All of the Astarte device SDKs are dependent on an Astarte instance running locally or remotely.
-As such, if you are not already familiar with setting up an Astarte instance we recommend reading
-the [Astarte documentation](https://docs.astarte-platform.org/astarte/latest/001-intro_user.html).
-Specifically the
-[Astarte in 5 minutes](https://docs.astarte-platform.org/astarte/latest/010-astarte_in_5_minutes.html)
-page can help setting up quickly an instance of Astarte for testing purposes.
+If you are new to Astarte and would like to quickly test one of our SDKs with an Astarte instance
+on your local machine and network then follow our
+[Astarte quick instance](astarte_quick_instance.md) guide to set up an Astarte instance from scratch.
+Furthermore, we recommend reading the
+[Astarte documentation](https://docs.astarte-platform.org/astarte/latest/001-intro_user.html) if you
+want to dive deeper into the Astarte platform's inner workings.
 
 Assuming a correctly configured Astarte instance is present, any of the Astarte device SDKs can be
 used to interact with it.

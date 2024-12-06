@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="API documentation" href="api_docs.html" /><link rel="prev" title="Astarte quick instance" href="astarte_quick_instance.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Features definition" href="features_def.html" /><link rel="prev" title="Get started with CSharp" href="get_started/csharp.html" />
 
     <link rel="shortcut icon" href="_static/mascotte.svg"/><!-- Generated with Sphinx 8.0.2 and Furo 2024.08.06 -->
-        <title>Features definition - Astarte SDKs documentation</title>
+        <title>Astarte quick instance - Astarte SDKs documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -212,8 +212,8 @@
 <li class="toctree-l2"><a class="reference internal" href="get_started/csharp.html">Get started with CSharp</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="astarte_quick_instance.html">Astarte quick instance</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Features definition</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Astarte quick instance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features_def.html">Features definition</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="api_docs.html">API documentation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of API documentation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="api_docs/esp32.html">Esp32 APIs</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Esp32 APIs</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference external" href="https://docs.astarte-platform.org/device-sdks/esp32/snapshot/api">Esp32 snapshot APIs</a></li>
@@ -270,7 +270,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="_sources/features_def.md.txt" title="View this page">
+  <a class="muted-link" href="_sources/astarte_quick_instance.md.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -295,133 +295,195 @@ Copyright 2024 SECO Mind Srl
 
 SPDX-License-Identifier: Apache-2.0
 -->
-<section id="features-definition">
-<h1>Features definition<a class="headerlink" href="#features-definition" title="Link to this heading">¶</a></h1>
-<p>A set of possible features supported by the SDKs is presented in this section.
-Each Astarte device SDK implements a slighly different set of features. While some might be
-common to all the SDKs, others might be more relevant to some programming language or framework
-and subequently be only implemented in a set of SDKs.</p>
-<section id="device-id-generation">
-<h2>Device ID generation<a class="headerlink" href="#device-id-generation" title="Link to this heading">¶</a></h2>
-<p>An Astarte instance identifies each device through an unique identifier.
-Some of the Astarte device SDKs provide utilities to generate a device ID in a deterministic or
-random manner. Some SDKs can extract information from the hardware to generate an unique identifier.
-For more information regarding the device ID format can be found in the
-<a class="reference external" href="https://docs.astarte-platform.org/astarte/latest/010-design_principles.html#device-id">Astarte documentation</a>.</p>
+<section id="astarte-quick-instance">
+<h1>Astarte quick instance<a class="headerlink" href="#astarte-quick-instance" title="Link to this heading">¶</a></h1>
+<p>This tutorial will guide you through bringing up your first Astarte instance.
+After completing this tutorial you will have an Astarte instance running on your host machine
+and will be ready to connect any of the available Astarte devices to it.
+You may choose to simulate a device on the same machine where the Astarte instance is running or
+use two different machines for hosting Astarte and the device.</p>
+<p>For more information on how to create a device using your favorite language/framework check out the
+<a class="reference internal" href="get_started.html"><span class="std std-doc">get started page</span></a>.</p>
+<section id="before-you-begin">
+<h2>Before you begin<a class="headerlink" href="#before-you-begin" title="Link to this heading">¶</a></h2>
+<p>First of all, please keep in mind that <strong>this setup is not meant to be used in production</strong>: by
+default, no persistence is involved, the installation does not have any recovery mechanism, and you
+will have to restart services manually in case something goes awry. This guide is great if you want
+to take Astarte for a spin, or if you want to use an isolated instance for development.</p>
+<section id="astarte-dependencies">
+<h3>Astarte dependencies<a class="headerlink" href="#astarte-dependencies" title="Link to this heading">¶</a></h3>
+<p>You will need a machine with at least 4GB of RAM, a recent 64-bit operating system with
+<a class="reference external" href="https://www.docker.com/">Docker</a>, <a class="reference external" href="https://docs.docker.com/compose/install/">Docker Compose</a> and
+<a class="reference external" href="https://github.com/astarte-platform/astartectl">astartectl</a> installed. This procedure has been
+tested on several systems, and is validated and maintained against Ubuntu 24.04 and macOS 10.15
+Catalina, but any other modern operating system should work.</p>
+<p>Docker version &gt;= 19, Docker compose version &gt;= 2.21 and astartectl &gt;= v24.5.2 are recommended.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>-v<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>version<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>astartectl<span class="w"> </span>version
+</pre></div>
+</div>
 </section>
-<section id="device-registration">
-<h2>Device registration<a class="headerlink" href="#device-registration" title="Link to this heading">¶</a></h2>
-<p>Registering a new device to the an Astarte instance can be performed in two ways:</p>
-<ol class="arabic simple">
-<li><p>Using the registration utilities in the Astarte instance itself. Such utilities will produce
-a credential secret. Such credential secret can then be transferred to the device an used to
-connect to Astarte.</p></li>
-<li><p>Using the on board registration utilities. This device APIs require an authorization JWT
-generated in the Astarte instance and then transferred to the device. The registration APIs
-will use the JWT token to negotiate a credential secret from the Astarte instance.</p></li>
-</ol>
-<p>Both methods will require a valid device ID to perform the registration.</p>
-<section id="on-board-device-registration">
-<h3>On board device registration<a class="headerlink" href="#on-board-device-registration" title="Link to this heading">¶</a></h3>
-<p>Registering the device is performed using the
-<a class="reference external" href="https://docs.astarte-platform.org/astarte/latest/api/index.html?urls.primaryName=Pairing%20API#/agent/registerDevice">Astarte API for device registration</a>.</p>
+<section id="for-linux-users">
+<h3>For linux users<a class="headerlink" href="#for-linux-users" title="Link to this heading">¶</a></h3>
+<p>Due to ScyllaDB requirements, if you’re working on a Linux machine you should make sure that
+<code class="docutils literal notranslate"><span class="pre">aio-max-nr</span></code> is at least <code class="docutils literal notranslate"><span class="pre">1048576</span></code>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>/proc/sys/fs/aio-max-nr
+</pre></div>
+</div>
+<p>If it’s less than that, you’ll need to edit your <code class="docutils literal notranslate"><span class="pre">/etc/sysctl.conf</span></code> file</p>
+<div class="highlight-Kconfig notranslate"><div class="highlight"><pre><span></span>fs.aio-max-nr<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1048576</span>
+</pre></div>
+</div>
+<p>and to persist this configuration</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>sysctl<span class="w"> </span>-p
+</pre></div>
+</div>
 </section>
+<section id="device-dependencies">
+<h3>Device dependencies<a class="headerlink" href="#device-dependencies" title="Link to this heading">¶</a></h3>
+<p>After completing this guide you will have an Astarte instance running and be ready to connect
+devices to it.
+Depending on your preference you could simulate a device directly on the same machine containing
+the Astarte instance or on dedicated hardware connected in the same LAN.</p>
+<p>If you want to connect dedicated hardware then you should perform some extra steps to help the
+device resolve the Astarte URLs to the local IP address of your host machine.</p>
+<section id="find-your-local-area-network-ip-address">
+<h4>Find your local area network IP address<a class="headerlink" href="#find-your-local-area-network-ip-address" title="Link to this heading">¶</a></h4>
+<p>First, find the IP address of your host machine in the LAN where both the device and the host
+will be connected.
+On Linux, this can be done using the command <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">addr</span> <span class="pre">show</span></code>. This will list all network interfaces
+with their associated IP addresses.</p>
 </section>
-<section id="interfaces-parsing">
-<h2>Interfaces parsing<a class="headerlink" href="#interfaces-parsing" title="Link to this heading">¶</a></h2>
-<p>The Astarte device SDKs are capable of parsing interfaces definitions expressed in a <code class="docutils literal notranslate"><span class="pre">.json</span></code> format.
-All the interfaces definitions provided to a device make up the introspection of such device.
-Each device will communicate its introspection to Astarte during the connection phase.</p>
-<p>For more information regarding the definition of interfaces see the
-<a class="reference external" href="https://docs.astarte-platform.org/astarte/latest/030-interface.html">Astarte documentation</a>.</p>
-</section>
-<section id="device-connection">
-<h2>Device connection<a class="headerlink" href="#device-connection" title="Link to this heading">¶</a></h2>
-<p>Astarte device SDKs make use of platform specific MQTT libraries and they hide all MQTTs connection
-management details.</p>
-<p>Astarte devices connect to the remote Astarte instance using mutual TLS authentication.</p>
-<section id="server-tls-certificates-support">
-<h3>Server TLS certificates support<a class="headerlink" href="#server-tls-certificates-support" title="Link to this heading">¶</a></h3>
-<p>Server authentication is performed using a TLS certificate, as such each device will need to
-include a set of root certificates in order to properly verify the server certificate.</p>
-</section>
-<section id="client-tls-certificate-support">
-<h3>Client TLS certificate support<a class="headerlink" href="#client-tls-certificate-support" title="Link to this heading">¶</a></h3>
-<p>Client authentication is performed using a TLS certificate issued by the Astarte instance.
-This certificate is obtained through the
-<a class="reference external" href="https://docs.astarte-platform.org/astarte/latest/api/index.html?urls.primaryName=Pairing%20API#/device/obtainCredentials">Astarte API for device credentials</a>.
-Each device will generate a certificate signing request and the Astarte instance will issue a
-corresponding x509 certificate.</p>
-</section>
-<section id="client-tls-certificate-renewal">
-<h3>Client TLS certificate renewal<a class="headerlink" href="#client-tls-certificate-renewal" title="Link to this heading">¶</a></h3>
-<p>Each device SDK is responsible to check the validity of its certificate using the appropriate
-<a class="reference external" href="https://docs.astarte-platform.org/astarte/latest/api/index.html?urls.primaryName=Pairing%20API#/device/obtainCredentials">Astarte API for device credentials validation</a>.</p>
-<p>Renewal of the certificate can be performed by requesting a fresh certificate to Astarte.</p>
-</section>
-<section id="reconnection">
-<h3>Reconnection<a class="headerlink" href="#reconnection" title="Link to this heading">¶</a></h3>
-<p>Astarte device SDKs implement an internal reconnection strategy that uses an exponential backoff
-to avoid network overloading.</p>
+<section id="configure-astarte-for-your-local-address">
+<h4>Configure Astarte for your local address<a class="headerlink" href="#configure-astarte-for-your-local-address" title="Link to this heading">¶</a></h4>
+<p>For this demo, we will use an external service <a class="reference external" href="https://nip.io/"><code class="docutils literal notranslate"><span class="pre">nip.io</span></code></a> which works
+as a wildcard DNS for any IP address.
+Setting an environment variable on your system will provide Astarte with this information.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">DOCKER_COMPOSE_ASTARTE_BASE_DOMAIN</span><span class="o">=</span><span class="s2">&quot;astarte.&lt;YOUR IP ADDRESS&gt;.nip.io&quot;</span>
+</pre></div>
+</div>
 </section>
 </section>
-<section id="data-streaming">
-<h2>Data streaming<a class="headerlink" href="#data-streaming" title="Link to this heading">¶</a></h2>
-<p>Each Astarte device SDK can transmit and receive data to one of the interfaces present in its
-introspection.</p>
-<section id="individual-data-transmission-and-reception">
-<h3>Individual data transmission and reception<a class="headerlink" href="#individual-data-transmission-and-reception" title="Link to this heading">¶</a></h3>
-<p>Devices can transmit and receive data for individual interfaces.
-Depending on the language and framework used by the SDK it might be required to place the data to
-transmit in a dedicated structure.</p>
 </section>
-<section id="aggregated-data-transmission-and-reception">
-<h3>Aggregated data transmission and reception<a class="headerlink" href="#aggregated-data-transmission-and-reception" title="Link to this heading">¶</a></h3>
-<p>Devices can transmit and receive data for aggregated interfaces.
-Depending on the language and framework used by the SDK it might be required to place the data to
-transmit in a dedicated structure.</p>
+<section id="installing-astarte-and-creating-a-realm-with-the-utility-script">
+<h2>Installing Astarte and creating a realm with the utility script<a class="headerlink" href="#installing-astarte-and-creating-a-realm-with-the-utility-script" title="Link to this heading">¶</a></h2>
+<p>If you are in a pinch we provide a quick setup script that automatically clones the Astarte
+repository, runs the docker containers, and creates a test realm (named <code class="docutils literal notranslate"><span class="pre">test</span></code>).
+It simply chains the commands listed in the two next steps together and requires some simple
+user prompts to proceed with each action.
+Since it’s a bash script it only runs on Linux, so if you are working on Windows you will have
+to follow the manual instructions.</p>
+<p>Download the script using curl:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>--proto<span class="w"> </span><span class="s1">&#39;=https&#39;</span><span class="w"> </span>--tlsv1.2<span class="w"> </span>-O<span class="w"> </span>-sSf<span class="w"> </span>https://raw.githubusercontent.com/astarte-platform/sdk-doc/refs/heads/master/astarte-setup.sh
+</pre></div>
+</div>
+<p>Then you can execute the script:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>bash<span class="w"> </span>astarte-setup.sh
+</pre></div>
+</div>
+<p>After running the script you can skip directly to the <a class="reference internal" href="#next-steps">next steps</a> section.</p>
 </section>
-<section id="reliability-support">
-<h3>Reliability support<a class="headerlink" href="#reliability-support" title="Link to this heading">¶</a></h3>
-<p>The devices ensure a level of reliability for all the data to transmitted or received. This level
-of reliability is specified in the interfaces definition and is implemented using MQTT QoS levels.</p>
+<section id="manually-install-astarte">
+<h2>Manually install Astarte<a class="headerlink" href="#manually-install-astarte" title="Link to this heading">¶</a></h2>
+<p>To get our Astarte instance running as fast as possible, we will install Astarte’s standalone
+distribution. It includes a tunable Docker Compose which brings up Astarte and every companion
+service needed for it to work.</p>
+<p>To do so, simply clone Astarte’s main repository and use its scripts to bring it up:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/astarte-platform/astarte.git<span class="w"> </span>-b<span class="w"> </span>release-1.2<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>astarte
+docker<span class="w"> </span>run<span class="w"> </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/compose:/compose<span class="w"> </span>astarte/docker-compose-initializer:1.2.0
+docker<span class="w"> </span>compose<span class="w"> </span>pull
+docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">docker-compose-initializer</span></code> will generate a root CA for devices, a key pair for Housekeeping, and
+a self-signed certificate for the broker (note: this is a <em>really</em> bad idea in production).
+You can tune the compose file further to use legitimate certificates and custom keys, but this is
+out of the scope of this tutorial.</p>
+<p>Compose might take some time to bring everything up, but usually within a minute from the containers
+creation Astarte will be ready.
+You can reach Astarte at the following addresses:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">api.astarte.&lt;YOUR</span> <span class="pre">IP</span> <span class="pre">ADDRESS&gt;.nip.io</span></code>: Astarte API, in detail:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">api.astarte.&lt;YOUR</span> <span class="pre">IP</span> <span class="pre">ADDRESS&gt;.nip.io/appengine</span></code>: AppEngine</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">api.astarte.&lt;YOUR</span> <span class="pre">IP</span> <span class="pre">ADDRESS&gt;.nip.io/housekeeping</span></code>: Housekeeping</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">api.astarte.&lt;YOUR</span> <span class="pre">IP</span> <span class="pre">ADDRESS&gt;.nip.io/pairing</span></code>: Pairing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">api.astarte.&lt;YOUR</span> <span class="pre">IP</span> <span class="pre">ADDRESS&gt;.nip.io/realmmanagement</span></code>: Realm Management</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">broker.astarte.&lt;YOUR</span> <span class="pre">IP</span> <span class="pre">ADDRESS&gt;.nip.io</span></code>: VerneMQ broker</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dashboard.astarte.&lt;YOUR</span> <span class="pre">IP</span> <span class="pre">ADDRESS&gt;.nip.io</span></code>: Astarte Dashboard</p></li>
+</ul>
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;YOUR</span> <span class="pre">IP</span> <span class="pre">ADDRESS&gt;.nip.io</span></code> can be substituted with <code class="docutils literal notranslate"><span class="pre">localhost</span></code> if you you did not set
+<code class="docutils literal notranslate"><span class="pre">DOCKER_COMPOSE_ASTARTE_BASE_DOMAIN</span></code> using your local IP address and want to run the device
+on the same machine as your Astarte instance.</p>
+<p>Moreover, Compose will forward the following ports to your machine:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">80</span></code>: HTTP</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">8883</span></code>: MQTTS</p></li>
+</ul>
 </section>
-<section id="data-persistence-and-automatic-retransmission">
-<h3>Data persistence and automatic retransmission<a class="headerlink" href="#data-persistence-and-automatic-retransmission" title="Link to this heading">¶</a></h3>
-<p>Astarte Device SDKs allow configuring persitence for high enough reliability levels. In case of
-connection loss data is stored to memory or disk (according to configuration) and they are
-automatically retransmitted as soon as the device is back online.</p>
+<section id="manually-create-a-realm">
+<h2>Manually create a realm<a class="headerlink" href="#manually-create-a-realm" title="Link to this heading">¶</a></h2>
+<p>Now that we have our instance up and running, we can start setting up a realm for our device.
+We’ll call our realm <code class="docutils literal notranslate"><span class="pre">test</span></code>. Given we have no SSO or Authentication mechanism set up, we’re just
+going to generate a public key to sign our JWTs with.</p>
+<p>You can create one with <code class="docutils literal notranslate"><span class="pre">astartectl</span></code>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>astartectl<span class="w"> </span>utils<span class="w"> </span>gen-keypair<span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">astartectl</span></code> to create a new realm:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>astartectl<span class="w"> </span>housekeeping<span class="w"> </span>realms<span class="w"> </span>create<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--astarte-url<span class="w"> </span>http://api.astarte.&lt;YOUR<span class="w"> </span>IP<span class="w"> </span>ADDRESS&gt;.nip.io<span class="w"> </span>-k<span class="w"> </span>compose/astarte-keys/housekeeping_private.pem<span class="w"> </span>--realm-public-key<span class="w"> </span>test_public.pem<span class="w"> </span>-y
+</pre></div>
+</div>
+<p>This creates a <code class="docutils literal notranslate"><span class="pre">test</span></code> realm, which should be ready to be used almost immediately.
+Remember to replace <code class="docutils literal notranslate"><span class="pre">&lt;YOUR</span> <span class="pre">IP</span> <span class="pre">ADDRESS&gt;.nip.io</span></code> with <code class="docutils literal notranslate"><span class="pre">localhost</span></code> if you did not set
+<code class="docutils literal notranslate"><span class="pre">DOCKER_COMPOSE_ASTARTE_BASE_DOMAIN</span></code> using your local IP and want to run the device
+on the same machine as your Astarte instance.</p>
+<p>Let’s then generate an authorization token in the form of a JWT.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>astartectl<span class="w"> </span>utils<span class="w"> </span>gen-jwt<span class="w"> </span>all-realm-apis<span class="w"> </span>-e<span class="w"> </span><span class="m">0</span><span class="w"> </span>-k<span class="w"> </span>test_private.pem
+</pre></div>
+</div>
+<p>The JWT generated will provide you access to all APIs of the realm. In production environments,
+more fine-tuned tokens should be carefully generated and used depending on needs, but this is out of
+the scope of this tutorial.</p>
 </section>
+<section id="access-the-astarte-dashboard">
+<h2>Access the Astarte dashboard<a class="headerlink" href="#access-the-astarte-dashboard" title="Link to this heading">¶</a></h2>
+<p>The Astarte dashboard is a useful GUI tool that provides control over your Astarte installation.
+You can find the Astarte dashboard for your newly created instance at
+<code class="docutils literal notranslate"><span class="pre">http://dashboard.astarte.&lt;YOUR</span> <span class="pre">IP</span> <span class="pre">ADDRESS&gt;.nip.io</span></code> if you did set the
+<code class="docutils literal notranslate"><span class="pre">DOCKER_COMPOSE_ASTARTE_BASE_DOMAIN</span></code> variable with your IP or at
+<code class="docutils literal notranslate"><span class="pre">http://dashboard.astarte.localhost</span></code> if you didn’t.
+You will be prompted for some login information. In the <code class="docutils literal notranslate"><span class="pre">realm</span></code> field you can place the name
+of your newly created realm (<code class="docutils literal notranslate"><span class="pre">test</span></code>) while in the <code class="docutils literal notranslate"><span class="pre">token</span></code> field you can place the access token
+generated in the previous step.</p>
 </section>
-<section id="properties">
-<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading">¶</a></h2>
-<p>Astarte has support for the concept of properties, which are kept synchronized between the server
-and the device.</p>
-<section id="setting-unsetting-device-properties">
-<h3>Setting/unsetting device properties<a class="headerlink" href="#setting-unsetting-device-properties" title="Link to this heading">¶</a></h3>
-<p>Device properties can be set in each device and each value change is communicated to the Astarte
-instance.
-Unsetting properties will be allowed only for properties are defined as unsettable in their
-interface definition.</p>
+<section id="next-steps">
+<h2>Next steps<a class="headerlink" href="#next-steps" title="Link to this heading">¶</a></h2>
+<p>You now have access to an Astarte instance and can continue with any of the
+<a class="reference internal" href="get_started.html"><span class="std std-doc">device get started guides</span></a> of your liking.</p>
 </section>
-<section id="setting-unsetting-server-properties">
-<h3>Setting/unsetting server properties<a class="headerlink" href="#setting-unsetting-server-properties" title="Link to this heading">¶</a></h3>
-<p>Server properties are property of the Astarte instance and can’t be modified by the device.
-However they can be added to the device introspection and any change for their value will be
-communicated to the device.
-Unsetting properties will be allowed only for properties are defined as unsettable in their
-interface definition.</p>
+<section id="cleaning-up">
+<h2>Cleaning up<a class="headerlink" href="#cleaning-up" title="Link to this heading">¶</a></h2>
+<p>When you’re done with your tests and developments, you can use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span></code> again to tear down
+your Astarte instance simply by issuing:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>down
+</pre></div>
+</div>
+<p>Unless you add the <code class="docutils literal notranslate"><span class="pre">-v</span> </code> option, persistencies will be kept and next time you will
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">up</span></code> the cluster will come back in the very same state you left it last time.
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">down</span> <span class="pre">-v</span></code> is extremely useful during development, especially if you want a clean
+slate for testing your applications or your routines every time.</p>
 </section>
-<section id="properties-presistency">
-<h3>Properties presistency<a class="headerlink" href="#properties-presistency" title="Link to this heading">¶</a></h3>
-<p>Astarte device SDKs store in persistent memory their owned properties.
-This ensures a correct synchronization between Astarte and the device in cases of re-connections.</p>
-</section>
-</section>
-<section id="data-validation">
-<h2>Data Validation<a class="headerlink" href="#data-validation" title="Link to this heading">¶</a></h2>
-<p>The Astarte device SDKs validate user data before transmission, hence errors are reported locally
-on the device improving troubleshooting experience.</p>
+<section id="final-notes">
+<h2>Final notes<a class="headerlink" href="#final-notes" title="Link to this heading">¶</a></h2>
+<p>Running Astarte through <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span></code> is the fastest way to go from zero to hero. However,
+<strong>please keep in mind this setup is unlikely to hold for long in production and is by design broken
+for large installations</strong>.</p>
+<p>This method is great for development and for trying out the system. If you wish to deploy Astarte
+in a more robust environment, have a look at a <a class="reference external" href="https://astarte.cloud/">managed Astarte instance</a>,
+or manage your own with the
+<a class="reference external" href="https://docs.astarte-platform.org/astarte-kubernetes-operator/latest/001-intro_administrator.html">Astarte Kubernetes Operator</a>.</p>
 </section>
 </section>
 
@@ -430,23 +492,23 @@ on the device improving troubleshooting experience.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="api_docs.html">
+          <a class="next-page" href="features_def.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">API documentation</div>
+                <div class="title">Features definition</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="astarte_quick_instance.html">
+          <a class="prev-page" href="get_started/csharp.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Astarte quick instance</div>
+                <div class="title">Get started with CSharp</div>
                 
               </div>
             </a>
@@ -480,34 +542,24 @@ on the device improving troubleshooting experience.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Features definition</a><ul>
-<li><a class="reference internal" href="#device-id-generation">Device ID generation</a></li>
-<li><a class="reference internal" href="#device-registration">Device registration</a><ul>
-<li><a class="reference internal" href="#on-board-device-registration">On board device registration</a></li>
+<li><a class="reference internal" href="#">Astarte quick instance</a><ul>
+<li><a class="reference internal" href="#before-you-begin">Before you begin</a><ul>
+<li><a class="reference internal" href="#astarte-dependencies">Astarte dependencies</a></li>
+<li><a class="reference internal" href="#for-linux-users">For linux users</a></li>
+<li><a class="reference internal" href="#device-dependencies">Device dependencies</a><ul>
+<li><a class="reference internal" href="#find-your-local-area-network-ip-address">Find your local area network IP address</a></li>
+<li><a class="reference internal" href="#configure-astarte-for-your-local-address">Configure Astarte for your local address</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#interfaces-parsing">Interfaces parsing</a></li>
-<li><a class="reference internal" href="#device-connection">Device connection</a><ul>
-<li><a class="reference internal" href="#server-tls-certificates-support">Server TLS certificates support</a></li>
-<li><a class="reference internal" href="#client-tls-certificate-support">Client TLS certificate support</a></li>
-<li><a class="reference internal" href="#client-tls-certificate-renewal">Client TLS certificate renewal</a></li>
-<li><a class="reference internal" href="#reconnection">Reconnection</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#data-streaming">Data streaming</a><ul>
-<li><a class="reference internal" href="#individual-data-transmission-and-reception">Individual data transmission and reception</a></li>
-<li><a class="reference internal" href="#aggregated-data-transmission-and-reception">Aggregated data transmission and reception</a></li>
-<li><a class="reference internal" href="#reliability-support">Reliability support</a></li>
-<li><a class="reference internal" href="#data-persistence-and-automatic-retransmission">Data persistence and automatic retransmission</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#properties">Properties</a><ul>
-<li><a class="reference internal" href="#setting-unsetting-device-properties">Setting/unsetting device properties</a></li>
-<li><a class="reference internal" href="#setting-unsetting-server-properties">Setting/unsetting server properties</a></li>
-<li><a class="reference internal" href="#properties-presistency">Properties presistency</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#data-validation">Data Validation</a></li>
+<li><a class="reference internal" href="#installing-astarte-and-creating-a-realm-with-the-utility-script">Installing Astarte and creating a realm with the utility script</a></li>
+<li><a class="reference internal" href="#manually-install-astarte">Manually install Astarte</a></li>
+<li><a class="reference internal" href="#manually-create-a-realm">Manually create a realm</a></li>
+<li><a class="reference internal" href="#access-the-astarte-dashboard">Access the Astarte dashboard</a></li>
+<li><a class="reference internal" href="#next-steps">Next steps</a></li>
+<li><a class="reference internal" href="#cleaning-up">Cleaning up</a></li>
+<li><a class="reference internal" href="#final-notes">Final notes</a></li>
 </ul>
 </li>
 </ul>
