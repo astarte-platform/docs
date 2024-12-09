@@ -297,102 +297,213 @@ SPDX-License-Identifier: Apache-2.0
 -->
 <section id="get-started-with-zephyr">
 <h1>Get started with Zephyr<a class="headerlink" href="#get-started-with-zephyr" title="Link to this heading">¶</a></h1>
-<p>Follow this guide to start with the Astarte device SDK for the Zephyr framework.</p>
-<p>We will assume you have already set up Zephyr and are starting with a fresh empty project.
-Your starting project should initialize networking using an appropriate physical layer and you
-should have added a set of TLS certificates appropriate to reach the Astarte servers.</p>
-<section id="add-the-astarte-device-sdk-as-a-dependency">
-<h2>Add the Astarte device SDK as a dependency<a class="headerlink" href="#add-the-astarte-device-sdk-as-a-dependency" title="Link to this heading">¶</a></h2>
-<p>To add this module as a dependency to an application the application’s manifest file should be
-modified in the following way.
-First, a new remote should be added:</p>
-<div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>  remotes:
-    # ... other remotes ...
-    - name: astarte-platform
-      url-base: https://github.com/astarte-platform
+<p>Follow this guide to start with the Astarte device SDK for the Zephyr framework. We will guide you
+through setting up a very basic Zephyr application creating a device on a board of your choice,
+connecting it to a local Astarte instance and transmitting some data.</p>
+<section id="before-you-begin">
+<h2>Before you begin<a class="headerlink" href="#before-you-begin" title="Link to this heading">¶</a></h2>
+<section id="local-astarte-instance">
+<h3>Local Astarte instance<a class="headerlink" href="#local-astarte-instance" title="Link to this heading">¶</a></h3>
+<p>This get started will focus on creating a device and connecting it to an Astarte instance.
+If you don’t have access to an Astarte instance you can easily set up one following our
+<a class="reference external" href="https://docs.astarte-platform.org/device-sdks/common/astarte_quick_instance.html">Astarte quick instance guide</a>.</p>
+<p>From here on we will assume you have access to an Astarte instance, remote or on a host machine
+connected to the same LAN where your device will be connected.
+Furthermore, we will assume you have access to the Astarte dashboard for a realm.
+The next steps will install the required interfaces and register a new device on Astarte using the
+dashboard. The same operations could be performed using <code class="docutils literal notranslate"><span class="pre">astartectl</span></code> and the access token generated
+in the Astarte quick instance guide.</p>
+</section>
+<section id="installing-the-required-interfaces">
+<h3>Installing the required interfaces<a class="headerlink" href="#installing-the-required-interfaces" title="Link to this heading">¶</a></h3>
+<p>The interfaces that our device will use must first be installed within the Astarte instance.
+In this guide we will show how to stream individual and aggregated data as well as how to set and
+unset properties. As a consequence we will need three separated interfaces, one for each data type.</p>
+<p>The following is the definition of the individually aggregated interface:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.astarte-platform.zephyr.get-started.Individual&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version_minor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;datastream&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ownership&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Individual interface for the get-started of the Astarte device SDK for Zephyr.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/double_endpoint&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;double&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;explicit_timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>Second, a new entry should be added to the projects list:</p>
-<div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>  projects:
-    # ... other projects ...
-    - name: astarte-device-sdk-zephyr
-      remote: astarte-platform
-      repo-path: astarte-device-sdk-zephyr.git
-      path: astarte-device-sdk-zephyr
-      revision: v0.7.1
-      west-commands: scripts/west-commands.yml
-      import: true
+<p>Next is the definition of the aggregated interface:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.astarte-platform.zephyr.get-started.Aggregated&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version_minor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;datastream&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;aggregation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ownership&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Aggregated interface for the get-started of the Astarte device SDK for Zephyr.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/group_data/double_endpoint&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;double&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;explicit_timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/group_data/string_endpoint&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;explicit_timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>Remember to run <code class="docutils literal notranslate"><span class="pre">west</span> <span class="pre">update</span></code> after changing the manifest file.</p>
-<p>In addition, the Astarte device library <code class="docutils literal notranslate"><span class="pre">Kconfig</span></code> should be added to the <code class="docutils literal notranslate"><span class="pre">Kconfig</span></code> file of the
-application.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rsource</span> <span class="s2">&quot;../../astarte-device-sdk-zephyr/Kconfig&quot;</span>
+<p>And finally the definition of the property interface:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.astarte-platform.zephyr.get-started.Property&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version_minor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;properties&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ownership&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Property interface for the get-started of the Astarte device SDK for Zephyr.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/double_endpoint&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;double&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;allow_unset&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>This will add the configuration options of the example module to the application.</p>
-<p>Last, install the dependencies for the west extensions required by the Astarte device, by running
-this command in your Zephyr workspace.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>./astarte-device-sdk-zephyr/scripts/requirements.txt
+<p>To install the three interfaces in the Astarte instance, open the Astarte dashboard, navigate to the
+interfaces tab and click on install new interface.
+You can copy and paste the JSON files for each interface in the right box overwriting the default
+template.</p>
+</section>
+<section id="registering-the-device">
+<h3>Registering the device<a class="headerlink" href="#registering-the-device" title="Link to this heading">¶</a></h3>
+<p>Devices should be pre-registered to Astarte before their first connection.
+With the Astarte device SDK for Zephyr this can be achieved in two ways:</p>
+<ul class="simple">
+<li><p>By registering the device on Astarte manually, obtaining a credentials secret and transfering it
+on the device.</p></li>
+<li><p>By using the included registration utilities provided by the SDK. Those utilities can make use of
+a registration JWT issued by Astarte and register the device automatically before the first
+connection.</p></li>
+</ul>
+<p>To keep this guide as simple as possible we will use the first method, as a device can be registered
+using the Astarte dashboard with a couple of clicks.</p>
+<p>To install a new device start by opening the dashboard and navigate to the devices tab.
+Click on register a new device, there you can input your own device ID or generate a random one.
+For example you could use the device ID <code class="docutils literal notranslate"><span class="pre">MFVgjjP2Tt6RbT_wKOI0VA</span></code>.
+Click on register device, this will register the device an give you a credentials secret.
+The credentials secret will be used by the device to authenticate with Astarte.
+Copy it somewhere safe as it will be used in the next steps.</p>
+</section>
+</section>
+<section id="creating-a-zephyr-rtos-project">
+<h2>Creating a Zephyr RTOS project<a class="headerlink" href="#creating-a-zephyr-rtos-project" title="Link to this heading">¶</a></h2>
+<p>This library is dependent on the <a class="reference external" href="https://zephyrproject.org/">Zephyr RTOS</a> project.
+If you are not familiar with Zephyr we suggest checking out their
+<a class="reference external" href="https://docs.zephyrproject.org/latest/index.html">documentation</a>.
+We will assume you have already followed at least the
+<a class="reference external" href="https://docs.zephyrproject.org/latest/develop/getting_started/index.html">getting started guide</a>
+from Zephyr and have installed the latest Zephyr SDK.</p>
+<p>Set up a new Zephyr project using the standard procedure.
+First create a new folder for your project, we will use <code class="docutils literal notranslate"><span class="pre">~/astartezephyrproject</span></code>. Create a
+Python venv within and install west.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>~/astartezephyrproject/.venv
+<span class="nb">source</span><span class="w"> </span>~/astartezephyrproject/.venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>west
+<span class="nb">cd</span><span class="w"> </span>~/astartezephyrproject
+</pre></div>
+</div>
+<p>Next, create a new manifest file for your project with the basic dependencies.
+We will add Zephyr and the Astarte device as dependencies, importing also all the Zephyr
+dependencies for simplicity.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">manifest</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">remotes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zephyrproject-rtos</span>
+<span class="w">      </span><span class="nt">url-base</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/zephyrproject-rtos</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">astarte-platform</span>
+<span class="w">      </span><span class="nt">url-base</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/astarte-platform</span>
+
+<span class="w">  </span><span class="nt">projects</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zephyr</span>
+<span class="w">      </span><span class="nt">remote</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zephyrproject-rtos</span>
+<span class="w">      </span><span class="nt">revision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v3.7.1</span>
+<span class="w">      </span><span class="nt">import</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">astarte-device-sdk-zephyr</span>
+<span class="w">      </span><span class="nt">remote</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">astarte-platform</span>
+<span class="w">      </span><span class="nt">repo-path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">astarte-device-sdk-zephyr.git</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">astarte-device-sdk-zephyr</span>
+<span class="w">      </span><span class="nt">revision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v0.7.1</span>
+</pre></div>
+</div>
+<p>Save the <code class="docutils literal notranslate"><span class="pre">west.yml</span></code> manifest in a <code class="docutils literal notranslate"><span class="pre">get_started_app</span></code> folder within the <code class="docutils literal notranslate"><span class="pre">astartezephyrproject</span></code>.
+We can then initialize our project with west.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>west<span class="w"> </span>init<span class="w"> </span>-l<span class="w"> </span>get_started_app
+west<span class="w"> </span>update
+west<span class="w"> </span>zephyr-export
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>~/astartezephyrproject/zephyr/scripts/requirements.txt
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>~/astartezephyrproject/astarte-device-sdk-zephyr/scripts/requirements.txt
+</pre></div>
+</div>
+<p>This will initialize your workspace, downloading all required dependencies.
+You will now need to create a valid Zephyr application scheleton in your <code class="docutils literal notranslate"><span class="pre">get_started_app</span></code>
+folder. If you are unsure how to do it check out the
+<a class="reference external" href="https://docs.zephyrproject.org/latest/develop/application/index.html">application development</a>
+section of the Zephyr documentation.
+You will need at least a <code class="docutils literal notranslate"><span class="pre">CMakeList.txt</span></code>, a <code class="docutils literal notranslate"><span class="pre">prj.conf</span></code>, and a <code class="docutils literal notranslate"><span class="pre">src/main.c</span></code> files.</p>
+<p>Once you correctly filled in those files with some placeholder code and configurations
+you will be able to build your application using the command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>west<span class="w"> </span>build<span class="w"> </span>-p<span class="w"> </span>-b<span class="w"> </span>&lt;YOUR<span class="w"> </span>BOARD&gt;<span class="w"> </span>./get_started_app/
 </pre></div>
 </div>
 </section>
-<section id="minimal-configuration-options-for-the-astarte-device">
-<h2>Minimal configuration options for the Astarte device<a class="headerlink" href="#minimal-configuration-options-for-the-astarte-device" title="Link to this heading">¶</a></h2>
+<section id="about-networking-layers">
+<h2>About networking layers<a class="headerlink" href="#about-networking-layers" title="Link to this heading">¶</a></h2>
+<p>Your board should include some kind of physical networking layer in order to connect to the
+internet. We expect you to configure your application for the specific physical layer of your board.
+In the following sections we will assume your board can connect through Ethernet.</p>
+</section>
+<section id="adding-minimal-configuration-options-for-the-astarte-device">
+<h2>Adding minimal configuration options for the Astarte device<a class="headerlink" href="#adding-minimal-configuration-options-for-the-astarte-device" title="Link to this heading">¶</a></h2>
 <p>A minimal set of Zephyr functionalities should be enabled for the Astarte device to work.
 Modules such as MbedTLS, base64, and MQTT provide the necessary functionality.</p>
-<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span># ... Hardware dependent networking configuration ...
-
-# Astarte device SDK
+<p>Copy and paste the following Kconfig into the <code class="docutils literal notranslate"><span class="pre">prj.conf</span></code> file, replacing the <code class="docutils literal notranslate"><span class="pre">&lt;ASTARTE</span> <span class="pre">HOSTNAME&gt;</span></code>
+and <code class="docutils literal notranslate"><span class="pre">&lt;REALM</span> <span class="pre">NAME&gt;</span></code> with appropriate values for your Astarte instance.
+If you used the Astarte quick instance to set up Astarte those values will be
+<code class="docutils literal notranslate"><span class="pre">api.astarte.&lt;HOST</span> <span class="pre">IP</span> <span class="pre">ADDRESS&gt;.nip.io</span></code> and <code class="docutils literal notranslate"><span class="pre">test</span></code>.</p>
+<div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span><span class="c1"># Astarte device SDK</span>
 CONFIG_ASTARTE_DEVICE_SDK=y
-CONFIG_ASTARTE_DEVICE_SDK_HOSTNAME=&quot;.&quot;
-CONFIG_ASTARTE_DEVICE_SDK_REALM_NAME=&quot;.&quot;
-CONFIG_ASTARTE_DEVICE_SDK_PAIRING_JWT=&quot;.&quot;
-# Assuming that HTTPs and MQTTs requests can use the same TLS certificate
-# The two following tags should correspond to the certificates added by the user
-CONFIG_ASTARTE_DEVICE_SDK_HTTPS_CA_CERT_TAG=1
-CONFIG_ASTARTE_DEVICE_SDK_MQTTS_CA_CERT_TAG=1
-# This tag should correspond to an unused certificate tag.
-# The Astarte device will use it to store the client certificate.
-CONFIG_ASTARTE_DEVICE_SDK_CLIENT_CERT_TAG=2
-# This example will not include permanent storage
+CONFIG_ASTARTE_DEVICE_SDK_HOSTNAME=&quot;&lt;ASTARTE<span class="w"> </span>HOSTNAME&gt;&quot;
+CONFIG_ASTARTE_DEVICE_SDK_REALM_NAME=&quot;&lt;REALM<span class="w"> </span>NAME&gt;&quot;
+CONFIG_ASTARTE_DEVICE_SDK_DEVELOP_USE_NON_TLS_HTTP=y
+CONFIG_ASTARTE_DEVICE_SDK_DEVELOP_USE_NON_TLS_MQTT=y
+CONFIG_ASTARTE_DEVICE_SDK_CLIENT_CERT_TAG=1
+<span class="c1"># For simplicity this example will not include permanent storage</span>
 CONFIG_ASTARTE_DEVICE_SDK_PERMANENT_STORAGE=n
 
-# Enable logging for application
-CONFIG_LOG=y
-
-# Increased stack size
+<span class="c1"># Increased stack size</span>
 CONFIG_MAIN_STACK_SIZE=16384
-
-# DNS resolver
+<span class="c1"># Enable base64 encoding and decoding</span>
+CONFIG_BASE64=y
+<span class="c1"># Enable system hashmaps</span>
+CONFIG_SYS_HASH_MAP=y
+<span class="c1"># Enable JSON library</span>
+CONFIG_JSON_LIBRARY=y
+<span class="c1"># Enable entropy generator</span>
+CONFIG_ENTROPY_GENERATOR=y
+<span class="c1"># DNS resolver</span>
 CONFIG_DNS_RESOLVER=y
 CONFIG_DNS_SERVER_IP_ADDRESSES=y
-CONFIG_DNS_SERVER1=&quot;8.8.8.8&quot; # Google DNS
-
-# Enable entropy generator
-CONFIG_ENTROPY_GENERATOR=y
-
-# Enable JSON library
-CONFIG_JSON_LIBRARY=y
-
-# Enable base64 encoding and decoding
-CONFIG_BASE64=y
-
-# Enable system hashmaps
-CONFIG_SYS_HASH_MAP=y
-
-# Sockets
-CONFIG_NET_SOCKETS=y
-CONFIG_NET_SOCKETS_SOCKOPT_TLS=y
-
-# Enable HTTP client
-CONFIG_HTTP_CLIENT=y
-
-# MQTT options
-CONFIG_MQTT_LIB=y
-CONFIG_MQTT_LIB_TLS=y
-
-# MbedTLS
+CONFIG_DNS_SERVER1=&quot;8.8.8.8&quot;<span class="w"> </span><span class="c1"># Google DNS</span>
+<span class="c1"># MbedTLS</span>
 CONFIG_MBEDTLS=y
 CONFIG_MBEDTLS_BUILTIN=y
 CONFIG_MBEDTLS_ENABLE_HEAP=y
@@ -400,7 +511,6 @@ CONFIG_MBEDTLS_HEAP_SIZE=55000
 CONFIG_MBEDTLS_SSL_MAX_CONTENT_LEN=16384
 CONFIG_MBEDTLS_PEM_CERTIFICATE_FORMAT=y
 CONFIG_MBEDTLS_PK_WRITE_C=y
-CONFIG_MBEDTLS_X509_CSR_WRITE_C=y
 CONFIG_MBEDTLS_ENTROPY_ENABLED=y
 CONFIG_MBEDTLS_ZEPHYR_ENTROPY=y
 CONFIG_MBEDTLS_TLS_VERSION_1_2=y
@@ -409,138 +519,143 @@ CONFIG_MBEDTLS_CIPHER_ALL_ENABLED=y
 CONFIG_MBEDTLS_SERVER_NAME_INDICATION=y
 CONFIG_MBEDTLS_KEY_EXCHANGE_ALL_ENABLED=y
 CONFIG_MBEDTLS_HASH_ALL_ENABLED=y
+CONFIG_MBEDTLS_CTR_DRBG_ENABLED=y
+CONFIG_MBEDTLS_HMAC_DRBG_ENABLED=y
+CONFIG_MBEDTLS_CHACHAPOLY_AEAD_ENABLED=y
 CONFIG_MBEDTLS_ECDH_C=y
 CONFIG_MBEDTLS_ECDSA_C=y
 CONFIG_MBEDTLS_ECJPAKE_C=y
 CONFIG_MBEDTLS_ECP_C=y
 CONFIG_MBEDTLS_ECP_ALL_ENABLED=y
-</pre></div>
-</div>
-</section>
-<section id="generate-a-device-id">
-<h2>Generate a device ID<a class="headerlink" href="#generate-a-device-id" title="Link to this heading">¶</a></h2>
-<p>Each Astarte device is uniquely identified within an Astarte instance using a device ID. Device IDs
-can be generated deterministically, starting from user-defined information or randomly.</p>
-<p>If you already have a device ID and a credential secret skip to
-<a class="reference internal" href="#generating-the-interfaces-headers">Generating the interfaces headers</a>.
-This step is only useful when registering the device through the APIs using the JWT token.
-When registering a device using an alternative method the device ID should be provided by the user.</p>
-<p>To generate a random device ID use the function <code class="docutils literal notranslate"><span class="pre">astarte_device_id_generate_random</span></code> as shown below.</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/device_id.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/result.h&gt;</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">	</span><span class="n">astarte_result_t</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ASTARTE_RESULT_OK</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">device_id</span><span class="p">[</span><span class="n">ASTARTE_DEVICE_ID_LEN</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span>
-<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">astarte_device_id_generate_random</span><span class="p">(</span><span class="n">device_id</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">res</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ASTARTE_RESULT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">		</span><span class="n">LOG_INF</span><span class="p">(</span><span class="s">&quot;Err: &#39;%s&#39;.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_result_to_name</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="p">}</span>
-</pre></div>
-</div>
-</section>
-<section id="registering-a-device">
-<h2>Registering a device<a class="headerlink" href="#registering-a-device" title="Link to this heading">¶</a></h2>
-<p>For a device to connect to Astarte a registration procedure is required. This registration will
-produce a device-specific credential secret that will be used when connecting to Astarte. The Zephyr
-Astarte device SDKs provide utilities to perform a device registration directly on the device.
-Those utilities require a registration JWT to be loaded on the device. Such JWT should be discarded
-following the registration procedure.</p>
-<p>This step is only useful when registering the device through the APIs using the JWT token.
-Registration of a device can also be performed outside the device in the Astarte instance using
-tools such as <a class="reference external" href="https://github.com/astarte-platform/astartectl">astartectl</a>, the
-<a class="reference external" href="https://docs.astarte-platform.org/astarte/latest/015-astarte_dashboard.html">Astarte dashboard</a>,
-or the dedicated
-<a class="reference external" href="https://docs.astarte-platform.org/astarte/latest/api/index.html?urls.primaryName=Pairing%20API">Astarte API for device registration</a>.
-The generated credential secret should then be loaded manually on the device.</p>
-<p>To generate a credential secret use the function <code class="docutils literal notranslate"><span class="pre">astarte_pairing_register_device</span></code> as shown below.
-The JWT should be specified in the Kconfig option <code class="docutils literal notranslate"><span class="pre">CONFIG_ASTARTE_DEVICE_SDK_PAIRING_JWT</span></code>.</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/pairing.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/result.h&gt;</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">	</span><span class="n">astarte_result_t</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ASTARTE_RESULT_OK</span><span class="p">;</span>
-
-<span class="w">    </span><span class="c1">// ... Generate a device ID ...</span>
-
-<span class="w">    </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">timeout_ms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">MSEC_PER_SEC</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">cred_secr</span><span class="p">[</span><span class="n">ASTARTE_PAIRING_CRED_SECR_LEN</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span>
-<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">astarte_pairing_register_device</span><span class="p">(</span><span class="n">timeout_ms</span><span class="p">,</span><span class="w"> </span><span class="n">device_id</span><span class="p">,</span><span class="w"> </span><span class="n">cred_secr</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">cred_secr</span><span class="p">));</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">res</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ASTARTE_RESULT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">		</span><span class="n">LOG_INF</span><span class="p">(</span><span class="s">&quot;Err: &#39;%s&#39;.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_result_to_name</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="p">}</span>
+CONFIG_MBEDTLS_GENPRIME_ENABLED=y
+CONFIG_MBEDTLS_PKCS5_C=y
+CONFIG_MBEDTLS_X509_CRL_PARSE_C=y
+CONFIG_MBEDTLS_X509_CSR_PARSE_C=y
+CONFIG_MBEDTLS_X509_CSR_WRITE_C=y
+<span class="c1"># Enable networking</span>
+CONFIG_NETWORKING=y
+<span class="c1"># Sockets</span>
+CONFIG_NET_SOCKETS=y
+CONFIG_NET_SOCKETS_POLL_MAX=4
+CONFIG_NET_SOCKETS_SOCKOPT_TLS=y
+<span class="c1"># Use DHCP for IPv4 and IPv6</span>
+CONFIG_NET_DHCPV4=y
+CONFIG_NET_DHCPV6=y
+<span class="c1"># Generic networking options</span>
+CONFIG_NET_TX_STACK_SIZE=4096
+CONFIG_NET_RX_STACK_SIZE=4096
+CONFIG_NET_PKT_RX_COUNT=20
+CONFIG_NET_PKT_TX_COUNT=20
+CONFIG_NET_BUF_RX_COUNT=40
+CONFIG_NET_BUF_TX_COUNT=40
+CONFIG_NET_MAX_CONTEXTS=20
+CONFIG_NET_MGMT=y
+CONFIG_NET_MGMT_EVENT=y
+CONFIG_NET_IPV4=y
+CONFIG_NET_IPV6=y
+CONFIG_NET_TCP=y
+<span class="c1"># Enable HTTP client</span>
+CONFIG_HTTP_CLIENT=y
+<span class="c1"># MQTT options</span>
+CONFIG_MQTT_LIB=y
+CONFIG_MQTT_LIB_TLS=y
+CONFIG_MQTT_KEEPALIVE=60
+<span class="c1"># Hash map function</span>
+CONFIG_SYS_HASH_FUNC32=y
 </pre></div>
 </div>
 </section>
 <section id="generating-the-interfaces-headers">
 <h2>Generating the interfaces headers<a class="headerlink" href="#generating-the-interfaces-headers" title="Link to this heading">¶</a></h2>
-<p>Each device should define a set of interfaces, defined as introspection, that will be used to
-communicate with the Astarte instance.</p>
-<p>Since the Astarte interfaces are defined in JSON files, we provide a Python script that
-automatically performs the conversion to a compatible C header. It has been configured as a west
-extension for this Zephyr module.</p>
-<p>Assuming all the interface files are contained in a <code class="docutils literal notranslate"><span class="pre">json_interfaces</span></code> folder it can be run as
-follows.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>west<span class="w"> </span>generate-interfaces<span class="w"> </span>--output_dir<span class="w"> </span>./generated_interfaces<span class="w"> </span>./json_interfaces
+<p>We previously added three interfaces to our Astarte instance. We will now do something similar on
+the device.
+Start by saving the three interfaces in JSON files in a <code class="docutils literal notranslate"><span class="pre">interfaces</span></code> folder in your working
+directory. You can then convert them to a set of C files containing all the same structures by
+running a <code class="docutils literal notranslate"><span class="pre">west</span></code> extension command.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>west<span class="w"> </span>generate-interfaces<span class="w"> </span>./get_started_app/interfaces
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">generated_interfaces</span></code> folder should be added to the include search path in the CMake
-configuration for your application.
-Furthermore, the sources in the <code class="docutils literal notranslate"><span class="pre">generated_interfaces</span></code> folder should be added to your application
-CMake target.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>FILE(GLOB generated_interfaces_src ${CMAKE_CURRENT_LIST_DIR}/../generated_interfaces/*.c)
-target_sources(app PRIVATE ${generated_interfaces_src})
-target_include_directories(app PRIVATE ${CMAKE_CURRENT_LIST_DIR}/../generated_interfaces)
+<p>This command will generate a source and header files. In order for zephyr to include them in the
+build process we should add a couple of lines to the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">target_include_directories</span><span class="p">(</span><span class="n">app</span> <span class="n">PRIVATE</span> <span class="n">interfaces</span><span class="p">)</span>
+<span class="n">target_sources</span><span class="p">(</span><span class="n">app</span> <span class="n">PRIVATE</span> <span class="n">interfaces</span><span class="o">/</span><span class="n">generated_interfaces</span><span class="o">.</span><span class="n">c</span><span class="p">)</span>
 </pre></div>
 </div>
-<blockquote>
-<div><p>NOTE: Remember that the interfaces should be installed in the Astarte
-instance for the device to use them.</p>
-</div></blockquote>
+<p>This is assuming your target application is named <code class="docutils literal notranslate"><span class="pre">app</span></code>.</p>
 </section>
 <section id="instantiating-a-device">
 <h2>Instantiating a device<a class="headerlink" href="#instantiating-a-device" title="Link to this heading">¶</a></h2>
-<p>Now that we obtained a credential secret we can create a new device instance.</p>
+<p>Finally, we can start with the source code of our device application. We will first create a new
+device using the device ID and credentials secret we obtained in the previous steps.</p>
 <p>The Astarte device SDK uses callbacks to communicate to the user that some event has occurred.
 Such callbacks should be configured before instantiating the device and connecting to Astarte.
 Several callbacks can be optionally configured. A connection callback, an individual data received
 callback, an object data received callback, and set property received callback, an unset property
 received callback, and a disconnection callback.</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/interface.h&gt;</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;zephyr/kernel.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;zephyr/net/ethernet.h&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/interface.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/device.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/result.h&gt;</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;generated_interfaces.h&quot;</span>
 
+<span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">net_mgmt_event_callback</span><span class="w"> </span><span class="n">ipv4_cb</span><span class="p">;</span>
+<span class="k">static</span><span class="w"> </span><span class="n">K_SEM_DEFINE</span><span class="p">(</span><span class="n">ipv4_address_obtained</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ipv4_mgmt_event_handler</span><span class="p">(</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">net_mgmt_event_callback</span><span class="w"> </span><span class="o">*</span><span class="n">event_cb</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">mgmt_event</span><span class="p">,</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">net_if</span><span class="w"> </span><span class="o">*</span><span class="n">iface</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">mgmt_event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">NET_EVENT_IPV4_ADDR_ADD</span><span class="p">:</span>
+<span class="w">            </span><span class="n">k_sem_give</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ipv4_address_obtained</span><span class="p">);</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">NET_EVENT_IPV4_ADDR_DEL</span><span class="p">:</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">default</span><span class="o">:</span>
+<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cp">#define DEVICE_ID &quot;DEVICE ID&quot;</span>
+<span class="cp">#define CRED_SECR &quot;CREDENTIALS SECRET&quot;</span>
+
 <span class="k">static</span><span class="w"> </span><span class="n">K_SEM_DEFINE</span><span class="p">(</span><span class="n">device_connected</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 
 <span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">connection_callback</span><span class="p">(</span><span class="n">astarte_device_connection_event_t</span><span class="w"> </span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">LOG_INF</span><span class="p">(</span><span class="s">&quot;Astarte device connected.&quot;</span><span class="p">);</span>
-<span class="w">	</span><span class="n">k_sem_give</span><span class="p">(</span><span class="o">&amp;</span><span class="n">device_connected</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printk</span><span class="p">(</span><span class="s">&quot;Astarte device connected.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">k_sem_give</span><span class="p">(</span><span class="o">&amp;</span><span class="n">device_connected</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">disconnection_callback</span><span class="p">(</span><span class="n">astarte_device_disconnection_event_t</span><span class="w"> </span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">LOG_INF</span><span class="p">(</span><span class="s">&quot;Astarte device disconnected&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">k_sem_take</span><span class="p">(</span><span class="o">&amp;</span><span class="n">device_connected</span><span class="p">,</span><span class="w"> </span><span class="n">K_NO_WAIT</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printk</span><span class="p">(</span><span class="s">&quot;Astarte device disconnected</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">	</span><span class="n">astarte_result_t</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ASTARTE_RESULT_OK</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">astarte_result_t</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ASTARTE_RESULT_OK</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1">// ... generate device ID and register the device with Astarte ...</span>
+<span class="w">    </span><span class="n">net_mgmt_init_event_callback</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ipv4_cb</span><span class="p">,</span><span class="w"> </span><span class="n">ipv4_mgmt_event_handler</span><span class="p">,</span>
+<span class="w">        </span><span class="n">NET_EVENT_IPV4_ADDR_ADD</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">NET_EVENT_IPV4_ADDR_DEL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">net_mgmt_add_event_callback</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ipv4_cb</span><span class="p">);</span>
 
+<span class="w">    </span><span class="n">printk</span><span class="p">(</span><span class="s">&quot;Waiting for Ethernet interface to be operational.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">net_if</span><span class="w"> </span><span class="o">*</span><span class="n">iface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">net_if_get_default</span><span class="p">();</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">net_if_oper_state</span><span class="p">(</span><span class="n">iface</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">NET_IF_OPER_UP</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">k_sleep</span><span class="p">(</span><span class="n">K_MSEC</span><span class="p">(</span><span class="mi">200</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">printk</span><span class="p">(</span><span class="s">&quot;Waiting for an IPv4 address (DHCP).</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">net_dhcpv4_start</span><span class="p">(</span><span class="n">iface</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">k_sem_count_get</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ipv4_address_obtained</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">k_sleep</span><span class="p">(</span><span class="n">K_MSEC</span><span class="p">(</span><span class="mi">200</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">printk</span><span class="p">(</span><span class="s">&quot;Creating an Astarte device.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">astarte_interface_t</span><span class="w"> </span><span class="o">*</span><span class="n">interfaces</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="o">&amp;</span><span class="n">org_astarteplatform_zephyr_examples_DeviceAggregate</span><span class="p">,</span>
-<span class="w">        </span><span class="o">&amp;</span><span class="n">org_astarteplatform_zephyr_examples_DeviceDatastream</span><span class="p">,</span>
-<span class="w">        </span><span class="o">&amp;</span><span class="n">org_astarteplatform_zephyr_examples_DeviceProperty</span><span class="p">,</span>
-<span class="w">        </span><span class="o">&amp;</span><span class="n">org_astarteplatform_zephyr_examples_ServerAggregate</span><span class="p">,</span>
-<span class="w">        </span><span class="o">&amp;</span><span class="n">org_astarteplatform_zephyr_examples_ServerDatastream</span><span class="p">,</span>
-<span class="w">        </span><span class="o">&amp;</span><span class="n">org_astarteplatform_zephyr_examples_ServerProperty</span>
-<span class="w">	</span><span class="p">};</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="n">org_astarte_platform_zephyr_get_started_Individual</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="n">org_astarte_platform_zephyr_get_started_Aggregated</span><span class="p">,</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="n">org_astarte_platform_zephyr_get_started_Property</span>
+<span class="w">    </span><span class="p">};</span>
 
 <span class="w">    </span><span class="n">astarte_device_config_t</span><span class="w"> </span><span class="n">device_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span>
 <span class="w">    </span><span class="n">device_config</span><span class="p">.</span><span class="n">http_timeout_ms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3000</span><span class="p">;</span>
@@ -550,15 +665,15 @@ received callback, and a disconnection callback.</p>
 <span class="w">    </span><span class="n">device_config</span><span class="p">.</span><span class="n">disconnection_cbk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">disconnection_callback</span><span class="p">;</span>
 <span class="w">    </span><span class="n">device_config</span><span class="p">.</span><span class="n">interfaces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">interfaces</span><span class="p">;</span>
 <span class="w">    </span><span class="n">device_config</span><span class="p">.</span><span class="n">interfaces_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ARRAY_SIZE</span><span class="p">(</span><span class="n">interfaces</span><span class="p">);</span>
-<span class="w">    </span><span class="n">memcpy</span><span class="p">(</span><span class="n">device_config</span><span class="p">.</span><span class="n">device_id</span><span class="p">,</span><span class="w"> </span><span class="n">device_id</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">device_id</span><span class="p">));</span>
-<span class="w">    </span><span class="n">memcpy</span><span class="p">(</span><span class="n">device_config</span><span class="p">.</span><span class="n">cred_secr</span><span class="p">,</span><span class="w"> </span><span class="n">cred_secr</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">cred_secr</span><span class="p">));</span>
+<span class="w">    </span><span class="n">memcpy</span><span class="p">(</span><span class="n">device_config</span><span class="p">.</span><span class="n">device_id</span><span class="p">,</span><span class="w"> </span><span class="n">DEVICE_ID</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">DEVICE_ID</span><span class="p">));</span>
+<span class="w">    </span><span class="n">memcpy</span><span class="p">(</span><span class="n">device_config</span><span class="p">.</span><span class="n">cred_secr</span><span class="p">,</span><span class="w"> </span><span class="n">CRED_SECR</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">CRED_SECR</span><span class="p">));</span>
 
 <span class="w">    </span><span class="n">astarte_device_handle_t</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
 <span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">astarte_device_new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">device_config</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">device</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">res</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ASTARTE_RESULT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">		</span><span class="n">LOG_INF</span><span class="p">(</span><span class="s">&quot;Err: &#39;%s&#39;.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_result_to_name</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
+<span class="w">        </span><span class="n">printk</span><span class="p">(</span><span class="s">&quot;Err: &#39;%s&#39;.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_result_to_name</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -567,20 +682,17 @@ received callback, and a disconnection callback.</p>
 <h2>Connecting and polling the device<a class="headerlink" href="#connecting-and-polling-the-device" title="Link to this heading">¶</a></h2>
 <p>After device initialization, the device will need to be connected explicitly and polled regularly
 to ensure the processing of MQTT messages.
-Ideally, a separate thread should be used for polling and transmission.</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/device.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/result.h&gt;</span>
-
-<span class="c1">// ... semaphores and callbacks ...</span>
+Ideally, two separate threads should be used for polling and transmission.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="c1">// ... imports, semaphores and callbacks ...</span>
 
 <span class="n">K_THREAD_STACK_DEFINE</span><span class="p">(</span><span class="n">device_rx_thread_stack_area</span><span class="p">,</span><span class="w"> </span><span class="mi">12288</span><span class="p">);</span>
 <span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">k_thread</span><span class="w"> </span><span class="n">device_rx_thread_data</span><span class="p">;</span>
 <span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">device_rx_thread_entry_point</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">device_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">unused1</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">unused2</span><span class="p">);</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">	</span><span class="n">astarte_result_t</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ASTARTE_RESULT_OK</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">astarte_result_t</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ASTARTE_RESULT_OK</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1">// ... generate device ID, register and instantiate the device ...</span>
+<span class="w">    </span><span class="c1">// ... configure networking and instantiate the device ...</span>
 
 <span class="w">    </span><span class="n">k_thread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">device_rx_thread_data</span><span class="p">,</span><span class="w"> </span><span class="n">device_rx_thread_stack_area</span><span class="p">,</span>
 <span class="w">        </span><span class="n">K_THREAD_STACK_SIZEOF</span><span class="p">(</span><span class="n">device_rx_thread_stack_area</span><span class="p">),</span><span class="w"> </span><span class="n">device_rx_thread_entry_point</span><span class="p">,</span>
@@ -589,6 +701,7 @@ Ideally, a separate thread should be used for polling and transmission.</p>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">k_sem_count_get</span><span class="p">(</span><span class="o">&amp;</span><span class="n">device_connected</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">k_sleep</span><span class="p">(</span><span class="n">K_MSEC</span><span class="p">(</span><span class="mi">200</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">printk</span><span class="p">(</span><span class="s">&quot;Astarte device connected.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
 
 <span class="p">}</span>
 
@@ -599,14 +712,14 @@ Ideally, a separate thread should be used for polling and transmission.</p>
 <span class="w">    </span><span class="n">astarte_device_handle_t</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">astarte_device_handle_t</span><span class="p">)</span><span class="w"> </span><span class="n">device_handle</span><span class="p">;</span>
 <span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">astarte_device_connect</span><span class="p">(</span><span class="n">device</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">res</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ASTARTE_RESULT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">		</span><span class="n">LOG_INF</span><span class="p">(</span><span class="s">&quot;Err: &#39;%s&#39;.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_result_to_name</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
+<span class="w">        </span><span class="n">printk</span><span class="p">(</span><span class="s">&quot;Err: &#39;%s&#39;.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_result_to_name</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">astarte_device_poll</span><span class="p">(</span><span class="n">device</span><span class="p">);</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">res</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ASTARTE_RESULT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">			</span><span class="n">LOG_INF</span><span class="p">(</span><span class="s">&quot;Err: &#39;%s&#39;.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_result_to_name</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
+<span class="w">            </span><span class="n">printk</span><span class="p">(</span><span class="s">&quot;Err: &#39;%s&#39;.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_result_to_name</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
 <span class="w">            </span><span class="k">return</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="n">k_sleep</span><span class="p">(</span><span class="n">K_MSEC</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
@@ -623,29 +736,25 @@ aggregation type.</p>
 <h3>Streaming individual data<a class="headerlink" href="#streaming-individual-data" title="Link to this heading">¶</a></h3>
 <p>In Astarte interfaces with <code class="docutils literal notranslate"><span class="pre">individual</span></code> aggregation, each mapping is treated as an independent value
 and is managed individually.</p>
-<p>The snippet below shows how to send a value that will be inserted into the <code class="docutils literal notranslate"><span class="pre">&quot;/boolean_endpoint&quot;</span></code>
-datastream, that is part of <code class="docutils literal notranslate"><span class="pre">&quot;org.astarteplatform.zephyr.examples.DeviceDatastream&quot;</span></code> datastream
+<p>The snippet below shows how to send a value that will be inserted into the <code class="docutils literal notranslate"><span class="pre">&quot;/double_endpoint&quot;</span></code>
+datastream, that is part of the <code class="docutils literal notranslate"><span class="pre">&quot;org.astarte-platform.zephyr.get-started.Individual&quot;</span></code> datastream
 interface.</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/device.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/individual.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/result.h&gt;</span>
-
-<span class="c1">// ... semaphores, callbacks and transmission thread ...</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="c1">// ... imports, semaphores, callbacks and transmission thread ...</span>
 
 <span class="n">K_THREAD_STACK_DEFINE</span><span class="p">(</span><span class="n">device_tx_thread_stack_area</span><span class="p">,</span><span class="w"> </span><span class="mi">8192</span><span class="p">);</span>
 <span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">k_thread</span><span class="w"> </span><span class="n">device_tx_thread_data</span><span class="p">;</span>
 <span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">device_tx_thread_entry_point</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">device_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">unused1</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">unused2</span><span class="p">);</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">	</span><span class="n">astarte_result_t</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ASTARTE_RESULT_OK</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">astarte_result_t</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ASTARTE_RESULT_OK</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1">// ... generate device ID, register, instantiate and connect the device ...</span>
+<span class="w">    </span><span class="c1">// ... configure networking, instantiate and connect the device ...</span>
 
 <span class="w">    </span><span class="n">k_thread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">device_tx_thread_data</span><span class="p">,</span><span class="w"> </span><span class="n">device_tx_thread_stack_area</span><span class="p">,</span>
 <span class="w">        </span><span class="n">K_THREAD_STACK_SIZEOF</span><span class="p">(</span><span class="n">device_tx_thread_stack_area</span><span class="p">),</span><span class="w"> </span><span class="n">device_tx_thread_entry_point</span><span class="p">,</span>
 <span class="w">        </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">device</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">K_NO_WAIT</span><span class="p">);</span>
 
-<span class="w">	</span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">k_sleep</span><span class="p">(</span><span class="n">K_MSEC</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -656,15 +765,15 @@ interface.</p>
 <span class="w">    </span><span class="n">astarte_result_t</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ASTARTE_RESULT_OK</span><span class="p">;</span>
 <span class="w">    </span><span class="n">astarte_device_handle_t</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">astarte_device_handle_t</span><span class="p">)</span><span class="w"> </span><span class="n">device_handle</span><span class="p">;</span>
 
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">interface_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">org_astarteplatform_zephyr_examples_DeviceDatastream</span><span class="p">.</span><span class="n">name</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1714748755</span><span class="p">;</span>
+<span class="w">    </span><span class="n">printk</span><span class="p">(</span><span class="s">&quot;Streaming individual data.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">interface_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">org_astarte_platform_zephyr_get_started_Individual</span><span class="p">.</span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">double_path</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/double_endpoint&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">astarte_individual_t</span><span class="w"> </span><span class="n">double_individual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">astarte_individual_from_double</span><span class="p">(</span><span class="mf">24.56</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">astarte_individual_t</span><span class="w"> </span><span class="n">boolean_individual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">astarte_individual_from_boolean</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">boolean_path</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/boolean_endpoint&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">astarte_device_stream_individual</span><span class="p">(</span>
-<span class="w">        </span><span class="n">device</span><span class="p">,</span><span class="w"> </span><span class="n">interface_name</span><span class="p">,</span><span class="w"> </span><span class="n">boolean_path</span><span class="p">,</span><span class="w"> </span><span class="n">boolean_individual</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">timestamp</span><span class="p">);</span>
+<span class="w">        </span><span class="n">device</span><span class="p">,</span><span class="w"> </span><span class="n">interface_name</span><span class="p">,</span><span class="w"> </span><span class="n">double_path</span><span class="p">,</span><span class="w"> </span><span class="n">double_individual</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">res</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ASTARTE_RESULT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">		</span><span class="n">LOG_INF</span><span class="p">(</span><span class="s">&quot;Err: &#39;%s&#39;.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_result_to_name</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
+<span class="w">        </span><span class="n">printk</span><span class="p">(</span><span class="s">&quot;Err: &#39;%s&#39;.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_result_to_name</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -676,82 +785,33 @@ interface.</p>
 <p>In Astarte interfaces with <code class="docutils literal notranslate"><span class="pre">object</span></code> aggregation, Astarte expects the owner to send all of the
 interface’s mappings at the same time, packed in a single message.</p>
 <p>The following snippet shows how to send a value for an object-aggregated interface. In this example,
-fourteen different data types will be sent together and will be inserted into the <code class="docutils literal notranslate"><span class="pre">&quot;/sensor24&quot;</span></code>
-datastream which is defined by the <code class="docutils literal notranslate"><span class="pre">&quot;/%{sensor_id}&quot;</span></code> endpoint, which is part of
-<code class="docutils literal notranslate"><span class="pre">&quot;org.astarteplatform.zephyr.examples.DeviceDatastream&quot;</span></code> datastream interface.</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/device.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/object.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/result.h&gt;</span>
-
-<span class="c1">// ... semaphores, callbacks, transmission and reception thread, main program ...</span>
+two different data types will be sent together and will be inserted into the <code class="docutils literal notranslate"><span class="pre">&quot;/group_data&quot;</span></code>
+datastream, which is part of the <code class="docutils literal notranslate"><span class="pre">&quot;org.astarte-platform.zephyr.get-started.Aggregated&quot;</span></code> datastream
+interface.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="c1">// ... imports, semaphores, callbacks, reception thread, main program ...</span>
 
 <span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">device_tx_thread_entry_point</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">device_handle</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">unused1</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">unused2</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">astarte_result_t</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ASTARTE_RESULT_OK</span><span class="p">;</span>
 <span class="w">    </span><span class="n">astarte_device_handle_t</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">astarte_device_handle_t</span><span class="p">)</span><span class="w"> </span><span class="n">device_handle</span><span class="p">;</span>
 
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">utils_binary_blob_data</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mh">0x53</span><span class="p">,</span><span class="w"> </span><span class="mh">0x47</span><span class="p">,</span><span class="w"> </span><span class="mh">0x56</span><span class="p">,</span><span class="w"> </span><span class="mh">0x73</span><span class="p">,</span><span class="w"> </span><span class="mh">0x62</span><span class="p">,</span><span class="w"> </span><span class="mh">0x47</span><span class="p">,</span><span class="w"> </span><span class="mh">0x38</span><span class="p">,</span><span class="w"> </span><span class="mh">0x3d</span><span class="w"> </span><span class="p">};</span>
-<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">binblob_1</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mh">0x53</span><span class="p">,</span><span class="w"> </span><span class="mh">0x47</span><span class="p">,</span><span class="w"> </span><span class="mh">0x56</span><span class="p">,</span><span class="w"> </span><span class="mh">0x73</span><span class="p">,</span><span class="w"> </span><span class="mh">0x62</span><span class="p">,</span><span class="w"> </span><span class="mh">0x47</span><span class="p">,</span><span class="w"> </span><span class="mh">0x38</span><span class="p">,</span><span class="w"> </span><span class="mh">0x3d</span><span class="w"> </span><span class="p">};</span>
-<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">binblob_2</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mh">0x64</span><span class="p">,</span><span class="w"> </span><span class="mh">0x32</span><span class="p">,</span><span class="w"> </span><span class="mh">0x39</span><span class="p">,</span><span class="w"> </span><span class="mh">0x79</span><span class="p">,</span><span class="w"> </span><span class="mh">0x62</span><span class="w"> </span><span class="p">};</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">utils_binary_blobs_data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">binblob_1</span><span class="p">,</span><span class="w"> </span><span class="n">binblob_2</span><span class="w"> </span><span class="p">};</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">utils_binary_blobs_sizes_data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">ARRAY_SIZE</span><span class="p">(</span><span class="n">binblob_1</span><span class="p">),</span><span class="w"> </span><span class="n">ARRAY_SIZE</span><span class="p">(</span><span class="n">binblob_2</span><span class="p">)</span><span class="w"> </span><span class="p">};</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">utils_boolean_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">utils_boolean_array_data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="p">};</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">utils_unix_time_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1710940988984</span><span class="p">;</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">utils_unix_time_array_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1710940988984</span><span class="w"> </span><span class="p">};</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">utils_double_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">15.42</span><span class="p">;</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">utils_double_array_data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mf">1542.25</span><span class="p">,</span><span class="w"> </span><span class="mf">88852.6</span><span class="w"> </span><span class="p">};</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">utils_integer_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">utils_integer_array_data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">4525</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="p">};</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">utils_longinteger_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8589934592</span><span class="p">;</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">utils_longinteger_array_data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">8589930067</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="mi">8589934592</span><span class="w"> </span><span class="p">};</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">utils_string_data</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello world!&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">utils_string_array_data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Hello &quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;world!&quot;</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="c1">// ... transmission of an individual datastream ...</span>
 
+<span class="w">    </span><span class="n">printk</span><span class="p">(</span><span class="s">&quot;Streaming aggregated data.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">double_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">15.42</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">string_data</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello world!&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="n">astarte_object_entry_t</span><span class="w"> </span><span class="n">entries</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">astarte_object_entry_new</span><span class="p">(</span><span class="s">&quot;binaryblob_endpoint&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="n">astarte_individual_from_binaryblob</span><span class="p">(</span>
-<span class="w">                </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">utils_binary_blob_data</span><span class="p">,</span><span class="w"> </span><span class="n">ARRAY_SIZE</span><span class="p">(</span><span class="n">utils_binary_blob_data</span><span class="p">))),</span>
-<span class="w">        </span><span class="n">astarte_object_entry_new</span><span class="p">(</span><span class="s">&quot;binaryblobarray_endpoint&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="n">astarte_individual_from_binaryblob_array</span><span class="p">((</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">**</span><span class="p">)</span><span class="w"> </span><span class="n">utils_binary_blobs_data</span><span class="p">,</span>
-<span class="w">                </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">utils_binary_blobs_sizes_data</span><span class="p">,</span><span class="w"> </span><span class="n">ARRAY_SIZE</span><span class="p">(</span><span class="n">utils_binary_blobs_data</span><span class="p">))),</span>
 <span class="w">        </span><span class="n">astarte_object_entry_new</span><span class="p">(</span>
-<span class="w">            </span><span class="s">&quot;boolean_endpoint&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_individual_from_boolean</span><span class="p">(</span><span class="n">utils_boolean_data</span><span class="p">)),</span>
-<span class="w">        </span><span class="n">astarte_object_entry_new</span><span class="p">(</span><span class="s">&quot;booleanarray_endpoint&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="n">astarte_individual_from_boolean_array</span><span class="p">(</span>
-<span class="w">                </span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">utils_boolean_array_data</span><span class="p">,</span><span class="w"> </span><span class="n">ARRAY_SIZE</span><span class="p">(</span><span class="n">utils_boolean_array_data</span><span class="p">))),</span>
+<span class="w">            </span><span class="s">&quot;double_endpoint&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_individual_from_double</span><span class="p">(</span><span class="n">double_data</span><span class="p">)),</span>
 <span class="w">        </span><span class="n">astarte_object_entry_new</span><span class="p">(</span>
-<span class="w">            </span><span class="s">&quot;datetime_endpoint&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_individual_from_datetime</span><span class="p">(</span><span class="n">utils_unix_time_data</span><span class="p">)),</span>
-<span class="w">        </span><span class="n">astarte_object_entry_new</span><span class="p">(</span><span class="s">&quot;datetimearray_endpoint&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="n">astarte_individual_from_datetime_array</span><span class="p">(</span>
-<span class="w">                </span><span class="p">(</span><span class="kt">int64_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">utils_unix_time_array_data</span><span class="p">,</span><span class="w"> </span><span class="n">ARRAY_SIZE</span><span class="p">(</span><span class="n">utils_unix_time_array_data</span><span class="p">))),</span>
-<span class="w">        </span><span class="n">astarte_object_entry_new</span><span class="p">(</span>
-<span class="w">            </span><span class="s">&quot;double_endpoint&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_individual_from_double</span><span class="p">(</span><span class="n">utils_double_data</span><span class="p">)),</span>
-<span class="w">        </span><span class="n">astarte_object_entry_new</span><span class="p">(</span><span class="s">&quot;doublearray_endpoint&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="n">astarte_individual_from_double_array</span><span class="p">(</span>
-<span class="w">                </span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">utils_double_array_data</span><span class="p">,</span><span class="w"> </span><span class="n">ARRAY_SIZE</span><span class="p">(</span><span class="n">utils_double_array_data</span><span class="p">))),</span>
-<span class="w">        </span><span class="n">astarte_object_entry_new</span><span class="p">(</span>
-<span class="w">            </span><span class="s">&quot;integer_endpoint&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_individual_from_integer</span><span class="p">(</span><span class="n">utils_integer_data</span><span class="p">)),</span>
-<span class="w">        </span><span class="n">astarte_object_entry_new</span><span class="p">(</span><span class="s">&quot;integerarray_endpoint&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="n">astarte_individual_from_integer_array</span><span class="p">(</span>
-<span class="w">                </span><span class="p">(</span><span class="kt">int32_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">utils_integer_array_data</span><span class="p">,</span><span class="w"> </span><span class="n">ARRAY_SIZE</span><span class="p">(</span><span class="n">utils_integer_array_data</span><span class="p">))),</span>
-<span class="w">        </span><span class="n">astarte_object_entry_new</span><span class="p">(</span>
-<span class="w">            </span><span class="s">&quot;longinteger_endpoint&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_individual_from_longinteger</span><span class="p">(</span><span class="n">utils_longinteger_data</span><span class="p">)),</span>
-<span class="w">        </span><span class="n">astarte_object_entry_new</span><span class="p">(</span><span class="s">&quot;longintegerarray_endpoint&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="n">astarte_individual_from_longinteger_array</span><span class="p">((</span><span class="kt">int64_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">utils_longinteger_array_data</span><span class="p">,</span>
-<span class="w">                </span><span class="n">ARRAY_SIZE</span><span class="p">(</span><span class="n">utils_longinteger_array_data</span><span class="p">))),</span>
-<span class="w">        </span><span class="n">astarte_object_entry_new</span><span class="p">(</span>
-<span class="w">            </span><span class="s">&quot;string_endpoint&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_individual_from_string</span><span class="p">(</span><span class="n">utils_string_data</span><span class="p">)),</span>
-<span class="w">        </span><span class="n">astarte_object_entry_new</span><span class="p">(</span><span class="s">&quot;stringarray_endpoint&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="n">astarte_individual_from_string_array</span><span class="p">(</span>
-<span class="w">                </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="p">)</span><span class="w"> </span><span class="n">utils_string_array_data</span><span class="p">,</span><span class="w"> </span><span class="n">ARRAY_SIZE</span><span class="p">(</span><span class="n">utils_string_array_data</span><span class="p">))),</span>
+<span class="w">            </span><span class="s">&quot;string_endpoint&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_individual_from_string</span><span class="p">(</span><span class="n">string_data</span><span class="p">)),</span>
 <span class="w">    </span><span class="p">};</span>
 
 <span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">astarte_device_stream_aggregated</span><span class="p">(</span><span class="n">device</span><span class="p">,</span>
-<span class="w">        </span><span class="n">org_astarteplatform_zephyr_examples_DeviceAggregate</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/sensor24&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">entries</span><span class="p">,</span>
+<span class="w">        </span><span class="n">org_astarte_platform_zephyr_get_started_Aggregated</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/group_data&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">entries</span><span class="p">,</span>
 <span class="w">        </span><span class="n">ARRAY_SIZE</span><span class="p">(</span><span class="n">entries</span><span class="p">),</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">res</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ASTARTE_RESULT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">		</span><span class="n">LOG_INF</span><span class="p">(</span><span class="s">&quot;Err: &#39;%s&#39;.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_result_to_name</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
+<span class="w">        </span><span class="n">printk</span><span class="p">(</span><span class="s">&quot;Err: &#39;%s&#39;.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_result_to_name</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -765,26 +825,27 @@ datastream which is defined by the <code class="docutils literal notranslate"><s
 concept of history or timestamping. From a programming point of view, setting and unsetting
 properties of device-owned interfaces is rather similar to sending messages on datastream
 interfaces.</p>
-<p>In this simple get started persistency for the properties has been disabled. See the more complete
-code examples in the GitHub repository for more information on how to set up the appropriate flash
-partition.</p>
+<p>In this get started guide persistency for the properties has been disabled. As such, setting and
+unsetting properties from the device would make little sense. See the more complete code samples in
+the <a class="reference external" href="https://github.com/astarte-platform/astarte-device-sdk-zephyr">GitHub repository</a> of the
+Zephyr Astarte device SDK for more information on how to set up the appropriate flash partition.</p>
 </section>
 <section id="disconnecting-the-device">
 <h2>Disconnecting the device<a class="headerlink" href="#disconnecting-the-device" title="Link to this heading">¶</a></h2>
 <p>The Astarte device can be gracefully disconnected by Astarte using the disconnect function.
 This function will trigger a callback to one of the user-defined functions.</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/device.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;astarte_device_sdk/result.h&gt;</span>
+<p>Note that polling on the device following a disconnect will return an error.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="c1">// ... imports, semaphores, callbacks, reception thread, main program ...</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">	</span><span class="n">astarte_result_t</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ASTARTE_RESULT_OK</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">astarte_result_t</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ASTARTE_RESULT_OK</span><span class="p">;</span>
 
-<span class="w">    </span><span class="c1">// ... generate device ID, register, instantiate and connect the device ...</span>
+<span class="w">    </span><span class="c1">// ... configure networking, instantiate and connect the device, poll the device ...</span>
 
 <span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">astarte_device_disconnect</span><span class="p">(</span><span class="n">device</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">res</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ASTARTE_RESULT_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">		</span><span class="n">LOG_INF</span><span class="p">(</span><span class="s">&quot;Err: &#39;%s&#39;.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_result_to_name</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
-<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="n">printk</span><span class="p">(</span><span class="s">&quot;Err: &#39;%s&#39;.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">astarte_result_to_name</span><span class="p">(</span><span class="n">res</span><span class="p">));</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -848,10 +909,15 @@ This function will trigger a callback to one of the user-defined functions.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Get started with Zephyr</a><ul>
-<li><a class="reference internal" href="#add-the-astarte-device-sdk-as-a-dependency">Add the Astarte device SDK as a dependency</a></li>
-<li><a class="reference internal" href="#minimal-configuration-options-for-the-astarte-device">Minimal configuration options for the Astarte device</a></li>
-<li><a class="reference internal" href="#generate-a-device-id">Generate a device ID</a></li>
-<li><a class="reference internal" href="#registering-a-device">Registering a device</a></li>
+<li><a class="reference internal" href="#before-you-begin">Before you begin</a><ul>
+<li><a class="reference internal" href="#local-astarte-instance">Local Astarte instance</a></li>
+<li><a class="reference internal" href="#installing-the-required-interfaces">Installing the required interfaces</a></li>
+<li><a class="reference internal" href="#registering-the-device">Registering the device</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-a-zephyr-rtos-project">Creating a Zephyr RTOS project</a></li>
+<li><a class="reference internal" href="#about-networking-layers">About networking layers</a></li>
+<li><a class="reference internal" href="#adding-minimal-configuration-options-for-the-astarte-device">Adding minimal configuration options for the Astarte device</a></li>
 <li><a class="reference internal" href="#generating-the-interfaces-headers">Generating the interfaces headers</a></li>
 <li><a class="reference internal" href="#instantiating-a-device">Instantiating a device</a></li>
 <li><a class="reference internal" href="#connecting-and-polling-the-device">Connecting and polling the device</a></li>
