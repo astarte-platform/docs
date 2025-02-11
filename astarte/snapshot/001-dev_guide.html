@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-A77C7890.js"></script>
+    <script src="dist/sidebar_items-93E9EEA5.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -105,7 +105,13 @@ Clea Astarte
   <span>Development Guide</span>
 </h1>
 
-<p>Welcome to Astarte! To learn more about contributing to the <a href="https://www.github.com/astarte-platform/astarte">Astarte project</a>, check out the <a href="https://github.com/astarte-platform/astarte/blob/master/CONTRIBUTING.md">Contributor's Guide</a>.</p><p>This guide is focused on writing and testing changes to Astarte. It assumes basic knowledge in the following areas:</p><ul><li>You have read the <a href="https://github.com/astarte-platform/astarte/blob/master/CONTRIBUTING.md">contributing guidelines</a> for the project</li><li>You are familiar with basic Astarte concepts such as Realms, Interfaces, Devices and Triggers. If you are not, you can learn more on the <a href="001-intro_architecture.html">documentation</a>!</li><li>You have already run at least once <a href="010-astarte_in_5_minutes.html">Astarte in 5 minutes</a></li><li>If you plan to work on the code, you have some knowledge of Elixir and Docker</li></ul><h2 id="where-to-start" class="section-heading">
+<p>Welcome to Astarte! To learn more about contributing to the <a href="https://www.github.com/astarte-platform/astarte">Astarte project</a>, check out the <a href="https://github.com/astarte-platform/astarte/blob/master/CONTRIBUTING.md">Contributor's Guide</a>.</p><p>This guide is focused on writing and testing changes to Astarte. It assumes basic knowledge in the following areas:</p><ul><li>You have read the <a href="https://github.com/astarte-platform/astarte/blob/master/CONTRIBUTING.md">contributing guidelines</a> for the project</li><li>You are familiar with basic Astarte concepts such as Realms, Interfaces, Devices and Triggers. If you are not, you can learn more on the <a href="001-intro_architecture.html">documentation</a>!</li><li>You have already run at least once <a href="010-astarte_in_5_minutes.html">Astarte in 5 minutes</a></li><li>If you plan to work on the code, you have some knowledge of Elixir and Docker</li></ul><h3 id="platforms" class="section-heading">
+  <a href="#platforms" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">platforms</p>
+  </a>
+  Platforms
+</h3>
+<p>Currently, the development of <a href="https://www.github.com/astarte-platform/astarte">Astarte project</a> is tested on the following platforms:</p><ul><li>Ubuntu linux &gt;= 20.04, amd64/arm64</li><li>Debian linux &gt;= bullseye, amd64/arm64</li><li>macOS amd64/arm64, via Microsoft VSCode devcontainer</li></ul><h2 id="where-to-start" class="section-heading">
   <a href="#where-to-start" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">where-to-start</p>
   </a>
@@ -131,44 +137,59 @@ It is written in Github-flavored markdown.</p><h3 id="tooling" class="section-he
   </a>
   Tooling
 </h3>
-<p>The main Astarte repo contains a number of tools that can be used everyday when interacting with Astarte. They are found in the <code class="inline">tools</code> directory subdirectory of the <a href="https://www.github.com/astarte-platform/astarte">main Astarte repository</a> on Github:</p><ul><li>Astarte Device Fleet Simulator: create a fleet of virtual devices. Mainly used for load testing</li><li>Astarte E2E: a tool that sends data from a virtual device and checks the resulting value in Astarte using triggers. Mainly used for monitoring</li><li>Astarte Import and Astarte Export: used to load/export data into/from Astarte</li></ul><h2 id="setting-up-elixir" class="section-heading">
-  <a href="#setting-up-elixir" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">setting-up-elixir</p>
+<p>The main Astarte repo contains a number of tools that can be used everyday when interacting with Astarte. They are found in the <code class="inline">tools</code> directory subdirectory of the <a href="https://www.github.com/astarte-platform/astarte">main Astarte repository</a> on Github:</p><ul><li>Astarte Device Fleet Simulator: create a fleet of virtual devices. Mainly used for load testing</li><li>Astarte E2E: a tool that sends data from a virtual device and checks the resulting value in Astarte using triggers. Mainly used for monitoring</li><li>Astarte Import and Astarte Export: used to load/export data into/from Astarte</li><li>Astarte Dev Tool: development helper, facilitating the up &amp; running of the platform in development mode (see <a href="#astarte_dev_tool">astarte_dev_tool</a>)</li></ul><h2 id="environment" class="section-heading">
+  <a href="#environment" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">environment</p>
   </a>
-  Setting up Elixir
+  Environment
 </h2>
-<p>In order to install and manage Elixir (and Erlang), we recommend using either the <a href="https://asdf-vm.com/">asdf</a> runtime version manager or the <a href="https://nixos.org/">nix</a> package manager.</p><h3 id="using-asdf" class="section-heading">
-  <a href="#using-asdf" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">using-asdf</p>
+<p>There are two possible alternatives for development, depending on whether you want to use a complete setup on the development host or prefer to use devcontainers.
+The choice also falls on whether you want to <a href="#testing-a-single-component">work on a single component</a> or prefer to start up the entire Astarte platform.</p><h3 id="devcontainers-preferred-on-macos-requires-microsoft-vscode-as-ide" class="section-heading">
+  <a href="#devcontainers-preferred-on-macos-requires-microsoft-vscode-as-ide" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">devcontainers-preferred-on-macos-requires-microsoft-vscode-as-ide</p>
   </a>
-  Using asdf
+  Devcontainers (preferred on macOs, requires Microsoft VSCode as IDE)
 </h3>
-<p>From inside the main Astarte directory, install the Elixir and Erlang asdf plugins</p><pre><code class="makeup bash" translate="no"><span class="">asdf plugin add erlang
+<p>The development system only requires <em>docker</em> and <em>docker compose</em> to be installed. macOS users normally prefer to use <em>Docker Desktop</em>, in which case <em>docker compose</em> is automatically installed.
+The development containers will already have the necessary add-ons to optimise the work.</p><blockquote><p>[!NOTE]
+When using dev containers, it is only possible to work on Astarte  <a href="https://www.github.com/astarte-platform/astarte">apps</a>, with the main requirement that all the Astarte containers must  be started.
+If you want to work on the other tools or libraries (e.g. <a href="https://github.com/astarte-platform/astarte_core">Astarte Core</a>), you must use another set-up method.</p></blockquote><h3 id="host-with-elixir-installed" class="section-heading">
+  <a href="#host-with-elixir-installed" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">host-with-elixir-installed</p>
+  </a>
+  Host with Elixir installed
+</h3>
+<p>In order to install and manage Elixir (and Erlang), we recommend using either the <a href="https://asdf-vm.com/">asdf</a> runtime version manager or the <a href="https://nixos.org/">nix</a> package manager.</p><h4>Using asdf</h4><p>From inside the main Astarte directory, install the Elixir and Erlang asdf plugins</p><pre><code class="makeup bash" translate="no"><span class="">asdf plugin add erlang
 </span><span class="">asdf plugin add elixir
 </span></code></pre><p>Then install Elang/OTP and Elixir with</p><pre><code class="makeup bash" translate="no"><span class="">asdf install
-</span></code></pre><h3 id="using-nix" class="section-heading">
-  <a href="#using-nix" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">using-nix</p>
+</span></code></pre><h4>Using nix</h4><p>From inside the main Astarte directory, just run</p><ul><li><code class="inline">nix develop</code>, if you are using flakes</li><li><code class="inline">nix-shell</code>, if not</li></ul><h2 id="development-on-the-entire-platform" class="section-heading">
+  <a href="#development-on-the-entire-platform" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">development-on-the-entire-platform</p>
   </a>
-  Using nix
+  Development on the entire platform
+</h2>
+<p>The easiest way to develop on the whole platform is to start the project (and, thus, every astarte container) with <em>docker compose</em> in &quot;development&quot; mode.
+This way you can also enable the hot reloading mode with the 'watch' command of <a href="https://www.github.com/astarte-platform/astarte">astarte_dev_tool</a> or directly with <em>docker compose</em>.</p><p>From inside the astarte_dev_tool directory, <code class="inline">mix build</code> to build the tool itself, followed by the commands to use it. Note that the root Astarte directory must be explicitly specified with <code class="inline">-p</code>:</p><ul><li><code class="inline">mix astarte_dev_tool.system.up -p &lt;path&gt;</code>, starts the platform and all containers in &quot;dev-mode&quot;.</li><li><code class="inline">mix astarte_dev_tool.system.watch -p &lt;path&gt;</code>, starts the &quot;watcher&quot;, which allows hot-code reloading in case of code changes. The process is stopped and must be explicitly closed with <code class="inline">ENTER</code>.</li><li><code class="inline">mix astarte_dev_tool.system.down -p &lt;path&gt; [-v]</code>, to terminate the platform. The <code class="inline">-v</code> parameter will also delete the volumes of the respective containers.</li></ul><h3 id="docker-compose" class="section-heading">
+  <a href="#docker-compose" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">docker-compose</p>
+  </a>
+  docker compose
 </h3>
-<p>From inside the main Astarte directory, just run</p><ul><li><code class="inline">nix develop</code>, if you are using flakes</li><li><code class="inline">nix-shell</code>, if not</li></ul><h2 id="can-i-use-an-elixir-repl-to-help-me-during-development" class="section-heading">
+<p>From inside the Astarte directory:</p><ul><li><code class="inline">docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build [-d]</code>, starts the platform and all containers in &quot;dev-mode&quot;.</li><li><code class="inline">docker compose -f docker-compose.dev.yml -f docker-compose.dev.yml watch --no-up</code>, starts the watching. The process must be terminated explicitly with <code class="inline">Ctrl+C</code>.</li><li><code class="inline">docker compose -f docker-compose.dev.yml -f docker-compose.dev.yml down [-v]</code>, to terminate the platform. The <code class="inline">-v</code> parameter will also delete the volumes of the respective containers.</li></ul><h2 id="development-on-individual-components" class="section-heading">
+  <a href="#development-on-individual-components" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">development-on-individual-components</p>
+  </a>
+  Development on individual components
+</h2>
+<p>It is also possible not to start the entire platform, to do so enter the directory of the service you are interested in and run the appropriate mix command (varies from service to service).
+Usually you don't want to do so, though.</p><h3 id="can-i-use-an-elixir-repl-to-help-me-during-development" class="section-heading">
   <a href="#can-i-use-an-elixir-repl-to-help-me-during-development" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">can-i-use-an-elixir-repl-to-help-me-during-development</p>
   </a>
   Can I use an Elixir REPL to help me during development?
-</h2>
+</h3>
 <p>Sure thing! However, usually Astarte services do need some context around them.
-Refer to the following <a href="#testing-a-single-component">&quot;Testing a single component&quot;</a> paragraph for dependencies, then you can start your application with an interactive shell by replacing <a href="https://hexdocs.pm/mix/Mix.Tasks.Test.html"><code class="inline">mix test</code></a> with <code class="inline">iex -S mix</code></p><h2 id="ok-i-made-changes-what-now" class="section-heading">
-  <a href="#ok-i-made-changes-what-now" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">ok-i-made-changes-what-now</p>
-  </a>
-  Ok, I made changes, what now?
-</h2>
-<p>Once you got your hands dirty, is time to test them.
-You can test changes to a single component, or run E2E tests if more than one service is involved.</p><p>Remember that a contribution should always include tests for the new functionality or the fix.
-We use the <a href="https://hexdocs.pm/ex_unit/ExUnit.html">ExUnit</a> framework for unit testing.
-Work is under way to add property-based testing too! </p><h3 id="testing-a-single-component" class="section-heading">
+Refer to the following <a href="#testing-a-single-component">&quot;Testing a single component&quot;</a> paragraph for dependencies, then you can start your application with an interactive shell by replacing <a href="https://hexdocs.pm/mix/Mix.Tasks.Test.html"><code class="inline">mix test</code></a> with <code class="inline">iex -S mix</code></p><h3 id="testing-a-single-component" class="section-heading">
   <a href="#testing-a-single-component" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">testing-a-single-component</p>
   </a>
@@ -182,8 +203,17 @@ You can do so by running</p><pre><code class="makeup bash" translate="no"><span 
 Some services are a bit special (for now!) and might need a little more setup for testing.</p><ul><li>AppEngine API needs the AMQP exchange <code class="inline">astarte_events</code> to be declared:
 after having started RabbitMQ, run the following lines to declare it:<pre><code class="makeup bash" translate="no"><span class="">  docker exec $RABBITMQ_CONTAINER_NAME rabbitmqadmin declare exchange name=astarte_events type=direct
 </span></code></pre></li></ul></blockquote><blockquote><ul><li>Pairing needs a CFSSL instance available and exposed on port 8080: you can run<pre><code class="makeup bash" translate="no"><span class=""> docker run --net=host -p 8080/tcp ispirata/docker-alpine-cfssl-autotest:astarte
-</span></code></pre></li></ul><p>and then test using</p><pre><code class="makeup bash" translate="no"><span class=""> RABBITMQ_HOST=localhost CASSANDRA_NODES=localhost CFSSL_API_URL=http://localhost:8080 mix test --exclude wip
-</span></code></pre></blockquote><h3 id="e2e-testing" class="section-heading">
+</span></code></pre>and then test using<pre><code class="makeup bash" translate="no"><span class=""> RABBITMQ_HOST=localhost CASSANDRA_NODES=localhost CFSSL_API_URL=http://localhost:8080 mix test --exclude wip
+</span></code></pre></li></ul></blockquote><h2 id="ok-i-made-changes-what-now" class="section-heading">
+  <a href="#ok-i-made-changes-what-now" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">ok-i-made-changes-what-now</p>
+  </a>
+  Ok, I made changes, what now?
+</h2>
+<p>Once you got your hands dirty, is time to test them.
+You can test changes to a single component, or run E2E tests if more than one service is involved.</p><p>Remember that a contribution should always include tests for the new functionality or the fix.
+We use the <a href="https://hexdocs.pm/ex_unit/ExUnit.html">ExUnit</a> framework for unit testing.
+Work is under way to add property-based testing too!</p><h3 id="e2e-testing" class="section-heading">
   <a href="#e2e-testing" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">e2e-testing</p>
   </a>
@@ -230,16 +260,16 @@ Save the Device ID and the Credentials Secret for the device, and use them for c
 </span><span class="">cd astarte-device-sdk-elixir
 </span><span class="">iex -S mix
 </span></code></pre><p>Now you can use the following commands to connect to Astarte:</p><pre><code class="makeup elixir" translate="no"><span class="c1"># Options to configure the device. &lt;THESE&gt; are placeholders for actual values.</span><span class="w">
-</span><span class="n">opts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="5417189473-1">[</span><span class="ss">pairing_url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://api.astarte.localhost/pairing&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">realm</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_REALM&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">device_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_DEVICE_ID&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">interface_provider</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_INTERFACES_DIRECTORY&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">credentials_secret</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_CREDENTIALS_SECRET&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">ignore_ssl_errors</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="5417189473-1">]</span><span class="w">
+</span><span class="n">opts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="0935658150-1">[</span><span class="ss">pairing_url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://api.astarte.localhost/pairing&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">realm</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_REALM&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">device_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_DEVICE_ID&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">interface_provider</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_INTERFACES_DIRECTORY&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">credentials_secret</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;YOUR_CREDENTIALS_SECRET&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">ignore_ssl_errors</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="0935658150-1">]</span><span class="w">
 
 </span><span class="c1"># Start the virtual device</span><span class="w">
-</span><span class="p" data-group-id="5417189473-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">pid</span><span class="p" data-group-id="5417189473-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Astarte.Device</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="5417189473-3">(</span><span class="n">opts</span><span class="p" data-group-id="5417189473-3">)</span><span class="w">
+</span><span class="p" data-group-id="0935658150-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">pid</span><span class="p" data-group-id="0935658150-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Astarte.Device</span><span class="o">.</span><span class="n">start_link</span><span class="p" data-group-id="0935658150-3">(</span><span class="n">opts</span><span class="p" data-group-id="0935658150-3">)</span><span class="w">
 
 </span><span class="c1"># Send a (device-owned) datastream</span><span class="w">
-</span><span class="nc">Astarte.Device</span><span class="o">.</span><span class="n">send_datastream</span><span class="p" data-group-id="5417189473-4">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;A_DEVICE_OWNED_DATASTREAM_INTERFACE&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;A_PATH&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;</span><span class="nc">A_VALUE</span><span class="o">&gt;</span><span class="p" data-group-id="5417189473-4">)</span><span class="w">
+</span><span class="nc">Astarte.Device</span><span class="o">.</span><span class="n">send_datastream</span><span class="p" data-group-id="0935658150-4">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;A_DEVICE_OWNED_DATASTREAM_INTERFACE&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;A_PATH&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;</span><span class="nc">A_VALUE</span><span class="o">&gt;</span><span class="p" data-group-id="0935658150-4">)</span><span class="w">
 
 </span><span class="c1"># Set a (device-owned) property</span><span class="w">
-</span><span class="nc">Astarte.Device</span><span class="o">.</span><span class="n">set_property</span><span class="p" data-group-id="5417189473-5">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;A_DEVICE_OWNED_PROPERTY_INTERFACE&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;A_PATH&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;</span><span class="nc">A_VALUE</span><span class="o">&gt;</span><span class="p" data-group-id="5417189473-5">)</span></code></pre>
+</span><span class="nc">Astarte.Device</span><span class="o">.</span><span class="n">set_property</span><span class="p" data-group-id="0935658150-5">(</span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;A_DEVICE_OWNED_PROPERTY_INTERFACE&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&lt;A_PATH&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;</span><span class="nc">A_VALUE</span><span class="o">&gt;</span><span class="p" data-group-id="0935658150-5">)</span></code></pre>
 <div class="bottom-actions">
   <div class="bottom-actions-item">
 
