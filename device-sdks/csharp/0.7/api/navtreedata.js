@@ -45,7 +45,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"class_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_interface_datastream_mapping.html#a8266b7c0ba7bbe9c98445ae2e532cf85a85cb0333369e3e27a987346c45d1678a"
+"struct_astarte_device_s_d_k_c_sharp_1_1_utilities_1_1_uuid.html#a0cc0e290a14e657aefb8fc6aa7307248"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

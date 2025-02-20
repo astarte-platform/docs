@@ -7,9 +7,9 @@ var namespace_astarte_device_s_d_k_c_sharp =
     [ "Protocol", "namespace_astarte_device_s_d_k_c_sharp_1_1_protocol.html", "namespace_astarte_device_s_d_k_c_sharp_1_1_protocol" ],
     [ "Transport", "namespace_astarte_device_s_d_k_c_sharp_1_1_transport.html", "namespace_astarte_device_s_d_k_c_sharp_1_1_transport" ],
     [ "Utilities", "namespace_astarte_device_s_d_k_c_sharp_1_1_utilities.html", "namespace_astarte_device_s_d_k_c_sharp_1_1_utilities" ],
-    [ "AstartePairingException", "class_astarte_device_s_d_k_c_sharp_1_1_astarte_pairing_exception.html", "class_astarte_device_s_d_k_c_sharp_1_1_astarte_pairing_exception" ],
-    [ "AstartePairingHandler", "class_astarte_device_s_d_k_c_sharp_1_1_astarte_pairing_handler.html", "class_astarte_device_s_d_k_c_sharp_1_1_astarte_pairing_handler" ],
+    [ "AstartePairingException", "class_astarte_device_s_d_k_c_sharp_1_1_astarte_pairing_exception.html", null ],
+    [ "AstartePairingHandler", "class_astarte_device_s_d_k_c_sharp_1_1_astarte_pairing_handler.html", null ],
     [ "AstartePairingService", "class_astarte_device_s_d_k_c_sharp_1_1_astarte_pairing_service.html", "class_astarte_device_s_d_k_c_sharp_1_1_astarte_pairing_service" ],
-    [ "IAstarteInterfaceProvider", "interface_astarte_device_s_d_k_c_sharp_1_1_i_astarte_interface_provider.html", "interface_astarte_device_s_d_k_c_sharp_1_1_i_astarte_interface_provider" ],
-    [ "IAstarteMessageListener", "interface_astarte_device_s_d_k_c_sharp_1_1_i_astarte_message_listener.html", "interface_astarte_device_s_d_k_c_sharp_1_1_i_astarte_message_listener" ]
+    [ "IAstarteInterfaceProvider", "interface_astarte_device_s_d_k_c_sharp_1_1_i_astarte_interface_provider.html", null ],
+    [ "IAstarteMessageListener", "interface_astarte_device_s_d_k_c_sharp_1_1_i_astarte_message_listener.html", null ]
 ];

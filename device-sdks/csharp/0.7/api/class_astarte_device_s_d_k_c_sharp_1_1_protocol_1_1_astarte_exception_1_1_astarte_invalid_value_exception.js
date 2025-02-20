@@ -1,4 +1,0 @@
-var class_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_exception_1_1_astarte_invalid_value_exception =
-[
-    [ "AstarteInvalidValueException", "class_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_exception_1_1_astarte_invalid_value_exception.html#aeed1ea295e274e273baa1ad4360b6f0b", null ]
-];

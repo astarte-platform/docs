@@ -1,4 +1,0 @@
-var class_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_exception_1_1_astarte_interface_exception =
-[
-    [ "AstarteInterfaceException", "class_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_exception_1_1_astarte_interface_exception.html#a410d83b9ff48c061d849c9a92ba9d7ac", null ]
-];

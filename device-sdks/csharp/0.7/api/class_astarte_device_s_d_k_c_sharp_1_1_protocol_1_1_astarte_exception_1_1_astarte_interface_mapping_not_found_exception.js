@@ -1,4 +1,0 @@
-var class_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_exception_1_1_astarte_interface_mapping_not_found_exception =
-[
-    [ "AstarteInterfaceMappingNotFoundException", "class_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_exception_1_1_astarte_interface_mapping_not_found_exception.html#a51951a7159253a7be9bdd62e7237a5c8", null ]
-];
