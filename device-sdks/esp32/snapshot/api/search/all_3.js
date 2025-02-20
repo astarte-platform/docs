@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['name_175',['name',['../structastarte__bson__element__t.html#a07022e2f2525b6a643c0eaa30d43ec21',1,'astarte_bson_element_t::name()'],['../structastarte__interface__t.html#add941a49aeafa76faba4fd52168376e2',1,'astarte_interface_t::name()']]],
-  ['name_5flen_176',['name_len',['../structastarte__bson__element__t.html#ae3b3cce7d06df8f02ecead339bd2d46c',1,'astarte_bson_element_t']]]
+  ['list_0',['list',['../structastarte__bson__document__t.html#afd11bd94c38b8dfce7c49d32360d6dcb',1,'astarte_bson_document_t']]],
+  ['list_5fsize_1',['list_size',['../structastarte__bson__document__t.html#aeaf43bdf416e11b739ca454a9897b98a',1,'astarte_bson_document_t']]]
 ];

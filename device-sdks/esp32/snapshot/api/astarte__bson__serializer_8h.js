@@ -1,9 +1,7 @@
 var astarte__bson__serializer_8h =
 [
-    [ "astarte_byte_array_t", "structastarte__byte__array__t.html", "structastarte__byte__array__t" ],
-    [ "astarte_bson_serializer_handle_t", "structastarte__bson__serializer__t.html", "structastarte__bson__serializer__t" ],
-    [ "__attribute__", "astarte__bson__serializer_8h.html#a5c80971154ed9f23f3f6ce5ed52f9e8c", null ],
-    [ "__attribute__", "astarte__bson__serializer_8h.html#a7ca866c32c26620608986bb6e353190d", null ],
+    [ "astarte_byte_array_t", "structastarte__byte__array__t.html", null ],
+    [ "astarte_bson_serializer_handle_t", "structastarte__bson__serializer__t.html", null ],
     [ "astarte_bson_serializer_append_binary", "astarte__bson__serializer_8h.html#aa2ba5e8b769e36944c89e2deb01c3f06", null ],
     [ "astarte_bson_serializer_append_binary_array", "astarte__bson__serializer_8h.html#ad4fd09666c2ef78d211b95903c1fcf66", null ],
     [ "astarte_bson_serializer_append_boolean", "astarte__bson__serializer_8h.html#a4e51e52511a588248f37eec523f89fb8", null ],
@@ -22,12 +20,8 @@ var astarte__bson__serializer_8h =
     [ "astarte_bson_serializer_append_string_array", "astarte__bson__serializer_8h.html#a68db5a2b345d991c52f8d52a98d5831d", null ],
     [ "astarte_bson_serializer_destroy", "astarte__bson__serializer_8h.html#a16d798a63ac712148a17c2bc66ca09fb", null ],
     [ "astarte_bson_serializer_document_size", "astarte__bson__serializer_8h.html#aa5432a871e11f395cf93642dde3c7ce6", null ],
-    [ "astarte_bson_serializer_get_document", "astarte__bson__serializer_8h.html#a70741f4ae13b1b464d6c57d7edcb6b3c", null ],
+    [ "astarte_bson_serializer_get_document", "astarte__bson__serializer_8h.html#a11ae9aee7b0f4c0f1e12455d88321577", null ],
     [ "astarte_bson_serializer_init", "astarte__bson__serializer_8h.html#ae76d19fefc8451bd92eeb3a382275872", null ],
     [ "astarte_bson_serializer_new", "astarte__bson__serializer_8h.html#ab3e816c58415635205fe6480e8c78f73", null ],
-    [ "astarte_bson_serializer_write_document", "astarte__bson__serializer_8h.html#a541992c266ce383a66a3e35f0e796d34", null ],
-    [ "ba", "astarte__bson__serializer_8h.html#a677b4bc5743c631a53577c96a1a41f21", null ],
-    [ "buf", "astarte__bson__serializer_8h.html#a2c5f4ef732286b78e31ec8d1cb238215", null ],
-    [ "capacity", "astarte__bson__serializer_8h.html#ad721fc6ca6a3d6ba3bc506576622aab0", null ],
-    [ "size", "astarte__bson__serializer_8h.html#a854352f53b148adc24983a58a1866d66", null ]
+    [ "astarte_bson_serializer_write_document", "astarte__bson__serializer_8h.html#a541992c266ce383a66a3e35f0e796d34", null ]
 ];

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['type_180',['type',['../structastarte__interface__t.html#a7a02b772033a5730651ddc93a42c848c',1,'astarte_interface_t']]],
-  ['type_5fdatastream_181',['TYPE_DATASTREAM',['../astarte__interface_8h.html#a5bc39e30e5f3291498195dac025388f8a3e4e46e992433e2101b2624c549bc3c0',1,'astarte_interface.h']]],
-  ['type_5fproperties_182',['TYPE_PROPERTIES',['../astarte__interface_8h.html#a5bc39e30e5f3291498195dac025388f8a8e2d2f7fbc3959527ca289772fb9e742',1,'astarte_interface.h']]]
+  ['name_0',['name',['../structastarte__bson__element__t.html#a07022e2f2525b6a643c0eaa30d43ec21',1,'astarte_bson_element_t::name'],['../structastarte__interface__t.html#add941a49aeafa76faba4fd52168376e2',1,'astarte_interface_t::name']]],
+  ['name_5flen_1',['name_len',['../structastarte__bson__element__t.html#ae3b3cce7d06df8f02ecead339bd2d46c',1,'astarte_bson_element_t']]]
 ];

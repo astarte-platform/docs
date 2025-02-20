@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['ownership_177',['ownership',['../structastarte__interface__t.html#a7291f1852025f8b126ac3bb892853d76',1,'astarte_interface_t']]],
-  ['ownership_5fdevice_178',['OWNERSHIP_DEVICE',['../astarte__interface_8h.html#ab500ca5a223d2a6a1df8843fda23fa82a424d08cb9b23b27a9c41ec6a5c76e1aa',1,'astarte_interface.h']]],
-  ['ownership_5fserver_179',['OWNERSHIP_SERVER',['../astarte__interface_8h.html#ab500ca5a223d2a6a1df8843fda23fa82afe5eff5d9794bd8f6daa84a6f740058a',1,'astarte_interface.h']]]
+  ['major_5fversion_0',['major_version',['../structastarte__interface__t.html#a33ec47e66c1275cf212da1fe43ac3721',1,'astarte_interface_t']]],
+  ['minor_5fversion_1',['minor_version',['../structastarte__interface__t.html#acccfb28c547f4501c6cd7872be8bdd2c',1,'astarte_interface_t']]]
 ];

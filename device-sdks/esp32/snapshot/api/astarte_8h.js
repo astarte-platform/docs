@@ -1,12 +1,7 @@
 var astarte_8h =
 [
-    [ "ASTARTE_DEVICE_SDK_MAJOR", "astarte_8h.html#a87ca690d387dbf587ef20f47b8364fed", null ],
-    [ "ASTARTE_DEVICE_SDK_MINOR", "astarte_8h.html#a17b08951504142422e80e649a55fba31", null ],
-    [ "ASTARTE_DEVICE_SDK_PATCH", "astarte_8h.html#a8923e4732262e68be4c5ac5ca1c8929d", null ],
-    [ "astarte_err_t", "astarte_8h.html#a781f0a08bff9db2517442bc243f5efde", null ],
     [ "astarte_err_t", "astarte_8h.html#a8c619a744449aa507f5e6dedebffea23", null ],
-    [ "__attribute__", "astarte_8h.html#a09ff4c8f358046acff33351742e7299a", null ],
-    [ "astarte_err_to_name", "astarte_8h.html#a1f8f7cf526c69086607a3af4b10f89da", null ],
+    [ "astarte_err_to_name", "astarte_8h.html#affd8eaaf974ae1468a94561526905cc7", null ],
     [ "ASTARTE_ERR", "astarte_8h.html#a4b61d355fb60e0f58f8b1fc1f0315e9b", null ],
     [ "ASTARTE_ERR_ALREADY_EXISTS", "astarte_8h.html#a3d4a77f789d0e3c0e455fd39a49f312b", null ],
     [ "ASTARTE_ERR_API", "astarte_8h.html#a49f09308f65bb49973dc83cf98e4eebc", null ],
