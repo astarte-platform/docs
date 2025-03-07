@@ -1,4 +1,0 @@
-var interface_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_events_1_1_i_astarte_server_value_publisher =
-[
-    [ "Publish", "interface_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_events_1_1_i_astarte_server_value_publisher.html#a6c6b3e5c13cd51c761b1426dfae7fff7", null ]
-];

@@ -1,8 +1,0 @@
-var class_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_events_1_1_astarte_server_value_1_1_astarte_server_value_builder =
-[
-    [ "AstarteServerValueBuilder", "class_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_events_1_1_astarte_server_value_1_1_astarte_server_value_builder.html#a005d3807cc6f976403819e47312cd407", null ],
-    [ "AstarteServerValueBuilder", "class_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_events_1_1_astarte_server_value_1_1_astarte_server_value_builder.html#a405e7ca1e25c8b72ea056611873bf574", null ],
-    [ "Build", "class_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_events_1_1_astarte_server_value_1_1_astarte_server_value_builder.html#a31f0af110a0e2416642827858d7d44ae", null ],
-    [ "InterfacePath", "class_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_events_1_1_astarte_server_value_1_1_astarte_server_value_builder.html#a87e7c66dfbb37fe8898671cba66b0897", null ],
-    [ "Timestamp", "class_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_events_1_1_astarte_server_value_1_1_astarte_server_value_builder.html#af7e9a4f5db0416b4391094abf9a532ca", null ]
-];
