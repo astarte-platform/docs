@@ -1,14 +1,14 @@
 var searchData=
 [
   ['a_20dependency_20in_20an_20application_0',['Using the library as a dependency in an application',['../index.html#autotoc_md2',1,'']]],
-  ['a_20new_20workspace_20venv_20and_20cloning_20the_20example_1',['Creating a new workspace, venv and cloning the example',['../index.html#autotoc_md4',1,'']]],
+  ['a_20new_20workspace_20venv_20and_20install_20west_1',['Creating a new workspace, venv and install west',['../index.html#autotoc_md4',1,'']]],
   ['a_20sample_20application_2',['Building and running a sample application',['../index.html#autotoc_md8',1,'']]],
   ['a_20standalone_20application_3',['Using the library as a standalone application',['../index.html#autotoc_md3',1,'']]],
   ['aggregation_4',['aggregation',['../structastarte__interface__t.html#a95a4050758f794d38b5abe035e8c4303',1,'astarte_interface_t']]],
   ['allow_5funset_5',['allow_unset',['../structastarte__mapping__t.html#aa1e746c198e88c67aa6a177c628e2b90',1,'astarte_mapping_t']]],
   ['an_20application_6',['Using the library as a dependency in an application',['../index.html#autotoc_md2',1,'']]],
   ['analysis_7',['Static code analysis',['../index.html#autotoc_md16',1,'']]],
-  ['and_20cloning_20the_20example_8',['Creating a new workspace, venv and cloning the example',['../index.html#autotoc_md4',1,'']]],
+  ['and_20install_20west_8',['Creating a new workspace, venv and install west',['../index.html#autotoc_md4',1,'']]],
   ['and_20installing_20python_20dependencies_9',['Exporting zephyr environment and installing python dependencies',['../index.html#autotoc_md6',1,'']]],
   ['and_20running_20a_20sample_20application_10',['Building and running a sample application',['../index.html#autotoc_md8',1,'']]],
   ['api_20for_20zephyr_11',['Astarte device API for Zephyr',['../index.html',1,'']]],

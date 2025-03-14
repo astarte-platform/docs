@@ -29,7 +29,7 @@ var NAVTREE =
       [ "Getting started", "index.html#autotoc_md1", [
         [ "Using the library as a dependency in an application", "index.html#autotoc_md2", null ],
         [ "Using the library as a standalone application", "index.html#autotoc_md3", [
-          [ "Creating a new workspace, venv and cloning the example", "index.html#autotoc_md4", null ],
+          [ "Creating a new workspace, venv and install west", "index.html#autotoc_md4", null ],
           [ "Initializing the workspace", "index.html#autotoc_md5", null ],
           [ "Exporting zephyr environment and installing python dependencies", "index.html#autotoc_md6", null ],
           [ "Fetching binary blobs for ESP32", "index.html#autotoc_md7", null ],

@@ -153,29 +153,23 @@ Using the library as a dependency in an application</h3>
 Using the library as a standalone application</h3>
 <p>For development or evaluation purposes the library can be used as a stand alone application in its own workspace. This will make it possible to build and execute the module samples without having to set up an extra application.</p>
 <h4><a class="anchor" id="autotoc_md4"></a>
-Creating a new workspace, venv and cloning the example</h4>
-<p>Start by creating a new workspace folder and a venv where <code>west</code> will reside. Then clone this library inside the newly created workspace.</p>
-<div class="fragment"><div class="line"># Create a venv and install the west tool</div>
-<div class="line">mkdir ~/zephyrproject</div>
-<div class="line">python3 -m venv ~/zephyrproject/.venv</div>
-<div class="line">source ~/zephyrproject/.venv/bin/activate</div>
+Creating a new workspace, venv and install west</h4>
+<p>Start by creating a new workspace folder and a venv where <code>west</code> will reside.</p>
+<div class="fragment"><div class="line">mkdir ~/zephyrproject &amp;&amp; cd ~/zephyrproject</div>
+<div class="line">python3 -m venv .venv</div>
+<div class="line">source .venv/bin/activate</div>
 <div class="line">pip install west</div>
-<div class="line"># Clone the example application repo</div>
-<div class="line">git clone https://github.com/astarte-platform/astarte-device-sdk-zephyr.git ~/zephyrproject/astarte-device-sdk-zephyr</div>
 </div><!-- fragment --><h4><a class="anchor" id="autotoc_md5"></a>
 Initializing the workspace</h4>
-<p>The west workspace should be then intialized, using the example repository as the manifest repository.</p>
-<div class="fragment"><div class="line"># initialize my-workspace for the example-application (main branch)</div>
-<div class="line">cd ~/zephyrproject</div>
-<div class="line">west init -l astarte-device-sdk-zephyr</div>
-<div class="line"># update Zephyr modules</div>
+<p>The west workspace should be then intialized, using the Astarte libary repository as the manifest repository.</p>
+<div class="fragment"><div class="line">west init -m git@github.com:astarte-platform/astarte-device-sdk-zephyr --mr master</div>
 <div class="line">west update</div>
 </div><!-- fragment --><h4><a class="anchor" id="autotoc_md6"></a>
 Exporting zephyr environment and installing python dependencies</h4>
 <p>Lastly some dependencies will need to be installed for all west extensions to work correctly.</p>
 <div class="fragment"><div class="line">west zephyr-export</div>
-<div class="line">pip install -r ~/zephyrproject/zephyr/scripts/requirements.txt</div>
-<div class="line">pip install -r ~/zephyrproject/astarte-device-sdk-zephyr/scripts/requirements.txt</div>
+<div class="line">west packages pip --install</div>
+<div class="line">west packages pip --install -- -r ./astarte-device-sdk-zephyr/scripts/requirements.txt</div>
 </div><!-- fragment --> <h4><a class="anchor" id="autotoc_md7"></a>
 Fetching binary blobs for ESP32</h4>
 <p>If building for an esp32 the binary blobs will need to be downloaded before building the application.</p>
