@@ -25,7 +25,7 @@ var group__results =
       [ "ASTARTE_RESULT_BSON_EMPTY_DOCUMENT_ERROR", "group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aabc1a9a95b992d19051dfb6c9f40be4b1", null ],
       [ "ASTARTE_RESULT_CLIENT_CERT_INVALID", "group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aaa775a37b189feaae4284e6f0ffa310bd", null ],
       [ "ASTARTE_RESULT_MAPPING_PATH_MISMATCH", "group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa9d3ff4e1e35c3f5da11c2cb1abfb3299", null ],
-      [ "ASTARTE_RESULT_MAPPING_INDIVIDUAL_INCOMPATIBLE", "group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa0e3ee5ea46f36442ceabadcd8d73e865", null ],
+      [ "ASTARTE_RESULT_MAPPING_DATA_INCOMPATIBLE", "group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aae4c5879135f3324e36d74cd94533d7bd", null ],
       [ "ASTARTE_RESULT_MAPPING_NOT_IN_INTERFACE", "group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa08fd4f716861144c09f1b3e987cb7289", null ],
       [ "ASTARTE_RESULT_MAPPING_UNSET_NOT_ALLOWED", "group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa191f81ce9b79393f2aedfedb09641858", null ],
       [ "ASTARTE_RESULT_MAPPING_EXPLICIT_TIMESTAMP_REQUIRED", "group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa5bff607299271f41ac0eff0be61e10ae", null ],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pairing_0',['Device pairing',['../group__pairing.html',1,'']]]
+  ['objects_0',['Objects',['../group__objects.html',1,'']]]
 ];

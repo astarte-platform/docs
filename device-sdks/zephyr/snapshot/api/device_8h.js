@@ -14,8 +14,8 @@ var device_8h =
     [ "astarte_device_force_disconnect", "group__device.html#ga9dcc2121b96a3d2cc570afbf897cb0b3", null ],
     [ "astarte_device_new", "group__device.html#ga487521ab61f4fbc8d961db13d182594f", null ],
     [ "astarte_device_poll", "group__device.html#ga4800793bbb8e4b76b01c21f96eb848e0", null ],
-    [ "astarte_device_set_property", "group__device.html#gaa7f237d00e4771ebce7ea73995aeaa20", null ],
-    [ "astarte_device_stream_aggregated", "group__device.html#ga2423d8e67ac6d6111a8ba59c273e4bde", null ],
-    [ "astarte_device_stream_individual", "group__device.html#ga7c9d853db00a39fee8422e15fa52e172", null ],
+    [ "astarte_device_send_individual", "group__device.html#ga9542caba91e741ac8b6fc1376b4c5d9a", null ],
+    [ "astarte_device_send_object", "group__device.html#ga3370d8a040552ec7dc9d6f6b1faee209", null ],
+    [ "astarte_device_set_property", "group__device.html#gad1f1910713e710705311aa008d813bb9", null ],
     [ "astarte_device_unset_property", "group__device.html#ga0f776ef7dd0b15c2088acff5d44127f2", null ]
 ];

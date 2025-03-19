@@ -15,17 +15,17 @@ var group__device =
       [ "user_data", "structastarte__device__data__event__t.html#a416f0496b77a479f24e5667007199fcf", null ]
     ] ],
     [ "astarte_device_datastream_individual_event_t", "structastarte__device__datastream__individual__event__t.html", [
-      [ "data_event", "structastarte__device__datastream__individual__event__t.html#aa44d5e20adebf2addfda07c2bef70486", null ],
-      [ "individual", "structastarte__device__datastream__individual__event__t.html#af9bf6f22aa0ee490347b37591d5cbddc", null ]
+      [ "base_event", "structastarte__device__datastream__individual__event__t.html#ab7a658a6b07cc6c464ee86b7aad22084", null ],
+      [ "data", "structastarte__device__datastream__individual__event__t.html#a2e67853b34094c8b37bd5b8276081cb0", null ]
     ] ],
     [ "astarte_device_datastream_object_event_t", "structastarte__device__datastream__object__event__t.html", [
-      [ "data_event", "structastarte__device__datastream__object__event__t.html#ae4613258159f961caf95c3dffee037e1", null ],
+      [ "base_event", "structastarte__device__datastream__object__event__t.html#af91c81bcd0378db83fa5b8212fe4b63c", null ],
       [ "entries", "structastarte__device__datastream__object__event__t.html#adb6e9463cd6c0dda20e0ee65efd44f74", null ],
       [ "entries_len", "structastarte__device__datastream__object__event__t.html#a3990b60ce065cde698b91a13b53115ee", null ]
     ] ],
     [ "astarte_device_property_set_event_t", "structastarte__device__property__set__event__t.html", [
-      [ "data_event", "structastarte__device__property__set__event__t.html#a3ea6702bf0164b9f2efaf1e6a0c0d158", null ],
-      [ "individual", "structastarte__device__property__set__event__t.html#abf6a4023c722981a4a7d4bf33ea98814", null ]
+      [ "base_event", "structastarte__device__property__set__event__t.html#a0e8a2223a4b6014e4225b1cd6cc44eaf", null ],
+      [ "data", "structastarte__device__property__set__event__t.html#a5a65fe6090919b980c3848651b414023", null ]
     ] ],
     [ "astarte_device_config_t", "structastarte__device__config__t.html", [
       [ "cbk_user_data", "structastarte__device__config__t.html#a83cf55381bfb7297d61a8d7c87633a8c", null ],
@@ -57,8 +57,8 @@ var group__device =
     [ "astarte_device_force_disconnect", "group__device.html#ga9dcc2121b96a3d2cc570afbf897cb0b3", null ],
     [ "astarte_device_new", "group__device.html#ga487521ab61f4fbc8d961db13d182594f", null ],
     [ "astarte_device_poll", "group__device.html#ga4800793bbb8e4b76b01c21f96eb848e0", null ],
-    [ "astarte_device_set_property", "group__device.html#gaa7f237d00e4771ebce7ea73995aeaa20", null ],
-    [ "astarte_device_stream_aggregated", "group__device.html#ga2423d8e67ac6d6111a8ba59c273e4bde", null ],
-    [ "astarte_device_stream_individual", "group__device.html#ga7c9d853db00a39fee8422e15fa52e172", null ],
+    [ "astarte_device_send_individual", "group__device.html#ga9542caba91e741ac8b6fc1376b4c5d9a", null ],
+    [ "astarte_device_send_object", "group__device.html#ga3370d8a040552ec7dc9d6f6b1faee209", null ],
+    [ "astarte_device_set_property", "group__device.html#gad1f1910713e710705311aa008d813bb9", null ],
     [ "astarte_device_unset_property", "group__device.html#ga0f776ef7dd0b15c2088acff5d44127f2", null ]
 ];

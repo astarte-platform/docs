@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['management_0',['Device management',['../group__device.html',1,'']]],
-  ['mapping_1',['Mapping',['../group__mapping.html',1,'']]]
+  ['library_0',['Astarte device library',['../group__astarte__device__sdk.html',1,'']]]
 ];

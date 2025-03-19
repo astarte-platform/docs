@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['tag_0',['tag',['../structastarte__individual__t.html#a8a7c8007024ee7e79b8379c8c802d861',1,'astarte_individual_t']]],
+  ['tag_0',['tag',['../structastarte__data__t.html#a0c4ca5b18bea5eec8cc5f637b7ba4117',1,'astarte_data_t']]],
   ['testing_1',['Unit testing',['../index.html#autotoc_md11',1,'']]],
   ['the_20library_20as_20a_20dependency_20in_20an_20application_2',['Using the library as a dependency in an application',['../index.html#autotoc_md2',1,'']]],
   ['the_20library_20as_20a_20standalone_20application_3',['Using the library as a standalone application',['../index.html#autotoc_md3',1,'']]],

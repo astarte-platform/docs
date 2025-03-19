@@ -1,5 +1,5 @@
 var structastarte__device__property__set__event__t =
 [
-    [ "data_event", "structastarte__device__property__set__event__t.html#a3ea6702bf0164b9f2efaf1e6a0c0d158", null ],
-    [ "individual", "structastarte__device__property__set__event__t.html#abf6a4023c722981a4a7d4bf33ea98814", null ]
+    [ "base_event", "structastarte__device__property__set__event__t.html#a0e8a2223a4b6014e4225b1cd6cc44eaf", null ],
+    [ "data", "structastarte__device__property__set__event__t.html#a5a65fe6090919b980c3848651b414023", null ]
 ];

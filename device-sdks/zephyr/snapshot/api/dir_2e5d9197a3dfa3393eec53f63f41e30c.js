@@ -1,9 +1,9 @@
 var dir_2e5d9197a3dfa3393eec53f63f41e30c =
 [
     [ "astarte.h", "astarte_8h.html", "astarte_8h" ],
+    [ "data.h", "data_8h.html", "data_8h" ],
     [ "device.h", "device_8h.html", "device_8h" ],
     [ "device_id.h", "device__id_8h.html", "device__id_8h" ],
-    [ "individual.h", "individual_8h.html", "individual_8h" ],
     [ "interface.h", "interface_8h.html", "interface_8h" ],
     [ "mapping.h", "mapping_8h.html", "mapping_8h" ],
     [ "object.h", "object_8h.html", "object_8h" ],

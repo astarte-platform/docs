@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['results_0',['Results',['../group__results.html',1,'']]]
+  ['pairing_0',['Device pairing',['../group__pairing.html',1,'']]]
 ];

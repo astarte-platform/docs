@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['library_0',['Astarte device library',['../group__astarte__device__sdk.html',1,'']]]
+  ['id_0',['Device ID',['../group__device__id.html',1,'']]],
+  ['interface_1',['Interface',['../group__interface.html',1,'']]]
 ];
