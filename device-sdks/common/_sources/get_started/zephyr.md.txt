@@ -145,17 +145,16 @@ manifest:
       url-base: https://github.com/zephyrproject-rtos
     - name: astarte-platform
       url-base: https://github.com/astarte-platform
-
   projects:
     - name: zephyr
       remote: zephyrproject-rtos
-      revision: v3.7.1
+      revision: v4.1.0
       import: true
     - name: astarte-device-sdk-zephyr
       remote: astarte-platform
       repo-path: astarte-device-sdk-zephyr.git
       path: astarte-device-sdk-zephyr
-      revision: v0.7.1
+      revision: v0.7.2
 ```
 Save the `west.yml` manifest in a `get_started_app` folder within the `astartezephyrproject`.
 We can then initialize our project with west.
@@ -226,9 +225,10 @@ CONFIG_MBEDTLS_ENABLE_HEAP=y
 CONFIG_MBEDTLS_HEAP_SIZE=55000
 CONFIG_MBEDTLS_SSL_MAX_CONTENT_LEN=16384
 CONFIG_MBEDTLS_PEM_CERTIFICATE_FORMAT=y
-CONFIG_MBEDTLS_PK_WRITE_C=y
-CONFIG_MBEDTLS_ENTROPY_ENABLED=y
-CONFIG_MBEDTLS_ZEPHYR_ENTROPY=y
+CONFIG_MBEDTLS_PK_WRITE_C=y # Required for PEM writing
+CONFIG_MBEDTLS_X509_CSR_WRITE_C=y
+CONFIG_MBEDTLS_ENTROPY_C=y
+CONFIG_MBEDTLS_ENTROPY_POLL_ZEPHYR=y
 CONFIG_MBEDTLS_TLS_VERSION_1_2=y
 CONFIG_MBEDTLS_CIPHER=y
 CONFIG_MBEDTLS_CIPHER_ALL_ENABLED=y
@@ -493,9 +493,9 @@ static void device_tx_thread_entry_point(void *device_handle, void *unused1, voi
     printk("Streaming individual data.\n");
     const char *interface_name = org_astarte_platform_zephyr_get_started_Individual.name;
     const char double_path[] = "/double_endpoint";
-    astarte_individual_t double_individual = astarte_individual_from_double(24.56);
+    astarte_data_t double_individual = astarte_data_from_double(24.56);
 
-    res = astarte_device_stream_individual(
+    res = astarte_device_send_individual(
         device, interface_name, double_path, double_individual, NULL);
     if (res != ASTARTE_RESULT_OK) {
         printk("Err: '%s'.\n", astarte_result_to_name(res));
@@ -530,12 +530,12 @@ static void device_tx_thread_entry_point(void *device_handle, void *unused1, voi
     const char string_data[] = "Hello world!";
     astarte_object_entry_t entries[] = {
         astarte_object_entry_new(
-            "double_endpoint", astarte_individual_from_double(double_data)),
+            "double_endpoint", astarte_data_from_double(double_data)),
         astarte_object_entry_new(
-            "string_endpoint", astarte_individual_from_string(string_data)),
+            "string_endpoint", astarte_data_from_string(string_data)),
     };
 
-    res = astarte_device_stream_aggregated(device,
+    res = astarte_device_send_object(device,
         org_astarte_platform_zephyr_get_started_Aggregated.name, "/group_data", entries,
         ARRAY_SIZE(entries), NULL);
     if (res != ASTARTE_RESULT_OK) {
@@ -572,7 +572,7 @@ int main(void) {
 
     // ... configure networking, instantiate and connect the device, poll the device ...
 
-    res = astarte_device_disconnect(device);
+    res = astarte_device_disconnect(device, K_SECONDS(10));
     if (res != ASTARTE_RESULT_OK) {
         printk("Err: '%s'.\n", astarte_result_to_name(res));
         return -1;
