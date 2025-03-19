@@ -1,0 +1,36 @@
+var group__data =
+[
+    [ "astarte_data_t", "structastarte__data__t.html", [
+      [ "data", "structastarte__data__t.html#a8aff053a34acc60222f273a96be623d3", null ],
+      [ "tag", "structastarte__data__t.html#a0c4ca5b18bea5eec8cc5f637b7ba4117", null ]
+    ] ],
+    [ "astarte_data_from_binaryblob", "group__data.html#gad35f2384e590ea4f9d8a21138f2f8104", null ],
+    [ "astarte_data_from_binaryblob_array", "group__data.html#ga48ef45b8f1594d765997aa01ecb5885e", null ],
+    [ "astarte_data_from_boolean", "group__data.html#ga945f969bc235021c4c4086f08e06a964", null ],
+    [ "astarte_data_from_boolean_array", "group__data.html#gaf5a3bbfca75c1c46267f2d2d56d9dac7", null ],
+    [ "astarte_data_from_datetime", "group__data.html#ga87bc3349a6da3e32edb4fd0a53b696f2", null ],
+    [ "astarte_data_from_datetime_array", "group__data.html#ga8f437d48959adc43d0e9c7f7fb295175", null ],
+    [ "astarte_data_from_double", "group__data.html#gaa95cbffa2e8573f633ad81c2f0fbd833", null ],
+    [ "astarte_data_from_double_array", "group__data.html#gad22b96156dafab31bc225d8cb0e22ed7", null ],
+    [ "astarte_data_from_integer", "group__data.html#ga75c8bbaa8372aa984df3740e55e4d24c", null ],
+    [ "astarte_data_from_integer_array", "group__data.html#gaca5f3baa7e2ec0f66585078eba39bdcb", null ],
+    [ "astarte_data_from_longinteger", "group__data.html#ga581338b15cc303d55a5191940d109bca", null ],
+    [ "astarte_data_from_longinteger_array", "group__data.html#ga63d743d673d018f3e39c371a83174158", null ],
+    [ "astarte_data_from_string", "group__data.html#ga043c18b645c12000db5a10b655a1b1a1", null ],
+    [ "astarte_data_from_string_array", "group__data.html#gaa3268c8867d5f4e526212414f75eda81", null ],
+    [ "astarte_data_get_type", "group__data.html#gaad15ededff37055aa37d48515a9f7866", null ],
+    [ "astarte_data_to_binaryblob", "group__data.html#gac83c551d326716d6e7a82ab1354d6e01", null ],
+    [ "astarte_data_to_binaryblob_array", "group__data.html#ga4a43d25660c707d7f885b762f38f2d56", null ],
+    [ "astarte_data_to_boolean", "group__data.html#ga3b5cdff3a1d531d80958a030059faf6c", null ],
+    [ "astarte_data_to_boolean_array", "group__data.html#gad0a8dafac7a0cc3b9c40c54d4629a25a", null ],
+    [ "astarte_data_to_datetime", "group__data.html#ga87ed130d1d18578112665efc99a10eb0", null ],
+    [ "astarte_data_to_datetime_array", "group__data.html#ga981e28b48ee533dae31b75269e92dc3f", null ],
+    [ "astarte_data_to_double", "group__data.html#ga187d119f3496612f569d9b07ff672c71", null ],
+    [ "astarte_data_to_double_array", "group__data.html#gae603ae150c0e0af3a578a93e9bc91d27", null ],
+    [ "astarte_data_to_integer", "group__data.html#ga7b54c984f3eba6c3230005d3962b060d", null ],
+    [ "astarte_data_to_integer_array", "group__data.html#gab7b453305265e309b88fb8839b465db7", null ],
+    [ "astarte_data_to_longinteger", "group__data.html#ga23cdb5b909116f1c3efd6e41c0bc4309", null ],
+    [ "astarte_data_to_longinteger_array", "group__data.html#ga97fc70b09c28c95da0fd8d950bd86758", null ],
+    [ "astarte_data_to_string", "group__data.html#ga386a0b41ae3c83e26163f359cfcc27b9", null ],
+    [ "astarte_data_to_string_array", "group__data.html#gac4140ec66b894f46b46166d1fa251e6a", null ]
+];
