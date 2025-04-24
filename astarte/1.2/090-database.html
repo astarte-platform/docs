@@ -123,6 +123,7 @@ Cassandra offers linear scalability and can span from really small clusters to h
   WITH replication = {'class': 'SimpleStrategy', 'replication_factor': &lt;replication factor&gt;}  AND
     durable_writes = true;</code></pre><pre><code class="sql">CREATE TABLE astarte.realms (
   realm_name varchar,
+  device_registration_limit bigint,
 
   PRIMARY KEY (realm_name)
 );</code></pre><pre><code class="sql">CREATE TABLE astarte.kv_store (
@@ -276,8 +277,13 @@ CREATE TABLE &lt;realm name&gt;.individual_datastreams (
   datetimearray_value list&lt;timestamp&gt;,
 
   PRIMARY KEY((device_id, interface_id), endpoint_id, path)
-);
-</code></pre><p>The following table is generated upon datastream interface creation for keeping all data sent to Astarte through the interface.</p><p>The table name is derived from lower case interface name where <code class="inline">.</code> and <code class="inline">-</code> have been replaced by <code class="inline">_</code> and <code class="inline">&quot;&quot;</code> (empty string), then the major version is appended with a <code class="inline">_v</code> prefix. 
+);</code></pre><pre><code class="sql">CREATE TABLE &lt;realm name&gt;.deletion_in_progress (
+  device_id uuid,
+  vmq_ack boolean,
+  dup_start_ack boolean,
+  dup_end_ack boolean,
+  PRIMARY KEY (device_id)
+);</code></pre><p>The following table is generated upon datastream interface creation for keeping all data sent to Astarte through the interface.</p><p>The table name is derived from lower case interface name where <code class="inline">.</code> and <code class="inline">-</code> have been replaced by <code class="inline">_</code> and <code class="inline">&quot;&quot;</code> (empty string), then the major version is appended with a <code class="inline">_v</code> prefix. 
 For example, com.Astarte.TestInterface version 1 becomes  <code class="inline">com_astarte_testinterface_v1</code>.</p><p>If, after all the required transformations, the resulting name is too long (&gt;45 chars), it will be encoded and truncated.</p><pre><code class="sql">CREATE TABLE &lt;interpolated interface name&gt;_v&lt;major_version&gt; (
     device_id uuid,
     path text,
