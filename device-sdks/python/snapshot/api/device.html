@@ -87,6 +87,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#device.exceptions.DeviceAlreadyRegisteredError"><code class="docutils literal notranslate"><span class="pre">DeviceAlreadyRegisteredError</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#device.exceptions.DeviceConnectingError"><code class="docutils literal notranslate"><span class="pre">DeviceConnectingError</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#device.exceptions.DeviceDisconnectedError"><code class="docutils literal notranslate"><span class="pre">DeviceDisconnectedError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.exceptions.DeviceGrpcDecodeError"><code class="docutils literal notranslate"><span class="pre">DeviceGrpcDecodeError</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#device.exceptions.InterfaceFileDecodeError"><code class="docutils literal notranslate"><span class="pre">InterfaceFileDecodeError</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#device.exceptions.InterfaceFileNotFoundError"><code class="docutils literal notranslate"><span class="pre">InterfaceFileNotFoundError</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#device.exceptions.InterfaceNotFoundError"><code class="docutils literal notranslate"><span class="pre">InterfaceNotFoundError</span></code></a></li>
@@ -784,7 +785,7 @@ reason, the usage of asyncio is strongly recommended.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="device.device_grpc.add_node_id_in_metadata">
-<span class="sig-prename descclassname"><span class="pre">device.device_grpc.</span></span><span class="sig-name descname"><span class="pre">add_node_id_in_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_call_details</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">grpc._interceptor._ClientCallDetails</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_grpc.add_node_id_in_metadata" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">device.device_grpc.</span></span><span class="sig-name descname"><span class="pre">add_node_id_in_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_call_details</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ClientCallDetails</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#device.device_grpc.AstarteClientCallDetails" title="device.device_grpc.AstarteClientCallDetails"><span class="pre">AstarteClientCallDetails</span></a></span></span><a class="headerlink" href="#device.device_grpc.add_node_id_in_metadata" title="Link to this definition"></a></dt>
 <dd><p>Add an Astarte message hub ID to che grpc client call details as a metadata fields.</p>
 <p>Note: This function doesn’t perform in place changes to client_call_details. It returns a
 totally new set of client call details.</p>
@@ -974,6 +975,18 @@ started but is not yet connected.</p>
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">DeviceDisconnectedError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.DeviceDisconnectedError" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
 <p>Exception raised if attempting a send while the device is disconnected from Astarte.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">msg</span> <span class="pre">--</span> <span class="pre">A</span> <span class="pre">message</span> <span class="pre">error</span> <span class="pre">carrying</span> <span class="pre">further</span> <span class="pre">details</span></span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.DeviceGrpcDecodeError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">DeviceGrpcDecodeError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.DeviceGrpcDecodeError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
+<p>Exception raised when a received AstarteData has an unrecognised type and can’t be decoded.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">msg</span> <span class="pre">--</span> <span class="pre">A</span> <span class="pre">message</span> <span class="pre">error</span> <span class="pre">carrying</span> <span class="pre">further</span> <span class="pre">details</span></span></dt>
