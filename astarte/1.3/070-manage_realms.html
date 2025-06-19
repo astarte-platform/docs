@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.29.0">
+    <meta name="project" content="Clea Astarte v1.2.0">
+
+    <title>Managing Realms — Clea Astarte v1.2.0</title>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-C9FC9F15.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+      <a href="https://docs.astarte-platform.org/astarte/1.0/">
+        <img src="assets/logo.png" alt="Clea Astarte" class="sidebar-projectImage">
+      </a>
+
+    <div class="sidebar-projectDetails">
+      <a href="https://docs.astarte-platform.org/astarte/1.0/" class="sidebar-projectName" translate="no">
+Clea Astarte
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
+        v1.2.0
+      </strong>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://github.com/astarte-platform/astarte/blob/release-1.0/doc/pages/administrator/070-manage_realms.md#L1" title="View Source" class="view-source" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span>Managing Realms</span>
+</h1>
+
+<p>Once the Cluster is set up, you can start managing it by creating Realms.</p><h2 id="accessing-housekeeping-key" class="section-heading">
+  <a href="#accessing-housekeeping-key" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">accessing-housekeeping-key</p>
+  </a>
+  Accessing Housekeeping key
+</h2>
+<p>When creating a new Cluster, Astarte Operator also creates a brand new keypair and stores it in
+the cluster. To retrieve it (assuming you deployed an instance named <code class="inline">astarte</code> in namespace <code class="inline">astarte</code>):</p><pre><code class="makeup bash" translate="no"><span class="">kubectl get secret -n astarte astarte-housekeeping-private-key -o=jsonpath={.data.private-key} | base64 -d &gt; housekeeping.key
+</span></code></pre><p>You can then use <code class="inline">housekeeping.key</code> to authenticate against Housekeeping API.</p><h2 id="device-limit-in-a-realm" class="section-heading">
+  <a href="#device-limit-in-a-realm" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">device-limit-in-a-realm</p>
+  </a>
+  Device limit in a Realm
+</h2>
+<p>While there is no limit on the number of Devices registered in a Realm, it is possible to impose
+an upper bound using the <code class="inline">&lt;astarte base API URL&gt;/housekeeping/v1/realms/&lt;realm name&gt;</code> API.
+By default, such an upper bound does not exist. The limit can be retrieved, updated or removed
+(meaning that any number of registered Devices is allowed).</p><h3 id="setting-updating-or-removing-the-limit-on-the-number-of-registered-devices-in-a-realm" class="section-heading">
+  <a href="#setting-updating-or-removing-the-limit-on-the-number-of-registered-devices-in-a-realm" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">setting-updating-or-removing-the-limit-on-the-number-of-registered-devices-in-a-realm</p>
+  </a>
+  Setting, updating or removing the limit on the number of registered Devices in a Realm
+</h3>
+<p><code class="inline">PATCH &lt;astarte base API URL&gt;/housekeeping/v1/realms/&lt;realm name&gt;</code></p><p>The HTTP payload of the request must have the following format:</p><pre><code class="json">{
+    &quot;data&quot;: {
+        &quot;device_registration_limit&quot;: &lt;value&gt;
+    }
+}</code></pre><p>To set or update the limit, the value must be a non negative integer.
+If the value is less than the number of currently registered devices, no devices will be
+removed, but it will not be possible to register new devices.
+When it is set, trying to register more Devices past the limit will result in an error.
+To remove the limit, the value must be <code class="inline">null</code>.</p><h3 id="fetching-the-limit-on-the-number-of-registered-devices-in-a-realm" class="section-heading">
+  <a href="#fetching-the-limit-on-the-number-of-registered-devices-in-a-realm" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">fetching-the-limit-on-the-number-of-registered-devices-in-a-realm</p>
+  </a>
+  Fetching the limit on the number of registered Devices in a Realm
+</h3>
+<p><code class="inline">GET &lt;astarte base API URL&gt;/housekeeping/v1/realms/&lt;realm name&gt;</code></p><p>The HTTP payload of the response will have the following format:</p><pre><code class="json">{
+  &quot;data&quot;: {
+    &quot;realm_name&quot;: &lt;realm name&gt;,
+    &quot;jwt_public_key_pem&quot;: &lt;realm public key&gt;,
+    &quot;replication_factor&quot;: &lt;realm replication factor&gt;,
+    &quot;device_registration_limit&quot;: &lt;realm device registration limit&gt;
+  }
+}</code></pre><p>If no limit is currently set, the value of the <code class="inline">&quot;device_registration_limit&quot;</code> field will be <code class="inline">null</code>.</p><h2 id="work-in-progress" class="section-heading">
+  <a href="#work-in-progress" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">work-in-progress</p>
+  </a>
+  Work in progress
+</h2>
+<p>This guide is not yet complete, as this part is a moving target within <code class="inline">astartectl</code>. Please refer to the
+<a href="001-intro_api.html">API Documentation</a> to manage Realms manually once here.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="095-known_issues.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Known issues
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="090-monitoring.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Monitoring
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
+        <p>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>
