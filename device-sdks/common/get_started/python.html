@@ -250,6 +250,7 @@
 <li class="toctree-l3"><a class="reference external" href="https://docs.astarte-platform.org/device-sdks/csharp/0.7/api">Csharp v0.7 APIs</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference external" href="https://docs.astarte-platform.org/device-sdks/cpp/snapshot/api">Cpp APIs</a></li>
 <li class="toctree-l2"><a class="reference external" href="https://docs.rs/astarte-device-sdk/latest/astarte_device_sdk/">Rust APIs</a></li>
 <li class="toctree-l2"><a class="reference external" href="https://pkg.go.dev/github.com/astarte-platform/astarte-device-sdk-go/">Go APIs</a></li>
 </ul>
@@ -300,62 +301,175 @@ SPDX-License-Identifier: Apache-2.0
 -->
 <section id="get-started-with-python">
 <h1>Get started with Python<a class="headerlink" href="#get-started-with-python" title="Link to this heading">¶</a></h1>
-<p>Follow this guide to get started with the Astarte device SDK for the Python programming language.</p>
+<p>Follow this guide to start with the Astarte device SDK for the Python programming language.
+We will explain how the SDK APIs can be used to create a device, connect to Astarte, and easily
+transmit data.</p>
 <p><strong>Note:</strong> The Astarte device SDK for Python can work using a direct MQTT connection to Astarte or
 connect through the <a class="reference external" href="https://github.com/astarte-platform/astarte-message-hub">Astarte message hub</a>.
 This getting started guide will show how to instantiate and connect a device to Astarte
 using the MQTT protocol.</p>
-<section id="importing-the-device-class">
-<h2>Importing the device class<a class="headerlink" href="#importing-the-device-class" title="Link to this heading">¶</a></h2>
-<p>Import the device class from the astarte package.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astarte.device</span><span class="w"> </span><span class="kn">import</span> <span class="n">DeviceMqtt</span>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
+<p>This get-started will focus on creating a device and connecting it to an Astarte instance.
+If you don’t have access to an Astarte instance you can easily set up one following our
+<a class="reference external" href="https://docs.astarte-platform.org/device-sdks/common/astarte_quick_instance.html">Astarte quick instance guide</a>.</p>
+<p>From here on we will assume you have access to an Astarte instance, remote or on your local machine.
+Furthermore, we will assume you have access to the Astarte dashboard for a realm.</p>
+<section id="installing-the-required-interfaces">
+<h3>Installing the required interfaces<a class="headerlink" href="#installing-the-required-interfaces" title="Link to this heading">¶</a></h3>
+<p>The interfaces that our device will use must first be installed within the Astarte instance.
+In this guide we will shot how to stream individual and aggregated data as well as how to set and
+unset data. As a consequence we will need three interfaces that the device will be able to use
+to transmit this data.
+The following is the definition of the individually aggregated interface:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.astarte-platform.python.get-started.Individual&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version_minor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;datastream&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ownership&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Individual interface for the get-started of the Astarte device SDK for Python.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/double_endpoint&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;double&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;explicit_timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Next is the definition of the aggregated interface:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.astarte-platform.python.get-started.Aggregated&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version_minor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;datastream&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;aggregation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ownership&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Aggregated interface for the get-started of the Astarte device SDK for Python.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/group_data/double_endpoint&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;double&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;explicit_timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/group_data/string_endpoint&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;explicit_timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>And finally the definition of the property interface:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.astarte-platform.python.get-started.Property&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;version_minor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;properties&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;ownership&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Property interface for the get-started of the Astarte device SDK for Python.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/double_endpoint&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;double&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;allow_unset&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To install the three interfaces in the Astarte instance, open the Astarte dashboard, navigate to the
+interfaces tab and click on install new interface.
+You can copy and paste the JSON files for each interface in the right box overwriting the default
+template.</p>
+</section>
+<section id="registering-the-device">
+<h3>Registering the device<a class="headerlink" href="#registering-the-device" title="Link to this heading">¶</a></h3>
+<p>Devices should be pre-registered to Astarte before their first connection.
+With the Astarte device SDK for Python this can be achieved in two ways:</p>
+<ul class="simple">
+<li><p>By registering the device on Astarte manually, obtaining a credentials secret and transfering it
+on the device.</p></li>
+<li><p>By using the included registration utilities provided by the SDK. Those utilities can make use of
+a registration JWT issued by Astarte and register the device automatically before the first
+connection.</p></li>
+</ul>
+<p>To keep this guide as simple as possible we will use the first method, as a device can be registered
+using the Astarte dashboard with a couple of clicks.</p>
+<p>To install a new device start by opening the dashboard and navigate to the devices tab.
+Click on register a new device, there you can input your own device ID or generate a random one.
+Click on register device, this will register the device an give you a credentials secret.
+The credentials secret will be used by the device to authenticate with Astarte.
+Copy it somewhere safe as it will be used in the next steps.</p>
+</section>
+</section>
+<section id="installing-the-astarte-device-sdk-for-python">
+<h2>Installing the Astarte device SDK for Python<a class="headerlink" href="#installing-the-astarte-device-sdk-for-python" title="Link to this heading">¶</a></h2>
+<p>The library source code can be found on
+<a class="reference external" href="https://github.com/astarte-platform/astarte-device-sdk-python">GitHub</a> and can be installed using
+pip:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>astarte-device-sdk
 </pre></div>
 </div>
 </section>
-<section id="registering-a-device">
-<h2>Registering a device<a class="headerlink" href="#registering-a-device" title="Link to this heading">¶</a></h2>
-<p>In order for a device to connect to Astarte a registration procedure is required. This registration
-will produce a device specific credential secret that will be used when connecting to Astarte.
-The Python Astarte device SDKs provides utilities to perform a device registration directly on
-the device. Those utilities require a registration JWT to be loaded on the device. Such JWT should
-be discarded following the registration procedure.</p>
-<p>This step is only useful when registering the device through the APIs using the JWT token.
-Registration of a device can also be performed outside the device in the Astarte instance using
-tools such as <a class="reference external" href="https://github.com/astarte-platform/astartectl">astartectl</a>, the
-<a class="reference external" href="https://docs.astarte-platform.org/astarte/latest/015-astarte_dashboard.html">Astarte dashboard</a>,
-or the dedicated
-<a class="reference external" href="https://docs.astarte-platform.org/astarte/latest/api/index.html?urls.primaryName=Pairing%20API">Astarte API for device registration</a>.
-The generated credential secret should then be loaded manually on the device.</p>
-<p>To generate a credential secret use the function <code class="docutils literal notranslate"><span class="pre">register_device_with_jwt_token</span></code> as shown below.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astarte.device</span><span class="w"> </span><span class="kn">import</span> <span class="n">register_device_with_jwt_token</span>
+<section id="creating-a-device-instance">
+<h2>Creating a device instance<a class="headerlink" href="#creating-a-device-instance" title="Link to this heading">¶</a></h2>
+<p>The first step to use the Astarte device SDK is to import the device class from the astarte package
+and create a device instance.</p>
+<p>The init function for the device class will require some information:</p>
+<ul class="simple">
+<li><p>The Astarte pairing base URL. This is the Astarte base URL with an appendend <code class="docutils literal notranslate"><span class="pre">/pairing</span></code> at the
+end. If you deployed an Astarte instance using the Astarte quick instance guide and decided to
+use the SDK on the same machine as the Astarte instance, this will be
+<code class="docutils literal notranslate"><span class="pre">http://api.astarte.localhost/pairing</span></code>.</p></li>
+<li><p>The name of the realm where the device is registered. If you deployed an Astarte instance using
+the Astarte quick instance guide, you can use the default generated one named <code class="docutils literal notranslate"><span class="pre">test</span></code>.</p></li>
+<li><p>The device ID.</p></li>
+<li><p>The credentials sected associated to the device ID.</p></li>
+<li><p>The path to a directory where the Astarte device will store some persistent data.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">astarte.device</span><span class="w"> </span><span class="kn">import</span> <span class="n">DeviceMqtt</span>
 
-<span class="n">DEVICE_ID</span> <span class="o">=</span> <span class="s2">&quot;&lt;DEVICE_ID&gt;&quot;</span>
-<span class="n">REALM</span> <span class="o">=</span> <span class="s2">&quot;&lt;REALM&gt;&quot;</span>
-<span class="n">JWT_TOKEN</span> <span class="o">=</span> <span class="s2">&quot;&lt;JWT_TOKEN&gt;&quot;</span>
-<span class="n">PAIRING_BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;&lt;PAIRING_BASE_URL&gt;&quot;</span>
+<span class="n">astarte_pairing_base_url</span> <span class="o">=</span> <span class="s2">&quot;&lt;PAIRING_BASE_URL&gt;&quot;</span>
+<span class="n">realm</span> <span class="o">=</span> <span class="s2">&quot;&lt;REALM&gt;&quot;</span>
+<span class="n">device_id</span> <span class="o">=</span> <span class="s2">&quot;&lt;DEVICE_ID&gt;&quot;</span>
+<span class="n">credentials_secret</span> <span class="o">=</span> <span class="s2">&quot;&lt;DEVICE CREDENTIALS SECRET&gt;&quot;</span>
+<span class="n">persistency_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
 
-<span class="n">credentials_secret</span> <span class="o">=</span> <span class="n">register_device_with_jwt_token</span><span class="p">(</span><span class="n">DEVICE_ID</span><span class="p">,</span> <span class="n">REALM</span><span class="p">,</span> <span class="n">JWT_TOKEN</span><span class="p">,</span> <span class="n">PAIRING_BASE_URL</span><span class="p">)</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">DeviceMqtt</span><span class="p">(</span>
+    <span class="n">device_id</span><span class="p">,</span>
+    <span class="n">realm</span><span class="p">,</span>
+    <span class="n">credentials_secret</span><span class="p">,</span>
+    <span class="n">astarte_pairing_base_url</span><span class="p">,</span>
+    <span class="n">persistency_dir</span><span class="p">,</span>
+    <span class="n">ignore_ssl_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
+<p>We will set the <code class="docutils literal notranslate"><span class="pre">ignore_ssl_errors</span></code> flag in order to ignore any self signed TLS certificate used
+in our local Astarte instance.</p>
 </section>
-<section id="instantiating-a-device">
-<h2>Instantiating a device<a class="headerlink" href="#instantiating-a-device" title="Link to this heading">¶</a></h2>
-<p>Now that we obtained a credential secret we can create a new device instance.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ... register the device with Astarte ...</span>
-
-<span class="n">device</span> <span class="o">=</span> <span class="n">DeviceMqtt</span><span class="p">(</span><span class="n">DEVICE_ID</span><span class="p">,</span> <span class="n">realm</span><span class="p">,</span> <span class="n">credentials_secret</span><span class="p">,</span> <span class="n">pairing_base_url</span><span class="p">,</span> <span class="n">persistency_dir</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="adding-interfaces-to-the-device">
-<h2>Adding interfaces to the device<a class="headerlink" href="#adding-interfaces-to-the-device" title="Link to this heading">¶</a></h2>
-<p>Each device should include a set of interfaces in its introspection.
+<section id="adding-the-interfaces-to-the-device">
+<h2>Adding the interfaces to the device<a class="headerlink" href="#adding-the-interfaces-to-the-device" title="Link to this heading">¶</a></h2>
+<p>We previously added three interfaces to our Astarte instance. We will now do something similar on
+the device.
 The Python SDK allows the user to add interfaces directly from <code class="docutils literal notranslate"><span class="pre">.json</span></code> files definitions using
-the <code class="docutils literal notranslate"><span class="pre">add_interfaces</span></code> method of the abstract class <code class="docutils literal notranslate"><span class="pre">Device</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ... register and instantiate the device ...</span>
+the <code class="docutils literal notranslate"><span class="pre">add_interface_from_file</span></code> method.
+Save the three interfaces in JSON files in your working directory and add them to the device as
+follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="n">interface_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/examples/interfaces/com.example.Interface.json&quot;</span><span class="p">)</span>
+<span class="c1"># ... instantiate the device ...</span>
+
+<span class="n">interface_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./org.astarte-platform.python.get-started.Individual.json&quot;</span><span class="p">)</span>
+<span class="n">device</span><span class="o">.</span><span class="n">add_interface_from_file</span><span class="p">(</span><span class="n">interface_file</span><span class="p">)</span>
+<span class="n">interface_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./org.astarte-platform.python.get-started.Aggregated.json&quot;</span><span class="p">)</span>
+<span class="n">device</span><span class="o">.</span><span class="n">add_interface_from_file</span><span class="p">(</span><span class="n">interface_file</span><span class="p">)</span>
+<span class="n">interface_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./org.astarte-platform.python.get-started.Property.json&quot;</span><span class="p">)</span>
 <span class="n">device</span><span class="o">.</span><span class="n">add_interface_from_file</span><span class="p">(</span><span class="n">interface_file</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -366,13 +480,13 @@ the <code class="docutils literal notranslate"><span class="pre">add_interfaces<
 Such callbacks should be configured prior to connecting to Astarte.</p>
 <p>Three callbacks can be optionally configured. A connection callback, a data received callback and
 a disconnection callback.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">on_connected_cbk</span><span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="n">DeviceMqtt</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ... instantiate and add the interfaces to a device ...</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_connected_cbk</span><span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="n">DeviceMqtt</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Device connected.&quot;</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">on_disconnected_cbk</span><span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="n">DeviceMqtt</span><span class="p">,</span> <span class="n">reason</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Device disconnected.&quot;</span><span class="p">)</span>
-
-<span class="c1"># ... register, instantiate and add the interfaces to a device ...</span>
 
 <span class="n">device</span><span class="o">.</span><span class="n">set_events_callbacks</span><span class="p">(</span><span class="n">on_connected</span><span class="o">=</span><span class="n">on_connected_cbk</span><span class="p">,</span> <span class="n">on_disconnected</span><span class="o">=</span><span class="n">on_disconnected_cbk</span><span class="p">)</span>
 </pre></div>
@@ -380,14 +494,15 @@ a disconnection callback.</p>
 </section>
 <section id="connecting-the-device">
 <h2>Connecting the device<a class="headerlink" href="#connecting-the-device" title="Link to this heading">¶</a></h2>
-<p>After the four fundamental steps of registering the device, instantiating the device,
-adding the interfaces and setting the callbacks have been completed the device can be connected to
-Astarte.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ... register, instantiate, add the interfaces and the callbacks for a device ...</span>
+<p>We are finally ready to connect our device to Astarte.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="c1"># ... instantiate, add the interfaces and the callbacks to a device ...</span>
 
 <span class="n">device</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
 <span class="k">while</span> <span class="ow">not</span> <span class="n">device</span><span class="o">.</span><span class="n">is_connected</span><span class="p">():</span>
-    <span class="c1"># Wait for connection</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
@@ -398,34 +513,33 @@ Astarte.</p>
 aggregation type.</p>
 <section id="streaming-individual-data">
 <h3>Streaming individual data<a class="headerlink" href="#streaming-individual-data" title="Link to this heading">¶</a></h3>
-<p>In Astarte interfaces with <code class="docutils literal notranslate"><span class="pre">individual</span></code> aggregation, each mapping is treated as an independent value
-and is managed individually.</p>
-<p>The snippet bellow shows how to send a value that will be inserted into the <code class="docutils literal notranslate"><span class="pre">&quot;/test0/value&quot;</span></code>
-datastream which is defined by <code class="docutils literal notranslate"><span class="pre">&quot;/%{sensor_id}/value&quot;</span></code> parametric endpoint, that is part of
-<code class="docutils literal notranslate"><span class="pre">&quot;org.astarte-platform.genericsensors.Values&quot;</span></code> datastream interface.</p>
+<p>For Astarte interfaces with <code class="docutils literal notranslate"><span class="pre">individual</span></code> aggregation, each mapping is treated as an independent
+value and is managed individually.</p>
+<p>The snippet bellow shows how to send a value that will be inserted into the <code class="docutils literal notranslate"><span class="pre">&quot;/double_endpoint&quot;</span></code>,
+that is part of the <code class="docutils literal notranslate"><span class="pre">&quot;org.astarte-platform.python.get-started.Individual&quot;</span></code> datastream interface.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ... device setup and connection ...</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
-<span class="n">device_interface_name</span> <span class="o">=</span> <span class="s2">&quot;org.astarte-platform.genericsensors.Values&quot;</span>
-<span class="n">device_path</span> <span class="o">=</span> <span class="s2">&quot;/test0/value&quot;</span>
-<span class="n">device</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">device_interface_name</span><span class="p">,</span> <span class="n">device_path</span><span class="p">,</span> <span class="mf">42.3</span><span class="p">,</span> <span class="n">timestamp</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">))</span>
+<span class="n">interface_name</span> <span class="o">=</span> <span class="s2">&quot;org.astarte-platform.python.get-started.Individual&quot;</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/double_endpoint&quot;</span>
+<span class="n">value</span> <span class="o">=</span> <span class="mf">42.3</span>
+<span class="n">device</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">interface_name</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="streaming-aggregated-data">
 <h3>Streaming aggregated data<a class="headerlink" href="#streaming-aggregated-data" title="Link to this heading">¶</a></h3>
-<p>In Astarte interfaces with <code class="docutils literal notranslate"><span class="pre">object</span></code> aggregation, Astarte expects the owner to send all of the
-interface’s mappings at the same time, packed in a single message.</p>
+<p>For Astarte interfaces with <code class="docutils literal notranslate"><span class="pre">object</span></code> aggregation, all of the interface’s mappings should be sent
+at the same time, packed in a single message.</p>
 <p>The following snippet shows how to send a value for an object aggregated interface. In this
-examples, <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">long</span></code> will be sent together and will be inserted into the <code class="docutils literal notranslate"><span class="pre">&quot;/coords&quot;</span></code>
-datastream which is defined by the <code class="docutils literal notranslate"><span class="pre">&quot;/coords&quot;</span></code> endpoint, that is part of <code class="docutils literal notranslate"><span class="pre">&quot;com.example.GPS&quot;</span></code>
+case, <code class="docutils literal notranslate"><span class="pre">double_endpoint</span></code> and <code class="docutils literal notranslate"><span class="pre">string_endpoint</span></code> will be sent together on the common <code class="docutils literal notranslate"><span class="pre">&quot;/group_data&quot;</span></code>
+datastream path, that is part of the <code class="docutils literal notranslate"><span class="pre">&quot;org.astarte-platform.python.get-started.Aggregated&quot;</span></code>
 datastream interface.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ... device setup and connection ...</span>
 
-<span class="n">aggregated_data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="mf">45.409627</span><span class="p">,</span> <span class="s1">&#39;long&#39;</span><span class="p">:</span> <span class="mf">11.8765254</span><span class="p">}</span>
-<span class="n">device_interface_name</span> <span class="o">=</span> <span class="s2">&quot;com.example.GPS&quot;</span>
-<span class="n">device_path</span> <span class="o">=</span> <span class="s2">&quot;/coords&quot;</span>
-<span class="n">device</span><span class="o">.</span><span class="n">send_aggregate</span><span class="p">(</span><span class="n">device_interface_name</span><span class="p">,</span> <span class="n">device_path</span><span class="p">,</span> <span class="n">aggregated_data</span><span class="p">,</span> <span class="n">timestamp</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">))</span>
+<span class="n">interface_name</span> <span class="o">=</span> <span class="s2">&quot;org.astarte-platform.python.get-started.Aggregated&quot;</span>
+<span class="n">common_path</span> <span class="o">=</span> <span class="s2">&quot;/group_data&quot;</span>
+<span class="n">aggregated_data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;double_endpoint&#39;</span><span class="p">:</span> <span class="mf">45.409627</span><span class="p">,</span> <span class="s1">&#39;string_endpoint&#39;</span><span class="p">:</span> <span class="s2">&quot;My string&quot;</span><span class="p">}</span>
+<span class="n">device</span><span class="o">.</span><span class="n">send_aggregate</span><span class="p">(</span><span class="n">interface_name</span><span class="p">,</span> <span class="n">common_path</span><span class="p">,</span> <span class="n">aggregated_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -435,23 +549,25 @@ datastream interface.</p>
 <p>Interfaces of <code class="docutils literal notranslate"><span class="pre">property</span></code> type represent a persistent, stateful, synchronized state with no concept
 of history or timestamping. From a programming point of view, setting and unsetting properties of
 device-owned interface is rather similar to sending messages on datastream interfaces.</p>
-<p>The following snippet shows how to set a value that will be inserted into the <code class="docutils literal notranslate"><span class="pre">&quot;/sensor0/name&quot;</span></code>
-property which is defined by <code class="docutils literal notranslate"><span class="pre">&quot;/%{sensor_id}/name&quot;</span></code> parametric endpoint, that is part of <code class="docutils literal notranslate"><span class="pre">&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;</span></code> device-owned properties interface.</p>
+<p>The following snippet shows how to set a new value for the <code class="docutils literal notranslate"><span class="pre">&quot;/double_endpoint&quot;</span></code> property, that is
+part of <code class="docutils literal notranslate"><span class="pre">&quot;org.astarte-platform.python.get-started.Property&quot;</span></code> properties interface.</p>
 <p>It should be noted how a property should be marked as unsettable in its interface definition to
 be able to use the unsetting method on it.</p>
 <p>Set property:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ... device setup and connection ...</span>
 
-<span class="n">property_value</span> <span class="o">=</span> <span class="s2">&quot;foobar&quot;</span>
-<span class="n">device_interface_name</span> <span class="o">=</span> <span class="s2">&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;</span>
-<span class="n">device_path</span> <span class="o">=</span> <span class="s2">&quot;/sensor0/name&quot;</span>
-<span class="n">device</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">device_interface_name</span><span class="p">,</span> <span class="n">device_path</span><span class="p">,</span> <span class="n">property_value</span><span class="p">)</span>
+<span class="n">interface_name</span> <span class="o">=</span> <span class="s2">&quot;org.astarte-platform.python.get-started.Property&quot;</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/double_endpoint&quot;</span>
+<span class="n">value</span> <span class="o">=</span> <span class="mf">55.5</span>
+<span class="n">device</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">interface_name</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Unset property:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ... device setup and connection ...</span>
 
-<span class="n">device</span><span class="o">.</span><span class="n">unset_property</span><span class="p">(</span><span class="s2">&quot;org.astarte-platform.genericsensors.AvailableSensors&quot;</span><span class="p">,</span> <span class="s2">&quot;/sensor0/name&quot;</span><span class="p">)</span>
+<span class="n">interface_name</span> <span class="o">=</span> <span class="s2">&quot;org.astarte-platform.python.get-started.Property&quot;</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/double_endpoint&quot;</span>
+<span class="n">device</span><span class="o">.</span><span class="n">unset_property</span><span class="p">(</span><span class="n">interface_name</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -461,6 +577,7 @@ be able to use the unsetting method on it.</p>
 This method will trigger a callback to one of the user defined functions.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ... device setup, connection and data transmission ...</span>
 
+<span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">device</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -523,10 +640,14 @@ This method will trigger a callback to one of the user defined functions.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Get started with Python</a><ul>
-<li><a class="reference internal" href="#importing-the-device-class">Importing the device class</a></li>
-<li><a class="reference internal" href="#registering-a-device">Registering a device</a></li>
-<li><a class="reference internal" href="#instantiating-a-device">Instantiating a device</a></li>
-<li><a class="reference internal" href="#adding-interfaces-to-the-device">Adding interfaces to the device</a></li>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a><ul>
+<li><a class="reference internal" href="#installing-the-required-interfaces">Installing the required interfaces</a></li>
+<li><a class="reference internal" href="#registering-the-device">Registering the device</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installing-the-astarte-device-sdk-for-python">Installing the Astarte device SDK for Python</a></li>
+<li><a class="reference internal" href="#creating-a-device-instance">Creating a device instance</a></li>
+<li><a class="reference internal" href="#adding-the-interfaces-to-the-device">Adding the interfaces to the device</a></li>
 <li><a class="reference internal" href="#registering-the-callbacks">Registering the callbacks</a></li>
 <li><a class="reference internal" href="#connecting-the-device">Connecting the device</a></li>
 <li><a class="reference internal" href="#streaming-data">Streaming data</a><ul>

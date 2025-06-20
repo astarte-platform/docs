@@ -18,6 +18,7 @@ Zephyr APIs <api_docs/zephyr.md>
 Esp32 APIs <api_docs/esp32.md>
 Java APIs <api_docs/java.md>
 Csharp APIs <api_docs/csharp.md>
+Cpp APIs <https://docs.astarte-platform.org/device-sdks/cpp/snapshot/api>
 Rust APIs <https://docs.rs/astarte-device-sdk/latest/astarte_device_sdk/>
 Go APIs <https://pkg.go.dev/github.com/astarte-platform/astarte-device-sdk-go/>
 ```
