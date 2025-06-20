@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>device package &mdash; Astarte device SDK Python 0.13.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=ec68e10f"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="astarte" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Astarte device SDK Python
+          </a>
+              <div class="version">
+                0.13
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">astarte</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">device package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-device.crypto">device.crypto module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#device.crypto.certificate_is_valid"><code class="docutils literal notranslate"><span class="pre">certificate_is_valid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.crypto.device_has_certificate"><code class="docutils literal notranslate"><span class="pre">device_has_certificate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.crypto.generate_csr"><code class="docutils literal notranslate"><span class="pre">generate_csr()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.crypto.import_device_certificate"><code class="docutils literal notranslate"><span class="pre">import_device_certificate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-device.database">device.database module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#device.database.AstarteDatabase"><code class="docutils literal notranslate"><span class="pre">AstarteDatabase</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.database.AstarteDatabaseSQLite"><code class="docutils literal notranslate"><span class="pre">AstarteDatabaseSQLite</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-device.device">device.device module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#device.device.ConnectionState"><code class="docutils literal notranslate"><span class="pre">ConnectionState</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.device.Device"><code class="docutils literal notranslate"><span class="pre">Device</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-device.device_grpc">device.device_grpc module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#device.device_grpc.AstarteClientCallDetails"><code class="docutils literal notranslate"><span class="pre">AstarteClientCallDetails</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.device_grpc.AstarteUnaryStreamInterceptor"><code class="docutils literal notranslate"><span class="pre">AstarteUnaryStreamInterceptor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.device_grpc.AstarteUnaryUnaryInterceptor"><code class="docutils literal notranslate"><span class="pre">AstarteUnaryUnaryInterceptor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.device_grpc.DeviceGrpc"><code class="docutils literal notranslate"><span class="pre">DeviceGrpc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.device_grpc.add_node_id_in_metadata"><code class="docutils literal notranslate"><span class="pre">add_node_id_in_metadata()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-device.device_mqtt">device.device_mqtt module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#device.device_mqtt.DeviceMqtt"><code class="docutils literal notranslate"><span class="pre">DeviceMqtt</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-device.exceptions">device.exceptions module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#device.exceptions.APIError"><code class="docutils literal notranslate"><span class="pre">APIError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.exceptions.AstarteError"><code class="docutils literal notranslate"><span class="pre">AstarteError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.exceptions.AuthorizationError"><code class="docutils literal notranslate"><span class="pre">AuthorizationError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.exceptions.DeviceAlreadyRegisteredError"><code class="docutils literal notranslate"><span class="pre">DeviceAlreadyRegisteredError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.exceptions.DeviceConnectingError"><code class="docutils literal notranslate"><span class="pre">DeviceConnectingError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.exceptions.DeviceDisconnectedError"><code class="docutils literal notranslate"><span class="pre">DeviceDisconnectedError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.exceptions.InterfaceFileDecodeError"><code class="docutils literal notranslate"><span class="pre">InterfaceFileDecodeError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.exceptions.InterfaceFileNotFoundError"><code class="docutils literal notranslate"><span class="pre">InterfaceFileNotFoundError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.exceptions.InterfaceNotFoundError"><code class="docutils literal notranslate"><span class="pre">InterfaceNotFoundError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.exceptions.JWTGenerationError"><code class="docutils literal notranslate"><span class="pre">JWTGenerationError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.exceptions.PersistencyDirectoryNotFoundError"><code class="docutils literal notranslate"><span class="pre">PersistencyDirectoryNotFoundError</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.exceptions.ValidationError"><code class="docutils literal notranslate"><span class="pre">ValidationError</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-device.interface">device.interface module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#device.interface.Interface"><code class="docutils literal notranslate"><span class="pre">Interface</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-device.introspection">device.introspection module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#device.introspection.Introspection"><code class="docutils literal notranslate"><span class="pre">Introspection</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-device.mapping">device.mapping module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#device.mapping.AstarteTypesLookupElement"><code class="docutils literal notranslate"><span class="pre">AstarteTypesLookupElement</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.mapping.MapType"><code class="docutils literal notranslate"><span class="pre">MapType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.mapping.Mapping"><code class="docutils literal notranslate"><span class="pre">Mapping</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-device.pairing_handler">device.pairing_handler module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#device.pairing_handler.generate_device_id"><code class="docutils literal notranslate"><span class="pre">generate_device_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.pairing_handler.generate_random_device_id"><code class="docutils literal notranslate"><span class="pre">generate_random_device_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.pairing_handler.obtain_device_certificate"><code class="docutils literal notranslate"><span class="pre">obtain_device_certificate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.pairing_handler.obtain_device_transport_information"><code class="docutils literal notranslate"><span class="pre">obtain_device_transport_information()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.pairing_handler.register_device_with_jwt_token"><code class="docutils literal notranslate"><span class="pre">register_device_with_jwt_token()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.pairing_handler.register_device_with_private_key"><code class="docutils literal notranslate"><span class="pre">register_device_with_private_key()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#device.pairing_handler.verify_device_certificate"><code class="docutils literal notranslate"><span class="pre">verify_device_certificate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-device">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Astarte device SDK Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">astarte</a></li>
+      <li class="breadcrumb-item active">device package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/device.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="device-package">
+<h1>device package<a class="headerlink" href="#device-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-device.crypto">
+<span id="device-crypto-module"></span><h2>device.crypto module<a class="headerlink" href="#module-device.crypto" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="device.crypto.certificate_is_valid">
+<span class="sig-prename descclassname"><span class="pre">device.crypto.</span></span><span class="sig-name descname"><span class="pre">certificate_is_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credentials_secret</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crypto_store_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#device.crypto.certificate_is_valid" title="Link to this definition"></a></dt>
+<dd><p>Utility function that checks the certificate validity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device_id</strong> (<em>str</em>) – The device ID</p></li>
+<li><p><strong>realm</strong> (<em>str</em>) – The Astarte realm where the device is registered</p></li>
+<li><p><strong>pairing_base_url</strong> (<em>str</em>) – The base URL for the Astarte pairing APIs</p></li>
+<li><p><strong>credentials_secret</strong> (<em>str</em>) – The credentials secret for the device in the given realm</p></li>
+<li><p><strong>ignore_ssl_errors</strong> (<em>str</em>) – Set to True to ignore SSL errors</p></li>
+<li><p><strong>crypto_store_dir</strong> (<em>str</em>) – Path to the folder where crypto information are stored</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the certificate is valid, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="device.crypto.device_has_certificate">
+<span class="sig-prename descclassname"><span class="pre">device.crypto.</span></span><span class="sig-name descname"><span class="pre">device_has_certificate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credentials_secret</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crypto_store_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#device.crypto.device_has_certificate" title="Link to this definition"></a></dt>
+<dd><p>Utility function that checks if a certificate is present for the device</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device_id</strong> (<em>str</em>) – The device ID</p></li>
+<li><p><strong>realm</strong> (<em>str</em>) – The Astarte realm where the device is registered</p></li>
+<li><p><strong>pairing_base_url</strong> (<em>str</em>) – The base URL for the Astarte pairing APIs</p></li>
+<li><p><strong>credentials_secret</strong> (<em>str</em>) – The credentials secret for the device in the given realm</p></li>
+<li><p><strong>ignore_ssl_errors</strong> (<em>str</em>) – Set to True to ignore SSL errors</p></li>
+<li><p><strong>crypto_store_dir</strong> (<em>str</em>) – Path to the folder where crypto information is stored</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the certificate is present, False otherwise</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="device.crypto.generate_csr">
+<span class="sig-prename descclassname"><span class="pre">device.crypto.</span></span><span class="sig-name descname"><span class="pre">generate_csr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crypto_store_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bytes</span></span></span><a class="headerlink" href="#device.crypto.generate_csr" title="Link to this definition"></a></dt>
+<dd><p>Utility function that generate the csr for the device</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>realm</strong> (<em>str</em>) – The Astarte realm where the device will be registered</p></li>
+<li><p><strong>device_id</strong> (<em>str</em>) – The device ID</p></li>
+<li><p><strong>crypto_store_dir</strong> (<em>str</em>) – Path to the folder where crypto information is stored</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The device certificate signing request file</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bytes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="device.crypto.import_device_certificate">
+<span class="sig-prename descclassname"><span class="pre">device.crypto.</span></span><span class="sig-name descname"><span class="pre">import_device_certificate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_crt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crypto_store_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.crypto.import_device_certificate" title="Link to this definition"></a></dt>
+<dd><p>Deserialize a client certificate and store the public information permanently in the file system</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client_crt</strong> (<em>str</em>) – Serialized client certificate</p></li>
+<li><p><strong>crypto_store_dir</strong> (<em>str</em>) – Directory where to store the public bytes of the certificate</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-device.database">
+<span id="device-database-module"></span><h2>device.database module<a class="headerlink" href="#module-device.database" title="Link to this heading"></a></h2>
+<p>API for an SQLite database to be used for Astarte properties persistency.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="device.database.AstarteDatabase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.database.</span></span><span class="sig-name descname"><span class="pre">AstarteDatabase</span></span><a class="headerlink" href="#device.database.AstarteDatabase" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Abstract class for a database that can be used to provide persistency to the properties.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabase.clear">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabase.clear" title="Link to this definition"></a></dt>
+<dd><p>Fully clear the database of all the properties.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabase.delete_prop">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete_prop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabase.delete_prop" title="Link to this definition"></a></dt>
+<dd><p>Delete a property from the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interface</strong> (<em>str</em>) – The interface name.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – The path to the property endpoint.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabase.delete_props_from_interface">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">delete_props_from_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabase.delete_props_from_interface" title="Link to this definition"></a></dt>
+<dd><p>Delete all the properties from the database belonging to an interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interface</strong> (<em>str</em>) – The interface name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabase.load_all_props">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_all_props</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">object</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#device.database.AstarteDatabase.load_all_props" title="Link to this definition"></a></dt>
+<dd><p>Load all the properties stored in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list containing all the propeties stored in the database.
+Each element of the list is a tuple in the format:
+(interface, interface major version, path, value)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[tuple[str, int, str, object]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabase.load_prop">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_prop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">major</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">object</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabase.load_prop" title="Link to this definition"></a></dt>
+<dd><p>Load a property from the database. If a property is found but the major version does not
+match, the property in the database will be deleted and None will be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interface</strong> (<em>str</em>) – The interface name.</p></li>
+<li><p><strong>major</strong> (<em>int</em>) – The major version for the interface.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – The path to the property endpoint.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The property value if the property is present and the provided interface major
+version matches the interface version stored in the database. None otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>object | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabase.store_prop">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">store_prop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">major</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabase.store_prop" title="Link to this definition"></a></dt>
+<dd><p>Store a property value in the database. It will overwrite the previous value where present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interface</strong> (<em>str</em>) – The interface name.</p></li>
+<li><p><strong>major</strong> (<em>int</em>) – The major version for the interface.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – The path to the property endpoint.</p></li>
+<li><p><strong>value</strong> (<em>object</em>) – The new value for the property.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="device.database.AstarteDatabaseSQLite">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.database.</span></span><span class="sig-name descname"><span class="pre">AstarteDatabaseSQLite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.database.AstarteDatabaseSQLite" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.database.AstarteDatabase" title="device.database.AstarteDatabase"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteDatabase</span></code></a></p>
+<p>An implementation for the abstract AstarteDatabase class. This implementation uses the standard
+SQLite library of Python to implement property persistency.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabaseSQLite.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabaseSQLite.clear" title="Link to this definition"></a></dt>
+<dd><p>Fully clear the database of all the properties.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabaseSQLite.delete_prop">
+<span class="sig-name descname"><span class="pre">delete_prop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabaseSQLite.delete_prop" title="Link to this definition"></a></dt>
+<dd><p>Delete a property from the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interface</strong> (<em>str</em>) – See documentation in AstarteDatabase.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – See documentation in AstarteDatabase.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabaseSQLite.delete_props_from_interface">
+<span class="sig-name descname"><span class="pre">delete_props_from_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabaseSQLite.delete_props_from_interface" title="Link to this definition"></a></dt>
+<dd><p>Delete all the properties from the database belonging to an interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interface</strong> (<em>str</em>) – See documentation in AstarteDatabase.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabaseSQLite.load_all_props">
+<span class="sig-name descname"><span class="pre">load_all_props</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">object</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#device.database.AstarteDatabaseSQLite.load_all_props" title="Link to this definition"></a></dt>
+<dd><p>Load all the properties stored in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>See documentation in AstarteDatabase.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[tuple[str, int, str, object]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabaseSQLite.load_prop">
+<span class="sig-name descname"><span class="pre">load_prop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">major</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">object</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabaseSQLite.load_prop" title="Link to this definition"></a></dt>
+<dd><p>Load a property from the database. If a property is found but the major version does not
+match, the property in the database will be deleted and None will be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interface</strong> (<em>str</em>) – See documentation in AstarteDatabase.</p></li>
+<li><p><strong>major</strong> (<em>int</em>) – See documentation in AstarteDatabase.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – See documentation in AstarteDatabase.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>See documentation in AstarteDatabase.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>object | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.database.AstarteDatabaseSQLite.store_prop">
+<span class="sig-name descname"><span class="pre">store_prop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">major</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.database.AstarteDatabaseSQLite.store_prop" title="Link to this definition"></a></dt>
+<dd><p>Store a property value in the database. It will overwrite the previous value where present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interface</strong> (<em>str</em>) – See documentation in AstarteDatabase.</p></li>
+<li><p><strong>major</strong> (<em>int</em>) – See documentation in AstarteDatabase.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – See documentation in AstarteDatabase.</p></li>
+<li><p><strong>value</strong> (<em>object</em>) – See documentation in AstarteDatabase.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-device.device">
+<span id="device-device-module"></span><h2>device.device module<a class="headerlink" href="#module-device.device" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="device.device.ConnectionState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device.</span></span><span class="sig-name descname"><span class="pre">ConnectionState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device.ConnectionState" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Possible connection states for a device.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.device.ConnectionState.CONNECTED">
+<span class="sig-name descname"><span class="pre">CONNECTED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#device.device.ConnectionState.CONNECTED" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.device.ConnectionState.CONNECTING">
+<span class="sig-name descname"><span class="pre">CONNECTING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#device.device.ConnectionState.CONNECTING" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.device.ConnectionState.DISCONNECTED">
+<span class="sig-name descname"><span class="pre">DISCONNECTED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#device.device.ConnectionState.DISCONNECTED" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="device.device.Device">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device.</span></span><span class="sig-name descname"><span class="pre">Device</span></span><a class="headerlink" href="#device.device.Device" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Abstract class defining the minumum APIs for an Astarte device implementation.</p>
+<p>This class is agnostic of a transport layer. It should be used to implement transport specific
+children classes.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device.Device.add_interface_from_file">
+<span class="sig-name descname"><span class="pre">add_interface_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device.Device.add_interface_from_file" title="Link to this definition"></a></dt>
+<dd><p>Adds an interface to the device, from a json file.</p>
+<p>It has to be called before <a class="reference internal" href="#device.device.Device.connect" title="device.device.Device.connect"><code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code></a>, as it will be used for building the device
+introspection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interface_file</strong> (<em>Path</em>) – An absolute path to an Astarte interface json file.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#device.exceptions.InterfaceFileNotFoundError" title="device.exceptions.InterfaceFileNotFoundError"><strong>InterfaceFileNotFoundError</strong></a> – If specified file does not exists.</p></li>
+<li><p><a class="reference internal" href="#device.exceptions.InterfaceFileDecodeError" title="device.exceptions.InterfaceFileDecodeError"><strong>InterfaceFileDecodeError</strong></a> – If specified file is not a valid json file.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device.Device.add_interface_from_json">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_interface_from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device.Device.add_interface_from_json" title="Link to this definition"></a></dt>
+<dd><p>Adds an interface to the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interface_json</strong> (<em>dict</em>) – Description of the interface obtained through <cite>json.loads()</cite> or similar methods.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device.Device.add_interfaces_from_dir">
+<span class="sig-name descname"><span class="pre">add_interfaces_from_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interfaces_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device.Device.add_interfaces_from_dir" title="Link to this definition"></a></dt>
+<dd><p>Adds a series of interfaces to the device, from a directory containing json files.</p>
+<p>It has to be called before <a class="reference internal" href="#device.device.Device.connect" title="device.device.Device.connect"><code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code></a>, as it will be used for building the device
+introspection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interfaces_dir</strong> (<em>Path</em>) – An absolute path to an a folder containing some Astarte interface json files.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#device.exceptions.InterfaceFileNotFoundError" title="device.exceptions.InterfaceFileNotFoundError"><strong>InterfaceFileNotFoundError</strong></a> – If specified directory does not exists.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device.Device.connect">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device.Device.connect" title="Link to this definition"></a></dt>
+<dd><p>Connects the device to Astarte.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device.Device.disconnect">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device.Device.disconnect" title="Link to this definition"></a></dt>
+<dd><p>Disconnects the device from Astarte.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device.Device.is_connected">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_connected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#device.device.Device.is_connected" title="Link to this definition"></a></dt>
+<dd><p>Returns whether the device is currently connected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The device connection status.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device.Device.remove_interface">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">remove_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device.Device.remove_interface" title="Link to this definition"></a></dt>
+<dd><p>Removes an Interface from the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interface_name</strong> (<em>str</em>) – The name of an Interface previously added with one of the <cite>add_interface(s)_from_*</cite>
+functions.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device.Device.send">
+<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interface_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device.Device.send" title="Link to this definition"></a></dt>
+<dd><p>Sends an individual message to an interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interface_name</strong> (<em>str</em>) – The name of an the Interface to send data to.</p></li>
+<li><p><strong>interface_path</strong> (<em>str</em>) – The path on the Interface to send data to.</p></li>
+<li><p><strong>payload</strong> (<em>object</em>) – The value to be sent. The type should be compatible to the one specified in the
+interface path.</p></li>
+<li><p><strong>timestamp</strong> (<em>datetime</em><em>, </em><em>optional</em>) – If sending a Datastream with explicit_timestamp, you can specify a datetime object
+which will be registered as the timestamp for the value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#device.exceptions.InterfaceNotFoundError" title="device.exceptions.InterfaceNotFoundError"><strong>InterfaceNotFoundError</strong></a> – If the specified interface is not declared in the introspection.</p></li>
+<li><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><strong>ValidationError</strong></a> – If the interface or payload validation was unsuccessful.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device.Device.send_aggregate">
+<span class="sig-name descname"><span class="pre">send_aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interface_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device.Device.send_aggregate" title="Link to this definition"></a></dt>
+<dd><p>Sends an aggregate message to an interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interface_name</strong> (<em>str</em>) – The name of the Interface to send data to.</p></li>
+<li><p><strong>interface_path</strong> (<em>str</em>) – The endpoint to send the data to</p></li>
+<li><p><strong>payload</strong> (<em>dict</em>) – A dictionary containing the path:value map for the aggregate.</p></li>
+<li><p><strong>timestamp</strong> (<em>datetime</em><em>, </em><em>optional</em>) – If the Datastream has explicit_timestamp, you can specify a datetime object which
+will be registered as the timestamp for the value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#device.exceptions.InterfaceNotFoundError" title="device.exceptions.InterfaceNotFoundError"><strong>InterfaceNotFoundError</strong></a> – If the specified interface is not declared in the introspection.</p></li>
+<li><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><strong>ValidationError</strong></a> – If the interface or payload validation was unsuccessful.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device.Device.set_events_callbacks">
+<span class="sig-name descname"><span class="pre">set_events_callbacks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">on_connected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#device.device.Device" title="device.device.Device"><span class="pre">Device</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_data_received</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#device.device.Device" title="device.device.Device"><span class="pre">Device</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">object</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">on_disconnected</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#device.device.Device" title="device.device.Device"><span class="pre">Device</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AbstractEventLoop</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device.Device.set_events_callbacks" title="Link to this definition"></a></dt>
+<dd><p>Can be used to set various callbacks to user provided functions.</p>
+<p>note:: All parameters default to None. Meaning that all unspeficied callbacks will be
+disabled. Same for the event loop.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>on_connected</strong> (<em>Callable</em><em>[</em><em>[</em><a class="reference internal" href="#device.device.Device" title="device.device.Device"><em>Device</em></a><em>]</em><em>, </em><em>None</em><em>] </em><em>| </em><em>None</em>) – A function that will be invoked everytime the device is connected.</p></li>
+<li><p><strong>on_data_received</strong> (<em>Callable</em><em>[</em><em>[</em><a class="reference internal" href="#device.device.Device" title="device.device.Device"><em>Device</em></a><em>, </em><em>string</em><em>, </em><em>string</em><em>, </em><em>object</em><em>]</em><em>, </em><em>None</em><em>] </em><em>| </em><em>None</em>) – A function that will be invoked everytime data is received from Astarte. Parameters are
+the device itself, the Interface name, the Interface path, and the payload. The payload
+will reflect the type defined in the Interface.</p></li>
+<li><p><strong>on_disconnected</strong> (<em>Callable</em><em>[</em><em>[</em><a class="reference internal" href="#device.device.Device" title="device.device.Device"><em>Device</em></a><em>]</em><em>, </em><em>None</em><em>] </em><em>| </em><em>None</em>) – A function that will be invoked everytime the device experiences a disconnection event.
+The int parameter bears the disconnect reason. With 0 being a graceful disconnection.</p></li>
+<li><p><strong>loop</strong> (<em>asyncio.AbstractEventLoop</em><em> | </em><em>None</em>) – An optional loop which will be used for invoking the callbacks. When this is not None,
+the device will call any specified callback through loop.call_soon_threadsafe, ensuring
+that the callbacks will be run in thread the loop belongs to. Usually, you want
+to set this to get_running_loop(). When not sent, callbacks will be invoked as a
+standard function - keep in mind this means your callbacks might create deadlocks.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device.Device.unset_property">
+<span class="sig-name descname"><span class="pre">unset_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interface_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device.Device.unset_property" title="Link to this definition"></a></dt>
+<dd><p>Unset the specified property on an interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interface_name</strong> (<em>str</em>) – The name of the Interface where the property to unset is located.</p></li>
+<li><p><strong>interface_path</strong> (<em>str</em>) – The path on the Interface to unset.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#device.exceptions.InterfaceNotFoundError" title="device.exceptions.InterfaceNotFoundError"><strong>InterfaceNotFoundError</strong></a> – If the specified interface is not declared in the introspection.</p></li>
+<li><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><strong>ValidationError</strong></a> – If the interface validation was unsuccessful.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-device.device_grpc">
+<span id="device-device-grpc-module"></span><h2>device.device_grpc module<a class="headerlink" href="#module-device.device_grpc" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="device.device_grpc.AstarteClientCallDetails">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device_grpc.</span></span><span class="sig-name descname"><span class="pre">AstarteClientCallDetails</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credentials</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_ready</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compression</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_grpc.AstarteClientCallDetails" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.device_grpc.AstarteClientCallDetails" title="device.device_grpc.AstarteClientCallDetails"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteClientCallDetails</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ClientCallDetails</span></code></p>
+<p>Astarte implementation for gRPC client call details.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="device.device_grpc.AstarteUnaryStreamInterceptor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device_grpc.</span></span><span class="sig-name descname"><span class="pre">AstarteUnaryStreamInterceptor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_grpc.AstarteUnaryStreamInterceptor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">UnaryStreamClientInterceptor</span></code></p>
+<p>Astarte implementation for a gRPC unary-stream client interceptor.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_grpc.AstarteUnaryStreamInterceptor.intercept_unary_stream">
+<span class="sig-name descname"><span class="pre">intercept_unary_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">continuation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_call_details</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_grpc.AstarteUnaryStreamInterceptor.intercept_unary_stream" title="Link to this definition"></a></dt>
+<dd><p>Implementation for the abstract interceptor method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>continuation</strong> (<em>Any</em>) – See parent class.</p></li>
+<li><p><strong>client_call_details</strong> (<em>Any</em>) – See parent class.</p></li>
+<li><p><strong>request</strong> (<em>Any</em>) – See parent class.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>See the parent class.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="device.device_grpc.AstarteUnaryUnaryInterceptor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device_grpc.</span></span><span class="sig-name descname"><span class="pre">AstarteUnaryUnaryInterceptor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_grpc.AstarteUnaryUnaryInterceptor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">UnaryUnaryClientInterceptor</span></code></p>
+<p>Astarte implementation for a gRPC unary-unary client interceptor.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_grpc.AstarteUnaryUnaryInterceptor.intercept_unary_unary">
+<span class="sig-name descname"><span class="pre">intercept_unary_unary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">continuation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_call_details</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_grpc.AstarteUnaryUnaryInterceptor.intercept_unary_unary" title="Link to this definition"></a></dt>
+<dd><p>Implementation for the abstract interceptor method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>continuation</strong> (<em>Any</em>) – See parent class.</p></li>
+<li><p><strong>client_call_details</strong> (<em>Any</em>) – See parent class.</p></li>
+<li><p><strong>request</strong> (<em>Any</em>) – See parent class.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>See the parent class.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="device.device_grpc.DeviceGrpc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device_grpc.</span></span><span class="sig-name descname"><span class="pre">DeviceGrpc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server_addr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_uuid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_grpc.DeviceGrpc" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Device</span></code></p>
+<p>Astarte device implementation using the GRPC transport protocol.</p>
+<p><strong>Threading and Concurrency</strong></p>
+<p>This SDK uses GRPC under the hood as a transport layer. As such, it is bound by GRPC’s
+behavior in terms of threading. When a device connects, a new thread is spawned and an
+event loop is run there to manage all the connection events.</p>
+<p>This SDK spares the user from this detail - on the other hand, when configuring callbacks,
+threading has to be taken into account. When configuring the callback functions, it is
+possible to specify an asyncio.loop() to automatically manage this detail. When a loop is
+specified, all callbacks will be called in the context of that loop, guaranteeing
+thread-safety and making sure that the user does not have to take any further action beyond
+consuming the callback.</p>
+<p>When a loop is not specified, callbacks are invoked just as standard Python functions. This
+inevitably means that the user will have to take into account the fact that the callback
+will be invoked in the thread of the GRPC connection. In particular, blocking the execution
+of that thread might cause deadlocks and, in general, malfunctions in the SDK. For this
+reason, the usage of asyncio is strongly recommended.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_grpc.DeviceGrpc.add_interface_from_json">
+<span class="sig-name descname"><span class="pre">add_interface_from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_grpc.DeviceGrpc.add_interface_from_json" title="Link to this definition"></a></dt>
+<dd><p>See parent class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interface_json</strong> (<em>dict</em>) – See parent class.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#device.exceptions.DeviceConnectingError" title="device.exceptions.DeviceConnectingError"><strong>DeviceConnectingError</strong></a> – When attempting to add an interface while the device if performing a connection.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_grpc.DeviceGrpc.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device_grpc.DeviceGrpc.connect" title="Link to this definition"></a></dt>
+<dd><p>Connect the device in synchronous mode.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_grpc.DeviceGrpc.disconnect">
+<span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device_grpc.DeviceGrpc.disconnect" title="Link to this definition"></a></dt>
+<dd><p>Disconnects the node, detaching it from the message hub.</p>
+<p>This method won’t have any effect if the device is not already connected.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_grpc.DeviceGrpc.is_connected">
+<span class="sig-name descname"><span class="pre">is_connected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#device.device_grpc.DeviceGrpc.is_connected" title="Link to this definition"></a></dt>
+<dd><p>Returns whether the device is currently connected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The device connection status.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_grpc.DeviceGrpc.remove_interface">
+<span class="sig-name descname"><span class="pre">remove_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device_grpc.DeviceGrpc.remove_interface" title="Link to this definition"></a></dt>
+<dd><p>See parent class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interface_name</strong> (<em>str</em>) – See parent class.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#device.exceptions.DeviceConnectingError" title="device.exceptions.DeviceConnectingError"><strong>DeviceConnectingError</strong></a> – When attempting to add an interface while the device if performing a connection.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="device.device_grpc.add_node_id_in_metadata">
+<span class="sig-prename descclassname"><span class="pre">device.device_grpc.</span></span><span class="sig-name descname"><span class="pre">add_node_id_in_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client_call_details</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">grpc._interceptor._ClientCallDetails</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_grpc.add_node_id_in_metadata" title="Link to this definition"></a></dt>
+<dd><p>Add an Astarte message hub ID to che grpc client call details as a metadata fields.</p>
+<p>Note: This function doesn’t perform in place changes to client_call_details. It returns a
+totally new set of client call details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_id</strong> (<em>str</em>) – The node ID to add.</p></li>
+<li><p><strong>client_call_details</strong> (<em>Any</em>) – The client call details to modify.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The new client call details.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>grpc._interceptor._ClientCallDetails</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-device.device_mqtt">
+<span id="device-device-mqtt-module"></span><h2>device.device_mqtt module<a class="headerlink" href="#module-device.device_mqtt" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.device_mqtt.</span></span><span class="sig-name descname"><span class="pre">DeviceMqtt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credentials_secret</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistency_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AstarteDatabase</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Device</span></code></p>
+<p>Astarte device implementation using the MQTT transport protocol.</p>
+<p><strong>Threading and Concurrency</strong></p>
+<p>This SDK uses paho-mqtt under the hood as a transport layer. As such, it is bound by
+paho-mqtt’s behavior in terms of threading. When a device connects, a new thread is spawned
+and an event loop is run there to manage all the connection events.</p>
+<p>This SDK spares the user from this detail - on the other hand, when configuring callbacks,
+threading has to be taken into account. When configuring the callback functions, it is
+possible to specify an asyncio.loop() to automatically manage this detail. When a loop is
+specified, all callbacks will be called in the context of that loop, guaranteeing
+thread-safety and making sure that the user does not have to take any further action beyond
+consuming the callback.</p>
+<p>When a loop is not specified, callbacks are invoked just as standard Python functions. This
+inevitably means that the user will have to take into account the fact that the callback
+will be invoked in the thread of the MQTT connection. In particular, blocking the execution
+of that thread might cause deadlocks and, in general, malfunctions in the SDK. For this
+reason, the usage of asyncio is strongly recommended.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt.add_interface_from_json">
+<span class="sig-name descname"><span class="pre">add_interface_from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt.add_interface_from_json" title="Link to this definition"></a></dt>
+<dd><p>See parent class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interface_json</strong> (<em>dict</em>) – See parent class.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#device.exceptions.DeviceConnectingError" title="device.exceptions.DeviceConnectingError"><strong>DeviceConnectingError</strong></a> – When attempting to add an interface while the device if performing a connection.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt.connect" title="Link to this definition"></a></dt>
+<dd><p>Connects the device asynchronously.</p>
+<p>When calling connect, a new connection thread is spawned and the device will start a
+connection routine. The function might return before the device connects: you want to
+use the on_connected callback to ensure you are notified upon connection.</p>
+<p>In case the device gets disconnected unexpectedly, it will try to reconnect indefinitely
+until disconnect() is called.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#device.exceptions.APIError" title="device.exceptions.APIError"><strong>APIError</strong></a> – When the obtained broker URL is invalid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt.disconnect">
+<span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt.disconnect" title="Link to this definition"></a></dt>
+<dd><p>Disconnects the device.</p>
+<p>When calling disconnect, the connection thread is requested to terminate the
+connection, and the thread is stopped when the disconnection happens.
+This function won’t return before the device has been disconnected. Calling this function
+should result in the callback on_disconnected being called with return code parameter 0,
+meaning the disconnection happened following an explicit disconnection request.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt.get_device_id">
+<span class="sig-name descname"><span class="pre">get_device_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt.get_device_id" title="Link to this definition"></a></dt>
+<dd><p>Returns the device ID of the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The ID of the device</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt.is_connected">
+<span class="sig-name descname"><span class="pre">is_connected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt.is_connected" title="Link to this definition"></a></dt>
+<dd><p>Returns whether the device is currently connected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The device connection status.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.device_mqtt.DeviceMqtt.remove_interface">
+<span class="sig-name descname"><span class="pre">remove_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.device_mqtt.DeviceMqtt.remove_interface" title="Link to this definition"></a></dt>
+<dd><p>See parent class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interface_name</strong> (<em>str</em>) – See parent class.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#device.exceptions.DeviceConnectingError" title="device.exceptions.DeviceConnectingError"><strong>DeviceConnectingError</strong></a> – When attempting to add an interface while the device if performing a connection.</p></li>
+<li><p><a class="reference internal" href="#device.exceptions.InterfaceNotFoundError" title="device.exceptions.InterfaceNotFoundError"><strong>InterfaceNotFoundError</strong></a> – When the provided interface can’t be found in the device introspection.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-device.exceptions">
+<span id="device-exceptions-module"></span><h2>device.exceptions module<a class="headerlink" href="#module-device.exceptions" title="Link to this heading"></a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.APIError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">APIError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.APIError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
+<p>Exception raised when Astarte APIs throw unhandled errors.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">body</span> <span class="pre">--</span> <span class="pre">the</span> <span class="pre">body</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">API</span> <span class="pre">reply,</span> <span class="pre">which</span> <span class="pre">may</span> <span class="pre">carry</span> <span class="pre">further</span> <span class="pre">details</span></span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.AstarteError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">AstarteError</span></span><a class="headerlink" href="#device.exceptions.AstarteError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Base class for Astarte Errors.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.AuthorizationError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">AuthorizationError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.AuthorizationError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
+<p>Exception raised when Astarte APIs refuse authentication.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">body</span> <span class="pre">--</span> <span class="pre">the</span> <span class="pre">body</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">API</span> <span class="pre">reply,</span> <span class="pre">which</span> <span class="pre">may</span> <span class="pre">carry</span> <span class="pre">further</span> <span class="pre">details</span></span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.DeviceAlreadyRegisteredError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">DeviceAlreadyRegisteredError</span></span><a class="headerlink" href="#device.exceptions.DeviceAlreadyRegisteredError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
+<p>Exception raised in case a device being registered has already been registered.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.DeviceConnectingError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">DeviceConnectingError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.DeviceConnectingError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
+<p>Exception raised when an operation is attempted while the device MQTT client has been
+started but is not yet connected.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">msg</span> <span class="pre">--</span> <span class="pre">A</span> <span class="pre">message</span> <span class="pre">error</span> <span class="pre">carrying</span> <span class="pre">further</span> <span class="pre">details</span></span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.DeviceDisconnectedError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">DeviceDisconnectedError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.DeviceDisconnectedError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
+<p>Exception raised if attempting a send while the device is disconnected from Astarte.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">msg</span> <span class="pre">--</span> <span class="pre">A</span> <span class="pre">message</span> <span class="pre">error</span> <span class="pre">carrying</span> <span class="pre">further</span> <span class="pre">details</span></span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.InterfaceFileDecodeError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">InterfaceFileDecodeError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.InterfaceFileDecodeError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
+<p>Exception raised when an interface .json file is not correctly formatted.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">msg</span> <span class="pre">--</span> <span class="pre">A</span> <span class="pre">message</span> <span class="pre">error</span> <span class="pre">carrying</span> <span class="pre">further</span> <span class="pre">details</span></span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.InterfaceFileNotFoundError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">InterfaceFileNotFoundError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.InterfaceFileNotFoundError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
+<p>Exception raised when a file containing an interface definition does not exists.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">msg</span> <span class="pre">--</span> <span class="pre">A</span> <span class="pre">message</span> <span class="pre">error</span> <span class="pre">carrying</span> <span class="pre">further</span> <span class="pre">details</span></span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.InterfaceNotFoundError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">InterfaceNotFoundError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.InterfaceNotFoundError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
+<p>Exception raised when an interface is not found in the device introspection.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">msg</span> <span class="pre">--</span> <span class="pre">A</span> <span class="pre">message</span> <span class="pre">error</span> <span class="pre">carrying</span> <span class="pre">further</span> <span class="pre">details</span></span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.JWTGenerationError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">JWTGenerationError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.JWTGenerationError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
+<p>Exception raised when the generation of a Jason Web Token has failed.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">msg</span> <span class="pre">--</span> <span class="pre">A</span> <span class="pre">message</span> <span class="pre">error</span> <span class="pre">carrying</span> <span class="pre">further</span> <span class="pre">details</span></span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.PersistencyDirectoryNotFoundError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">PersistencyDirectoryNotFoundError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.PersistencyDirectoryNotFoundError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
+<p>Exception raised when the provided persistency directory is not found.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">body</span> <span class="pre">--</span> <span class="pre">the</span> <span class="pre">body</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">API</span> <span class="pre">reply,</span> <span class="pre">which</span> <span class="pre">may</span> <span class="pre">carry</span> <span class="pre">further</span> <span class="pre">details</span></span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="device.exceptions.ValidationError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.exceptions.</span></span><span class="sig-name descname"><span class="pre">ValidationError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.exceptions.ValidationError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#device.exceptions.AstarteError" title="device.exceptions.AstarteError"><code class="xref py py-class docutils literal notranslate"><span class="pre">AstarteError</span></code></a></p>
+<p>Exception raised when validation has failed.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">msg</span> <span class="pre">--</span> <span class="pre">A</span> <span class="pre">message</span> <span class="pre">error</span> <span class="pre">carrying</span> <span class="pre">further</span> <span class="pre">details</span></span></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-device.interface">
+<span id="device-interface-module"></span><h2>device.interface module<a class="headerlink" href="#module-device.interface" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="device.interface.Interface">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.interface.</span></span><span class="sig-name descname"><span class="pre">Interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_definition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.interface.Interface" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class that represent an Interface definition</p>
+<p>Interfaces are a core concept of Astarte which defines how data is exchanged between Astarte
+and its peers. They are not to be intended as OOP interfaces, but rather as the following
+definition:</p>
+<p>In Astarte each interface has an owner, can represent either a continuous data stream or a
+snapshot of a set of properties, and can be either aggregated into an object or be an
+independent set of individual members.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.interface.Interface.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#device.interface.Interface.name" title="Link to this definition"></a></dt>
+<dd><p>Interface name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.interface.Interface.version_major">
+<span class="sig-name descname"><span class="pre">version_major</span></span><a class="headerlink" href="#device.interface.Interface.version_major" title="Link to this definition"></a></dt>
+<dd><p>Interface version major number</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.interface.Interface.version_minor">
+<span class="sig-name descname"><span class="pre">version_minor</span></span><a class="headerlink" href="#device.interface.Interface.version_minor" title="Link to this definition"></a></dt>
+<dd><p>Interface version minor number</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.interface.Interface.type">
+<span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#device.interface.Interface.type" title="Link to this definition"></a></dt>
+<dd><p>Interface type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.interface.Interface.ownership">
+<span class="sig-name descname"><span class="pre">ownership</span></span><a class="headerlink" href="#device.interface.Interface.ownership" title="Link to this definition"></a></dt>
+<dd><p>Interface ownership</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.interface.Interface.aggregation">
+<span class="sig-name descname"><span class="pre">aggregation</span></span><a class="headerlink" href="#device.interface.Interface.aggregation" title="Link to this definition"></a></dt>
+<dd><p>Interface aggregation policy</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.interface.Interface.mappings">
+<span class="sig-name descname"><span class="pre">mappings</span></span><a class="headerlink" href="#device.interface.Interface.mappings" title="Link to this definition"></a></dt>
+<dd><p>Interface mapping dictionary, keys are the endpoint of each mapping</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict(<a class="reference internal" href="#device.mapping.Mapping" title="device.mapping.Mapping">Mapping</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.interface.Interface.get_mapping">
+<span class="sig-name descname"><span class="pre">get_mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoint</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#device.interface.Interface.get_mapping" title="Link to this definition"></a></dt>
+<dd><p>Retrieve the Mapping with the given endpoint from the Interface
+:param endpoint: The Mapping endpoint
+:type endpoint: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The Mapping if found, None otherwise</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#device.mapping.Mapping" title="device.mapping.Mapping">Mapping</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.interface.Interface.get_reliability">
+<span class="sig-name descname"><span class="pre">get_reliability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#device.interface.Interface.get_reliability" title="Link to this definition"></a></dt>
+<dd><p>Get the reliability for the mapping corresponding to the provided endpoint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>endpoint</strong> (<em>str</em>) – The Mapping endpoint to deduce reliability from.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The deduced reliability, one of [0,1,2].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#device.exceptions.InterfaceNotFoundError" title="device.exceptions.InterfaceNotFoundError"><strong>InterfaceNotFoundError</strong></a> – If the interface is not declared in the introspection.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.interface.Interface.is_aggregation_object">
+<span class="sig-name descname"><span class="pre">is_aggregation_object</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#device.interface.Interface.is_aggregation_object" title="Link to this definition"></a></dt>
+<dd><p>Check if the current Interface is a datastream with aggregation object
+:returns: True if aggregation: object
+:rtype: bool</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.interface.Interface.is_property_endpoint_resettable">
+<span class="sig-name descname"><span class="pre">is_property_endpoint_resettable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoint</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.interface.Interface.is_property_endpoint_resettable" title="Link to this definition"></a></dt>
+<dd><p>Check the resettability of an endpoint.
+:param endpoint: The Mapping endpoint
+:type endpoint: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if type is properties, endpoint is valid and resettable</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.interface.Interface.is_server_owned">
+<span class="sig-name descname"><span class="pre">is_server_owned</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#device.interface.Interface.is_server_owned" title="Link to this definition"></a></dt>
+<dd><p>Check the Interface ownership
+:returns: True if ownership: server
+:rtype: bool</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.interface.Interface.is_type_properties">
+<span class="sig-name descname"><span class="pre">is_type_properties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#device.interface.Interface.is_type_properties" title="Link to this definition"></a></dt>
+<dd><p>Check the Interface type
+:returns: True if type: properties
+:rtype: bool</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.interface.Interface.validate_path">
+<span class="sig-name descname"><span class="pre">validate_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.interface.Interface.validate_path" title="Link to this definition"></a></dt>
+<dd><p>Validate that the provided path conforms to the interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Path to validate. In case of an individual interface it should correspond to the full
+endpoint, while in case of aggregated interfaces it should correspond to the common
+part to all the endpoints.</p></li>
+<li><p><strong>payload</strong> (<em>object</em>) – Payload used to extrapolate the remaining endpoints for aggregated interfaces.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><strong>ValidationError</strong></a> – When validation has failed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.interface.Interface.validate_payload">
+<span class="sig-name descname"><span class="pre">validate_payload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.interface.Interface.validate_payload" title="Link to this definition"></a></dt>
+<dd><p>Validate that the payload conforms to the interface definition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Path on which the payload has been received. This is assumed to correspond to a valid
+mapping (or partial mapping in case of aggregate interface). Should be first checked
+with validate_path().</p></li>
+<li><p><strong>payload</strong> (<em>object</em>) – Data to validate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><strong>ValidationError</strong></a> – When validation has failed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.interface.Interface.validate_payload_and_timestamp">
+<span class="sig-name descname"><span class="pre">validate_payload_and_timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.interface.Interface.validate_payload_and_timestamp" title="Link to this definition"></a></dt>
+<dd><p>Validate that path, payload and timestamp conform to the interface definition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Data endpoint in interface</p></li>
+<li><p><strong>payload</strong> (<em>object</em>) – Data to validate</p></li>
+<li><p><strong>timestamp</strong> (<em>datetime</em><em> or </em><em>None</em>) – Timestamp associated to the payload</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><strong>ValidationError</strong></a> – When validation has failed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-device.introspection">
+<span id="device-introspection-module"></span><h2>device.introspection module<a class="headerlink" href="#module-device.introspection" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="device.introspection.Introspection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.introspection.</span></span><span class="sig-name descname"><span class="pre">Introspection</span></span><a class="headerlink" href="#device.introspection.Introspection" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class that represent the introspection of a device.</p>
+<p>The introspection is the list od interfaces that the device declares to the server it is
+compatible with.</p>
+<p>In any given time a device can have a single interface with a given name, multiple interfaces
+with the same name but different major/minor are not supported.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="device.introspection.Introspection.add_interface">
+<span class="sig-name descname"><span class="pre">add_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Interface</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.introspection.Introspection.add_interface" title="Link to this definition"></a></dt>
+<dd><p>Adds an interface to the introspection</p>
+<p>This will add an interface to the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interface</strong> (<a class="reference internal" href="#device.interface.Interface" title="device.interface.Interface"><em>Interface</em></a>) – An Astarte interface object. Usually obtained by using json.loads() on an interface
+file and then using the loaded json to initialize the interface object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.introspection.Introspection.get_all_interfaces">
+<span class="sig-name descname"><span class="pre">get_all_interfaces</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Interface</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#device.introspection.Introspection.get_all_interfaces" title="Link to this definition"></a></dt>
+<dd><p>Retrieve all the list of all Interfaces in device’s Introspection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The list of all Interfaces in the Introspection</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.introspection.Introspection.get_all_server_owned_interfaces">
+<span class="sig-name descname"><span class="pre">get_all_server_owned_interfaces</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Interface</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#device.introspection.Introspection.get_all_server_owned_interfaces" title="Link to this definition"></a></dt>
+<dd><p>Retrieve all the list of all Interfaces in device’s Introspection with server ownership</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The list of all Interfaces in the Introspection that have ownership “server”</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.introspection.Introspection.get_interface">
+<span class="sig-name descname"><span class="pre">get_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Interface</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="headerlink" href="#device.introspection.Introspection.get_interface" title="Link to this definition"></a></dt>
+<dd><p>Retrieve an Interface definition from the Introspection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interface_name</strong> (<em>str</em>) – The name of an Interface previously added with <a class="reference internal" href="#device.introspection.Introspection.add_interface" title="device.introspection.Introspection.add_interface"><code class="xref py py-func docutils literal notranslate"><span class="pre">add_interface()</span></code></a>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the Interface definition if found in the Introspection, None otherwise</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#device.interface.Interface" title="device.interface.Interface">Interface</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.introspection.Introspection.remove_interface">
+<span class="sig-name descname"><span class="pre">remove_interface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.introspection.Introspection.remove_interface" title="Link to this definition"></a></dt>
+<dd><p>Removes an Interface from the Introspection</p>
+<p>Removes an Interface definition from the device. It has to be called before
+<code class="xref py py-func docutils literal notranslate"><span class="pre">connect()</span></code>, as it will be used for building the device Introspection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interface_name</strong> (<em>str</em>) – The name of an Interface previously added with <a class="reference internal" href="#device.introspection.Introspection.add_interface" title="device.introspection.Introspection.add_interface"><code class="xref py py-func docutils literal notranslate"><span class="pre">add_interface()</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-device.mapping">
+<span id="device-mapping-module"></span><h2>device.mapping module<a class="headerlink" href="#module-device.mapping" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="device.mapping.AstarteTypesLookupElement">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.mapping.</span></span><span class="sig-name descname"><span class="pre">AstarteTypesLookupElement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtype</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.mapping.AstarteTypesLookupElement" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.mapping.AstarteTypesLookupElement.subtype">
+<span class="sig-name descname"><span class="pre">subtype</span></span><a class="headerlink" href="#device.mapping.AstarteTypesLookupElement.subtype" title="Link to this definition"></a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.mapping.AstarteTypesLookupElement.type">
+<span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#device.mapping.AstarteTypesLookupElement.type" title="Link to this definition"></a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="device.mapping.MapType">
+<span class="sig-prename descclassname"><span class="pre">device.mapping.</span></span><span class="sig-name descname"><span class="pre">MapType</span></span><a class="headerlink" href="#device.mapping.MapType" title="Link to this definition"></a></dt>
+<dd><p>Lookup table for mapping Astarte type to Python type</p>
+<p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>] | <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>] | <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>] | <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>] | <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>] | <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code>]</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="device.mapping.Mapping">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">device.mapping.</span></span><span class="sig-name descname"><span class="pre">Mapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping_definition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_datastream</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.mapping.Mapping" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class that represent a data Mapping
+Mappings are designed around REST controller semantics: each mapping describes an endpoint
+which is resolved to a path, it is strongly typed, and can have additional options. Just like
+in REST controllers, Endpoints can be parametrized to build REST-like collection and trees.
+Parameters are identified by %{parameterName}, with each endpoint supporting any number of
+parameters (see
+<a class="reference external" href="https://docs.astarte-platform.org/snapshot/030-interface.html#limitations">Limitations</a>).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.mapping.Mapping.endpoint">
+<span class="sig-name descname"><span class="pre">endpoint</span></span><a class="headerlink" href="#device.mapping.Mapping.endpoint" title="Link to this definition"></a></dt>
+<dd><p>Path of the Mapping</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.mapping.Mapping.type">
+<span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#device.mapping.Mapping.type" title="Link to this definition"></a></dt>
+<dd><p>Type of the Mapping (see notes)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.mapping.Mapping.explicit_timestamp">
+<span class="sig-name descname"><span class="pre">explicit_timestamp</span></span><a class="headerlink" href="#device.mapping.Mapping.explicit_timestamp" title="Link to this definition"></a></dt>
+<dd><p>Flag that defines if the Mapping requires a timestamp associated to the Payload before send.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.mapping.Mapping.reliability">
+<span class="sig-name descname"><span class="pre">reliability</span></span><a class="headerlink" href="#device.mapping.Mapping.reliability" title="Link to this definition"></a></dt>
+<dd><p>Reliability level of the Mapping (see notes)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="device.mapping.Mapping.allow_unset">
+<span class="sig-name descname"><span class="pre">allow_unset</span></span><a class="headerlink" href="#device.mapping.Mapping.allow_unset" title="Link to this definition"></a></dt>
+<dd><p>Allow unsetting for properties</p>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p><strong>Supported data types</strong></p>
+<p>The following types are supported:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>double: A double-precision floating-point number as specified by binary64, by the IEEE</dt><dd><p>754 standard (NaNs and other non-numerical values are not supported).</p>
+</dd>
+</dl>
+</li>
+<li><p>integer: A signed 32 bit integer.</p></li>
+<li><p>boolean: Either true or false, adhering to JSON boolean type.</p></li>
+<li><dl class="simple">
+<dt>longinteger: A signed 64-bit integer (please note that longinteger is represented as a</dt><dd><p>string by default in JSON-based APIs.).</p>
+</dd>
+</dl>
+</li>
+<li><p>string: An UTF-8 string, at most 65536 bytes long.</p></li>
+<li><dl class="simple">
+<dt>binaryblob: An arbitrary sequence of any byte that should be shorter than 64 KiB. (</dt><dd><p>binaryblob is represented as a base64 string by default in JSON-based APIs.).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>datetime: A UTC timestamp, internally represented as milliseconds since 1st Jan 1970</dt><dd><p>using a signed 64 bits integer. (datetime is represented as an ISO 8601 string by
+default in JSON based APIs.)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>doublearray, integerarray, booleanarray, longintegerarray, stringarray,</dt><dd><p>binaryblobarray, datetimearray: A list of values, represented as a JSON Array.
+Arrays can have up to 1024 items and each item must respect the limits of its scalar
+type (i.e. each string in a stringarray must be at most 65535 bytes long, each binary
+blob in a binaryblobarray must be shorter than 64 KiB.)</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Quality of Service</strong></p>
+<p>Data messages QoS is chosen according to mapping settings, such as reliability.
+Properties are always published using QoS 2.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>INTERFACE TYPE</p></th>
+<th class="head"><p>RELIABILITY</p></th>
+<th class="head"><p>QOS</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>properties</p></td>
+<td><p>always unique</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>datastream</p></td>
+<td><p>unreliable</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>datastream</p></td>
+<td><p>guaranteed</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>datastream</p></td>
+<td><p>unique</p></td>
+<td><p>2</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="device.mapping.Mapping.validate_path">
+<span class="sig-name descname"><span class="pre">validate_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.mapping.Mapping.validate_path" title="Link to this definition"></a></dt>
+<dd><p>Validate an endpoint against the endpoints declared in the mapping.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>Str</em>) – Path to validate.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><strong>ValidationError</strong></a> – When validation has failed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.mapping.Mapping.validate_payload">
+<span class="sig-name descname"><span class="pre">validate_payload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bytes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">bytes</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.mapping.Mapping.validate_payload" title="Link to this definition"></a></dt>
+<dd><p>Mapping data validation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>payload</strong> (<em>MapType</em>) – Data to validate</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><strong>ValidationError</strong></a> – When validation has failed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="device.mapping.Mapping.validate_timestamp">
+<span class="sig-name descname"><span class="pre">validate_timestamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">datetime</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#device.mapping.Mapping.validate_timestamp" title="Link to this definition"></a></dt>
+<dd><p>Mapping timestamp validation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>timestamp</strong> (<em>datetime</em><em> or </em><em>None</em>) – Timestamp associated to the payload</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#device.exceptions.ValidationError" title="device.exceptions.ValidationError"><strong>ValidationError</strong></a> – When validation has failed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-device.pairing_handler">
+<span id="device-pairing-handler-module"></span><h2>device.pairing_handler module<a class="headerlink" href="#module-device.pairing_handler" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="device.pairing_handler.generate_device_id">
+<span class="sig-prename descclassname"><span class="pre">device.pairing_handler.</span></span><span class="sig-name descname"><span class="pre">generate_device_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">namespace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">UUID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unique_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#device.pairing_handler.generate_device_id" title="Link to this definition"></a></dt>
+<dd><p>Deterministically generate a device Id based on UUID namespace identifier and unique data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>namespace</strong> (<em>UUID</em>) – UUID namespace of the device_id</p></li>
+<li><p><strong>unique_data</strong> (<em>str</em>) – device unique data used to generate the device_id</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the generated device Id, using the standard Astarte device ID encoding (base64
+urlencoding without padding).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="device.pairing_handler.generate_random_device_id">
+<span class="sig-prename descclassname"><span class="pre">device.pairing_handler.</span></span><span class="sig-name descname"><span class="pre">generate_random_device_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#device.pairing_handler.generate_random_device_id" title="Link to this definition"></a></dt>
+<dd><p>Quick way to generate a device Id.
+Pay attention that each time this value is different and the use in production is discouraged.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the generated device Id, using the standard Astarte device ID encoding (base64
+urlencoding without padding).</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="device.pairing_handler.obtain_device_certificate">
+<span class="sig-prename descclassname"><span class="pre">device.pairing_handler.</span></span><span class="sig-name descname"><span class="pre">obtain_device_certificate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credentials_secret</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crypto_store_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#device.pairing_handler.obtain_device_certificate" title="Link to this definition"></a></dt>
+<dd><p>Utility function that gets a device certificate from Astarte based on a locally generated csr</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device_id</strong> (<em>str</em>) – The device ID</p></li>
+<li><p><strong>realm</strong> (<em>str</em>) – The Astarte realm where the device is registered</p></li>
+<li><p><strong>credentials_secret</strong> (<em>str</em>) – The credentials secret for the device in the given realm</p></li>
+<li><p><strong>pairing_base_url</strong> (<em>str</em>) – The base URL for the Astarte pairing APIs</p></li>
+<li><p><strong>crypto_store_dir</strong> (<em>str</em>) – Path to the folder where crypto information are stored</p></li>
+<li><p><strong>ignore_ssl_errors</strong> (<em>str</em>) – Set to True to ignore SSL errors</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#device.exceptions.AuthorizationError" title="device.exceptions.AuthorizationError"><strong>AuthorizationError</strong></a> – If the authentication provided was not correct</p></li>
+<li><p><a class="reference internal" href="#device.exceptions.APIError" title="device.exceptions.APIError"><strong>APIError</strong></a> – If a generic Error was returned by the APIs</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="device.pairing_handler.obtain_device_transport_information">
+<span class="sig-prename descclassname"><span class="pre">device.pairing_handler.</span></span><span class="sig-name descname"><span class="pre">obtain_device_transport_information</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credentials_secret</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#device.pairing_handler.obtain_device_transport_information" title="Link to this definition"></a></dt>
+<dd><p>Utility function that requests the device transport information to Astarte</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device_id</strong> (<em>str</em>) – The device ID</p></li>
+<li><p><strong>realm</strong> (<em>str</em>) – The Astarte realm where the device is registered</p></li>
+<li><p><strong>credentials_secret</strong> (<em>str</em>) – The credentials secret for the device in the given realm</p></li>
+<li><p><strong>pairing_base_url</strong> (<em>str</em>) – The base URL for the Astarte pairing APIs</p></li>
+<li><p><strong>ignore_ssl_errors</strong> (<em>str</em>) – Set to True to ignore SSL errors</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The device transport information</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#device.exceptions.AuthorizationError" title="device.exceptions.AuthorizationError"><strong>AuthorizationError</strong></a> – If the authentication provided was not correct</p></li>
+<li><p><a class="reference internal" href="#device.exceptions.APIError" title="device.exceptions.APIError"><strong>APIError</strong></a> – If a generic Error was returned by the APIs</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="device.pairing_handler.register_device_with_jwt_token">
+<span class="sig-prename descclassname"><span class="pre">device.pairing_handler.</span></span><span class="sig-name descname"><span class="pre">register_device_with_jwt_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jwt_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#device.pairing_handler.register_device_with_jwt_token" title="Link to this definition"></a></dt>
+<dd><p>Registers a device against an Astarte instance/realm with a JWT Token</p>
+<p>Returns the Credentials secret for the device</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device_id</strong> (<em>str</em>) – The device ID to register.</p></li>
+<li><p><strong>realm</strong> (<em>str</em>) – The Realm in which to register the device.</p></li>
+<li><p><strong>jwt_token</strong> (<em>str</em>) – A JWT Token to Authenticate against Pairing API. The token must have access to Pairing
+API and to the agent API paths.</p></li>
+<li><p><strong>pairing_base_url</strong> (<em>str</em>) – The Base URL of Pairing API of the Astarte Instance the device will be registered in.</p></li>
+<li><p><strong>ignore_ssl_errors</strong> (<em>bool</em>) – Useful if you’re registering a device into a test instance of Astarte with self-signed
+certificates. It is not recommended to leave this <cite>true</cite> in production.
+Defaults to <cite>false</cite>, if <cite>true</cite> SSL errors will be ignored when registering a device.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The credentials secret obtained after the registration</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="device.pairing_handler.register_device_with_private_key">
+<span class="sig-prename descclassname"><span class="pre">device.pairing_handler.</span></span><span class="sig-name descname"><span class="pre">register_device_with_private_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">private_key_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#device.pairing_handler.register_device_with_private_key" title="Link to this definition"></a></dt>
+<dd><p>Registers a device against an Astarte instance/realm with a Private Key</p>
+<p>Returns the Credentials secret for the device</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device_id</strong> (<em>str</em>) – The device ID to register.</p></li>
+<li><p><strong>realm</strong> (<em>str</em>) – The Realm in which to register the device.</p></li>
+<li><p><strong>private_key_file</strong> (<em>str</em>) – Path to the Private Key file for the Realm. It will be used to Authenticate against
+Pairing API.</p></li>
+<li><p><strong>pairing_base_url</strong> (<em>str</em>) – The Base URL of Pairing API of the Astarte Instance the device will be registered in.</p></li>
+<li><p><strong>ignore_ssl_errors</strong> (<em>str</em>) – Set to True to ignore SSL errors</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The credentials secret obtained after the registration</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="device.pairing_handler.verify_device_certificate">
+<span class="sig-prename descclassname"><span class="pre">device.pairing_handler.</span></span><span class="sig-name descname"><span class="pre">verify_device_certificate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">realm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">credentials_secret</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairing_base_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_ssl_errors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cert_pem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#device.pairing_handler.verify_device_certificate" title="Link to this definition"></a></dt>
+<dd><p>Utility function that verifies the validity of a device certificate with Astarte</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device_id</strong> (<em>str</em>) – The device ID</p></li>
+<li><p><strong>realm</strong> (<em>str</em>) – The Astarte realm where the device is registered</p></li>
+<li><p><strong>pairing_base_url</strong> (<em>str</em>) – The base URL for the Astarte pairing APIs</p></li>
+<li><p><strong>credentials_secret</strong> (<em>str</em>) – The credentials secret for the device in the given realm</p></li>
+<li><p><strong>ignore_ssl_errors</strong> (<em>str</em>) – Set to True to ignore SSL errors</p></li>
+<li><p><strong>cert_pem</strong> (<em>str</em>) – Certificate to verify in the PEM format</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="#device.exceptions.AuthorizationError" title="device.exceptions.AuthorizationError"><strong>AuthorizationError</strong></a> – If the authentication provided was not correct</p></li>
+<li><p><a class="reference internal" href="#device.exceptions.APIError" title="device.exceptions.APIError"><strong>APIError</strong></a> – If a generic Error was returned by the APIs</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the certificate is valid, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-device">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-device" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="astarte" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, SECOMind.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
