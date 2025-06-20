@@ -220,6 +220,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../api_docs.html">API documentation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of API documentation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../api_docs/python.html">Python APIs</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Python APIs</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference external" href="https://docs.astarte-platform.org/device-sdks/python/snapshot/api">Python snapshot APIs</a></li>
+<li class="toctree-l3"><a class="reference external" href="https://docs.astarte-platform.org/device-sdks/python/0.14/api">Python v0.14 APIs</a></li>
 <li class="toctree-l3"><a class="reference external" href="https://docs.astarte-platform.org/device-sdks/python/0.13/api">Python v0.13 APIs</a></li>
 <li class="toctree-l3"><a class="reference external" href="https://docs.astarte-platform.org/device-sdks/python/0.12/api">Python v0.12 APIs</a></li>
 <li class="toctree-l3"><a class="reference external" href="https://docs.astarte-platform.org/device-sdks/python/0.11/api">Python v0.11 APIs</a></li>
@@ -296,7 +297,21 @@
         </div>
         <article role="main" id="furo-main-content">
           <!--
+This file is part of Astarte.
+
 Copyright 2025 SECO Mind Srl
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 SPDX-License-Identifier: Apache-2.0
 -->
@@ -427,7 +442,7 @@ connection messages. Ideally, two separate tasks should be used for both polling
 <span class="p">}</span>
 
 <span class="sd">/// Load connection configuration and connect a device to Astarte.</span>
-<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">init</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">eyre</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(</span><span class="n">DeviceClient</span><span class="o">&lt;</span><span class="n">SqliteStore</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">DeviceConnection</span><span class="o">&lt;</span><span class="n">SqliteStore</span><span class="p">,</span><span class="w"> </span><span class="n">Mqtt</span><span class="o">&lt;</span><span class="n">SqliteStore</span><span class="o">&gt;&gt;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">init</span><span class="p">()</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">eyre</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">(</span><span class="n">DeviceClient</span><span class="o">&lt;</span><span class="n">Mqtt</span><span class="o">&lt;</span><span class="n">SqliteStore</span><span class="o">&gt;&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">DeviceConnection</span><span class="o">&lt;</span><span class="n">Mqtt</span><span class="o">&lt;</span><span class="n">SqliteStore</span><span class="o">&gt;&gt;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Load the device configuration</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tokio</span><span class="p">::</span><span class="n">fs</span><span class="p">::</span><span class="n">read_to_string</span><span class="p">(</span><span class="s">&quot;config.json&quot;</span><span class="p">).</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">cfg</span><span class="p">:</span><span class="w"> </span><span class="nc">Config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">serde_json</span><span class="p">::</span><span class="n">from_str</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
@@ -448,10 +463,9 @@ connection messages. Ideally, two separate tasks should be used for both polling
 <span class="w">        </span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">store</span><span class="p">)</span>
 <span class="w">        </span><span class="c1">// NOTE: here we are not defining any Astarte interface, thus the device will not be able to</span>
 <span class="w">        </span><span class="c1">// send or receive data to/from Astarte</span>
-<span class="w">        </span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="n">mqtt_config</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="k">await</span><span class="o">?</span>
+<span class="w">        </span><span class="p">.</span><span class="n">connection</span><span class="p">(</span><span class="n">mqtt_config</span><span class="p">)</span>
 <span class="w">        </span><span class="p">.</span><span class="n">build</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="k">await</span><span class="p">;</span>
+<span class="w">        </span><span class="p">.</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
 
 <span class="w">    </span><span class="nb">Ok</span><span class="p">((</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">connection</span><span class="p">))</span>
 <span class="p">}</span>
@@ -461,7 +475,7 @@ connection messages. Ideally, two separate tasks should be used for both polling
 <span class="w">    </span><span class="n">color_eyre</span><span class="p">::</span><span class="n">install</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
 <span class="w">    </span><span class="n">tracing_subscriber</span><span class="p">::</span><span class="n">fmt</span><span class="p">::</span><span class="n">init</span><span class="p">();</span>
 
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">connection</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">init</span><span class="p">().</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">connection</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">init</span><span class="p">().</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
 
 <span class="w">    </span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Connection to Astarte established.&quot;</span><span class="p">);</span>
 
@@ -635,14 +649,14 @@ template.</p></li>
 <span class="p">#</span><span class="w">     </span><span class="n">prelude</span><span class="p">::</span><span class="o">*</span><span class="p">,</span>
 
 <span class="cp">#[tracing::instrument(skip_all)]</span>
-<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">receive_data</span><span class="p">(</span><span class="n">client</span><span class="p">:</span><span class="w"> </span><span class="nc">DeviceClient</span><span class="o">&lt;</span><span class="n">SqliteStore</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">eyre</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">receive_data</span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="n">client</span><span class="p">:</span><span class="w"> </span><span class="nc">DeviceClient</span><span class="o">&lt;</span><span class="n">Mqtt</span><span class="o">&lt;</span><span class="n">SqliteStore</span><span class="o">&gt;&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">eyre</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">loop</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="n">recv</span><span class="p">().</span><span class="k">await</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nb">Ok</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="n">astarte_device_sdk</span><span class="p">::</span><span class="n">Value</span><span class="p">::</span><span class="n">Individual</span><span class="p">(</span><span class="n">var</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nb">Ok</span><span class="p">(</span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="n">astarte_device_sdk</span><span class="p">::</span><span class="n">Value</span><span class="p">::</span><span class="n">Individual</span><span class="p">{</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">timestamp</span><span class="p">:</span><span class="w"> </span><span class="nc">_</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                    </span><span class="c1">// we want to analyze a mapping similar to &quot;/id/data&quot; so we split by &#39;/&#39; and use the</span>
 <span class="w">                    </span><span class="c1">// parts of interest</span>
-<span class="w">                    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">splitn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;/&#39;</span><span class="p">).</span><span class="n">skip</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">                    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">splitn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;/&#39;</span><span class="p">).</span><span class="n">skip</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 
 <span class="w">                    </span><span class="kd">let</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iter</span>
 <span class="w">                        </span><span class="p">.</span><span class="n">next</span><span class="p">()</span>
@@ -652,7 +666,7 @@ template.</p></li>
 
 <span class="w">                    </span><span class="k">match</span><span class="w"> </span><span class="n">iter</span><span class="p">.</span><span class="n">next</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                        </span><span class="nb">Some</span><span class="p">(</span><span class="s">&quot;data&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="kd">let</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="kt">f64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">var</span><span class="p">.</span><span class="n">try_into</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
+<span class="w">                            </span><span class="kd">let</span><span class="w"> </span><span class="n">value</span><span class="p">:</span><span class="w"> </span><span class="kt">f64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">.</span><span class="n">try_into</span><span class="p">()</span><span class="o">?</span><span class="p">;</span>
 <span class="w">                            </span><span class="n">info</span><span class="o">!</span><span class="p">(</span>
 <span class="w">                                </span><span class="s">&quot;Received new data datastream for LED {}. LED data is now {}&quot;</span><span class="p">,</span>
 <span class="w">                                </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">value</span>
@@ -679,8 +693,7 @@ template.</p></li>
 <span class="cm">    let (client, connection) = DeviceBuilder::new()</span>
 <span class="cm">        .store(store)</span>
 <span class="cm">        .interface_directory(&quot;interfaces&quot;)?</span>
-<span class="cm">        .connect(mqtt_config)</span>
-<span class="cm">        .await?</span>
+<span class="cm">        .connection(mqtt_config)</span>
 <span class="cm">        .build()</span>
 <span class="cm">        .await;</span>
 <span class="cm">    */</span>
@@ -732,17 +745,17 @@ interface.</p>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="c1">// ... imports, structs definition ...</span>
 
 <span class="cp">#[tracing::instrument(skip_all)]</span>
-<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">send_individual</span><span class="p">(</span><span class="n">client</span><span class="p">:</span><span class="w"> </span><span class="nc">DeviceClient</span><span class="o">&lt;</span><span class="n">SqliteStore</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">eyre</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">send_individual</span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="n">client</span><span class="p">:</span><span class="w"> </span><span class="nc">DeviceClient</span><span class="o">&lt;</span><span class="n">Mqtt</span><span class="o">&lt;</span><span class="n">SqliteStore</span><span class="o">&gt;&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">eyre</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// send data every 1 sec</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">interval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tokio</span><span class="p">::</span><span class="n">time</span><span class="p">::</span><span class="n">interval</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">time</span><span class="p">::</span><span class="n">Duration</span><span class="p">::</span><span class="n">from_secs</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span>
 
 <span class="w">    </span><span class="k">loop</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">client</span>
-<span class="w">            </span><span class="p">.</span><span class="n">send</span><span class="p">(</span>
+<span class="w">            </span><span class="p">.</span><span class="n">send_individual</span><span class="p">(</span>
 <span class="w">                </span><span class="s">&quot;org.astarte-platform.rust.get-started.IndividualDevice&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="s">&quot;/double_endpoint&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="n">data</span><span class="p">,</span>
+<span class="w">                </span><span class="n">data</span><span class="p">.</span><span class="n">try_into</span><span class="p">()</span><span class="o">?</span><span class="p">,</span>
 <span class="w">            </span><span class="p">)</span>
 <span class="w">            </span><span class="p">.</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
 
@@ -779,14 +792,14 @@ interface.</p>
 
 <span class="p">#</span><span class="w"> </span><span class="cp">#[cfg(not(feature = </span><span class="s">&quot;derive&quot;</span><span class="cp">))]</span>
 
-<span class="cp">#[derive(Debug, AstarteAggregate)]</span>
+<span class="cp">#[derive(Debug, IntoAstarteObject)]</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">DataObject</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">double_endpoint</span><span class="p">:</span><span class="w"> </span><span class="kt">f64</span><span class="p">,</span>
 <span class="w">    </span><span class="n">string_endpoint</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="cp">#[tracing::instrument(skip_all)]</span>
-<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">send_aggregate</span><span class="p">(</span><span class="n">client</span><span class="p">:</span><span class="w"> </span><span class="nc">DeviceClient</span><span class="o">&lt;</span><span class="n">SqliteStore</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">eyre</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">send_aggregate</span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="n">client</span><span class="p">:</span><span class="w"> </span><span class="nc">DeviceClient</span><span class="o">&lt;</span><span class="n">Mqtt</span><span class="o">&lt;</span><span class="n">SqliteStore</span><span class="o">&gt;&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">eyre</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// send data every 1 sec</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">interval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tokio</span><span class="p">::</span><span class="n">time</span><span class="p">::</span><span class="n">interval</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">time</span><span class="p">::</span><span class="n">Duration</span><span class="p">::</span><span class="n">from_secs</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
 
@@ -804,7 +817,7 @@ interface.</p>
 <span class="w">            </span><span class="p">.</span><span class="n">send_object</span><span class="p">(</span>
 <span class="w">                </span><span class="s">&quot;org.astarte-platform.rust.get-started.Aggregated&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="s">&quot;/group_data&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="n">data</span><span class="p">,</span>
+<span class="w">                </span><span class="n">data</span><span class="p">.</span><span class="n">try_into</span><span class="p">()</span><span class="o">?</span><span class="p">,</span>
 <span class="w">            </span><span class="p">)</span>
 <span class="w">            </span><span class="p">.</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
 
@@ -840,17 +853,17 @@ interface.</p>
 <div class="highlight-rust notranslate"><div class="highlight"><pre><span></span><span class="c1">// ... imports, structs definition ...</span>
 
 <span class="cp">#[tracing::instrument(skip_all)]</span>
-<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">send_property</span><span class="p">(</span><span class="n">client</span><span class="p">:</span><span class="w"> </span><span class="nc">DeviceClient</span><span class="o">&lt;</span><span class="n">SqliteStore</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">eyre</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="k">async</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">send_property</span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="n">client</span><span class="p">:</span><span class="w"> </span><span class="nc">DeviceClient</span><span class="o">&lt;</span><span class="n">Mqtt</span><span class="o">&lt;</span><span class="n">SqliteStore</span><span class="o">&gt;&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nc">eyre</span><span class="p">::</span><span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">interval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tokio</span><span class="p">::</span><span class="n">time</span><span class="p">::</span><span class="n">interval</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">time</span><span class="p">::</span><span class="n">Duration</span><span class="p">::</span><span class="n">from_secs</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
 
 <span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span>
 
 <span class="w">    </span><span class="k">loop</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">client</span>
-<span class="w">            </span><span class="p">.</span><span class="n">send</span><span class="p">(</span>
+<span class="w">            </span><span class="p">.</span><span class="n">send_individual</span><span class="p">(</span>
 <span class="w">                </span><span class="s">&quot;org.astarte-platform.rust.get-started.Property&quot;</span><span class="p">,</span>
 <span class="w">                </span><span class="s">&quot;/double_endpoint&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="n">data</span><span class="p">,</span>
+<span class="w">                </span><span class="n">data</span><span class="p">.</span><span class="n">try_into</span><span class="p">()</span><span class="o">?</span><span class="p">,</span>
 <span class="w">            </span><span class="p">)</span>
 <span class="w">            </span><span class="p">.</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
 
@@ -859,7 +872,7 @@ interface.</p>
 <span class="w">        </span><span class="c1">// wait 1 sec before unsetting the property</span>
 <span class="w">        </span><span class="n">interval</span><span class="p">.</span><span class="n">tick</span><span class="p">().</span><span class="k">await</span><span class="p">;</span>
 
-<span class="w">        </span><span class="n">client</span><span class="p">.</span><span class="n">unset</span><span class="p">(</span><span class="s">&quot;org.astarte-platform.rust.get-started.Property&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/double_endpoint&quot;</span><span class="p">).</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
+<span class="w">        </span><span class="n">client</span><span class="p">.</span><span class="n">unset_property</span><span class="p">(</span><span class="s">&quot;org.astarte-platform.rust.get-started.Property&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/double_endpoint&quot;</span><span class="p">).</span><span class="k">await</span><span class="o">?</span><span class="p">;</span>
 
 <span class="w">        </span><span class="n">info</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Unset property on /double_endpoint endpoint&quot;</span><span class="p">);</span>
 
