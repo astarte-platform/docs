@@ -5,6 +5,8 @@ var classAstarteDeviceSdk_1_1AstarteDevice =
     [ "AstarteDevice", "classAstarteDeviceSdk_1_1AstarteDevice.html#a26b19e2924fe976fb4ca51f87d19cc8f", null ],
     [ "AstarteDevice", "classAstarteDeviceSdk_1_1AstarteDevice.html#a244432fd850b7f711c1baac0d36d4865", null ],
     [ "add_interface_from_json", "classAstarteDeviceSdk_1_1AstarteDevice.html#a189fc1187933cfb26239a21a9c4efc92", null ],
+    [ "add_interface_from_str", "classAstarteDeviceSdk_1_1AstarteDevice.html#ac5693362cd440d1d45a0973d2e5db466", null ],
+    [ "add_interface_from_str", "classAstarteDeviceSdk_1_1AstarteDevice.html#a9e839ca50635e9e8dede28319ba4623f", null ],
     [ "connect", "classAstarteDeviceSdk_1_1AstarteDevice.html#a1f60377c260a2befc8fba57423ffb37b", null ],
     [ "disconnect", "classAstarteDeviceSdk_1_1AstarteDevice.html#a8c0f80ace917d04948bf5fd989189417", null ],
     [ "is_connected", "classAstarteDeviceSdk_1_1AstarteDevice.html#aade11b4f919dd79b2cf66a6f0ab6fa79", null ],

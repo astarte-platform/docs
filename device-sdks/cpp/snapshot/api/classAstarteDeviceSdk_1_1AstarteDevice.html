@@ -157,6 +157,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a189fc1187933cfb26239a21a9c4efc92" id="r_a189fc1187933cfb26239a21a9c4efc92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a189fc1187933cfb26239a21a9c4efc92">add_interface_from_json</a> (const std::filesystem::path &amp;json_file)</td></tr>
 <tr class="memdesc:a189fc1187933cfb26239a21a9c4efc92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an interface for the device from a json file.  <br /></td></tr>
 <tr class="separator:a189fc1187933cfb26239a21a9c4efc92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5693362cd440d1d45a0973d2e5db466" id="r_ac5693362cd440d1d45a0973d2e5db466"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5693362cd440d1d45a0973d2e5db466">add_interface_from_str</a> (std::string json)</td></tr>
+<tr class="memdesc:ac5693362cd440d1d45a0973d2e5db466"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an interface for the device from a json string.  <br /></td></tr>
+<tr class="separator:ac5693362cd440d1d45a0973d2e5db466"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e839ca50635e9e8dede28319ba4623f" id="r_a9e839ca50635e9e8dede28319ba4623f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e839ca50635e9e8dede28319ba4623f">add_interface_from_str</a> (std::string_view json)</td></tr>
+<tr class="memdesc:a9e839ca50635e9e8dede28319ba4623f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an interface for the device from a json file.  <br /></td></tr>
+<tr class="separator:a9e839ca50635e9e8dede28319ba4623f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f60377c260a2befc8fba57423ffb37b" id="r_a1f60377c260a2befc8fba57423ffb37b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f60377c260a2befc8fba57423ffb37b">connect</a> ()</td></tr>
 <tr class="memdesc:a1f60377c260a2befc8fba57423ffb37b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect the device to Astarte.  <br /></td></tr>
 <tr class="separator:a1f60377c260a2befc8fba57423ffb37b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -309,6 +315,56 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">json_file</td><td>The path to the .json interface file. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac5693362cd440d1d45a0973d2e5db466" name="ac5693362cd440d1d45a0973d2e5db466"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5693362cd440d1d45a0973d2e5db466">&#9670;&#160;</a></span>add_interface_from_str() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AstarteDeviceSdk::AstarteDevice::add_interface_from_str </td>
+          <td>(</td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>json</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add an interface for the device from a json string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">json</td><td>The interface to add. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9e839ca50635e9e8dede28319ba4623f" name="a9e839ca50635e9e8dede28319ba4623f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e839ca50635e9e8dede28319ba4623f">&#9670;&#160;</a></span>add_interface_from_str() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AstarteDeviceSdk::AstarteDevice::add_interface_from_str </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>json</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add an interface for the device from a json file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">json</td><td>The interface to add. </td></tr>
   </table>
   </dd>
 </dl>
