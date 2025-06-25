@@ -120,25 +120,25 @@ A Trigger can be linked to at most one Trigger Delivery Policy, but a single Tri
   </a>
   Listing and querying Trigger Delivery Policies using Realm Management API
 </h3>
-<p>To list all existing Trigger Delivery Policies in a Realm:</p><p><code class="inline">GET api.&lt;your astarte domain&gt;/realmmanagement/v1/&lt;realm name&gt;/policies</code></p><pre><code class="json">{
-  &quot;data&quot;: [
-    &quot;my_trigger_delivery_policy&quot;,
-    &quot;simple_trigger_delivery_policy&quot;,
-    &quot;other_trigger_delivery_policy&quot;,
-    &quot;retry_upon_all_errors_delivery_policy&quot;
-  ]
-}</code></pre><p>To get a Trigger Delivery Policy definition:</p><p><code class="inline">GET api.&lt;your astarte domain&gt;/realmmanagement/v1/&lt;realm name&gt;/policies/simple_trigger_delivery_policy</code></p><pre><code class="json">{
-  &quot;data&quot;: {
-    &quot;name&quot; : &quot;simple_trigger_delivery_policy&quot;,
-    &quot;maximum_capacity&quot; : 100,
-    &quot;error_handlers&quot; : [
-        {
-            &quot;on&quot; : &quot;any_error&quot;,
-            &quot;strategy&quot; : &quot;discard&quot;
-        }
-    ]
-  }
-}</code></pre><h2 id="installing-a-trigger-delivery-policy" class="section-heading">
+<p>To list all existing Trigger Delivery Policies in a Realm:</p><p><code class="inline">GET api.&lt;your astarte domain&gt;/realmmanagement/v1/&lt;realm name&gt;/policies</code></p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="9332869132-1">{</span><span class="w">
+  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9332869132-2">[</span><span class="w">
+    </span><span class="s2">&quot;my_trigger_delivery_policy&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;simple_trigger_delivery_policy&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;other_trigger_delivery_policy&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;retry_upon_all_errors_delivery_policy&quot;</span><span class="w">
+  </span><span class="p" data-group-id="9332869132-2">]</span><span class="w">
+</span><span class="p" data-group-id="9332869132-1">}</span></code></pre><p>To get a Trigger Delivery Policy definition:</p><p><code class="inline">GET api.&lt;your astarte domain&gt;/realmmanagement/v1/&lt;realm name&gt;/policies/simple_trigger_delivery_policy</code></p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="9877791453-1">{</span><span class="w">
+  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9877791453-2">{</span><span class="w">
+    </span><span class="s2">&quot;name&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple_trigger_delivery_policy&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;maximum_capacity&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;error_handlers&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9877791453-3">[</span><span class="w">
+        </span><span class="p" data-group-id="9877791453-4">{</span><span class="w">
+            </span><span class="s2">&quot;on&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;any_error&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;strategy&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;discard&quot;</span><span class="w">
+        </span><span class="p" data-group-id="9877791453-4">}</span><span class="w">
+    </span><span class="p" data-group-id="9877791453-3">]</span><span class="w">
+  </span><span class="p" data-group-id="9877791453-2">}</span><span class="w">
+</span><span class="p" data-group-id="9877791453-1">}</span></code></pre><h2 id="installing-a-trigger-delivery-policy" class="section-heading">
   <a href="#installing-a-trigger-delivery-policy" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">installing-a-trigger-delivery-policy</p>
   </a>
@@ -150,18 +150,18 @@ A Trigger can be linked to at most one Trigger Delivery Policy, but a single Tri
   </a>
   Installing a Trigger Delivery Policy using Realm Management APIs
 </h3>
-<p><code class="inline">POST api.&lt;your astarte domain&gt;/realmmanagement/v1/&lt;realm name&gt;/policies</code></p><p>The POST request must have the following request body, with content type <code class="inline">application/json</code></p><pre><code class="json">{
-  &quot;data&quot;: {
-    &quot;name&quot; : &quot;simple_trigger_delivery_policy&quot;,
-    &quot;maximum_capacity&quot; : 100,
-    &quot;error_handlers&quot; : [
-        {
-            &quot;on&quot; : &quot;any_error&quot;,
-            &quot;strategy&quot; : &quot;discard&quot;
-        }
-    ]
-  }
-}</code></pre><h2 id="deleting-a-trigger-delivery-policy" class="section-heading">
+<p><code class="inline">POST api.&lt;your astarte domain&gt;/realmmanagement/v1/&lt;realm name&gt;/policies</code></p><p>The POST request must have the following request body, with content type <code class="inline">application/json</code></p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="6501680302-1">{</span><span class="w">
+  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6501680302-2">{</span><span class="w">
+    </span><span class="s2">&quot;name&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple_trigger_delivery_policy&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;maximum_capacity&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;error_handlers&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6501680302-3">[</span><span class="w">
+        </span><span class="p" data-group-id="6501680302-4">{</span><span class="w">
+            </span><span class="s2">&quot;on&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;any_error&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;strategy&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;discard&quot;</span><span class="w">
+        </span><span class="p" data-group-id="6501680302-4">}</span><span class="w">
+    </span><span class="p" data-group-id="6501680302-3">]</span><span class="w">
+  </span><span class="p" data-group-id="6501680302-2">}</span><span class="w">
+</span><span class="p" data-group-id="6501680302-1">}</span></code></pre><h2 id="deleting-a-trigger-delivery-policy" class="section-heading">
   <a href="#deleting-a-trigger-delivery-policy" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">deleting-a-trigger-delivery-policy</p>
   </a>
@@ -187,37 +187,37 @@ A Trigger Delivery Policy can be deleted only if no Triggers linked to it are pr
   A Simple Trigger Delivery Policy
 </h3>
 <p>The following Trigger Delivery Policy discards events on any error.
-This is the only behaviour previous Astarte versions (i.e. &lt; 1.1) allowed.</p><pre><code class="json">{
-    &quot;name&quot; : &quot;simple_policy&quot;,
-    &quot;maximum_capacity&quot; : 100,
-    &quot;error_handlers&quot; : [
-        {
-            &quot;on&quot; : &quot;any_error&quot;,
-            &quot;strategy&quot; : &quot;discard&quot;
-        }
-    ]
-}</code></pre><h3 id="a-more-complex-trigger-delivery-policy" class="section-heading">
+This is the only behaviour previous Astarte versions (i.e. &lt; 1.1) allowed.</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="2167540008-1">{</span><span class="w">
+    </span><span class="s2">&quot;name&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple_policy&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;maximum_capacity&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;error_handlers&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2167540008-2">[</span><span class="w">
+        </span><span class="p" data-group-id="2167540008-3">{</span><span class="w">
+            </span><span class="s2">&quot;on&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;any_error&quot;</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;strategy&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;discard&quot;</span><span class="w">
+        </span><span class="p" data-group-id="2167540008-3">}</span><span class="w">
+    </span><span class="p" data-group-id="2167540008-2">]</span><span class="w">
+</span><span class="p" data-group-id="2167540008-1">}</span></code></pre><h3 id="a-more-complex-trigger-delivery-policy" class="section-heading">
   <a href="#a-more-complex-trigger-delivery-policy" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">a-more-complex-trigger-delivery-policy</p>
   </a>
   A More Complex Trigger Delivery Policy
 </h3>
-<p>The following policy has a different behaviour depending on whether the HTTP delivery error is a client or a server one. </p><pre><code class="json">{
-    &quot;name&quot; : &quot;complex_policy&quot;,
-    &quot;maximum_capacity&quot; : 100,
-    &quot;error_handlers&quot; : [
-            {
-                &quot;on&quot; : &quot;server_error&quot;,
-                &quot;strategy&quot; : &quot;retry&quot;
-            },
-            {
-                &quot;on&quot; : &quot;client_error&quot;,
-                &quot;strategy&quot; : &quot;discard&quot;
-            }
-        ],
-    &quot;retry_times&quot; : 5,
-    &quot;event_ttl&quot; : 10
-}</code></pre><p>If an HTTP client error occurs, then Astarte will try to resend the event up to 5 times.
+<p>The following policy has a different behaviour depending on whether the HTTP delivery error is a client or a server one. </p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="7527785559-1">{</span><span class="w">
+    </span><span class="s2">&quot;name&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;complex_policy&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;maximum_capacity&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;error_handlers&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7527785559-2">[</span><span class="w">
+            </span><span class="p" data-group-id="7527785559-3">{</span><span class="w">
+                </span><span class="s2">&quot;on&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;server_error&quot;</span><span class="p">,</span><span class="w">
+                </span><span class="s2">&quot;strategy&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;retry&quot;</span><span class="w">
+            </span><span class="p" data-group-id="7527785559-3">}</span><span class="p">,</span><span class="w">
+            </span><span class="p" data-group-id="7527785559-4">{</span><span class="w">
+                </span><span class="s2">&quot;on&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;client_error&quot;</span><span class="p">,</span><span class="w">
+                </span><span class="s2">&quot;strategy&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;discard&quot;</span><span class="w">
+            </span><span class="p" data-group-id="7527785559-4">}</span><span class="w">
+        </span><span class="p" data-group-id="7527785559-2">]</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;retry_times&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">&quot;event_ttl&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="p" data-group-id="7527785559-1">}</span></code></pre><p>If an HTTP client error occurs, then Astarte will try to resend the event up to 5 times.
 If there occurs an HTTP server error, then Astarte will do nothing. 
 At most 100 events can be in the queue at any time; if more than 100 events are present in the queue, the oldest ones will be deleted (even if they were resent less than 5 times in the case of HTTP client errors). If any event lasts for longer than 10 second in the queue, it will be discarded.</p><h2 id="known-issues" class="section-heading">
   <a href="#known-issues" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
