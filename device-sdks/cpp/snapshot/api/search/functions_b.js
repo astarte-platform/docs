@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['unset_5fproperty_0',['unset_property',['../classAstarteDeviceSdk_1_1AstarteDevice.html#a456fb8c2cd41ff2a7013fbfe02e53943',1,'AstarteDeviceSdk::AstarteDevice']]]
+  ['try_5finto_0',['try_into',['../classAstarteDeviceSdk_1_1AstarteData.html#abc63be5b2b20d6310825a8941ce1e720',1,'AstarteDeviceSdk::AstarteData::try_into()'],['../classAstarteDeviceSdk_1_1AstarteMessage.html#afda66777da768df8d6a569d165473e2e',1,'AstarteDeviceSdk::AstarteMessage::try_into()']]]
 ];

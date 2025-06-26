@@ -9,5 +9,6 @@ var classAstarteDeviceSdk_1_1AstarteMessage =
     [ "is_datastream", "classAstarteDeviceSdk_1_1AstarteMessage.html#a377f5c5b4073fa80901745f2777773db", null ],
     [ "is_individual", "classAstarteDeviceSdk_1_1AstarteMessage.html#a562a81952ea6af818021cc189832db7f", null ],
     [ "operator!=", "classAstarteDeviceSdk_1_1AstarteMessage.html#a347b18770159d28a4948753e9f0619ee", null ],
-    [ "operator==", "classAstarteDeviceSdk_1_1AstarteMessage.html#aba1bb5f92ab1f77f5e32a6ca36e5d7f4", null ]
+    [ "operator==", "classAstarteDeviceSdk_1_1AstarteMessage.html#aba1bb5f92ab1f77f5e32a6ca36e5d7f4", null ],
+    [ "try_into", "classAstarteDeviceSdk_1_1AstarteMessage.html#afda66777da768df8d6a569d165473e2e", null ]
 ];

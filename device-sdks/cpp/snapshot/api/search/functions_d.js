@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7eastartedevice_0',['~AstarteDevice',['../classAstarteDeviceSdk_1_1AstarteDevice.html#ac53545d0d35ac3134eda025c19277338',1,'AstarteDeviceSdk::AstarteDevice']]]
+  ['what_0',['what',['../classAstarteDeviceSdk_1_1AstarteException.html#ad7a9b291d236e4b5074134a4746b4720',1,'AstarteDeviceSdk::AstarteException']]]
 ];

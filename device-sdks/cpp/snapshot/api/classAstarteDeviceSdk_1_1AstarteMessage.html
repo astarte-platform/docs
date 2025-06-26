@@ -156,6 +156,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a47c84b527db29d032eb432a58eba8a8d"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a47c84b527db29d032eb432a58eba8a8d">into</a> () const -&gt; const T &amp;</td></tr>
 <tr class="memdesc:a47c84b527db29d032eb432a58eba8a8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the content of the message.  <br /></td></tr>
 <tr class="separator:a47c84b527db29d032eb432a58eba8a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afda66777da768df8d6a569d165473e2e" id="r_afda66777da768df8d6a569d165473e2e"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
+<tr class="memitem:afda66777da768df8d6a569d165473e2e"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#afda66777da768df8d6a569d165473e2e">try_into</a> () const -&gt; std::optional&lt; T &gt;</td></tr>
+<tr class="memdesc:afda66777da768df8d6a569d165473e2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the content of the message if it's of the correct type.  <br /></td></tr>
+<tr class="separator:afda66777da768df8d6a569d165473e2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16e0645f0c4bca9d47643aa5c1441c29" id="r_a16e0645f0c4bca9d47643aa5c1441c29"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16e0645f0c4bca9d47643aa5c1441c29">get_raw_data</a> () const -&gt; const std::variant&lt; <a class="el" href="classAstarteDeviceSdk_1_1AstarteDatastreamIndividual.html">AstarteDatastreamIndividual</a>, <a class="el" href="classAstarteDeviceSdk_1_1AstarteDatastreamObject.html">AstarteDatastreamObject</a>, <a class="el" href="classAstarteDeviceSdk_1_1AstartePropertyIndividual.html">AstartePropertyIndividual</a> &gt; &amp;</td></tr>
 <tr class="memdesc:a16e0645f0c4bca9d47643aa5c1441c29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the raw data contained in this class instance.  <br /></td></tr>
 <tr class="separator:a16e0645f0c4bca9d47643aa5c1441c29"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -482,6 +486,36 @@ template&lt;typename T&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True when equal, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="afda66777da768df8d6a569d165473e2e" name="afda66777da768df8d6a569d165473e2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afda66777da768df8d6a569d165473e2e">&#9670;&#160;</a></span>try_into()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto AstarteDeviceSdk::AstarteMessage::try_into </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const -&gt; std::optional&lt;T&gt; </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the content of the message if it's of the correct type. </p>
+<dl class="section return"><dt>Returns</dt><dd>The value contained in the message or nullopt. </dd></dl>
 
 </div>
 </div>

@@ -144,6 +144,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abeb2685afecc79c5bec66ef2f781a2ac"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#abeb2685afecc79c5bec66ef2f781a2ac">into</a> () const -&gt; const T &amp;</td></tr>
 <tr class="memdesc:abeb2685afecc79c5bec66ef2f781a2ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the Astarte data class to the appropriate data type.  <br /></td></tr>
 <tr class="separator:abeb2685afecc79c5bec66ef2f781a2ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc63be5b2b20d6310825a8941ce1e720" id="r_abc63be5b2b20d6310825a8941ce1e720"><td class="memTemplParams" colspan="2">template&lt;AstarteDataAllowedType T&gt; </td></tr>
+<tr class="memitem:abc63be5b2b20d6310825a8941ce1e720"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#abc63be5b2b20d6310825a8941ce1e720">try_into</a> () const -&gt; std::optional&lt; T &gt;</td></tr>
+<tr class="memdesc:abc63be5b2b20d6310825a8941ce1e720"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the Astarte data class to the given type if it's the correct variant.  <br /></td></tr>
+<tr class="separator:abc63be5b2b20d6310825a8941ce1e720"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a903ce710d1e7df38ed9beb8e9a6206b1" id="r_a903ce710d1e7df38ed9beb8e9a6206b1"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a903ce710d1e7df38ed9beb8e9a6206b1">format</a> () const -&gt; std::string</td></tr>
 <tr class="memdesc:a903ce710d1e7df38ed9beb8e9a6206b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pretty format the Astarte data.  <br /></td></tr>
 <tr class="separator:a903ce710d1e7df38ed9beb8e9a6206b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -378,6 +382,36 @@ template&lt;AstarteDataAllowedType T&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True when equal, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="abc63be5b2b20d6310825a8941ce1e720" name="abc63be5b2b20d6310825a8941ce1e720"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc63be5b2b20d6310825a8941ce1e720">&#9670;&#160;</a></span>try_into()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;AstarteDataAllowedType T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto AstarteDeviceSdk::AstarteData::try_into </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const -&gt; std::optional&lt;T&gt; </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convert the Astarte data class to the given type if it's the correct variant. </p>
+<dl class="section return"><dt>Returns</dt><dd>The value contained in the class instance or nullopt. </dd></dl>
 
 </div>
 </div>
