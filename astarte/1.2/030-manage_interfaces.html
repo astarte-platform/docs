@@ -123,7 +123,7 @@ before, to avoid bad surprises once your fleet starts rolling.</p><h2 id="queryi
 <p>You can list all installed interfaces in a given Realm. This will return all the valid installed
 Interface names, without any versioning.</p><h4>List Interfaces using astartectl</h4><pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">astartectl realm-management interfaces list
 </span><span class="">[com.my.Interface1 com.my.Interface2 com.my.Interface3]
-</span></code></pre><h4>List Interfaces using Astarte Dashboard</h4><p>From your Dashboard, after logging in, click on &quot;Interfaces&quot; in the left menu.</p><h4>List Interfaces using Realm Management API</h4><p><code class="inline">GET &lt;astarte base API URL&gt;/realmmanagement/v1/test/interfaces</code></p><pre><code class="json">{&quot;data&quot;: [&quot;com.my.Interface1&quot;,&quot;com.my.Interface2&quot;,&quot;com.my.Interface3&quot;]}</code></pre><h3 id="listing-major-versions-for-an-interface" class="section-heading">
+</span></code></pre><h4>List Interfaces using Astarte Dashboard</h4><p>From your Dashboard, after logging in, click on &quot;Interfaces&quot; in the left menu.</p><h4>List Interfaces using Realm Management API</h4><p><code class="inline">GET &lt;astarte base API URL&gt;/realmmanagement/v1/test/interfaces</code></p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="5445326597-1">{</span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5445326597-2">[</span><span class="s2">&quot;com.my.Interface1&quot;</span><span class="p">,</span><span class="s2">&quot;com.my.Interface2&quot;</span><span class="p">,</span><span class="s2">&quot;com.my.Interface3&quot;</span><span class="p" data-group-id="5445326597-2">]</span><span class="p" data-group-id="5445326597-1">}</span></code></pre><h3 id="listing-major-versions-for-an-interface" class="section-heading">
   <a href="#listing-major-versions-for-an-interface" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">listing-major-versions-for-an-interface</p>
   </a>
@@ -138,7 +138,7 @@ expected, and will be disregarded. Astarte ensures upon Interface installation f
 and as such you can always query the latest minor version of an Interface safely.</p><h4>List Versions using astartectl</h4><pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">astartectl realm-management interfaces versions com.my.Interface1
 </span><span class="">[0 1 2]
 </span></code></pre><h4>List Versions using Astarte Dashboard</h4><p>In the Dashboard's Interface page, click on any Interface name. A drop-down will appear, showing
-installed major versions for that Interface name.</p><h4>List Versions using Realm Management API</h4><p><code class="inline">GET &lt;astarte base API URL&gt;/realmmanagement/v1/test/interfaces/com.my.Interface1</code></p><pre><code class="json">{&quot;data&quot;: [0,1,2]}</code></pre><h4>Getting an Interface Definition</h4><p>Astarte allows you to retrieve the Interface Definition for a given Name and Major Version pair. The
+installed major versions for that Interface name.</p><h4>List Versions using Realm Management API</h4><p><code class="inline">GET &lt;astarte base API URL&gt;/realmmanagement/v1/test/interfaces/com.my.Interface1</code></p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="1717015033-1">{</span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1717015033-2">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p" data-group-id="1717015033-2">]</span><span class="p" data-group-id="1717015033-1">}</span></code></pre><h4>Getting an Interface Definition</h4><p>Astarte allows you to retrieve the Interface Definition for a given Name and Major Version pair. The
 definition is in the standard Interface JSON format.</p><h3 id="get-interface-definition-using-astartectl" class="section-heading">
   <a href="#get-interface-definition-using-astartectl" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">get-interface-definition-using-astartectl</p>
@@ -188,33 +188,33 @@ Interface and bump it to a new Minor.</p><h3 id="get-interface-definition-using-
   </a>
   Get Interface Definition using Realm Management API
 </h3>
-<p><code class="inline">GET &lt;astarte base API URL&gt;/realmmanagement/v1/test/interfaces/com.my.Interface1/0</code></p><pre><code class="json">{
-  &quot;data&quot;: {
-    &quot;version_minor&quot;: 2,
-    &quot;version_major&quot;: 0,
-    &quot;type&quot;: &quot;properties&quot;,
-    &quot;ownership&quot;: &quot;device&quot;,
-    &quot;mappings&quot;: [
-      {
-        &quot;type&quot;: &quot;integer&quot;,
-        &quot;path&quot;: &quot;/myValue&quot;,
-        &quot;description&quot;: &quot;This is quite an important value.&quot;
-      },
-      {
-        &quot;type&quot;: &quot;integer&quot;,
-        &quot;path&quot;: &quot;/myBetterValue&quot;,
-        &quot;description&quot;: &quot;A better revision, introduced in minor 2, supported only by some devices&quot;
-      },
-      {
-        &quot;type&quot;: &quot;boolean&quot;,
-        &quot;path&quot;: &quot;/awesome&quot;,
-        &quot;allow_unset&quot;: true,
-        &quot;description&quot;: &quot;Introduced in minor 1, tells you if the device is awesome. Optional.&quot;
-      }
-    ],
-    &quot;interface_name&quot;: &quot;com.my.Interface1&quot;
-  }
-}</code></pre><h2 id="installing-updating-an-interface" class="section-heading">
+<p><code class="inline">GET &lt;astarte base API URL&gt;/realmmanagement/v1/test/interfaces/com.my.Interface1/0</code></p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="8312384741-1">{</span><span class="w">
+  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8312384741-2">{</span><span class="w">
+    </span><span class="nt">&quot;version_minor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;version_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;properties&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;ownership&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8312384741-3">[</span><span class="w">
+      </span><span class="p" data-group-id="8312384741-4">{</span><span class="w">
+        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/myValue&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is quite an important value.&quot;</span><span class="w">
+      </span><span class="p" data-group-id="8312384741-4">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="8312384741-5">{</span><span class="w">
+        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/myBetterValue&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A better revision, introduced in minor 2, supported only by some devices&quot;</span><span class="w">
+      </span><span class="p" data-group-id="8312384741-5">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="8312384741-6">{</span><span class="w">
+        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;boolean&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/awesome&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;allow_unset&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Introduced in minor 1, tells you if the device is awesome. Optional.&quot;</span><span class="w">
+      </span><span class="p" data-group-id="8312384741-6">}</span><span class="w">
+    </span><span class="p" data-group-id="8312384741-3">]</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;com.my.Interface1&quot;</span><span class="w">
+  </span><span class="p" data-group-id="8312384741-2">}</span><span class="w">
+</span><span class="p" data-group-id="8312384741-1">}</span></code></pre><h2 id="installing-updating-an-interface" class="section-heading">
   <a href="#installing-updating-an-interface" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">installing-updating-an-interface</p>
   </a>
@@ -280,33 +280,33 @@ such, the only feedback received by the API is that the Interface is valid and t
 accepted by the backend. However, this is no guarantee that the Interface will be installed
 successfully. As a best practice, it is advised to either wait a few seconds in between Realm
 Management API invocations, or verify through a <code class="inline">GET</code> operation whether the Interface has been
-installed or not.</p><p><code class="inline">POST &lt;astarte base API URL&gt;/realmmanagement/v1/test/interfaces</code></p><p>The POST request must have the following request body, with content type <code class="inline">application/json</code></p><pre><code class="json">{
-  &quot;data&quot;: {
-    &quot;version_minor&quot;: 2,
-    &quot;version_major&quot;: 0,
-    &quot;type&quot;: &quot;properties&quot;,
-    &quot;ownership&quot;: &quot;device&quot;,
-    &quot;mappings&quot;: [
-      {
-        &quot;type&quot;: &quot;integer&quot;,
-        &quot;path&quot;: &quot;/myValue&quot;,
-        &quot;description&quot;: &quot;This is quite an important value.&quot;
-      },
-      {
-        &quot;type&quot;: &quot;integer&quot;,
-        &quot;path&quot;: &quot;/myBetterValue&quot;,
-        &quot;description&quot;: &quot;A better revision, introduced in minor 2, supported only by some devices&quot;
-      },
-      {
-        &quot;type&quot;: &quot;boolean&quot;,
-        &quot;path&quot;: &quot;/awesome&quot;,
-        &quot;allow_unset&quot;: true,
-        &quot;description&quot;: &quot;Introduced in minor 1, tells you if the device is awesome. Optional.&quot;
-      }
-    ],
-    &quot;interface_name&quot;: &quot;com.my.Interface1&quot;
-  }
-}</code></pre><p>The call will return either <code class="inline">201 Created</code> or an error. Most common failure cases are:</p><ul><li>The interface/major combination already exists in the Realm</li><li>The interface schema fails validation</li></ul><p>In any case, the API returns details on what caused the error and how to solve it through Astarte's
+installed or not.</p><p><code class="inline">POST &lt;astarte base API URL&gt;/realmmanagement/v1/test/interfaces</code></p><p>The POST request must have the following request body, with content type <code class="inline">application/json</code></p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="7860059024-1">{</span><span class="w">
+  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7860059024-2">{</span><span class="w">
+    </span><span class="nt">&quot;version_minor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;version_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;properties&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;ownership&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7860059024-3">[</span><span class="w">
+      </span><span class="p" data-group-id="7860059024-4">{</span><span class="w">
+        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/myValue&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is quite an important value.&quot;</span><span class="w">
+      </span><span class="p" data-group-id="7860059024-4">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="7860059024-5">{</span><span class="w">
+        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/myBetterValue&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A better revision, introduced in minor 2, supported only by some devices&quot;</span><span class="w">
+      </span><span class="p" data-group-id="7860059024-5">}</span><span class="p">,</span><span class="w">
+      </span><span class="p" data-group-id="7860059024-6">{</span><span class="w">
+        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;boolean&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/awesome&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;allow_unset&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Introduced in minor 1, tells you if the device is awesome. Optional.&quot;</span><span class="w">
+      </span><span class="p" data-group-id="7860059024-6">}</span><span class="w">
+    </span><span class="p" data-group-id="7860059024-3">]</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;com.my.Interface1&quot;</span><span class="w">
+  </span><span class="p" data-group-id="7860059024-2">}</span><span class="w">
+</span><span class="p" data-group-id="7860059024-1">}</span></code></pre><p>The call will return either <code class="inline">201 Created</code> or an error. Most common failure cases are:</p><ul><li>The interface/major combination already exists in the Realm</li><li>The interface schema fails validation</li></ul><p>In any case, the API returns details on what caused the error and how to solve it through Astarte's
 standard error reply schema.</p><h3 id="update-an-interface-using-astartectl" class="section-heading">
   <a href="#update-an-interface-using-astartectl" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">update-an-interface-using-astartectl</p>
