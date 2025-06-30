@@ -84,6 +84,14 @@ device.pairing\_handler module
    :undoc-members:
    :show-inheritance:
 
+device.types module
+-------------------
+
+.. automodule:: device.types
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 
