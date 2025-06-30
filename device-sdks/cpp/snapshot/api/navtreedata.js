@@ -30,16 +30,17 @@ var NAVTREE =
       [ "Supported Astarte message hub versions", "index.html#autotoc_md2", null ],
       [ "Optional features", "index.html#autotoc_md3", [
         [ "Formatting Astarte data", "index.html#autotoc_md4", null ],
-        [ "Public message hub proto dependency", "index.html#autotoc_md5", null ]
+        [ "Public spdlog dependency", "index.html#autotoc_md5", null ],
+        [ "Public message hub proto dependency", "index.html#autotoc_md6", null ]
       ] ],
-      [ "Dependencies", "index.html#autotoc_md6", [
-        [ "gRPC", "index.html#autotoc_md7", null ],
-        [ "Astarte message hub proto", "index.html#autotoc_md8", null ],
-        [ "spdlog", "index.html#autotoc_md9", null ],
-        [ "base64", "index.html#autotoc_md10", null ]
+      [ "Dependencies", "index.html#autotoc_md7", [
+        [ "gRPC", "index.html#autotoc_md8", null ],
+        [ "Astarte message hub proto", "index.html#autotoc_md9", null ],
+        [ "spdlog", "index.html#autotoc_md10", null ],
+        [ "base64", "index.html#autotoc_md11", null ]
       ] ],
-      [ "Get started with the samples", "index.html#autotoc_md11", null ],
-      [ "Importing the library in an external project", "index.html#autotoc_md12", null ]
+      [ "Get started with the samples", "index.html#autotoc_md12", null ],
+      [ "Importing the library in an external project", "index.html#autotoc_md13", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
