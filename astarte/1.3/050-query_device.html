@@ -148,56 +148,56 @@ Clicking on the Device ID will take you to its details page.</p><h3 id="query-de
   </a>
   Query Device status using AppEngine API
 </h3>
-<p><code class="inline">GET api.&lt;your astarte domain&gt;/appengine/v1/test/devices/f0VMRgIBAQAAAAAAAAAAAA</code></p><pre><code class="json">{
-    &quot;data&quot;: {
-        &quot;total_received_msgs&quot;: 221,
-        &quot;total_received_bytes&quot;: 11660,
-        &quot;last_seen_ip&quot;: &quot;203.0.113.89&quot;,
-        &quot;last_credentials_request_ip&quot;: &quot;203.0.113.201&quot;,
-        &quot;last_disconnection&quot;: &quot;2018-02-07T18:38:57.266Z&quot;,
-        &quot;last_connection&quot;: &quot;2018-02-08T09:49:26.556Z&quot;,
-        &quot;id&quot;: &quot;f0VMRgIBAQAAAAAAAAAAAA&quot;,
-        &quot;first_registration&quot;: &quot;2018-01-31T17:10:59.270Z&quot;,
-        &quot;connected&quot;: true,
-        &quot;introspection&quot;: {
-            &quot;com.example.ExampleInterface&quot; : {
-                &quot;major&quot; : 1,
-                &quot;minor&quot; : 0,
-                &quot;exchanged_msgs&quot;: 20,
-                &quot;exchanged_bytes&quot;: 200
-            },
-            &quot;org.example.TestInterface&quot; : {
-                &quot;major&quot; : 0,
-                &quot;minor&quot; : 2,
-                &quot;exchanged_msgs&quot;: 8,
-                &quot;exchanged_bytes&quot;: 147
-            }
-        },
-        &quot;aliases&quot;: {
-            &quot;name&quot;: &quot;device_a&quot;
-        },
-        &quot;attributes&quot;: {
-            &quot;attributes_key&quot;: &quot;attributes_value&quot;
-        },
-        &quot;groups&quot;: [
-            &quot;my_group&quot;,
-        ],
-        &quot;previous_interfaces&quot;: [
-            {
-                &quot;name&quot;: &quot;com.example.ExampleInterface&quot;,
-                &quot;major&quot; : 0,
-                &quot;minor&quot; : 2,
-                &quot;exchanged_msgs&quot;: 3,
-                &quot;exchanged_bytes&quot;: 120
-            }
-        ]
-    }
-}</code></pre><p>Through the API, it is also possible to get the Introspection of the device only:</p><p><code class="inline">GET api.&lt;your astarte domain&gt;/appengine/v1/test/devices/f0VMRgIBAQAAAAAAAAAAAA/interfaces</code></p><pre><code class="json">{
-    &quot;data&quot;: [
-        &quot;com.example.ExampleInterface&quot;,
-        &quot;com.example.TestInterface&quot;
-    ]
-}</code></pre><p>This returns the Interfaces which the device reported in its Introspection <em>and</em> which are known to the Realm.</p><p>Arbitrary information can be added to the device by means of <code class="inline">attributes</code>: they allow to store any
+<p><code class="inline">GET api.&lt;your astarte domain&gt;/appengine/v1/test/devices/f0VMRgIBAQAAAAAAAAAAAA</code></p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="9767259673-1">{</span><span class="w">
+    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9767259673-2">{</span><span class="w">
+        </span><span class="nt">&quot;total_received_msgs&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">221</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;total_received_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11660</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;last_seen_ip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;203.0.113.89&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;last_credentials_request_ip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;203.0.113.201&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;last_disconnection&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-02-07T18:38:57.266Z&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;last_connection&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-02-08T09:49:26.556Z&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f0VMRgIBAQAAAAAAAAAAAA&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;first_registration&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-01-31T17:10:59.270Z&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;connected&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;introspection&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9767259673-3">{</span><span class="w">
+            </span><span class="s2">&quot;com.example.ExampleInterface&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9767259673-4">{</span><span class="w">
+                </span><span class="s2">&quot;major&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="s2">&quot;minor&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nt">&quot;exchanged_msgs&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+                </span><span class="nt">&quot;exchanged_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+            </span><span class="p" data-group-id="9767259673-4">}</span><span class="p">,</span><span class="w">
+            </span><span class="s2">&quot;org.example.TestInterface&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9767259673-5">{</span><span class="w">
+                </span><span class="s2">&quot;major&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">&quot;minor&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="nt">&quot;exchanged_msgs&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+                </span><span class="nt">&quot;exchanged_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">147</span><span class="w">
+            </span><span class="p" data-group-id="9767259673-5">}</span><span class="w">
+        </span><span class="p" data-group-id="9767259673-3">}</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;aliases&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9767259673-6">{</span><span class="w">
+            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device_a&quot;</span><span class="w">
+        </span><span class="p" data-group-id="9767259673-6">}</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9767259673-7">{</span><span class="w">
+            </span><span class="nt">&quot;attributes_key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;attributes_value&quot;</span><span class="w">
+        </span><span class="p" data-group-id="9767259673-7">}</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;groups&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9767259673-8">[</span><span class="w">
+            </span><span class="s2">&quot;my_group&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="p" data-group-id="9767259673-8">]</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;previous_interfaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9767259673-9">[</span><span class="w">
+            </span><span class="p" data-group-id="9767259673-10">{</span><span class="w">
+                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;com.example.ExampleInterface&quot;</span><span class="p">,</span><span class="w">
+                </span><span class="s2">&quot;major&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">&quot;minor&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="nt">&quot;exchanged_msgs&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+                </span><span class="nt">&quot;exchanged_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="w">
+            </span><span class="p" data-group-id="9767259673-10">}</span><span class="w">
+        </span><span class="p" data-group-id="9767259673-9">]</span><span class="w">
+    </span><span class="p" data-group-id="9767259673-2">}</span><span class="w">
+</span><span class="p" data-group-id="9767259673-1">}</span></code></pre><p>Through the API, it is also possible to get the Introspection of the device only:</p><p><code class="inline">GET api.&lt;your astarte domain&gt;/appengine/v1/test/devices/f0VMRgIBAQAAAAAAAAAAAA/interfaces</code></p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="6178775737-1">{</span><span class="w">
+    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6178775737-2">[</span><span class="w">
+        </span><span class="s2">&quot;com.example.ExampleInterface&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="s2">&quot;com.example.TestInterface&quot;</span><span class="w">
+    </span><span class="p" data-group-id="6178775737-2">]</span><span class="w">
+</span><span class="p" data-group-id="6178775737-1">}</span></code></pre><p>This returns the Interfaces which the device reported in its Introspection <em>and</em> which are known to the Realm.</p><p>Arbitrary information can be added to the device by means of <code class="inline">attributes</code>: they allow to store any
 number of string values associated to a corresponding string key.
 To set, modify and delete <code class="inline">attributes</code>, a <code class="inline">PATCH</code> on the device endpoint is required:</p><pre><code class="makeup elixir" translate="no"><span class="nc">PATCH</span><span class="w"> </span><span class="n">api</span><span class="o">.</span><span class="o">&lt;</span><span class="n">your</span><span class="w"> </span><span class="n">astarte</span><span class="w"> </span><span class="n">domain</span><span class="o">&gt;</span><span class="o">/</span><span class="n">appengine</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">f0VMRgIBAQAAAAAAAAAAAA</span></code></pre><p>In the request body, the <code class="inline">data</code> JSON object should have a <code class="inline">attributes</code> key which bears a dictionary
 of strings. A valid request body which changes only device attributes, for example, is
