@@ -166,9 +166,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1f60377c260a2befc8fba57423ffb37b" id="r_a1f60377c260a2befc8fba57423ffb37b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f60377c260a2befc8fba57423ffb37b">connect</a> ()</td></tr>
 <tr class="memdesc:a1f60377c260a2befc8fba57423ffb37b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect the device to Astarte.  <br /></td></tr>
 <tr class="separator:a1f60377c260a2befc8fba57423ffb37b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aade11b4f919dd79b2cf66a6f0ab6fa79" id="r_aade11b4f919dd79b2cf66a6f0ab6fa79"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aade11b4f919dd79b2cf66a6f0ab6fa79">is_connected</a> (std::chrono::milliseconds timeout=100ms) -&gt; bool</td></tr>
-<tr class="memdesc:aade11b4f919dd79b2cf66a6f0ab6fa79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the device is connected.  <br /></td></tr>
-<tr class="separator:aade11b4f919dd79b2cf66a6f0ab6fa79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75f26fd066a9bb431779a4c92ab63405" id="r_a75f26fd066a9bb431779a4c92ab63405"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75f26fd066a9bb431779a4c92ab63405">is_connected</a> (const std::chrono::milliseconds &amp;timeout=100ms) -&gt; bool</td></tr>
+<tr class="memdesc:a75f26fd066a9bb431779a4c92ab63405"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the device is connected.  <br /></td></tr>
+<tr class="separator:a75f26fd066a9bb431779a4c92ab63405"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c0f80ace917d04948bf5fd989189417" id="r_a8c0f80ace917d04948bf5fd989189417"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c0f80ace917d04948bf5fd989189417">disconnect</a> ()</td></tr>
 <tr class="memdesc:a8c0f80ace917d04948bf5fd989189417"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect from Astarte.  <br /></td></tr>
 <tr class="separator:a8c0f80ace917d04948bf5fd989189417"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -184,9 +184,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a456fb8c2cd41ff2a7013fbfe02e53943" id="r_a456fb8c2cd41ff2a7013fbfe02e53943"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a456fb8c2cd41ff2a7013fbfe02e53943">unset_property</a> (const std::string &amp;interface_name, const std::string &amp;path)</td></tr>
 <tr class="memdesc:a456fb8c2cd41ff2a7013fbfe02e53943"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unset a device property.  <br /></td></tr>
 <tr class="separator:a456fb8c2cd41ff2a7013fbfe02e53943"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0175368728b7947f8fbc39fcc1d48ba" id="r_aa0175368728b7947f8fbc39fcc1d48ba"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0175368728b7947f8fbc39fcc1d48ba">poll_incoming</a> () -&gt; std::optional&lt; <a class="el" href="classAstarteDeviceSdk_1_1AstarteMessage.html">AstarteMessage</a> &gt;</td></tr>
-<tr class="memdesc:aa0175368728b7947f8fbc39fcc1d48ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poll incoming messages.  <br /></td></tr>
-<tr class="separator:aa0175368728b7947f8fbc39fcc1d48ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9709bbdeee9028a0bf92bb54935c2ac5" id="r_a9709bbdeee9028a0bf92bb54935c2ac5"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9709bbdeee9028a0bf92bb54935c2ac5">poll_incoming</a> (const std::chrono::milliseconds &amp;timeout=100ms) -&gt; std::optional&lt; <a class="el" href="classAstarteDeviceSdk_1_1AstarteMessage.html">AstarteMessage</a> &gt;</td></tr>
+<tr class="memdesc:a9709bbdeee9028a0bf92bb54935c2ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poll incoming messages.  <br /></td></tr>
+<tr class="separator:a9709bbdeee9028a0bf92bb54935c2ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for the Astarte devices. </p>
@@ -410,8 +410,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aade11b4f919dd79b2cf66a6f0ab6fa79" name="aade11b4f919dd79b2cf66a6f0ab6fa79"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aade11b4f919dd79b2cf66a6f0ab6fa79">&#9670;&#160;</a></span>is_connected()</h2>
+<a id="a75f26fd066a9bb431779a4c92ab63405" name="a75f26fd066a9bb431779a4c92ab63405"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75f26fd066a9bb431779a4c92ab63405">&#9670;&#160;</a></span>is_connected()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -419,7 +419,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">auto AstarteDeviceSdk::AstarteDevice::is_connected </td>
           <td>(</td>
-          <td class="paramtype">std::chrono::milliseconds</td>          <td class="paramname"><span class="paramname"><em>timeout</em></span><span class="paramdefsep"> = </span><span class="paramdefval">100ms</span></td><td>)</td>
+          <td class="paramtype">const std::chrono::milliseconds &amp;</td>          <td class="paramname"><span class="paramname"><em>timeout</em></span><span class="paramdefsep"> = </span><span class="paramdefval">100ms</span></td><td>)</td>
           <td> -&gt;  bool</td>
         </tr>
       </table>
@@ -490,8 +490,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa0175368728b7947f8fbc39fcc1d48ba" name="aa0175368728b7947f8fbc39fcc1d48ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa0175368728b7947f8fbc39fcc1d48ba">&#9670;&#160;</a></span>poll_incoming()</h2>
+<a id="a9709bbdeee9028a0bf92bb54935c2ac5" name="a9709bbdeee9028a0bf92bb54935c2ac5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9709bbdeee9028a0bf92bb54935c2ac5">&#9670;&#160;</a></span>poll_incoming()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -499,13 +499,19 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">auto AstarteDeviceSdk::AstarteDevice::poll_incoming </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">const std::chrono::milliseconds &amp;</td>          <td class="paramname"><span class="paramname"><em>timeout</em></span><span class="paramdefsep"> = </span><span class="paramdefval">100ms</span></td><td>)</td>
           <td> -&gt;  std::optional&lt; <a class="el" href="classAstarteDeviceSdk_1_1AstarteMessage.html">AstarteMessage</a> &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Poll incoming messages. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeout</td><td>Will block for this timeout if no message is present. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>The received message when present, std::nullopt otherwise. </dd></dl>
 
 </div>
