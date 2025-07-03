@@ -116,9 +116,9 @@ such as e.g. Interfaces, Triggers, Devices, Groups etc...</p><h2 id="device-limi
 <p>While there is no limit on the number of Devices registered in a Realm, it is possible that an
 upper bound has been set in the Realm configuration using the <a href="/api/index.html?urls.primaryName=Housekeeping API">Housekeeping API</a>.
 When it is set, trying to register more Devices past the limit will result in an error.
-The limit can be retrieved from Realm Management with</p><p><code class="inline">GET &lt;astarte base API URL&gt;/realmmanagement/v1/&lt;realm name&gt;/config/device_registration_limit</code></p><p>The HTTP payload of the response will have the following format:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="8646490148-1">{</span><span class="w">
+The limit can be retrieved from Realm Management with</p><p><code class="inline">GET &lt;astarte base API URL&gt;/realmmanagement/v1/&lt;realm name&gt;/config/device_registration_limit</code></p><p>The HTTP payload of the response will have the following format:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="9550858449-1">{</span><span class="w">
     </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;</span><span class="err">v</span><span class="err">a</span><span class="err">l</span><span class="err">u</span><span class="err">e</span><span class="err">&gt;</span><span class="w">
-</span><span class="p" data-group-id="8646490148-1">}</span></code></pre><p>If such a limit is set, the value will be a non negative integer.
+</span><span class="p" data-group-id="9550858449-1">}</span></code></pre><p>If such a limit is set, the value will be a non negative integer.
 If not, the value will be <code class="inline">null</code>.</p>
 <div class="bottom-actions">
   <div class="bottom-actions-item">
