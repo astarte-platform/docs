@@ -9,7 +9,7 @@ var classAstarteDeviceSdk_1_1AstarteDevice =
     [ "add_interface_from_str", "classAstarteDeviceSdk_1_1AstarteDevice.html#a9e839ca50635e9e8dede28319ba4623f", null ],
     [ "connect", "classAstarteDeviceSdk_1_1AstarteDevice.html#a1f60377c260a2befc8fba57423ffb37b", null ],
     [ "disconnect", "classAstarteDeviceSdk_1_1AstarteDevice.html#a8c0f80ace917d04948bf5fd989189417", null ],
-    [ "is_connected", "classAstarteDeviceSdk_1_1AstarteDevice.html#a75f26fd066a9bb431779a4c92ab63405", null ],
+    [ "is_connected", "classAstarteDeviceSdk_1_1AstarteDevice.html#a65f362deaac84eb2a5f4a5659d7d68e8", null ],
     [ "operator=", "classAstarteDeviceSdk_1_1AstarteDevice.html#a3a6bb7a7941073bcc765ed528d6afab0", null ],
     [ "operator=", "classAstarteDeviceSdk_1_1AstarteDevice.html#a1c0decc4b0bfc5df9d314aa00894e1a9", null ],
     [ "poll_incoming", "classAstarteDeviceSdk_1_1AstarteDevice.html#a9709bbdeee9028a0bf92bb54935c2ac5", null ],

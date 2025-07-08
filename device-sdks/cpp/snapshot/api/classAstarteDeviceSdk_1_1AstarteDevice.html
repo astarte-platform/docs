@@ -166,9 +166,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1f60377c260a2befc8fba57423ffb37b" id="r_a1f60377c260a2befc8fba57423ffb37b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f60377c260a2befc8fba57423ffb37b">connect</a> ()</td></tr>
 <tr class="memdesc:a1f60377c260a2befc8fba57423ffb37b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect the device to Astarte.  <br /></td></tr>
 <tr class="separator:a1f60377c260a2befc8fba57423ffb37b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75f26fd066a9bb431779a4c92ab63405" id="r_a75f26fd066a9bb431779a4c92ab63405"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75f26fd066a9bb431779a4c92ab63405">is_connected</a> (const std::chrono::milliseconds &amp;timeout=100ms) -&gt; bool</td></tr>
-<tr class="memdesc:a75f26fd066a9bb431779a4c92ab63405"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the device is connected.  <br /></td></tr>
-<tr class="separator:a75f26fd066a9bb431779a4c92ab63405"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65f362deaac84eb2a5f4a5659d7d68e8" id="r_a65f362deaac84eb2a5f4a5659d7d68e8"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a65f362deaac84eb2a5f4a5659d7d68e8">is_connected</a> (const std::chrono::milliseconds &amp;timeout=100ms) const -&gt; bool</td></tr>
+<tr class="memdesc:a65f362deaac84eb2a5f4a5659d7d68e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the device is connected.  <br /></td></tr>
+<tr class="separator:a65f362deaac84eb2a5f4a5659d7d68e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c0f80ace917d04948bf5fd989189417" id="r_a8c0f80ace917d04948bf5fd989189417"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c0f80ace917d04948bf5fd989189417">disconnect</a> ()</td></tr>
 <tr class="memdesc:a8c0f80ace917d04948bf5fd989189417"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect from Astarte.  <br /></td></tr>
 <tr class="separator:a8c0f80ace917d04948bf5fd989189417"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -410,19 +410,27 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a75f26fd066a9bb431779a4c92ab63405" name="a75f26fd066a9bb431779a4c92ab63405"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75f26fd066a9bb431779a4c92ab63405">&#9670;&#160;</a></span>is_connected()</h2>
+<a id="a65f362deaac84eb2a5f4a5659d7d68e8" name="a65f362deaac84eb2a5f4a5659d7d68e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65f362deaac84eb2a5f4a5659d7d68e8">&#9670;&#160;</a></span>is_connected()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">auto AstarteDeviceSdk::AstarteDevice::is_connected </td>
           <td>(</td>
           <td class="paramtype">const std::chrono::milliseconds &amp;</td>          <td class="paramname"><span class="paramname"><em>timeout</em></span><span class="paramdefsep"> = </span><span class="paramdefval">100ms</span></td><td>)</td>
-          <td> -&gt;  bool</td>
+          <td> const -&gt;  bool</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Check if the device is connected. </p>
