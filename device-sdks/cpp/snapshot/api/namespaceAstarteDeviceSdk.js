@@ -4,6 +4,7 @@ var namespaceAstarteDeviceSdk =
     [ "AstarteDatastreamIndividual", "classAstarteDeviceSdk_1_1AstarteDatastreamIndividual.html", "classAstarteDeviceSdk_1_1AstarteDatastreamIndividual" ],
     [ "AstarteDatastreamObject", "classAstarteDeviceSdk_1_1AstarteDatastreamObject.html", "classAstarteDeviceSdk_1_1AstarteDatastreamObject" ],
     [ "AstarteDevice", "classAstarteDeviceSdk_1_1AstarteDevice.html", "classAstarteDeviceSdk_1_1AstarteDevice" ],
+    [ "AstarteDeviceGRPC", "classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html", "classAstarteDeviceSdk_1_1AstarteDeviceGRPC" ],
     [ "AstarteException", "classAstarteDeviceSdk_1_1AstarteException.html", "classAstarteDeviceSdk_1_1AstarteException" ],
     [ "AstarteFileOpenException", "classAstarteDeviceSdk_1_1AstarteFileOpenException.html", "classAstarteDeviceSdk_1_1AstarteFileOpenException" ],
     [ "AstarteInternalException", "classAstarteDeviceSdk_1_1AstarteInternalException.html", "classAstarteDeviceSdk_1_1AstarteInternalException" ],
