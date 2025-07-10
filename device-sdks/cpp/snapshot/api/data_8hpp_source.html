@@ -215,7 +215,7 @@ $(function(){initNavTree('data_8hpp_source.html',''); initResizable(true); });
 <div class="foldopen" id="foldopen00099" data-start="{" data-end="}">
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classAstarteDeviceSdk_1_1AstarteData.html#abc63be5b2b20d6310825a8941ce1e720">   99</a></span>  <span class="keyword">auto</span> <a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#abc63be5b2b20d6310825a8941ce1e720">try_into</a>() const -&gt; std::optional&lt;T&gt; {</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordflow">if</span> (std::holds_alternative&lt;T&gt;(data_)) {</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>      <span class="keywordflow">return</span> std::move(std::get&lt;T&gt;(data_));</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>      <span class="keywordflow">return</span> std::get&lt;T&gt;(data_);</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">return</span> std::nullopt;</div>
@@ -236,7 +236,7 @@ $(function(){initNavTree('data_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  <span class="keyword">auto</span> <a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#abc63be5b2b20d6310825a8941ce1e720">try_into</a>(std::enable_if_t&lt;astarte_data_is_allowed_type&lt;T&gt;::value, <span class="keywordtype">bool</span>&gt; <span class="comment">/*unused*/</span> =</div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>                    <span class="keyword">true</span>) const -&gt; std::optional&lt;T&gt; {</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordflow">if</span> (std::holds_alternative&lt;T&gt;(data_)) {</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>      <span class="keywordflow">return</span> std::move(std::get&lt;T&gt;(data_));</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>      <span class="keywordflow">return</span> std::get&lt;T&gt;(data_);</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    }</div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordflow">return</span> std::nullopt;</div>

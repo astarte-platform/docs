@@ -169,7 +169,7 @@ $(function(){initNavTree('msg_8hpp_source.html',''); initResizable(true); });
 <div class="foldopen" id="foldopen00071" data-start="{" data-end="}">
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classAstarteDeviceSdk_1_1AstarteMessage.html#afda66777da768df8d6a569d165473e2e">   71</a></span>  [[nodiscard]] <span class="keyword">auto</span> <a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteMessage.html#afda66777da768df8d6a569d165473e2e">try_into</a>() const -&gt; std::optional&lt;T&gt; {</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordflow">if</span> (std::holds_alternative&lt;T&gt;(data_)) {</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>      <span class="keywordflow">return</span> std::move(std::get&lt;T&gt;(data_));</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>      <span class="keywordflow">return</span> std::get&lt;T&gt;(data_);</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    }</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordflow">return</span> std::nullopt;</div>
