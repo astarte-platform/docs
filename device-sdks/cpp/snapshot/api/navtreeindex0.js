@@ -232,9 +232,8 @@ var NAVTREEINDEX0 =
 "index.html#autotoc_md0":[0],
 "index.html#autotoc_md1":[0,0],
 "index.html#autotoc_md10":[0,3,2],
-"index.html#autotoc_md11":[0,3,3],
-"index.html#autotoc_md12":[0,4],
-"index.html#autotoc_md13":[0,5],
+"index.html#autotoc_md11":[0,4],
+"index.html#autotoc_md12":[0,5],
 "index.html#autotoc_md2":[0,1],
 "index.html#autotoc_md3":[0,2],
 "index.html#autotoc_md4":[0,2,0],
@@ -249,5 +248,6 @@ var NAVTREEINDEX0 =
 "msg_8hpp_source.html":[4,0,0,0,5],
 "namespaceAstarteDeviceSdk.html":[1,0,0],
 "namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14":[1,0,0,12],
-"namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a041d80dfb20d085ac09b96eae3040244":[1,0,0,12,12]
+"namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a041d80dfb20d085ac09b96eae3040244":[1,0,0,12,12],
+"namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a0ad51a83dba4b96ac2079335ce07e4a7":[1,0,0,12,11]
 };

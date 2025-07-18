@@ -36,11 +36,10 @@ var NAVTREE =
       [ "Dependencies", "index.html#autotoc_md7", [
         [ "gRPC", "index.html#autotoc_md8", null ],
         [ "Astarte message hub proto", "index.html#autotoc_md9", null ],
-        [ "spdlog", "index.html#autotoc_md10", null ],
-        [ "base64", "index.html#autotoc_md11", null ]
+        [ "spdlog", "index.html#autotoc_md10", null ]
       ] ],
-      [ "Get started with the samples", "index.html#autotoc_md12", null ],
-      [ "Importing the library in an external project", "index.html#autotoc_md13", null ]
+      [ "Get started with the samples", "index.html#autotoc_md11", null ],
+      [ "Importing the library in an external project", "index.html#autotoc_md12", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -70,7 +69,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a0ad51a83dba4b96ac2079335ce07e4a7"
+"namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a124be5d0ace8f04bba5abb6cb26d4266"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

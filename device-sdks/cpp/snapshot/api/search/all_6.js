@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['get_20started_20with_20the_20samples_0',['Get started with the samples',['../index.html#autotoc_md12',1,'']]],
+  ['get_20started_20with_20the_20samples_0',['Get started with the samples',['../index.html#autotoc_md11',1,'']]],
   ['get_5ffilename_1',['get_filename',['../classAstarteDeviceSdk_1_1AstarteFileOpenException.html#a366b104f274857fb2c4ebe345d5fb5e8',1,'AstarteDeviceSdk::AstarteFileOpenException']]],
   ['get_5finterface_2',['get_interface',['../classAstarteDeviceSdk_1_1AstarteMessage.html#ac008a7c6d99cef011d3301c99113fe8a',1,'AstarteDeviceSdk::AstarteMessage']]],
   ['get_5fpath_3',['get_path',['../classAstarteDeviceSdk_1_1AstarteMessage.html#a99a08ec6619b12a53e9cc5d7bdf42729',1,'AstarteDeviceSdk::AstarteMessage']]],

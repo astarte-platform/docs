@@ -2,7 +2,7 @@ var searchData=
 [
   ['add_5finterface_5ffrom_5fjson_0',['add_interface_from_json',['../classAstarteDeviceSdk_1_1AstarteDevice.html#a959e192cc6277180d4a053586d13e35f',1,'AstarteDeviceSdk::AstarteDevice::add_interface_from_json()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#ad0d8a3517924e790df1aa2359317bd73',1,'AstarteDeviceSdk::AstarteDeviceGRPC::add_interface_from_json()']]],
   ['add_5finterface_5ffrom_5fstr_1',['add_interface_from_str',['../classAstarteDeviceSdk_1_1AstarteDevice.html#a59f75946631eb7b5909cabbbe7e0431c',1,'AstarteDeviceSdk::AstarteDevice::add_interface_from_str(std::string json)=0'],['../classAstarteDeviceSdk_1_1AstarteDevice.html#a50cc8cbf09dfc228152c11a7392c504c',1,'AstarteDeviceSdk::AstarteDevice::add_interface_from_str(std::string_view json)=0'],['../classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#aff5b770600fb8edd5f90a08cb5018c44',1,'AstarteDeviceSdk::AstarteDeviceGRPC::add_interface_from_str(std::string json) override'],['../classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a5d3bc0861d4313e255f2be87ca2afaf3',1,'AstarteDeviceSdk::AstarteDeviceGRPC::add_interface_from_str(std::string_view json) override']]],
-  ['an_20external_20project_2',['Importing the library in an external project',['../index.html#autotoc_md13',1,'']]],
+  ['an_20external_20project_2',['Importing the library in an external project',['../index.html#autotoc_md12',1,'']]],
   ['api_20for_20c_3',['Astarte device API for C++',['../index.html',1,'']]],
   ['astarte_20data_4',['Formatting Astarte data',['../index.html#autotoc_md4',1,'']]],
   ['astarte_20device_20api_20for_20c_5',['Astarte device API for C++',['../index.html',1,'']]],
