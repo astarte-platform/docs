@@ -22,6 +22,7 @@ Choose your favourite language and framework and follow our getting started guid
 :maxdepth: 1
 get_started/c_esp32.md
 get_started/cpp_qt5.md
+get_started/cpp.md
 get_started/elixir.md
 get_started/go.md
 get_started/java_android.md

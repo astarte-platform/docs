@@ -1,0 +1,34 @@
+%% Copyright 2024 SECO Mind Srl
+%% SPDX-License-Identifier: CC0-1.0
+
+flowchart LR
+    subgraph arch[  ]
+        direction LR
+        subgraph cloud[Cloud]
+            astarte[Astarte]
+        end
+        subgraph gateway[Gateway hardware]
+            astarte-mh[Astarte message hub]
+        end
+        subgraph device1[Hardware device]
+            astarte-mh <-->|gRPC| node1[Node 1]
+        end
+        subgraph device2[Hardware device]
+            astarte-mh <-->|gRPC| node2[Node 2]
+        end
+        subgraph device3[Hardware device]
+            astarte-mh <-->|gRPC| noden[Node N]
+        end
+    end
+    astarte <-->|MQTT| astarte-mh
+    style arch fill:#25516e
+    style cloud fill:#00b0f1,stroke:#ffffff
+    style astarte fill:#127ab2,stroke:#ffffff,color:#fff
+    style gateway fill:#00b0f1, stroke:#ffffff
+    style astarte-mh fill:#127ab2,stroke:#ffffff,color:#fff
+    style device1 fill:#00b0f1, stroke:#ffffff
+    style node1 fill:#127ab2,stroke:#ffffff,color:#fff
+    style device2 fill:#00b0f1, stroke:#ffffff
+    style node2 fill:#127ab2,stroke:#ffffff,color:#fff
+    style device3 fill:#00b0f1, stroke:#ffffff
+    style noden fill:#127ab2,stroke:#ffffff,color:#fff
