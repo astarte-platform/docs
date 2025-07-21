@@ -325,7 +325,7 @@ rapid development and a pleasant developer experience.</p>
 the <a class="reference external" href="https://docs.astarte-platform.org/astarte/latest/080-mqtt-v1-protocol.html">Astarte MQTT v1 Protocol</a>.
 Using this protocol each SDK device connects directly to Astarte cloud. This is ideal when interaction
 with Astarte is performed by a single application contained within a single hardware device.</p>
-<p><img alt="Astarte device direct MQTT architecture" src="_images/transport_mqtt_direct.png" /></p>
+<p><img alt="Astarte device direct MQTT architecture" src="_images/transport_mqtt_direct.svg" /></p>
 </section>
 <section id="grpc">
 <h3>gRPC<a class="headerlink" href="#grpc" title="Link to this heading">¶</a></h3>
@@ -335,7 +335,7 @@ In this case the Astarte message hub may be used as a gateway, and each SDK will
 through it.
 In this case each Astarte library will act as an independend message hub node. While the message
 hub will manage the connection to the cloud using MQTT.</p>
-<p><img alt="Astarte message hub gRPC architecture" src="_images/transport_grpc_msghub.png" /></p>
+<p><img alt="Astarte message hub gRPC architecture" src="_images/transport_grpc_msghub.svg" /></p>
 </section>
 </section>
 <section id="supported-languages-and-platforms">
