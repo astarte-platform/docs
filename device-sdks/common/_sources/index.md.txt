@@ -55,7 +55,7 @@ At the moment the following SDKs are available:
 | -------- | -------- | --------- | ----------- | ------------- | ----- |
 | **C** | Espressif | MQTT | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-esp32) | [API docs](https://docs.astarte-platform.org/device-sdks/esp32/latest/api/) | [Get started](get_started/c_esp32.md) |
 | **C** | Zephyr | MQTT | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-zephyr) | [API docs](https://docs.astarte-platform.org/device-sdks/zephyr/latest/api/) | [Get started](get_started/zephyr.md) |
-| **C++** | Linux/Windows | gRPC | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-cpp) | | [Get started](get_started/cpp.md) |
+| **C++** | Linux/Windows | gRPC | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-cpp) | [API docs](https://docs.astarte-platform.org/device-sdks/cpp/latest/api/) | [Get started](get_started/cpp.md) |
 | **C++** | Qt5 | MQTT | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-qt5) | | [Get started](get_started/cpp_qt5.md) |
 | **C#** |  | MQTT | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-csharp) | [API docs](https://docs.astarte-platform.org/device-sdks/csharp/snapshot/api/) | [Get started](get_started/csharp.md) |
 | **Elixir** |  | MQTT | [GitHub](https://github.com/astarte-platform/astarte-device-sdk-elixir) | | [Get started](get_started/elixir.md) |
