@@ -14,7 +14,7 @@ The APIs documentation can be found here:
 ```{toctree}
 :maxdepth: 1
 Esp32 APIs <api_docs/esp32.md>
-Cpp APIs <https://docs.astarte-platform.org/device-sdks/cpp/snapshot/api>
+Cpp APIs <api_docs/cpp.md>
 Python APIs <api_docs/python.md>
 Java APIs <api_docs/java.md>
 Csharp APIs <api_docs/csharp.md>

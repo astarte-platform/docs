@@ -1,0 +1,9 @@
+# Cpp APIs documentation
+
+Find the Cpp documentation at the following links:
+```{toctree}
+:maxdepth: 1
+Cpp snapshot APIs <https://docs.astarte-platform.org/device-sdks/cpp/snapshot/api>
+Cpp v0.6 APIs <https://docs.astarte-platform.org/device-sdks/cpp/0.6/api>
+
+```
