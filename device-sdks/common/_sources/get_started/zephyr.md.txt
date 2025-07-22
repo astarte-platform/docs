@@ -154,7 +154,7 @@ manifest:
       remote: astarte-platform
       repo-path: astarte-device-sdk-zephyr.git
       path: astarte-device-sdk-zephyr
-      revision: v0.8.0
+      revision: v0.9.0
 ```
 Save the `west.yml` manifest in a `get_started_app` folder within the `astartezephyrproject`.
 We can then initialize our project with west.
