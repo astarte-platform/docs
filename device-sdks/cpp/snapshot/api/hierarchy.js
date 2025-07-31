@@ -8,11 +8,13 @@ var hierarchy =
     ] ],
     [ "AstarteDeviceSdk::AstarteMessage", "classAstarteDeviceSdk_1_1AstarteMessage.html", null ],
     [ "AstarteDeviceSdk::AstartePropertyIndividual", "classAstarteDeviceSdk_1_1AstartePropertyIndividual.html", null ],
+    [ "AstarteDeviceSdk::AstarteStoredProperty", "classAstarteDeviceSdk_1_1AstarteStoredProperty.html", null ],
     [ "std::exception", null, [
       [ "AstarteDeviceSdk::AstarteException", "classAstarteDeviceSdk_1_1AstarteException.html", [
         [ "AstarteDeviceSdk::AstarteFileOpenException", "classAstarteDeviceSdk_1_1AstarteFileOpenException.html", null ],
         [ "AstarteDeviceSdk::AstarteInternalException", "classAstarteDeviceSdk_1_1AstarteInternalException.html", null ],
-        [ "AstarteDeviceSdk::AstarteInvalidInputException", "classAstarteDeviceSdk_1_1AstarteInvalidInputException.html", null ]
+        [ "AstarteDeviceSdk::AstarteInvalidInputException", "classAstarteDeviceSdk_1_1AstarteInvalidInputException.html", null ],
+        [ "AstarteDeviceSdk::AstarteOperationRefusedException", "classAstarteDeviceSdk_1_1AstarteOperationRefusedException.html", null ]
       ] ]
     ] ]
 ];

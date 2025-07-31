@@ -10,5 +10,7 @@ var searchData=
   ['astarteinternalexception_7',['AstarteInternalException',['../classAstarteDeviceSdk_1_1AstarteInternalException.html',1,'AstarteDeviceSdk']]],
   ['astarteinvalidinputexception_8',['AstarteInvalidInputException',['../classAstarteDeviceSdk_1_1AstarteInvalidInputException.html',1,'AstarteDeviceSdk']]],
   ['astartemessage_9',['AstarteMessage',['../classAstarteDeviceSdk_1_1AstarteMessage.html',1,'AstarteDeviceSdk']]],
-  ['astartepropertyindividual_10',['AstartePropertyIndividual',['../classAstarteDeviceSdk_1_1AstartePropertyIndividual.html',1,'AstarteDeviceSdk']]]
+  ['astarteoperationrefusedexception_10',['AstarteOperationRefusedException',['../classAstarteDeviceSdk_1_1AstarteOperationRefusedException.html',1,'AstarteDeviceSdk']]],
+  ['astartepropertyindividual_11',['AstartePropertyIndividual',['../classAstarteDeviceSdk_1_1AstartePropertyIndividual.html',1,'AstarteDeviceSdk']]],
+  ['astartestoredproperty_12',['AstarteStoredProperty',['../classAstarteDeviceSdk_1_1AstarteStoredProperty.html',1,'AstarteDeviceSdk']]]
 ];

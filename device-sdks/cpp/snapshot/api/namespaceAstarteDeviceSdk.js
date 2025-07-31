@@ -10,8 +10,14 @@ var namespaceAstarteDeviceSdk =
     [ "AstarteInternalException", "classAstarteDeviceSdk_1_1AstarteInternalException.html", "classAstarteDeviceSdk_1_1AstarteInternalException" ],
     [ "AstarteInvalidInputException", "classAstarteDeviceSdk_1_1AstarteInvalidInputException.html", "classAstarteDeviceSdk_1_1AstarteInvalidInputException" ],
     [ "AstarteMessage", "classAstarteDeviceSdk_1_1AstarteMessage.html", "classAstarteDeviceSdk_1_1AstarteMessage" ],
+    [ "AstarteOperationRefusedException", "classAstarteDeviceSdk_1_1AstarteOperationRefusedException.html", "classAstarteDeviceSdk_1_1AstarteOperationRefusedException" ],
     [ "AstartePropertyIndividual", "classAstarteDeviceSdk_1_1AstartePropertyIndividual.html", "classAstarteDeviceSdk_1_1AstartePropertyIndividual" ],
+    [ "AstarteStoredProperty", "classAstarteDeviceSdk_1_1AstarteStoredProperty.html", "classAstarteDeviceSdk_1_1AstarteStoredProperty" ],
     [ "AstarteDataAllowedType", "conceptAstarteDeviceSdk_1_1AstarteDataAllowedType.html", null ],
+    [ "AstarteOwnership", "namespaceAstarteDeviceSdk.html#a79f95d24cf1c8079309a7002059a08c4", [
+      [ "kDevice", "namespaceAstarteDeviceSdk.html#a79f95d24cf1c8079309a7002059a08c4a6f4a69bb197bb71ac0458f048c5ff684", null ],
+      [ "kServer", "namespaceAstarteDeviceSdk.html#a79f95d24cf1c8079309a7002059a08c4a11c78722eadcb9a11faedf384d4f1e3d", null ]
+    ] ],
     [ "AstarteType", "namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14", [
       [ "kBinaryBlob", "namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a85f34f81d45e6d17460c5c8226ba6e5c", null ],
       [ "kBoolean", "namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a271b87fee416b6feff43e821c7bd8b43", null ],

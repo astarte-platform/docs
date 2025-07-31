@@ -165,8 +165,14 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAstarteDeviceSdk_1_1AstarteMessage.html">AstarteMessage</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Astarte message class, represents a full message for/from Astarte.  <a href="classAstarteDeviceSdk_1_1AstarteMessage.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAstarteDeviceSdk_1_1AstarteOperationRefusedException.html">AstarteOperationRefusedException</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic exception for when an operation is refused by the Astarte device.  <a href="classAstarteDeviceSdk_1_1AstarteOperationRefusedException.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAstarteDeviceSdk_1_1AstartePropertyIndividual.html">AstartePropertyIndividual</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Representing the Astarte individual datastream data.  <a href="classAstarteDeviceSdk_1_1AstartePropertyIndividual.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAstarteDeviceSdk_1_1AstarteStoredProperty.html">AstarteStoredProperty</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Representing data for a stored property.  <a href="classAstarteDeviceSdk_1_1AstarteStoredProperty.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="concepts" name="concepts"></a>
@@ -177,6 +183,11 @@ Concepts</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:a79f95d24cf1c8079309a7002059a08c4" id="r_a79f95d24cf1c8079309a7002059a08c4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79f95d24cf1c8079309a7002059a08c4">AstarteOwnership</a> : int8_t { <a class="el" href="#a79f95d24cf1c8079309a7002059a08c4a6f4a69bb197bb71ac0458f048c5ff684">kDevice</a>
+, <a class="el" href="#a79f95d24cf1c8079309a7002059a08c4a11c78722eadcb9a11faedf384d4f1e3d">kServer</a>
+ }</td></tr>
+<tr class="memdesc:a79f95d24cf1c8079309a7002059a08c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Possible Astarte ownership.  <a href="#a79f95d24cf1c8079309a7002059a08c4">More...</a><br /></td></tr>
+<tr class="separator:a79f95d24cf1c8079309a7002059a08c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23916adc1ea1368b60c7262420b42f14" id="r_a23916adc1ea1368b60c7262420b42f14"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23916adc1ea1368b60c7262420b42f14">AstarteType</a> : int8_t { <br />
 &#160;&#160;<a class="el" href="#a23916adc1ea1368b60c7262420b42f14a85f34f81d45e6d17460c5c8226ba6e5c">kBinaryBlob</a>
 , <a class="el" href="#a23916adc1ea1368b60c7262420b42f14a271b87fee416b6feff43e821c7bd8b43">kBoolean</a>
@@ -203,6 +214,28 @@ Enumerations</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Umbrella namespace for the Astarte device SDK. </p>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a79f95d24cf1c8079309a7002059a08c4" name="a79f95d24cf1c8079309a7002059a08c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79f95d24cf1c8079309a7002059a08c4">&#9670;&#160;</a></span>AstarteOwnership</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a79f95d24cf1c8079309a7002059a08c4">AstarteDeviceSdk::AstarteOwnership</a> : int8_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Possible Astarte ownership. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a79f95d24cf1c8079309a7002059a08c4a6f4a69bb197bb71ac0458f048c5ff684" name="a79f95d24cf1c8079309a7002059a08c4a6f4a69bb197bb71ac0458f048c5ff684"></a>kDevice&#160;</td><td class="fielddoc"><p>Ownership is retained by the device. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a79f95d24cf1c8079309a7002059a08c4a11c78722eadcb9a11faedf384d4f1e3d" name="a79f95d24cf1c8079309a7002059a08c4a11c78722eadcb9a11faedf384d4f1e3d"></a>kServer&#160;</td><td class="fielddoc"><p>Ownership is retained by the Astarte cloud server. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <a id="a23916adc1ea1368b60c7262420b42f14" name="a23916adc1ea1368b60c7262420b42f14"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a23916adc1ea1368b60c7262420b42f14">&#9670;&#160;</a></span>AstarteType</h2>
 

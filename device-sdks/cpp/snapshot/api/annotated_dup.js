@@ -11,6 +11,8 @@ var annotated_dup =
       [ "AstarteInternalException", "classAstarteDeviceSdk_1_1AstarteInternalException.html", "classAstarteDeviceSdk_1_1AstarteInternalException" ],
       [ "AstarteInvalidInputException", "classAstarteDeviceSdk_1_1AstarteInvalidInputException.html", "classAstarteDeviceSdk_1_1AstarteInvalidInputException" ],
       [ "AstarteMessage", "classAstarteDeviceSdk_1_1AstarteMessage.html", "classAstarteDeviceSdk_1_1AstarteMessage" ],
-      [ "AstartePropertyIndividual", "classAstarteDeviceSdk_1_1AstartePropertyIndividual.html", "classAstarteDeviceSdk_1_1AstartePropertyIndividual" ]
+      [ "AstarteOperationRefusedException", "classAstarteDeviceSdk_1_1AstarteOperationRefusedException.html", "classAstarteDeviceSdk_1_1AstarteOperationRefusedException" ],
+      [ "AstartePropertyIndividual", "classAstarteDeviceSdk_1_1AstartePropertyIndividual.html", "classAstarteDeviceSdk_1_1AstartePropertyIndividual" ],
+      [ "AstarteStoredProperty", "classAstarteDeviceSdk_1_1AstarteStoredProperty.html", "classAstarteDeviceSdk_1_1AstarteStoredProperty" ]
     ] ]
 ];

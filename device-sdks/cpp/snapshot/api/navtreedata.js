@@ -69,7 +69,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a124be5d0ace8f04bba5abb6cb26d4266"
+"functions.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

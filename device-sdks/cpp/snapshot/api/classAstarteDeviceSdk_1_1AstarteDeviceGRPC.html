@@ -168,9 +168,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad0d8a3517924e790df1aa2359317bd73" id="r_ad0d8a3517924e790df1aa2359317bd73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0d8a3517924e790df1aa2359317bd73">add_interface_from_json</a> (const std::filesystem::path &amp;json_file) override</td></tr>
 <tr class="memdesc:ad0d8a3517924e790df1aa2359317bd73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an interface for the device from a json file.  <br /></td></tr>
 <tr class="separator:ad0d8a3517924e790df1aa2359317bd73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff5b770600fb8edd5f90a08cb5018c44" id="r_aff5b770600fb8edd5f90a08cb5018c44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff5b770600fb8edd5f90a08cb5018c44">add_interface_from_str</a> (std::string json) override</td></tr>
-<tr class="memdesc:aff5b770600fb8edd5f90a08cb5018c44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an interface for the device from a json string.  <br /></td></tr>
-<tr class="separator:aff5b770600fb8edd5f90a08cb5018c44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d3bc0861d4313e255f2be87ca2afaf3" id="r_a5d3bc0861d4313e255f2be87ca2afaf3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d3bc0861d4313e255f2be87ca2afaf3">add_interface_from_str</a> (std::string_view json) override</td></tr>
 <tr class="memdesc:a5d3bc0861d4313e255f2be87ca2afaf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an interface for the device from a json file.  <br /></td></tr>
 <tr class="separator:a5d3bc0861d4313e255f2be87ca2afaf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,21 +180,30 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a04494f839315f9a64f9a5772ec5650dd" id="r_a04494f839315f9a64f9a5772ec5650dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04494f839315f9a64f9a5772ec5650dd">disconnect</a> () override</td></tr>
 <tr class="memdesc:a04494f839315f9a64f9a5772ec5650dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect from Astarte.  <br /></td></tr>
 <tr class="separator:a04494f839315f9a64f9a5772ec5650dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17ff0b6f80090b467d51a70c2894b103" id="r_a17ff0b6f80090b467d51a70c2894b103"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17ff0b6f80090b467d51a70c2894b103">send_individual</a> (const std::string &amp;interface_name, const std::string &amp;path, const <a class="el" href="classAstarteDeviceSdk_1_1AstarteData.html">AstarteData</a> &amp;data, const std::chrono::system_clock::time_point *timestamp) override</td></tr>
-<tr class="memdesc:a17ff0b6f80090b467d51a70c2894b103"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send individual data to Astarte.  <br /></td></tr>
-<tr class="separator:a17ff0b6f80090b467d51a70c2894b103"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a446fc0cfa01f7550bfede04f3f3cb194" id="r_a446fc0cfa01f7550bfede04f3f3cb194"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a446fc0cfa01f7550bfede04f3f3cb194">send_object</a> (const std::string &amp;interface_name, const std::string &amp;path, const <a class="el" href="classAstarteDeviceSdk_1_1AstarteDatastreamObject.html">AstarteDatastreamObject</a> &amp;object, const std::chrono::system_clock::time_point *timestamp) override</td></tr>
-<tr class="memdesc:a446fc0cfa01f7550bfede04f3f3cb194"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send object data to Astarte.  <br /></td></tr>
-<tr class="separator:a446fc0cfa01f7550bfede04f3f3cb194"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc4a2d7b8ddb42fff1840e1e6dba6835" id="r_abc4a2d7b8ddb42fff1840e1e6dba6835"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc4a2d7b8ddb42fff1840e1e6dba6835">set_property</a> (const std::string &amp;interface_name, const std::string &amp;path, const <a class="el" href="classAstarteDeviceSdk_1_1AstarteData.html">AstarteData</a> &amp;data) override</td></tr>
-<tr class="memdesc:abc4a2d7b8ddb42fff1840e1e6dba6835"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a device property.  <br /></td></tr>
-<tr class="separator:abc4a2d7b8ddb42fff1840e1e6dba6835"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2e949cede1f4235792f942681f30f36" id="r_aa2e949cede1f4235792f942681f30f36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2e949cede1f4235792f942681f30f36">unset_property</a> (const std::string &amp;interface_name, const std::string &amp;path) override</td></tr>
-<tr class="memdesc:aa2e949cede1f4235792f942681f30f36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unset a device property.  <br /></td></tr>
-<tr class="separator:aa2e949cede1f4235792f942681f30f36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47e7432fe1352af423776f5fab14ff06" id="r_a47e7432fe1352af423776f5fab14ff06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47e7432fe1352af423776f5fab14ff06">send_individual</a> (std::string_view interface_name, std::string_view path, const <a class="el" href="classAstarteDeviceSdk_1_1AstarteData.html">AstarteData</a> &amp;data, const std::chrono::system_clock::time_point *timestamp) override</td></tr>
+<tr class="memdesc:a47e7432fe1352af423776f5fab14ff06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send individual data to Astarte.  <br /></td></tr>
+<tr class="separator:a47e7432fe1352af423776f5fab14ff06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2de48382d2eff1eefd1476c44c8c5137" id="r_a2de48382d2eff1eefd1476c44c8c5137"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2de48382d2eff1eefd1476c44c8c5137">send_object</a> (std::string_view interface_name, std::string_view path, const <a class="el" href="classAstarteDeviceSdk_1_1AstarteDatastreamObject.html">AstarteDatastreamObject</a> &amp;object, const std::chrono::system_clock::time_point *timestamp) override</td></tr>
+<tr class="memdesc:a2de48382d2eff1eefd1476c44c8c5137"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send object data to Astarte.  <br /></td></tr>
+<tr class="separator:a2de48382d2eff1eefd1476c44c8c5137"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55f15eaad61c3aa6f765b5237ca69989" id="r_a55f15eaad61c3aa6f765b5237ca69989"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55f15eaad61c3aa6f765b5237ca69989">set_property</a> (std::string_view interface_name, std::string_view path, const <a class="el" href="classAstarteDeviceSdk_1_1AstarteData.html">AstarteData</a> &amp;data) override</td></tr>
+<tr class="memdesc:a55f15eaad61c3aa6f765b5237ca69989"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a device property.  <br /></td></tr>
+<tr class="separator:a55f15eaad61c3aa6f765b5237ca69989"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13e93d4a4d76ee0e62d4dd1684ee08fd" id="r_a13e93d4a4d76ee0e62d4dd1684ee08fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13e93d4a4d76ee0e62d4dd1684ee08fd">unset_property</a> (std::string_view interface_name, std::string_view path) override</td></tr>
+<tr class="memdesc:a13e93d4a4d76ee0e62d4dd1684ee08fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unset a device property.  <br /></td></tr>
+<tr class="separator:a13e93d4a4d76ee0e62d4dd1684ee08fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b0d98663ca414ce4c3d20d01124f890" id="r_a0b0d98663ca414ce4c3d20d01124f890"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b0d98663ca414ce4c3d20d01124f890">poll_incoming</a> (const std::chrono::milliseconds &amp;timeout) -&gt; std::optional&lt; <a class="el" href="classAstarteDeviceSdk_1_1AstarteMessage.html">AstarteMessage</a> &gt; override</td></tr>
 <tr class="memdesc:a0b0d98663ca414ce4c3d20d01124f890"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poll incoming messages.  <br /></td></tr>
 <tr class="separator:a0b0d98663ca414ce4c3d20d01124f890"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7792bef3f2206d4422a90a4309f7b176" id="r_a7792bef3f2206d4422a90a4309f7b176"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7792bef3f2206d4422a90a4309f7b176">get_all_properties</a> (const std::optional&lt; <a class="el" href="namespaceAstarteDeviceSdk.html#a79f95d24cf1c8079309a7002059a08c4">AstarteOwnership</a> &gt; &amp;ownership) -&gt; std::list&lt; <a class="el" href="classAstarteDeviceSdk_1_1AstarteStoredProperty.html">AstarteStoredProperty</a> &gt;</td></tr>
+<tr class="memdesc:a7792bef3f2206d4422a90a4309f7b176"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all stored properties matching the input filter.  <br /></td></tr>
+<tr class="separator:a7792bef3f2206d4422a90a4309f7b176"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a440d5401b8ea1644c7ddad49b7399ac7" id="r_a440d5401b8ea1644c7ddad49b7399ac7"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a440d5401b8ea1644c7ddad49b7399ac7">get_properties</a> (std::string_view interface_name) -&gt; std::list&lt; <a class="el" href="classAstarteDeviceSdk_1_1AstarteStoredProperty.html">AstarteStoredProperty</a> &gt;</td></tr>
+<tr class="memdesc:a440d5401b8ea1644c7ddad49b7399ac7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get stored properties matching the interface.  <br /></td></tr>
+<tr class="separator:a440d5401b8ea1644c7ddad49b7399ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9a438b81607d6909f56ac1752b9cc9e" id="r_aa9a438b81607d6909f56ac1752b9cc9e"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9a438b81607d6909f56ac1752b9cc9e">get_property</a> (std::string_view interface_name, std::string_view path) -&gt; <a class="el" href="classAstarteDeviceSdk_1_1AstartePropertyIndividual.html">AstartePropertyIndividual</a></td></tr>
+<tr class="memdesc:aa9a438b81607d6909f56ac1752b9cc9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a single stored property matching the interface name and path.  <br /></td></tr>
+<tr class="separator:aa9a438b81607d6909f56ac1752b9cc9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classAstarteDeviceSdk_1_1AstarteDevice"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classAstarteDeviceSdk_1_1AstarteDevice')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classAstarteDeviceSdk_1_1AstarteDevice.html">AstarteDeviceSdk::AstarteDevice</a></td></tr>
 <tr class="memitem:aec22068af4720f671248303f9cf07341 inherit pub_methods_classAstarteDeviceSdk_1_1AstarteDevice" id="r_aec22068af4720f671248303f9cf07341"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAstarteDeviceSdk_1_1AstarteDevice.html#aec22068af4720f671248303f9cf07341">~AstarteDevice</a> ()=default</td></tr>
 <tr class="memdesc:aec22068af4720f671248303f9cf07341 inherit pub_methods_classAstarteDeviceSdk_1_1AstarteDevice"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor.  <br /></td></tr>
@@ -373,43 +379,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="aff5b770600fb8edd5f90a08cb5018c44" name="aff5b770600fb8edd5f90a08cb5018c44"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aff5b770600fb8edd5f90a08cb5018c44">&#9670;&#160;</a></span>add_interface_from_str() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void AstarteDeviceSdk::AstarteDeviceGRPC::add_interface_from_str </td>
-          <td>(</td>
-          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>json</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Add an interface for the device from a json string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">json</td><td>The interface to add. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="classAstarteDeviceSdk_1_1AstarteDevice.html#a59f75946631eb7b5909cabbbe7e0431c">AstarteDeviceSdk::AstarteDevice</a>.</p>
-
-</div>
-</div>
 <a id="a5d3bc0861d4313e255f2be87ca2afaf3" name="a5d3bc0861d4313e255f2be87ca2afaf3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d3bc0861d4313e255f2be87ca2afaf3">&#9670;&#160;</a></span>add_interface_from_str() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d3bc0861d4313e255f2be87ca2afaf3">&#9670;&#160;</a></span>add_interface_from_str()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -499,6 +470,89 @@ Additional Inherited Members</h2></td></tr>
 <p>Disconnect from Astarte. </p>
 
 <p>Implements <a class="el" href="classAstarteDeviceSdk_1_1AstarteDevice.html#a8abc4fa96f56e2379c5e9c910597df2f">AstarteDeviceSdk::AstarteDevice</a>.</p>
+
+</div>
+</div>
+<a id="a7792bef3f2206d4422a90a4309f7b176" name="a7792bef3f2206d4422a90a4309f7b176"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7792bef3f2206d4422a90a4309f7b176">&#9670;&#160;</a></span>get_all_properties()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto AstarteDeviceSdk::AstarteDeviceGRPC::get_all_properties </td>
+          <td>(</td>
+          <td class="paramtype">const std::optional&lt; <a class="el" href="namespaceAstarteDeviceSdk.html#a79f95d24cf1c8079309a7002059a08c4">AstarteOwnership</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>ownership</em></span></td><td>)</td>
+          <td> -&gt;  std::list&lt; <a class="el" href="classAstarteDeviceSdk_1_1AstarteStoredProperty.html">AstarteStoredProperty</a> &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get all stored properties matching the input filter. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ownership</td><td>Optional ownership filter. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A list of stored properties, as returned by the message hub. </dd></dl>
+
+</div>
+</div>
+<a id="a440d5401b8ea1644c7ddad49b7399ac7" name="a440d5401b8ea1644c7ddad49b7399ac7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a440d5401b8ea1644c7ddad49b7399ac7">&#9670;&#160;</a></span>get_properties()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto AstarteDeviceSdk::AstarteDeviceGRPC::get_properties </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>interface_name</em></span></td><td>)</td>
+          <td> -&gt;  std::list&lt; <a class="el" href="classAstarteDeviceSdk_1_1AstarteStoredProperty.html">AstarteStoredProperty</a> &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get stored properties matching the interface. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">interface_name</td><td>The name of the interface for the properties. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A list of stored properties, as returned by the message hub. </dd></dl>
+
+</div>
+</div>
+<a id="aa9a438b81607d6909f56ac1752b9cc9e" name="aa9a438b81607d6909f56ac1752b9cc9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9a438b81607d6909f56ac1752b9cc9e">&#9670;&#160;</a></span>get_property()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto AstarteDeviceSdk::AstarteDeviceGRPC::get_property </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>interface_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>path</em></span>&#160;) -&gt;  <a class="el" href="classAstarteDeviceSdk_1_1AstartePropertyIndividual.html">AstartePropertyIndividual</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a single stored property matching the interface name and path. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">interface_name</td><td>The name of the interface for the property. </td></tr>
+    <tr><td class="paramname">path</td><td>Exact path for the property. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The stored property, as returned by the message hub. </dd></dl>
 
 </div>
 </div>
@@ -628,8 +682,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a17ff0b6f80090b467d51a70c2894b103" name="a17ff0b6f80090b467d51a70c2894b103"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a17ff0b6f80090b467d51a70c2894b103">&#9670;&#160;</a></span>send_individual()</h2>
+<a id="a47e7432fe1352af423776f5fab14ff06" name="a47e7432fe1352af423776f5fab14ff06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47e7432fe1352af423776f5fab14ff06">&#9670;&#160;</a></span>send_individual()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -640,12 +694,12 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void AstarteDeviceSdk::AstarteDeviceGRPC::send_individual </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>interface_name</em></span>, </td>
+          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>interface_name</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
+          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -676,12 +730,12 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classAstarteDeviceSdk_1_1AstarteDevice.html#a38b2f385944684385f4d24693da2e7b7">AstarteDeviceSdk::AstarteDevice</a>.</p>
+<p>Implements <a class="el" href="classAstarteDeviceSdk_1_1AstarteDevice.html#a3369196394420cffc05346d4f2536867">AstarteDeviceSdk::AstarteDevice</a>.</p>
 
 </div>
 </div>
-<a id="a446fc0cfa01f7550bfede04f3f3cb194" name="a446fc0cfa01f7550bfede04f3f3cb194"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a446fc0cfa01f7550bfede04f3f3cb194">&#9670;&#160;</a></span>send_object()</h2>
+<a id="a2de48382d2eff1eefd1476c44c8c5137" name="a2de48382d2eff1eefd1476c44c8c5137"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2de48382d2eff1eefd1476c44c8c5137">&#9670;&#160;</a></span>send_object()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -692,12 +746,12 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void AstarteDeviceSdk::AstarteDeviceGRPC::send_object </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>interface_name</em></span>, </td>
+          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>interface_name</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
+          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -728,12 +782,12 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classAstarteDeviceSdk_1_1AstarteDevice.html#a1595d672bae6d3d9119638171c6952d2">AstarteDeviceSdk::AstarteDevice</a>.</p>
+<p>Implements <a class="el" href="classAstarteDeviceSdk_1_1AstarteDevice.html#ab15981ec19ffbe758f69a1b920709c2a">AstarteDeviceSdk::AstarteDevice</a>.</p>
 
 </div>
 </div>
-<a id="abc4a2d7b8ddb42fff1840e1e6dba6835" name="abc4a2d7b8ddb42fff1840e1e6dba6835"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc4a2d7b8ddb42fff1840e1e6dba6835">&#9670;&#160;</a></span>set_property()</h2>
+<a id="a55f15eaad61c3aa6f765b5237ca69989" name="a55f15eaad61c3aa6f765b5237ca69989"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55f15eaad61c3aa6f765b5237ca69989">&#9670;&#160;</a></span>set_property()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -744,12 +798,12 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void AstarteDeviceSdk::AstarteDeviceGRPC::set_property </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>interface_name</em></span>, </td>
+          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>interface_name</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
+          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -774,12 +828,12 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classAstarteDeviceSdk_1_1AstarteDevice.html#ad80f04b11ec1a57a9a2b638bb1df2623">AstarteDeviceSdk::AstarteDevice</a>.</p>
+<p>Implements <a class="el" href="classAstarteDeviceSdk_1_1AstarteDevice.html#a23f70a70a4a8a016c80deb1c9bc9b031">AstarteDeviceSdk::AstarteDevice</a>.</p>
 
 </div>
 </div>
-<a id="aa2e949cede1f4235792f942681f30f36" name="aa2e949cede1f4235792f942681f30f36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2e949cede1f4235792f942681f30f36">&#9670;&#160;</a></span>unset_property()</h2>
+<a id="a13e93d4a4d76ee0e62d4dd1684ee08fd" name="a13e93d4a4d76ee0e62d4dd1684ee08fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13e93d4a4d76ee0e62d4dd1684ee08fd">&#9670;&#160;</a></span>unset_property()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -790,12 +844,12 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void AstarteDeviceSdk::AstarteDeviceGRPC::unset_property </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>interface_name</em></span>, </td>
+          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>interface_name</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>&#160;)</td>
+          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>path</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -814,7 +868,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classAstarteDeviceSdk_1_1AstarteDevice.html#ad30100ee65bbd47a2578c3c29ec83fe0">AstarteDeviceSdk::AstarteDevice</a>.</p>
+<p>Implements <a class="el" href="classAstarteDeviceSdk_1_1AstarteDevice.html#a292bd87aef9c1bc2d799fde0c928c304">AstarteDeviceSdk::AstarteDevice</a>.</p>
 
 </div>
 </div>
