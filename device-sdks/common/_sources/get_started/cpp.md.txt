@@ -155,7 +155,6 @@ project(GetStarted)
 include(FetchContent)
 
 # Import the Astarte device for C++
-set(ASTARTE_ENABLE_FORMAT ON CACHE BOOL "Enable pretty printing of Astarte data")
 set(ASTARTE_GRPC_VERSION "1.57.1" CACHE STRING "Set gRPC version")
 FetchContent_Declare(astarte_device_sdk
   GIT_REPOSITORY git@github.com:astarte-platform/astarte-device-sdk-cpp.git
@@ -196,6 +195,7 @@ A couple of assumptions have been made:
 #include "astarte_device_sdk/data.hpp"
 #include "astarte_device_sdk/device_grpc.hpp"
 #include "astarte_device_sdk/msg.hpp"
+#include "astarte_device_sdk/formatter.hpp"
 
 using AstarteDeviceSdk::AstarteData;
 using AstarteDeviceSdk::AstarteDatastreamIndividual;
@@ -215,14 +215,14 @@ void reception_handler(std::shared_ptr<AstarteDeviceGRPC> device) {
       if (msg.is_datastream()) {
         if (msg.is_individual()) {
           const auto &data(msg.into<AstarteDatastreamIndividual>());
-          std::cout << "Value: {}" << data.format()<< std::endl;
+          std::cout << "Value: {}" << data << std::endl;
         } else {
           const auto &data(msg.into<AstarteDatastreamObject>());
-          std::cout << "Value: {}" << data.format()<< std::endl;
+          std::cout << "Value: {}" << data << std::endl;
         }
       } else {
         const auto &data(msg.into<AstartePropertyIndividual>());
-          std::cout << "Value: {}" << data.format()<< std::endl;
+          std::cout << "Value: {}" << data << std::endl;
       }
     }
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
