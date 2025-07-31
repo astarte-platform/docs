@@ -18,7 +18,6 @@ var classAstarteDeviceSdk_1_1AstarteDatastreamObject =
     [ "erase", "classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#a678145f2ef81786bc146ccd9b16e4126", null ],
     [ "find", "classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#aeb164db58ffd19983cde69ca6d45f2d0", null ],
     [ "find", "classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#a6b188af7278f230a6963c0537aa5ec3a", null ],
-    [ "format", "classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#aae68e6cf327a8189dcd5d76f97aa78d6", null ],
     [ "get_raw_data", "classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#ac3b85c07991e3f834327c9973b18a168", null ],
     [ "insert", "classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#a85a3fd18435bd99d5720f3f34ad7ef39", null ],
     [ "operator!=", "classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#aaaa5fe6dc371874e259b86b56037ba4e", null ],

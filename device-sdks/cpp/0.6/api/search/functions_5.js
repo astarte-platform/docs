@@ -1,5 +1,8 @@
 var searchData=
 [
   ['find_0',['find',['../classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#aeb164db58ffd19983cde69ca6d45f2d0',1,'AstarteDeviceSdk::AstarteDatastreamObject::find(const std::string &amp;key) -&gt; iterator'],['../classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#a6b188af7278f230a6963c0537aa5ec3a',1,'AstarteDeviceSdk::AstarteDatastreamObject::find(const std::string &amp;key) const -&gt; const_iterator']]],
-  ['format_1',['format',['../classAstarteDeviceSdk_1_1AstarteData.html#a903ce710d1e7df38ed9beb8e9a6206b1',1,'AstarteDeviceSdk::AstarteData::format()'],['../classAstarteDeviceSdk_1_1AstarteDatastreamIndividual.html#a886ae6b55acc95f21dbab5a5d3e3a19b',1,'AstarteDeviceSdk::AstarteDatastreamIndividual::format()'],['../classAstarteDeviceSdk_1_1AstarteMessage.html#ae2d2827faadd7c8b503ee9b444fa001a',1,'AstarteDeviceSdk::AstarteMessage::format()'],['../classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#aae68e6cf327a8189dcd5d76f97aa78d6',1,'AstarteDeviceSdk::AstarteDatastreamObject::format()'],['../classAstarteDeviceSdk_1_1AstartePropertyIndividual.html#a55843ac1f889ee28e21cf9ea415af021',1,'AstarteDeviceSdk::AstartePropertyIndividual::format()']]]
+  ['format_5fbase64_1',['format_base64',['../namespaceutils.html#a4968ba3384550aa61d4b12fa9645fac0',1,'utils']]],
+  ['format_5fdata_2',['format_data',['../namespaceutils.html#ad7cd2b3325596e8224e8eafa0fe275af',1,'utils']]],
+  ['format_5ftimestamp_3',['format_timestamp',['../namespaceutils.html#a1bd59a284c6a7e2e13079df2e2759007',1,'utils']]],
+  ['format_5fvector_4',['format_vector',['../namespaceutils.html#a3fe44dad03cb165ccb6f89fc6108e829',1,'utils']]]
 ];

@@ -139,12 +139,11 @@ Minimum C++ version</h2>
 Supported Astarte message hub versions</h2>
 <p>This library relies on the Astarte message hub for connectivity with Astarte. The message hub should be at least at version X.X for this library to function properly.</p>
 <h2><a class="anchor" id="autotoc_md3"></a>
+Formatting Astarte data</h2>
+<p>Astarte data, both in transmission and reception is encapsulated in C++ objects. It is possible to pretty print data objects. The resulting string will be in a JSON compabile format and can be used to interact with the Astarte REST APIs during developement.</p>
+<h2><a class="anchor" id="autotoc_md4"></a>
 Optional features</h2>
 <p>Some features of the library can be enabled or disabled using CMake options.</p>
-<h3><a class="anchor" id="autotoc_md4"></a>
-Formatting Astarte data</h3>
-<p>Astarte data, both in transmission and reception is encapsulated in C++ objects. This feature enables a set of format methods of such objects making it possible to pretty print data objects. The resulting string will be in a JSON compabile format and can be used to interact with the Astarte REST APIs during developement.</p>
-<p>The option to enable this feature is: <code>ASTARTE_ENABLE_FORMAT</code>.</p>
 <h3><a class="anchor" id="autotoc_md5"></a>
 Public spdlog dependency</h3>
 <p>The spdlog libary is the logger used by the Astarte device library. By the default it's a private dependency, checked our with fetch content. However, the user can choose to link the library as a public dependency using the dedicated option.</p>
