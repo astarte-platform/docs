@@ -1,7 +1,6 @@
 var classAstarteDeviceSdk_1_1AstarteMessage =
 [
     [ "AstarteMessage", "classAstarteDeviceSdk_1_1AstarteMessage.html#ab1b5a29b303a5786f86696513d5dea22", null ],
-    [ "format", "classAstarteDeviceSdk_1_1AstarteMessage.html#ae2d2827faadd7c8b503ee9b444fa001a", null ],
     [ "get_interface", "classAstarteDeviceSdk_1_1AstarteMessage.html#ac008a7c6d99cef011d3301c99113fe8a", null ],
     [ "get_path", "classAstarteDeviceSdk_1_1AstarteMessage.html#a99a08ec6619b12a53e9cc5d7bdf42729", null ],
     [ "get_raw_data", "classAstarteDeviceSdk_1_1AstarteMessage.html#a16e0645f0c4bca9d47643aa5c1441c29", null ],

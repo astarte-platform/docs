@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['data_0',['Formatting Astarte data',['../index.html#autotoc_md4',1,'']]],
+  ['data_0',['Formatting Astarte data',['../index.html#autotoc_md3',1,'']]],
   ['data_2ehpp_1',['data.hpp',['../data_8hpp.html',1,'']]],
   ['dependencies_2',['Dependencies',['../index.html#autotoc_md7',1,'']]],
   ['dependency_3',['dependency',['../index.html#autotoc_md6',1,'Public message hub proto dependency'],['../index.html#autotoc_md5',1,'Public spdlog dependency']]],

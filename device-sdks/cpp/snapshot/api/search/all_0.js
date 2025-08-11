@@ -4,7 +4,7 @@ var searchData=
   ['add_5finterface_5ffrom_5fstr_1',['add_interface_from_str',['../classAstarteDeviceSdk_1_1AstarteDevice.html#a50cc8cbf09dfc228152c11a7392c504c',1,'AstarteDeviceSdk::AstarteDevice::add_interface_from_str()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a5d3bc0861d4313e255f2be87ca2afaf3',1,'AstarteDeviceSdk::AstarteDeviceGRPC::add_interface_from_str()']]],
   ['an_20external_20project_2',['Importing the library in an external project',['../index.html#autotoc_md12',1,'']]],
   ['api_20for_20c_3',['Astarte device API for C++',['../index.html',1,'']]],
-  ['astarte_20data_4',['Formatting Astarte data',['../index.html#autotoc_md4',1,'']]],
+  ['astarte_20data_4',['Formatting Astarte data',['../index.html#autotoc_md3',1,'']]],
   ['astarte_20device_20api_20for_20c_5',['Astarte device API for C++',['../index.html',1,'']]],
   ['astarte_20device_20sdk_20for_20c_6',['Astarte device SDK for C++',['../index.html#autotoc_md0',1,'']]],
   ['astarte_20message_20hub_20proto_7',['Astarte message hub proto',['../index.html#autotoc_md9',1,'']]],

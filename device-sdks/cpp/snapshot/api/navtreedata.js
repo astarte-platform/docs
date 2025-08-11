@@ -28,8 +28,8 @@ var NAVTREE =
     [ "Astarte device SDK for C++", "index.html#autotoc_md0", [
       [ "Minimum C++ version", "index.html#autotoc_md1", null ],
       [ "Supported Astarte message hub versions", "index.html#autotoc_md2", null ],
-      [ "Optional features", "index.html#autotoc_md3", [
-        [ "Formatting Astarte data", "index.html#autotoc_md4", null ],
+      [ "Formatting Astarte data", "index.html#autotoc_md3", null ],
+      [ "Optional features", "index.html#autotoc_md4", [
         [ "Public spdlog dependency", "index.html#autotoc_md5", null ],
         [ "Public message hub proto dependency", "index.html#autotoc_md6", null ]
       ] ],
@@ -45,6 +45,7 @@ var NAVTREE =
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ],
         [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
@@ -69,7 +70,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"functions.html"
+"index.html#autotoc_md3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

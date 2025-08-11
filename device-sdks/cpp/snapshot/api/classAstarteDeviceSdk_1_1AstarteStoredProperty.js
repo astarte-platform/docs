@@ -1,7 +1,6 @@
 var classAstarteDeviceSdk_1_1AstarteStoredProperty =
 [
     [ "AstarteStoredProperty", "classAstarteDeviceSdk_1_1AstarteStoredProperty.html#a8d0f68426a04102961bbb771bb4285b3", null ],
-    [ "format", "classAstarteDeviceSdk_1_1AstarteStoredProperty.html#ac8b312b414c1dd4cd0b4743b221068c4", null ],
     [ "get_interface_name", "classAstarteDeviceSdk_1_1AstarteStoredProperty.html#a9371afe89af95ebdce58b2ae2d694393", null ],
     [ "get_ownership", "classAstarteDeviceSdk_1_1AstarteStoredProperty.html#a09816eda1a6dcefe7acd83bf1475fed2", null ],
     [ "get_path", "classAstarteDeviceSdk_1_1AstarteStoredProperty.html#ad4f2f9c42299fcc988373bd4ffb35339", null ],
