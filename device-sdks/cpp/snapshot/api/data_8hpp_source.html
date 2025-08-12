@@ -139,140 +139,82 @@ $(function(){initNavTree('data_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;variant&gt;</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#if !(__cplusplus &gt;= 202002L)</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;type_traits&gt;</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#endif  </span><span class="comment">// !(__cplusplus &gt;= 202002L)</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="type_8hpp.html">astarte_device_sdk/type.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="foldopen" id="foldopen00025" data-start="{" data-end="}">
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="namespaceAstarteDeviceSdk.html">   25</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceAstarteDeviceSdk.html">AstarteDeviceSdk</a> {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#if __cplusplus &gt;= 202002L</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00030" data-start="{" data-end="}">
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="conceptAstarteDeviceSdk_1_1AstarteDataAllowedType.html">   30</a></span><span class="keyword">concept </span><a class="code hl_concept" href="conceptAstarteDeviceSdk_1_1AstarteDataAllowedType.html">AstarteDataAllowedType</a> = <span class="keyword">requires</span> {</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="keyword">requires</span> std::is_same_v&lt;T, int32_t&gt; || std::is_same_v&lt;T, int64_t&gt; || std::is_same_v&lt;T, double&gt; ||</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>               std::is_same_v&lt;T, bool&gt; || std::is_same_v&lt;T, std::string&gt; ||</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>               std::is_same_v&lt;T, std::vector&lt;uint8_t&gt;&gt; ||</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>               std::is_same_v&lt;T, std::chrono::system_clock::time_point&gt; ||</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>               std::is_same_v&lt;T, std::vector&lt;int32_t&gt;&gt; || std::is_same_v&lt;T, std::vector&lt;int64_t&gt;&gt; ||</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>               std::is_same_v&lt;T, std::vector&lt;double&gt;&gt; || std::is_same_v&lt;T, std::vector&lt;bool&gt;&gt; ||</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>               std::is_same_v&lt;T, std::vector&lt;std::string&gt;&gt; ||</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>               std::is_same_v&lt;T, std::vector&lt;std::vector&lt;uint8_t&gt;&gt;&gt; ||</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>               std::is_same_v&lt;T, std::vector&lt;std::chrono::system_clock::time_point&gt;&gt;;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>};</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="type_8hpp.html">astarte_device_sdk/type.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="}">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="namespaceAstarteDeviceSdk.html">   22</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceAstarteDeviceSdk.html">AstarteDeviceSdk</a> {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="}">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="conceptAstarteDeviceSdk_1_1AstarteDataAllowedType.html">   26</a></span><span class="keyword">concept </span><a class="code hl_concept" href="conceptAstarteDeviceSdk_1_1AstarteDataAllowedType.html">AstarteDataAllowedType</a> = <span class="keyword">requires</span> {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <span class="keyword">requires</span> std::is_same_v&lt;T, int32_t&gt; || std::is_same_v&lt;T, int64_t&gt; || std::is_same_v&lt;T, double&gt; ||</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>               std::is_same_v&lt;T, bool&gt; || std::is_same_v&lt;T, std::string&gt; ||</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>               std::is_same_v&lt;T, std::vector&lt;uint8_t&gt;&gt; ||</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>               std::is_same_v&lt;T, std::chrono::system_clock::time_point&gt; ||</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>               std::is_same_v&lt;T, std::vector&lt;int32_t&gt;&gt; || std::is_same_v&lt;T, std::vector&lt;int64_t&gt;&gt; ||</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>               std::is_same_v&lt;T, std::vector&lt;double&gt;&gt; || std::is_same_v&lt;T, std::vector&lt;bool&gt;&gt; ||</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>               std::is_same_v&lt;T, std::vector&lt;std::string&gt;&gt; ||</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>               std::is_same_v&lt;T, std::vector&lt;std::vector&lt;uint8_t&gt;&gt;&gt; ||</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>               std::is_same_v&lt;T, std::vector&lt;std::chrono::system_clock::time_point&gt;&gt;;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>};</div>
 </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#else   </span><span class="comment">// __cplusplus &gt;= 202002L</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">struct </span>astarte_data_is_allowed_type : std::false_type {};</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">struct </span>astarte_data_is_allowed_type&lt;int32_t&gt; : std::true_type {};</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">struct </span>astarte_data_is_allowed_type&lt;int64_t&gt; : std::true_type {};</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">struct </span>astarte_data_is_allowed_type&lt;double&gt; : std::true_type {};</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">struct </span>astarte_data_is_allowed_type&lt;bool&gt; : std::true_type {};</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">struct </span>astarte_data_is_allowed_type&lt;std::string&gt; : std::true_type {};</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">struct </span>astarte_data_is_allowed_type&lt;std::vector&lt;uint8_t&gt;&gt; : std::true_type {};</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">struct </span>astarte_data_is_allowed_type&lt;std::chrono::system_clock::time_point&gt; : std::true_type {};</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">struct </span>astarte_data_is_allowed_type&lt;std::vector&lt;int32_t&gt;&gt; : std::true_type {};</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">struct </span>astarte_data_is_allowed_type&lt;std::vector&lt;int64_t&gt;&gt; : std::true_type {};</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">struct </span>astarte_data_is_allowed_type&lt;std::vector&lt;double&gt;&gt; : std::true_type {};</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">struct </span>astarte_data_is_allowed_type&lt;std::vector&lt;bool&gt;&gt; : std::true_type {};</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keyword">struct </span>astarte_data_is_allowed_type&lt;std::vector&lt;std::string&gt;&gt; : std::true_type {};</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keyword">struct </span>astarte_data_is_allowed_type&lt;std::vector&lt;std::vector&lt;uint8_t&gt;&gt;&gt; : std::true_type {};</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keyword">struct </span>astarte_data_is_allowed_type&lt;std::vector&lt;std::chrono::system_clock::time_point&gt;&gt;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    : std::true_type {};</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#endif  </span><span class="comment">// __cplusplus &gt;= 202002L</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span></div>
-<div class="foldopen" id="foldopen00076" data-start="{" data-end="};">
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classAstarteDeviceSdk_1_1AstarteData.html">   76</a></span><span class="keyword">class </span><a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#acae66b5d478b82099ef90bfa707619eb">AstarteData</a> {</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">#if __cplusplus &gt;= 202002L</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  <span class="keyword">template</span> &lt;AstarteDataAllowedType T&gt;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classAstarteDeviceSdk_1_1AstarteData.html#acae66b5d478b82099ef90bfa707619eb">   84</a></span>  <span class="keyword">explicit</span> <a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#acae66b5d478b82099ef90bfa707619eb">AstarteData</a>(T value) : data_(value) {}</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  <span class="keyword">template</span> &lt;AstarteDataAllowedType T&gt;</div>
-<div class="foldopen" id="foldopen00091" data-start="{" data-end="}">
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classAstarteDeviceSdk_1_1AstarteData.html#abeb2685afecc79c5bec66ef2f781a2ac">   91</a></span>  <span class="keyword">auto</span> <a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#abeb2685afecc79c5bec66ef2f781a2ac">into</a>() const -&gt; const T&amp; {</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordflow">return</span> std::get&lt;T&gt;(data_);</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span></div>
+<div class="foldopen" id="foldopen00039" data-start="{" data-end="};">
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classAstarteDeviceSdk_1_1AstarteData.html">   39</a></span><span class="keyword">class </span><a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#acae66b5d478b82099ef90bfa707619eb">AstarteData</a> {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="keyword">template</span> &lt;AstarteDataAllowedType T&gt;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classAstarteDeviceSdk_1_1AstarteData.html#acae66b5d478b82099ef90bfa707619eb">   46</a></span>  <span class="keyword">explicit</span> <a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#acae66b5d478b82099ef90bfa707619eb">AstarteData</a>(T value) : data_(value) {}</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  <span class="keyword">template</span> &lt;AstarteDataAllowedType T&gt;</div>
+<div class="foldopen" id="foldopen00053" data-start="{" data-end="}">
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classAstarteDeviceSdk_1_1AstarteData.html#abeb2685afecc79c5bec66ef2f781a2ac">   53</a></span>  <span class="keyword">auto</span> <a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#abeb2685afecc79c5bec66ef2f781a2ac">into</a>() const -&gt; const T&amp; {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">return</span> std::get&lt;T&gt;(data_);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  }</div>
 </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  <span class="keyword">template</span> &lt;AstarteDataAllowedType T&gt;</div>
-<div class="foldopen" id="foldopen00099" data-start="{" data-end="}">
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classAstarteDeviceSdk_1_1AstarteData.html#abc63be5b2b20d6310825a8941ce1e720">   99</a></span>  <span class="keyword">auto</span> <a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#abc63be5b2b20d6310825a8941ce1e720">try_into</a>() const -&gt; std::optional&lt;T&gt; {</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordflow">if</span> (std::holds_alternative&lt;T&gt;(data_)) {</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>      <span class="keywordflow">return</span> std::get&lt;T&gt;(data_);</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="keyword">template</span> &lt;AstarteDataAllowedType T&gt;</div>
+<div class="foldopen" id="foldopen00061" data-start="{" data-end="}">
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classAstarteDeviceSdk_1_1AstarteData.html#abc63be5b2b20d6310825a8941ce1e720">   61</a></span>  <span class="keyword">auto</span> <a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#abc63be5b2b20d6310825a8941ce1e720">try_into</a>() const -&gt; std::optional&lt;T&gt; {</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordflow">if</span> (std::holds_alternative&lt;T&gt;(data_)) {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>      <span class="keywordflow">return</span> std::get&lt;T&gt;(data_);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordflow">return</span> std::nullopt;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  }</div>
 </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="preprocessor">#else   </span><span class="comment">// __cplusplus &gt;= 202002L</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>  <span class="keyword">explicit</span> <a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#acae66b5d478b82099ef90bfa707619eb">AstarteData</a>(</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>      T value, std::enable_if_t&lt;astarte_data_is_allowed_type&lt;T&gt;::value, <span class="keywordtype">bool</span>&gt; <span class="comment">/*unused*/</span> = <span class="keyword">true</span>)</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>      : data_(value) {}</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span></div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>  <span class="keyword">auto</span> <a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#abeb2685afecc79c5bec66ef2f781a2ac">into</a>(std::enable_if_t&lt;astarte_data_is_allowed_type&lt;T&gt;::value, <span class="keywordtype">bool</span>&gt; <span class="comment">/*unused*/</span> = <span class="keyword">true</span>) const</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>      -&gt; const T&amp; {</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordflow">return</span> std::get&lt;T&gt;(data_);</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  }</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  <span class="keyword">auto</span> <a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#abc63be5b2b20d6310825a8941ce1e720">try_into</a>(std::enable_if_t&lt;astarte_data_is_allowed_type&lt;T&gt;::value, <span class="keywordtype">bool</span>&gt; <span class="comment">/*unused*/</span> =</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>                    <span class="keyword">true</span>) const -&gt; std::optional&lt;T&gt; {</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordflow">if</span> (std::holds_alternative&lt;T&gt;(data_)) {</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>      <span class="keywordflow">return</span> std::get&lt;T&gt;(data_);</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    }</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordflow">return</span> std::nullopt;</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>  }</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="preprocessor">#endif  </span><span class="comment">// __cplusplus &gt;= 202002L</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno"><a class="line" href="classAstarteDeviceSdk_1_1AstarteData.html#a778cc0da21b10f51bb10b07451852762">  143</a></span>  [[nodiscard]] <span class="keyword">auto</span> <a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#a778cc0da21b10f51bb10b07451852762">get_type</a>() const -&gt; <a class="code hl_enumeration" href="namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14">AstarteType</a>;</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="classAstarteDeviceSdk_1_1AstarteData.html#a4b044550dbfe999b0d8faecbb0935df1">  149</a></span>  [[nodiscard]] auto <a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#a4b044550dbfe999b0d8faecbb0935df1">get_raw_data</a>() const</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>      -&gt; const std::variant&lt;int32_t, int64_t, <span class="keywordtype">double</span>, <span class="keywordtype">bool</span>, std::<span class="keywordtype">string</span>, std::vector&lt;uint8_t&gt;,</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>                            std::chrono::system_clock::time_point, std::vector&lt;int32_t&gt;,</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>                            std::vector&lt;int64_t&gt;, std::vector&lt;<span class="keywordtype">double</span>&gt;, std::vector&lt;<span class="keywordtype">bool</span>&gt;,</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                            std::vector&lt;std::<span class="keywordtype">string</span>&gt;, std::vector&lt;std::vector&lt;uint8_t&gt;&gt;,</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>                            std::vector&lt;std::chrono::system_clock::time_point&gt;&gt;&amp;;</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="classAstarteDeviceSdk_1_1AstarteData.html#aef945c6d3b9bbbf9737963ab4aeeb06e">  160</a></span>  [[nodiscard]] auto operator==(const <a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#acae66b5d478b82099ef90bfa707619eb">AstarteData</a>&amp; other) const -&gt; <span class="keywordtype">bool</span>;</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno"><a class="line" href="classAstarteDeviceSdk_1_1AstarteData.html#a1d6fb35ddf51193a0326b4c844b4c9c1">  166</a></span>  [[nodiscard]] auto operator!=(const <a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#acae66b5d478b82099ef90bfa707619eb">AstarteData</a>&amp; other) const -&gt; <span class="keywordtype">bool</span>;</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> private:</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>  std::variant&lt;int32_t, int64_t, <span class="keywordtype">double</span>, <span class="keywordtype">bool</span>, std::<span class="keywordtype">string</span>, std::vector&lt;uint8_t&gt;,</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>               std::chrono::system_clock::time_point, std::vector&lt;int32_t&gt;, std::vector&lt;int64_t&gt;,</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>               std::vector&lt;<span class="keywordtype">double</span>&gt;, std::vector&lt;<span class="keywordtype">bool</span>&gt;, std::vector&lt;std::<span class="keywordtype">string</span>&gt;,</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>               std::vector&lt;std::vector&lt;uint8_t&gt;&gt;,</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>               std::vector&lt;std::chrono::system_clock::time_point&gt;&gt;</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>      data_;</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>};</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classAstarteDeviceSdk_1_1AstarteData.html#a778cc0da21b10f51bb10b07451852762">   72</a></span>  [[nodiscard]] <span class="keyword">auto</span> <a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#a778cc0da21b10f51bb10b07451852762">get_type</a>() const -&gt; <a class="code hl_enumeration" href="namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14">AstarteType</a>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classAstarteDeviceSdk_1_1AstarteData.html#a4b044550dbfe999b0d8faecbb0935df1">   78</a></span>  [[nodiscard]] auto <a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#a4b044550dbfe999b0d8faecbb0935df1">get_raw_data</a>() const</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>      -&gt; const std::variant&lt;int32_t, int64_t, <span class="keywordtype">double</span>, <span class="keywordtype">bool</span>, std::<span class="keywordtype">string</span>, std::vector&lt;uint8_t&gt;,</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                            std::chrono::system_clock::time_point, std::vector&lt;int32_t&gt;,</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                            std::vector&lt;int64_t&gt;, std::vector&lt;<span class="keywordtype">double</span>&gt;, std::vector&lt;<span class="keywordtype">bool</span>&gt;,</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                            std::vector&lt;std::<span class="keywordtype">string</span>&gt;, std::vector&lt;std::vector&lt;uint8_t&gt;&gt;,</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                            std::vector&lt;std::chrono::system_clock::time_point&gt;&gt;&amp;;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classAstarteDeviceSdk_1_1AstarteData.html#aef945c6d3b9bbbf9737963ab4aeeb06e">   89</a></span>  [[nodiscard]] auto operator==(const <a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#acae66b5d478b82099ef90bfa707619eb">AstarteData</a>&amp; other) const -&gt; <span class="keywordtype">bool</span>;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classAstarteDeviceSdk_1_1AstarteData.html#a1d6fb35ddf51193a0326b4c844b4c9c1">   95</a></span>  [[nodiscard]] auto operator!=(const <a class="code hl_function" href="classAstarteDeviceSdk_1_1AstarteData.html#acae66b5d478b82099ef90bfa707619eb">AstarteData</a>&amp; other) const -&gt; <span class="keywordtype">bool</span>;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> private:</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  std::variant&lt;int32_t, int64_t, <span class="keywordtype">double</span>, <span class="keywordtype">bool</span>, std::<span class="keywordtype">string</span>, std::vector&lt;uint8_t&gt;,</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>               std::chrono::system_clock::time_point, std::vector&lt;int32_t&gt;, std::vector&lt;int64_t&gt;,</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>               std::vector&lt;<span class="keywordtype">double</span>&gt;, std::vector&lt;<span class="keywordtype">bool</span>&gt;, std::vector&lt;std::<span class="keywordtype">string</span>&gt;,</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>               std::vector&lt;std::vector&lt;uint8_t&gt;&gt;,</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>               std::vector&lt;std::chrono::system_clock::time_point&gt;&gt;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>      data_;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>};</div>
 </div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>}  <span class="comment">// namespace AstarteDeviceSdk</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>}  <span class="comment">// namespace AstarteDeviceSdk</span></div>
 </div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="preprocessor">#endif  </span><span class="comment">// ASTARTE_DEVICE_SDK_DATA_H</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="preprocessor">#endif  </span><span class="comment">// ASTARTE_DEVICE_SDK_DATA_H</span></div>
 <div class="ttc" id="aclassAstarteDeviceSdk_1_1AstarteData_html_a4b044550dbfe999b0d8faecbb0935df1"><div class="ttname"><a href="classAstarteDeviceSdk_1_1AstarteData.html#a4b044550dbfe999b0d8faecbb0935df1">AstarteDeviceSdk::AstarteData::get_raw_data</a></div><div class="ttdeci">auto get_raw_data() const -&gt; const std::variant&lt; int32_t, int64_t, double, bool, std::string, std::vector&lt; uint8_t &gt;, std::chrono::system_clock::time_point, std::vector&lt; int32_t &gt;, std::vector&lt; int64_t &gt;, std::vector&lt; double &gt;, std::vector&lt; bool &gt;, std::vector&lt; std::string &gt;, std::vector&lt; std::vector&lt; uint8_t &gt; &gt;, std::vector&lt; std::chrono::system_clock::time_point &gt; &gt; &amp;</div><div class="ttdoc">Return the raw data contained in this class instance.</div></div>
 <div class="ttc" id="aclassAstarteDeviceSdk_1_1AstarteData_html_a778cc0da21b10f51bb10b07451852762"><div class="ttname"><a href="classAstarteDeviceSdk_1_1AstarteData.html#a778cc0da21b10f51bb10b07451852762">AstarteDeviceSdk::AstarteData::get_type</a></div><div class="ttdeci">auto get_type() const -&gt; AstarteType</div><div class="ttdoc">Get the type of the data contained in this class instance.</div></div>
-<div class="ttc" id="aclassAstarteDeviceSdk_1_1AstarteData_html_abc63be5b2b20d6310825a8941ce1e720"><div class="ttname"><a href="classAstarteDeviceSdk_1_1AstarteData.html#abc63be5b2b20d6310825a8941ce1e720">AstarteDeviceSdk::AstarteData::try_into</a></div><div class="ttdeci">auto try_into() const -&gt; std::optional&lt; T &gt;</div><div class="ttdoc">Convert the Astarte data class to the given type if it&#39;s the correct variant.</div><div class="ttdef"><b>Definition</b> data.hpp:99</div></div>
-<div class="ttc" id="aclassAstarteDeviceSdk_1_1AstarteData_html_abeb2685afecc79c5bec66ef2f781a2ac"><div class="ttname"><a href="classAstarteDeviceSdk_1_1AstarteData.html#abeb2685afecc79c5bec66ef2f781a2ac">AstarteDeviceSdk::AstarteData::into</a></div><div class="ttdeci">auto into() const -&gt; const T &amp;</div><div class="ttdoc">Convert the Astarte data class to the appropriate data type.</div><div class="ttdef"><b>Definition</b> data.hpp:91</div></div>
-<div class="ttc" id="aclassAstarteDeviceSdk_1_1AstarteData_html_acae66b5d478b82099ef90bfa707619eb"><div class="ttname"><a href="classAstarteDeviceSdk_1_1AstarteData.html#acae66b5d478b82099ef90bfa707619eb">AstarteDeviceSdk::AstarteData::AstarteData</a></div><div class="ttdeci">AstarteData(T value)</div><div class="ttdoc">Constructor for the AstarteData class.</div><div class="ttdef"><b>Definition</b> data.hpp:84</div></div>
-<div class="ttc" id="aconceptAstarteDeviceSdk_1_1AstarteDataAllowedType_html"><div class="ttname"><a href="conceptAstarteDeviceSdk_1_1AstarteDataAllowedType.html">AstarteDeviceSdk::AstarteDataAllowedType</a></div><div class="ttdoc">Restricts the allowed types for instances of an Astarte data class.</div><div class="ttdef"><b>Definition</b> data.hpp:30</div></div>
-<div class="ttc" id="anamespaceAstarteDeviceSdk_html"><div class="ttname"><a href="namespaceAstarteDeviceSdk.html">AstarteDeviceSdk</a></div><div class="ttdoc">Umbrella namespace for the Astarte device SDK.</div><div class="ttdef"><b>Definition</b> data.hpp:25</div></div>
+<div class="ttc" id="aclassAstarteDeviceSdk_1_1AstarteData_html_abc63be5b2b20d6310825a8941ce1e720"><div class="ttname"><a href="classAstarteDeviceSdk_1_1AstarteData.html#abc63be5b2b20d6310825a8941ce1e720">AstarteDeviceSdk::AstarteData::try_into</a></div><div class="ttdeci">auto try_into() const -&gt; std::optional&lt; T &gt;</div><div class="ttdoc">Convert the Astarte data class to the given type if it&#39;s the correct variant.</div><div class="ttdef"><b>Definition</b> data.hpp:61</div></div>
+<div class="ttc" id="aclassAstarteDeviceSdk_1_1AstarteData_html_abeb2685afecc79c5bec66ef2f781a2ac"><div class="ttname"><a href="classAstarteDeviceSdk_1_1AstarteData.html#abeb2685afecc79c5bec66ef2f781a2ac">AstarteDeviceSdk::AstarteData::into</a></div><div class="ttdeci">auto into() const -&gt; const T &amp;</div><div class="ttdoc">Convert the Astarte data class to the appropriate data type.</div><div class="ttdef"><b>Definition</b> data.hpp:53</div></div>
+<div class="ttc" id="aclassAstarteDeviceSdk_1_1AstarteData_html_acae66b5d478b82099ef90bfa707619eb"><div class="ttname"><a href="classAstarteDeviceSdk_1_1AstarteData.html#acae66b5d478b82099ef90bfa707619eb">AstarteDeviceSdk::AstarteData::AstarteData</a></div><div class="ttdeci">AstarteData(T value)</div><div class="ttdoc">Constructor for the AstarteData class.</div><div class="ttdef"><b>Definition</b> data.hpp:46</div></div>
+<div class="ttc" id="aconceptAstarteDeviceSdk_1_1AstarteDataAllowedType_html"><div class="ttname"><a href="conceptAstarteDeviceSdk_1_1AstarteDataAllowedType.html">AstarteDeviceSdk::AstarteDataAllowedType</a></div><div class="ttdoc">Restricts the allowed types for instances of an Astarte data class.</div><div class="ttdef"><b>Definition</b> data.hpp:26</div></div>
+<div class="ttc" id="anamespaceAstarteDeviceSdk_html"><div class="ttname"><a href="namespaceAstarteDeviceSdk.html">AstarteDeviceSdk</a></div><div class="ttdoc">Umbrella namespace for the Astarte device SDK.</div><div class="ttdef"><b>Definition</b> data.hpp:22</div></div>
 <div class="ttc" id="anamespaceAstarteDeviceSdk_html_a23916adc1ea1368b60c7262420b42f14"><div class="ttname"><a href="namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14">AstarteDeviceSdk::AstarteType</a></div><div class="ttdeci">AstarteType</div><div class="ttdoc">Possible Astarte types.</div><div class="ttdef"><b>Definition</b> type.hpp:18</div></div>
 <div class="ttc" id="atype_8hpp_html"><div class="ttname"><a href="type_8hpp.html">type.hpp</a></div><div class="ttdoc">Types definitions for communication with Astarte.</div></div>
 </div><!-- fragment --></div><!-- contents -->
