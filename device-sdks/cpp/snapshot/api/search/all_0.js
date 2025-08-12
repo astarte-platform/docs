@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['add_5finterface_5ffrom_5fjson_0',['add_interface_from_json',['../classAstarteDeviceSdk_1_1AstarteDevice.html#a959e192cc6277180d4a053586d13e35f',1,'AstarteDeviceSdk::AstarteDevice::add_interface_from_json()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#ad0d8a3517924e790df1aa2359317bd73',1,'AstarteDeviceSdk::AstarteDeviceGRPC::add_interface_from_json()']]],
-  ['add_5finterface_5ffrom_5fstr_1',['add_interface_from_str',['../classAstarteDeviceSdk_1_1AstarteDevice.html#a50cc8cbf09dfc228152c11a7392c504c',1,'AstarteDeviceSdk::AstarteDevice::add_interface_from_str()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a5d3bc0861d4313e255f2be87ca2afaf3',1,'AstarteDeviceSdk::AstarteDeviceGRPC::add_interface_from_str()']]],
+  ['add_5finterface_5ffrom_5ffile_0',['add_interface_from_file',['../classAstarteDeviceSdk_1_1AstarteDevice.html#a6b9aab232fff91820a9f914914c852da',1,'AstarteDeviceSdk::AstarteDevice::add_interface_from_file()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a33cefc4d7895c73eacd257363ca79bf1',1,'AstarteDeviceSdk::AstarteDeviceGRPC::add_interface_from_file()']]],
+  ['add_5finterface_5ffrom_5fstr_1',['add_interface_from_str',['../classAstarteDeviceSdk_1_1AstarteDevice.html#a25203661e11c67d833b64c22cb55bbc0',1,'AstarteDeviceSdk::AstarteDevice::add_interface_from_str()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a643d3b3f927697d83f061bb53fa54763',1,'AstarteDeviceSdk::AstarteDeviceGRPC::add_interface_from_str()']]],
   ['an_20external_20project_2',['Importing the library in an external project',['../index.html#autotoc_md12',1,'']]],
   ['api_20for_20c_3',['Astarte device API for C++',['../index.html',1,'']]],
   ['astarte_20data_4',['Formatting Astarte data',['../index.html#autotoc_md3',1,'']]],

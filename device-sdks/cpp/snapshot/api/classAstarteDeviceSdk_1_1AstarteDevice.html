@@ -163,12 +163,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a066d8ab1dd1b009b5dedb14aa3b9cc2a" id="r_a066d8ab1dd1b009b5dedb14aa3b9cc2a"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a066d8ab1dd1b009b5dedb14aa3b9cc2a">operator=</a> (<a class="el" href="classAstarteDeviceSdk_1_1AstarteDevice.html">AstarteDevice</a> &amp;&amp;other) -&gt; <a class="el" href="classAstarteDeviceSdk_1_1AstarteDevice.html">AstarteDevice</a> &amp;=default</td></tr>
 <tr class="memdesc:a066d8ab1dd1b009b5dedb14aa3b9cc2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assignment operator for the Astarte device class.  <br /></td></tr>
 <tr class="separator:a066d8ab1dd1b009b5dedb14aa3b9cc2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a959e192cc6277180d4a053586d13e35f" id="r_a959e192cc6277180d4a053586d13e35f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a959e192cc6277180d4a053586d13e35f">add_interface_from_json</a> (const std::filesystem::path &amp;json_file)=0</td></tr>
-<tr class="memdesc:a959e192cc6277180d4a053586d13e35f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an interface for the device from a JSON file.  <br /></td></tr>
-<tr class="separator:a959e192cc6277180d4a053586d13e35f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50cc8cbf09dfc228152c11a7392c504c" id="r_a50cc8cbf09dfc228152c11a7392c504c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50cc8cbf09dfc228152c11a7392c504c">add_interface_from_str</a> (std::string_view json)=0</td></tr>
-<tr class="memdesc:a50cc8cbf09dfc228152c11a7392c504c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an interface for the device from a JSON string view.  <br /></td></tr>
-<tr class="separator:a50cc8cbf09dfc228152c11a7392c504c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b9aab232fff91820a9f914914c852da" id="r_a6b9aab232fff91820a9f914914c852da"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b9aab232fff91820a9f914914c852da">add_interface_from_file</a> (const std::filesystem::path &amp;json_file, std::chrono::milliseconds timeout)=0</td></tr>
+<tr class="memdesc:a6b9aab232fff91820a9f914914c852da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an interface for the device from a JSON file.  <br /></td></tr>
+<tr class="separator:a6b9aab232fff91820a9f914914c852da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25203661e11c67d833b64c22cb55bbc0" id="r_a25203661e11c67d833b64c22cb55bbc0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25203661e11c67d833b64c22cb55bbc0">add_interface_from_str</a> (std::string_view json, std::chrono::milliseconds timeout)=0</td></tr>
+<tr class="memdesc:a25203661e11c67d833b64c22cb55bbc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an interface for the device from a JSON string view.  <br /></td></tr>
+<tr class="separator:a25203661e11c67d833b64c22cb55bbc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6cc9412781fe823f24cf7713a904704" id="r_ab6cc9412781fe823f24cf7713a904704"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6cc9412781fe823f24cf7713a904704">remove_interface</a> (const std::string &amp;interface_name, std::chrono::milliseconds timeout)=0</td></tr>
+<tr class="memdesc:ab6cc9412781fe823f24cf7713a904704"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an installed interface.  <br /></td></tr>
+<tr class="separator:ab6cc9412781fe823f24cf7713a904704"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ed11e6667bcb20bd92ad68e90908538" id="r_a3ed11e6667bcb20bd92ad68e90908538"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ed11e6667bcb20bd92ad68e90908538">connect</a> ()=0</td></tr>
 <tr class="memdesc:a3ed11e6667bcb20bd92ad68e90908538"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect the device to Astarte.  <br /></td></tr>
 <tr class="separator:a3ed11e6667bcb20bd92ad68e90908538"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -321,8 +324,8 @@ Protected Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a959e192cc6277180d4a053586d13e35f" name="a959e192cc6277180d4a053586d13e35f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a959e192cc6277180d4a053586d13e35f">&#9670;&#160;</a></span>add_interface_from_json()</h2>
+<a id="a6b9aab232fff91820a9f914914c852da" name="a6b9aab232fff91820a9f914914c852da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b9aab232fff91820a9f914914c852da">&#9670;&#160;</a></span>add_interface_from_file()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -331,10 +334,14 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void AstarteDeviceSdk::AstarteDevice::add_interface_from_json </td>
+          <td class="memname">virtual void AstarteDeviceSdk::AstarteDevice::add_interface_from_file </td>
           <td>(</td>
-          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>json_file</em></span></td><td>)</td>
+          <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>json_file</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::chrono::milliseconds</td>          <td class="paramname"><span class="paramname"><em>timeout</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -348,16 +355,17 @@ Protected Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">json_file</td><td>The path to the .json interface file. </td></tr>
+    <tr><td class="paramname">timeout</td><td>A timeout used to check the device connection status. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#ad0d8a3517924e790df1aa2359317bd73">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
+<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a33cefc4d7895c73eacd257363ca79bf1">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
 
 </div>
 </div>
-<a id="a50cc8cbf09dfc228152c11a7392c504c" name="a50cc8cbf09dfc228152c11a7392c504c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a50cc8cbf09dfc228152c11a7392c504c">&#9670;&#160;</a></span>add_interface_from_str()</h2>
+<a id="a25203661e11c67d833b64c22cb55bbc0" name="a25203661e11c67d833b64c22cb55bbc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25203661e11c67d833b64c22cb55bbc0">&#9670;&#160;</a></span>add_interface_from_str()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -368,8 +376,12 @@ Protected Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual void AstarteDeviceSdk::AstarteDevice::add_interface_from_str </td>
           <td>(</td>
-          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>json</em></span></td><td>)</td>
+          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>json</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::chrono::milliseconds</td>          <td class="paramname"><span class="paramname"><em>timeout</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -383,11 +395,12 @@ Protected Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">json</td><td>The interface definition as a JSON string view. </td></tr>
+    <tr><td class="paramname">timeout</td><td>A timeout used to check the device connection status. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a5d3bc0861d4313e255f2be87ca2afaf3">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
+<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a643d3b3f927697d83f061bb53fa54763">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
 
 </div>
 </div>
@@ -580,6 +593,46 @@ Protected Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>An std::optional containing the received <a class="el" href="classAstarteDeviceSdk_1_1AstarteMessage.html" title="Astarte message class, represents a full message for/from Astarte.">AstarteMessage</a> if one was available, or std::nullopt if the timeout was reached. </dd></dl>
 
 <p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a0b0d98663ca414ce4c3d20d01124f890">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
+
+</div>
+</div>
+<a id="ab6cc9412781fe823f24cf7713a904704" name="ab6cc9412781fe823f24cf7713a904704"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6cc9412781fe823f24cf7713a904704">&#9670;&#160;</a></span>remove_interface()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void AstarteDeviceSdk::AstarteDevice::remove_interface </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>interface_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::chrono::milliseconds</td>          <td class="paramname"><span class="paramname"><em>timeout</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Remove an installed interface. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">interface_name</td><td>The interface name. </td></tr>
+    <tr><td class="paramname">timeout</td><td>A timeout used to check the device connection status. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a6bb05f09c6d8126988b14cceaaf46195">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
 
 </div>
 </div>
