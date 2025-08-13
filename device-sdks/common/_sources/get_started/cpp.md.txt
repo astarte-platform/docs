@@ -191,6 +191,7 @@ A couple of assumptions have been made:
 #include <cstdlib>
 #include <iostream>
 #include <thread>
+#include <chrono>
 
 #include "astarte_device_sdk/data.hpp"
 #include "astarte_device_sdk/device_grpc.hpp"
@@ -204,8 +205,10 @@ using AstarteDeviceSdk::AstarteDeviceGRPC;
 using AstarteDeviceSdk::AstarteMessage;
 using AstarteDeviceSdk::AstartePropertyIndividual;
 
-void reception_handler(std::shared_ptr<AstarteDeviceGRPC> device) {
-  while (true) {
+using namespace std::chrono_literals;
+
+void reception_handler(std::stop_token token, std::shared_ptr<AstarteDeviceGRPC> device) {
+  while (!token.stop_requested()) {
     auto incoming = device->poll_incoming(std::chrono::milliseconds(100));
     if (incoming.has_value()) {
       AstarteMessage msg(incoming.value());
@@ -242,9 +245,9 @@ int main(int argc, char **argv) {
   std::filesystem::path device_property_interface_file_path =
       "./org.astarte-platform.cpp.get-started.Property.json";
 
-  device->add_interface_from_json(device_individual_interface_file_path);
-  device->add_interface_from_json(device_aggregated_interface_file_path);
-  device->add_interface_from_json(device_property_interface_file_path);
+  device->add_interface_from_file(device_individual_interface_file_path, 0ms);
+  device->add_interface_from_file(device_aggregated_interface_file_path, 0ms);
+  device->add_interface_from_file(device_property_interface_file_path, 0ms);
 
   device->connect();
 
@@ -252,7 +255,7 @@ int main(int argc, char **argv) {
     std::this_thread::sleep_for(std::chrono::seconds(1));
   } while (!device->is_connected(std::chrono::milliseconds(100)));
 
-  auto reception_thread = std::thread(reception_handler, device);
+  auto reception_thread = std::jthread(reception_handler, device);
 
   // ...
   // Here we will operate with the device
