@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['remove_5finterface_0',['remove_interface',['../classAstarteDeviceSdk_1_1AstarteDevice.html#ab6cc9412781fe823f24cf7713a904704',1,'AstarteDeviceSdk::AstarteDevice::remove_interface()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a6bb05f09c6d8126988b14cceaaf46195',1,'AstarteDeviceSdk::AstarteDeviceGRPC::remove_interface()']]]
+  ['remove_5finterface_0',['remove_interface',['../classAstarteDeviceSdk_1_1AstarteDevice.html#a4a9d7ccdc472d0c917d8a824d4fcf6a5',1,'AstarteDeviceSdk::AstarteDevice::remove_interface()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a2b664973fca8cb7ffa9838896ec3d044',1,'AstarteDeviceSdk::AstarteDeviceGRPC::remove_interface()']]]
 ];
