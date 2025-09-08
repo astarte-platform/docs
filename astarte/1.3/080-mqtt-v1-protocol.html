@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-C9FC9F15.js"></script>
+    <script src="dist/sidebar_items-E9940C87.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -111,7 +111,7 @@ Clea Astarte
   </a>
   MQTT Topics Overview
 </h2>
-<p>Astarte MQTT v1 Protocol relies on few well known reserved topics.</p><table><thead><tr><th style="text-align: left;">Topic</th><th style="text-align: left;">Purpose</th><th style="text-align: left;">Published By</th><th style="text-align: left;">QoS</th><th style="text-align: left;">Payload Format</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;</code></td><td style="text-align: left;">Introspection</td><td style="text-align: left;">Device</td><td style="text-align: left;">2</td><td style="text-align: left;">ASCII plain text, ':' and ';' delimited</td></tr><tr><td style="text-align: left;"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;/control/emptyCache</code></td><td style="text-align: left;">Empty Cache</td><td style="text-align: left;">Device</td><td style="text-align: left;">2</td><td style="text-align: left;">ASCII plain text (always &quot;1&quot;)</td></tr><tr><td style="text-align: left;"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;/control/consumer/properties</code></td><td style="text-align: left;">Purge Properties</td><td style="text-align: left;">Astarte</td><td style="text-align: left;">2</td><td style="text-align: left;">deflated plain text</td></tr><tr><td style="text-align: left;"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;/control/producer/properties</code></td><td style="text-align: left;">Purge Properties</td><td style="text-align: left;">Device</td><td style="text-align: left;">2</td><td style="text-align: left;">deflated plain text</td></tr><tr><td style="text-align: left;"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;/&lt;interface name&gt;/&lt;path&gt;</code></td><td style="text-align: left;">Publish Data</td><td style="text-align: left;">Both</td><td style="text-align: left;">0, 1, 2</td><td style="text-align: left;">BSON (or empty)</td></tr></tbody></table><p>For clarity reasons all <code class="inline">&lt;realm name&gt;/&lt;device id&gt;</code> prefixes will be omitted on the following paragraphs, those topics will be called device topics.
+<p>Astarte MQTT v1 Protocol relies on few well known reserved topics.</p><table><thead><tr><th style="text-align: left;">Topic</th><th style="text-align: left;">Purpose</th><th style="text-align: left;">Published By</th><th style="text-align: left;">QoS</th><th style="text-align: left;">Payload Format</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;</code></td><td style="text-align: left;">Introspection</td><td style="text-align: left;">Device</td><td style="text-align: left;">2</td><td style="text-align: left;">ASCII plain text, ':' and ';' delimited</td></tr><tr><td style="text-align: left;"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;/capabilities</code></td><td style="text-align: left;">Capabilities</td><td style="text-align: left;">Device</td><td style="text-align: left;">2</td><td style="text-align: left;">BSON</td></tr><tr><td style="text-align: left;"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;/control/emptyCache</code></td><td style="text-align: left;">Empty Cache</td><td style="text-align: left;">Device</td><td style="text-align: left;">2</td><td style="text-align: left;">ASCII plain text (always &quot;1&quot;)</td></tr><tr><td style="text-align: left;"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;/control/consumer/properties</code></td><td style="text-align: left;">Purge Properties</td><td style="text-align: left;">Astarte</td><td style="text-align: left;">2</td><td style="text-align: left;">deflated plain text</td></tr><tr><td style="text-align: left;"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;/control/producer/properties</code></td><td style="text-align: left;">Purge Properties</td><td style="text-align: left;">Device</td><td style="text-align: left;">2</td><td style="text-align: left;">deflated plain text</td></tr><tr><td style="text-align: left;"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;/&lt;interface name&gt;/&lt;path&gt;</code></td><td style="text-align: left;">Publish Data</td><td style="text-align: left;">Both</td><td style="text-align: left;">0, 1, 2</td><td style="text-align: left;">BSON (or empty)</td></tr></tbody></table><p>For clarity reasons all <code class="inline">&lt;realm name&gt;/&lt;device id&gt;</code> prefixes will be omitted on the following paragraphs, those topics will be called device topics.
 Topics are not bidirectional, devices must not publish data for server owned topics and viceversa, onwership is explicitly stated in interfaces files.</p><h2 id="bson" class="section-heading">
   <a href="#bson" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">bson</p>
@@ -168,7 +168,19 @@ In Astarte jargon this message is called <em>empty cache</em> and it is performe
   Session Present
 </h2>
 <p>In the very same fashion as the device, Astarte (or the broker) might be inconsistent with a Device's known status and its known properties. Although unlikely, as Astarte should always keep knowledge about remote device status, this might happen, for example, after an internal error.
-Astarte performs this task by telling the broker to disconnect the device and clear its session. After this, when the device will attempt reconnection, session present will be false.</p><p>After a clean session properties might be purged.</p><h2 id="purge-properties" class="section-heading">
+Astarte performs this task by telling the broker to disconnect the device and clear its session. After this, when the device will attempt reconnection, session present will be false.</p><p>After a clean session properties might be purged.</p><h2 id="device-capabilities" class="section-heading">
+  <a href="#device-capabilities" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">device-capabilities</p>
+  </a>
+  Device capabilities
+</h2>
+<p>A device can define how future communication with Astarte will take place by specifying <strong>capabilities</strong>. Interacting with astarte to set capabilities works as follows:</p><ol><li>A device can send one or more capabilities at a time.</li><li>If a capability is not explicitly set, its default value is used.</li><li>When a device sends a capabilities message, two things can happen. Either the message is valid and the new values override the current ones, or the message was malformed. In this case the following happens:<ul><li>the previously stored values remain unchanged;</li><li>the device gets forcefully disconnected.</li></ul></li><li>Capabilities are preserved in the database, ensuring consistency across sessions.</li></ol><h3 id="capabilities-list" class="section-heading">
+  <a href="#capabilities-list" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">capabilities-list</p>
+  </a>
+  Capabilities List
+</h3>
+<p>The following is a comprehensive list of all capabilities currently implemented. In the <em>possible values</em> column the <strong>default value</strong> is marked in bold.</p><table><thead><tr><th style="text-align: left;">Name</th><th style="text-align: left;">Values</th><th style="text-align: left;">Purpose</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">purge_properties_compression_format</code></td><td style="text-align: left;"><strong>&quot;zlib&quot;</strong>, &quot;plaintext&quot;</td><td style="text-align: left;">Set if Astarte should send the purge properties payload compressed with <em>zlib</em> or in <em>plaintext</em></td></tr></tbody></table><h2 id="purge-properties" class="section-heading">
   <a href="#purge-properties" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">purge-properties</p>
   </a>
@@ -236,17 +248,17 @@ A further simplification might remove any requirement for any introspection mess
   </a>
   Connecting to the Broker
 </h2>
-<p>In the same fashion as Authentication, Pairing provides the client with information about how to connect to the MQTT broker. When invoking relevant Pairing API's method to gather information about available transports for a device, if Astarte advertises Astarte MQTT v1, a similar reply will be returned:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="1423763653-1">{</span><span class="w">
-  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1423763653-2">{</span><span class="w">
+<p>In the same fashion as Authentication, Pairing provides the client with information about how to connect to the MQTT broker. When invoking relevant Pairing API's method to gather information about available transports for a device, if Astarte advertises Astarte MQTT v1, a similar reply will be returned:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="2415533582-1">{</span><span class="w">
+  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2415533582-2">{</span><span class="w">
     </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;version string&gt;&quot;</span><span class="p">,</span><span class="w">
     </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;status string&gt;&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nt">&quot;protocols&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1423763653-3">{</span><span class="w">
-      </span><span class="nt">&quot;astarte_mqtt_v1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1423763653-4">{</span><span class="w">
+    </span><span class="nt">&quot;protocols&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2415533582-3">{</span><span class="w">
+      </span><span class="nt">&quot;astarte_mqtt_v1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2415533582-4">{</span><span class="w">
         </span><span class="nt">&quot;broker_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mqtts://broker.astarte.example.com:8883&quot;</span><span class="w">
-      </span><span class="p" data-group-id="1423763653-4">}</span><span class="w">
-    </span><span class="p" data-group-id="1423763653-3">}</span><span class="w">
-  </span><span class="p" data-group-id="1423763653-2">}</span><span class="w">
-</span><span class="p" data-group-id="1423763653-1">}</span></code></pre>
+      </span><span class="p" data-group-id="2415533582-4">}</span><span class="w">
+    </span><span class="p" data-group-id="2415533582-3">}</span><span class="w">
+  </span><span class="p" data-group-id="2415533582-2">}</span><span class="w">
+</span><span class="p" data-group-id="2415533582-1">}</span></code></pre>
 <div class="bottom-actions">
   <div class="bottom-actions-item">
 

@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-C9FC9F15.js"></script>
+    <script src="dist/sidebar_items-E9940C87.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -126,7 +126,7 @@ Every event in the event queue can be resent up to a number of times given in th
 This is a required component and uniquely identifies the policy in the realm.</p></li><li><p>Error handlers: a non-empty list of handlers. 
 Each handler acts on groups of delivery errors and describes the strategy Astarte should take when they occur.
 In pseudo-BNF syntax, an handler is described by the following grammar:</p><pre><code class="makeup elixir" translate="no"><span class="w">    </span><span class="n">handler</span><span class="w"> </span><span class="o">::</span><span class="o">=</span><span class="w"> </span><span class="s">&quot;{&quot;</span><span class="w">
-        </span><span class="s">&quot;on&quot;</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="w"> </span><span class="s">&quot;client_error&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&quot;server_error&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&quot;any_error&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p" data-group-id="1698647473-1">[</span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="p" data-group-id="1698647473-1">]</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="w">
+        </span><span class="s">&quot;on&quot;</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="w"> </span><span class="s">&quot;client_error&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&quot;server_error&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&quot;any_error&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p" data-group-id="5860353000-1">[</span><span class="o">&lt;</span><span class="n">int</span><span class="o">&gt;</span><span class="p" data-group-id="5860353000-1">]</span><span class="w"> </span><span class="s">&quot;,&quot;</span><span class="w">
         </span><span class="s">&quot;strategy&quot;</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="w"> </span><span class="s">&quot;discard&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&quot;retry&quot;</span><span class="w">
     </span><span class="s">&quot;}&quot;</span></code></pre><p>There are two possible strategies: either discard the event or retry. If the strategy is <code class="inline">retry</code>, events will be requeued in the event queue.
 The default retry strategy is discarding events.

@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-C9FC9F15.js"></script>
+    <script src="dist/sidebar_items-E9940C87.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -140,7 +140,9 @@ Cassandra offers linear scalability and can span from really small clusters to h
 <p>Each realm needs several tables to store data for all the functionalities.
 Realm tables can be grouped in the following functionalities:</p><ul><li>Configuration &amp; key-value store</li><li>Interfaces schema</li><li>Device management</li><li>Groups management</li><li>Triggers storage</li><li>Data storage</li></ul><p>Some data storage tables might be created when required, whereas all other tables are created when a keyspace is created, using the following statements:</p><pre><code class="sql">CREATE KEYSPACE &lt;realm name&gt;
   WITH replication = {'class': 'SimpleStrategy', 'replication_factor': :replication_factor} AND
-    durable_writes = true;</code></pre><pre><code class="sql">CREATE TABLE &lt;realm name&gt;.kv_store (
+    durable_writes = true;</code></pre><pre><code class="sql">CREATE TYPE &lt;realm name&gt;.capabilities (
+  purge_properties_compression_format int
+);</code></pre><pre><code class="sql">CREATE TABLE &lt;realm name&gt;.kv_store (
   group varchar,
   key varchar,
   value blob,
@@ -178,6 +180,7 @@ Realm tables can be grouped in the following functionalities:</p><ul><li>Configu
   attributes map&lt;varchar, varchar&gt;,
 
   groups map&lt;varchar, timeuuid&gt;,
+  capabilities capabilities,
 
   PRIMARY KEY (device_id)
 );</code></pre><pre><code class="sql">CREATE TABLE &lt;realm name&gt;.grouped_devices (

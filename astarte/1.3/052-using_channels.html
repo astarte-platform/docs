@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-C9FC9F15.js"></script>
+    <script src="dist/sidebar_items-E9940C87.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -134,13 +134,13 @@ configured - every time a Condition is triggered an event is delivered to users 
   Events
 </h3>
 <p>Everytime a Condition of an installed Trigger is triggered, an event is sent to the Phoenix Channel,
-with a similar payload:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="2430197809-1">{</span><span class="w">
+with a similar payload:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="5711405098-1">{</span><span class="w">
     </span><span class="nt">&quot;device_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f0VMRgIBAQAAAAAAAAAAAA&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2430197809-2">{</span><span class="w">
+    </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5711405098-2">{</span><span class="w">
         </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device_connected&quot;</span><span class="p">,</span><span class="w">
         </span><span class="nt">&quot;device_ip_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.2.3.4&quot;</span><span class="w">
-    </span><span class="p" data-group-id="2430197809-2">}</span><span class="w">
-</span><span class="p" data-group-id="2430197809-1">}</span></code></pre><p><code class="inline">device_id</code> is always present (as long as the trigger matches a device) and identifies the device
+    </span><span class="p" data-group-id="5711405098-2">}</span><span class="w">
+</span><span class="p" data-group-id="5711405098-1">}</span></code></pre><p><code class="inline">device_id</code> is always present (as long as the trigger matches a device) and identifies the device
 emitting the event. <code class="inline">event</code>, instead, depends on the kind of installed trigger. It always carries a
 <code class="inline">type</code> string, which identifies the content of the object. The complete list of possible
 event payloads can be found <a href="060-triggers.html#simple-event-payloads">here</a>.</p><h3 id="lifecycle" class="section-heading">
@@ -161,10 +161,10 @@ expire after some time, if left in an empty room.</p><h2 id="managing-transient-
 </h2>
 <p>To install a Transient Trigger, one should issue a <code class="inline">watch</code> event in the Channel, given he is
 authorized to do so. The payload of such an event is identical to a Trigger definition, hence it
-looks like this:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="4385419964-1">{</span><span class="w">
+looks like this:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="4827829775-1">{</span><span class="w">
     </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;datatrigger&quot;</span><span class="p">,</span><span class="w">
     </span><span class="nt">&quot;device_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f0VMRgIBAQAAAAAAAAAAAA&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nt">&quot;simple_trigger&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4385419964-2">{</span><span class="w">
+    </span><span class="nt">&quot;simple_trigger&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4827829775-2">{</span><span class="w">
         </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data_trigger&quot;</span><span class="p">,</span><span class="w">
         </span><span class="nt">&quot;on&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;incoming_data&quot;</span><span class="p">,</span><span class="w">
         </span><span class="nt">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.astarte-platform.genericsensors.Values&quot;</span><span class="p">,</span><span class="w">
@@ -172,8 +172,8 @@ looks like this:</p><pre><code class="makeup json" translate="no"><span class="p
         </span><span class="nt">&quot;match_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/streamTest/value&quot;</span><span class="p">,</span><span class="w">
         </span><span class="nt">&quot;value_match_operator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&gt;&quot;</span><span class="p">,</span><span class="w">
         </span><span class="nt">&quot;known_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="w">
-    </span><span class="p" data-group-id="4385419964-2">}</span><span class="w">
-</span><span class="p" data-group-id="4385419964-1">}</span></code></pre><p>This installs in the Room a Transient Trigger which will trigger an event everytime a value higher
+    </span><span class="p" data-group-id="4827829775-2">}</span><span class="w">
+</span><span class="p" data-group-id="4827829775-1">}</span></code></pre><p>This installs in the Room a Transient Trigger which will trigger an event everytime a value higher
 than <code class="inline">0.6</code> is sent on the path <code class="inline">/streamTest/value</code> of the <code class="inline">datastream</code> interface
 <code class="inline">org.astarte-platform.genericsensors.Values</code> by the device <code class="inline">f0VMRgIBAQAAAAAAAAAAAA</code>, and will be
 received by every user currently in the room. If a user isn't in the room at the time of the event,
@@ -186,10 +186,10 @@ should be the name of the trigger which should be uninstalled.</p><h3 id="group-
 </h3>
 <p>Transient triggers can also target an Astarte group instead of a single device. To install a group
 volatile trigger, pass the <code class="inline">group_name</code> key in the JSON payload instead of the <code class="inline">device_id</code> key.</p><p>For example, the trigger below is equivalent to the one in the previous section, but it targets all
-devices that are in the group <code class="inline">mygroup</code>.</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="8788770737-1">{</span><span class="w">
+devices that are in the group <code class="inline">mygroup</code>.</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="9469284868-1">{</span><span class="w">
     </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;groupdevicetrigger&quot;</span><span class="p">,</span><span class="w">
     </span><span class="nt">&quot;group_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mygroup&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nt">&quot;simple_trigger&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8788770737-2">{</span><span class="w">
+    </span><span class="nt">&quot;simple_trigger&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9469284868-2">{</span><span class="w">
         </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data_trigger&quot;</span><span class="p">,</span><span class="w">
         </span><span class="nt">&quot;on&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;incoming_data&quot;</span><span class="p">,</span><span class="w">
         </span><span class="nt">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.astarte-platform.genericsensors.Values&quot;</span><span class="p">,</span><span class="w">
@@ -197,8 +197,8 @@ devices that are in the group <code class="inline">mygroup</code>.</p><pre><code
         </span><span class="nt">&quot;match_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/streamTest/value&quot;</span><span class="p">,</span><span class="w">
         </span><span class="nt">&quot;value_match_operator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&gt;&quot;</span><span class="p">,</span><span class="w">
         </span><span class="nt">&quot;known_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="w">
-    </span><span class="p" data-group-id="8788770737-2">}</span><span class="w">
-</span><span class="p" data-group-id="8788770737-1">}</span></code></pre><p>Note that the devices belonging to the group are evaluated when the trigger is installed, <em>i.e.</em> if
+    </span><span class="p" data-group-id="9469284868-2">}</span><span class="w">
+</span><span class="p" data-group-id="9469284868-1">}</span></code></pre><p>Note that the devices belonging to the group are evaluated when the trigger is installed, <em>i.e.</em> if
 a device is added to the group when the trigger is already installed, the trigger will not target
 the newly added device. The same goes for devices removed from the group, that will still be
 targeted by the trigger until it is removed.</p><h2 id="authorization" class="section-heading">
