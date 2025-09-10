@@ -39,7 +39,8 @@ var NAVTREE =
         [ "spdlog", "index.html#autotoc_md10", null ]
       ] ],
       [ "Get started with the samples", "index.html#autotoc_md11", null ],
-      [ "Importing the library in an external project", "index.html#autotoc_md12", null ]
+      [ "Importing the library in an external project", "index.html#autotoc_md12", null ],
+      [ "Conan integration", "index.html#autotoc_md13", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
