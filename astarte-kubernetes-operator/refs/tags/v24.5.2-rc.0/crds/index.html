@@ -1,0 +1,5318 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+	<meta name="generator" content="Hugo 0.139.2">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  API Reference
+  #
+
+
+  Packages
+  #
+
+
+
+  api.astarte-platform.org/v1alpha2
+
+  api.astarte-platform.org/v1alpha3
+
+  ingress.astarte-platform.org/v1alpha1
+
+
+  api.astarte-platform.org/v1alpha2
+  #
+
+Package v1alpha2 contains API Schema definitions for the api v1alpha2 API group
+
+  Resource Types
+  #
+
+
+
+  Astarte
+
+  AstarteList
+
+  Flow
+
+  FlowList
+
+
+  Astarte
+  #
+
+Astarte is the Schema for the astartes API
+Appears in:
+
+
+  AstarteList
+
+
+  
+      
+          Field
+          Description
+      
+  
+  
+      
+          apiVersion string
+          api.astarte-platform.org/v1alpha2
+      
+      
+          kind string
+          Astarte
+      
+      
+          metadata 
+  ObjectMeta
+          Refer to Kubernetes API documentation for fields of metadata.
+      
+      
+          spec 
+  AstarteSpec
+          
+      
+      
+          status 
+  AstarteStatus
+          
+      
+  
+
+
+  AstarteAPISpec
+  #
+
+Appears in:
+
+
+  AstarteSpec
+
+
+  
+      
+          Field
+          Description
+      
+  
+  
+      
+          ssl boolean
+          
+      
+      
+          host string
+          
+      
+  
+
+
+  AstarteAppengineAPISpec
+  #
+
+Appears in:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://docs.astarte-platform.org/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/">
+  <meta property="og:site_name" content="Astarte Kubernetes Operator APIs">
+  <meta property="og:title" content="Astarte Kubernetes Operator APIs">
+  <meta property="og:description" content="API Reference # Packages # api.astarte-platform.org/v1alpha2 api.astarte-platform.org/v1alpha3 ingress.astarte-platform.org/v1alpha1 api.astarte-platform.org/v1alpha2 # Package v1alpha2 contains API Schema definitions for the api v1alpha2 API group
+Resource Types # Astarte AstarteList Flow FlowList Astarte # Astarte is the Schema for the astartes API
+Appears in:
+AstarteList Field Description apiVersion string api.astarte-platform.org/v1alpha2 kind string Astarte metadata ObjectMeta Refer to Kubernetes API documentation for fields of metadata. spec AstarteSpec status AstarteStatus AstarteAPISpec # Appears in:
+AstarteSpec Field Description ssl boolean host string AstarteAppengineAPISpec # Appears in:">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+<title> | Astarte Kubernetes Operator APIs</title>
+<link rel="icon" href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/favicon.png" >
+<link rel="manifest" href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/manifest.json">
+<link rel="canonical" href="https://docs.astarte-platform.org/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/">
+<link rel="stylesheet" href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/book.min.434035e7885c7f5d12818bd9f111cf1a0925c6fb78382667381c3d5eda3fb4f1.css" integrity="sha256-Q0A154hcf10SgYvZ8RHPGgklxvt4OCZnOBw9Xto/tPE=" crossorigin="anonymous">
+  <script defer src="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/fuse.min.js"></script>
+  <script defer src="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/en.search.min.dbb059e71bca3c2e5f07fbb40dca959224e023eb7fa9df855063ea361ae87794.js" integrity="sha256-27BZ5xvKPC5fB/u0DcqVkiTgI&#43;t/qd&#43;FUGPqNhrod5Q=" crossorigin="anonymous"></script>
+
+  <script defer src="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/sw.min.a174ebcb4e614fa38e85a61dd5e0d36b17f2517cd595c0a8ccf129d6f747231d.js" integrity="sha256-oXTry05hT6OOhaYd1eDTaxfyUXzVlcCozPEp1vdHIx0=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://docs.astarte-platform.org/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/index.xml" title="Astarte Kubernetes Operator APIs" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/"><span>Astarte Kubernetes Operator APIs</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://github.com/astarte-platform/astarte-kubernetes-operator"  target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3></h3>
+
+  <label for="toc-control">
+    
+    <img src="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#api-reference">API Reference</a>
+      <ul>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#apiastarte-platformorgv1alpha2">api.astarte-platform.org/v1alpha2</a>
+          <ul>
+            <li><a href="#resource-types">Resource Types</a></li>
+          </ul>
+        </li>
+        <li><a href="#apiastarte-platformorgv1alpha3">api.astarte-platform.org/v1alpha3</a>
+          <ul>
+            <li><a href="#resource-types-1">Resource Types</a></li>
+          </ul>
+        </li>
+        <li><a href="#ingressastarte-platformorgv1alpha1">ingress.astarte-platform.org/v1alpha1</a>
+          <ul>
+            <li><a href="#resource-types-2">Resource Types</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="api-reference">
+  API Reference
+  <a class="anchor" href="#api-reference">#</a>
+</h1>
+<h2 id="packages">
+  Packages
+  <a class="anchor" href="#packages">#</a>
+</h2>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#apiastarte-platformorgv1alpha2">api.astarte-platform.org/v1alpha2</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#apiastarte-platformorgv1alpha3">api.astarte-platform.org/v1alpha3</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#ingressastarte-platformorgv1alpha1">ingress.astarte-platform.org/v1alpha1</a></li>
+</ul>
+<h2 id="apiastarte-platformorgv1alpha2">
+  api.astarte-platform.org/v1alpha2
+  <a class="anchor" href="#apiastarte-platformorgv1alpha2">#</a>
+</h2>
+<p>Package v1alpha2 contains API Schema definitions for the api v1alpha2 API group</p>
+<h3 id="resource-types">
+  Resource Types
+  <a class="anchor" href="#resource-types">#</a>
+</h3>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarte">Astarte</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartelist">AstarteList</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flow">Flow</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flowlist">FlowList</a></li>
+</ul>
+<h4 id="astarte">
+  Astarte
+  <a class="anchor" href="#astarte">#</a>
+</h4>
+<p>Astarte is the Schema for the astartes API</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartelist">AstarteList</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>apiVersion</code> <em>string</em></td>
+          <td><code>api.astarte-platform.org/v1alpha2</code></td>
+      </tr>
+      <tr>
+          <td><code>kind</code> <em>string</em></td>
+          <td><code>Astarte</code></td>
+      </tr>
+      <tr>
+          <td><code>metadata</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#objectmeta-v1-meta">ObjectMeta</a></em></td>
+          <td>Refer to Kubernetes API documentation for fields of <code>metadata</code>.</td>
+      </tr>
+      <tr>
+          <td><code>spec</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartespec">AstarteSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>status</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartestatus">AstarteStatus</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astarteapispec">
+  AstarteAPISpec
+  <a class="anchor" href="#astarteapispec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartespec">AstarteSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>ssl</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>host</code> <em>string</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astarteappengineapispec">
+  AstarteAppengineAPISpec
+  <a class="anchor" href="#astarteappengineapispec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecomponentsspec">AstarteComponentsSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>replicas</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>antiAffinity</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customAffinity</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#affinity-v1-core">Affinity</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deploymentStrategy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>additionalEnv</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envvar-v1-core">EnvVar</a> array</em></td>
+          <td>Additional environment variables for this Component</td>
+      </tr>
+      <tr>
+          <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>autoscaler</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
+          <td>Autoscaling resources for this deployment/statefulset. If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+      </tr>
+      <tr>
+          <td><code>priorityClass</code> <em>string</em></td>
+          <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+      </tr>
+      <tr>
+          <td><code>disableAuthentication</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>maxResultsLimit</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>roomEventsQueueName</code> <em>string</em></td>
+          <td>Configures the name of the Room Events queue. Should be configured only in installations with a highly customized RabbitMQ. It is advised to leave empty unless you know exactly what you&rsquo;re doing.</td>
+      </tr>
+      <tr>
+          <td><code>roomEventsExchangeName</code> <em>string</em></td>
+          <td>Configures the name of the Room Events exchange. Should be configured only in installations with a highly customized RabbitMQ. It is advised to leave empty unless you know exactly what you&rsquo;re doing.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecfsslcarootconfigsigningcaconstraintspec">
+  AstarteCFSSLCARootConfigSigningCAConstraintSpec
+  <a class="anchor" href="#astartecfsslcarootconfigsigningcaconstraintspec">#</a>
+</h4>
+<p><em>Underlying type:</em> <em>
+  <a href="#struct%7bk8sioapimachinerypkgapismetav1typemeta-%22json:%5c%22,inline%5c%22%22;-maxpathlen-int-%22json:%5c%22max_path_len%5c%22%22;-isca-bool-%22json:%5c%22is_ca%5c%22%22;-maxpathlenzero-bool-%22json:%5c%22max_path_len_zero%5c%22%22%7d">struct{k8s.io/apimachinery/pkg/apis/meta/v1.TypeMeta &ldquo;json:&quot;,inline&quot;&rdquo;; MaxPathLen int &ldquo;json:&quot;max_path_len&quot;&rdquo;; IsCA bool &ldquo;json:&quot;is_ca&quot;&rdquo;; MaxPathLenZero bool &ldquo;json:&quot;max_path_len_zero&quot;&rdquo;}</a></em></p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcarootconfigsigningdefaultspec">AstarteCFSSLCARootConfigSigningDefaultSpec</a></li>
+</ul>
+<h4 id="astartecfsslcarootconfigsigningdefaultspec">
+  AstarteCFSSLCARootConfigSigningDefaultSpec
+  <a class="anchor" href="#astartecfsslcarootconfigsigningdefaultspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcarootconfigsigningspec">AstarteCFSSLCARootConfigSigningSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>usages</code> <em>string array</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>expiry</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>ca_constraint</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcarootconfigsigningcaconstraintspec">AstarteCFSSLCARootConfigSigningCAConstraintSpec</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecfsslcarootconfigsigningspec">
+  AstarteCFSSLCARootConfigSigningSpec
+  <a class="anchor" href="#astartecfsslcarootconfigsigningspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcarootconfigspec">AstarteCFSSLCARootConfigSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>default</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcarootconfigsigningdefaultspec">AstarteCFSSLCARootConfigSigningDefaultSpec</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecfsslcarootconfigspec">
+  AstarteCFSSLCARootConfigSpec
+  <a class="anchor" href="#astartecfsslcarootconfigspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslspec">AstarteCFSSLSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>signing</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcarootconfigsigningspec">AstarteCFSSLCARootConfigSigningSpec</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecfsslcsrrootcacaspec">
+  AstarteCFSSLCSRRootCACASpec
+  <a class="anchor" href="#astartecfsslcsrrootcacaspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcsrrootcaspec">AstarteCFSSLCSRRootCASpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>expiry</code> <em>string</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecfsslcsrrootcakeyspec">
+  AstarteCFSSLCSRRootCAKeySpec
+  <a class="anchor" href="#astartecfsslcsrrootcakeyspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcsrrootcaspec">AstarteCFSSLCSRRootCASpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>algo</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>size</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecfsslcsrrootcanamesspec">
+  AstarteCFSSLCSRRootCANamesSpec
+  <a class="anchor" href="#astartecfsslcsrrootcanamesspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcsrrootcaspec">AstarteCFSSLCSRRootCASpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>C</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>L</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>O</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>OU</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>ST</code> <em>string</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecfsslcsrrootcaspec">
+  AstarteCFSSLCSRRootCASpec
+  <a class="anchor" href="#astartecfsslcsrrootcaspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslspec">AstarteCFSSLSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>CN</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>key</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcsrrootcakeyspec">AstarteCFSSLCSRRootCAKeySpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>names</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcsrrootcanamesspec">AstarteCFSSLCSRRootCANamesSpec</a> array</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>ca</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcsrrootcacaspec">AstarteCFSSLCSRRootCACASpec</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecfssldbconfigspec">
+  AstarteCFSSLDBConfigSpec
+  <a class="anchor" href="#astartecfssldbconfigspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslspec">AstarteCFSSLSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>driver</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>dataSource</code> <em>string</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecfsslspec">
+  AstarteCFSSLSpec
+  <a class="anchor" href="#astartecfsslspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartespec">AstarteSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>url</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>caExpiry</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>caSecret</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#localobjectreference-v1-core">LocalObjectReference</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>certificateExpiry</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>dbConfig</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfssldbconfigspec">AstarteCFSSLDBConfigSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>storage</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartepersistentstoragespec">AstartePersistentStorageSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>csrRootCa</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcsrrootcaspec">AstarteCFSSLCSRRootCASpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>caRootConfig</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcarootconfigspec">AstarteCFSSLCARootConfigSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>priorityClass</code> <em>string</em></td>
+          <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecassandraconnectionspec">
+  AstarteCassandraConnectionSpec
+  <a class="anchor" href="#astartecassandraconnectionspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecassandraspec">AstarteCassandraSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>poolSize</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>autodiscovery</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>sslConfiguration</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecassandrasslconfigurationspec">AstarteCassandraSSLConfigurationSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>secret</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#logincredentialssecret">LoginCredentialsSecret</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>username</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>password</code> <em>string</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecassandrasslconfigurationspec">
+  AstarteCassandraSSLConfigurationSpec
+  <a class="anchor" href="#astartecassandrasslconfigurationspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecassandraconnectionspec">AstarteCassandraConnectionSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>enabled</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customCASecret</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#localobjectreference-v1-core">LocalObjectReference</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>sni</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customSNI</code> <em>string</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecassandraspec">
+  AstarteCassandraSpec
+  <a class="anchor" href="#astartecassandraspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartespec">AstarteSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>replicas</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>antiAffinity</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customAffinity</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#affinity-v1-core">Affinity</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deploymentStrategy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>additionalEnv</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envvar-v1-core">EnvVar</a> array</em></td>
+          <td>Additional environment variables for this Component</td>
+      </tr>
+      <tr>
+          <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>autoscaler</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
+          <td>Autoscaling resources for this deployment/statefulset. If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+      </tr>
+      <tr>
+          <td><code>priorityClass</code> <em>string</em></td>
+          <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+      </tr>
+      <tr>
+          <td><code>nodes</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>maxHeapSize</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>heapNewSize</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>storage</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartepersistentstoragespec">AstartePersistentStorageSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>connection</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecassandraconnectionspec">AstarteCassandraConnectionSpec</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astarteclusterhealth">
+  AstarteClusterHealth
+  <a class="anchor" href="#astarteclusterhealth">#</a>
+</h4>
+<p><em>Underlying type:</em> <em>string</em></p>
+<p>AstarteClusterHealth represents the overall health of the cluster</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartestatus">AstarteStatus</a></li>
+</ul>
+<h4 id="astartecomponentsspec">
+  AstarteComponentsSpec
+  <a class="anchor" href="#astartecomponentsspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartespec">AstarteSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>flow</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericapispec">AstarteGenericAPISpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>housekeeping</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericcomponentspec">AstarteGenericComponentSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>realmManagement</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericcomponentspec">AstarteGenericComponentSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>pairing</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericcomponentspec">AstarteGenericComponentSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>dataUpdaterPlant</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedataupdaterplantspec">AstarteDataUpdaterPlantSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>appengineApi</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarteappengineapispec">AstarteAppengineAPISpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>triggerEngine</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartetriggerenginespec">AstarteTriggerEngineSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>dashboard</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedashboardspec">AstarteDashboardSpec</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartedashboardconfigauthspec">
+  AstarteDashboardConfigAuthSpec
+  <a class="anchor" href="#astartedashboardconfigauthspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedashboardconfigspec">AstarteDashboardConfigSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedashboardspec">AstarteDashboardSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>type</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>oauth_api_url</code> <em>string</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartedashboardconfigspec">
+  AstarteDashboardConfigSpec
+  <a class="anchor" href="#astartedashboardconfigspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedashboardspec">AstarteDashboardSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>realmManagementApiUrl</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>appEngineApiUrl</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>pairingApiUrl</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>flowApiUrl</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>defaultRealm</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>defaultAuth</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>auth</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedashboardconfigauthspec">AstarteDashboardConfigAuthSpec</a> array</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartedashboardspec">
+  AstarteDashboardSpec
+  <a class="anchor" href="#astartedashboardspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecomponentsspec">AstarteComponentsSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>replicas</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>antiAffinity</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customAffinity</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#affinity-v1-core">Affinity</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deploymentStrategy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>additionalEnv</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envvar-v1-core">EnvVar</a> array</em></td>
+          <td>Additional environment variables for this Component</td>
+      </tr>
+      <tr>
+          <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>autoscaler</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
+          <td>Autoscaling resources for this deployment/statefulset. If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+      </tr>
+      <tr>
+          <td><code>priorityClass</code> <em>string</em></td>
+          <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+      </tr>
+      <tr>
+          <td><code>realmManagementApiUrl</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>appEngineApiUrl</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>pairingApiUrl</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>flowApiUrl</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>defaultRealm</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>defaultAuth</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>auth</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedashboardconfigauthspec">AstarteDashboardConfigAuthSpec</a> array</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartedataupdaterplantspec">
+  AstarteDataUpdaterPlantSpec
+  <a class="anchor" href="#astartedataupdaterplantspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecomponentsspec">AstarteComponentsSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>replicas</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>antiAffinity</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customAffinity</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#affinity-v1-core">Affinity</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deploymentStrategy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>additionalEnv</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envvar-v1-core">EnvVar</a> array</em></td>
+          <td>Additional environment variables for this Component</td>
+      </tr>
+      <tr>
+          <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>autoscaler</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
+          <td>Autoscaling resources for this deployment/statefulset. If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+      </tr>
+      <tr>
+          <td><code>priorityClass</code> <em>string</em></td>
+          <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+      </tr>
+      <tr>
+          <td><code>dataQueueCount</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>prefetchCount</code> <em>integer</em></td>
+          <td>Controls the prefetch count for Data Updater Plant. When fine-tuning Astarte, this parameter can make a difference for what concerns Data Updater Plant ingestion performance. However, it can also degrade performance significantly and/or increase risk of data loss when misconfigured. Configure this value only if you know what you&rsquo;re doing and you have experience with RabbitMQ. Defaults to 300</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartefeatures">
+  AstarteFeatures
+  <a class="anchor" href="#astartefeatures">#</a>
+</h4>
+<p>AstarteFeatures enables/disables selectively a set of global features in Astarte</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartespec">AstarteSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>realmDeletion</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>autoscaling</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>astartePodPriorities</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartepodprioritiesspec">AstartePodPrioritiesSpec</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartegenericapispec">
+  AstarteGenericAPISpec
+  <a class="anchor" href="#astartegenericapispec">#</a>
+</h4>
+<p>AstarteGenericAPISpec represents a generic Astarte API Component in the Deployment spec</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarteappengineapispec">AstarteAppengineAPISpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecomponentsspec">AstarteComponentsSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericcomponentspec">AstarteGenericComponentSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>replicas</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>antiAffinity</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customAffinity</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#affinity-v1-core">Affinity</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deploymentStrategy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>additionalEnv</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envvar-v1-core">EnvVar</a> array</em></td>
+          <td>Additional environment variables for this Component</td>
+      </tr>
+      <tr>
+          <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>autoscaler</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
+          <td>Autoscaling resources for this deployment/statefulset. If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+      </tr>
+      <tr>
+          <td><code>priorityClass</code> <em>string</em></td>
+          <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+      </tr>
+      <tr>
+          <td><code>disableAuthentication</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartegenericclusteredresource">
+  AstarteGenericClusteredResource
+  <a class="anchor" href="#astartegenericclusteredresource">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarteappengineapispec">AstarteAppengineAPISpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecassandraspec">AstarteCassandraSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedashboardspec">AstarteDashboardSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedataupdaterplantspec">AstarteDataUpdaterPlantSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericapispec">AstarteGenericAPISpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericcomponentspec">AstarteGenericComponentSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarterabbitmqspec">AstarteRabbitMQSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartetriggerenginespec">AstarteTriggerEngineSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartevernemqspec">AstarteVerneMQSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>replicas</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>antiAffinity</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customAffinity</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#affinity-v1-core">Affinity</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deploymentStrategy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>additionalEnv</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envvar-v1-core">EnvVar</a> array</em></td>
+          <td>Additional environment variables for this Component</td>
+      </tr>
+      <tr>
+          <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>autoscaler</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
+          <td>Autoscaling resources for this deployment/statefulset. If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+      </tr>
+      <tr>
+          <td><code>priorityClass</code> <em>string</em></td>
+          <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartegenericclusteredresourceautoscalerspec">
+  AstarteGenericClusteredResourceAutoscalerSpec
+  <a class="anchor" href="#astartegenericclusteredresourceautoscalerspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarteappengineapispec">AstarteAppengineAPISpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecassandraspec">AstarteCassandraSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedashboardspec">AstarteDashboardSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedataupdaterplantspec">AstarteDataUpdaterPlantSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericapispec">AstarteGenericAPISpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresource">AstarteGenericClusteredResource</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarterabbitmqspec">AstarteRabbitMQSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartetriggerenginespec">AstarteTriggerEngineSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartevernemqspec">AstarteVerneMQSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>horizontal</code> <em>string</em></td>
+          <td>Name of the HorizontalPodAutoscaler for this deployment/statefulset. This will take precedence over the &ldquo;Replicas&rdquo; field of the parent Astarte component.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartegenericcomponentspec">
+  AstarteGenericComponentSpec
+  <a class="anchor" href="#astartegenericcomponentspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecomponentsspec">AstarteComponentsSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>api</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericapispec">AstarteGenericAPISpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>backend</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresource">AstarteGenericClusteredResource</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartelist">
+  AstarteList
+  <a class="anchor" href="#astartelist">#</a>
+</h4>
+<p>AstarteList contains a list of Astarte</p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>apiVersion</code> <em>string</em></td>
+          <td><code>api.astarte-platform.org/v1alpha2</code></td>
+      </tr>
+      <tr>
+          <td><code>kind</code> <em>string</em></td>
+          <td><code>AstarteList</code></td>
+      </tr>
+      <tr>
+          <td><code>metadata</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#listmeta-v1-meta">ListMeta</a></em></td>
+          <td>Refer to Kubernetes API documentation for fields of <code>metadata</code>.</td>
+      </tr>
+      <tr>
+          <td><code>items</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarte">Astarte</a> array</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartepersistentstoragespec">
+  AstartePersistentStorageSpec
+  <a class="anchor" href="#astartepersistentstoragespec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslspec">AstarteCFSSLSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecassandraspec">AstarteCassandraSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarterabbitmqspec">AstarteRabbitMQSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartevernemqspec">AstarteVerneMQSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>size</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#quantity">Quantity</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>className</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>volumeDefinition</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#volume-v1-core">Volume</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartepodprioritiesspec">
+  AstartePodPrioritiesSpec
+  <a class="anchor" href="#astartepodprioritiesspec">#</a>
+</h4>
+<p>AstartePodPriorities allows to set different priorityClasses for Astarte pods. Note that enabling this feature might generate some counter-intuitive scheduling beahaviour if not done properly.</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartefeatures">AstarteFeatures</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>enabled</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>astarteHighPriority</code> <em>integer</em></td>
+          <td>The value of the highest PriorityClass for Astarte pods. Once the value is set, updating it will not have effect.</td>
+      </tr>
+      <tr>
+          <td><code>astarteMidPriority</code> <em>integer</em></td>
+          <td>The value of the medium PriorityClass for Astarte pods. Once the value is set, updating it will not have effect.</td>
+      </tr>
+      <tr>
+          <td><code>astarteLowPriority</code> <em>integer</em></td>
+          <td>The value of the least PriorityClass for Astarte pods. Once the value is set, updating it will not have effect.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astarterabbitmqconnectionspec">
+  AstarteRabbitMQConnectionSpec
+  <a class="anchor" href="#astarterabbitmqconnectionspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarterabbitmqspec">AstarteRabbitMQSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>host</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>port</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>username</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>password</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>virtualHost</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>sslConfiguration</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarterabbitmqsslconfigurationspec">AstarteRabbitMQSSLConfigurationSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>secret</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#logincredentialssecret">LoginCredentialsSecret</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astarterabbitmqsslconfigurationspec">
+  AstarteRabbitMQSSLConfigurationSpec
+  <a class="anchor" href="#astarterabbitmqsslconfigurationspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarterabbitmqconnectionspec">AstarteRabbitMQConnectionSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>enabled</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customCASecret</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#localobjectreference-v1-core">LocalObjectReference</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>sni</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customSNI</code> <em>string</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astarterabbitmqspec">
+  AstarteRabbitMQSpec
+  <a class="anchor" href="#astarterabbitmqspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartespec">AstarteSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>replicas</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>antiAffinity</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customAffinity</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#affinity-v1-core">Affinity</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deploymentStrategy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>additionalEnv</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envvar-v1-core">EnvVar</a> array</em></td>
+          <td>Additional environment variables for this Component</td>
+      </tr>
+      <tr>
+          <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>autoscaler</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
+          <td>Autoscaling resources for this deployment/statefulset. If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+      </tr>
+      <tr>
+          <td><code>priorityClass</code> <em>string</em></td>
+          <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+      </tr>
+      <tr>
+          <td><code>connection</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarterabbitmqconnectionspec">AstarteRabbitMQConnectionSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>storage</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartepersistentstoragespec">AstartePersistentStorageSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>additionalPlugins</code> <em>string array</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>dataQueuesPrefix</code> <em>string</em></td>
+          <td>Configures the data queues prefix on RabbitMQ. You should change this setting only in custom RabbitMQ installations.</td>
+      </tr>
+      <tr>
+          <td><code>eventsExchangeName</code> <em>string</em></td>
+          <td>Configures the events exchange name on RabbitMQ. You should change this setting only in custom RabbitMQ installations.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartespec">
+  AstarteSpec
+  <a class="anchor" href="#astartespec">#</a>
+</h4>
+<p>AstarteSpec defines the desired state of Astarte</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarte">Astarte</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td>The Astarte Version for this Resource</td>
+      </tr>
+      <tr>
+          <td><code>imagePullPolicy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#pullpolicy-v1-core">PullPolicy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>imagePullSecrets</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#localobjectreference-v1-core">LocalObjectReference</a> array</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>distributionChannel</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deploymentStrategy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>features</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartefeatures">AstarteFeatures</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>rbac</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>storageClassName</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>api</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarteapispec">AstarteAPISpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>rabbitmq</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarterabbitmqspec">AstarteRabbitMQSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>cassandra</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecassandraspec">AstarteCassandraSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>vernemq</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartevernemqspec">AstarteVerneMQSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>cfssl</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslspec">AstarteCFSSLSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>components</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecomponentsspec">AstarteComponentsSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>astarteSystemKeyspace</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartesystemkeyspacespec">AstarteSystemKeyspaceSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>astarteInstanceID</code> <em>string</em></td>
+          <td>AstarteInstanceID is the unique ID that is associated with an Astarte instance. This parameter is used to let different Astarte instances employ a shared database infrastructure. Once set, the AstarteInstanceID cannot be changed. Defaults to &ldquo;&rdquo;.</td>
+      </tr>
+      <tr>
+          <td><code>manualMaintenanceMode</code> <em>boolean</em></td>
+          <td>ManualMaintenanceMode pauses all reconciliation activities but still computes the resource status. It should be used only when the managed Astarte resources requires manual intervention and the Operator cannot break out of the problem by itself. Do not set this field unless you know exactly what you are doing.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartestatus">
+  AstarteStatus
+  <a class="anchor" href="#astartestatus">#</a>
+</h4>
+<p>AstarteStatus defines the observed state of Astarte</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarte">Astarte</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>phase</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#reconciliationphase">ReconciliationPhase</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>astarteVersion</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>operatorVersion</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>health</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarteclusterhealth">AstarteClusterHealth</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>baseAPIURL</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>brokerURL</code> <em>string</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartesystemkeyspacespec">
+  AstarteSystemKeyspaceSpec
+  <a class="anchor" href="#astartesystemkeyspacespec">#</a>
+</h4>
+<p>astarteSystemKeyspace configures the main system keyspace for Astarte. As of now, these settings have effect only upon cluster initialization, and will be ignored otherwise.</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartespec">AstarteSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>replicationFactor</code> <em>integer</em></td>
+          <td>The Replication Factor for the keyspace</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartetriggerenginespec">
+  AstarteTriggerEngineSpec
+  <a class="anchor" href="#astartetriggerenginespec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecomponentsspec">AstarteComponentsSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>replicas</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>antiAffinity</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customAffinity</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#affinity-v1-core">Affinity</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deploymentStrategy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>additionalEnv</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envvar-v1-core">EnvVar</a> array</em></td>
+          <td>Additional environment variables for this Component</td>
+      </tr>
+      <tr>
+          <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>autoscaler</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
+          <td>Autoscaling resources for this deployment/statefulset. If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+      </tr>
+      <tr>
+          <td><code>priorityClass</code> <em>string</em></td>
+          <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+      </tr>
+      <tr>
+          <td><code>eventsQueueName</code> <em>string</em></td>
+          <td>Configures the name of the Events queue. Should be configured only in installations with a highly customized RabbitMQ. It is advised to leave empty unless you know exactly what you&rsquo;re doing.</td>
+      </tr>
+      <tr>
+          <td><code>eventsRoutingKey</code> <em>string</em></td>
+          <td>Configures the routing key for Trigger Events. Should be configured only in installations with a highly customized RabbitMQ and a custom Trigger Engine setup. It is advised to leave empty unless you know exactly what you&rsquo;re doing, misconfiguring this value can cause heavy breakage within Trigger Engine.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartevernemqspec">
+  AstarteVerneMQSpec
+  <a class="anchor" href="#astartevernemqspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartespec">AstarteSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>replicas</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>antiAffinity</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customAffinity</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#affinity-v1-core">Affinity</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deploymentStrategy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>additionalEnv</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envvar-v1-core">EnvVar</a> array</em></td>
+          <td>Additional environment variables for this Component</td>
+      </tr>
+      <tr>
+          <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>autoscaler</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
+          <td>Autoscaling resources for this deployment/statefulset. If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+      </tr>
+      <tr>
+          <td><code>priorityClass</code> <em>string</em></td>
+          <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+      </tr>
+      <tr>
+          <td><code>host</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>port</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>caSecret</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>storage</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartepersistentstoragespec">AstartePersistentStorageSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deviceHeartbeatSeconds</code> <em>integer</em></td>
+          <td>Controls the device heartbeat from the broker to Astarte. The heartbeat is sent periodically to prevent Astarte from keeping up stale connections from Devices in case the broker misbehaves and does not send disconnection events. You should usually not tweak this value. Moreover, keep in mind that when a lot of devices are connected simultaneously, having a short heartbeat time might cause performance issues. Defaults to an hour.</td>
+      </tr>
+      <tr>
+          <td><code>maxOfflineMessages</code> <em>integer</em></td>
+          <td>The maximum number of QoS 1 or 2 messages to hold in the offline queue. Defaults to 1000000. Set to -1 for no maximum (not recommended). Set to 0 if no messages should be stored offline.</td>
+      </tr>
+      <tr>
+          <td><code>persistentClientExpiration</code> <em>string</em></td>
+          <td>This option allows persistent clients ( = clean session set to false) to be removed if they do not reconnect within &lsquo;persistent_client_expiration&rsquo;. This is a non-standard option. As far as the MQTT specification is concerned, persistent clients persist forever. The expiration period should be an integer followed by one of &rsquo;d&rsquo;, &lsquo;w&rsquo;, &rsquo;m&rsquo;, &lsquo;y&rsquo; for day, week, month, and year. Default: 1 year</td>
+      </tr>
+      <tr>
+          <td><code>mirrorQueue</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>sslListener</code> <em>boolean</em></td>
+          <td>This option allows, when true, to handle SSL termination at VerneMQ level. Default: false</td>
+      </tr>
+      <tr>
+          <td><code>sslListenerCertSecretName</code> <em>string</em></td>
+          <td>Reference the name of the secret containing the TLS certificate for VerneMQ. The secret must be present in the same namespace in which Astarte resides. The field will be used only if SSLListener is set to true.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="blockworker">
+  BlockWorker
+  <a class="anchor" href="#blockworker">#</a>
+</h4>
+<p>BlockWorker defines a Worker for a Container Block</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#containerblockspec">ContainerBlockSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>id</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>dataProvider</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#dataprovider">DataProvider</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="containerblockspec">
+  ContainerBlockSpec
+  <a class="anchor" href="#containerblockspec">#</a>
+</h4>
+<p>ContainerBlockSpec defines a Container Block in a Flow</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flowspec">FlowSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>id</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>imagePullSecrets</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#localobjectreference-v1-core">LocalObjectReference</a> array</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>environment</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envvar-v1-core">EnvVar</a> array</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>config</code> <em>string</em></td>
+          <td>Configuration represents the JSON string carrying the user configuration for this block</td>
+      </tr>
+      <tr>
+          <td><code>workers</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#blockworker">BlockWorker</a> array</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="dataprovider">
+  DataProvider
+  <a class="anchor" href="#dataprovider">#</a>
+</h4>
+<p>DataProvider is a struct which defines which Data Providers (e.g. Brokers) are available for a Worker</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#blockworker">BlockWorker</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>rabbitmq</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#rabbitmqdataprovider">RabbitMQDataProvider</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="flow">
+  Flow
+  <a class="anchor" href="#flow">#</a>
+</h4>
+<p>Flow is the Schema for the flows API</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flowlist">FlowList</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>apiVersion</code> <em>string</em></td>
+          <td><code>api.astarte-platform.org/v1alpha2</code></td>
+      </tr>
+      <tr>
+          <td><code>kind</code> <em>string</em></td>
+          <td><code>Flow</code></td>
+      </tr>
+      <tr>
+          <td><code>metadata</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#objectmeta-v1-meta">ObjectMeta</a></em></td>
+          <td>Refer to Kubernetes API documentation for fields of <code>metadata</code>.</td>
+      </tr>
+      <tr>
+          <td><code>spec</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flowspec">FlowSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>status</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flowstatus">FlowStatus</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="flowlist">
+  FlowList
+  <a class="anchor" href="#flowlist">#</a>
+</h4>
+<p>FlowList contains a list of Flow</p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>apiVersion</code> <em>string</em></td>
+          <td><code>api.astarte-platform.org/v1alpha2</code></td>
+      </tr>
+      <tr>
+          <td><code>kind</code> <em>string</em></td>
+          <td><code>FlowList</code></td>
+      </tr>
+      <tr>
+          <td><code>metadata</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#listmeta-v1-meta">ListMeta</a></em></td>
+          <td>Refer to Kubernetes API documentation for fields of <code>metadata</code>.</td>
+      </tr>
+      <tr>
+          <td><code>items</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flow">Flow</a> array</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="flowspec">
+  FlowSpec
+  <a class="anchor" href="#flowspec">#</a>
+</h4>
+<p>FlowSpec defines the desired state of Flow</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flow">Flow</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>astarte</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#localobjectreference-v1-core">LocalObjectReference</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>astarteRealm</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>nativeBlocks</code> <em>integer</em></td>
+          <td>Defines the amount of non-container blocks in the Flow</td>
+      </tr>
+      <tr>
+          <td><code>nativeBlocksResources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcelist-v1-core">ResourceList</a></em></td>
+          <td>Defines the overall resources consumed by Native Blocks</td>
+      </tr>
+      <tr>
+          <td><code>flowPool</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#localobjectreference-v1-core">LocalObjectReference</a></em></td>
+          <td>EE Only: Defines the Flow Pool in which the Flow will be allocated.</td>
+      </tr>
+      <tr>
+          <td><code>blocks</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#containerblockspec">ContainerBlockSpec</a> array</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="flowstate">
+  FlowState
+  <a class="anchor" href="#flowstate">#</a>
+</h4>
+<p><em>Underlying type:</em> <em>string</em></p>
+<p>FlowState describes the global state of a Flow</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flowstatus">FlowStatus</a></li>
+</ul>
+<h4 id="flowstatus">
+  FlowStatus
+  <a class="anchor" href="#flowstatus">#</a>
+</h4>
+<p>FlowStatus defines the observed state of Flow</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flow">Flow</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>state</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flowstate">FlowState</a></em></td>
+          <td>State defines the overall state of the Flow</td>
+      </tr>
+      <tr>
+          <td><code>totalContainerBlocks</code> <em>integer</em></td>
+          <td>Represents the total number of the Container Blocks in the Flow</td>
+      </tr>
+      <tr>
+          <td><code>readyContainerBlocks</code> <em>integer</em></td>
+          <td>Represents the total number of Ready Container Blocks in the Flow. In a healthy Flow, this matches the number of Total Container Blocks.</td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcelist-v1-core">ResourceList</a></em></td>
+          <td>The overall resources allocated in the cluster for this Block</td>
+      </tr>
+      <tr>
+          <td><code>failingContainerBlocks</code> <em>integer</em></td>
+          <td>Represents the total number of Container Blocks with non temporary failures. Present only if any of the Blocks is in such state. When present, manual intervention is most likely required.</td>
+      </tr>
+      <tr>
+          <td><code>unrecoverableFailures</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#containerstate-v1-core">ContainerState</a> array</em></td>
+          <td>UnrecoverableFailures lists all the ContainerStates of failing containers, for further inspection.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="logincredentialssecret">
+  LoginCredentialsSecret
+  <a class="anchor" href="#logincredentialssecret">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecassandraconnectionspec">AstarteCassandraConnectionSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarterabbitmqconnectionspec">AstarteRabbitMQConnectionSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>name</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>usernameKey</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>passwordKey</code> <em>string</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="rabbitmqconfig">
+  RabbitMQConfig
+  <a class="anchor" href="#rabbitmqconfig">#</a>
+</h4>
+<p><em>Underlying type:</em> <em>
+  <a href="#struct%7bk8sioapimachinerypkgapismetav1typemeta-%22json:%5c%22,inline%5c%22%22;-host-string-%22json:%5c%22host%5c%22%22;-port-int16-%22json:%5c%22port,omitempty%5c%22%22;-ssl-*bool-%22json:%5c%22ssl,omitempty%5c%22%22;-username-string-%22json:%5c%22username%5c%22%22;-password-string-%22json:%5c%22password%5c%22%22%7d">struct{k8s.io/apimachinery/pkg/apis/meta/v1.TypeMeta &ldquo;json:&quot;,inline&quot;&rdquo;; Host string &ldquo;json:&quot;host&quot;&rdquo;; Port int16 &ldquo;json:&quot;port,omitempty&quot;&rdquo;; SSL *bool &ldquo;json:&quot;ssl,omitempty&quot;&rdquo;; Username string &ldquo;json:&quot;username&quot;&rdquo;; Password string &ldquo;json:&quot;password&quot;&rdquo;}</a></em></p>
+<p>RabbitMQConfig represents configuration for RabbitMQ</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#rabbitmqdataprovider">RabbitMQDataProvider</a></li>
+</ul>
+<h4 id="rabbitmqdataprovider">
+  RabbitMQDataProvider
+  <a class="anchor" href="#rabbitmqdataprovider">#</a>
+</h4>
+<p>RabbitMQDataProvider is a representation of a Data Provider based upon RabbitMQ</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#dataprovider">DataProvider</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>queues</code> <em>string array</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>exchange</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#rabbitmqexchange">RabbitMQExchange</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>rabbitmq</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#rabbitmqconfig">RabbitMQConfig</a></em></td>
+          <td>RabbitMQConfig is an optional field which allows to specify configuration for an external RabbitMQ broker. If not specified, Astarte&rsquo;s main Broker will be used.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="rabbitmqexchange">
+  RabbitMQExchange
+  <a class="anchor" href="#rabbitmqexchange">#</a>
+</h4>
+<p><em>Underlying type:</em> <em>
+  <a href="#struct%7bk8sioapimachinerypkgapismetav1typemeta-%22json:%5c%22,inline%5c%22%22;-name-string-%22json:%5c%22name%5c%22%22;-routingkey-string-%22json:%5c%22routingkey%5c%22%22%7d">struct{k8s.io/apimachinery/pkg/apis/meta/v1.TypeMeta &ldquo;json:&quot;,inline&quot;&rdquo;; Name string &ldquo;json:&quot;name&quot;&rdquo;; RoutingKey string &ldquo;json:&quot;routingKey&quot;&rdquo;}</a></em></p>
+<p>RabbitMQExchange is a representation of a RabbitMQ Exchange</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#rabbitmqdataprovider">RabbitMQDataProvider</a></li>
+</ul>
+<h4 id="reconciliationphase">
+  ReconciliationPhase
+  <a class="anchor" href="#reconciliationphase">#</a>
+</h4>
+<p><em>Underlying type:</em> <em>string</em></p>
+<p>ReconciliationPhase describes the reconciliation phase the Resource is in</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartestatus">AstarteStatus</a></li>
+</ul>
+<h2 id="apiastarte-platformorgv1alpha3">
+  api.astarte-platform.org/v1alpha3
+  <a class="anchor" href="#apiastarte-platformorgv1alpha3">#</a>
+</h2>
+<p>Package v1alpha3 contains API Schema definitions for the api v1alpha3 API group</p>
+<h3 id="resource-types-1">
+  Resource Types
+  <a class="anchor" href="#resource-types-1">#</a>
+</h3>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarte">Astarte</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartelist">AstarteList</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flow">Flow</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flowlist">FlowList</a></li>
+</ul>
+<h4 id="astarte-1">
+  Astarte
+  <a class="anchor" href="#astarte-1">#</a>
+</h4>
+<p>Astarte is the Schema for the astartes API</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartelist">AstarteList</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>apiVersion</code> <em>string</em></td>
+          <td><code>api.astarte-platform.org/v1alpha3</code></td>
+      </tr>
+      <tr>
+          <td><code>kind</code> <em>string</em></td>
+          <td><code>Astarte</code></td>
+      </tr>
+      <tr>
+          <td><code>metadata</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#objectmeta-v1-meta">ObjectMeta</a></em></td>
+          <td>Refer to Kubernetes API documentation for fields of <code>metadata</code>.</td>
+      </tr>
+      <tr>
+          <td><code>spec</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartespec">AstarteSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>status</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartestatus">AstarteStatus</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astarteapispec-1">
+  AstarteAPISpec
+  <a class="anchor" href="#astarteapispec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartespec">AstarteSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>ssl</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>host</code> <em>string</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astarteappengineapispec-1">
+  AstarteAppengineAPISpec
+  <a class="anchor" href="#astarteappengineapispec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecomponentsspec">AstarteComponentsSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>replicas</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>antiAffinity</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customAffinity</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#affinity-v1-core">Affinity</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deploymentStrategy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>additionalEnv</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envvar-v1-core">EnvVar</a> array</em></td>
+          <td>Additional environment variables for this Component</td>
+      </tr>
+      <tr>
+          <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>autoscaler</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
+          <td>Autoscaling resources for this deployment/statefulset. If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+      </tr>
+      <tr>
+          <td><code>priorityClass</code> <em>string</em></td>
+          <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+      </tr>
+      <tr>
+          <td><code>disableAuthentication</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>maxResultsLimit</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>roomEventsQueueName</code> <em>string</em></td>
+          <td>Configures the name of the Room Events queue. Should be configured only in installations with a highly customized RabbitMQ. It is advised to leave empty unless you know exactly what you&rsquo;re doing.</td>
+      </tr>
+      <tr>
+          <td><code>roomEventsExchangeName</code> <em>string</em></td>
+          <td>Configures the name of the Room Events exchange. Should be configured only in installations with a highly customized RabbitMQ. It is advised to leave empty unless you know exactly what you&rsquo;re doing.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecfsslcarootconfigsigningcaconstraintspec-1">
+  AstarteCFSSLCARootConfigSigningCAConstraintSpec
+  <a class="anchor" href="#astartecfsslcarootconfigsigningcaconstraintspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcarootconfigsigningdefaultspec">AstarteCFSSLCARootConfigSigningDefaultSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>max_path_len</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>is_ca</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>max_path_len_zero</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecfsslcarootconfigsigningdefaultspec-1">
+  AstarteCFSSLCARootConfigSigningDefaultSpec
+  <a class="anchor" href="#astartecfsslcarootconfigsigningdefaultspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcarootconfigsigningspec">AstarteCFSSLCARootConfigSigningSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>usages</code> <em>string array</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>expiry</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>ca_constraint</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcarootconfigsigningcaconstraintspec">AstarteCFSSLCARootConfigSigningCAConstraintSpec</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecfsslcarootconfigsigningspec-1">
+  AstarteCFSSLCARootConfigSigningSpec
+  <a class="anchor" href="#astartecfsslcarootconfigsigningspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcarootconfigspec">AstarteCFSSLCARootConfigSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>default</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcarootconfigsigningdefaultspec">AstarteCFSSLCARootConfigSigningDefaultSpec</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecfsslcarootconfigspec-1">
+  AstarteCFSSLCARootConfigSpec
+  <a class="anchor" href="#astartecfsslcarootconfigspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslspec">AstarteCFSSLSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>signing</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcarootconfigsigningspec">AstarteCFSSLCARootConfigSigningSpec</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecfsslcsrrootcacaspec-1">
+  AstarteCFSSLCSRRootCACASpec
+  <a class="anchor" href="#astartecfsslcsrrootcacaspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcsrrootcaspec">AstarteCFSSLCSRRootCASpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>expiry</code> <em>string</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecfsslcsrrootcakeyspec-1">
+  AstarteCFSSLCSRRootCAKeySpec
+  <a class="anchor" href="#astartecfsslcsrrootcakeyspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcsrrootcaspec">AstarteCFSSLCSRRootCASpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>algo</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>size</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecfsslcsrrootcanamesspec-1">
+  AstarteCFSSLCSRRootCANamesSpec
+  <a class="anchor" href="#astartecfsslcsrrootcanamesspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcsrrootcaspec">AstarteCFSSLCSRRootCASpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>C</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>L</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>O</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>OU</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>ST</code> <em>string</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecfsslcsrrootcaspec-1">
+  AstarteCFSSLCSRRootCASpec
+  <a class="anchor" href="#astartecfsslcsrrootcaspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslspec">AstarteCFSSLSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>CN</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>key</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcsrrootcakeyspec">AstarteCFSSLCSRRootCAKeySpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>names</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcsrrootcanamesspec">AstarteCFSSLCSRRootCANamesSpec</a> array</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>ca</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcsrrootcacaspec">AstarteCFSSLCSRRootCACASpec</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecfssldbconfigspec-1">
+  AstarteCFSSLDBConfigSpec
+  <a class="anchor" href="#astartecfssldbconfigspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslspec">AstarteCFSSLSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>driver</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>dataSource</code> <em>string</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecfsslspec-1">
+  AstarteCFSSLSpec
+  <a class="anchor" href="#astartecfsslspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartespec">AstarteSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>url</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>caExpiry</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>caSecret</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#localobjectreference-v1-core">LocalObjectReference</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>certificateExpiry</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>dbConfig</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfssldbconfigspec">AstarteCFSSLDBConfigSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>storage</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartepersistentstoragespec">AstartePersistentStorageSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>csrRootCa</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcsrrootcaspec">AstarteCFSSLCSRRootCASpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>caRootConfig</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslcarootconfigspec">AstarteCFSSLCARootConfigSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>priorityClass</code> <em>string</em></td>
+          <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecassandraconnectionspec-1">
+  AstarteCassandraConnectionSpec
+  <a class="anchor" href="#astartecassandraconnectionspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecassandraspec">AstarteCassandraSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>poolSize</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>autodiscovery</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>sslConfiguration</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecassandrasslconfigurationspec">AstarteCassandraSSLConfigurationSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>secret</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#logincredentialssecret">LoginCredentialsSecret</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>username</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>password</code> <em>string</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecassandrasslconfigurationspec-1">
+  AstarteCassandraSSLConfigurationSpec
+  <a class="anchor" href="#astartecassandrasslconfigurationspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecassandraconnectionspec">AstarteCassandraConnectionSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>enable</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customCASecret</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#localobjectreference-v1-core">LocalObjectReference</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>sni</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customSNI</code> <em>string</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartecassandraspec-1">
+  AstarteCassandraSpec
+  <a class="anchor" href="#astartecassandraspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartespec">AstarteSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>replicas</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>antiAffinity</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customAffinity</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#affinity-v1-core">Affinity</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deploymentStrategy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>additionalEnv</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envvar-v1-core">EnvVar</a> array</em></td>
+          <td>Additional environment variables for this Component</td>
+      </tr>
+      <tr>
+          <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>autoscaler</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
+          <td>Autoscaling resources for this deployment/statefulset. If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+      </tr>
+      <tr>
+          <td><code>priorityClass</code> <em>string</em></td>
+          <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+      </tr>
+      <tr>
+          <td><code>nodes</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>maxHeapSize</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>heapNewSize</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>storage</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartepersistentstoragespec">AstartePersistentStorageSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>connection</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecassandraconnectionspec">AstarteCassandraConnectionSpec</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astarteclusterhealth-1">
+  AstarteClusterHealth
+  <a class="anchor" href="#astarteclusterhealth-1">#</a>
+</h4>
+<p><em>Underlying type:</em> <em>string</em></p>
+<p>AstarteClusterHealth represents the overall health of the cluster</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartestatus">AstarteStatus</a></li>
+</ul>
+<h4 id="astartecomponentsspec-1">
+  AstarteComponentsSpec
+  <a class="anchor" href="#astartecomponentsspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartespec">AstarteSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>flow</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericapispec">AstarteGenericAPISpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>housekeeping</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericcomponentspec">AstarteGenericComponentSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>realmManagement</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericcomponentspec">AstarteGenericComponentSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>pairing</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericcomponentspec">AstarteGenericComponentSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>dataUpdaterPlant</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedataupdaterplantspec">AstarteDataUpdaterPlantSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>appengineApi</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarteappengineapispec">AstarteAppengineAPISpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>triggerEngine</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartetriggerenginespec">AstarteTriggerEngineSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>dashboard</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedashboardspec">AstarteDashboardSpec</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartedashboardconfigauthspec-1">
+  AstarteDashboardConfigAuthSpec
+  <a class="anchor" href="#astartedashboardconfigauthspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedashboardconfigspec">AstarteDashboardConfigSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedashboardspec">AstarteDashboardSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>type</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>oauth_api_url</code> <em>string</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartedashboardconfigspec-1">
+  AstarteDashboardConfigSpec
+  <a class="anchor" href="#astartedashboardconfigspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedashboardspec">AstarteDashboardSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>realmManagementApiUrl</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>appEngineApiUrl</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>pairingApiUrl</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>flowApiUrl</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>defaultRealm</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>defaultAuth</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>auth</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedashboardconfigauthspec">AstarteDashboardConfigAuthSpec</a> array</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartedashboardspec-1">
+  AstarteDashboardSpec
+  <a class="anchor" href="#astartedashboardspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecomponentsspec">AstarteComponentsSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>replicas</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>antiAffinity</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customAffinity</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#affinity-v1-core">Affinity</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deploymentStrategy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>additionalEnv</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envvar-v1-core">EnvVar</a> array</em></td>
+          <td>Additional environment variables for this Component</td>
+      </tr>
+      <tr>
+          <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>autoscaler</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
+          <td>Autoscaling resources for this deployment/statefulset. If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+      </tr>
+      <tr>
+          <td><code>priorityClass</code> <em>string</em></td>
+          <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+      </tr>
+      <tr>
+          <td><code>realmManagementApiUrl</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>appEngineApiUrl</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>pairingApiUrl</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>flowApiUrl</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>defaultRealm</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>defaultAuth</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>auth</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedashboardconfigauthspec">AstarteDashboardConfigAuthSpec</a> array</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartedataupdaterplantspec-1">
+  AstarteDataUpdaterPlantSpec
+  <a class="anchor" href="#astartedataupdaterplantspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecomponentsspec">AstarteComponentsSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>replicas</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>antiAffinity</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customAffinity</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#affinity-v1-core">Affinity</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deploymentStrategy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>additionalEnv</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envvar-v1-core">EnvVar</a> array</em></td>
+          <td>Additional environment variables for this Component</td>
+      </tr>
+      <tr>
+          <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>autoscaler</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
+          <td>Autoscaling resources for this deployment/statefulset. If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+      </tr>
+      <tr>
+          <td><code>priorityClass</code> <em>string</em></td>
+          <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+      </tr>
+      <tr>
+          <td><code>dataQueueCount</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>prefetchCount</code> <em>integer</em></td>
+          <td>Controls the prefetch count for Data Updater Plant. When fine-tuning Astarte, this parameter can make a difference for what concerns Data Updater Plant ingestion performance. However, it can also degrade performance significantly and/or increase risk of data loss when misconfigured. Configure this value only if you know what you&rsquo;re doing and you have experience with RabbitMQ. Defaults to 300</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartefeatures-1">
+  AstarteFeatures
+  <a class="anchor" href="#astartefeatures-1">#</a>
+</h4>
+<p>AstarteFeatures enables/disables selectively a set of global features in Astarte</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartespec">AstarteSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>realmDeletion</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>autoscaling</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>astartePodPriorities</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartepodprioritiesspec">AstartePodPrioritiesSpec</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartegenericapispec-1">
+  AstarteGenericAPISpec
+  <a class="anchor" href="#astartegenericapispec-1">#</a>
+</h4>
+<p>AstarteGenericAPISpec represents a generic Astarte API Component in the Deployment spec</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarteappengineapispec">AstarteAppengineAPISpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecomponentsspec">AstarteComponentsSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericcomponentspec">AstarteGenericComponentSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>replicas</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>antiAffinity</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customAffinity</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#affinity-v1-core">Affinity</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deploymentStrategy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>additionalEnv</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envvar-v1-core">EnvVar</a> array</em></td>
+          <td>Additional environment variables for this Component</td>
+      </tr>
+      <tr>
+          <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>autoscaler</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
+          <td>Autoscaling resources for this deployment/statefulset. If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+      </tr>
+      <tr>
+          <td><code>priorityClass</code> <em>string</em></td>
+          <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+      </tr>
+      <tr>
+          <td><code>disableAuthentication</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartegenericclusteredresource-1">
+  AstarteGenericClusteredResource
+  <a class="anchor" href="#astartegenericclusteredresource-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarteappengineapispec">AstarteAppengineAPISpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecassandraspec">AstarteCassandraSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedashboardspec">AstarteDashboardSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedataupdaterplantspec">AstarteDataUpdaterPlantSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericapispec">AstarteGenericAPISpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericcomponentspec">AstarteGenericComponentSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarterabbitmqspec">AstarteRabbitMQSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartetriggerenginespec">AstarteTriggerEngineSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartevernemqspec">AstarteVerneMQSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>replicas</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>antiAffinity</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customAffinity</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#affinity-v1-core">Affinity</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deploymentStrategy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>additionalEnv</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envvar-v1-core">EnvVar</a> array</em></td>
+          <td>Additional environment variables for this Component</td>
+      </tr>
+      <tr>
+          <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>autoscaler</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
+          <td>Autoscaling resources for this deployment/statefulset. If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+      </tr>
+      <tr>
+          <td><code>priorityClass</code> <em>string</em></td>
+          <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartegenericclusteredresourceautoscalerspec-1">
+  AstarteGenericClusteredResourceAutoscalerSpec
+  <a class="anchor" href="#astartegenericclusteredresourceautoscalerspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarteappengineapispec">AstarteAppengineAPISpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecassandraspec">AstarteCassandraSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedashboardspec">AstarteDashboardSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedataupdaterplantspec">AstarteDataUpdaterPlantSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericapispec">AstarteGenericAPISpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresource">AstarteGenericClusteredResource</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarterabbitmqspec">AstarteRabbitMQSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartetriggerenginespec">AstarteTriggerEngineSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartevernemqspec">AstarteVerneMQSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>horizontal</code> <em>string</em></td>
+          <td>Name of the HorizontalPodAutoscaler for this deployment/statefulset. This will take precedence over the &ldquo;Replicas&rdquo; field of the parent Astarte component.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartegenericcomponentspec-1">
+  AstarteGenericComponentSpec
+  <a class="anchor" href="#astartegenericcomponentspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecomponentsspec">AstarteComponentsSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>api</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericapispec">AstarteGenericAPISpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>backend</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresource">AstarteGenericClusteredResource</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartelist-1">
+  AstarteList
+  <a class="anchor" href="#astartelist-1">#</a>
+</h4>
+<p>AstarteList contains a list of Astarte</p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>apiVersion</code> <em>string</em></td>
+          <td><code>api.astarte-platform.org/v1alpha3</code></td>
+      </tr>
+      <tr>
+          <td><code>kind</code> <em>string</em></td>
+          <td><code>AstarteList</code></td>
+      </tr>
+      <tr>
+          <td><code>metadata</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#listmeta-v1-meta">ListMeta</a></em></td>
+          <td>Refer to Kubernetes API documentation for fields of <code>metadata</code>.</td>
+      </tr>
+      <tr>
+          <td><code>items</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarte">Astarte</a> array</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartepersistentstoragespec-1">
+  AstartePersistentStorageSpec
+  <a class="anchor" href="#astartepersistentstoragespec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslspec">AstarteCFSSLSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecassandraspec">AstarteCassandraSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarterabbitmqspec">AstarteRabbitMQSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartevernemqspec">AstarteVerneMQSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>size</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#quantity">Quantity</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>className</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>volumeDefinition</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#volume-v1-core">Volume</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartepodprioritiesspec-1">
+  AstartePodPrioritiesSpec
+  <a class="anchor" href="#astartepodprioritiesspec-1">#</a>
+</h4>
+<p>AstartePodPriorities allows to set different priorityClasses for Astarte pods. Note that enabling this feature might generate some counter-intuitive scheduling beahaviour if not done properly.</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartefeatures">AstarteFeatures</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>enable</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>astarteHighPriority</code> <em>integer</em></td>
+          <td>The value of the highest PriorityClass for Astarte pods. Once the value is set, updating it will not have effect.</td>
+      </tr>
+      <tr>
+          <td><code>astarteMidPriority</code> <em>integer</em></td>
+          <td>The value of the medium PriorityClass for Astarte pods. Once the value is set, updating it will not have effect.</td>
+      </tr>
+      <tr>
+          <td><code>astarteLowPriority</code> <em>integer</em></td>
+          <td>The value of the least PriorityClass for Astarte pods. Once the value is set, updating it will not have effect.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astarterabbitmqconnectionspec-1">
+  AstarteRabbitMQConnectionSpec
+  <a class="anchor" href="#astarterabbitmqconnectionspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarterabbitmqspec">AstarteRabbitMQSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>host</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>port</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>username</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>password</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>virtualHost</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>sslConfiguration</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarterabbitmqsslconfigurationspec">AstarteRabbitMQSSLConfigurationSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>secret</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#logincredentialssecret">LoginCredentialsSecret</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astarterabbitmqsslconfigurationspec-1">
+  AstarteRabbitMQSSLConfigurationSpec
+  <a class="anchor" href="#astarterabbitmqsslconfigurationspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarterabbitmqconnectionspec">AstarteRabbitMQConnectionSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>enable</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customCASecret</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#localobjectreference-v1-core">LocalObjectReference</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>sni</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customSNI</code> <em>string</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astarterabbitmqspec-1">
+  AstarteRabbitMQSpec
+  <a class="anchor" href="#astarterabbitmqspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartespec">AstarteSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>replicas</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>antiAffinity</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customAffinity</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#affinity-v1-core">Affinity</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deploymentStrategy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>additionalEnv</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envvar-v1-core">EnvVar</a> array</em></td>
+          <td>Additional environment variables for this Component</td>
+      </tr>
+      <tr>
+          <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>autoscaler</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
+          <td>Autoscaling resources for this deployment/statefulset. If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+      </tr>
+      <tr>
+          <td><code>priorityClass</code> <em>string</em></td>
+          <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+      </tr>
+      <tr>
+          <td><code>connection</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarterabbitmqconnectionspec">AstarteRabbitMQConnectionSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>storage</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartepersistentstoragespec">AstartePersistentStorageSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>additionalPlugins</code> <em>string array</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>dataQueuesPrefix</code> <em>string</em></td>
+          <td>Configures the data queues prefix on RabbitMQ. You should change this setting only in custom RabbitMQ installations.</td>
+      </tr>
+      <tr>
+          <td><code>eventsExchangeName</code> <em>string</em></td>
+          <td>Configures the events exchange name on RabbitMQ. You should change this setting only in custom RabbitMQ installations.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartespec-1">
+  AstarteSpec
+  <a class="anchor" href="#astartespec-1">#</a>
+</h4>
+<p>AstarteSpec defines the desired state of Astarte</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarte">Astarte</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td>The Astarte Version for this Resource</td>
+      </tr>
+      <tr>
+          <td><code>imagePullPolicy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#pullpolicy-v1-core">PullPolicy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>imagePullSecrets</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#localobjectreference-v1-core">LocalObjectReference</a> array</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>distributionChannel</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deploymentStrategy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>features</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartefeatures">AstarteFeatures</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>rbac</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>storageClassName</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>api</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarteapispec">AstarteAPISpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>rabbitmq</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarterabbitmqspec">AstarteRabbitMQSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>cassandra</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecassandraspec">AstarteCassandraSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>vernemq</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartevernemqspec">AstarteVerneMQSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>cfssl</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecfsslspec">AstarteCFSSLSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>components</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecomponentsspec">AstarteComponentsSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>astarteSystemKeyspace</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartesystemkeyspacespec">AstarteSystemKeyspaceSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>astarteInstanceID</code> <em>string</em></td>
+          <td>AstarteInstanceID is the unique ID that is associated with an Astarte instance. This parameter is used to let different Astarte instances employ a shared database infrastructure. Once set, the AstarteInstanceID cannot be changed. Defaults to &ldquo;&rdquo;.</td>
+      </tr>
+      <tr>
+          <td><code>manualMaintenanceMode</code> <em>boolean</em></td>
+          <td>ManualMaintenanceMode pauses all reconciliation activities but still computes the resource status. It should be used only when the managed Astarte resources requires manual intervention and the Operator cannot break out of the problem by itself. Do not set this field unless you know exactly what you are doing.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartestatus-1">
+  AstarteStatus
+  <a class="anchor" href="#astartestatus-1">#</a>
+</h4>
+<p>AstarteStatus defines the observed state of Astarte</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarte">Astarte</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>phase</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#reconciliationphase">ReconciliationPhase</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>astarteVersion</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>operatorVersion</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>health</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarteclusterhealth">AstarteClusterHealth</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>baseAPIURL</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>brokerURL</code> <em>string</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartesystemkeyspacespec-1">
+  AstarteSystemKeyspaceSpec
+  <a class="anchor" href="#astartesystemkeyspacespec-1">#</a>
+</h4>
+<p>astarteSystemKeyspace configures the main system keyspace for Astarte. As of now, these settings have effect only upon cluster initialization, and will be ignored otherwise.</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartespec">AstarteSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>replicationFactor</code> <em>integer</em></td>
+          <td>The Replication Factor for the keyspace</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartetriggerenginespec-1">
+  AstarteTriggerEngineSpec
+  <a class="anchor" href="#astartetriggerenginespec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecomponentsspec">AstarteComponentsSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>replicas</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>antiAffinity</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customAffinity</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#affinity-v1-core">Affinity</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deploymentStrategy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>additionalEnv</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envvar-v1-core">EnvVar</a> array</em></td>
+          <td>Additional environment variables for this Component</td>
+      </tr>
+      <tr>
+          <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>autoscaler</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
+          <td>Autoscaling resources for this deployment/statefulset. If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+      </tr>
+      <tr>
+          <td><code>priorityClass</code> <em>string</em></td>
+          <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+      </tr>
+      <tr>
+          <td><code>eventsQueueName</code> <em>string</em></td>
+          <td>Configures the name of the Events queue. Should be configured only in installations with a highly customized RabbitMQ. It is advised to leave empty unless you know exactly what you&rsquo;re doing.</td>
+      </tr>
+      <tr>
+          <td><code>eventsRoutingKey</code> <em>string</em></td>
+          <td>Configures the routing key for Trigger Events. Should be configured only in installations with a highly customized RabbitMQ and a custom Trigger Engine setup. It is advised to leave empty unless you know exactly what you&rsquo;re doing, misconfiguring this value can cause heavy breakage within Trigger Engine.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartevernemqspec-1">
+  AstarteVerneMQSpec
+  <a class="anchor" href="#astartevernemqspec-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartespec">AstarteSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>replicas</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>antiAffinity</code> <em>boolean</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>customAffinity</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#affinity-v1-core">Affinity</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deploymentStrategy</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>version</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td>Compute Resources for this Component.</td>
+      </tr>
+      <tr>
+          <td><code>additionalEnv</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envvar-v1-core">EnvVar</a> array</em></td>
+          <td>Additional environment variables for this Component</td>
+      </tr>
+      <tr>
+          <td><code>podLabels</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional labels for this Component&rsquo;s pod(s). Label keys can&rsquo;t be of the form &ldquo;app&rdquo;, &ldquo;component&rdquo;, &ldquo;astarte-<em>&rdquo;, &ldquo;flow-</em>&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>autoscaler</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
+          <td>Autoscaling resources for this deployment/statefulset. If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+      </tr>
+      <tr>
+          <td><code>priorityClass</code> <em>string</em></td>
+          <td>The PriorityClass for this component. Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified. Ignored if astartePodPriorities is not enabled.</td>
+      </tr>
+      <tr>
+          <td><code>host</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>port</code> <em>integer</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>caSecret</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>storage</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartepersistentstoragespec">AstartePersistentStorageSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>deviceHeartbeatSeconds</code> <em>integer</em></td>
+          <td>Controls the device heartbeat from the broker to Astarte. The heartbeat is sent periodically to prevent Astarte from keeping up stale connections from Devices in case the broker misbehaves and does not send disconnection events. You should usually not tweak this value. Moreover, keep in mind that when a lot of devices are connected simultaneously, having a short heartbeat time might cause performance issues. Defaults to an hour.</td>
+      </tr>
+      <tr>
+          <td><code>maxOfflineMessages</code> <em>integer</em></td>
+          <td>The maximum number of QoS 1 or 2 messages to hold in the offline queue. Defaults to 1000000. Set to -1 for no maximum (not recommended). Set to 0 if no messages should be stored offline.</td>
+      </tr>
+      <tr>
+          <td><code>persistentClientExpiration</code> <em>string</em></td>
+          <td>This option allows persistent clients ( = clean session set to false) to be removed if they do not reconnect within &lsquo;persistent_client_expiration&rsquo;. This is a non-standard option. As far as the MQTT specification is concerned, persistent clients persist forever. The expiration period should be an integer followed by one of &rsquo;d&rsquo;, &lsquo;w&rsquo;, &rsquo;m&rsquo;, &lsquo;y&rsquo; for day, week, month, and year. Default: 1 year</td>
+      </tr>
+      <tr>
+          <td><code>mirrorQueue</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>sslListener</code> <em>boolean</em></td>
+          <td>This option allows, when true, to handle SSL termination at VerneMQ level. Default: false</td>
+      </tr>
+      <tr>
+          <td><code>sslListenerCertSecretName</code> <em>string</em></td>
+          <td>Reference the name of the secret containing the TLS certificate for VerneMQ. The secret must be present in the same namespace in which Astarte resides. The field will be used only if SSLListener is set to true.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="blockworker-1">
+  BlockWorker
+  <a class="anchor" href="#blockworker-1">#</a>
+</h4>
+<p>BlockWorker defines a Worker for a Container Block</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#containerblockspec">ContainerBlockSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>id</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>dataProvider</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#dataprovider">DataProvider</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="containerblockspec-1">
+  ContainerBlockSpec
+  <a class="anchor" href="#containerblockspec-1">#</a>
+</h4>
+<p>ContainerBlockSpec defines a Container Block in a Flow</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flowspec">FlowSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>id</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>image</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>imagePullSecrets</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#localobjectreference-v1-core">LocalObjectReference</a> array</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>environment</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#envvar-v1-core">EnvVar</a> array</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>config</code> <em>string</em></td>
+          <td>Configuration represents the JSON string carrying the user configuration for this block</td>
+      </tr>
+      <tr>
+          <td><code>workers</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#blockworker">BlockWorker</a> array</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="dataprovider-1">
+  DataProvider
+  <a class="anchor" href="#dataprovider-1">#</a>
+</h4>
+<p>DataProvider is a struct which defines which Data Providers (e.g. Brokers) are available for a Worker</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#blockworker">BlockWorker</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>rabbitmq</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#rabbitmqdataprovider">RabbitMQDataProvider</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="flow-1">
+  Flow
+  <a class="anchor" href="#flow-1">#</a>
+</h4>
+<p>Flow is the Schema for the flows API</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flowlist">FlowList</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>apiVersion</code> <em>string</em></td>
+          <td><code>api.astarte-platform.org/v1alpha3</code></td>
+      </tr>
+      <tr>
+          <td><code>kind</code> <em>string</em></td>
+          <td><code>Flow</code></td>
+      </tr>
+      <tr>
+          <td><code>metadata</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#objectmeta-v1-meta">ObjectMeta</a></em></td>
+          <td>Refer to Kubernetes API documentation for fields of <code>metadata</code>.</td>
+      </tr>
+      <tr>
+          <td><code>spec</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flowspec">FlowSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>status</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flowstatus">FlowStatus</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="flowlist-1">
+  FlowList
+  <a class="anchor" href="#flowlist-1">#</a>
+</h4>
+<p>FlowList contains a list of Flow</p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>apiVersion</code> <em>string</em></td>
+          <td><code>api.astarte-platform.org/v1alpha3</code></td>
+      </tr>
+      <tr>
+          <td><code>kind</code> <em>string</em></td>
+          <td><code>FlowList</code></td>
+      </tr>
+      <tr>
+          <td><code>metadata</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#listmeta-v1-meta">ListMeta</a></em></td>
+          <td>Refer to Kubernetes API documentation for fields of <code>metadata</code>.</td>
+      </tr>
+      <tr>
+          <td><code>items</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flow">Flow</a> array</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="flowspec-1">
+  FlowSpec
+  <a class="anchor" href="#flowspec-1">#</a>
+</h4>
+<p>FlowSpec defines the desired state of Flow</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flow">Flow</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>astarte</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#localobjectreference-v1-core">LocalObjectReference</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>astarteRealm</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>nativeBlocks</code> <em>integer</em></td>
+          <td>Defines the amount of non-container blocks in the Flow</td>
+      </tr>
+      <tr>
+          <td><code>nativeBlocksResources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcelist-v1-core">ResourceList</a></em></td>
+          <td>Defines the overall resources consumed by Native Blocks</td>
+      </tr>
+      <tr>
+          <td><code>flowPool</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#localobjectreference-v1-core">LocalObjectReference</a></em></td>
+          <td>EE Only: Defines the Flow Pool in which the Flow will be allocated.</td>
+      </tr>
+      <tr>
+          <td><code>blocks</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#containerblockspec">ContainerBlockSpec</a> array</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="flowstate-1">
+  FlowState
+  <a class="anchor" href="#flowstate-1">#</a>
+</h4>
+<p><em>Underlying type:</em> <em>string</em></p>
+<p>FlowState describes the global state of a Flow</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flowstatus">FlowStatus</a></li>
+</ul>
+<h4 id="flowstatus-1">
+  FlowStatus
+  <a class="anchor" href="#flowstatus-1">#</a>
+</h4>
+<p>FlowStatus defines the observed state of Flow</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flow">Flow</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>state</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#flowstate">FlowState</a></em></td>
+          <td>State defines the overall state of the Flow</td>
+      </tr>
+      <tr>
+          <td><code>totalContainerBlocks</code> <em>integer</em></td>
+          <td>Represents the total number of the Container Blocks in the Flow</td>
+      </tr>
+      <tr>
+          <td><code>readyContainerBlocks</code> <em>integer</em></td>
+          <td>Represents the total number of Ready Container Blocks in the Flow. In a healthy Flow, this matches the number of Total Container Blocks.</td>
+      </tr>
+      <tr>
+          <td><code>resources</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#resourcelist-v1-core">ResourceList</a></em></td>
+          <td>The overall resources allocated in the cluster for this Block</td>
+      </tr>
+      <tr>
+          <td><code>failingContainerBlocks</code> <em>integer</em></td>
+          <td>Represents the total number of Container Blocks with non temporary failures. Present only if any of the Blocks is in such state. When present, manual intervention is most likely required.</td>
+      </tr>
+      <tr>
+          <td><code>unrecoverableFailures</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#containerstate-v1-core">ContainerState</a> array</em></td>
+          <td>UnrecoverableFailures lists all the ContainerStates of failing containers, for further inspection.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="logincredentialssecret-1">
+  LoginCredentialsSecret
+  <a class="anchor" href="#logincredentialssecret-1">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartecassandraconnectionspec">AstarteCassandraConnectionSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astarterabbitmqconnectionspec">AstarteRabbitMQConnectionSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>name</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>usernameKey</code> <em>string</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>passwordKey</code> <em>string</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="rabbitmqconfig-1">
+  RabbitMQConfig
+  <a class="anchor" href="#rabbitmqconfig-1">#</a>
+</h4>
+<p><em>Underlying type:</em> <em>
+  <a href="#struct%7bk8sioapimachinerypkgapismetav1typemeta-%22json:%5c%22,inline%5c%22%22;-host-string-%22json:%5c%22host%5c%22%22;-port-int16-%22json:%5c%22port,omitempty%5c%22%22;-ssl-*bool-%22json:%5c%22ssl,omitempty%5c%22%22;-username-string-%22json:%5c%22username%5c%22%22;-password-string-%22json:%5c%22password%5c%22%22%7d">struct{k8s.io/apimachinery/pkg/apis/meta/v1.TypeMeta &ldquo;json:&quot;,inline&quot;&rdquo;; Host string &ldquo;json:&quot;host&quot;&rdquo;; Port int16 &ldquo;json:&quot;port,omitempty&quot;&rdquo;; SSL *bool &ldquo;json:&quot;ssl,omitempty&quot;&rdquo;; Username string &ldquo;json:&quot;username&quot;&rdquo;; Password string &ldquo;json:&quot;password&quot;&rdquo;}</a></em></p>
+<p>RabbitMQConfig represents configuration for RabbitMQ</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#rabbitmqdataprovider">RabbitMQDataProvider</a></li>
+</ul>
+<h4 id="rabbitmqdataprovider-1">
+  RabbitMQDataProvider
+  <a class="anchor" href="#rabbitmqdataprovider-1">#</a>
+</h4>
+<p>RabbitMQDataProvider is a representation of a Data Provider based upon RabbitMQ</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#dataprovider">DataProvider</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>queues</code> <em>string array</em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>exchange</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#rabbitmqexchange">RabbitMQExchange</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>rabbitmq</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#rabbitmqconfig">RabbitMQConfig</a></em></td>
+          <td>RabbitMQConfig is an optional field which allows to specify configuration for an external RabbitMQ broker. If not specified, Astarte&rsquo;s main Broker will be used.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="rabbitmqexchange-1">
+  RabbitMQExchange
+  <a class="anchor" href="#rabbitmqexchange-1">#</a>
+</h4>
+<p><em>Underlying type:</em> <em>
+  <a href="#struct%7bk8sioapimachinerypkgapismetav1typemeta-%22json:%5c%22,inline%5c%22%22;-name-string-%22json:%5c%22name%5c%22%22;-routingkey-string-%22json:%5c%22routingkey%5c%22%22%7d">struct{k8s.io/apimachinery/pkg/apis/meta/v1.TypeMeta &ldquo;json:&quot;,inline&quot;&rdquo;; Name string &ldquo;json:&quot;name&quot;&rdquo;; RoutingKey string &ldquo;json:&quot;routingKey&quot;&rdquo;}</a></em></p>
+<p>RabbitMQExchange is a representation of a RabbitMQ Exchange</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#rabbitmqdataprovider">RabbitMQDataProvider</a></li>
+</ul>
+<h4 id="reconciliationphase-1">
+  ReconciliationPhase
+  <a class="anchor" href="#reconciliationphase-1">#</a>
+</h4>
+<p><em>Underlying type:</em> <em>string</em></p>
+<p>ReconciliationPhase describes the reconciliation phase the Resource is in</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartestatus">AstarteStatus</a></li>
+</ul>
+<h2 id="ingressastarte-platformorgv1alpha1">
+  ingress.astarte-platform.org/v1alpha1
+  <a class="anchor" href="#ingressastarte-platformorgv1alpha1">#</a>
+</h2>
+<p>Package v1alpha1 contains API Schema definitions for the ingress v1alpha1 API group</p>
+<h3 id="resource-types-2">
+  Resource Types
+  <a class="anchor" href="#resource-types-2">#</a>
+</h3>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedefaultingress">AstarteDefaultIngress</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedefaultingresslist">AstarteDefaultIngressList</a></li>
+</ul>
+<h4 id="astartedefaultingress">
+  AstarteDefaultIngress
+  <a class="anchor" href="#astartedefaultingress">#</a>
+</h4>
+<p>AstarteDefaultIngress is the Schema for the astartedefaultingresses API</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedefaultingresslist">AstarteDefaultIngressList</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>apiVersion</code> <em>string</em></td>
+          <td><code>ingress.astarte-platform.org/v1alpha1</code></td>
+      </tr>
+      <tr>
+          <td><code>kind</code> <em>string</em></td>
+          <td><code>AstarteDefaultIngress</code></td>
+      </tr>
+      <tr>
+          <td><code>metadata</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#objectmeta-v1-meta">ObjectMeta</a></em></td>
+          <td>Refer to Kubernetes API documentation for fields of <code>metadata</code>.</td>
+      </tr>
+      <tr>
+          <td><code>spec</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedefaultingressspec">AstarteDefaultIngressSpec</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>status</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedefaultingressstatus">AstarteDefaultIngressStatus</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartedefaultingressapispec">
+  AstarteDefaultIngressAPISpec
+  <a class="anchor" href="#astartedefaultingressapispec">#</a>
+</h4>
+<p>AstarteDefaultIngressAPISpec defines how the Astarte APIs are served.</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedefaultingressspec">AstarteDefaultIngressSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td>When true, deploy the API ingress.</td>
+      </tr>
+      <tr>
+          <td><code>tlsSecret</code> <em>string</em></td>
+          <td>The secret containing the TLS certificates and keys used to access the Astarte API. The secret must be present in the namespace in which Astarte resides. If set, this secret overrides the TLSSecret field contained in AstarteDefaultIngressSpec.</td>
+      </tr>
+      <tr>
+          <td><code>cors</code> <em>boolean</em></td>
+          <td>When true, enable Cross-Origin Resource Sharing (CORS). Default: false.</td>
+      </tr>
+      <tr>
+          <td><code>exposeHousekeeping</code> <em>boolean</em></td>
+          <td>When true, the housekeeping endpoint is publicly exposed. Default: true.</td>
+      </tr>
+      <tr>
+          <td><code>serveMetrics</code> <em>boolean</em></td>
+          <td>When true, all /metrics endpoints for Astarte services will be served by a dedicated metrics ingress. Metrics can be gathered by querying the /metrics/<service-name> path. Beware this might be a security hole. You can control which IPs can access /metrics with serveMetricsToSubnet. Default: false.</td>
+      </tr>
+      <tr>
+          <td><code>serveMetricsToSubnet</code> <em>string</em></td>
+          <td>When specified and when serveMetrics is true, /metrics endpoints will be served only to IPs in the provided subnet range. The subnet has to be compatible with the HAProxy ACL src syntax (e.g.: &ldquo;10.0.0.0/16&rdquo;). Default: &ldquo;&rdquo;.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartedefaultingressbrokerspec">
+  AstarteDefaultIngressBrokerSpec
+  <a class="anchor" href="#astartedefaultingressbrokerspec">#</a>
+</h4>
+<p>AstarteDefaultIngressBrokerSpec defines how the Astarte Broker is served.</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedefaultingressspec">AstarteDefaultIngressSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td>When true, expose the Broker.</td>
+      </tr>
+      <tr>
+          <td><code>serviceType</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#servicetype-v1-core">ServiceType</a></em></td>
+          <td>Set the type of service employed to expose the broker. Supported values are &ldquo;NodePort&rdquo; and &ldquo;LoadBalancer&rdquo;. The AstarteDefaultIngress handles TLS termination at VerneMQ level and, as such, no TLSSecret is needed to configure the broker service. Default: &ldquo;LoadBalancer&rdquo;</td>
+      </tr>
+      <tr>
+          <td><code>loadBalancerIP</code> <em>string</em></td>
+          <td>Set the LoadBalancerIP if and only if the broker service is of type &ldquo;LoadBalancer&rdquo;. This feature depends on whether the cloud provider supports specifying the LoadBalancerIP when a load balancer is created.</td>
+      </tr>
+      <tr>
+          <td><code>serviceAnnotations</code> <em>object (keys:string, values:string)</em></td>
+          <td>Additional annotations for the service exposing this broker.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartedefaultingressdashboardspec">
+  AstarteDefaultIngressDashboardSpec
+  <a class="anchor" href="#astartedefaultingressdashboardspec">#</a>
+</h4>
+<p>AstarteDefaultIngressDashboardSpec defines how the Astarte Dashboard is served.</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedefaultingressspec">AstarteDefaultIngressSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>deploy</code> <em>boolean</em></td>
+          <td>When true, deploy the Ingress for the Dashboard.</td>
+      </tr>
+      <tr>
+          <td><code>ssl</code> <em>boolean</em></td>
+          <td>When true, enable TLS authentication for the Dashboard.</td>
+      </tr>
+      <tr>
+          <td><code>host</code> <em>string</em></td>
+          <td>The host handling requests addressed to the dashboard. When deploy is true and host is not set, the dashboard will be exposed at the following URL: https://<astarte-base-url>/dashboard.</td>
+      </tr>
+      <tr>
+          <td><code>tlsSecret</code> <em>string</em></td>
+          <td>The secret containing the TLS certificates and keys used to access the Astarte Dashboard. The secret must be present in the namespace in which Astarte resides. If set, this secret overrides the TLSSecret field contained in AstarteDefaultIngressSpec.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartedefaultingresslist">
+  AstarteDefaultIngressList
+  <a class="anchor" href="#astartedefaultingresslist">#</a>
+</h4>
+<p>AstarteDefaultIngressList contains a list of AstarteDefaultIngress</p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>apiVersion</code> <em>string</em></td>
+          <td><code>ingress.astarte-platform.org/v1alpha1</code></td>
+      </tr>
+      <tr>
+          <td><code>kind</code> <em>string</em></td>
+          <td><code>AstarteDefaultIngressList</code></td>
+      </tr>
+      <tr>
+          <td><code>metadata</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#listmeta-v1-meta">ListMeta</a></em></td>
+          <td>Refer to Kubernetes API documentation for fields of <code>metadata</code>.</td>
+      </tr>
+      <tr>
+          <td><code>items</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedefaultingress">AstarteDefaultIngress</a> array</em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartedefaultingressspec">
+  AstarteDefaultIngressSpec
+  <a class="anchor" href="#astartedefaultingressspec">#</a>
+</h4>
+<p>AstarteDefaultIngressSpec defines the desired state of the AstarteDefaultIngress resource</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedefaultingress">AstarteDefaultIngress</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>astarte</code> <em>string</em></td>
+          <td>The name of the Astarte instance served by the AstarteDefaultIngress.</td>
+      </tr>
+      <tr>
+          <td><code>ingressClass</code> <em>string</em></td>
+          <td>In clusters with more than one instance of the Ingress-NGINX controller, all instances of the controllers must be aware of which Ingress object they must serve. The ingressClass field of a ingress object is the way to let the controller know about that. Default: &ldquo;nginx&rdquo;.</td>
+      </tr>
+      <tr>
+          <td><code>api</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedefaultingressapispec">AstarteDefaultIngressAPISpec</a></em></td>
+          <td>Define the desired state of the AstarteDefaultIngressAPISpec resource.</td>
+      </tr>
+      <tr>
+          <td><code>dashboard</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedefaultingressdashboardspec">AstarteDefaultIngressDashboardSpec</a></em></td>
+          <td>Define the desired state of the AstarteDefaultIngressDashboardSpec resource.</td>
+      </tr>
+      <tr>
+          <td><code>broker</code> <em>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedefaultingressbrokerspec">AstarteDefaultIngressBrokerSpec</a></em></td>
+          <td>Define the desired state of the AstarteDefaultIngressBrokerSpec resource.</td>
+      </tr>
+      <tr>
+          <td><code>tlsSecret</code> <em>string</em></td>
+          <td>The secret containing the TLS certificates and keys used to connect to Astarte. The secret must be present in the namespace in which Astarte resides and it will be used to authenticate requests for API and Dashboard. If specific configurations are required, the TLSSecret can be overridden by setting the secret in any of AstarteDefaultIngressAPISpec and AstarteDefaultIngressDashboardSpec.</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartedefaultingressstatus">
+  AstarteDefaultIngressStatus
+  <a class="anchor" href="#astartedefaultingressstatus">#</a>
+</h4>
+<p>AstarteDefaultIngressStatus defines the observed state of AstarteDefaultIngress</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/#astartedefaultingress">AstarteDefaultIngress</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>api</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#ingressstatus-v1-networking">IngressStatus</a></em></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>broker</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#servicestatus-v1-core">ServiceStatus</a></em></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#api-reference">API Reference</a>
+      <ul>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#apiastarte-platformorgv1alpha2">api.astarte-platform.org/v1alpha2</a>
+          <ul>
+            <li><a href="#resource-types">Resource Types</a></li>
+          </ul>
+        </li>
+        <li><a href="#apiastarte-platformorgv1alpha3">api.astarte-platform.org/v1alpha3</a>
+          <ul>
+            <li><a href="#resource-types-1">Resource Types</a></li>
+          </ul>
+        </li>
+        <li><a href="#ingressastarte-platformorgv1alpha1">ingress.astarte-platform.org/v1alpha1</a>
+          <ul>
+            <li><a href="#resource-types-2">Resource Types</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

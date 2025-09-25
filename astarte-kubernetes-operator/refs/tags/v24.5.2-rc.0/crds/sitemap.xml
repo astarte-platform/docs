@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://docs.astarte-platform.org/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/</loc>
+  </url><url>
+    <loc>https://docs.astarte-platform.org/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/categories/</loc>
+  </url><url>
+    <loc>https://docs.astarte-platform.org/astarte-kubernetes-operator/refs/tags/v24.5.2-rc.0/crds/tags/</loc>
+  </url>
+</urlset>
