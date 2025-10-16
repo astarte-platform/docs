@@ -113,7 +113,19 @@ Cassandra offers linear scalability and can span from really small clusters to h
   </a>
   Schema and Keyspace Creation
 </h2>
-<p>Astarte automatically takes care of keyspaces, tables creation and intra-version migrations (those tasks are performed by <code class="inline">astarte_housekeeping</code> or <code class="inline">astarte_realm_management</code>, depending on the context). The following documentation is just a reference about Astarte's internal statements, and is related to the release series referenced by the documentation.</p><h3 id="astarte-keyspace" class="section-heading">
+<p>Astarte automatically takes care of keyspaces, tables creation and intra-version migrations (those tasks are performed by <code class="inline">astarte_housekeeping</code> or <code class="inline">astarte_realm_management</code>, depending on the context). The following documentation is just a reference about Astarte's internal statements, and is related to the release series referenced by the documentation.</p><h3 id="astarte-instance-id" class="section-heading">
+  <a href="#astarte-instance-id" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">astarte-instance-id</p>
+  </a>
+  Astarte Instance ID
+</h3>
+<p>The Astarte Instance ID is needed in order to run multiple Astarte instances on a shared database, 
+as it provides proper namespace isolation. It is configurable by setting the <code class="inline">ASTARTE_INSTANCE_ID</code> environment variable, and when set to an empty string (the default), maintains the same behavior 
+as previous installations. 
+The Astarte Instance ID is fully supported by the Astarte Operator.For the usage with the operator you can 
+refer to <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/24.5/001-intro_administrator.html">the corresponding documentation</a> </p><h4>Inner workings</h4><p>When the Astarte Instance ID is set, it is used as a prefix for the Cassandra keyspace name. 
+If the resulting keyspace name would exceed Cassandra’s length limits, suitable adjustments 
+are automatically applied to ensure compliance.</p><h3 id="astarte-keyspace" class="section-heading">
   <a href="#astarte-keyspace" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">astarte-keyspace</p>
   </a>
@@ -285,6 +297,7 @@ CREATE TABLE &lt;realm name&gt;.individual_datastreams (
   vmq_ack boolean,
   dup_start_ack boolean,
   dup_end_ack boolean,
+  groups set&lt;text&gt;,
   PRIMARY KEY (device_id)
 );</code></pre><p>The following table is generated upon datastream interface creation for keeping all data sent to Astarte through the interface.</p><p>The table name is derived from lower case interface name where <code class="inline">.</code> and <code class="inline">-</code> have been replaced by <code class="inline">_</code> and <code class="inline">&quot;&quot;</code> (empty string), then the major version is appended with a <code class="inline">_v</code> prefix. 
 For example, com.Astarte.TestInterface version 1 becomes  <code class="inline">com_astarte_testinterface_v1</code>.</p><p>If, after all the required transformations, the resulting name is too long (&gt;45 chars), it will be encoded and truncated.</p><pre><code class="sql">CREATE TABLE &lt;interpolated interface name&gt;_v&lt;major_version&gt; (
