@@ -52,7 +52,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Astarte device API for C++<span id="projectnumber">&#160;0.8.0</span>
+   <div id="projectname">Astarte device API for C++<span id="projectnumber">&#160;0.8.1</span>
    </div>
    <div id="projectbrief">Astarte device SDK for C++</div>
   </td>
@@ -182,7 +182,7 @@ Importing the library in an external project</h2>
 <div class="line">FetchContent_Declare(</div>
 <div class="line">    astarte_device_sdk</div>
 <div class="line">  GIT_REPOSITORY git@github.com:secomind/astarte-device-sdk-cpp.git</div>
-<div class="line">  GIT_TAG v0.8.0</div>
+<div class="line">  GIT_TAG v0.8.1</div>
 <div class="line">)</div>
 <div class="line">FetchContent_MakeAvailable(astarte_device_sdk)</div>
 </div><!-- fragment --><p>Additionally remember to link the library with your executable. </p><div class="fragment"><div class="line">target_link_libraries(app</div>
@@ -192,7 +192,7 @@ Conan integration</h2>
 <p>The package manager <a href="https://conan.io/">Conan</a> is supported by this library. This package has not yet been added to the Conan center index and subsequently it's not yet available using the dependency import in a conanfile. However, users can always install into their local cache by checking out this repository and then running the following commands.</p>
 <div class="fragment"><div class="line">conan create . --build=missing --settings=compiler.cppstd=20</div>
 </div><!-- fragment --><p>The created package can then be added to the conanfile of a project. </p><div class="fragment"><div class="line">[requires]</div>
-<div class="line">astarte-device-sdk/0.8.0</div>
+<div class="line">astarte-device-sdk/0.8.1</div>
 </div><!-- fragment --><p>Additionally remember to import and link the library with your executable. </p><div class="fragment"><div class="line">find_package(astarte_device_sdk)</div>
 <div class="line">...</div>
 <div class="line">target_link_libraries(app</div>
