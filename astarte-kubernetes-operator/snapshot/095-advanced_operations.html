@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-69B0E325.js"></script>
+    <script src="dist/sidebar_items-7C34BA30.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -133,7 +133,22 @@ database even when Astarte is deleted from your cluster.</p><p>To restore your A
 </span></code></pre><p>And when your Astarte resource is ready, to restore your AstarteDefaultIngress resource:</p><pre><code class="makeup bash" translate="no"><span class="">kubectl apply -f adi-backup.yaml
 </span></code></pre><p>At the end of this step, your cluster is restored. Please, notice that the external IP of the
 ingress services might have changed. Take action to ensure that the changes of the IP are reflected
-anywhere appropriate in your deployment.</p>
+anywhere appropriate in your deployment.</p><h2 id="set-up-an-instance-id" class="section-heading">
+  <a href="#set-up-an-instance-id" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">set-up-an-instance-id</p>
+  </a>
+  Set up an instance id
+</h2>
+<p><code class="inline">AstarteInstanceID</code> is the unique identifier associated with an Astarte instance.<br/>This parameter is optional and defaults to an empty string (<code class="inline">&quot;&quot;</code>) for backward
+compatibility with existing installations.  </p><p>When set, <code class="inline">AstarteInstanceID</code> allows multiple Astarte instances to share the same
+database infrastructure by isolating their keyspaces. The identifier is used as a
+prefix in Cassandra keyspace names.
+The Operator validates AstarteInstanceID against the following regular expression:
+<code class="inline">^[a-z]?[a-z0-9]{0,47}$</code> (must start with a lowercase letter, followed by up to 
+47 lowercase letters or digits). If the value does not match this pattern, the 
+validation webhook will reject the resource and Astarte will not start.</p><p>To enable this feature in a Kubernetes environment, the value must be provided in
+the Astarte resource specification (<code class="inline">Spec.AstarteInstanceID</code>). At runtime, the
+value is propagated through the environment variables:</p><ul><li><code class="inline">ASTARTE_INSTANCE_ID</code></li><li><code class="inline">DOCKER_VERNEMQ_ASTARTE_VMQ_PLUGIN__ASTARTE_INSTANCE_ID</code></li></ul><p>Note that once an <code class="inline">AstarteInstanceID</code> is configured, it cannot be changed.</p>
 <div class="bottom-actions">
   <div class="bottom-actions-item">
 
