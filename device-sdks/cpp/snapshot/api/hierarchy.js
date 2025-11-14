@@ -6,15 +6,15 @@ var hierarchy =
     [ "AstarteDeviceSdk::AstarteDevice", "classAstarteDeviceSdk_1_1AstarteDevice.html", [
       [ "AstarteDeviceSdk::AstarteDeviceGRPC", "classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html", null ]
     ] ],
+    [ "AstarteDeviceSdk::AstarteErrorBase", "classAstarteDeviceSdk_1_1AstarteErrorBase.html", [
+      [ "AstarteDeviceSdk::AstarteFileOpenError", "classAstarteDeviceSdk_1_1AstarteFileOpenError.html", null ],
+      [ "AstarteDeviceSdk::AstarteGrpcLibError", "classAstarteDeviceSdk_1_1AstarteGrpcLibError.html", null ],
+      [ "AstarteDeviceSdk::AstarteInternalError", "classAstarteDeviceSdk_1_1AstarteInternalError.html", null ],
+      [ "AstarteDeviceSdk::AstarteInvalidInputError", "classAstarteDeviceSdk_1_1AstarteInvalidInputError.html", null ],
+      [ "AstarteDeviceSdk::AstarteMsgHubError", "classAstarteDeviceSdk_1_1AstarteMsgHubError.html", null ],
+      [ "AstarteDeviceSdk::AstarteOperationRefusedError", "classAstarteDeviceSdk_1_1AstarteOperationRefusedError.html", null ]
+    ] ],
     [ "AstarteDeviceSdk::AstarteMessage", "classAstarteDeviceSdk_1_1AstarteMessage.html", null ],
     [ "AstarteDeviceSdk::AstartePropertyIndividual", "classAstarteDeviceSdk_1_1AstartePropertyIndividual.html", null ],
-    [ "AstarteDeviceSdk::AstarteStoredProperty", "classAstarteDeviceSdk_1_1AstarteStoredProperty.html", null ],
-    [ "std::exception", null, [
-      [ "AstarteDeviceSdk::AstarteException", "classAstarteDeviceSdk_1_1AstarteException.html", [
-        [ "AstarteDeviceSdk::AstarteFileOpenException", "classAstarteDeviceSdk_1_1AstarteFileOpenException.html", null ],
-        [ "AstarteDeviceSdk::AstarteInternalException", "classAstarteDeviceSdk_1_1AstarteInternalException.html", null ],
-        [ "AstarteDeviceSdk::AstarteInvalidInputException", "classAstarteDeviceSdk_1_1AstarteInvalidInputException.html", null ],
-        [ "AstarteDeviceSdk::AstarteOperationRefusedException", "classAstarteDeviceSdk_1_1AstarteOperationRefusedException.html", null ]
-      ] ]
-    ] ]
+    [ "AstarteDeviceSdk::AstarteStoredProperty", "classAstarteDeviceSdk_1_1AstarteStoredProperty.html", null ]
 ];

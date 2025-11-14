@@ -1,7 +1,15 @@
 var searchData=
 [
-  ['the_20library_20in_20an_20external_20project_0',['Importing the library in an external project',['../index.html#autotoc_md12',1,'']]],
-  ['the_20samples_1',['Get started with the samples',['../index.html#autotoc_md11',1,'']]],
-  ['try_5finto_2',['try_into',['../classAstarteDeviceSdk_1_1AstarteData.html#abc63be5b2b20d6310825a8941ce1e720',1,'AstarteDeviceSdk::AstarteData::try_into()'],['../classAstarteDeviceSdk_1_1AstarteMessage.html#afda66777da768df8d6a569d165473e2e',1,'AstarteDeviceSdk::AstarteMessage::try_into()']]],
-  ['type_2ehpp_3',['type.hpp',['../type_8hpp.html',1,'']]]
+  ['samples_0',['Get started with the samples',['../index.html#autotoc_md11',1,'']]],
+  ['sdk_20for_20c_1',['Astarte device SDK for C++',['../index.html#autotoc_md0',1,'']]],
+  ['send_5findividual_2',['send_individual',['../classAstarteDeviceSdk_1_1AstarteDevice.html#ad3f8cc0b681459eacf69b39fa19a99a6',1,'AstarteDeviceSdk::AstarteDevice::send_individual()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#aea6585361507d5d9cf38029c4350b37f',1,'AstarteDeviceSdk::AstarteDeviceGRPC::send_individual()']]],
+  ['send_5fobject_3',['send_object',['../classAstarteDeviceSdk_1_1AstarteDevice.html#af5b9bb5755bc24b464930f3226ff88af',1,'AstarteDeviceSdk::AstarteDevice::send_object()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#abbd842feb8c6bb134b3b9b2c49c6ab75',1,'AstarteDeviceSdk::AstarteDeviceGRPC::send_object()']]],
+  ['set_5fproperty_4',['set_property',['../classAstarteDeviceSdk_1_1AstarteDevice.html#ac2690d90ea4cbc1392905798e5805875',1,'AstarteDeviceSdk::AstarteDevice::set_property()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#aad9be65a9912df7455c4a39f459c1478',1,'AstarteDeviceSdk::AstarteDeviceGRPC::set_property()']]],
+  ['size_5',['size',['../classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#ac3485d4b47145d3cebfaf8f2c3141758',1,'AstarteDeviceSdk::AstarteDatastreamObject']]],
+  ['size_5ftype_6',['size_type',['../classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#a0f4a11ec5dcdf23665669b119cef260a',1,'AstarteDeviceSdk::AstarteDatastreamObject']]],
+  ['spdlog_7',['spdlog',['../index.html#autotoc_md10',1,'']]],
+  ['spdlog_20dependency_8',['Public spdlog dependency',['../index.html#autotoc_md5',1,'']]],
+  ['started_20with_20the_20samples_9',['Get started with the samples',['../index.html#autotoc_md11',1,'']]],
+  ['stored_5fproperty_2ehpp_10',['stored_property.hpp',['../stored__property_8hpp.html',1,'']]],
+  ['supported_20astarte_20message_20hub_20versions_11',['Supported Astarte message hub versions',['../index.html#autotoc_md2',1,'']]]
 ];

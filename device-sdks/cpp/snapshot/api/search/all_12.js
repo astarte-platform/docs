@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['value_5ftype_0',['value_type',['../classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#a0bbe2c86b3a0817522c2eb323ffd5410',1,'AstarteDeviceSdk::AstarteDatastreamObject']]],
-  ['version_1',['Minimum C++ version',['../index.html#autotoc_md1',1,'']]],
-  ['versions_2',['Supported Astarte message hub versions',['../index.html#autotoc_md2',1,'']]]
+  ['unset_5fproperty_0',['unset_property',['../classAstarteDeviceSdk_1_1AstarteDevice.html#ad16a82982c96e51778b62091a78aab86',1,'AstarteDeviceSdk::AstarteDevice::unset_property()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#ae1318783d3493f2a169112fc506baa78',1,'AstarteDeviceSdk::AstarteDeviceGRPC::unset_property()']]],
+  ['utils_1',['utils',['../namespaceutils.html',1,'']]]
 ];

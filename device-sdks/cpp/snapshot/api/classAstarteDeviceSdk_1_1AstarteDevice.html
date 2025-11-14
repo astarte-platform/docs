@@ -163,36 +163,36 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a066d8ab1dd1b009b5dedb14aa3b9cc2a" id="r_a066d8ab1dd1b009b5dedb14aa3b9cc2a"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a066d8ab1dd1b009b5dedb14aa3b9cc2a">operator=</a> (<a class="el" href="classAstarteDeviceSdk_1_1AstarteDevice.html">AstarteDevice</a> &amp;&amp;other) -&gt; <a class="el" href="classAstarteDeviceSdk_1_1AstarteDevice.html">AstarteDevice</a> &amp;=default</td></tr>
 <tr class="memdesc:a066d8ab1dd1b009b5dedb14aa3b9cc2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assignment operator for the Astarte device class.  <br /></td></tr>
 <tr class="separator:a066d8ab1dd1b009b5dedb14aa3b9cc2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20f717485203b87bb34b2f9c082ca502" id="r_a20f717485203b87bb34b2f9c082ca502"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20f717485203b87bb34b2f9c082ca502">add_interface_from_file</a> (const std::filesystem::path &amp;json_file)=0</td></tr>
-<tr class="memdesc:a20f717485203b87bb34b2f9c082ca502"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an interface for the device from a JSON file.  <br /></td></tr>
-<tr class="separator:a20f717485203b87bb34b2f9c082ca502"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50cc8cbf09dfc228152c11a7392c504c" id="r_a50cc8cbf09dfc228152c11a7392c504c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50cc8cbf09dfc228152c11a7392c504c">add_interface_from_str</a> (std::string_view json)=0</td></tr>
-<tr class="memdesc:a50cc8cbf09dfc228152c11a7392c504c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an interface for the device from a JSON string view.  <br /></td></tr>
-<tr class="separator:a50cc8cbf09dfc228152c11a7392c504c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a9d7ccdc472d0c917d8a824d4fcf6a5" id="r_a4a9d7ccdc472d0c917d8a824d4fcf6a5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a9d7ccdc472d0c917d8a824d4fcf6a5">remove_interface</a> (const std::string &amp;interface_name)=0</td></tr>
-<tr class="memdesc:a4a9d7ccdc472d0c917d8a824d4fcf6a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an installed interface.  <br /></td></tr>
-<tr class="separator:a4a9d7ccdc472d0c917d8a824d4fcf6a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ed11e6667bcb20bd92ad68e90908538" id="r_a3ed11e6667bcb20bd92ad68e90908538"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ed11e6667bcb20bd92ad68e90908538">connect</a> ()=0</td></tr>
-<tr class="memdesc:a3ed11e6667bcb20bd92ad68e90908538"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect the device to Astarte.  <br /></td></tr>
-<tr class="separator:a3ed11e6667bcb20bd92ad68e90908538"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ceef702ed2c4c9f2905fa83f8c41b33" id="r_a2ceef702ed2c4c9f2905fa83f8c41b33"><td class="memItemLeft" align="right" valign="top">virtual auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ceef702ed2c4c9f2905fa83f8c41b33">add_interface_from_file</a> (const std::filesystem::path &amp;json_file) -&gt; astarte_tl::expected&lt; void, <a class="el" href="namespaceAstarteDeviceSdk.html#a64fd48de7374d5606011147586d83cb2">AstarteError</a> &gt;=0</td></tr>
+<tr class="memdesc:a2ceef702ed2c4c9f2905fa83f8c41b33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an interface for the device from a JSON file.  <br /></td></tr>
+<tr class="separator:a2ceef702ed2c4c9f2905fa83f8c41b33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b55609f40bda1f119ba1c78783dbbb9" id="r_a1b55609f40bda1f119ba1c78783dbbb9"><td class="memItemLeft" align="right" valign="top">virtual auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b55609f40bda1f119ba1c78783dbbb9">add_interface_from_str</a> (std::string_view json) -&gt; astarte_tl::expected&lt; void, <a class="el" href="namespaceAstarteDeviceSdk.html#a64fd48de7374d5606011147586d83cb2">AstarteError</a> &gt;=0</td></tr>
+<tr class="memdesc:a1b55609f40bda1f119ba1c78783dbbb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an interface for the device from a JSON string view.  <br /></td></tr>
+<tr class="separator:a1b55609f40bda1f119ba1c78783dbbb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade2a2e2034bc7c14be14a45d3687c292" id="r_ade2a2e2034bc7c14be14a45d3687c292"><td class="memItemLeft" align="right" valign="top">virtual auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade2a2e2034bc7c14be14a45d3687c292">remove_interface</a> (const std::string &amp;interface_name) -&gt; astarte_tl::expected&lt; void, <a class="el" href="namespaceAstarteDeviceSdk.html#a64fd48de7374d5606011147586d83cb2">AstarteError</a> &gt;=0</td></tr>
+<tr class="memdesc:ade2a2e2034bc7c14be14a45d3687c292"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an installed interface.  <br /></td></tr>
+<tr class="separator:ade2a2e2034bc7c14be14a45d3687c292"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f13af78da2eebcd6c8e41cb85a85aca" id="r_a3f13af78da2eebcd6c8e41cb85a85aca"><td class="memItemLeft" align="right" valign="top">virtual auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f13af78da2eebcd6c8e41cb85a85aca">connect</a> () -&gt; astarte_tl::expected&lt; void, <a class="el" href="namespaceAstarteDeviceSdk.html#a64fd48de7374d5606011147586d83cb2">AstarteError</a> &gt;=0</td></tr>
+<tr class="memdesc:a3f13af78da2eebcd6c8e41cb85a85aca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect the device to Astarte.  <br /></td></tr>
+<tr class="separator:a3f13af78da2eebcd6c8e41cb85a85aca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed9bf3ab9b3289940a00048a4a37cb0f" id="r_aed9bf3ab9b3289940a00048a4a37cb0f"><td class="memItemLeft" align="right" valign="top">virtual auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed9bf3ab9b3289940a00048a4a37cb0f">is_connected</a> () const -&gt; bool=0</td></tr>
 <tr class="memdesc:aed9bf3ab9b3289940a00048a4a37cb0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the device is connected to the Astarte message hub.  <br /></td></tr>
 <tr class="separator:aed9bf3ab9b3289940a00048a4a37cb0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8abc4fa96f56e2379c5e9c910597df2f" id="r_a8abc4fa96f56e2379c5e9c910597df2f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8abc4fa96f56e2379c5e9c910597df2f">disconnect</a> ()=0</td></tr>
-<tr class="memdesc:a8abc4fa96f56e2379c5e9c910597df2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect the device from Astarte.  <br /></td></tr>
-<tr class="separator:a8abc4fa96f56e2379c5e9c910597df2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3369196394420cffc05346d4f2536867" id="r_a3369196394420cffc05346d4f2536867"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3369196394420cffc05346d4f2536867">send_individual</a> (std::string_view interface_name, std::string_view path, const <a class="el" href="classAstarteDeviceSdk_1_1AstarteData.html">AstarteData</a> &amp;data, const std::chrono::system_clock::time_point *timestamp)=0</td></tr>
-<tr class="memdesc:a3369196394420cffc05346d4f2536867"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send an individual data payload to Astarte.  <br /></td></tr>
-<tr class="separator:a3369196394420cffc05346d4f2536867"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab15981ec19ffbe758f69a1b920709c2a" id="r_ab15981ec19ffbe758f69a1b920709c2a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab15981ec19ffbe758f69a1b920709c2a">send_object</a> (std::string_view interface_name, std::string_view path, const <a class="el" href="classAstarteDeviceSdk_1_1AstarteDatastreamObject.html">AstarteDatastreamObject</a> &amp;object, const std::chrono::system_clock::time_point *timestamp)=0</td></tr>
-<tr class="memdesc:ab15981ec19ffbe758f69a1b920709c2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send an aggregate object data payload to Astarte.  <br /></td></tr>
-<tr class="separator:ab15981ec19ffbe758f69a1b920709c2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23f70a70a4a8a016c80deb1c9bc9b031" id="r_a23f70a70a4a8a016c80deb1c9bc9b031"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23f70a70a4a8a016c80deb1c9bc9b031">set_property</a> (std::string_view interface_name, std::string_view path, const <a class="el" href="classAstarteDeviceSdk_1_1AstarteData.html">AstarteData</a> &amp;data)=0</td></tr>
-<tr class="memdesc:a23f70a70a4a8a016c80deb1c9bc9b031"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a device property on Astarte.  <br /></td></tr>
-<tr class="separator:a23f70a70a4a8a016c80deb1c9bc9b031"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a292bd87aef9c1bc2d799fde0c928c304" id="r_a292bd87aef9c1bc2d799fde0c928c304"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a292bd87aef9c1bc2d799fde0c928c304">unset_property</a> (std::string_view interface_name, std::string_view path)=0</td></tr>
-<tr class="memdesc:a292bd87aef9c1bc2d799fde0c928c304"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unset a device property on Astarte.  <br /></td></tr>
-<tr class="separator:a292bd87aef9c1bc2d799fde0c928c304"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf2975ae81d87425b92cec9cdc50d346" id="r_aaf2975ae81d87425b92cec9cdc50d346"><td class="memItemLeft" align="right" valign="top">virtual auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf2975ae81d87425b92cec9cdc50d346">disconnect</a> () -&gt; astarte_tl::expected&lt; void, <a class="el" href="namespaceAstarteDeviceSdk.html#a64fd48de7374d5606011147586d83cb2">AstarteError</a> &gt;=0</td></tr>
+<tr class="memdesc:aaf2975ae81d87425b92cec9cdc50d346"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect the device from Astarte.  <br /></td></tr>
+<tr class="separator:aaf2975ae81d87425b92cec9cdc50d346"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3f8cc0b681459eacf69b39fa19a99a6" id="r_ad3f8cc0b681459eacf69b39fa19a99a6"><td class="memItemLeft" align="right" valign="top">virtual auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3f8cc0b681459eacf69b39fa19a99a6">send_individual</a> (std::string_view interface_name, std::string_view path, const <a class="el" href="classAstarteDeviceSdk_1_1AstarteData.html">AstarteData</a> &amp;data, const std::chrono::system_clock::time_point *timestamp) -&gt; astarte_tl::expected&lt; void, <a class="el" href="namespaceAstarteDeviceSdk.html#a64fd48de7374d5606011147586d83cb2">AstarteError</a> &gt;=0</td></tr>
+<tr class="memdesc:ad3f8cc0b681459eacf69b39fa19a99a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send an individual data payload to Astarte.  <br /></td></tr>
+<tr class="separator:ad3f8cc0b681459eacf69b39fa19a99a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5b9bb5755bc24b464930f3226ff88af" id="r_af5b9bb5755bc24b464930f3226ff88af"><td class="memItemLeft" align="right" valign="top">virtual auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5b9bb5755bc24b464930f3226ff88af">send_object</a> (std::string_view interface_name, std::string_view path, const <a class="el" href="classAstarteDeviceSdk_1_1AstarteDatastreamObject.html">AstarteDatastreamObject</a> &amp;object, const std::chrono::system_clock::time_point *timestamp) -&gt; astarte_tl::expected&lt; void, <a class="el" href="namespaceAstarteDeviceSdk.html#a64fd48de7374d5606011147586d83cb2">AstarteError</a> &gt;=0</td></tr>
+<tr class="memdesc:af5b9bb5755bc24b464930f3226ff88af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send an aggregate object data payload to Astarte.  <br /></td></tr>
+<tr class="separator:af5b9bb5755bc24b464930f3226ff88af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2690d90ea4cbc1392905798e5805875" id="r_ac2690d90ea4cbc1392905798e5805875"><td class="memItemLeft" align="right" valign="top">virtual auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2690d90ea4cbc1392905798e5805875">set_property</a> (std::string_view interface_name, std::string_view path, const <a class="el" href="classAstarteDeviceSdk_1_1AstarteData.html">AstarteData</a> &amp;data) -&gt; astarte_tl::expected&lt; void, <a class="el" href="namespaceAstarteDeviceSdk.html#a64fd48de7374d5606011147586d83cb2">AstarteError</a> &gt;=0</td></tr>
+<tr class="memdesc:ac2690d90ea4cbc1392905798e5805875"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a device property on Astarte.  <br /></td></tr>
+<tr class="separator:ac2690d90ea4cbc1392905798e5805875"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad16a82982c96e51778b62091a78aab86" id="r_ad16a82982c96e51778b62091a78aab86"><td class="memItemLeft" align="right" valign="top">virtual auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad16a82982c96e51778b62091a78aab86">unset_property</a> (std::string_view interface_name, std::string_view path) -&gt; astarte_tl::expected&lt; void, <a class="el" href="namespaceAstarteDeviceSdk.html#a64fd48de7374d5606011147586d83cb2">AstarteError</a> &gt;=0</td></tr>
+<tr class="memdesc:ad16a82982c96e51778b62091a78aab86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unset a device property on Astarte.  <br /></td></tr>
+<tr class="separator:ad16a82982c96e51778b62091a78aab86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a889485ae2c24ac8e2473bfafddc7fd40" id="r_a889485ae2c24ac8e2473bfafddc7fd40"><td class="memItemLeft" align="right" valign="top">virtual auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a889485ae2c24ac8e2473bfafddc7fd40">poll_incoming</a> (const std::chrono::milliseconds &amp;timeout) -&gt; std::optional&lt; <a class="el" href="classAstarteDeviceSdk_1_1AstarteMessage.html">AstarteMessage</a> &gt;=0</td></tr>
 <tr class="memdesc:a889485ae2c24ac8e2473bfafddc7fd40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poll for incoming messages from Astarte.  <br /></td></tr>
 <tr class="separator:a889485ae2c24ac8e2473bfafddc7fd40"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -324,8 +324,8 @@ Protected Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a20f717485203b87bb34b2f9c082ca502" name="a20f717485203b87bb34b2f9c082ca502"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20f717485203b87bb34b2f9c082ca502">&#9670;&#160;</a></span>add_interface_from_file()</h2>
+<a id="a2ceef702ed2c4c9f2905fa83f8c41b33" name="a2ceef702ed2c4c9f2905fa83f8c41b33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ceef702ed2c4c9f2905fa83f8c41b33">&#9670;&#160;</a></span>add_interface_from_file()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -334,10 +334,10 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void AstarteDeviceSdk::AstarteDevice::add_interface_from_file </td>
+          <td class="memname">virtual auto AstarteDeviceSdk::AstarteDevice::add_interface_from_file </td>
           <td>(</td>
           <td class="paramtype">const std::filesystem::path &amp;</td>          <td class="paramname"><span class="paramname"><em>json_file</em></span></td><td>)</td>
-          <td></td>
+          <td> -&gt;  astarte_tl::expected&lt; void, <a class="el" href="namespaceAstarteDeviceSdk.html#a64fd48de7374d5606011147586d83cb2">AstarteError</a> &gt;</td>
         </tr>
       </table>
   </td>
@@ -354,13 +354,14 @@ Protected Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>An error if generated. </dd></dl>
 
-<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a8a335e8534df86344e153968187d4068">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
+<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a7de53802d51536aee350dd59baee04f4">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
 
 </div>
 </div>
-<a id="a50cc8cbf09dfc228152c11a7392c504c" name="a50cc8cbf09dfc228152c11a7392c504c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a50cc8cbf09dfc228152c11a7392c504c">&#9670;&#160;</a></span>add_interface_from_str()</h2>
+<a id="a1b55609f40bda1f119ba1c78783dbbb9" name="a1b55609f40bda1f119ba1c78783dbbb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b55609f40bda1f119ba1c78783dbbb9">&#9670;&#160;</a></span>add_interface_from_str()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -369,10 +370,10 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void AstarteDeviceSdk::AstarteDevice::add_interface_from_str </td>
+          <td class="memname">virtual auto AstarteDeviceSdk::AstarteDevice::add_interface_from_str </td>
           <td>(</td>
           <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>json</em></span></td><td>)</td>
-          <td></td>
+          <td> -&gt;  astarte_tl::expected&lt; void, <a class="el" href="namespaceAstarteDeviceSdk.html#a64fd48de7374d5606011147586d83cb2">AstarteError</a> &gt;</td>
         </tr>
       </table>
   </td>
@@ -389,13 +390,14 @@ Protected Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>An error if generated. </dd></dl>
 
-<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a5d3bc0861d4313e255f2be87ca2afaf3">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
+<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#af3c519345fc8ce9e2765fe814e8df480">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
 
 </div>
 </div>
-<a id="a3ed11e6667bcb20bd92ad68e90908538" name="a3ed11e6667bcb20bd92ad68e90908538"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ed11e6667bcb20bd92ad68e90908538">&#9670;&#160;</a></span>connect()</h2>
+<a id="a3f13af78da2eebcd6c8e41cb85a85aca" name="a3f13af78da2eebcd6c8e41cb85a85aca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f13af78da2eebcd6c8e41cb85a85aca">&#9670;&#160;</a></span>connect()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -404,10 +406,10 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void AstarteDeviceSdk::AstarteDevice::connect </td>
+          <td class="memname">virtual auto AstarteDeviceSdk::AstarteDevice::connect </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> -&gt;  astarte_tl::expected&lt; void, <a class="el" href="namespaceAstarteDeviceSdk.html#a64fd48de7374d5606011147586d83cb2">AstarteError</a> &gt;</td>
         </tr>
       </table>
   </td>
@@ -418,14 +420,14 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Connect the device to Astarte. </p>
-<p>This is an asynchronous function. It starts a management process that will handle the device's connectivity in the background. </p>
+<p>This is an asynchronous function. It starts a management process that will handle the device's connectivity in the background. </p><dl class="section return"><dt>Returns</dt><dd>An error if generated. </dd></dl>
 
-<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a08462fe220771d9c4783317e2db0c0ad">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
+<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#abb2d4bccae19bb6662d6ab88d9bbd8f0">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
 
 </div>
 </div>
-<a id="a8abc4fa96f56e2379c5e9c910597df2f" name="a8abc4fa96f56e2379c5e9c910597df2f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8abc4fa96f56e2379c5e9c910597df2f">&#9670;&#160;</a></span>disconnect()</h2>
+<a id="aaf2975ae81d87425b92cec9cdc50d346" name="aaf2975ae81d87425b92cec9cdc50d346"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf2975ae81d87425b92cec9cdc50d346">&#9670;&#160;</a></span>disconnect()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -434,10 +436,10 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void AstarteDeviceSdk::AstarteDevice::disconnect </td>
+          <td class="memname">virtual auto AstarteDeviceSdk::AstarteDevice::disconnect </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> -&gt;  astarte_tl::expected&lt; void, <a class="el" href="namespaceAstarteDeviceSdk.html#a64fd48de7374d5606011147586d83cb2">AstarteError</a> &gt;</td>
         </tr>
       </table>
   </td>
@@ -448,8 +450,9 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Disconnect the device from Astarte. </p>
+<dl class="section return"><dt>Returns</dt><dd>An error if generated. </dd></dl>
 
-<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a04494f839315f9a64f9a5772ec5650dd">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
+<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a934542c92cc05b7eeb0dd84bcc080285">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
 
 </div>
 </div>
@@ -580,8 +583,8 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a4a9d7ccdc472d0c917d8a824d4fcf6a5" name="a4a9d7ccdc472d0c917d8a824d4fcf6a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a9d7ccdc472d0c917d8a824d4fcf6a5">&#9670;&#160;</a></span>remove_interface()</h2>
+<a id="ade2a2e2034bc7c14be14a45d3687c292" name="ade2a2e2034bc7c14be14a45d3687c292"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade2a2e2034bc7c14be14a45d3687c292">&#9670;&#160;</a></span>remove_interface()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -590,10 +593,10 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void AstarteDeviceSdk::AstarteDevice::remove_interface </td>
+          <td class="memname">virtual auto AstarteDeviceSdk::AstarteDevice::remove_interface </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>interface_name</em></span></td><td>)</td>
-          <td></td>
+          <td> -&gt;  astarte_tl::expected&lt; void, <a class="el" href="namespaceAstarteDeviceSdk.html#a64fd48de7374d5606011147586d83cb2">AstarteError</a> &gt;</td>
         </tr>
       </table>
   </td>
@@ -610,13 +613,14 @@ Protected Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>An error if generated. </dd></dl>
 
-<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a2b664973fca8cb7ffa9838896ec3d044">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
+<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a8e44ea239bc0aa0d7dabb20954439378">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
 
 </div>
 </div>
-<a id="a3369196394420cffc05346d4f2536867" name="a3369196394420cffc05346d4f2536867"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3369196394420cffc05346d4f2536867">&#9670;&#160;</a></span>send_individual()</h2>
+<a id="ad3f8cc0b681459eacf69b39fa19a99a6" name="ad3f8cc0b681459eacf69b39fa19a99a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3f8cc0b681459eacf69b39fa19a99a6">&#9670;&#160;</a></span>send_individual()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -625,7 +629,7 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void AstarteDeviceSdk::AstarteDevice::send_individual </td>
+          <td class="memname">virtual auto AstarteDeviceSdk::AstarteDevice::send_individual </td>
           <td>(</td>
           <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>interface_name</em></span>, </td>
         </tr>
@@ -642,7 +646,7 @@ Protected Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::chrono::system_clock::time_point *</td>          <td class="paramname"><span class="paramname"><em>timestamp</em></span>&#160;)</td>
+          <td class="paramtype">const std::chrono::system_clock::time_point *</td>          <td class="paramname"><span class="paramname"><em>timestamp</em></span>&#160;) -&gt;  astarte_tl::expected&lt; void, <a class="el" href="namespaceAstarteDeviceSdk.html#a64fd48de7374d5606011147586d83cb2">AstarteError</a> &gt;</td>
         </tr>
       </table>
   </td>
@@ -662,13 +666,14 @@ Protected Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>An error if generated. </dd></dl>
 
-<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a47e7432fe1352af423776f5fab14ff06">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
+<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#aea6585361507d5d9cf38029c4350b37f">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
 
 </div>
 </div>
-<a id="ab15981ec19ffbe758f69a1b920709c2a" name="ab15981ec19ffbe758f69a1b920709c2a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab15981ec19ffbe758f69a1b920709c2a">&#9670;&#160;</a></span>send_object()</h2>
+<a id="af5b9bb5755bc24b464930f3226ff88af" name="af5b9bb5755bc24b464930f3226ff88af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5b9bb5755bc24b464930f3226ff88af">&#9670;&#160;</a></span>send_object()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -677,7 +682,7 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void AstarteDeviceSdk::AstarteDevice::send_object </td>
+          <td class="memname">virtual auto AstarteDeviceSdk::AstarteDevice::send_object </td>
           <td>(</td>
           <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>interface_name</em></span>, </td>
         </tr>
@@ -694,7 +699,7 @@ Protected Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::chrono::system_clock::time_point *</td>          <td class="paramname"><span class="paramname"><em>timestamp</em></span>&#160;)</td>
+          <td class="paramtype">const std::chrono::system_clock::time_point *</td>          <td class="paramname"><span class="paramname"><em>timestamp</em></span>&#160;) -&gt;  astarte_tl::expected&lt; void, <a class="el" href="namespaceAstarteDeviceSdk.html#a64fd48de7374d5606011147586d83cb2">AstarteError</a> &gt;</td>
         </tr>
       </table>
   </td>
@@ -714,13 +719,14 @@ Protected Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>An error if generated. </dd></dl>
 
-<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a2de48382d2eff1eefd1476c44c8c5137">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
+<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#abbd842feb8c6bb134b3b9b2c49c6ab75">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
 
 </div>
 </div>
-<a id="a23f70a70a4a8a016c80deb1c9bc9b031" name="a23f70a70a4a8a016c80deb1c9bc9b031"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a23f70a70a4a8a016c80deb1c9bc9b031">&#9670;&#160;</a></span>set_property()</h2>
+<a id="ac2690d90ea4cbc1392905798e5805875" name="ac2690d90ea4cbc1392905798e5805875"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2690d90ea4cbc1392905798e5805875">&#9670;&#160;</a></span>set_property()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -729,7 +735,7 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void AstarteDeviceSdk::AstarteDevice::set_property </td>
+          <td class="memname">virtual auto AstarteDeviceSdk::AstarteDevice::set_property </td>
           <td>(</td>
           <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>interface_name</em></span>, </td>
         </tr>
@@ -741,7 +747,7 @@ Protected Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classAstarteDeviceSdk_1_1AstarteData.html">AstarteData</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>data</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="classAstarteDeviceSdk_1_1AstarteData.html">AstarteData</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>data</em></span>&#160;) -&gt;  astarte_tl::expected&lt; void, <a class="el" href="namespaceAstarteDeviceSdk.html#a64fd48de7374d5606011147586d83cb2">AstarteError</a> &gt;</td>
         </tr>
       </table>
   </td>
@@ -760,13 +766,14 @@ Protected Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>An error if generated. </dd></dl>
 
-<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a55f15eaad61c3aa6f765b5237ca69989">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
+<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#aad9be65a9912df7455c4a39f459c1478">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
 
 </div>
 </div>
-<a id="a292bd87aef9c1bc2d799fde0c928c304" name="a292bd87aef9c1bc2d799fde0c928c304"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a292bd87aef9c1bc2d799fde0c928c304">&#9670;&#160;</a></span>unset_property()</h2>
+<a id="ad16a82982c96e51778b62091a78aab86" name="ad16a82982c96e51778b62091a78aab86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad16a82982c96e51778b62091a78aab86">&#9670;&#160;</a></span>unset_property()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -775,14 +782,14 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void AstarteDeviceSdk::AstarteDevice::unset_property </td>
+          <td class="memname">virtual auto AstarteDeviceSdk::AstarteDevice::unset_property </td>
           <td>(</td>
           <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>interface_name</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>path</em></span>&#160;)</td>
+          <td class="paramtype">std::string_view</td>          <td class="paramname"><span class="paramname"><em>path</em></span>&#160;) -&gt;  astarte_tl::expected&lt; void, <a class="el" href="namespaceAstarteDeviceSdk.html#a64fd48de7374d5606011147586d83cb2">AstarteError</a> &gt;</td>
         </tr>
       </table>
   </td>
@@ -800,8 +807,9 @@ Protected Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>An error if generated. </dd></dl>
 
-<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a13e93d4a4d76ee0e62d4dd1684ee08fd">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
+<p>Implemented in <a class="el" href="classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#ae1318783d3493f2a169112fc506baa78">AstarteDeviceSdk::AstarteDeviceGRPC</a>.</p>
 
 </div>
 </div>

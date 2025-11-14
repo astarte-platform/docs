@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['value_5ftype_0',['value_type',['../classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#a0bbe2c86b3a0817522c2eb323ffd5410',1,'AstarteDeviceSdk::AstarteDatastreamObject']]]
+  ['size_5ftype_0',['size_type',['../classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#a0f4a11ec5dcdf23665669b119cef260a',1,'AstarteDeviceSdk::AstarteDatastreamObject']]]
 ];

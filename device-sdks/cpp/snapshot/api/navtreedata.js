@@ -47,6 +47,7 @@ var NAVTREE =
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
+        [ "Typedefs", "namespacemembers_type.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ],
         [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
@@ -71,7 +72,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"index.html#autotoc_md10"
+"classAstarteDeviceSdk_1_1AstarteStoredProperty.html#a9371afe89af95ebdce58b2ae2d694393"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

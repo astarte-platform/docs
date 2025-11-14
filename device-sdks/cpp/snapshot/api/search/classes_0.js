@@ -5,12 +5,14 @@ var searchData=
   ['astartedatastreamobject_2',['AstarteDatastreamObject',['../classAstarteDeviceSdk_1_1AstarteDatastreamObject.html',1,'AstarteDeviceSdk']]],
   ['astartedevice_3',['AstarteDevice',['../classAstarteDeviceSdk_1_1AstarteDevice.html',1,'AstarteDeviceSdk']]],
   ['astartedevicegrpc_4',['AstarteDeviceGRPC',['../classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html',1,'AstarteDeviceSdk']]],
-  ['astarteexception_5',['AstarteException',['../classAstarteDeviceSdk_1_1AstarteException.html',1,'AstarteDeviceSdk']]],
-  ['astartefileopenexception_6',['AstarteFileOpenException',['../classAstarteDeviceSdk_1_1AstarteFileOpenException.html',1,'AstarteDeviceSdk']]],
-  ['astarteinternalexception_7',['AstarteInternalException',['../classAstarteDeviceSdk_1_1AstarteInternalException.html',1,'AstarteDeviceSdk']]],
-  ['astarteinvalidinputexception_8',['AstarteInvalidInputException',['../classAstarteDeviceSdk_1_1AstarteInvalidInputException.html',1,'AstarteDeviceSdk']]],
-  ['astartemessage_9',['AstarteMessage',['../classAstarteDeviceSdk_1_1AstarteMessage.html',1,'AstarteDeviceSdk']]],
-  ['astarteoperationrefusedexception_10',['AstarteOperationRefusedException',['../classAstarteDeviceSdk_1_1AstarteOperationRefusedException.html',1,'AstarteDeviceSdk']]],
-  ['astartepropertyindividual_11',['AstartePropertyIndividual',['../classAstarteDeviceSdk_1_1AstartePropertyIndividual.html',1,'AstarteDeviceSdk']]],
-  ['astartestoredproperty_12',['AstarteStoredProperty',['../classAstarteDeviceSdk_1_1AstarteStoredProperty.html',1,'AstarteDeviceSdk']]]
+  ['astarteerrorbase_5',['AstarteErrorBase',['../classAstarteDeviceSdk_1_1AstarteErrorBase.html',1,'AstarteDeviceSdk']]],
+  ['astartefileopenerror_6',['AstarteFileOpenError',['../classAstarteDeviceSdk_1_1AstarteFileOpenError.html',1,'AstarteDeviceSdk']]],
+  ['astartegrpcliberror_7',['AstarteGrpcLibError',['../classAstarteDeviceSdk_1_1AstarteGrpcLibError.html',1,'AstarteDeviceSdk']]],
+  ['astarteinternalerror_8',['AstarteInternalError',['../classAstarteDeviceSdk_1_1AstarteInternalError.html',1,'AstarteDeviceSdk']]],
+  ['astarteinvalidinputerror_9',['AstarteInvalidInputError',['../classAstarteDeviceSdk_1_1AstarteInvalidInputError.html',1,'AstarteDeviceSdk']]],
+  ['astartemessage_10',['AstarteMessage',['../classAstarteDeviceSdk_1_1AstarteMessage.html',1,'AstarteDeviceSdk']]],
+  ['astartemsghuberror_11',['AstarteMsgHubError',['../classAstarteDeviceSdk_1_1AstarteMsgHubError.html',1,'AstarteDeviceSdk']]],
+  ['astarteoperationrefusederror_12',['AstarteOperationRefusedError',['../classAstarteDeviceSdk_1_1AstarteOperationRefusedError.html',1,'AstarteDeviceSdk']]],
+  ['astartepropertyindividual_13',['AstartePropertyIndividual',['../classAstarteDeviceSdk_1_1AstartePropertyIndividual.html',1,'AstarteDeviceSdk']]],
+  ['astartestoredproperty_14',['AstarteStoredProperty',['../classAstarteDeviceSdk_1_1AstarteStoredProperty.html',1,'AstarteDeviceSdk']]]
 ];

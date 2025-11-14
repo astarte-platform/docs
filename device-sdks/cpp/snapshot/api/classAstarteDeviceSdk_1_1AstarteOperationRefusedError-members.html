@@ -96,7 +96,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('classAstarteDeviceSdk_1_1AstarteFileOpenException.html',''); initResizable(true); });
+$(function(){initNavTree('classAstarteDeviceSdk_1_1AstarteOperationRefusedError.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -122,16 +122,20 @@ $(function(){initNavTree('classAstarteDeviceSdk_1_1AstarteFileOpenException.html
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">AstarteDeviceSdk::AstarteFileOpenException Member List</div></div>
+  <div class="headertitle"><div class="title">AstarteDeviceSdk::AstarteOperationRefusedError Member List</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>This is the complete list of members for <a class="el" href="classAstarteDeviceSdk_1_1AstarteFileOpenException.html">AstarteDeviceSdk::AstarteFileOpenException</a>, including all inherited members.</p>
+<p>This is the complete list of members for <a class="el" href="classAstarteDeviceSdk_1_1AstarteOperationRefusedError.html">AstarteDeviceSdk::AstarteOperationRefusedError</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteException.html#a7ef3256068af0ab663ad6c61e3d758df">AstarteException</a>(std::string_view message)</td><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteException.html">AstarteDeviceSdk::AstarteException</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteFileOpenException.html#a950af4576df1e885a3a335038372fe96">AstarteFileOpenException</a>(std::string_view filename)</td><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteFileOpenException.html">AstarteDeviceSdk::AstarteFileOpenException</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteFileOpenException.html#a366b104f274857fb2c4ebe345d5fb5e8">get_filename</a>() const -&gt; const std::string &amp;</td><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteFileOpenException.html">AstarteDeviceSdk::AstarteFileOpenException</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteException.html#ad7a9b291d236e4b5074134a4746b4720">what</a>() const noexcept -&gt; const char *override</td><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteException.html">AstarteDeviceSdk::AstarteException</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteErrorBase.html#aecd7e21960b8f93660d68d3f8dfcab5c">AstarteErrorBase</a>(std::string_view type, std::string_view message)</td><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteErrorBase.html">AstarteDeviceSdk::AstarteErrorBase</a></td><td class="entry"><span class="mlabel">explicit</span><span class="mlabel">protected</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteErrorBase.html#ace2eb5fbe652967e724ea342a5b83659">AstarteErrorBase</a>(std::string_view type, std::string_view message, const AstarteErrorBase &amp;other)</td><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteErrorBase.html">AstarteDeviceSdk::AstarteErrorBase</a></td><td class="entry"><span class="mlabel">explicit</span><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteOperationRefusedError.html#a8dcb201a8ee165bcc1f87d1383535434">AstarteOperationRefusedError</a>(std::string_view message)</td><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteOperationRefusedError.html">AstarteDeviceSdk::AstarteOperationRefusedError</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteOperationRefusedError.html#a7f4d51939dfb9d47dd69b0ae026bdf67">AstarteOperationRefusedError</a>(std::string_view message, const AstarteError &amp;other)</td><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteOperationRefusedError.html">AstarteDeviceSdk::AstarteOperationRefusedError</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteErrorBase.html#a402b76c9316368377dda6286dc67a6b3">message</a>() const -&gt; const std::string &amp;</td><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteErrorBase.html">AstarteDeviceSdk::AstarteErrorBase</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteErrorBase.html#a869e6be7883f1739f0b247f0c88eae28">nested_error</a>() const -&gt; const std::shared_ptr&lt; AstarteErrorBase &gt; &amp;</td><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteErrorBase.html">AstarteDeviceSdk::AstarteErrorBase</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteErrorBase.html#add04284e7eb39747f63773d2e09c7592">type</a>() const -&gt; const std::string &amp;</td><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteErrorBase.html">AstarteDeviceSdk::AstarteErrorBase</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteErrorBase.html#a59ea8a75c4cee7cacfeafe364522b6ad">~AstarteErrorBase</a>()</td><td class="entry"><a class="el" href="classAstarteDeviceSdk_1_1AstarteErrorBase.html">AstarteDeviceSdk::AstarteErrorBase</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

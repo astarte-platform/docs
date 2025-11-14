@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['size_5ftype_0',['size_type',['../classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#a0f4a11ec5dcdf23665669b119cef260a',1,'AstarteDeviceSdk::AstarteDatastreamObject']]]
+  ['maptype_0',['MapType',['../classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#a17b58d279ea9c726057e9977196565e1',1,'AstarteDeviceSdk::AstarteDatastreamObject']]]
 ];

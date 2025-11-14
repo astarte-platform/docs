@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['unset_5fproperty_0',['unset_property',['../classAstarteDeviceSdk_1_1AstarteDevice.html#a292bd87aef9c1bc2d799fde0c928c304',1,'AstarteDeviceSdk::AstarteDevice::unset_property()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a13e93d4a4d76ee0e62d4dd1684ee08fd',1,'AstarteDeviceSdk::AstarteDeviceGRPC::unset_property()']]],
-  ['utils_1',['utils',['../namespaceutils.html',1,'']]]
+  ['the_20library_20in_20an_20external_20project_0',['Importing the library in an external project',['../index.html#autotoc_md12',1,'']]],
+  ['the_20samples_1',['Get started with the samples',['../index.html#autotoc_md11',1,'']]],
+  ['try_5finto_2',['try_into',['../classAstarteDeviceSdk_1_1AstarteData.html#abc63be5b2b20d6310825a8941ce1e720',1,'AstarteDeviceSdk::AstarteData::try_into()'],['../classAstarteDeviceSdk_1_1AstarteMessage.html#afda66777da768df8d6a569d165473e2e',1,'AstarteDeviceSdk::AstarteMessage::try_into()']]],
+  ['type_3',['type',['../classAstarteDeviceSdk_1_1AstarteErrorBase.html#add04284e7eb39747f63773d2e09c7592',1,'AstarteDeviceSdk::AstarteErrorBase']]],
+  ['type_2ehpp_4',['type.hpp',['../type_8hpp.html',1,'']]]
 ];
