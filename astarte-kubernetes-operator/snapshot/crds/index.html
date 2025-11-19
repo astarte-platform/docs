@@ -482,6 +482,27 @@ https://github.com/alex-shpak/hugo-book
           <td>Enum: [high mid low ] <br />Optional: {} <br /></td>
       </tr>
       <tr>
+          <td><code>livenessProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Liveness probe for this component.<br />If not set, a default HTTP GET probe is configured to check the /health endpoint on the http port.<br />Default settings: InitialDelaySeconds=10, TimeoutSeconds=5, PeriodSeconds=30, FailureThreshold=5 (15 for Housekeeping).<br />Note: VerneMQ uses different defaults: /metrics endpoint on port 8888, InitialDelaySeconds=60, PeriodSeconds=20, FailureThreshold=3.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>readinessProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Readiness probe for this component.<br />If not set, a default HTTP GET probe is configured to check the /health endpoint on the http port.<br />Default settings: InitialDelaySeconds=10, TimeoutSeconds=5, PeriodSeconds=30, FailureThreshold=5 (15 for Housekeeping).<br />Note: VerneMQ uses different defaults: /metrics endpoint on port 8888, InitialDelaySeconds=60, PeriodSeconds=20, FailureThreshold=3.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>startupProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Startup probe for this component.<br />If not set, no startup probe is configured by default.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
           <td><code>disableAuthentication</code> <em>boolean</em></td>
           <td></td>
           <td></td>
@@ -886,6 +907,27 @@ https://github.com/alex-shpak/hugo-book
           <td>The PriorityClass for this component.<br />Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified.<br />Ignored if astartePodPriorities is not enabled.</td>
           <td></td>
           <td>Enum: [high mid low ] <br />Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>livenessProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Liveness probe for CFSSL.<br />If not set, a default HTTP GET probe is configured to check the /api/v1/cfssl/health endpoint on the http port.<br />Default settings: InitialDelaySeconds=10, TimeoutSeconds=5, PeriodSeconds=20, FailureThreshold=3.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>readinessProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Readiness probe for CFSSL.<br />If not set, a default HTTP GET probe is configured to check the /api/v1/cfssl/health endpoint on the http port.<br />Default settings: InitialDelaySeconds=10, TimeoutSeconds=5, PeriodSeconds=20, FailureThreshold=3.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>startupProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Startup probe for CFSSL.<br />If not set, no startup probe is configured by default.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
       </tr>
   </tbody>
 </table>
@@ -1312,6 +1354,27 @@ https://github.com/alex-shpak/hugo-book
           <td>Enum: [high mid low ] <br />Optional: {} <br /></td>
       </tr>
       <tr>
+          <td><code>livenessProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Liveness probe for this component.<br />If not set, a default HTTP GET probe is configured to check the /health endpoint on the http port.<br />Default settings: InitialDelaySeconds=10, TimeoutSeconds=5, PeriodSeconds=30, FailureThreshold=5 (15 for Housekeeping).<br />Note: VerneMQ uses different defaults: /metrics endpoint on port 8888, InitialDelaySeconds=60, PeriodSeconds=20, FailureThreshold=3.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>readinessProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Readiness probe for this component.<br />If not set, a default HTTP GET probe is configured to check the /health endpoint on the http port.<br />Default settings: InitialDelaySeconds=10, TimeoutSeconds=5, PeriodSeconds=30, FailureThreshold=5 (15 for Housekeeping).<br />Note: VerneMQ uses different defaults: /metrics endpoint on port 8888, InitialDelaySeconds=60, PeriodSeconds=20, FailureThreshold=3.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>startupProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Startup probe for this component.<br />If not set, no startup probe is configured by default.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
           <td><code>realmManagementApiUrl</code> <em>string</em></td>
           <td></td>
           <td></td>
@@ -1465,6 +1528,27 @@ https://github.com/alex-shpak/hugo-book
           <td>The PriorityClass for this component.<br />Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified.<br />Ignored if astartePodPriorities is not enabled.</td>
           <td></td>
           <td>Enum: [high mid low ] <br />Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>livenessProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Liveness probe for this component.<br />If not set, a default HTTP GET probe is configured to check the /health endpoint on the http port.<br />Default settings: InitialDelaySeconds=10, TimeoutSeconds=5, PeriodSeconds=30, FailureThreshold=5 (15 for Housekeeping).<br />Note: VerneMQ uses different defaults: /metrics endpoint on port 8888, InitialDelaySeconds=60, PeriodSeconds=20, FailureThreshold=3.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>readinessProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Readiness probe for this component.<br />If not set, a default HTTP GET probe is configured to check the /health endpoint on the http port.<br />Default settings: InitialDelaySeconds=10, TimeoutSeconds=5, PeriodSeconds=30, FailureThreshold=5 (15 for Housekeeping).<br />Note: VerneMQ uses different defaults: /metrics endpoint on port 8888, InitialDelaySeconds=60, PeriodSeconds=20, FailureThreshold=3.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>startupProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Startup probe for this component.<br />If not set, no startup probe is configured by default.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>dataQueueCount</code> <em>integer</em></td>
@@ -1634,6 +1718,27 @@ https://github.com/alex-shpak/hugo-book
           <td>Enum: [high mid low ] <br />Optional: {} <br /></td>
       </tr>
       <tr>
+          <td><code>livenessProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Liveness probe for this component.<br />If not set, a default HTTP GET probe is configured to check the /health endpoint on the http port.<br />Default settings: InitialDelaySeconds=10, TimeoutSeconds=5, PeriodSeconds=30, FailureThreshold=5 (15 for Housekeeping).<br />Note: VerneMQ uses different defaults: /metrics endpoint on port 8888, InitialDelaySeconds=60, PeriodSeconds=20, FailureThreshold=3.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>readinessProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Readiness probe for this component.<br />If not set, a default HTTP GET probe is configured to check the /health endpoint on the http port.<br />Default settings: InitialDelaySeconds=10, TimeoutSeconds=5, PeriodSeconds=30, FailureThreshold=5 (15 for Housekeeping).<br />Note: VerneMQ uses different defaults: /metrics endpoint on port 8888, InitialDelaySeconds=60, PeriodSeconds=20, FailureThreshold=3.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>startupProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Startup probe for this component.<br />If not set, no startup probe is configured by default.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
           <td><code>disableAuthentication</code> <em>boolean</em></td>
           <td></td>
           <td></td>
@@ -1760,6 +1865,27 @@ https://github.com/alex-shpak/hugo-book
           <td>The PriorityClass for this component.<br />Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified.<br />Ignored if astartePodPriorities is not enabled.</td>
           <td></td>
           <td>Enum: [high mid low ] <br />Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>livenessProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Liveness probe for this component.<br />If not set, a default HTTP GET probe is configured to check the /health endpoint on the http port.<br />Default settings: InitialDelaySeconds=10, TimeoutSeconds=5, PeriodSeconds=30, FailureThreshold=5 (15 for Housekeeping).<br />Note: VerneMQ uses different defaults: /metrics endpoint on port 8888, InitialDelaySeconds=60, PeriodSeconds=20, FailureThreshold=3.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>readinessProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Readiness probe for this component.<br />If not set, a default HTTP GET probe is configured to check the /health endpoint on the http port.<br />Default settings: InitialDelaySeconds=10, TimeoutSeconds=5, PeriodSeconds=30, FailureThreshold=5 (15 for Housekeeping).<br />Note: VerneMQ uses different defaults: /metrics endpoint on port 8888, InitialDelaySeconds=60, PeriodSeconds=20, FailureThreshold=3.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>startupProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Startup probe for this component.<br />If not set, no startup probe is configured by default.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
       </tr>
   </tbody>
 </table>
@@ -2377,6 +2503,27 @@ deployments) the replica distribution per datacenter. These settings take effect
           <td>Enum: [high mid low ] <br />Optional: {} <br /></td>
       </tr>
       <tr>
+          <td><code>livenessProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Liveness probe for this component.<br />If not set, a default HTTP GET probe is configured to check the /health endpoint on the http port.<br />Default settings: InitialDelaySeconds=10, TimeoutSeconds=5, PeriodSeconds=30, FailureThreshold=5 (15 for Housekeeping).<br />Note: VerneMQ uses different defaults: /metrics endpoint on port 8888, InitialDelaySeconds=60, PeriodSeconds=20, FailureThreshold=3.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>readinessProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Readiness probe for this component.<br />If not set, a default HTTP GET probe is configured to check the /health endpoint on the http port.<br />Default settings: InitialDelaySeconds=10, TimeoutSeconds=5, PeriodSeconds=30, FailureThreshold=5 (15 for Housekeeping).<br />Note: VerneMQ uses different defaults: /metrics endpoint on port 8888, InitialDelaySeconds=60, PeriodSeconds=20, FailureThreshold=3.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>startupProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Startup probe for this component.<br />If not set, no startup probe is configured by default.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
           <td><code>eventsQueueName</code> <em>string</em></td>
           <td>Configures the name of the Events queue. Should be configured only in installations with a highly<br />customized RabbitMQ. It is advised to leave empty unless you know exactly what you&rsquo;re doing.</td>
           <td></td>
@@ -2499,6 +2646,27 @@ deployments) the replica distribution per datacenter. These settings take effect
           <td>The PriorityClass for this component.<br />Must be one of &ldquo;high&rdquo;, &ldquo;mid&rdquo;, &ldquo;low&rdquo; or unspecified.<br />Ignored if astartePodPriorities is not enabled.</td>
           <td></td>
           <td>Enum: [high mid low ] <br />Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>livenessProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Liveness probe for this component.<br />If not set, a default HTTP GET probe is configured to check the /health endpoint on the http port.<br />Default settings: InitialDelaySeconds=10, TimeoutSeconds=5, PeriodSeconds=30, FailureThreshold=5 (15 for Housekeeping).<br />Note: VerneMQ uses different defaults: /metrics endpoint on port 8888, InitialDelaySeconds=60, PeriodSeconds=20, FailureThreshold=3.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>readinessProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Readiness probe for this component.<br />If not set, a default HTTP GET probe is configured to check the /health endpoint on the http port.<br />Default settings: InitialDelaySeconds=10, TimeoutSeconds=5, PeriodSeconds=30, FailureThreshold=5 (15 for Housekeeping).<br />Note: VerneMQ uses different defaults: /metrics endpoint on port 8888, InitialDelaySeconds=60, PeriodSeconds=20, FailureThreshold=3.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>startupProbe</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#probe-v1-core">Probe</a></em></td>
+          <td>Override the default Startup probe for this component.<br />If not set, no startup probe is configured by default.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>host</code> <em>string</em></td>
