@@ -18,7 +18,7 @@
 
   flow.astarte-platform.org/v2alpha1
 
-  ingress.astarte-platform.org/v1alpha1
+  ingress.astarte-platform.org/v2alpha1
 
 
   api.astarte-platform.org/v2alpha1
@@ -101,7 +101,7 @@ Appears in:">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://docs.astarte-platform.org/astarte-kubernetes-operator/snapshot/crds/">
   <meta property="og:site_name" content="Astarte Kubernetes Operator APIs">
   <meta property="og:title" content="Astarte Kubernetes Operator APIs">
-  <meta property="og:description" content="API Reference # Packages # api.astarte-platform.org/v2alpha1 flow.astarte-platform.org/v2alpha1 ingress.astarte-platform.org/v1alpha1 api.astarte-platform.org/v2alpha1 # Package v2alpha1 contains API Schema definitions for the api v2alpha1 API group
+  <meta property="og:description" content="API Reference # Packages # api.astarte-platform.org/v2alpha1 flow.astarte-platform.org/v2alpha1 ingress.astarte-platform.org/v2alpha1 api.astarte-platform.org/v2alpha1 # Package v2alpha1 contains API Schema definitions for the api v2alpha1 API group
 Package v2alpha1 contains API Schema definitions for the api v2alpha1 API group
 Resource Types # Astarte AstarteList Astarte # Astarte is the Schema for the astartes API
 Appears in:
@@ -232,7 +232,7 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#resource-types-1">Resource Types</a></li>
           </ul>
         </li>
-        <li><a href="#ingressastarte-platformorgv1alpha1">ingress.astarte-platform.org/v1alpha1</a>
+        <li><a href="#ingressastarte-platformorgv2alpha1">ingress.astarte-platform.org/v2alpha1</a>
           <ul>
             <li><a href="#resource-types-2">Resource Types</a></li>
           </ul>
@@ -265,7 +265,7 @@ https://github.com/alex-shpak/hugo-book
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#flowastarte-platformorgv2alpha1">flow.astarte-platform.org/v2alpha1</a></li>
 <li>
-  <a href="/astarte-kubernetes-operator/snapshot/crds/#ingressastarte-platformorgv1alpha1">ingress.astarte-platform.org/v1alpha1</a></li>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#ingressastarte-platformorgv2alpha1">ingress.astarte-platform.org/v2alpha1</a></li>
 </ul>
 <h2 id="apiastarte-platformorgv2alpha1">
   api.astarte-platform.org/v2alpha1
@@ -3521,11 +3521,11 @@ Worker</p>
       </tr>
   </tbody>
 </table>
-<h2 id="ingressastarte-platformorgv1alpha1">
-  ingress.astarte-platform.org/v1alpha1
-  <a class="anchor" href="#ingressastarte-platformorgv1alpha1">#</a>
+<h2 id="ingressastarte-platformorgv2alpha1">
+  ingress.astarte-platform.org/v2alpha1
+  <a class="anchor" href="#ingressastarte-platformorgv2alpha1">#</a>
 </h2>
-<p>Package v1alpha1 contains API Schema definitions for the ingress v1alpha1 API group</p>
+<p>Package v2alpha1 contains API Schema definitions for the ingress v2alpha1 API group</p>
 <h3 id="resource-types-2">
   Resource Types
   <a class="anchor" href="#resource-types-2">#</a>
@@ -3558,7 +3558,7 @@ Worker</p>
   <tbody>
       <tr>
           <td><code>apiVersion</code> <em>string</em></td>
-          <td><code>ingress.astarte-platform.org/v1alpha1</code></td>
+          <td><code>ingress.astarte-platform.org/v2alpha1</code></td>
           <td></td>
           <td></td>
       </tr>
@@ -3632,18 +3632,6 @@ Worker</p>
       <tr>
           <td><code>exposeHousekeeping</code> <em>boolean</em></td>
           <td>When true, the housekeeping endpoint is publicly exposed. Default: true.</td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><code>serveMetrics</code> <em>boolean</em></td>
-          <td>When true, all /metrics endpoints for Astarte services will be served by a dedicated metrics ingress.<br />Metrics can be gathered by querying the /metrics/<service-name> path.<br />Beware this might be a security hole. You can control which IPs can access /metrics<br />with serveMetricsToSubnet. Default: false.</td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><code>serveMetricsToSubnet</code> <em>string</em></td>
-          <td>When specified and when serveMetrics is true, /metrics endpoints will be served only to IPs<br />in the provided subnet range. The subnet has to be compatible with the HAProxy<br />ACL src syntax (e.g.: &ldquo;10.0.0.0/16&rdquo;). Default: &ldquo;&rdquo;.</td>
           <td></td>
           <td></td>
       </tr>
@@ -3759,7 +3747,7 @@ Worker</p>
   <tbody>
       <tr>
           <td><code>apiVersion</code> <em>string</em></td>
-          <td><code>ingress.astarte-platform.org/v1alpha1</code></td>
+          <td><code>ingress.astarte-platform.org/v2alpha1</code></td>
           <td></td>
           <td></td>
       </tr>
@@ -3936,7 +3924,7 @@ Worker</p>
             <li><a href="#resource-types-1">Resource Types</a></li>
           </ul>
         </li>
-        <li><a href="#ingressastarte-platformorgv1alpha1">ingress.astarte-platform.org/v1alpha1</a>
+        <li><a href="#ingressastarte-platformorgv2alpha1">ingress.astarte-platform.org/v2alpha1</a>
           <ul>
             <li><a href="#resource-types-2">Resource Types</a></li>
           </ul>
