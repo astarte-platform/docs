@@ -135,7 +135,7 @@ $(function(){initNavTree('conceptAstarteDeviceSdk_1_1AstarteDataAllowedType.html
 <div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptAstarteDeviceSdk_1_1AstarteDataAllowedType.html">AstarteDeviceSdk::AstarteDataAllowedType</a> =  <span class="keyword">requires</span> {</div>
 <div class="line">  <span class="keyword">requires</span> std::is_same_v&lt;T, int32_t&gt; || std::is_same_v&lt;T, int64_t&gt; || std::is_same_v&lt;T, double&gt; ||</div>
 <div class="line">               std::is_same_v&lt;T, bool&gt; || std::is_same_v&lt;T, std::string&gt; ||</div>
-<div class="line">               std::is_same_v&lt;T, std::vector&lt;uint8_t&gt;&gt; ||</div>
+<div class="line">               std::is_same_v&lt;T, std::string_view&gt; || std::is_same_v&lt;T, std::vector&lt;uint8_t&gt;&gt; ||</div>
 <div class="line">               std::is_same_v&lt;T, std::chrono::system_clock::time_point&gt; ||</div>
 <div class="line">               std::is_same_v&lt;T, std::vector&lt;int32_t&gt;&gt; || std::is_same_v&lt;T, std::vector&lt;int64_t&gt;&gt; ||</div>
 <div class="line">               std::is_same_v&lt;T, std::vector&lt;double&gt;&gt; || std::is_same_v&lt;T, std::vector&lt;bool&gt;&gt; ||</div>
@@ -143,7 +143,7 @@ $(function(){initNavTree('conceptAstarteDeviceSdk_1_1AstarteDataAllowedType.html
 <div class="line">               std::is_same_v&lt;T, std::vector&lt;std::vector&lt;uint8_t&gt;&gt;&gt; ||</div>
 <div class="line">               std::is_same_v&lt;T, std::vector&lt;std::chrono::system_clock::time_point&gt;&gt;;</div>
 <div class="line">}</div>
-<div class="ttc" id="aconceptAstarteDeviceSdk_1_1AstarteDataAllowedType_html"><div class="ttname"><a href="conceptAstarteDeviceSdk_1_1AstarteDataAllowedType.html">AstarteDeviceSdk::AstarteDataAllowedType</a></div><div class="ttdoc">Restricts the allowed types for instances of an Astarte data class.</div><div class="ttdef"><b>Definition</b> data.hpp:26</div></div>
+<div class="ttc" id="aconceptAstarteDeviceSdk_1_1AstarteDataAllowedType_html"><div class="ttname"><a href="conceptAstarteDeviceSdk_1_1AstarteDataAllowedType.html">AstarteDeviceSdk::AstarteDataAllowedType</a></div><div class="ttdoc">Restricts the allowed types for instances of an Astarte data class.</div><div class="ttdef"><b>Definition</b> data.hpp:27</div></div>
 </div><!-- fragment --><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Restricts the allowed types for instances of an Astarte data class. </p>
 </div></div><!-- contents -->
