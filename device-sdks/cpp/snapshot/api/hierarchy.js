@@ -4,7 +4,7 @@ var hierarchy =
     [ "AstarteDeviceSdk::AstarteDatastreamIndividual", "classAstarteDeviceSdk_1_1AstarteDatastreamIndividual.html", null ],
     [ "AstarteDeviceSdk::AstarteDatastreamObject", "classAstarteDeviceSdk_1_1AstarteDatastreamObject.html", null ],
     [ "AstarteDeviceSdk::AstarteDevice", "classAstarteDeviceSdk_1_1AstarteDevice.html", [
-      [ "AstarteDeviceSdk::AstarteDeviceGRPC", "classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html", null ]
+      [ "AstarteDeviceSdk::AstarteDeviceGrpc", "classAstarteDeviceSdk_1_1AstarteDeviceGrpc.html", null ]
     ] ],
     [ "AstarteDeviceSdk::AstarteErrorBase", "classAstarteDeviceSdk_1_1AstarteErrorBase.html", [
       [ "AstarteDeviceSdk::AstarteFileOpenError", "classAstarteDeviceSdk_1_1AstarteFileOpenError.html", null ],

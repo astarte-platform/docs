@@ -8,5 +8,5 @@ var searchData=
   ['device_20sdk_20for_20c_5',['Astarte device SDK for C++',['../index.html#autotoc_md0',1,'']]],
   ['device_2ehpp_6',['device.hpp',['../device_8hpp.html',1,'']]],
   ['device_5fgrpc_2ehpp_7',['device_grpc.hpp',['../device__grpc_8hpp.html',1,'']]],
-  ['disconnect_8',['disconnect',['../classAstarteDeviceSdk_1_1AstarteDevice.html#aaf2975ae81d87425b92cec9cdc50d346',1,'AstarteDeviceSdk::AstarteDevice::disconnect()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGRPC.html#a934542c92cc05b7eeb0dd84bcc080285',1,'AstarteDeviceSdk::AstarteDeviceGRPC::disconnect()']]]
+  ['disconnect_8',['disconnect',['../classAstarteDeviceSdk_1_1AstarteDevice.html#aaf2975ae81d87425b92cec9cdc50d346',1,'AstarteDeviceSdk::AstarteDevice::disconnect()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGrpc.html#a0777a408e5e014632614e06fd71a930e',1,'AstarteDeviceSdk::AstarteDeviceGrpc::disconnect()']]]
 ];
