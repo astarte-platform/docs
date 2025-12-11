@@ -106,8 +106,7 @@ Clea Astarte
 </h1>
 
 <p>This page collects some notable issues which affect Astarte <code class="inline">v1.0</code>. This is by no means an
-exhaustive list and you should also check <a href="https://github.com/astarte-platform/astarte/issues">Github
-issues</a> to see if your problem is already
+exhaustive list and you should also check <a href="https://github.com/astarte-platform/astarte/issues">Github issues</a> to see if your problem is already
 covered there.</p><h2 id="realm-deletion" class="section-heading">
   <a href="#realm-deletion" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">realm-deletion</p>
@@ -119,10 +118,9 @@ valid certificate are not disconnected from the Realm. The issue is tracked
 <a href="https://github.com/astarte-platform/astarte/issues/443">here</a>.</p><p>Since publishing with devices on unexisting realms can cause problems (namely: RabbitMQ data queues
 filling up) which can also impact devices on other realms, a realm should be deleted only after
 ensuring that no devices are connected to it.</p><p>Due to the problems that realm deletion can cause, currently the feature must be explicitly enabled
-with a feature gate, i.e. by adding</p><pre><code class="yaml">  features:
-    realmDeletion: true
-  components:
-    ...</code></pre><p>to the Astarte Custom Resource (which maps to setting the <code class="inline">HOUSEKEEPING_ENABLE_REALM_DELETION</code>
+with a feature gate, i.e. by adding</p><pre><code class="yaml">features:
+  realmDeletion: true
+components: ...</code></pre><p>to the Astarte Custom Resource (which maps to setting the <code class="inline">HOUSEKEEPING_ENABLE_REALM_DELETION</code>
 environment variable to <code class="inline">true</code> in the <code class="inline">astarte_housekeeping</code> container).</p><p>We also encourage avoiding to recreate realms with the same name to avoid having devices from the
 old realm reconnecting back to the new one.</p><h2 id="group-permissions" class="section-heading">
   <a href="#group-permissions" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>

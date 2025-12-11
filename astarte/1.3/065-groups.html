@@ -105,12 +105,10 @@ Clea Astarte
   <span>Groups</span>
 </h1>
 
-<p>Astarte supports creating groups of devices in a realm.</p><p>Groups are currently useful mainly to provide access control, combining Astarte's <a href="070-auth.html#authorization">path based
-authorization</a> with the fact that devices can be queried with a group
+<p>Astarte supports creating groups of devices in a realm.</p><p>Groups are currently useful mainly to provide access control, combining Astarte's <a href="070-auth.html#authorization">path based authorization</a> with the fact that devices can be queried with a group
 URL. This makes it possible to emit tokens allowing a user to operate only on devices that belong to
 a specific group.</p><p>Groups can be managed using <a href="https://github.com/astarte-platform/astartectl"><code class="inline">astartectl</code></a> or using
-<a href="/api/index.html?urls.primaryName=AppEngine API">AppEngine API</a>. See the <a href="065-managing-groups.html">Managing Groups
-page</a> in the User Guide for some usage examples.</p><p>Keep in mind a group is existing as long as there's at least one device in it. Once the last device
+<a href="/api/index.html?urls.primaryName=AppEngine API">AppEngine API</a>. See the <a href="065-managing-groups.html">Managing Groups page</a> in the User Guide for some usage examples.</p><p>Keep in mind a group is existing as long as there's at least one device in it. Once the last device
 is removed from the group, the group does not exist anymore, since groups are a tag (or label) of
 devices.</p>
 <div class="bottom-actions">

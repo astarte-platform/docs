@@ -131,8 +131,7 @@ emits these Credentials through a policy which is usually imposed by the Authori
 Credentials or by Pairing itself. They are designed to be transient, revokable and reasonably
 short-lived - however, the actual behavior and their lifecycle is entirely orchestrated by the
 Authority emitting them. The emission of <em>Transport Credentials</em> can be inhibited for a specific
-Device, you can read how to do that in the <a href="040-connect_device.html#credentials-secret-pairing-and-transports">User
-Guide</a></p><p>Transports, by design, have no knowledge nor access to <em>Credentials Secret</em>, but have full authority
+Device, you can read how to do that in the <a href="040-connect_device.html#credentials-secret-pairing-and-transports">User Guide</a></p><p>Transports, by design, have no knowledge nor access to <em>Credentials Secret</em>, but have full authority
 over the authentication mechanism for devices. In fact, each Transport is free to choose the
 authentication mechanism which fits it best.</p><h3 id="credentials-secret-storage-recommendations" class="section-heading">
   <a href="#credentials-secret-storage-recommendations" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
@@ -154,8 +153,7 @@ only Astarte SDK has access to <em>Credentials Secret</em>.</p><h2 id="using-ssl
   Using SSL Certificates as Transport Credentials
 </h2>
 <p>Whenever possible, Transports are advised to implement their Authentication through the use of SSL
-certificates and a certificate authority by using <a href="https://en.wikipedia.org/wiki/Mutual_authentication">Mutual
-Authentication</a>, to ensure identities of the
+certificates and a certificate authority by using <a href="https://en.wikipedia.org/wiki/Mutual_authentication">Mutual Authentication</a>, to ensure identities of the
 endpoint and the client are well-known to each other - this is especially the case with Astarte's
 MQTT Protocol on top of VerneMQ Transport.</p><p>In this case, <em>Transport Credentials</em> are a SSL Certificate, and Pairing will interact with a
 Certificate Authority. The certificate rotates depending on the emission policy of the CA and can be
@@ -181,19 +179,17 @@ SSL endpoint.</em></p><h3 id="certificate-authority" class="section-heading">
 </h3>
 <p>Pairing is designed to interact with an abstract certificate authority, given this authority is
 capable of:</p><ul><li>Emitting SSL Certificates with a custom CN (this is important in the Transport authentication
- flow)</li><li>Revoking emitted certificates and exposing CRL/OCSP revocation information</li></ul><p>and is accessible from a 3rd party (e.g. from a REST API). By default, Astarte supports
+flow)</li><li>Revoking emitted certificates and exposing CRL/OCSP revocation information</li></ul><p>and is accessible from a 3rd party (e.g. from a REST API). By default, Astarte supports
 <a href="https://github.com/cloudflare/cfssl">Cloudflare's CFSSL</a>, and also provides a minimal installation
 in its default deploy scripts. For bigger installations, especially in terms of number of connected
-devices, it is strongly advised to use a dedicated CFSSL installation. Also, <a href="http://astarte.cloud/enterprise">Astarte
-Enterprise</a> provides a number of additional features including
+devices, it is strongly advised to use a dedicated CFSSL installation. Also, <a href="http://astarte.cloud/enterprise">Astarte Enterprise</a> provides a number of additional features including
 support for other external CAs.</p><h3 id="certificate-flow" class="section-heading">
   <a href="#certificate-flow" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">certificate-flow</p>
   </a>
   Certificate flow
 </h3>
-<p>During the Pairing flow, the device <strong>must</strong> generate autonomously a <a href="https://en.wikipedia.org/wiki/Certificate_signing_request">Certificate Signing Request
-(CSR)</a> which will be in turn relayed by
+<p>During the Pairing flow, the device <strong>must</strong> generate autonomously a <a href="https://en.wikipedia.org/wiki/Certificate_signing_request">Certificate Signing Request (CSR)</a> which will be in turn relayed by
 Pairing to the configured Certificate Authority. Pairing will also provide the Certificate Authority
 with a custom CN, which maps to <code class="inline">&lt;realm&gt;/&lt;device id&gt;</code>.</p><p>The CA <strong>must</strong> ensure the signed certificate carries this information, as it will be used by the
 Transport to authenticate the caller inside Astarte. Pairing, in fact, will also perform sanity

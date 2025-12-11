@@ -152,29 +152,29 @@ editor in view-only mode, showing its definition on the right panel.</p><h3 id="
   </a>
   Listing and querying Triggers using Realm Management API
 </h3>
-<p>To list all existing Triggers in a Realm:</p><p><code class="inline">GET api.&lt;astarte base URL&gt;/realmmanagement/v1/&lt;realm name&gt;/triggers</code></p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="9924813458-1">{</span><span class="w">
-  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9924813458-2">[</span><span class="w">
+<p>To list all existing Triggers in a Realm:</p><p><code class="inline">GET api.&lt;astarte base URL&gt;/realmmanagement/v1/&lt;realm name&gt;/triggers</code></p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="7179593292-1">{</span><span class="w">
+  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7179593292-2">[</span><span class="w">
     </span><span class="s2">&quot;my_trigger&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;other_trigger&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;my_connection_trigger&quot;</span><span class="p">,</span><span class="w">
     </span><span class="s2">&quot;my_data_trigger&quot;</span><span class="w">
-  </span><span class="p" data-group-id="9924813458-2">]</span><span class="w">
-</span><span class="p" data-group-id="9924813458-1">}</span></code></pre><p>To get a Trigger definition:</p><p><code class="inline">GET api.&lt;astarte base URL&gt;/realmmanagement/v1/&lt;realm name&gt;/triggers/my_connection_trigger</code></p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="0944765298-1">{</span><span class="w">
-  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0944765298-2">{</span><span class="w">
+  </span><span class="p" data-group-id="7179593292-2">]</span><span class="w">
+</span><span class="p" data-group-id="7179593292-1">}</span></code></pre><p>To get a Trigger definition:</p><p><code class="inline">GET api.&lt;astarte base URL&gt;/realmmanagement/v1/&lt;realm name&gt;/triggers/my_connection_trigger</code></p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="1511720798-1">{</span><span class="w">
+  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1511720798-2">{</span><span class="w">
     </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_connection_trigger&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0944765298-3">{</span><span class="w">
-        </span><span class="nt">&quot;http_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;url&gt;&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="nt">&quot;http_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;method&gt;&quot;</span><span class="w">
-    </span><span class="p" data-group-id="0944765298-3">}</span><span class="p">,</span><span class="w">
-    </span><span class="nt">&quot;simple_triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0944765298-4">[</span><span class="w">
-        </span><span class="p" data-group-id="0944765298-5">{</span><span class="w">
-            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device_trigger&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;device_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;on&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device_connected&quot;</span><span class="w">
-        </span><span class="p" data-group-id="0944765298-5">}</span><span class="w">
-    </span><span class="p" data-group-id="0944765298-4">]</span><span class="w">
-  </span><span class="p" data-group-id="0944765298-2">}</span><span class="w">
-</span><span class="p" data-group-id="0944765298-1">}</span></code></pre><h2 id="installing-a-trigger" class="section-heading">
+    </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1511720798-3">{</span><span class="w">
+      </span><span class="nt">&quot;http_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;url&gt;&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nt">&quot;http_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;method&gt;&quot;</span><span class="w">
+    </span><span class="p" data-group-id="1511720798-3">}</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;simple_triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1511720798-4">[</span><span class="w">
+      </span><span class="p" data-group-id="1511720798-5">{</span><span class="w">
+        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device_trigger&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;device_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;on&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device_connected&quot;</span><span class="w">
+      </span><span class="p" data-group-id="1511720798-5">}</span><span class="w">
+    </span><span class="p" data-group-id="1511720798-4">]</span><span class="w">
+  </span><span class="p" data-group-id="1511720798-2">}</span><span class="w">
+</span><span class="p" data-group-id="1511720798-1">}</span></code></pre><h2 id="installing-a-trigger" class="section-heading">
   <a href="#installing-a-trigger" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">installing-a-trigger</p>
   </a>
@@ -205,22 +205,22 @@ to install the Trigger in the Realm.</p><h3 id="installing-a-trigger-using-astar
   </a>
   Installing a Trigger using Realm Management APIs
 </h3>
-<p><code class="inline">POST api.&lt;astarte base URL&gt;/realmmanagement/v1/&lt;realm name&gt;/triggers</code></p><p>The POST request must have the following request body, with content type <code class="inline">application/json</code></p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="4852675402-1">{</span><span class="w">
-  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4852675402-2">{</span><span class="w">
+<p><code class="inline">POST api.&lt;astarte base URL&gt;/realmmanagement/v1/&lt;realm name&gt;/triggers</code></p><p>The POST request must have the following request body, with content type <code class="inline">application/json</code></p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="5679637966-1">{</span><span class="w">
+  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5679637966-2">{</span><span class="w">
     </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_connection_trigger&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4852675402-3">{</span><span class="w">
-        </span><span class="nt">&quot;http_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;url&gt;&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="nt">&quot;http_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;method&gt;&quot;</span><span class="w">
-    </span><span class="p" data-group-id="4852675402-3">}</span><span class="p">,</span><span class="w">
-    </span><span class="nt">&quot;simple_triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4852675402-4">[</span><span class="w">
-        </span><span class="p" data-group-id="4852675402-5">{</span><span class="w">
-            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device_trigger&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;device_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;on&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device_connected&quot;</span><span class="w">
-        </span><span class="p" data-group-id="4852675402-5">}</span><span class="w">
-    </span><span class="p" data-group-id="4852675402-4">]</span><span class="w">
-  </span><span class="p" data-group-id="4852675402-2">}</span><span class="w">
-</span><span class="p" data-group-id="4852675402-1">}</span></code></pre><h2 id="deleting-a-trigger" class="section-heading">
+    </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5679637966-3">{</span><span class="w">
+      </span><span class="nt">&quot;http_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;url&gt;&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nt">&quot;http_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;method&gt;&quot;</span><span class="w">
+    </span><span class="p" data-group-id="5679637966-3">}</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;simple_triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5679637966-4">[</span><span class="w">
+      </span><span class="p" data-group-id="5679637966-5">{</span><span class="w">
+        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device_trigger&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;device_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;on&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device_connected&quot;</span><span class="w">
+      </span><span class="p" data-group-id="5679637966-5">}</span><span class="w">
+    </span><span class="p" data-group-id="5679637966-4">]</span><span class="w">
+  </span><span class="p" data-group-id="5679637966-2">}</span><span class="w">
+</span><span class="p" data-group-id="5679637966-1">}</span></code></pre><h2 id="deleting-a-trigger" class="section-heading">
   <a href="#deleting-a-trigger" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">deleting-a-trigger</p>
   </a>
@@ -265,60 +265,60 @@ sample payload for its HTTP Post URL action.</p><h3 id="connection-trigger" clas
   Connection Trigger
 </h3>
 <p>This trigger will send a <code class="inline">POST</code> request to <code class="inline">&lt;url&gt;</code> every time any device connects to its
-transport.</p><p>This is the JSON representation of the trigger:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="1176320913-1">{</span><span class="w">
-    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_connection_trigger&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1176320913-2">{</span><span class="w">
-        </span><span class="nt">&quot;http_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;url&gt;&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="nt">&quot;http_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;post&quot;</span><span class="w">
-    </span><span class="p" data-group-id="1176320913-2">}</span><span class="p">,</span><span class="w">
-    </span><span class="nt">&quot;simple_triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1176320913-3">[</span><span class="w">
-        </span><span class="p" data-group-id="1176320913-4">{</span><span class="w">
-            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device_trigger&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;device_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;on&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device_connected&quot;</span><span class="w">
-        </span><span class="p" data-group-id="1176320913-4">}</span><span class="w">
-    </span><span class="p" data-group-id="1176320913-3">]</span><span class="w">
-</span><span class="p" data-group-id="1176320913-1">}</span></code></pre><p>If the Trigger is installed, when a device connects, <code class="inline">&lt;url&gt;</code> will receive the following JSON payload:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="4785809068-1">{</span><span class="w">
+transport.</p><p>This is the JSON representation of the trigger:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="0515675084-1">{</span><span class="w">
+  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_connection_trigger&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0515675084-2">{</span><span class="w">
+    </span><span class="nt">&quot;http_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;url&gt;&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;http_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;post&quot;</span><span class="w">
+  </span><span class="p" data-group-id="0515675084-2">}</span><span class="p">,</span><span class="w">
+  </span><span class="nt">&quot;simple_triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0515675084-3">[</span><span class="w">
+    </span><span class="p" data-group-id="0515675084-4">{</span><span class="w">
+      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device_trigger&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nt">&quot;device_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nt">&quot;on&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device_connected&quot;</span><span class="w">
+    </span><span class="p" data-group-id="0515675084-4">}</span><span class="w">
+  </span><span class="p" data-group-id="0515675084-3">]</span><span class="w">
+</span><span class="p" data-group-id="0515675084-1">}</span></code></pre><p>If the Trigger is installed, when a device connects, <code class="inline">&lt;url&gt;</code> will receive the following JSON payload:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="2066687281-1">{</span><span class="w">
   </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;timestamp&gt;&quot;</span><span class="p">,</span><span class="w">
   </span><span class="nt">&quot;device_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;device_id&gt;&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4785809068-2">{</span><span class="w">
+  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2066687281-2">{</span><span class="w">
     </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device_connected&quot;</span><span class="p">,</span><span class="w">
     </span><span class="nt">&quot;device_ip_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;device_ip_address&gt;&quot;</span><span class="w">
-  </span><span class="p" data-group-id="4785809068-2">}</span><span class="w">
-</span><span class="p" data-group-id="4785809068-1">}</span></code></pre><h3 id="data-trigger" class="section-heading">
+  </span><span class="p" data-group-id="2066687281-2">}</span><span class="w">
+</span><span class="p" data-group-id="2066687281-1">}</span></code></pre><h3 id="data-trigger" class="section-heading">
   <a href="#data-trigger" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">data-trigger</p>
   </a>
   Data Trigger
 </h3>
 <p>This trigger will send a <code class="inline">POST</code> request to <code class="inline">http://www.example.com/hook</code> every time a device sends data to the
-<code class="inline">org.astarte-platform.genericsensors.Values</code> major version <code class="inline">0</code> interface on the <code class="inline">/streamTest/value</code> path.</p><p>This is the JSON representation of the trigger</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="0684189230-1">{</span><span class="w">
-    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_data_trigger&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0684189230-2">{</span><span class="w">
-        </span><span class="nt">&quot;http_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://www.example.com/hook&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="nt">&quot;http_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;post&quot;</span><span class="w">
-    </span><span class="p" data-group-id="0684189230-2">}</span><span class="p">,</span><span class="w">
-    </span><span class="nt">&quot;simple_triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0684189230-3">[</span><span class="w">
-        </span><span class="p" data-group-id="0684189230-4">{</span><span class="w">
-            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data_trigger&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;on&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;incoming_data&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.astarte-platform.genericsensors.Values&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;interface_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;match_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/streamTest/value&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;value_match_operator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w">
-        </span><span class="p" data-group-id="0684189230-4">}</span><span class="w">
-    </span><span class="p" data-group-id="0684189230-3">]</span><span class="w">
-</span><span class="p" data-group-id="0684189230-1">}</span></code></pre><p>If the Trigger is installed, when a device sends data to the interface/path defined above,
-<code class="inline">&lt;url&gt;</code> will receive the following JSON payload:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="9303577052-1">{</span><span class="w">
+<code class="inline">org.astarte-platform.genericsensors.Values</code> major version <code class="inline">0</code> interface on the <code class="inline">/streamTest/value</code> path.</p><p>This is the JSON representation of the trigger</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="5440838952-1">{</span><span class="w">
+  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_data_trigger&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5440838952-2">{</span><span class="w">
+    </span><span class="nt">&quot;http_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://www.example.com/hook&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;http_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;post&quot;</span><span class="w">
+  </span><span class="p" data-group-id="5440838952-2">}</span><span class="p">,</span><span class="w">
+  </span><span class="nt">&quot;simple_triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5440838952-3">[</span><span class="w">
+    </span><span class="p" data-group-id="5440838952-4">{</span><span class="w">
+      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data_trigger&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nt">&quot;on&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;incoming_data&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nt">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.astarte-platform.genericsensors.Values&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nt">&quot;interface_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">&quot;match_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/streamTest/value&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nt">&quot;value_match_operator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w">
+    </span><span class="p" data-group-id="5440838952-4">}</span><span class="w">
+  </span><span class="p" data-group-id="5440838952-3">]</span><span class="w">
+</span><span class="p" data-group-id="5440838952-1">}</span></code></pre><p>If the Trigger is installed, when a device sends data to the interface/path defined above,
+<code class="inline">&lt;url&gt;</code> will receive the following JSON payload:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="2244018308-1">{</span><span class="w">
   </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;timestamp&gt;&quot;</span><span class="p">,</span><span class="w">
   </span><span class="nt">&quot;device_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;device_id&gt;&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9303577052-2">{</span><span class="w">
+  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2244018308-2">{</span><span class="w">
     </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;incoming_data&quot;</span><span class="p">,</span><span class="w">
     </span><span class="nt">&quot;interface&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.astarte-platform.genericsensors.Values&quot;</span><span class="p">,</span><span class="w">
     </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/streamTest/value&quot;</span><span class="p">,</span><span class="w">
     </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;</span><span class="err">v</span><span class="err">a</span><span class="err">l</span><span class="err">u</span><span class="err">e</span><span class="err">&gt;</span><span class="w">
-  </span><span class="p" data-group-id="9303577052-2">}</span><span class="w">
-</span><span class="p" data-group-id="9303577052-1">}</span></code></pre><h2 id="restricting-triggers-to-a-single-device-or-group" class="section-heading">
+  </span><span class="p" data-group-id="2244018308-2">}</span><span class="w">
+</span><span class="p" data-group-id="2244018308-1">}</span></code></pre><h2 id="restricting-triggers-to-a-single-device-or-group" class="section-heading">
   <a href="#restricting-triggers-to-a-single-device-or-group" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">restricting-triggers-to-a-single-device-or-group</p>
   </a>
@@ -340,21 +340,21 @@ on HTTP events and how to handle events that have not been delivered.
 A Trigger can be linked to one (at most) Trigger Delivery Policy by specifying the name of the policy in the <code class="inline">&quot;policy&quot;</code> field.
 If no Trigger Delivery Policies are specified, Astarte will resort to the default (pre v1.1) behaviour, i.e. ignoring delivery errors.
 Note that the Trigger Delivery Policy must be installed before installing a Trigger that is linked to it, or an error will be returned.
-The following is an example of a Connection Trigger linked to the <code class="inline">simple_trigger_delivery_policy</code> Trigger Delivery Policy:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="7353477466-1">{</span><span class="w">
-    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_connection_trigger&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7353477466-2">{</span><span class="w">
-        </span><span class="nt">&quot;http_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;url&gt;&quot;</span><span class="p">,</span><span class="w">
-        </span><span class="nt">&quot;http_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;post&quot;</span><span class="w">
-    </span><span class="p" data-group-id="7353477466-2">}</span><span class="p">,</span><span class="w">
-    </span><span class="nt">&quot;simple_triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7353477466-3">[</span><span class="w">
-        </span><span class="p" data-group-id="7353477466-4">{</span><span class="w">
-            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device_trigger&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;device_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;on&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device_connected&quot;</span><span class="w">
-        </span><span class="p" data-group-id="7353477466-4">}</span><span class="w">
-    </span><span class="p" data-group-id="7353477466-3">]</span><span class="p">,</span><span class="w">
-    </span><span class="s2">&quot;policy&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple_trigger_delivery_policy&quot;</span><span class="w">
-</span><span class="p" data-group-id="7353477466-1">}</span></code></pre><p>Refer to the <a href="062-using_trigger_delivery_policies.html">relevant documentation</a> for more information on Trigger Delivery Policies.</p>
+The following is an example of a Connection Trigger linked to the <code class="inline">simple_trigger_delivery_policy</code> Trigger Delivery Policy:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="2706660093-1">{</span><span class="w">
+  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_connection_trigger&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2706660093-2">{</span><span class="w">
+    </span><span class="nt">&quot;http_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;url&gt;&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;http_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;post&quot;</span><span class="w">
+  </span><span class="p" data-group-id="2706660093-2">}</span><span class="p">,</span><span class="w">
+  </span><span class="nt">&quot;simple_triggers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2706660093-3">[</span><span class="w">
+    </span><span class="p" data-group-id="2706660093-4">{</span><span class="w">
+      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device_trigger&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nt">&quot;device_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="w">
+      </span><span class="nt">&quot;on&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device_connected&quot;</span><span class="w">
+    </span><span class="p" data-group-id="2706660093-4">}</span><span class="w">
+  </span><span class="p" data-group-id="2706660093-3">]</span><span class="p">,</span><span class="w">
+  </span><span class="nt">&quot;policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;simple_trigger_delivery_policy&quot;</span><span class="w">
+</span><span class="p" data-group-id="2706660093-1">}</span></code></pre><p>Refer to the <a href="062-using_trigger_delivery_policies.html">relevant documentation</a> for more information on Trigger Delivery Policies.</p>
 <div class="bottom-actions">
   <div class="bottom-actions-item">
 

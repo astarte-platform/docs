@@ -117,8 +117,7 @@ individual members.</p><p>If you are already familiar with interface's basic con
   Versioning
 </h2>
 <p>Interfaces are versioned, each interface having both a major version and a minor
-version number. The concept behind these two version numbers mimics <a href="http://semver.org/">Semantic
-Versioning</a>: arbitrary changes can happen exclusively between different major
+version number. The concept behind these two version numbers mimics <a href="http://semver.org/">Semantic Versioning</a>: arbitrary changes can happen exclusively between different major
 versions (e.g. removing members, changing types, etc...), whereas minor versions allow incremental
 additive changes only (e.g. adding members).</p><p>Several different major versions of the same interface can coexist at the same time in Astarte,
 although a Device can hold only a single version of an interface at a time (even though interfaces
@@ -130,14 +129,13 @@ major version.</p><h2 id="format" class="section-heading">
   Format
 </h2>
 <p>Interfaces are described using a JSON document. Each interface is identified by an unique
-interface name of maximum 128 characters, which must be a <a href="https://en.wikipedia.org/wiki/Reverse_domain_name_notation">Reverse Domain
-Name</a>. As a convention, the interface
-name usually contains its author's URI Reverse Internet Domain Name.</p><p>An example skeleton looks like this:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="8070619713-1">{</span><span class="w">
+interface name of maximum 128 characters, which must be a <a href="https://en.wikipedia.org/wiki/Reverse_domain_name_notation">Reverse Domain Name</a>. As a convention, the interface
+name usually contains its author's URI Reverse Internet Domain Name.</p><p>An example skeleton looks like this:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="7228844123-1">{</span><span class="w">
     </span><span class="nt">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;com.test.MyInterfaceName&quot;</span><span class="p">,</span><span class="w">
     </span><span class="nt">&quot;version_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nt">&quot;version_minor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="8070619713-2">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="8070619713-2">]</span><span class="w">
-</span><span class="p" data-group-id="8070619713-1">}</span></code></pre><p>Valid values and variables are listed in the <a href="040-interface_schema.html">Interface Schema</a>.</p><h3 id="name-limitations" class="section-heading">
+    </span><span class="p" data-group-id="7228844123-2">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="7228844123-2">]</span><span class="w">
+</span><span class="p" data-group-id="7228844123-1">}</span></code></pre><p>Valid values and variables are listed in the <a href="040-interface_schema.html">Interface Schema</a>.</p><h3 id="name-limitations" class="section-heading">
   <a href="#name-limitations" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">name-limitations</p>
   </a>
@@ -168,8 +166,7 @@ the last part of the Interface name, which should be CamelCase.</p><p>Examples o
 persistent state or synchronization. As a rule of thumb, <code class="inline">datastream</code> interfaces should be used when
 dealing with values such as sensor samples, commands and events. <code class="inline">datastream</code> are stored as time
 series in the database, making them suitable for time span filtering and any other common time
-series operation, but they are <em>not</em> idempotent in the REST API semantics.</p><p>Due to their nature, <code class="inline">datastream</code> interfaces have a number of <a href="#datastream-specific-features">additional
-properties</a> which fine tune their behavior.</p><h3 id="properties" class="section-heading">
+series operation, but they are <em>not</em> idempotent in the REST API semantics.</p><p>Due to their nature, <code class="inline">datastream</code> interfaces have a number of <a href="#datastream-specific-features">additional properties</a> which fine tune their behavior.</p><h3 id="properties" class="section-heading">
   <a href="#properties" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">properties</p>
   </a>
@@ -181,8 +178,7 @@ policies/rules. <code class="inline">properties</code> are stored in a key-value
 interface, and they are idempotent in the REST API semantics. Rather than being able to act on a
 stream like in the <code class="inline">datastream</code> case, <code class="inline">properties</code> can be retrieved, or can be used as a
 <a href="060-triggers.html">trigger</a> whenever they change.</p><p>Values in a <code class="inline">properties</code> interface can be unset (or deleted according to the http jargon): to allow
-such a thing, the interface must have its <code class="inline">allow_unset</code> property set to <code class="inline">true</code>. Please <a href="040-interface_schema.html">refer to the
-JSON Schema</a> for further details.</p><h2 id="ownership" class="section-heading">
+such a thing, the interface must have its <code class="inline">allow_unset</code> property set to <code class="inline">true</code>. Please <a href="040-interface_schema.html">refer to the JSON Schema</a> for further details.</p><h2 id="ownership" class="section-heading">
   <a href="#ownership" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">ownership</p>
   </a>
@@ -201,15 +197,15 @@ actor consumes data.</p><h2 id="mappings" class="section-heading">
 controller semantics: each mapping describes an endpoint which is resolved to a path, it is strongly
 typed, and can have additional options. Just like in REST controllers, Endpoints can be parametrized
 to build REST-like collection and trees. Parameters are identified by <code class="inline">%{parameterName}</code>, with each
-endpoint supporting any number of parameters (see <a href="#limitations">Limitations</a>).</p><p>This is how a parametrized mapping looks like:</p><pre><code class="makeup json" translate="no"><span class="w">    </span><span class="p" data-group-id="2098889295-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="2098889295-1">]</span><span class="w">
-    </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">[</span><span class="w">
-        </span><span class="p" data-group-id="2098889295-2">{</span><span class="w">
-            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;reliability&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;retention&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;discard&quot;</span><span class="w">
-        </span><span class="p" data-group-id="2098889295-2">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="2098889295-3">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="2098889295-3">]</span></code></pre><p>In this example, <code class="inline">/0/value</code>, <code class="inline">/1/value</code> or <code class="inline">/test/value</code> all map to a valid endpoint, while
+endpoint supporting any number of parameters (see <a href="#limitations">Limitations</a>).</p><p>This is how a parametrized mapping looks like:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="3966746266-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="3966746266-1">]</span><span class="w">
+</span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">[</span><span class="w">
+    </span><span class="p" data-group-id="3966746266-2">{</span><span class="w">
+        </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;reliability&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;retention&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;discard&quot;</span><span class="w">
+    </span><span class="p" data-group-id="3966746266-2">}</span><span class="p">,</span><span class="w">
+</span><span class="p" data-group-id="3966746266-3">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="3966746266-3">]</span></code></pre><p>In this example, <code class="inline">/0/value</code>, <code class="inline">/1/value</code> or <code class="inline">/test/value</code> all map to a valid endpoint, while
 <code class="inline">/te/st/value</code> can't be resolved by any endpoint.</p><h3 id="supported-data-types" class="section-heading">
   <a href="#supported-data-types" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">supported-data-types</p>
@@ -233,44 +229,43 @@ an error in the interface installation process.</p><h3 id="limitations" class="s
   </a>
   Limitations
 </h3>
-<p>A valid interface must resolve a path univocally to a single endpoint. Take the following example:</p><pre><code class="makeup json" translate="no"><span class="w">    </span><span class="p" data-group-id="2514131570-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="2514131570-1">]</span><span class="w">
-    </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">[</span><span class="w">
-        </span><span class="p" data-group-id="2514131570-2">{</span><span class="w">
-            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="2514131570-2">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="2514131570-3">{</span><span class="w">
-            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/myPath/value&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="2514131570-3">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="2514131570-4">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="2514131570-4">]</span></code></pre><p>In such a case, the interface isn't valid and is
+<p>A valid interface must resolve a path univocally to a single endpoint. Take the following example:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="3577118780-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="3577118780-1">]</span><span class="w">
+</span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">[</span><span class="w">
+    </span><span class="p" data-group-id="3577118780-2">{</span><span class="w">
+        </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w">
+    </span><span class="p" data-group-id="3577118780-2">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="3577118780-3">{</span><span class="w">
+        </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/myPath/value&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w">
+    </span><span class="p" data-group-id="3577118780-3">}</span><span class="p">,</span><span class="w">
+</span><span class="p" data-group-id="3577118780-4">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="3577118780-4">]</span></code></pre><p>In such a case, the interface isn't valid and is
 rejected, due to the fact that path <code class="inline">/myPath/value</code> is ambiguous and could be resolved to two
 different endpoints.</p><p>Any endpoint configuration must not generate paths that are prefix of other paths, for this reason
-the following example is also invalid:</p><pre><code class="makeup json" translate="no"><span class="w">    </span><span class="p" data-group-id="3615990518-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="3615990518-1">]</span><span class="w">
-    </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">[</span><span class="w">
-        </span><span class="p" data-group-id="3615990518-2">{</span><span class="w">
-            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/some/thing&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="3615990518-2">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="3615990518-3">{</span><span class="w">
-            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/some/%{param}/value&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="3615990518-3">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="3615990518-4">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="3615990518-4">]</span><span class="w">
-</span></code></pre><p>In case the interface's aggregation is <code class="inline">object</code>, additional restrictions apply. Endpoints in the
+the following example is also invalid:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="3488967750-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="3488967750-1">]</span><span class="w">
+</span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">[</span><span class="w">
+    </span><span class="p" data-group-id="3488967750-2">{</span><span class="w">
+        </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/some/thing&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;integer&quot;</span><span class="w">
+    </span><span class="p" data-group-id="3488967750-2">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="3488967750-3">{</span><span class="w">
+        </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/some/%{param}/value&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w">
+    </span><span class="p" data-group-id="3488967750-3">}</span><span class="p">,</span><span class="w">
+</span><span class="p" data-group-id="3488967750-4">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="3488967750-4">]</span></code></pre><p>In case the interface's aggregation is <code class="inline">object</code>, additional restrictions apply. Endpoints in the
 same interface must all have the same depth, and the same number of parameters. If the interface is
 parametrized, every endpoint must have the same parameter name at the same level. This is an example
-of a valid aggregated interface mapping:</p><pre><code class="makeup json" translate="no"><span class="w">    </span><span class="p" data-group-id="4606958502-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="4606958502-1">]</span><span class="w">
-    </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">[</span><span class="w">
-        </span><span class="p" data-group-id="4606958502-2">{</span><span class="w">
-            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="4606958502-2">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="4606958502-3">{</span><span class="w">
-            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/%{itemIndex}/otherValue&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w">
-        </span><span class="p" data-group-id="4606958502-3">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="4606958502-4">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="4606958502-4">]</span></code></pre><p>Additional limitations (which stem from the MQTT protocol specification) can be outlined. When using
+of a valid aggregated interface mapping:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="7907284575-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="7907284575-1">]</span><span class="w">
+</span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">[</span><span class="w">
+    </span><span class="p" data-group-id="7907284575-2">{</span><span class="w">
+        </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w">
+    </span><span class="p" data-group-id="7907284575-2">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="7907284575-3">{</span><span class="w">
+        </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/%{itemIndex}/otherValue&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w">
+    </span><span class="p" data-group-id="7907284575-3">}</span><span class="p">,</span><span class="w">
+</span><span class="p" data-group-id="7907284575-4">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="7907284575-4">]</span></code></pre><p>Additional limitations (which stem from the MQTT protocol specification) can be outlined. When using
 parametric endpoints, the actual values used in place of parameter placeholders must fulfill the
 following requirements:</p><ul><li>endpoint parameters must be non-empty UTF-8 encoded strings;</li><li>endpoint parameters must not contain the following characters: <code class="inline">+</code> and <code class="inline">#</code>. Those characters are
 treated as wildcards for MQTT topics and therefore must be avoided;</li><li>endpoint parameters must not contain the <code class="inline">/</code> character.</li></ul><h2 id="aggregation" class="section-heading">
@@ -287,8 +282,7 @@ each mapping is treated as an independent value and is managed individually. In 
 <code class="inline">object</code>, Astarte expects the owner to send all of the interface's mappings at the same time, packed
 in a single message. In this case, all of the mappings share some core properties such as the
 timestamp.</p><p>Aggregation is a powerful mechanism that can be used to map interfaces to real world <em>&quot;objects&quot;</em>.
-Moreover, aggregated interfaces can also be parametrized, although with <a href="#limitations">some
-limitations</a>.</p><h3 id="endpoints-and-aggregation" class="section-heading">
+Moreover, aggregated interfaces can also be parametrized, although with <a href="#limitations">some limitations</a>.</p><h3 id="endpoints-and-aggregation" class="section-heading">
   <a href="#endpoints-and-aggregation" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">endpoints-and-aggregation</p>
   </a>
@@ -298,27 +292,27 @@ limitations</a>.</p><h3 id="endpoints-and-aggregation" class="section-heading">
 behavior in Astarte 0.10 which is kept for retrocompatibility - however, new interfaces should ensure
 each endpoint in an aggreate has at least depth 2, as support for depth 1 will be removed in a future
 release. This change has been done to be consistent with AppEngine API design, and to ensure that
-path <code class="inline">/</code> is not ambiguous.</p><p>This is the correct way to set up a valid endpoint structure for an aggregate:</p><pre><code class="makeup json" translate="no"><span class="w">    </span><span class="p" data-group-id="5807925934-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="5807925934-1">]</span><span class="w">
-    </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">[</span><span class="w">
-        </span><span class="p" data-group-id="5807925934-2">{</span><span class="w">
-            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/objects/value&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="5807925934-2">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="5807925934-3">{</span><span class="w">
-            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/objects/otherValue&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w">
-        </span><span class="p" data-group-id="5807925934-3">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="5807925934-4">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="5807925934-4">]</span></code></pre><p>The following structure, instead, is deprecated:</p><pre><code class="makeup json" translate="no"><span class="w">    </span><span class="p" data-group-id="2141447209-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="2141447209-1">]</span><span class="w">
-    </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">[</span><span class="w">
-        </span><span class="p" data-group-id="2141447209-2">{</span><span class="w">
-            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/value&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="2141447209-2">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="2141447209-3">{</span><span class="w">
-            </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/otherValue&quot;</span><span class="p">,</span><span class="w">
-            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w">
-        </span><span class="p" data-group-id="2141447209-3">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="2141447209-4">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="2141447209-4">]</span></code></pre><h2 id="datastream-specific-features" class="section-heading">
+path <code class="inline">/</code> is not ambiguous.</p><p>This is the correct way to set up a valid endpoint structure for an aggregate:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="4385702624-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="4385702624-1">]</span><span class="w">
+</span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">[</span><span class="w">
+    </span><span class="p" data-group-id="4385702624-2">{</span><span class="w">
+        </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/objects/value&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w">
+    </span><span class="p" data-group-id="4385702624-2">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="4385702624-3">{</span><span class="w">
+        </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/objects/otherValue&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w">
+    </span><span class="p" data-group-id="4385702624-3">}</span><span class="p">,</span><span class="w">
+</span><span class="p" data-group-id="4385702624-4">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="4385702624-4">]</span></code></pre><p>The following structure, instead, is deprecated:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="8295642754-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="8295642754-1">]</span><span class="w">
+</span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">[</span><span class="w">
+    </span><span class="p" data-group-id="8295642754-2">{</span><span class="w">
+        </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/value&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w">
+    </span><span class="p" data-group-id="8295642754-2">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="8295642754-3">{</span><span class="w">
+        </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/otherValue&quot;</span><span class="p">,</span><span class="w">
+        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w">
+    </span><span class="p" data-group-id="8295642754-3">}</span><span class="p">,</span><span class="w">
+</span><span class="p" data-group-id="8295642754-4">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="8295642754-4">]</span></code></pre><h2 id="datastream-specific-features" class="section-heading">
   <a href="#datastream-specific-features" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">datastream-specific-features</p>
   </a>
@@ -341,7 +335,7 @@ it (<code class="inline">discard</code>), should be kept in a cache in memory (<
 guaranteed to be delivered in the timeframe defined by the <code class="inline">expiry</code>.</li><li><code class="inline">expiry</code>: Meaningful only when <code class="inline">retention</code> is <code class="inline">stored</code>. Defines how many seconds a specific data
 entry should be kept before giving up and erasing it from the persistent cache. A value &lt;= 0 means
 the persistent cache never expires, and is the default.</li><li><code class="inline">database_retention_policy</code>: Useful only with datastream. Defines whether data should expire
- from the database after a given interval. Valid values are: no_ttl and use_ttl.</li><li><code class="inline">database_retention_ttl</code>: Useful when database_retention_policy is <code class="inline">&quot;use_ttl&quot;</code>. Defines how many
+from the database after a given interval. Valid values are: no_ttl and use_ttl.</li><li><code class="inline">database_retention_ttl</code>: Useful when database_retention_policy is <code class="inline">&quot;use_ttl&quot;</code>. Defines how many
 seconds a specific data entry should be kept before erasing it from the database.</li></ul><h2 id="best-practices" class="section-heading">
   <a href="#best-practices" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">best-practices</p>

@@ -108,8 +108,7 @@ Clea Astarte
 <p>Once a Device has been Registered in Astarte, it is capable of connecting to it.</p><p>Devices connect to Astarte through the use of <em>Transports</em>. A Transport is an arbitrary protocol
 implementation which maps Astarte's concepts (mainly Interfaces) to a communication channel.
 Astarte's main supported Transport is Astarte/MQTT, implemented on top of
-<a href="https://github.com/erlio/vernemq">VerneMQ</a> through <a href="https://github.com/astarte-platform/astarte_vmq_plugin">an additional
-plugin</a>, and it is used by Astarte's SDKs
+<a href="https://github.com/erlio/vernemq">VerneMQ</a> through <a href="https://github.com/astarte-platform/astarte_vmq_plugin">an additional plugin</a>, and it is used by Astarte's SDKs
 for communication. However, virtually any protocol can be integrated in Astarte by creating a
 corresponding Transport.</p><p>Transports also define the authentication/authorization mechanism of their Devices. For instance,
 Astarte/MQTT uses <a href="https://en.wikipedia.org/wiki/Mutual_authentication">mutual SSL Authentication</a>
@@ -123,11 +122,9 @@ Transport(s) and Credentials, Devices have to interact with Pairing.</p><h2 id="
 <p>Once a Device has performed its first registration through an Agent, it holds its <em>Credentials
 Secret</em>. This <em>Credentials Secret</em> is the token the device uses for performing the actual Pairing
 routine, which results in the device obtaining its Credentials for accessing its designated
-Transport.</p><p>A Device's <em>Credentials Secret</em> allows access to <a href="https://docs.astarte-platform.org/astarte/1.1/api/?urls.primaryName=Pairing%20API#/device">Pairing API's Device REST
-API</a>,
+Transport.</p><p>A Device's <em>Credentials Secret</em> allows access to <a href="https://docs.astarte-platform.org/astarte/1.1/api/?urls.primaryName=Pairing%20API#/device">Pairing API's Device REST API</a>,
 which is then used for obtaining information about which Transports the Device can use for
-communicating, and for obtaining Credentials for its assigned Transports.</p><p>The ability to request Credentials of a Device can be inhibited with <a href="https://docs.astarte-platform.org/astarte/1.1/api/#/device/updateDeviceStatus">AppEngine
-API</a> or using
+communicating, and for obtaining Credentials for its assigned Transports.</p><p>The ability to request Credentials of a Device can be inhibited with <a href="https://docs.astarte-platform.org/astarte/1.1/api/#/device/updateDeviceStatus">AppEngine API</a> or using
 <a href="https://github.com/astarte-platform/astartectl"><code class="inline">astartectl</code></a> with this command:</p><pre><code class="makeup bash" translate="no"><span class="">astartectl appengine devices credentials inhibit &lt;device_id_or_alias&gt; true \
 </span><span class="">  -k &lt;appengine-key&gt; -r &lt;realm-name&gt; -u &lt;astarte-api-url&gt;
 </span></code></pre><p>Once its <code class="inline">credentials_inhibited</code> field is set to <code class="inline">true</code>, a Device is not able to request new

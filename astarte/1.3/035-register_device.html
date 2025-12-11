@@ -113,8 +113,7 @@ MQTT Broker (VerneMQ with Astarte's plugin). Before this happens, though, Device
 credentials for accessing their Transport and, most of all, make themselves known to Astarte. This
 happens through the Registration process.</p><p>In Astarte, Registering a device means obtaining an unique <em>Credentials Secret</em> (Registration
 Credentials), univocally associated to a Device ID, through a well-known workflow and pipeline. If
-you are not familiar with these concepts, please refer to <a href="050-pairing_mechanism.html">Pairing
-Architecture</a> to learn more about Pairing's workflow basics.</p><p>The <em>Credentials Secret</em> can then be used by the Device for accessing Pairing API and getting
+you are not familiar with these concepts, please refer to <a href="050-pairing_mechanism.html">Pairing Architecture</a> to learn more about Pairing's workflow basics.</p><p>The <em>Credentials Secret</em> can then be used by the Device for accessing Pairing API and getting
 information and Credentials for its Transport. As such, registration happens <strong>only once</strong> during a
 Device's lifecycle, and is a security-sensitive process. As such, this process is usually carried
 over (in production scenarios) through an <em>Agent</em>.</p><h2 id="registration-agent" class="section-heading">
@@ -124,8 +123,7 @@ over (in production scenarios) through an <em>Agent</em>.</p><h2 id="registratio
   Registration Agent
 </h2>
 <p>An <em>Agent</em>'s purpose is to perform Registration on behalf of a Device. <em>Agents</em> should be the only
-components in your infrastructure with enough credentials to access <a href="api/index.html?urls.primaryName=Pairing%20API#/agent">Pairing's Agent
-APIs</a> (as a rule of thumb, it is a bad idea to
+components in your infrastructure with enough credentials to access <a href="api/index.html?urls.primaryName=Pairing%20API#/agent">Pairing's Agent APIs</a> (as a rule of thumb, it is a bad idea to
 give access to Pairing API to anything which isn't an Agent).</p><p>When setting up an Astarte project, it is fundamental to define beforehand how your Devices will be
 registered and hence where your Agent(s) will belong. There's two main ways for implementing an
 Agent, even though in production scenarios <em>On Board Agents</em> are <strong>strongly discouraged</strong> as they
@@ -143,8 +141,7 @@ credentials to each device belonging to a Realm. Of course, this also opens up a
 failure in the whole fleet's security, as Credentials aren't tied to a specific device - as such, if
 compromised, they might allow an attacker to register an arbitrary device into a Realm, unless other
 policies prevent him from doing so.</p><p>To create a On Board Agent, you simply need to emit a long-enough lived token from your Realm's
-private key with access to <a href="api/index.html?urls.primaryName=Pairing%20API#/agent">Pairing's Agent
-APIs</a>. This token should then be delivered to
+private key with access to <a href="api/index.html?urls.primaryName=Pairing%20API#/agent">Pairing's Agent APIs</a>. This token should then be delivered to
 your devices and provided to the SDK in order to carry over the Registration. The SDK will do this
 automatically and without any need for additional code, as long as you set the <code class="inline">agentKey</code>
 configuration key to a meaningful value, and no <em>Credentials Secret</em> has been set.</p><h3 id="3rd-party-agent" class="section-heading">
@@ -195,8 +192,7 @@ time.</p><h2 id="unregistering-a-device" class="section-heading">
 <p>Once the <em>Credentials Secret</em> is used for retrieving Credentials for a Transport for the first time,
 Astarte prevents further registration of the same Device again.</p><p>If there's the need of registering the device again (e.g.: a Device has been tampered and got back
 to its plant with its previous <em>Credentials Secret</em> compromised), it is possible to explicitly
-unregister the device to obtain a new <em>Credentials Secret</em> using <a href="api/index.html?urls.primaryName=Pairing%20API#/agent/unregisterDevice">Pairing's Agent
-APIs</a> or with <code class="inline">astartectl</code>
+unregister the device to obtain a new <em>Credentials Secret</em> using <a href="api/index.html?urls.primaryName=Pairing%20API#/agent/unregisterDevice">Pairing's Agent APIs</a> or with <code class="inline">astartectl</code>
 (see the output of <code class="inline">astartectl pairing agent unregister -h</code> for more documentation).</p>
 <div class="bottom-actions">
   <div class="bottom-actions-item">

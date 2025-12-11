@@ -126,7 +126,7 @@ Consider, for example, a simple value and timestamp payload. The encoded JSON ve
   </a>
   BSON format
 </h3>
-<p>BSON is a really simple binary format, breaking down the previous example is very easy thanks to BSON simplicity: the first 4 bytes (<code class="inline">1b 00 00 00</code>) are the document size header, follows the timestamp marker (<code class="inline">09</code>), the timestamp key name (<code class="inline">74 00</code>, that is &quot;t&quot;), the timestamp value (<code class="inline">5f 48 06 f1 65 01 00 00</code> as int64), the double value marker (<code class="inline">01</code>),  the value key name (<code class="inline">76 00</code>, that is &quot;v&quot;), the actual value (<code class="inline">cd cc cc cc cc 4c 39 40</code> as 64-bit IEEE 754-2008 floating point) and the end of document marker (<code class="inline">00</code>).</p><h3 id="astarte-payload-standard-fields" class="section-heading">
+<p>BSON is a really simple binary format, breaking down the previous example is very easy thanks to BSON simplicity: the first 4 bytes (<code class="inline">1b 00 00 00</code>) are the document size header, follows the timestamp marker (<code class="inline">09</code>), the timestamp key name (<code class="inline">74 00</code>, that is &quot;t&quot;), the timestamp value (<code class="inline">5f 48 06 f1 65 01 00 00</code> as int64), the double value marker (<code class="inline">01</code>), the value key name (<code class="inline">76 00</code>, that is &quot;v&quot;), the actual value (<code class="inline">cd cc cc cc cc 4c 39 40</code> as 64-bit IEEE 754-2008 floating point) and the end of document marker (<code class="inline">00</code>).</p><h3 id="astarte-payload-standard-fields" class="section-heading">
   <a href="#astarte-payload-standard-fields" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">astarte-payload-standard-fields</p>
   </a>
@@ -248,17 +248,17 @@ A further simplification might remove any requirement for any introspection mess
   </a>
   Connecting to the Broker
 </h2>
-<p>In the same fashion as Authentication, Pairing provides the client with information about how to connect to the MQTT broker. When invoking relevant Pairing API's method to gather information about available transports for a device, if Astarte advertises Astarte MQTT v1, a similar reply will be returned:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="5203426125-1">{</span><span class="w">
-  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5203426125-2">{</span><span class="w">
+<p>In the same fashion as Authentication, Pairing provides the client with information about how to connect to the MQTT broker. When invoking relevant Pairing API's method to gather information about available transports for a device, if Astarte advertises Astarte MQTT v1, a similar reply will be returned:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="1544281457-1">{</span><span class="w">
+  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1544281457-2">{</span><span class="w">
     </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;version string&gt;&quot;</span><span class="p">,</span><span class="w">
     </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;status string&gt;&quot;</span><span class="p">,</span><span class="w">
-    </span><span class="nt">&quot;protocols&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5203426125-3">{</span><span class="w">
-      </span><span class="nt">&quot;astarte_mqtt_v1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5203426125-4">{</span><span class="w">
+    </span><span class="nt">&quot;protocols&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1544281457-3">{</span><span class="w">
+      </span><span class="nt">&quot;astarte_mqtt_v1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1544281457-4">{</span><span class="w">
         </span><span class="nt">&quot;broker_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mqtts://broker.astarte.example.com:8883&quot;</span><span class="w">
-      </span><span class="p" data-group-id="5203426125-4">}</span><span class="w">
-    </span><span class="p" data-group-id="5203426125-3">}</span><span class="w">
-  </span><span class="p" data-group-id="5203426125-2">}</span><span class="w">
-</span><span class="p" data-group-id="5203426125-1">}</span></code></pre>
+      </span><span class="p" data-group-id="1544281457-4">}</span><span class="w">
+    </span><span class="p" data-group-id="1544281457-3">}</span><span class="w">
+  </span><span class="p" data-group-id="1544281457-2">}</span><span class="w">
+</span><span class="p" data-group-id="1544281457-1">}</span></code></pre>
 <div class="bottom-actions">
   <div class="bottom-actions-item">
 
