@@ -133,7 +133,11 @@ are automatically applied to ensure compliance.</p><h3 id="astarte-keyspace" cla
 </h3>
 <p>Astarte needs an <code class="inline">astarte</code> keyspace to store its own data.</p><p><code class="inline">astarte</code> keyspace and tables are created with following <a href="https://docs.datastax.com/en/cql/3.3/index.html">CQL</a> statements:</p><pre><code class="sql">CREATE KEYSPACE astarte
   WITH replication = {'class': 'SimpleStrategy', 'replication_factor': &lt;replication factor&gt;}  AND
-    durable_writes = true;</code></pre><pre><code class="sql">CREATE TABLE astarte.realms (
+    durable_writes = true;</code></pre><blockquote><h4 class="info">Tablets</h4><p>In recent versions of scylladb, we explicitly disable the tablets feature as they break
+lightweight transactions, which are used within astarte</p><pre><code class="sql">CREATE KEYSPACE astarte
+  WITH replication = {'class': 'SimpleStrategy', 'replication_factor': &lt;replication factor&gt;}  AND
+    durable_writes = true AND
+    tablets = { 'enabled': false };</code></pre></blockquote><pre><code class="sql">CREATE TABLE astarte.realms (
   realm_name varchar,
   device_registration_limit bigint,
 
@@ -152,7 +156,11 @@ are automatically applied to ensure compliance.</p><h3 id="astarte-keyspace" cla
 <p>Each realm needs several tables to store data for all the functionalities.
 Realm tables can be grouped in the following functionalities:</p><ul><li>Configuration &amp; key-value store</li><li>Interfaces schema</li><li>Device management</li><li>Groups management</li><li>Triggers storage</li><li>Data storage</li></ul><p>Some data storage tables might be created when required, whereas all other tables are created when a keyspace is created, using the following statements:</p><pre><code class="sql">CREATE KEYSPACE &lt;realm name&gt;
   WITH replication = {'class': 'SimpleStrategy', 'replication_factor': :replication_factor} AND
-    durable_writes = true;</code></pre><pre><code class="sql">CREATE TYPE &lt;realm name&gt;.capabilities (
+    durable_writes = true;</code></pre><blockquote><h4 class="info">Tablets</h4><p>In recent versions of scylladb, we explicitly disable the tablets feature as they break
+lightweight transactions, which are used within astarte</p><pre><code class="sql">CREATE KEYSPACE &lt;realm name&gt;
+  WITH replication = {'class': 'SimpleStrategy', 'replication_factor': :replication_factor} AND
+    durable_writes = true AND
+    tablets = { 'enabled': false };</code></pre></blockquote><pre><code class="sql">CREATE TYPE &lt;realm name&gt;.capabilities (
   purge_properties_compression_format int
 );</code></pre><pre><code class="sql">CREATE TABLE &lt;realm name&gt;.kv_store (
   group varchar,
