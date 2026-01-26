@@ -1564,6 +1564,42 @@ https://github.com/alex-shpak/hugo-book
       </tr>
   </tbody>
 </table>
+<h4 id="astartefdospec">
+  AstarteFDOSpec
+  <a class="anchor" href="#astartefdospec">#</a>
+</h4>
+<p>AstarteFDOSpec configures FDO support in Astarte.
+This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#astartefeatures">AstarteFeatures</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+          <th>Default</th>
+          <th>Validation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>enable</code> <em>boolean</em></td>
+          <td></td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>rendezvousServer</code> <em>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#hostandport">HostAndPort</a></em></td>
+          <td></td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+  </tbody>
+</table>
 <h4 id="astartefeatures">
   AstarteFeatures
   <a class="anchor" href="#astartefeatures">#</a>
@@ -1599,6 +1635,13 @@ https://github.com/alex-shpak/hugo-book
       <tr>
           <td><code>astartePodPriorities</code> <em>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#astartepodprioritiesspec">AstartePodPrioritiesSpec</a></em></td>
+          <td></td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>fdo</code> <em>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#astartefdospec">AstarteFDOSpec</a></em></td>
           <td></td>
           <td></td>
           <td>Optional: {} <br /></td>
@@ -2870,6 +2913,8 @@ deployments) the replica distribution per datacenter. These settings take effect
 <ul>
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#astartecassandraconnectionspec">AstarteCassandraConnectionSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#astartefdospec">AstarteFDOSpec</a></li>
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#astarterabbitmqconnectionspec">AstarteRabbitMQConnectionSpec</a></li>
 <li>
