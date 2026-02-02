@@ -213,8 +213,9 @@ Code formatting</h3>
 <p>The code in this module is formatted using <code>clang-format</code>. An extension command for <code>west</code> has been created to facilitate formatting. Run <code>west format --help</code> to learn about the formatting options.</p>
 <h3><a class="anchor" id="autotoc_md16"></a>
 Static code analysis</h3>
-<p><a href="https://codechecker.readthedocs.io/en/latest/">CodeChecker</a> is the one of the <a href="https://docs.zephyrproject.org/latest/develop/sca/index.html">two</a> natively supported static analysis tools in <code>west</code>. It can be configured to run different static checkers, such as <code>clang-tidy</code> and <code>cppcheck</code>.</p>
-<p>An extension command for <code>west</code> has been created to facilitate running static analysis with <code>clang-tidy</code>. Run <code>west static --help</code> to read what this command performs.</p>
+<p><a href="https://codechecker.readthedocs.io/en/latest/">CodeChecker</a> is the one of the <a href="https://docs.zephyrproject.org/latest/develop/sca/index.html">many</a> natively supported static analysis tools in <code>west</code>. It can be configured to run different static checkers, such as <code>clang-tidy</code> and <code>cppcheck</code>.</p>
+<p>Due to dependency conflicts with the zephyr venv it's suggested to install CodeChecker using pipx. The following command should suffice: </p><div class="fragment"><div class="line">pipx install codechecker</div>
+</div><!-- fragment --><p>An extension command for <code>west</code> has been created to facilitate running static analysis with <code>clang-tidy</code>. Run <code>west static --help</code> to read what this command performs.</p>
 <h3><a class="anchor" id="autotoc_md17"></a>
 Build doxygen documentation</h3>
 <p>The dependencies for generating the doxygen documentation are:</p><ul>
