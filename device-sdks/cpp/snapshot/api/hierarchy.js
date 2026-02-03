@@ -1,20 +1,57 @@
 var hierarchy =
 [
+    [ "astarte_fmt::formatter< T >", "structastarte__fmt_1_1formatter.html", null ],
+    [ "astarte_fmt::formatter< AstarteDeviceSdk::AstarteData >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteData_01_4.html", null ],
+    [ "astarte_fmt::formatter< AstarteDeviceSdk::AstarteDatastreamIndividual >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteDatastreamIndividual_01_4.html", null ],
+    [ "astarte_fmt::formatter< AstarteDeviceSdk::AstarteDatastreamObject >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteDatastreamObject_01_4.html", null ],
+    [ "astarte_fmt::formatter< AstarteDeviceSdk::AstarteError >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteError_01_4.html", null ],
+    [ "astarte_fmt::formatter< AstarteDeviceSdk::AstarteErrorBase >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteErrorBase_01_4.html", null ],
+    [ "astarte_fmt::formatter< AstarteDeviceSdk::AstarteMessage >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteMessage_01_4.html", null ],
+    [ "astarte_fmt::formatter< AstarteDeviceSdk::AstarteOwnership >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteOwnership_01_4.html", null ],
+    [ "astarte_fmt::formatter< AstarteDeviceSdk::AstartePropertyIndividual >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstartePropertyIndividual_01_4.html", null ],
+    [ "astarte_fmt::formatter< AstarteDeviceSdk::AstarteStoredProperty >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteStoredProperty_01_4.html", null ],
+    [ "astarte_fmt::formatter< AstarteDeviceSdk::AstarteType >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteType_01_4.html", null ],
     [ "AstarteDeviceSdk::AstarteData", "classAstarteDeviceSdk_1_1AstarteData.html", null ],
     [ "AstarteDeviceSdk::AstarteDatastreamIndividual", "classAstarteDeviceSdk_1_1AstarteDatastreamIndividual.html", null ],
     [ "AstarteDeviceSdk::AstarteDatastreamObject", "classAstarteDeviceSdk_1_1AstarteDatastreamObject.html", null ],
     [ "AstarteDeviceSdk::AstarteDevice", "classAstarteDeviceSdk_1_1AstarteDevice.html", [
-      [ "AstarteDeviceSdk::AstarteDeviceGrpc", "classAstarteDeviceSdk_1_1AstarteDeviceGrpc.html", null ]
+      [ "AstarteDeviceSdk::AstarteDeviceGrpc", "classAstarteDeviceSdk_1_1AstarteDeviceGrpc.html", null ],
+      [ "AstarteDeviceSdk::AstarteDeviceMqtt", "classAstarteDeviceSdk_1_1AstarteDeviceMqtt.html", null ]
     ] ],
     [ "AstarteDeviceSdk::AstarteErrorBase", "classAstarteDeviceSdk_1_1AstarteErrorBase.html", [
+      [ "AstarteDeviceSdk::AstarteCryptoError", "classAstarteDeviceSdk_1_1AstarteCryptoError.html", null ],
+      [ "AstarteDeviceSdk::AstarteDataSerializationError", "classAstarteDeviceSdk_1_1AstarteDataSerializationError.html", null ],
+      [ "AstarteDeviceSdk::AstarteDeviceRegistrationError", "classAstarteDeviceSdk_1_1AstarteDeviceRegistrationError.html", null ],
       [ "AstarteDeviceSdk::AstarteFileOpenError", "classAstarteDeviceSdk_1_1AstarteFileOpenError.html", null ],
       [ "AstarteDeviceSdk::AstarteGrpcLibError", "classAstarteDeviceSdk_1_1AstarteGrpcLibError.html", null ],
+      [ "AstarteDeviceSdk::AstarteHttpError", "classAstarteDeviceSdk_1_1AstarteHttpError.html", null ],
+      [ "AstarteDeviceSdk::AstarteInterfaceValidationError", "classAstarteDeviceSdk_1_1AstarteInterfaceValidationError.html", null ],
       [ "AstarteDeviceSdk::AstarteInternalError", "classAstarteDeviceSdk_1_1AstarteInternalError.html", null ],
+      [ "AstarteDeviceSdk::AstarteInvalidAstarteTypeError", "classAstarteDeviceSdk_1_1AstarteInvalidAstarteTypeError.html", null ],
+      [ "AstarteDeviceSdk::AstarteInvalidDatabaseRetentionPolicyError", "classAstarteDeviceSdk_1_1AstarteInvalidDatabaseRetentionPolicyError.html", null ],
       [ "AstarteDeviceSdk::AstarteInvalidInputError", "classAstarteDeviceSdk_1_1AstarteInvalidInputError.html", null ],
+      [ "AstarteDeviceSdk::AstarteInvalidInterfaceAggregationError", "classAstarteDeviceSdk_1_1AstarteInvalidInterfaceAggregationError.html", null ],
+      [ "AstarteDeviceSdk::AstarteInvalidInterfaceOwnershipeError", "classAstarteDeviceSdk_1_1AstarteInvalidInterfaceOwnershipeError.html", null ],
+      [ "AstarteDeviceSdk::AstarteInvalidInterfaceTypeError", "classAstarteDeviceSdk_1_1AstarteInvalidInterfaceTypeError.html", null ],
+      [ "AstarteDeviceSdk::AstarteInvalidInterfaceVersionError", "classAstarteDeviceSdk_1_1AstarteInvalidInterfaceVersionError.html", null ],
+      [ "AstarteDeviceSdk::AstarteInvalidReliabilityError", "classAstarteDeviceSdk_1_1AstarteInvalidReliabilityError.html", null ],
+      [ "AstarteDeviceSdk::AstarteInvalidRetentionError", "classAstarteDeviceSdk_1_1AstarteInvalidRetentionError.html", null ],
+      [ "AstarteDeviceSdk::AstarteInvalidUrlError", "classAstarteDeviceSdk_1_1AstarteInvalidUrlError.html", null ],
+      [ "AstarteDeviceSdk::AstarteJsonParsingError", "classAstarteDeviceSdk_1_1AstarteJsonParsingError.html", null ],
+      [ "AstarteDeviceSdk::AstarteMqttConnectionError", "classAstarteDeviceSdk_1_1AstarteMqttConnectionError.html", null ],
+      [ "AstarteDeviceSdk::AstarteMqttError", "classAstarteDeviceSdk_1_1AstarteMqttError.html", null ],
       [ "AstarteDeviceSdk::AstarteMsgHubError", "classAstarteDeviceSdk_1_1AstarteMsgHubError.html", null ],
-      [ "AstarteDeviceSdk::AstarteOperationRefusedError", "classAstarteDeviceSdk_1_1AstarteOperationRefusedError.html", null ]
+      [ "AstarteDeviceSdk::AstarteOperationRefusedError", "classAstarteDeviceSdk_1_1AstarteOperationRefusedError.html", null ],
+      [ "AstarteDeviceSdk::AstartePairingApiError", "classAstarteDeviceSdk_1_1AstartePairingApiError.html", null ],
+      [ "AstarteDeviceSdk::AstartePairingConfigError", "classAstarteDeviceSdk_1_1AstartePairingConfigError.html", null ],
+      [ "AstarteDeviceSdk::AstarteReadCredentialError", "classAstarteDeviceSdk_1_1AstarteReadCredentialError.html", null ],
+      [ "AstarteDeviceSdk::AstarteRetrieveBrokerUrlError", "classAstarteDeviceSdk_1_1AstarteRetrieveBrokerUrlError.html", null ],
+      [ "AstarteDeviceSdk::AstarteUuidError", "classAstarteDeviceSdk_1_1AstarteUuidError.html", null ],
+      [ "AstarteDeviceSdk::AstarteWriteCredentialError", "classAstarteDeviceSdk_1_1AstarteWriteCredentialError.html", null ]
     ] ],
     [ "AstarteDeviceSdk::AstarteMessage", "classAstarteDeviceSdk_1_1AstarteMessage.html", null ],
     [ "AstarteDeviceSdk::AstartePropertyIndividual", "classAstarteDeviceSdk_1_1AstartePropertyIndividual.html", null ],
-    [ "AstarteDeviceSdk::AstarteStoredProperty", "classAstarteDeviceSdk_1_1AstarteStoredProperty.html", null ]
+    [ "AstarteDeviceSdk::AstarteStoredProperty", "classAstarteDeviceSdk_1_1AstarteStoredProperty.html", null ],
+    [ "AstarteDeviceSdk::config::MqttConfig", "classAstarteDeviceSdk_1_1config_1_1MqttConfig.html", null ],
+    [ "AstarteDeviceSdk::PairingApi", "classAstarteDeviceSdk_1_1PairingApi.html", null ]
 ];

@@ -125,7 +125,8 @@ $(function(){initNavTree('data_8hpp.html',''); initResizable(true); });
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#concepts">Concepts</a>  </div>
+<a href="#concepts">Concepts</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">data.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -135,10 +136,13 @@ $(function(){initNavTree('data_8hpp.html',''); initResizable(true); });
 <div class="textblock"><code>#include &lt;chrono&gt;</code><br />
 <code>#include &lt;cstdint&gt;</code><br />
 <code>#include &lt;optional&gt;</code><br />
+<code>#include &lt;ostream&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;string_view&gt;</code><br />
+<code>#include &lt;type_traits&gt;</code><br />
 <code>#include &lt;variant&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;astarte_device_sdk/formatter.hpp&quot;</code><br />
 <code>#include &quot;<a class="el" href="type_8hpp_source.html">astarte_device_sdk/type.hpp</a>&quot;</code><br />
 </div>
 <p><a href="data_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -147,6 +151,9 @@ $(function(){initNavTree('data_8hpp.html',''); initResizable(true); });
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAstarteDeviceSdk_1_1AstarteData.html">AstarteDeviceSdk::AstarteData</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Astarte data class, representing the basic Astarte types.  <a href="classAstarteDeviceSdk_1_1AstarteData.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteData_01_4.html">astarte_fmt::formatter&lt; AstarteDeviceSdk::AstarteData &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="classAstarteDeviceSdk_1_1AstarteData.html" title="Astarte data class, representing the basic Astarte types.">AstarteDeviceSdk::AstarteData</a>.  <a href="structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteData_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -160,10 +167,56 @@ Concepts</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptAstarteDeviceSdk_1_1AstarteDataAllowedType.html">AstarteDeviceSdk::AstarteDataAllowedType</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restricts the allowed types for instances of an Astarte data class. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ad2ef602893302c5edbef2ed1040934e0" id="r_ad2ef602893302c5edbef2ed1040934e0"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2ef602893302c5edbef2ed1040934e0">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="classAstarteDeviceSdk_1_1AstarteData.html">AstarteDeviceSdk::AstarteData</a> &amp;data) -&gt; std::ostream &amp;</td></tr>
+<tr class="memdesc:ad2ef602893302c5edbef2ed1040934e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream insertion operator for AstarteData.  <br /></td></tr>
+<tr class="separator:ad2ef602893302c5edbef2ed1040934e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Astarte data class and its related methods. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="ad2ef602893302c5edbef2ed1040934e0" name="ad2ef602893302c5edbef2ed1040934e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2ef602893302c5edbef2ed1040934e0">&#9670;&#160;</a></span>operator&lt;&lt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classAstarteDeviceSdk_1_1AstarteData.html">AstarteDeviceSdk::AstarteData</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>data</em></span>&#160;) -&gt; std::ostream&amp; </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Stream insertion operator for AstarteData. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out</td><td>The output stream. </td></tr>
+    <tr><td class="paramname">data</td><td>The AstarteData object to output. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the output stream. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

@@ -1,8 +1,9 @@
 var dir_2e5d9197a3dfa3393eec53f63f41e30c =
 [
+    [ "grpc", "dir_ae9570008c2434e578af4fa2747eb0bd.html", "dir_ae9570008c2434e578af4fa2747eb0bd" ],
+    [ "mqtt", "dir_a24b07b18b9631d5214a31e7e61fdee3.html", "dir_a24b07b18b9631d5214a31e7e61fdee3" ],
     [ "data.hpp", "data_8hpp.html", "data_8hpp" ],
     [ "device.hpp", "device_8hpp.html", "device_8hpp" ],
-    [ "device_grpc.hpp", "device__grpc_8hpp.html", "device__grpc_8hpp" ],
     [ "errors.hpp", "errors_8hpp_source.html", null ],
     [ "formatter.hpp", "formatter_8hpp_source.html", null ],
     [ "individual.hpp", "individual_8hpp.html", "individual_8hpp" ],

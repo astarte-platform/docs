@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['_7eastartedevice_0',['~AstarteDevice',['../classAstarteDeviceSdk_1_1AstarteDevice.html#aec22068af4720f671248303f9cf07341',1,'AstarteDeviceSdk::AstarteDevice']]],
-  ['_7eastartedevicegrpc_1',['~AstarteDeviceGrpc',['../classAstarteDeviceSdk_1_1AstarteDeviceGrpc.html#a91c0d91523e3aaff89164e72038947fb',1,'AstarteDeviceSdk::AstarteDeviceGrpc']]],
-  ['_7eastarteerrorbase_2',['~AstarteErrorBase',['../classAstarteDeviceSdk_1_1AstarteErrorBase.html#a59ea8a75c4cee7cacfeafe364522b6ad',1,'AstarteDeviceSdk::AstarteErrorBase']]]
+  ['unset_5fproperty_0',['unset_property',['../classAstarteDeviceSdk_1_1AstarteDevice.html#ad16a82982c96e51778b62091a78aab86',1,'AstarteDeviceSdk::AstarteDevice::unset_property()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGrpc.html#a733123eb8fb4cc60830f3818621a7a84',1,'AstarteDeviceSdk::AstarteDeviceGrpc::unset_property()'],['../classAstarteDeviceSdk_1_1AstarteDeviceMqtt.html#a781d724a32f2ce4bd99972e483e0b8d7',1,'AstarteDeviceSdk::AstarteDeviceMqtt::unset_property()']]]
 ];

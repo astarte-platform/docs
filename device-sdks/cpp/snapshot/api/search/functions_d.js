@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['send_5findividual_0',['send_individual',['../classAstarteDeviceSdk_1_1AstarteDevice.html#ad3f8cc0b681459eacf69b39fa19a99a6',1,'AstarteDeviceSdk::AstarteDevice::send_individual()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGrpc.html#af41d86b501f7be16809009c42fa94f22',1,'AstarteDeviceSdk::AstarteDeviceGrpc::send_individual()']]],
-  ['send_5fobject_1',['send_object',['../classAstarteDeviceSdk_1_1AstarteDevice.html#af5b9bb5755bc24b464930f3226ff88af',1,'AstarteDeviceSdk::AstarteDevice::send_object()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGrpc.html#abed55a73eb63c9bdb1b80cf1279cedef',1,'AstarteDeviceSdk::AstarteDeviceGrpc::send_object()']]],
-  ['set_5fproperty_2',['set_property',['../classAstarteDeviceSdk_1_1AstarteDevice.html#ac2690d90ea4cbc1392905798e5805875',1,'AstarteDeviceSdk::AstarteDevice::set_property()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGrpc.html#a0d9fde5396adfdcb521e3736b583a603',1,'AstarteDeviceSdk::AstarteDeviceGrpc::set_property()']]],
-  ['size_3',['size',['../classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#ac3485d4b47145d3cebfaf8f2c3141758',1,'AstarteDeviceSdk::AstarteDatastreamObject']]]
+  ['realm_0',['realm',['../classAstarteDeviceSdk_1_1config_1_1MqttConfig.html#a3867422faa31fde2256b161e345ae9d7',1,'AstarteDeviceSdk::config::MqttConfig']]],
+  ['register_5fdevice_1',['register_device',['../classAstarteDeviceSdk_1_1PairingApi.html#af1b7225f663df929686e6fa57cfa0b50',1,'AstarteDeviceSdk::PairingApi']]],
+  ['remove_5finterface_2',['remove_interface',['../classAstarteDeviceSdk_1_1AstarteDevice.html#ade2a2e2034bc7c14be14a45d3687c292',1,'AstarteDeviceSdk::AstarteDevice::remove_interface()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGrpc.html#ab7f468ded85af3ab9c8e45a8f972d82d',1,'AstarteDeviceSdk::AstarteDeviceGrpc::remove_interface()'],['../classAstarteDeviceSdk_1_1AstarteDeviceMqtt.html#aac921a18bb73acd90a6b1d42170d2af4',1,'AstarteDeviceSdk::AstarteDeviceMqtt::remove_interface()']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['unset_5fproperty_0',['unset_property',['../classAstarteDeviceSdk_1_1AstarteDevice.html#ad16a82982c96e51778b62091a78aab86',1,'AstarteDeviceSdk::AstarteDevice::unset_property()'],['../classAstarteDeviceSdk_1_1AstarteDeviceGrpc.html#a733123eb8fb4cc60830f3818621a7a84',1,'AstarteDeviceSdk::AstarteDeviceGrpc::unset_property()']]]
+  ['try_5finto_0',['try_into',['../classAstarteDeviceSdk_1_1AstarteData.html#abc63be5b2b20d6310825a8941ce1e720',1,'AstarteDeviceSdk::AstarteData::try_into()'],['../classAstarteDeviceSdk_1_1AstarteMessage.html#afda66777da768df8d6a569d165473e2e',1,'AstarteDeviceSdk::AstarteMessage::try_into()']]],
+  ['type_1',['type',['../classAstarteDeviceSdk_1_1AstarteErrorBase.html#add04284e7eb39747f63773d2e09c7592',1,'AstarteDeviceSdk::AstarteErrorBase']]]
 ];

@@ -9,11 +9,12 @@ var searchData=
   ['kdevice_6',['kDevice',['../namespaceAstarteDeviceSdk.html#a79f95d24cf1c8079309a7002059a08c4a6f4a69bb197bb71ac0458f048c5ff684',1,'AstarteDeviceSdk']]],
   ['kdouble_7',['kDouble',['../namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a124be5d0ace8f04bba5abb6cb26d4266',1,'AstarteDeviceSdk']]],
   ['kdoublearray_8',['kDoubleArray',['../namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a88784d1dd53b5de8167ce1f6b8d70d0b',1,'AstarteDeviceSdk']]],
-  ['kinteger_9',['kInteger',['../namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14ad53bfa2269ee47835ffaa1480d52dabc',1,'AstarteDeviceSdk']]],
-  ['kintegerarray_10',['kIntegerArray',['../namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a0ad51a83dba4b96ac2079335ce07e4a7',1,'AstarteDeviceSdk']]],
-  ['klonginteger_11',['kLongInteger',['../namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14affd7723d6d4848f845b0c6d9c55a91df',1,'AstarteDeviceSdk']]],
-  ['klongintegerarray_12',['kLongIntegerArray',['../namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a041d80dfb20d085ac09b96eae3040244',1,'AstarteDeviceSdk']]],
-  ['kserver_13',['kServer',['../namespaceAstarteDeviceSdk.html#a79f95d24cf1c8079309a7002059a08c4a11c78722eadcb9a11faedf384d4f1e3d',1,'AstarteDeviceSdk']]],
-  ['kstring_14',['kString',['../namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14adcf8936c9818bd5023031305d5487ecb',1,'AstarteDeviceSdk']]],
-  ['kstringarray_15',['kStringArray',['../namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a8cbca0200c862477329ec0d0a8f664ac',1,'AstarteDeviceSdk']]]
+  ['keepalive_9',['keepalive',['../classAstarteDeviceSdk_1_1config_1_1MqttConfig.html#a4fa7636e342dcbb5fefecc01770bae3d',1,'AstarteDeviceSdk::config::MqttConfig::keepalive(uint32_t duration) -&gt; MqttConfig &amp;'],['../classAstarteDeviceSdk_1_1config_1_1MqttConfig.html#aff6f3b2517c42c4fb75ac394befee885',1,'AstarteDeviceSdk::config::MqttConfig::keepalive() const -&gt; uint32_t']]],
+  ['kinteger_10',['kInteger',['../namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14ad53bfa2269ee47835ffaa1480d52dabc',1,'AstarteDeviceSdk']]],
+  ['kintegerarray_11',['kIntegerArray',['../namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a0ad51a83dba4b96ac2079335ce07e4a7',1,'AstarteDeviceSdk']]],
+  ['klonginteger_12',['kLongInteger',['../namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14affd7723d6d4848f845b0c6d9c55a91df',1,'AstarteDeviceSdk']]],
+  ['klongintegerarray_13',['kLongIntegerArray',['../namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a041d80dfb20d085ac09b96eae3040244',1,'AstarteDeviceSdk']]],
+  ['kserver_14',['kServer',['../namespaceAstarteDeviceSdk.html#a79f95d24cf1c8079309a7002059a08c4a11c78722eadcb9a11faedf384d4f1e3d',1,'AstarteDeviceSdk']]],
+  ['kstring_15',['kString',['../namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14adcf8936c9818bd5023031305d5487ecb',1,'AstarteDeviceSdk']]],
+  ['kstringarray_16',['kStringArray',['../namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a8cbca0200c862477329ec0d0a8f664ac',1,'AstarteDeviceSdk']]]
 ];

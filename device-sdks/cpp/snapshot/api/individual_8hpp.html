@@ -124,14 +124,17 @@ $(function(){initNavTree('individual_8hpp.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">individual.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
 <p>Astarte individual datastream class and its related methods.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="data_8hpp_source.html">astarte_device_sdk/data.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;ostream&gt;</code><br />
+<code>#include &quot;<a class="el" href="data_8hpp_source.html">astarte_device_sdk/data.hpp</a>&quot;</code><br />
+<code>#include &quot;astarte_device_sdk/formatter.hpp&quot;</code><br />
 </div>
 <p><a href="individual_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -140,16 +143,65 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAstarteDeviceSdk_1_1AstarteDatastreamIndividual.html">AstarteDeviceSdk::AstarteDatastreamIndividual</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Representing the Astarte individual datastream data.  <a href="classAstarteDeviceSdk_1_1AstarteDatastreamIndividual.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteDatastreamIndividual_01_4.html">astarte_fmt::formatter&lt; AstarteDeviceSdk::AstarteDatastreamIndividual &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="classAstarteDeviceSdk_1_1AstarteDatastreamIndividual.html" title="Representing the Astarte individual datastream data.">AstarteDeviceSdk::AstarteDatastreamIndividual</a>.  <a href="structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteDatastreamIndividual_01_4.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceAstarteDeviceSdk.html">AstarteDeviceSdk</a></td></tr>
 <tr class="memdesc:namespaceAstarteDeviceSdk"><td class="mdescLeft">&#160;</td><td class="mdescRight">Umbrella namespace for the Astarte device SDK. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:aab23c6a467dc8327a5701f41db33c97e" id="r_aab23c6a467dc8327a5701f41db33c97e"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab23c6a467dc8327a5701f41db33c97e">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="classAstarteDeviceSdk_1_1AstarteDatastreamIndividual.html">AstarteDeviceSdk::AstarteDatastreamIndividual</a> &amp;data) -&gt; std::ostream &amp;</td></tr>
+<tr class="memdesc:aab23c6a467dc8327a5701f41db33c97e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream insertion operator for AstarteDatastreamIndividual.  <br /></td></tr>
+<tr class="separator:aab23c6a467dc8327a5701f41db33c97e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Astarte individual datastream class and its related methods. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="aab23c6a467dc8327a5701f41db33c97e" name="aab23c6a467dc8327a5701f41db33c97e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab23c6a467dc8327a5701f41db33c97e">&#9670;&#160;</a></span>operator&lt;&lt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>out</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classAstarteDeviceSdk_1_1AstarteDatastreamIndividual.html">AstarteDeviceSdk::AstarteDatastreamIndividual</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>data</em></span>&#160;) -&gt; std::ostream&amp; </td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Stream insertion operator for AstarteDatastreamIndividual. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out</td><td>The output stream. </td></tr>
+    <tr><td class="paramname">data</td><td>The AstarteDatastreamIndividual object to output. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the output stream. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

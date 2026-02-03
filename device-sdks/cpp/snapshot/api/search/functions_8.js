@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['message_0',['message',['../classAstarteDeviceSdk_1_1AstarteErrorBase.html#a402b76c9316368377dda6286dc67a6b3',1,'AstarteDeviceSdk::AstarteErrorBase']]]
+  ['keepalive_0',['keepalive',['../classAstarteDeviceSdk_1_1config_1_1MqttConfig.html#a4fa7636e342dcbb5fefecc01770bae3d',1,'AstarteDeviceSdk::config::MqttConfig::keepalive(uint32_t duration) -&gt; MqttConfig &amp;'],['../classAstarteDeviceSdk_1_1config_1_1MqttConfig.html#aff6f3b2517c42c4fb75ac394befee885',1,'AstarteDeviceSdk::config::MqttConfig::keepalive() const -&gt; uint32_t']]]
 ];

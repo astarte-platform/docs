@@ -1,20 +1,61 @@
 var annotated_dup =
 [
+    [ "astarte_fmt", "namespaceastarte__fmt.html", [
+      [ "formatter", "structastarte__fmt_1_1formatter.html", null ],
+      [ "formatter< AstarteDeviceSdk::AstarteData >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteData_01_4.html", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteData_01_4" ],
+      [ "formatter< AstarteDeviceSdk::AstarteDatastreamIndividual >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteDatastreamIndividual_01_4.html", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteDatastreamIndividual_01_4" ],
+      [ "formatter< AstarteDeviceSdk::AstarteDatastreamObject >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteDatastreamObject_01_4.html", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteDatastreamObject_01_4" ],
+      [ "formatter< AstarteDeviceSdk::AstarteError >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteError_01_4.html", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteError_01_4" ],
+      [ "formatter< AstarteDeviceSdk::AstarteErrorBase >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteErrorBase_01_4.html", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteErrorBase_01_4" ],
+      [ "formatter< AstarteDeviceSdk::AstarteMessage >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteMessage_01_4.html", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteMessage_01_4" ],
+      [ "formatter< AstarteDeviceSdk::AstarteOwnership >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteOwnership_01_4.html", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteOwnership_01_4" ],
+      [ "formatter< AstarteDeviceSdk::AstartePropertyIndividual >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstartePropertyIndividual_01_4.html", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstartePropertyIndividual_01_4" ],
+      [ "formatter< AstarteDeviceSdk::AstarteStoredProperty >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteStoredProperty_01_4.html", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteStoredProperty_01_4" ],
+      [ "formatter< AstarteDeviceSdk::AstarteType >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteType_01_4.html", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteType_01_4" ]
+    ] ],
     [ "AstarteDeviceSdk", "namespaceAstarteDeviceSdk.html", [
+      [ "config", "namespaceAstarteDeviceSdk_1_1config.html", [
+        [ "MqttConfig", "classAstarteDeviceSdk_1_1config_1_1MqttConfig.html", "classAstarteDeviceSdk_1_1config_1_1MqttConfig" ]
+      ] ],
+      [ "AstarteCryptoError", "classAstarteDeviceSdk_1_1AstarteCryptoError.html", "classAstarteDeviceSdk_1_1AstarteCryptoError" ],
       [ "AstarteData", "classAstarteDeviceSdk_1_1AstarteData.html", "classAstarteDeviceSdk_1_1AstarteData" ],
+      [ "AstarteDataSerializationError", "classAstarteDeviceSdk_1_1AstarteDataSerializationError.html", "classAstarteDeviceSdk_1_1AstarteDataSerializationError" ],
       [ "AstarteDatastreamIndividual", "classAstarteDeviceSdk_1_1AstarteDatastreamIndividual.html", "classAstarteDeviceSdk_1_1AstarteDatastreamIndividual" ],
       [ "AstarteDatastreamObject", "classAstarteDeviceSdk_1_1AstarteDatastreamObject.html", "classAstarteDeviceSdk_1_1AstarteDatastreamObject" ],
       [ "AstarteDevice", "classAstarteDeviceSdk_1_1AstarteDevice.html", "classAstarteDeviceSdk_1_1AstarteDevice" ],
       [ "AstarteDeviceGrpc", "classAstarteDeviceSdk_1_1AstarteDeviceGrpc.html", "classAstarteDeviceSdk_1_1AstarteDeviceGrpc" ],
+      [ "AstarteDeviceMqtt", "classAstarteDeviceSdk_1_1AstarteDeviceMqtt.html", "classAstarteDeviceSdk_1_1AstarteDeviceMqtt" ],
+      [ "AstarteDeviceRegistrationError", "classAstarteDeviceSdk_1_1AstarteDeviceRegistrationError.html", "classAstarteDeviceSdk_1_1AstarteDeviceRegistrationError" ],
       [ "AstarteErrorBase", "classAstarteDeviceSdk_1_1AstarteErrorBase.html", "classAstarteDeviceSdk_1_1AstarteErrorBase" ],
       [ "AstarteFileOpenError", "classAstarteDeviceSdk_1_1AstarteFileOpenError.html", "classAstarteDeviceSdk_1_1AstarteFileOpenError" ],
       [ "AstarteGrpcLibError", "classAstarteDeviceSdk_1_1AstarteGrpcLibError.html", "classAstarteDeviceSdk_1_1AstarteGrpcLibError" ],
+      [ "AstarteHttpError", "classAstarteDeviceSdk_1_1AstarteHttpError.html", "classAstarteDeviceSdk_1_1AstarteHttpError" ],
+      [ "AstarteInterfaceValidationError", "classAstarteDeviceSdk_1_1AstarteInterfaceValidationError.html", "classAstarteDeviceSdk_1_1AstarteInterfaceValidationError" ],
       [ "AstarteInternalError", "classAstarteDeviceSdk_1_1AstarteInternalError.html", "classAstarteDeviceSdk_1_1AstarteInternalError" ],
+      [ "AstarteInvalidAstarteTypeError", "classAstarteDeviceSdk_1_1AstarteInvalidAstarteTypeError.html", "classAstarteDeviceSdk_1_1AstarteInvalidAstarteTypeError" ],
+      [ "AstarteInvalidDatabaseRetentionPolicyError", "classAstarteDeviceSdk_1_1AstarteInvalidDatabaseRetentionPolicyError.html", "classAstarteDeviceSdk_1_1AstarteInvalidDatabaseRetentionPolicyError" ],
       [ "AstarteInvalidInputError", "classAstarteDeviceSdk_1_1AstarteInvalidInputError.html", "classAstarteDeviceSdk_1_1AstarteInvalidInputError" ],
+      [ "AstarteInvalidInterfaceAggregationError", "classAstarteDeviceSdk_1_1AstarteInvalidInterfaceAggregationError.html", "classAstarteDeviceSdk_1_1AstarteInvalidInterfaceAggregationError" ],
+      [ "AstarteInvalidInterfaceOwnershipeError", "classAstarteDeviceSdk_1_1AstarteInvalidInterfaceOwnershipeError.html", "classAstarteDeviceSdk_1_1AstarteInvalidInterfaceOwnershipeError" ],
+      [ "AstarteInvalidInterfaceTypeError", "classAstarteDeviceSdk_1_1AstarteInvalidInterfaceTypeError.html", "classAstarteDeviceSdk_1_1AstarteInvalidInterfaceTypeError" ],
+      [ "AstarteInvalidInterfaceVersionError", "classAstarteDeviceSdk_1_1AstarteInvalidInterfaceVersionError.html", "classAstarteDeviceSdk_1_1AstarteInvalidInterfaceVersionError" ],
+      [ "AstarteInvalidReliabilityError", "classAstarteDeviceSdk_1_1AstarteInvalidReliabilityError.html", "classAstarteDeviceSdk_1_1AstarteInvalidReliabilityError" ],
+      [ "AstarteInvalidRetentionError", "classAstarteDeviceSdk_1_1AstarteInvalidRetentionError.html", "classAstarteDeviceSdk_1_1AstarteInvalidRetentionError" ],
+      [ "AstarteInvalidUrlError", "classAstarteDeviceSdk_1_1AstarteInvalidUrlError.html", "classAstarteDeviceSdk_1_1AstarteInvalidUrlError" ],
+      [ "AstarteJsonParsingError", "classAstarteDeviceSdk_1_1AstarteJsonParsingError.html", "classAstarteDeviceSdk_1_1AstarteJsonParsingError" ],
       [ "AstarteMessage", "classAstarteDeviceSdk_1_1AstarteMessage.html", "classAstarteDeviceSdk_1_1AstarteMessage" ],
+      [ "AstarteMqttConnectionError", "classAstarteDeviceSdk_1_1AstarteMqttConnectionError.html", "classAstarteDeviceSdk_1_1AstarteMqttConnectionError" ],
+      [ "AstarteMqttError", "classAstarteDeviceSdk_1_1AstarteMqttError.html", "classAstarteDeviceSdk_1_1AstarteMqttError" ],
       [ "AstarteMsgHubError", "classAstarteDeviceSdk_1_1AstarteMsgHubError.html", "classAstarteDeviceSdk_1_1AstarteMsgHubError" ],
       [ "AstarteOperationRefusedError", "classAstarteDeviceSdk_1_1AstarteOperationRefusedError.html", "classAstarteDeviceSdk_1_1AstarteOperationRefusedError" ],
+      [ "AstartePairingApiError", "classAstarteDeviceSdk_1_1AstartePairingApiError.html", "classAstarteDeviceSdk_1_1AstartePairingApiError" ],
+      [ "AstartePairingConfigError", "classAstarteDeviceSdk_1_1AstartePairingConfigError.html", "classAstarteDeviceSdk_1_1AstartePairingConfigError" ],
       [ "AstartePropertyIndividual", "classAstarteDeviceSdk_1_1AstartePropertyIndividual.html", "classAstarteDeviceSdk_1_1AstartePropertyIndividual" ],
-      [ "AstarteStoredProperty", "classAstarteDeviceSdk_1_1AstarteStoredProperty.html", "classAstarteDeviceSdk_1_1AstarteStoredProperty" ]
+      [ "AstarteReadCredentialError", "classAstarteDeviceSdk_1_1AstarteReadCredentialError.html", "classAstarteDeviceSdk_1_1AstarteReadCredentialError" ],
+      [ "AstarteRetrieveBrokerUrlError", "classAstarteDeviceSdk_1_1AstarteRetrieveBrokerUrlError.html", "classAstarteDeviceSdk_1_1AstarteRetrieveBrokerUrlError" ],
+      [ "AstarteStoredProperty", "classAstarteDeviceSdk_1_1AstarteStoredProperty.html", "classAstarteDeviceSdk_1_1AstarteStoredProperty" ],
+      [ "AstarteUuidError", "classAstarteDeviceSdk_1_1AstarteUuidError.html", "classAstarteDeviceSdk_1_1AstarteUuidError" ],
+      [ "AstarteWriteCredentialError", "classAstarteDeviceSdk_1_1AstarteWriteCredentialError.html", "classAstarteDeviceSdk_1_1AstarteWriteCredentialError" ],
+      [ "PairingApi", "classAstarteDeviceSdk_1_1PairingApi.html", "classAstarteDeviceSdk_1_1PairingApi" ]
     ] ]
 ];

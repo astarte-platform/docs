@@ -1,5 +1,6 @@
 var type_8hpp =
 [
+    [ "astarte_fmt::formatter< AstarteDeviceSdk::AstarteType >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteType_01_4.html", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteType_01_4" ],
     [ "AstarteDeviceSdk::AstarteType", "namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14", [
       [ "AstarteDeviceSdk::kBinaryBlob", "namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a85f34f81d45e6d17460c5c8226ba6e5c", null ],
       [ "AstarteDeviceSdk::kBoolean", "namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a271b87fee416b6feff43e821c7bd8b43", null ],
@@ -15,5 +16,7 @@ var type_8hpp =
       [ "AstarteDeviceSdk::kIntegerArray", "namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a0ad51a83dba4b96ac2079335ce07e4a7", null ],
       [ "AstarteDeviceSdk::kLongIntegerArray", "namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a041d80dfb20d085ac09b96eae3040244", null ],
       [ "AstarteDeviceSdk::kStringArray", "namespaceAstarteDeviceSdk.html#a23916adc1ea1368b60c7262420b42f14a8cbca0200c862477329ec0d0a8f664ac", null ]
-    ] ]
+    ] ],
+    [ "AstarteDeviceSdk::astarte_type_from_str", "namespaceAstarteDeviceSdk.html#a2f7c42b0283c71cbe8689465b5619ca9", null ],
+    [ "operator<<", "type_8hpp.html#ada28311a0f6cc78bbce68e10bba13f30", null ]
 ];
