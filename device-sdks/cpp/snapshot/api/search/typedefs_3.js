@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['maptype_0',['MapType',['../classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#a17b58d279ea9c726057e9977196565e1',1,'AstarteDeviceSdk::AstarteDatastreamObject']]]
+  ['maptype_0',['MapType',['../classastarte_1_1device_1_1DatastreamObject.html#a2fda039e63affc774cc1a1e33c341c27',1,'astarte::device::DatastreamObject']]]
 ];

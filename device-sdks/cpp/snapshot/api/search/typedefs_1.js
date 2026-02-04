@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['const_5fiterator_0',['const_iterator',['../classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#a481f23ef784c131db72ba7ce64046b25',1,'AstarteDeviceSdk::AstarteDatastreamObject']]]
+  ['error_0',['Error',['../namespaceastarte_1_1device.html#a9675caabed06c1cc0cd827c2d6eeabf9',1,'astarte::device']]]
 ];

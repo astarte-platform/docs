@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['begin_0',['begin',['../classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#a2444d3a8ef3fe8547e226d84b11bddd0',1,'AstarteDeviceSdk::AstarteDatastreamObject::begin() -&gt; iterator'],['../classAstarteDeviceSdk_1_1AstarteDatastreamObject.html#ac868dea47c5a4899cc4826dbbe23193d',1,'AstarteDeviceSdk::AstarteDatastreamObject::begin() const -&gt; const_iterator']]]
+  ['begin_0',['begin',['../classastarte_1_1device_1_1DatastreamObject.html#a018750d59602e8f1d67f16f6ca8e2722',1,'astarte::device::DatastreamObject::begin() -&gt; iterator'],['../classastarte_1_1device_1_1DatastreamObject.html#ad8f0308f589abaa85f398d6637fc4ff9',1,'astarte::device::DatastreamObject::begin() const -&gt; const_iterator']]]
 ];

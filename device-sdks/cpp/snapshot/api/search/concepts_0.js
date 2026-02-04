@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['astartedataallowedtype_0',['AstarteDataAllowedType',['../conceptAstarteDeviceSdk_1_1AstarteDataAllowedType.html',1,'AstarteDeviceSdk']]]
+  ['dataallowedtype_0',['DataAllowedType',['../conceptastarte_1_1device_1_1DataAllowedType.html',1,'astarte::device']]]
 ];

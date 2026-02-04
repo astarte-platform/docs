@@ -1,4 +1,4 @@
 var device__grpc_8hpp =
 [
-    [ "AstarteDeviceSdk::AstarteDeviceGrpc", "classAstarteDeviceSdk_1_1AstarteDeviceGrpc.html", "classAstarteDeviceSdk_1_1AstarteDeviceGrpc" ]
+    [ "astarte::device::grpc::DeviceGrpc", "classastarte_1_1device_1_1grpc_1_1DeviceGrpc.html", "classastarte_1_1device_1_1grpc_1_1DeviceGrpc" ]
 ];

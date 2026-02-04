@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mqttconfig_0',['MqttConfig',['../classAstarteDeviceSdk_1_1config_1_1MqttConfig.html',1,'AstarteDeviceSdk::config']]]
+  ['errorbase_0',['ErrorBase',['../classastarte_1_1device_1_1ErrorBase.html',1,'astarte::device']]]
 ];

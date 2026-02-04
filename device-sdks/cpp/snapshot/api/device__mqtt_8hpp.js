@@ -1,4 +1,4 @@
 var device__mqtt_8hpp =
 [
-    [ "AstarteDeviceSdk::AstarteDeviceMqtt", "classAstarteDeviceSdk_1_1AstarteDeviceMqtt.html", "classAstarteDeviceSdk_1_1AstarteDeviceMqtt" ]
+    [ "astarte::device::mqtt::DeviceMqtt", "classastarte_1_1device_1_1mqtt_1_1DeviceMqtt.html", "classastarte_1_1device_1_1mqtt_1_1DeviceMqtt" ]
 ];

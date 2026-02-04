@@ -1,6 +1,6 @@
 var stored__property_8hpp =
 [
-    [ "AstarteDeviceSdk::AstarteStoredProperty", "classAstarteDeviceSdk_1_1AstarteStoredProperty.html", "classAstarteDeviceSdk_1_1AstarteStoredProperty" ],
-    [ "astarte_fmt::formatter< AstarteDeviceSdk::AstarteStoredProperty >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteStoredProperty_01_4.html", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteStoredProperty_01_4" ],
-    [ "operator<<", "stored__property_8hpp.html#a867d72a604bb429745134ca447131c1a", null ]
+    [ "astarte::device::StoredProperty", "classastarte_1_1device_1_1StoredProperty.html", "classastarte_1_1device_1_1StoredProperty" ],
+    [ "astarte_fmt::formatter< astarte::device::StoredProperty >", "structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1StoredProperty_01_4.html", "structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1StoredProperty_01_4" ],
+    [ "operator<<", "stored__property_8hpp.html#a2013bc0c8b37032b3aa3174ae662486f", null ]
 ];

@@ -1,7 +1,7 @@
 var data_8hpp =
 [
-    [ "AstarteDeviceSdk::AstarteData", "classAstarteDeviceSdk_1_1AstarteData.html", "classAstarteDeviceSdk_1_1AstarteData" ],
-    [ "astarte_fmt::formatter< AstarteDeviceSdk::AstarteData >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteData_01_4.html", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteData_01_4" ],
-    [ "AstarteDeviceSdk::AstarteDataAllowedType", "conceptAstarteDeviceSdk_1_1AstarteDataAllowedType.html", null ],
-    [ "operator<<", "data_8hpp.html#ad2ef602893302c5edbef2ed1040934e0", null ]
+    [ "astarte::device::Data", "classastarte_1_1device_1_1Data.html", "classastarte_1_1device_1_1Data" ],
+    [ "astarte_fmt::formatter< astarte::device::Data >", "structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Data_01_4.html", "structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Data_01_4" ],
+    [ "astarte::device::DataAllowedType", "conceptastarte_1_1device_1_1DataAllowedType.html", null ],
+    [ "operator<<", "data_8hpp.html#a1284c793f4f7a6ef904e9953d8905594", null ]
 ];

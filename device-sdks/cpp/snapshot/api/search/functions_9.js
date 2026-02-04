@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['message_0',['message',['../classAstarteDeviceSdk_1_1AstarteErrorBase.html#a402b76c9316368377dda6286dc67a6b3',1,'AstarteDeviceSdk::AstarteErrorBase']]],
-  ['mqttconfig_1',['MqttConfig',['../classAstarteDeviceSdk_1_1config_1_1MqttConfig.html#a270579046d2cbc8d06e32c3990a75f5c',1,'AstarteDeviceSdk::config::MqttConfig::MqttConfig(MqttConfig &amp;&amp;) noexcept'],['../classAstarteDeviceSdk_1_1config_1_1MqttConfig.html#ada673ee27a20d1373bd5764683c34f3c',1,'AstarteDeviceSdk::config::MqttConfig::MqttConfig(const MqttConfig &amp;)=delete']]]
+  ['jsonparsingerror_0',['JsonParsingError',['../classastarte_1_1device_1_1mqtt_1_1JsonParsingError.html#af922f48dfe0c85a4cf983e1791e6d7b1',1,'astarte::device::mqtt::JsonParsingError::JsonParsingError(std::string_view message)'],['../classastarte_1_1device_1_1mqtt_1_1JsonParsingError.html#a207b6bb02401f7f45e4c43ae36a027c0',1,'astarte::device::mqtt::JsonParsingError::JsonParsingError(std::string_view message, const Error &amp;other)']]]
 ];

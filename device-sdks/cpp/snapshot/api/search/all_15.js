@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['_7eastartedevice_0',['~AstarteDevice',['../classAstarteDeviceSdk_1_1AstarteDevice.html#aec22068af4720f671248303f9cf07341',1,'AstarteDeviceSdk::AstarteDevice']]],
-  ['_7eastartedevicegrpc_1',['~AstarteDeviceGrpc',['../classAstarteDeviceSdk_1_1AstarteDeviceGrpc.html#a91c0d91523e3aaff89164e72038947fb',1,'AstarteDeviceSdk::AstarteDeviceGrpc']]],
-  ['_7eastartedevicemqtt_2',['~AstarteDeviceMqtt',['../classAstarteDeviceSdk_1_1AstarteDeviceMqtt.html#a2933903b9294d044e08b85e177bf8ecf',1,'AstarteDeviceSdk::AstarteDeviceMqtt']]],
-  ['_7eastarteerrorbase_3',['~AstarteErrorBase',['../classAstarteDeviceSdk_1_1AstarteErrorBase.html#af51650abe20c61d75cc55204a2579a52',1,'AstarteDeviceSdk::AstarteErrorBase']]]
+  ['with_20the_20samples_0',['Get started with the samples',['../index.html#autotoc_md11',1,'']]],
+  ['with_5fcredential_5fsecret_1',['with_credential_secret',['../classastarte_1_1device_1_1mqtt_1_1Config.html#ae14d6e7f666212053565d841de7f636c',1,'astarte::device::mqtt::Config']]],
+  ['writecredentialerror_2',['WriteCredentialError',['../classastarte_1_1device_1_1mqtt_1_1WriteCredentialError.html',1,'astarte::device::mqtt::WriteCredentialError'],['../classastarte_1_1device_1_1mqtt_1_1WriteCredentialError.html#a4936eff119f3b74ab5c1a688b0c573e6',1,'astarte::device::mqtt::WriteCredentialError::WriteCredentialError(std::string_view message)'],['../classastarte_1_1device_1_1mqtt_1_1WriteCredentialError.html#a2f857832d6408507c815903536d36eed',1,'astarte::device::mqtt::WriteCredentialError::WriteCredentialError(std::string_view message, const Error &amp;other)']]]
 ];

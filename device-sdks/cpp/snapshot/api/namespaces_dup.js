@@ -1,5 +1,5 @@
 var namespaces_dup =
 [
-    [ "astarte_fmt", "namespaceastarte__fmt.html", "namespaceastarte__fmt" ],
-    [ "AstarteDeviceSdk", "namespaceAstarteDeviceSdk.html", "namespaceAstarteDeviceSdk" ]
+    [ "astarte", "namespaceastarte.html", "namespaceastarte" ],
+    [ "astarte_fmt", "namespaceastarte__fmt.html", "namespaceastarte__fmt" ]
 ];

@@ -1,10 +1,10 @@
 var ownership_8hpp =
 [
-    [ "astarte_fmt::formatter< AstarteDeviceSdk::AstarteOwnership >", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteOwnership_01_4.html", "structastarte__fmt_1_1formatter_3_01AstarteDeviceSdk_1_1AstarteOwnership_01_4" ],
-    [ "AstarteDeviceSdk::AstarteOwnership", "namespaceAstarteDeviceSdk.html#a79f95d24cf1c8079309a7002059a08c4", [
-      [ "AstarteDeviceSdk::kDevice", "namespaceAstarteDeviceSdk.html#a79f95d24cf1c8079309a7002059a08c4a6f4a69bb197bb71ac0458f048c5ff684", null ],
-      [ "AstarteDeviceSdk::kServer", "namespaceAstarteDeviceSdk.html#a79f95d24cf1c8079309a7002059a08c4a11c78722eadcb9a11faedf384d4f1e3d", null ]
+    [ "astarte_fmt::formatter< astarte::device::Ownership >", "structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Ownership_01_4.html", "structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Ownership_01_4" ],
+    [ "astarte::device::Ownership", "namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9", [
+      [ "astarte::device::kDevice", "namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9ad8e300cddc60bfda73b7fa2d8696b52c", null ],
+      [ "astarte::device::kServer", "namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9a7513e70a1d67d3818c8818b0feb352be", null ]
     ] ],
-    [ "operator<<", "ownership_8hpp.html#a6ab20d44e9a54f37ea05df9b7b345ca3", null ],
-    [ "AstarteDeviceSdk::ownership_from_str", "namespaceAstarteDeviceSdk.html#ae8591ac7c8228c3fed92481c98912be4", null ]
+    [ "operator<<", "ownership_8hpp.html#a3d93dc44233244e04a6f5aea6da63f06", null ],
+    [ "astarte::device::ownership_from_str", "namespaceastarte_1_1device.html#a68d95a3f9d0aaa8e773338fbf4cecd33", null ]
 ];
