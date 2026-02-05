@@ -3,7 +3,6 @@ var classastarte_1_1device_1_1Device =
     [ "~Device", "classastarte_1_1device_1_1Device.html#ae2214614561798db278cefdeb4f8fc27", null ],
     [ "Device", "classastarte_1_1device_1_1Device.html#a403a1a9d9996effde6eb49fb4dfd1a2b", null ],
     [ "Device", "classastarte_1_1device_1_1Device.html#aed1b87ad41a02a71c730d75b3a9f786a", null ],
-    [ "Device", "classastarte_1_1device_1_1Device.html#a79e6ae77f47befd64eec229a017942f8", null ],
     [ "add_interface_from_file", "classastarte_1_1device_1_1Device.html#a024b9b41adc52997f5602cb195497daf", null ],
     [ "add_interface_from_str", "classastarte_1_1device_1_1Device.html#aa56332e1b17e85e1672ab6d8389db197", null ],
     [ "connect", "classastarte_1_1device_1_1Device.html#ad1f761801e85ea1d8e24c43fc051825b", null ],

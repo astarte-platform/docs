@@ -137,15 +137,15 @@ $(function(){initNavTree('type_8hpp.html',''); initResizable(true); });
 <code>#include &lt;ostream&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;string_view&gt;</code><br />
-<code>#include &quot;astarte_device_sdk/errors.hpp&quot;</code><br />
-<code>#include &quot;astarte_device_sdk/formatter.hpp&quot;</code><br />
+<code>#include &quot;<a class="el" href="errors_8hpp_source.html">astarte_device_sdk/errors.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="formatter_8hpp_source.html">astarte_device_sdk/formatter.hpp</a>&quot;</code><br />
 </div>
 <p><a href="type_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Type_01_4.html">astarte_fmt::formatter&lt; astarte::device::Type &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="namespaceastarte_1_1device.html#a5075d95e28a72c6685710f400063e1f0" title="Possible Astarte types.">astarte::device::Type</a>.  <a href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Type_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="namespaceastarte_1_1device.html#a5075d95e28a72c6685710f400063e1f0" title="Enumeration of supported Astarte data types.">astarte::device::Type</a>.  <a href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Type_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -179,13 +179,13 @@ Enumerations</h2></td></tr>
 , <a class="el" href="namespaceastarte_1_1device.html#a5075d95e28a72c6685710f400063e1f0a6aee590417cc3994643219bac552043c">astarte::device::kStringArray</a>
 <br />
  }</td></tr>
-<tr class="memdesc:a5075d95e28a72c6685710f400063e1f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Possible Astarte types.  <a href="namespaceastarte_1_1device.html#a5075d95e28a72c6685710f400063e1f0">More...</a><br /></td></tr>
+<tr class="memdesc:a5075d95e28a72c6685710f400063e1f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration of supported Astarte data types.  <a href="namespaceastarte_1_1device.html#a5075d95e28a72c6685710f400063e1f0">More...</a><br /></td></tr>
 <tr class="separator:a5075d95e28a72c6685710f400063e1f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a3763b209aa31dc38a8b79afd8623fda3" id="r_a3763b209aa31dc38a8b79afd8623fda3"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceastarte_1_1device.html#a3763b209aa31dc38a8b79afd8623fda3">astarte::device::astarte_type_from_str</a> (const std::string &amp;type) -&gt; astarte_tl::expected&lt; <a class="el" href="namespaceastarte_1_1device.html#a5075d95e28a72c6685710f400063e1f0">Type</a>, <a class="el" href="namespaceastarte_1_1device.html#a9675caabed06c1cc0cd827c2d6eeabf9">Error</a> &gt;</td></tr>
-<tr class="memdesc:a3763b209aa31dc38a8b79afd8623fda3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a string to an <a class="el" href="namespaceastarte_1_1device.html#a5075d95e28a72c6685710f400063e1f0" title="Possible Astarte types.">Type</a> enum.  <br /></td></tr>
+<tr class="memdesc:a3763b209aa31dc38a8b79afd8623fda3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string representation of a type to a <a class="el" href="namespaceastarte_1_1device.html#a5075d95e28a72c6685710f400063e1f0" title="Enumeration of supported Astarte data types.">Type</a> enum.  <br /></td></tr>
 <tr class="separator:a3763b209aa31dc38a8b79afd8623fda3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0353ab8a9774657c64bd249c421dba33" id="r_a0353ab8a9774657c64bd249c421dba33"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0353ab8a9774657c64bd249c421dba33">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="namespaceastarte_1_1device.html#a5075d95e28a72c6685710f400063e1f0">astarte::device::Type</a> typ) -&gt; std::ostream &amp;</td></tr>
 <tr class="memdesc:a0353ab8a9774657c64bd249c421dba33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream insertion operator for Type.  <br /></td></tr>
@@ -193,6 +193,7 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Types definitions for communication with Astarte. </p>
+<p>This file defines the enumeration of supported Astarte data types and provides utility functions for string conversion and formatting, enabling type-safe data handling within the SDK. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a0353ab8a9774657c64bd249c421dba33" name="a0353ab8a9774657c64bd249c421dba33"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0353ab8a9774657c64bd249c421dba33">&#9670;&#160;</a></span>operator&lt;&lt;()</h2>
@@ -224,12 +225,12 @@ Functions</h2></td></tr>
 <p>Stream insertion operator for Type. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">out</td><td>The output stream. </td></tr>
-    <tr><td class="paramname">typ</td><td>The Type enum to output. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">out</td><td>The output stream to write to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">typ</td><td>The Type enum to output. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Reference to the output stream. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the output stream. </dd></dl>
 
 </div>
 </div>

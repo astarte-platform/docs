@@ -129,7 +129,7 @@ $(function(){initNavTree('structastarte__fmt_1_1formatter_3_01astarte_1_1device_
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="namespaceastarte_1_1device.html#a5075d95e28a72c6685710f400063e1f0" title="Possible Astarte types.">astarte::device::Type</a>.  
+<p><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="namespaceastarte_1_1device.html#a5075d95e28a72c6685710f400063e1f0" title="Enumeration of supported Astarte data types.">astarte::device::Type</a>.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="type_8hpp_source.html">type.hpp</a>&gt;</code></p>
@@ -138,15 +138,15 @@ $(function(){initNavTree('structastarte__fmt_1_1formatter_3_01astarte_1_1device_
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a58e9d14bcc23df4b4470bab0084fbdbe" id="r_a58e9d14bcc23df4b4470bab0084fbdbe"><td class="memTemplParams" colspan="2">template&lt;typename ParseContext&gt; </td></tr>
 <tr class="memitem:a58e9d14bcc23df4b4470bab0084fbdbe"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a58e9d14bcc23df4b4470bab0084fbdbe">parse</a> (ParseContext &amp;ctx) const</td></tr>
-<tr class="memdesc:a58e9d14bcc23df4b4470bab0084fbdbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the format string. Default implementation.  <br /></td></tr>
+<tr class="memdesc:a58e9d14bcc23df4b4470bab0084fbdbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the format string. Default implementation.  <br /></td></tr>
 <tr class="separator:a58e9d14bcc23df4b4470bab0084fbdbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3330662f6bfaddb1924665cf8a4f5370" id="r_a3330662f6bfaddb1924665cf8a4f5370"><td class="memTemplParams" colspan="2">template&lt;typename FormatContext&gt; </td></tr>
 <tr class="memitem:a3330662f6bfaddb1924665cf8a4f5370"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a3330662f6bfaddb1924665cf8a4f5370">format</a> (const <a class="el" href="namespaceastarte_1_1device.html#a5075d95e28a72c6685710f400063e1f0">astarte::device::Type</a> &amp;typ, FormatContext &amp;ctx) const</td></tr>
-<tr class="memdesc:a3330662f6bfaddb1924665cf8a4f5370"><td class="mdescLeft">&#160;</td><td class="mdescRight">Format the Type enum to its string representation.  <br /></td></tr>
+<tr class="memdesc:a3330662f6bfaddb1924665cf8a4f5370"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the Type enum to its string representation.  <br /></td></tr>
 <tr class="separator:a3330662f6bfaddb1924665cf8a4f5370"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="namespaceastarte_1_1device.html#a5075d95e28a72c6685710f400063e1f0" title="Possible Astarte types.">astarte::device::Type</a>. </p>
+<div class="textblock"><p><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="namespaceastarte_1_1device.html#a5075d95e28a72c6685710f400063e1f0" title="Enumeration of supported Astarte data types.">astarte::device::Type</a>. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a3330662f6bfaddb1924665cf8a4f5370" name="a3330662f6bfaddb1924665cf8a4f5370"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3330662f6bfaddb1924665cf8a4f5370">&#9670;&#160;</a></span>format()</h2>
@@ -177,11 +177,11 @@ template&lt;typename FormatContext&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Format the Type enum to its string representation. </p>
+<p>Formats the Type enum to its string representation. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">typ</td><td>The Type to format. </td></tr>
-    <tr><td class="paramname">ctx</td><td>The format context. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">typ</td><td>The Type to format. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The format context. </td></tr>
   </table>
   </dd>
 </dl>
@@ -214,10 +214,10 @@ template&lt;typename ParseContext&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Parse the format string. Default implementation. </p>
+<p>Parses the format string. Default implementation. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ctx</td><td>The parse context. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ctx</td><td>The parse context. </td></tr>
   </table>
   </dd>
 </dl>

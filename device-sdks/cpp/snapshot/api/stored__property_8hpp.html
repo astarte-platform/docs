@@ -130,14 +130,14 @@ $(function(){initNavTree('stored__property_8hpp.html',''); initResizable(true); 
 </div><!--header-->
 <div class="contents">
 
-<p>Astarte stored property class and its related methods.  
+<p>Astarte stored property class.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstdint&gt;</code><br />
 <code>#include &lt;ostream&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;string_view&gt;</code><br />
 <code>#include &quot;<a class="el" href="data_8hpp_source.html">astarte_device_sdk/data.hpp</a>&quot;</code><br />
-<code>#include &quot;astarte_device_sdk/formatter.hpp&quot;</code><br />
+<code>#include &quot;<a class="el" href="formatter_8hpp_source.html">astarte_device_sdk/formatter.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ownership_8hpp_source.html">astarte_device_sdk/ownership.hpp</a>&quot;</code><br />
 </div>
 <p><a href="stored__property_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -145,10 +145,10 @@ $(function(){initNavTree('stored__property_8hpp.html',''); initResizable(true); 
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classastarte_1_1device_1_1StoredProperty.html">astarte::device::StoredProperty</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Representing data for a stored property.  <a href="classastarte_1_1device_1_1StoredProperty.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a stored property on the device.  <a href="classastarte_1_1device_1_1StoredProperty.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1StoredProperty_01_4.html">astarte_fmt::formatter&lt; astarte::device::StoredProperty &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="classastarte_1_1device_1_1StoredProperty.html" title="Representing data for a stored property.">astarte::device::StoredProperty</a>.  <a href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1StoredProperty_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="classastarte_1_1device_1_1StoredProperty.html" title="Represents a stored property on the device.">astarte::device::StoredProperty</a>.  <a href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1StoredProperty_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -167,7 +167,8 @@ Functions</h2></td></tr>
 <tr class="separator:a2013bc0c8b37032b3aa3174ae662486f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Astarte stored property class and its related methods. </p>
+<div class="textblock"><p>Astarte stored property class. </p>
+<p>This file defines the StoredProperty class, which acts as a container for a property's value and its associated metadata (interface name, path, version, ownership). </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a2013bc0c8b37032b3aa3174ae662486f" name="a2013bc0c8b37032b3aa3174ae662486f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2013bc0c8b37032b3aa3174ae662486f">&#9670;&#160;</a></span>operator&lt;&lt;()</h2>
@@ -199,12 +200,12 @@ Functions</h2></td></tr>
 <p>Stream insertion operator for StoredProperty. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">out</td><td>The output stream. </td></tr>
-    <tr><td class="paramname">prop</td><td>The StoredProperty object to output. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">out</td><td>The output stream. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">prop</td><td>The StoredProperty object to output. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Reference to the output stream. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the output stream. </dd></dl>
 
 </div>
 </div>

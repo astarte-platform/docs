@@ -138,11 +138,11 @@ $(function(){initNavTree('structastarte__fmt_1_1formatter_3_01astarte_1_1device_
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8d647f78c011ef20768ae7eaab4f3813" id="r_a8d647f78c011ef20768ae7eaab4f3813"><td class="memTemplParams" colspan="2">template&lt;typename ParseContext&gt; </td></tr>
 <tr class="memitem:a8d647f78c011ef20768ae7eaab4f3813"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a8d647f78c011ef20768ae7eaab4f3813">parse</a> (ParseContext &amp;ctx) const</td></tr>
-<tr class="memdesc:a8d647f78c011ef20768ae7eaab4f3813"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the format string. Default implementation.  <br /></td></tr>
+<tr class="memdesc:a8d647f78c011ef20768ae7eaab4f3813"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the format string.  <br /></td></tr>
 <tr class="separator:a8d647f78c011ef20768ae7eaab4f3813"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb66e8bf459b777897c5b9de2fde2cb2" id="r_aeb66e8bf459b777897c5b9de2fde2cb2"><td class="memTemplParams" colspan="2">template&lt;typename FormatContext&gt; </td></tr>
 <tr class="memitem:aeb66e8bf459b777897c5b9de2fde2cb2"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aeb66e8bf459b777897c5b9de2fde2cb2">format</a> (const <a class="el" href="classastarte_1_1device_1_1Message.html">astarte::device::Message</a> &amp;msg, FormatContext &amp;ctx) const</td></tr>
-<tr class="memdesc:aeb66e8bf459b777897c5b9de2fde2cb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Format the Message object.  <br /></td></tr>
+<tr class="memdesc:aeb66e8bf459b777897c5b9de2fde2cb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the Message object.  <br /></td></tr>
 <tr class="separator:aeb66e8bf459b777897c5b9de2fde2cb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -177,11 +177,11 @@ template&lt;typename FormatContext&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Format the Message object. </p>
+<p>Formats the Message object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">msg</td><td>The Message to format. </td></tr>
-    <tr><td class="paramname">ctx</td><td>The format context. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">msg</td><td>The Message instance to format. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The format context. </td></tr>
   </table>
   </dd>
 </dl>
@@ -214,10 +214,10 @@ template&lt;typename ParseContext&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Parse the format string. Default implementation. </p>
+<p>Parses the format string. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ctx</td><td>The parse context. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The parse context. </td></tr>
   </table>
   </dd>
 </dl>

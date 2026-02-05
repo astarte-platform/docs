@@ -129,7 +129,7 @@ $(function(){initNavTree('structastarte__fmt_1_1formatter_3_01astarte_1_1device_
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="classastarte_1_1device_1_1DatastreamIndividual.html" title="Representing the Astarte individual datastream data.">astarte::device::DatastreamIndividual</a>.  
+<p><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="classastarte_1_1device_1_1DatastreamIndividual.html" title="Represents the Astarte individual datastream data.">astarte::device::DatastreamIndividual</a>.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="individual_8hpp_source.html">individual.hpp</a>&gt;</code></p>
@@ -138,15 +138,15 @@ $(function(){initNavTree('structastarte__fmt_1_1formatter_3_01astarte_1_1device_
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a32e3de136bb7adebe787ce8d69d742c8" id="r_a32e3de136bb7adebe787ce8d69d742c8"><td class="memTemplParams" colspan="2">template&lt;typename ParseContext&gt; </td></tr>
 <tr class="memitem:a32e3de136bb7adebe787ce8d69d742c8"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a32e3de136bb7adebe787ce8d69d742c8">parse</a> (ParseContext &amp;ctx) const</td></tr>
-<tr class="memdesc:a32e3de136bb7adebe787ce8d69d742c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the format string. Default implementation.  <br /></td></tr>
+<tr class="memdesc:a32e3de136bb7adebe787ce8d69d742c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the format string.  <br /></td></tr>
 <tr class="separator:a32e3de136bb7adebe787ce8d69d742c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c370fa321a27083a93d15d2cfd9fa5d" id="r_a9c370fa321a27083a93d15d2cfd9fa5d"><td class="memTemplParams" colspan="2">template&lt;typename FormatContext&gt; </td></tr>
 <tr class="memitem:a9c370fa321a27083a93d15d2cfd9fa5d"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a9c370fa321a27083a93d15d2cfd9fa5d">format</a> (const <a class="el" href="classastarte_1_1device_1_1DatastreamIndividual.html">astarte::device::DatastreamIndividual</a> &amp;data, FormatContext &amp;ctx) const</td></tr>
-<tr class="memdesc:a9c370fa321a27083a93d15d2cfd9fa5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Format the DatastreamIndividual object.  <br /></td></tr>
+<tr class="memdesc:a9c370fa321a27083a93d15d2cfd9fa5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the DatastreamIndividual object.  <br /></td></tr>
 <tr class="separator:a9c370fa321a27083a93d15d2cfd9fa5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="classastarte_1_1device_1_1DatastreamIndividual.html" title="Representing the Astarte individual datastream data.">astarte::device::DatastreamIndividual</a>. </p>
+<div class="textblock"><p><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="classastarte_1_1device_1_1DatastreamIndividual.html" title="Represents the Astarte individual datastream data.">astarte::device::DatastreamIndividual</a>. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a9c370fa321a27083a93d15d2cfd9fa5d" name="a9c370fa321a27083a93d15d2cfd9fa5d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9c370fa321a27083a93d15d2cfd9fa5d">&#9670;&#160;</a></span>format()</h2>
@@ -177,15 +177,15 @@ template&lt;typename FormatContext&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Format the DatastreamIndividual object. </p>
+<p>Formats the DatastreamIndividual object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">data</td><td>The DatastreamIndividual to format. </td></tr>
-    <tr><td class="paramname">ctx</td><td>The format context. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>The DatastreamIndividual instance to format. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The format context. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>An iterator to the end of the output. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>An iterator to the end of the output context. </dd></dl>
 
 </div>
 </div>
@@ -214,10 +214,10 @@ template&lt;typename ParseContext&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Parse the format string. Default implementation. </p>
+<p>Parses the format string. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ctx</td><td>The parse context. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The parse context. </td></tr>
   </table>
   </dd>
 </dl>

@@ -129,7 +129,7 @@ $(function(){initNavTree('structastarte__fmt_1_1formatter_3_01astarte_1_1device_
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="classastarte_1_1device_1_1StoredProperty.html" title="Representing data for a stored property.">astarte::device::StoredProperty</a>.  
+<p><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9" title="Possible Astarte ownership.">astarte::device::Ownership</a>.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="ownership_8hpp_source.html">ownership.hpp</a>&gt;</code></p>
@@ -138,15 +138,15 @@ $(function(){initNavTree('structastarte__fmt_1_1formatter_3_01astarte_1_1device_
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a53a223b01c6b0b4842f2ea9ec86794f4" id="r_a53a223b01c6b0b4842f2ea9ec86794f4"><td class="memTemplParams" colspan="2">template&lt;typename ParseContext&gt; </td></tr>
 <tr class="memitem:a53a223b01c6b0b4842f2ea9ec86794f4"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a53a223b01c6b0b4842f2ea9ec86794f4">parse</a> (ParseContext &amp;ctx) const</td></tr>
-<tr class="memdesc:a53a223b01c6b0b4842f2ea9ec86794f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the format string. Default implementation.  <br /></td></tr>
+<tr class="memdesc:a53a223b01c6b0b4842f2ea9ec86794f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the format string. Default implementation.  <br /></td></tr>
 <tr class="separator:a53a223b01c6b0b4842f2ea9ec86794f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad6a058a274e0ec51ceee484b0336873" id="r_aad6a058a274e0ec51ceee484b0336873"><td class="memTemplParams" colspan="2">template&lt;typename FormatContext&gt; </td></tr>
 <tr class="memitem:aad6a058a274e0ec51ceee484b0336873"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aad6a058a274e0ec51ceee484b0336873">format</a> (const <a class="el" href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9">astarte::device::Ownership</a> &amp;ownership, FormatContext &amp;ctx) const</td></tr>
-<tr class="memdesc:aad6a058a274e0ec51ceee484b0336873"><td class="mdescLeft">&#160;</td><td class="mdescRight">Format the <a class="el" href="namespaceastarte_1_1device.html" title="Umbrella namespace for the Astarte device library.">astarte::device</a>:: object.  <br /></td></tr>
+<tr class="memdesc:aad6a058a274e0ec51ceee484b0336873"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the <a class="el" href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9" title="Possible Astarte ownership.">astarte::device::Ownership</a> object.  <br /></td></tr>
 <tr class="separator:aad6a058a274e0ec51ceee484b0336873"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="classastarte_1_1device_1_1StoredProperty.html" title="Representing data for a stored property.">astarte::device::StoredProperty</a>. </p>
+<div class="textblock"><p><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9" title="Possible Astarte ownership.">astarte::device::Ownership</a>. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="aad6a058a274e0ec51ceee484b0336873" name="aad6a058a274e0ec51ceee484b0336873"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aad6a058a274e0ec51ceee484b0336873">&#9670;&#160;</a></span>format()</h2>
@@ -177,11 +177,17 @@ template&lt;typename FormatContext&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Format the <a class="el" href="namespaceastarte_1_1device.html" title="Umbrella namespace for the Astarte device library.">astarte::device</a>:: object. </p>
+<p>Formats the <a class="el" href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9" title="Possible Astarte ownership.">astarte::device::Ownership</a> object. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">FormatContext</td><td>The type of the format context. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ownership</td><td>The <a class="el" href="namespaceastarte_1_1device.html" title="Umbrella namespace for the Astarte device library.">astarte::device</a>:: to format. </td></tr>
-    <tr><td class="paramname">ctx</td><td>The format context. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ownership</td><td>The <a class="el" href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9" title="Possible Astarte ownership.">astarte::device::Ownership</a> to format. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The format context. </td></tr>
   </table>
   </dd>
 </dl>
@@ -214,10 +220,16 @@ template&lt;typename ParseContext&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Parse the format string. Default implementation. </p>
+<p>Parses the format string. Default implementation. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">ParseContext</td><td>The type of the parse context. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ctx</td><td>The parse context. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The parse context. </td></tr>
   </table>
   </dd>
 </dl>

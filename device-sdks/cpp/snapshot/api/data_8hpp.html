@@ -142,7 +142,7 @@ $(function(){initNavTree('data_8hpp.html',''); initResizable(true); });
 <code>#include &lt;type_traits&gt;</code><br />
 <code>#include &lt;variant&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
-<code>#include &quot;astarte_device_sdk/formatter.hpp&quot;</code><br />
+<code>#include &quot;<a class="el" href="formatter_8hpp_source.html">astarte_device_sdk/formatter.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="type_8hpp_source.html">astarte_device_sdk/type.hpp</a>&quot;</code><br />
 </div>
 <p><a href="data_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -150,10 +150,10 @@ $(function(){initNavTree('data_8hpp.html',''); initResizable(true); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classastarte_1_1device_1_1Data.html">astarte::device::Data</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Astarte data class, representing the basic Astarte types.  <a href="classastarte_1_1device_1_1Data.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a single Astarte data value.  <a href="classastarte_1_1device_1_1Data.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Data_01_4.html">astarte_fmt::formatter&lt; astarte::device::Data &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="classastarte_1_1device_1_1Data.html" title="Astarte data class, representing the basic Astarte types.">astarte::device::Data</a>.  <a href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Data_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="classastarte_1_1device_1_1Data.html" title="Represents a single Astarte data value.">astarte::device::Data</a>.  <a href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Data_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -168,7 +168,7 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="concepts" name="concepts"></a>
 Concepts</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptastarte_1_1device_1_1DataAllowedType.html">astarte::device::DataAllowedType</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restricts the allowed types for instances of an Astarte data class. <br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C++ concept to restrict the allowed types for instances of an Astarte data class. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -179,6 +179,7 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Astarte data class and its related methods. </p>
+<p>This file defines the container class for data exchanged with the Astarte platform, handling type mapping between C++ and Astarte's data model. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a1284c793f4f7a6ef904e9953d8905594" name="a1284c793f4f7a6ef904e9953d8905594"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1284c793f4f7a6ef904e9953d8905594">&#9670;&#160;</a></span>operator&lt;&lt;()</h2>
@@ -210,12 +211,12 @@ Functions</h2></td></tr>
 <p>Stream insertion operator for Data. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">out</td><td>The output stream. </td></tr>
-    <tr><td class="paramname">data</td><td>The Data object to output. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">out</td><td>The output stream. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>The Data object to output. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Reference to the output stream. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the output stream. </dd></dl>
 
 </div>
 </div>

@@ -129,7 +129,7 @@ $(function(){initNavTree('structastarte__fmt_1_1formatter_3_01astarte_1_1device_
 </div><!--header-->
 <div class="contents">
 
-<p>Formatter specialization for <a class="el" href="namespaceastarte_1_1device.html#a9675caabed06c1cc0cd827c2d6eeabf9" title="A variant type representing any possible error from the Astarte device library.">astarte::device::Error</a>.  
+<p>Formatter specialization for <a class="el" href="namespaceastarte_1_1device.html#a9675caabed06c1cc0cd827c2d6eeabf9" title="Variant type representing any error from the Astarte device library.">astarte::device::Error</a>.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="errors_8hpp_source.html">errors.hpp</a>&gt;</code></p>
@@ -138,15 +138,15 @@ $(function(){initNavTree('structastarte__fmt_1_1formatter_3_01astarte_1_1device_
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1e0d288ce81184258b0e9091e53b5b2d" id="r_a1e0d288ce81184258b0e9091e53b5b2d"><td class="memTemplParams" colspan="2">template&lt;typename ParseContext&gt; </td></tr>
 <tr class="memitem:a1e0d288ce81184258b0e9091e53b5b2d"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a1e0d288ce81184258b0e9091e53b5b2d">parse</a> (ParseContext &amp;ctx) const</td></tr>
-<tr class="memdesc:a1e0d288ce81184258b0e9091e53b5b2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the format string. Default implementation.  <br /></td></tr>
+<tr class="memdesc:a1e0d288ce81184258b0e9091e53b5b2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the format string.  <br /></td></tr>
 <tr class="separator:a1e0d288ce81184258b0e9091e53b5b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91748e0ea7b8c960818c83a94fd542db" id="r_a91748e0ea7b8c960818c83a94fd542db"><td class="memTemplParams" colspan="2">template&lt;typename FormatContext&gt; </td></tr>
 <tr class="memitem:a91748e0ea7b8c960818c83a94fd542db"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a91748e0ea7b8c960818c83a94fd542db">format</a> (const <a class="el" href="namespaceastarte_1_1device.html#a9675caabed06c1cc0cd827c2d6eeabf9">astarte::device::Error</a> &amp;err_variant, FormatContext &amp;ctx) const</td></tr>
-<tr class="memdesc:a91748e0ea7b8c960818c83a94fd542db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Format the Error object.  <br /></td></tr>
+<tr class="memdesc:a91748e0ea7b8c960818c83a94fd542db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the Error object by visiting the variant.  <br /></td></tr>
 <tr class="separator:a91748e0ea7b8c960818c83a94fd542db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Formatter specialization for <a class="el" href="namespaceastarte_1_1device.html#a9675caabed06c1cc0cd827c2d6eeabf9" title="A variant type representing any possible error from the Astarte device library.">astarte::device::Error</a>. </p>
+<div class="textblock"><p>Formatter specialization for <a class="el" href="namespaceastarte_1_1device.html#a9675caabed06c1cc0cd827c2d6eeabf9" title="Variant type representing any error from the Astarte device library.">astarte::device::Error</a>. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a91748e0ea7b8c960818c83a94fd542db" name="a91748e0ea7b8c960818c83a94fd542db"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a91748e0ea7b8c960818c83a94fd542db">&#9670;&#160;</a></span>format()</h2>
@@ -177,15 +177,15 @@ template&lt;typename FormatContext&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Format the Error object. </p>
+<p>Formats the Error object by visiting the variant. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">err_variant</td><td>The Error to format. </td></tr>
-    <tr><td class="paramname">ctx</td><td>The format context. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">err_variant</td><td>The Error variant instance to format. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The format context. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>An iterator to the end of the output. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>An iterator to the end of the output context. </dd></dl>
 
 </div>
 </div>
@@ -214,10 +214,10 @@ template&lt;typename ParseContext&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Parse the format string. Default implementation. </p>
+<p>Parses the format string. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ctx</td><td>The parse context. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The parse context. </td></tr>
   </table>
   </dd>
 </dl>

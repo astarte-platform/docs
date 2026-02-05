@@ -126,7 +126,7 @@ $(function(){initNavTree('conceptastarte_1_1device_1_1DataAllowedType.html','');
 </div><!--header-->
 <div class="contents">
 
-<p>Restricts the allowed types for instances of an Astarte data class.  
+<p>C++ concept to restrict the allowed types for instances of an Astarte data class.  
 <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="data_8hpp_source.html">data.hpp</a>&gt;</code></p>
@@ -143,9 +143,10 @@ $(function(){initNavTree('conceptastarte_1_1device_1_1DataAllowedType.html','');
 <div class="line">               std::is_same_v&lt;T, std::vector&lt;std::vector&lt;uint8_t&gt;&gt;&gt; ||</div>
 <div class="line">               std::is_same_v&lt;T, std::vector&lt;std::chrono::system_clock::time_point&gt;&gt;;</div>
 <div class="line">}</div>
-<div class="ttc" id="aconceptastarte_1_1device_1_1DataAllowedType_html"><div class="ttname"><a href="conceptastarte_1_1device_1_1DataAllowedType.html">astarte::device::DataAllowedType</a></div><div class="ttdoc">Restricts the allowed types for instances of an Astarte data class.</div><div class="ttdef"><b>Definition</b> data.hpp:30</div></div>
+<div class="ttc" id="aconceptastarte_1_1device_1_1DataAllowedType_html"><div class="ttname"><a href="conceptastarte_1_1device_1_1DataAllowedType.html">astarte::device::DataAllowedType</a></div><div class="ttdoc">C++ concept to restrict the allowed types for instances of an Astarte data class.</div><div class="ttdef"><b>Definition</b> data.hpp:38</div></div>
 </div><!-- fragment --><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Restricts the allowed types for instances of an Astarte data class. </p>
+<div class="textblock"><p>C++ concept to restrict the allowed types for instances of an Astarte data class. </p>
+<p>This concept ensures that only specific C++ types, corresponding to Astarte's supported data types, can be used to construct and retrieve data from the <code>Data</code> class. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

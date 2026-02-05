@@ -77,7 +77,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"classastarte_1_1device_1_1MsgHubError.html",
+"classastarte_1_1device_1_1MsgHubError.html#ad86efa80e65730ae1c6d31dd536b5908",
 "conceptastarte_1_1device_1_1DataAllowedType.html"
 ];
 

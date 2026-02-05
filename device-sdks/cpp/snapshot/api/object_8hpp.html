@@ -137,7 +137,7 @@ $(function(){initNavTree('object_8hpp.html',''); initResizable(true); });
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;unordered_map&gt;</code><br />
 <code>#include &quot;<a class="el" href="data_8hpp_source.html">astarte_device_sdk/data.hpp</a>&quot;</code><br />
-<code>#include &quot;astarte_device_sdk/formatter.hpp&quot;</code><br />
+<code>#include &quot;<a class="el" href="formatter_8hpp_source.html">astarte_device_sdk/formatter.hpp</a>&quot;</code><br />
 </div>
 <p><a href="object_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -167,6 +167,7 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Astarte object class and its related methods. </p>
+<p>This file defines the container for aggregated object datastreams, allowing multiple Astarte data fields to be grouped and sent as a single coherent unit. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="aaae17b1d21e6bbc7e5e3748b60ea7062" name="aaae17b1d21e6bbc7e5e3748b60ea7062"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaae17b1d21e6bbc7e5e3748b60ea7062">&#9670;&#160;</a></span>operator&lt;&lt;()</h2>
@@ -198,12 +199,12 @@ Functions</h2></td></tr>
 <p>Stream insertion operator for DatastreamObject. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">out</td><td>The output stream. </td></tr>
-    <tr><td class="paramname">data</td><td>The DatastreamObject to output. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">out</td><td>The output stream. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>The DatastreamObject to output. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Reference to the output stream. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the output stream. </dd></dl>
 
 </div>
 </div>

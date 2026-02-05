@@ -134,17 +134,17 @@ $(function(){initNavTree('individual_8hpp.html',''); initResizable(true); });
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;ostream&gt;</code><br />
 <code>#include &quot;<a class="el" href="data_8hpp_source.html">astarte_device_sdk/data.hpp</a>&quot;</code><br />
-<code>#include &quot;astarte_device_sdk/formatter.hpp&quot;</code><br />
+<code>#include &quot;<a class="el" href="formatter_8hpp_source.html">astarte_device_sdk/formatter.hpp</a>&quot;</code><br />
 </div>
 <p><a href="individual_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classastarte_1_1device_1_1DatastreamIndividual.html">astarte::device::DatastreamIndividual</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Representing the Astarte individual datastream data.  <a href="classastarte_1_1device_1_1DatastreamIndividual.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the Astarte individual datastream data.  <a href="classastarte_1_1device_1_1DatastreamIndividual.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1DatastreamIndividual_01_4.html">astarte_fmt::formatter&lt; astarte::device::DatastreamIndividual &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="classastarte_1_1device_1_1DatastreamIndividual.html" title="Representing the Astarte individual datastream data.">astarte::device::DatastreamIndividual</a>.  <a href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1DatastreamIndividual_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="classastarte_1_1device_1_1DatastreamIndividual.html" title="Represents the Astarte individual datastream data.">astarte::device::DatastreamIndividual</a>.  <a href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1DatastreamIndividual_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -164,6 +164,7 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Astarte individual datastream class and its related methods. </p>
+<p>This file defines the container for individual datastream data used within the Astarte device library to encapsulate single data points. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a9ae80b9c6fd7113fc0504148f8ac30fa" name="a9ae80b9c6fd7113fc0504148f8ac30fa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9ae80b9c6fd7113fc0504148f8ac30fa">&#9670;&#160;</a></span>operator&lt;&lt;()</h2>
@@ -195,12 +196,12 @@ Functions</h2></td></tr>
 <p>Stream insertion operator for DatastreamIndividual. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">out</td><td>The output stream. </td></tr>
-    <tr><td class="paramname">data</td><td>The DatastreamIndividual object to output. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">out</td><td>The output stream. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>The DatastreamIndividual object to output. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Reference to the output stream. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the output stream. </dd></dl>
 
 </div>
 </div>

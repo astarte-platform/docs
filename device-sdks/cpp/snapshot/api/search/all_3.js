@@ -12,7 +12,7 @@ var searchData=
   ['default_5fkeep_5falive_9',['DEFAULT_KEEP_ALIVE',['../namespaceastarte_1_1device_1_1mqtt.html#a234127ce1593ed3c984d5a8fd178003e',1,'astarte::device::mqtt']]],
   ['dependencies_10',['Dependencies',['../index.html#autotoc_md7',1,'']]],
   ['dependency_11',['dependency',['../index.html#autotoc_md6',1,'Public message hub proto dependency'],['../index.html#autotoc_md5',1,'Public spdlog dependency']]],
-  ['device_12',['Device',['../classastarte_1_1device_1_1Device.html',1,'astarte::device::Device'],['../classastarte_1_1device_1_1Device.html#a403a1a9d9996effde6eb49fb4dfd1a2b',1,'astarte::device::Device::Device(const Device &amp;other)=delete'],['../classastarte_1_1device_1_1Device.html#aed1b87ad41a02a71c730d75b3a9f786a',1,'astarte::device::Device::Device(Device &amp;&amp;other)=default'],['../classastarte_1_1device_1_1Device.html#a79e6ae77f47befd64eec229a017942f8',1,'astarte::device::Device::Device()=default']]],
+  ['device_12',['Device',['../classastarte_1_1device_1_1Device.html',1,'astarte::device::Device'],['../classastarte_1_1device_1_1Device.html#a403a1a9d9996effde6eb49fb4dfd1a2b',1,'astarte::device::Device::Device(const Device &amp;other)=delete'],['../classastarte_1_1device_1_1Device.html#aed1b87ad41a02a71c730d75b3a9f786a',1,'astarte::device::Device::Device(Device &amp;&amp;other)=default']]],
   ['device_20api_20for_20c_13',['Astarte device API for C++',['../index.html',1,'']]],
   ['device_20sdk_20for_20c_14',['Astarte device SDK for C++',['../index.html#autotoc_md0',1,'']]],
   ['device_2ehpp_15',['device.hpp',['../device_8hpp.html',1,'']]],

@@ -129,7 +129,7 @@ $(function(){initNavTree('structastarte__fmt_1_1formatter_3_01astarte_1_1device_
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="classastarte_1_1device_1_1PropertyIndividual.html" title="Representing the Astarte individual datastream data.">astarte::device::PropertyIndividual</a>.  
+<p><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="classastarte_1_1device_1_1PropertyIndividual.html" title="Representing the Astarte individual property data.">astarte::device::PropertyIndividual</a>.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="property_8hpp_source.html">property.hpp</a>&gt;</code></p>
@@ -138,15 +138,15 @@ $(function(){initNavTree('structastarte__fmt_1_1formatter_3_01astarte_1_1device_
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aed77abbf93c6ccd817d6b3df98187ae1" id="r_aed77abbf93c6ccd817d6b3df98187ae1"><td class="memTemplParams" colspan="2">template&lt;typename ParseContext&gt; </td></tr>
 <tr class="memitem:aed77abbf93c6ccd817d6b3df98187ae1"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#aed77abbf93c6ccd817d6b3df98187ae1">parse</a> (ParseContext &amp;ctx) const</td></tr>
-<tr class="memdesc:aed77abbf93c6ccd817d6b3df98187ae1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the format string. Default implementation.  <br /></td></tr>
+<tr class="memdesc:aed77abbf93c6ccd817d6b3df98187ae1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the format string. Default implementation.  <br /></td></tr>
 <tr class="separator:aed77abbf93c6ccd817d6b3df98187ae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a5777e8f73583b4d89099e02281d371" id="r_a7a5777e8f73583b4d89099e02281d371"><td class="memTemplParams" colspan="2">template&lt;typename FormatContext&gt; </td></tr>
 <tr class="memitem:a7a5777e8f73583b4d89099e02281d371"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7a5777e8f73583b4d89099e02281d371">format</a> (const <a class="el" href="classastarte_1_1device_1_1PropertyIndividual.html">astarte::device::PropertyIndividual</a> &amp;data, FormatContext &amp;ctx) const</td></tr>
-<tr class="memdesc:a7a5777e8f73583b4d89099e02281d371"><td class="mdescLeft">&#160;</td><td class="mdescRight">Format the PropertyIndividual object.  <br /></td></tr>
+<tr class="memdesc:a7a5777e8f73583b4d89099e02281d371"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the PropertyIndividual object.  <br /></td></tr>
 <tr class="separator:a7a5777e8f73583b4d89099e02281d371"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="classastarte_1_1device_1_1PropertyIndividual.html" title="Representing the Astarte individual datastream data.">astarte::device::PropertyIndividual</a>. </p>
+<div class="textblock"><p><a class="el" href="structastarte__fmt_1_1formatter.html" title="Base formatter struct declaration for Doxygen.">astarte_fmt::formatter</a> specialization for <a class="el" href="classastarte_1_1device_1_1PropertyIndividual.html" title="Representing the Astarte individual property data.">astarte::device::PropertyIndividual</a>. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7a5777e8f73583b4d89099e02281d371" name="a7a5777e8f73583b4d89099e02281d371"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7a5777e8f73583b4d89099e02281d371">&#9670;&#160;</a></span>format()</h2>
@@ -177,11 +177,11 @@ template&lt;typename FormatContext&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Format the PropertyIndividual object. </p>
+<p>Formats the PropertyIndividual object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">data</td><td>The PropertyIndividual to format. </td></tr>
-    <tr><td class="paramname">ctx</td><td>The format context. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>The PropertyIndividual to format. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The format context. </td></tr>
   </table>
   </dd>
 </dl>
@@ -214,10 +214,10 @@ template&lt;typename ParseContext&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Parse the format string. Default implementation. </p>
+<p>Parses the format string. Default implementation. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ctx</td><td>The parse context. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The parse context. </td></tr>
   </table>
   </dd>
 </dl>

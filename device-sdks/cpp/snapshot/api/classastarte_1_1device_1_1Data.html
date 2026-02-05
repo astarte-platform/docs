@@ -129,7 +129,7 @@ $(function(){initNavTree('classastarte_1_1device_1_1Data.html',''); initResizabl
 </div><!--header-->
 <div class="contents">
 
-<p>Astarte data class, representing the basic Astarte types.  
+<p>Represents a single Astarte data value.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="data_8hpp_source.html">data.hpp</a>&gt;</code></p>
@@ -138,21 +138,21 @@ $(function(){initNavTree('classastarte_1_1device_1_1Data.html',''); initResizabl
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a977642d1988aab54e92234c2f460f34d" id="r_a977642d1988aab54e92234c2f460f34d"><td class="memTemplParams" colspan="2">template&lt;DataAllowedType T&gt; </td></tr>
 <tr class="memitem:a977642d1988aab54e92234c2f460f34d"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a977642d1988aab54e92234c2f460f34d">Data</a> (const T &amp;value)</td></tr>
-<tr class="memdesc:a977642d1988aab54e92234c2f460f34d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classastarte_1_1device_1_1Data.html" title="Astarte data class, representing the basic Astarte types.">Data</a> class.  <br /></td></tr>
+<tr class="memdesc:a977642d1988aab54e92234c2f460f34d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classastarte_1_1device_1_1Data.html" title="Represents a single Astarte data value.">Data</a> object from a value of any <code><a class="el" href="conceptastarte_1_1device_1_1DataAllowedType.html" title="C++ concept to restrict the allowed types for instances of an Astarte data class.">DataAllowedType</a></code>.  <br /></td></tr>
 <tr class="separator:a977642d1988aab54e92234c2f460f34d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f641ecb7e0e879df76cdeac15a77c6b" id="r_a9f641ecb7e0e879df76cdeac15a77c6b"><td class="memTemplParams" colspan="2">template&lt;DataAllowedType T&gt; </td></tr>
 <tr class="memitem:a9f641ecb7e0e879df76cdeac15a77c6b"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a9f641ecb7e0e879df76cdeac15a77c6b">into</a> () const -&gt; std::conditional_t&lt; std::is_same_v&lt; T, std::string_view &gt;, std::string_view, const T &amp; &gt;</td></tr>
-<tr class="memdesc:a9f641ecb7e0e879df76cdeac15a77c6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the Astarte data class to the appropriate data type.  <br /></td></tr>
+<tr class="memdesc:a9f641ecb7e0e879df76cdeac15a77c6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the Astarte data class to the specified type <code>T</code>.  <br /></td></tr>
 <tr class="separator:a9f641ecb7e0e879df76cdeac15a77c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ed84c1e4fd2a17d270e3d7eee64f293" id="r_a4ed84c1e4fd2a17d270e3d7eee64f293"><td class="memTemplParams" colspan="2">template&lt;DataAllowedType T&gt; </td></tr>
 <tr class="memitem:a4ed84c1e4fd2a17d270e3d7eee64f293"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a4ed84c1e4fd2a17d270e3d7eee64f293">try_into</a> () const -&gt; std::optional&lt; T &gt;</td></tr>
-<tr class="memdesc:a4ed84c1e4fd2a17d270e3d7eee64f293"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the Astarte data class to the given type if it's the correct variant.  <br /></td></tr>
+<tr class="memdesc:a4ed84c1e4fd2a17d270e3d7eee64f293"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to convert the Astarte data class to the specified type <code>T</code> safely.  <br /></td></tr>
 <tr class="separator:a4ed84c1e4fd2a17d270e3d7eee64f293"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8f87cfc2c7419c837118983c2409a5a" id="r_ab8f87cfc2c7419c837118983c2409a5a"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8f87cfc2c7419c837118983c2409a5a">get_type</a> () const -&gt; <a class="el" href="namespaceastarte_1_1device.html#a5075d95e28a72c6685710f400063e1f0">Type</a></td></tr>
-<tr class="memdesc:ab8f87cfc2c7419c837118983c2409a5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type of the data contained in this class instance.  <br /></td></tr>
+<tr class="memdesc:ab8f87cfc2c7419c837118983c2409a5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the type of the data contained in this class instance.  <br /></td></tr>
 <tr class="separator:ab8f87cfc2c7419c837118983c2409a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32a094a354d8fde396d8ee96b3d28013" id="r_a32a094a354d8fde396d8ee96b3d28013"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a32a094a354d8fde396d8ee96b3d28013">get_raw_data</a> () const -&gt; const std::variant&lt; int32_t, int64_t, double, bool, std::string, std::vector&lt; uint8_t &gt;, std::chrono::system_clock::time_point, std::vector&lt; int32_t &gt;, std::vector&lt; int64_t &gt;, std::vector&lt; double &gt;, std::vector&lt; bool &gt;, std::vector&lt; std::string &gt;, std::vector&lt; std::vector&lt; uint8_t &gt; &gt;, std::vector&lt; std::chrono::system_clock::time_point &gt; &gt; &amp;</td></tr>
-<tr class="memdesc:a32a094a354d8fde396d8ee96b3d28013"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the raw data contained in this class instance.  <br /></td></tr>
+<tr class="memdesc:a32a094a354d8fde396d8ee96b3d28013"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the raw data variant contained in this class instance.  <br /></td></tr>
 <tr class="separator:a32a094a354d8fde396d8ee96b3d28013"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a663620bd242e6c6a0d2a57504c1b9892" id="r_a663620bd242e6c6a0d2a57504c1b9892"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a663620bd242e6c6a0d2a57504c1b9892">operator==</a> (const <a class="el" href="classastarte_1_1device_1_1Data.html">Data</a> &amp;other) const -&gt; bool</td></tr>
 <tr class="memdesc:a663620bd242e6c6a0d2a57504c1b9892"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overloader for the comparison operator ==.  <br /></td></tr>
@@ -162,7 +162,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5b6ac847924a2592035d08de85705793"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Astarte data class, representing the basic Astarte types. </p>
+<div class="textblock"><p>Represents a single Astarte data value. </p>
+<p>The <code><a class="el" href="classastarte_1_1device_1_1Data.html" title="Represents a single Astarte data value.">Data</a></code> class acts as a versatile container for all data types supported by the Astarte platform. It abstracts away the underlying C++ types, providing a unified interface for handling data sent to and received from Astarte.</p>
+<p>It uses <code>std::variant</code> internally to store different types, ensuring type safety while offering flexibility. The <code><a class="el" href="conceptastarte_1_1device_1_1DataAllowedType.html" title="C++ concept to restrict the allowed types for instances of an Astarte data class.">DataAllowedType</a></code> concept restricts which C++ types can be stored, mapping them to Astarte's data model. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a977642d1988aab54e92234c2f460f34d" name="a977642d1988aab54e92234c2f460f34d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a977642d1988aab54e92234c2f460f34d">&#9670;&#160;</a></span>Data()</h2>
@@ -189,11 +191,17 @@ template&lt;DataAllowedType T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Constructor for the <a class="el" href="classastarte_1_1device_1_1Data.html" title="Astarte data class, representing the basic Astarte types.">Data</a> class. </p>
-<dl class="section note"><dt>Note</dt><dd>About string views. By design an <a class="el" href="classastarte_1_1device_1_1Data.html" title="Astarte data class, representing the basic Astarte types.">Data</a> object is intended to encapsulate data without relying on the lifetime of its inputs. As such passing a string_view to the constructor will result in the creation of a new internal std::string object that will contain a copy of the input string. </dd></dl>
+<p>Constructs a <a class="el" href="classastarte_1_1device_1_1Data.html" title="Represents a single Astarte data value.">Data</a> object from a value of any <code><a class="el" href="conceptastarte_1_1device_1_1DataAllowedType.html" title="C++ concept to restrict the allowed types for instances of an Astarte data class.">DataAllowedType</a></code>. </p>
+<p>The constructor implicitly copies the provided value into the internal storage. This ensures that the <code><a class="el" href="classastarte_1_1device_1_1Data.html" title="Represents a single Astarte data value.">Data</a></code> object manages its own data lifetime independently of the input <code>value</code>.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type of the value, must satisfy <code><a class="el" href="conceptastarte_1_1device_1_1DataAllowedType.html" title="C++ concept to restrict the allowed types for instances of an Astarte data class.">DataAllowedType</a></code>. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td>The content of the Astarte data instance. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>The content to initialize the Astarte data instance with. </td></tr>
   </table>
   </dd>
 </dl>
@@ -224,8 +232,8 @@ template&lt;DataAllowedType T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Return the raw data contained in this class instance. </p>
-<dl class="section return"><dt>Returns</dt><dd>The raw data contained in this class instance. This is a variant containing one of the possible data types. </dd></dl>
+<p>Returns the raw data variant contained in this class instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>A constant reference to the internal variant containing one of the possible data types. </dd></dl>
 
 </div>
 </div>
@@ -252,8 +260,8 @@ template&lt;DataAllowedType T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Get the type of the data contained in this class instance. </p>
-<dl class="section return"><dt>Returns</dt><dd>The type of the content of this class instance. </dd></dl>
+<p>Gets the type of the data contained in this class instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>The Astarte <a class="el" href="namespaceastarte_1_1device.html#a5075d95e28a72c6685710f400063e1f0" title="Enumeration of supported Astarte data types.">Type</a> of the content of this class instance. </dd></dl>
 
 </div>
 </div>
@@ -282,8 +290,21 @@ template&lt;DataAllowedType T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Convert the Astarte data class to the appropriate data type. </p>
-<dl class="section return"><dt>Returns</dt><dd>The value contained in the class instance. </dd></dl>
+<p>Converts the Astarte data class to the specified type <code>T</code>. </p>
+<p>This method performs a direct extraction of the stored value using <code>std::get&lt;T&gt;</code>. It is the caller's responsibility to ensure that the <code><a class="el" href="classastarte_1_1device_1_1Data.html" title="Represents a single Astarte data value.">Data</a></code> object currently holds a value of type <code>T</code>.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The target type to convert to, must satisfy <code><a class="el" href="conceptastarte_1_1device_1_1DataAllowedType.html" title="C++ concept to restrict the allowed types for instances of an Astarte data class.">DataAllowedType</a></code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A constant reference to the value contained in the class instance. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::bad_variant_access</td><td>If the <code><a class="el" href="classastarte_1_1device_1_1Data.html" title="Represents a single Astarte data value.">Data</a></code> object does not contain a <code>T</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -313,7 +334,7 @@ template&lt;DataAllowedType T&gt; </div>
 <p>Overloader for the comparison operator !=. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td>The object to compare to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">other</td><td>The object to compare to. </td></tr>
   </table>
   </dd>
 </dl>
@@ -347,7 +368,7 @@ template&lt;DataAllowedType T&gt; </div>
 <p>Overloader for the comparison operator ==. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td>The object to compare to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">other</td><td>The object to compare to. </td></tr>
   </table>
   </dd>
 </dl>
@@ -380,8 +401,15 @@ template&lt;DataAllowedType T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Convert the Astarte data class to the given type if it's the correct variant. </p>
-<dl class="section return"><dt>Returns</dt><dd>The value contained in the class instance or nullopt. </dd></dl>
+<p>Attempts to convert the Astarte data class to the specified type <code>T</code> safely. </p>
+<p>This method attempts to extract the stored value as type <code>T</code>. If the <code><a class="el" href="classastarte_1_1device_1_1Data.html" title="Represents a single Astarte data value.">Data</a></code> object currently holds a value of type <code>T</code>, an <code>std::optional</code> containing that value is returned.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The target type to convert to, must satisfy <code><a class="el" href="conceptastarte_1_1device_1_1DataAllowedType.html" title="C++ concept to restrict the allowed types for instances of an Astarte data class.">DataAllowedType</a></code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::optional containing the value if the types match, or std::nullopt otherwise. </dd></dl>
 
 </div>
 </div>

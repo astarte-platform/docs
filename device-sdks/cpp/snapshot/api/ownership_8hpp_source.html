@@ -137,8 +137,8 @@ $(function(){initNavTree('ownership_8hpp_source.html',''); initResizable(true); 
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;ostream&gt;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;astarte_device_sdk/errors.hpp&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;astarte_device_sdk/formatter.hpp&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="errors_8hpp.html">astarte_device_sdk/errors.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="formatter_8hpp.html">astarte_device_sdk/formatter.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceastarte_1_1device.html">astarte::device</a> {</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span></div>
@@ -149,72 +149,74 @@ $(function(){initNavTree('ownership_8hpp_source.html',''); initResizable(true); 
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>};</div>
 </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span></div>
-<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="namespaceastarte_1_1device.html#a68d95a3f9d0aaa8e773338fbf4cecd33">   37</a></span><span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespaceastarte_1_1device.html#a68d95a3f9d0aaa8e773338fbf4cecd33">ownership_from_str</a>(<span class="keyword">const</span> std::string&amp; ownership)</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    -&gt; astarte_tl::expected&lt;Ownership, Error&gt; {</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  <span class="keywordflow">if</span> (ownership == <span class="stringliteral">&quot;device&quot;</span>) {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9ad8e300cddc60bfda73b7fa2d8696b52c">Ownership::kDevice</a>;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  }</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  <span class="keywordflow">if</span> (ownership == <span class="stringliteral">&quot;server&quot;</span>) {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9a7513e70a1d67d3818c8818b0feb352be">Ownership::kServer</a>;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  }</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="keywordflow">return</span> astarte_tl::unexpected(</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>      <a class="code hl_class" href="classastarte_1_1device_1_1InvalidInterfaceOwnershipeError.html">InvalidInterfaceOwnershipeError</a>(<span class="stringliteral">&quot;interface ownershipe not valid: &quot;</span> + ownership));</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
+<div class="foldopen" id="foldopen00036" data-start="{" data-end="}">
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="namespaceastarte_1_1device.html#a68d95a3f9d0aaa8e773338fbf4cecd33">   36</a></span><span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code hl_function" href="namespaceastarte_1_1device.html#a68d95a3f9d0aaa8e773338fbf4cecd33">ownership_from_str</a>(<span class="keyword">const</span> std::string&amp; ownership)</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    -&gt; astarte_tl::expected&lt;Ownership, Error&gt; {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <span class="keywordflow">if</span> (ownership == <span class="stringliteral">&quot;device&quot;</span>) {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9ad8e300cddc60bfda73b7fa2d8696b52c">Ownership::kDevice</a>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  }</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  <span class="keywordflow">if</span> (ownership == <span class="stringliteral">&quot;server&quot;</span>) {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9a7513e70a1d67d3818c8818b0feb352be">Ownership::kServer</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <span class="keywordflow">return</span> astarte_tl::unexpected(</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>      <a class="code hl_class" href="classastarte_1_1device_1_1InvalidInterfaceOwnershipeError.html">InvalidInterfaceOwnershipeError</a>(<span class="stringliteral">&quot;interface ownership not valid: &quot;</span> + ownership));</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>}</div>
 </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}  <span class="comment">// namespace astarte::device</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">template</span> &lt;&gt;</div>
-<div class="foldopen" id="foldopen00055" data-start="{" data-end="};">
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Ownership_01_4.html">   55</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structastarte__fmt_1_1formatter.html">astarte_fmt::formatter</a>&lt;<a class="code hl_namespace" href="namespaceastarte.html">astarte</a>::device::Ownership&gt; {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ParseContext&gt;</div>
-<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Ownership_01_4.html#a53a223b01c6b0b4842f2ea9ec86794f4">   62</a></span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Ownership_01_4.html#a53a223b01c6b0b4842f2ea9ec86794f4">parse</a>(ParseContext&amp; ctx)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordflow">return</span> ctx.begin();</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  }</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}  <span class="comment">// namespace astarte::device</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">template</span> &lt;&gt;</div>
+<div class="foldopen" id="foldopen00052" data-start="{" data-end="};">
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Ownership_01_4.html">   52</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structastarte__fmt_1_1formatter.html">astarte_fmt::formatter</a>&lt;<a class="code hl_namespace" href="namespaceastarte.html">astarte</a>::device::Ownership&gt; {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> ParseContext&gt;</div>
+<div class="foldopen" id="foldopen00061" data-start="{" data-end="}">
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Ownership_01_4.html#a53a223b01c6b0b4842f2ea9ec86794f4">   61</a></span>  <span class="keyword">constexpr</span> <span class="keyword">auto</span> <a class="code hl_function" href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Ownership_01_4.html#a53a223b01c6b0b4842f2ea9ec86794f4">parse</a>(ParseContext&amp; ctx)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordflow">return</span> ctx.begin();</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  }</div>
 </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> FormatContext&gt;</div>
-<div class="foldopen" id="foldopen00073" data-start="{" data-end="}">
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Ownership_01_4.html#aad6a058a274e0ec51ceee484b0336873">   73</a></span>  <span class="keyword">auto</span> <a class="code hl_function" href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Ownership_01_4.html#aad6a058a274e0ec51ceee484b0336873">format</a>(<span class="keyword">const</span> <a class="code hl_enumeration" href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9">astarte::device::Ownership</a>&amp; ownership, FormatContext&amp; ctx)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keyword">auto</span> out = ctx.out();</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordflow">switch</span> (ownership) {</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9ad8e300cddc60bfda73b7fa2d8696b52c">astarte::device::Ownership::kDevice</a>:</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        astarte_fmt::format_to(out, <span class="stringliteral">&quot;device&quot;</span>);</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9a7513e70a1d67d3818c8818b0feb352be">astarte::device::Ownership::kServer</a>:</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        astarte_fmt::format_to(out, <span class="stringliteral">&quot;server&quot;</span>);</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    }</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> FormatContext&gt;</div>
+<div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Ownership_01_4.html#aad6a058a274e0ec51ceee484b0336873">   74</a></span>  <span class="keyword">auto</span> <a class="code hl_function" href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Ownership_01_4.html#aad6a058a274e0ec51ceee484b0336873">format</a>(<span class="keyword">const</span> <a class="code hl_enumeration" href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9">astarte::device::Ownership</a>&amp; ownership, FormatContext&amp; ctx)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keyword">auto</span> out = ctx.out();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordflow">switch</span> (ownership) {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9ad8e300cddc60bfda73b7fa2d8696b52c">astarte::device::Ownership::kDevice</a>:</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        astarte_fmt::format_to(out, <span class="stringliteral">&quot;device&quot;</span>);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>      <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9a7513e70a1d67d3818c8818b0feb352be">astarte::device::Ownership::kServer</a>:</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        astarte_fmt::format_to(out, <span class="stringliteral">&quot;server&quot;</span>);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>  }</div>
 </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>};</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>};</div>
 </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span></div>
-<div class="foldopen" id="foldopen00095" data-start="{" data-end="}">
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="ownership_8hpp.html#a3d93dc44233244e04a6f5aea6da63f06">   95</a></span><span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code hl_function" href="ownership_8hpp.html#a3d93dc44233244e04a6f5aea6da63f06">operator&lt;&lt;</a>(std::ostream&amp; out, <span class="keyword">const</span> <a class="code hl_enumeration" href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9">astarte::device::Ownership</a> ownership)</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    -&gt; std::ostream&amp; {</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  out &lt;&lt; astarte_fmt::format(<span class="stringliteral">&quot;{}&quot;</span>, ownership);</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>}</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span></div>
+<div class="foldopen" id="foldopen00097" data-start="{" data-end="}">
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="ownership_8hpp.html#a3d93dc44233244e04a6f5aea6da63f06">   97</a></span><span class="keyword">inline</span> <span class="keyword">auto</span> <a class="code hl_function" href="ownership_8hpp.html#a3d93dc44233244e04a6f5aea6da63f06">operator&lt;&lt;</a>(std::ostream&amp; out, <span class="keyword">const</span> <a class="code hl_enumeration" href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9">astarte::device::Ownership</a> ownership)</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    -&gt; std::ostream&amp; {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  out &lt;&lt; astarte_fmt::format(<span class="stringliteral">&quot;{}&quot;</span>, ownership);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  <span class="keywordflow">return</span> out;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>}</div>
 </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">#endif  </span><span class="comment">// ASTARTE_DEVICE_SDK_OWNERSHIP_H</span></div>
-<div class="ttc" id="aclassastarte_1_1device_1_1InvalidInterfaceOwnershipeError_html"><div class="ttname"><a href="classastarte_1_1device_1_1InvalidInterfaceOwnershipeError.html">astarte::device::InvalidInterfaceOwnershipeError</a></div><div class="ttdoc">The provided interface ownership is incorrect.</div><div class="ttdef"><b>Definition</b> errors.hpp:377</div></div>
-<div class="ttc" id="anamespaceastarte_1_1device_html"><div class="ttname"><a href="namespaceastarte_1_1device.html">astarte::device</a></div><div class="ttdoc">Umbrella namespace for the Astarte device library.</div><div class="ttdef"><b>Definition</b> data.hpp:26</div></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="preprocessor">#endif  </span><span class="comment">// ASTARTE_DEVICE_SDK_OWNERSHIP_H</span></div>
+<div class="ttc" id="aclassastarte_1_1device_1_1InvalidInterfaceOwnershipeError_html"><div class="ttname"><a href="classastarte_1_1device_1_1InvalidInterfaceOwnershipeError.html">astarte::device::InvalidInterfaceOwnershipeError</a></div><div class="ttdoc">Error indicating that the provided interface ownership is incorrect.</div><div class="ttdef"><b>Definition</b> errors.hpp:385</div></div>
+<div class="ttc" id="aerrors_8hpp_html"><div class="ttname"><a href="errors_8hpp.html">errors.hpp</a></div><div class="ttdoc">Error types and handling for the Astarte device library.</div></div>
+<div class="ttc" id="aformatter_8hpp_html"><div class="ttname"><a href="formatter_8hpp.html">formatter.hpp</a></div><div class="ttdoc">Data formatting utilities for Astarte types.</div></div>
+<div class="ttc" id="anamespaceastarte_1_1device_html"><div class="ttname"><a href="namespaceastarte_1_1device.html">astarte::device</a></div><div class="ttdoc">Umbrella namespace for the Astarte device library.</div><div class="ttdef"><b>Definition</b> data.hpp:29</div></div>
 <div class="ttc" id="anamespaceastarte_1_1device_html_a4b0fc7f8b2d144f3ceeab1fa3c339ce9"><div class="ttname"><a href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9">astarte::device::Ownership</a></div><div class="ttdeci">Ownership</div><div class="ttdoc">Possible Astarte ownership.</div><div class="ttdef"><b>Definition</b> ownership.hpp:23</div></div>
 <div class="ttc" id="anamespaceastarte_1_1device_html_a4b0fc7f8b2d144f3ceeab1fa3c339ce9a7513e70a1d67d3818c8818b0feb352be"><div class="ttname"><a href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9a7513e70a1d67d3818c8818b0feb352be">astarte::device::kServer</a></div><div class="ttdeci">@ kServer</div><div class="ttdoc">Ownership is retained by the Astarte cloud server.</div><div class="ttdef"><b>Definition</b> ownership.hpp:27</div></div>
 <div class="ttc" id="anamespaceastarte_1_1device_html_a4b0fc7f8b2d144f3ceeab1fa3c339ce9ad8e300cddc60bfda73b7fa2d8696b52c"><div class="ttname"><a href="namespaceastarte_1_1device.html#a4b0fc7f8b2d144f3ceeab1fa3c339ce9ad8e300cddc60bfda73b7fa2d8696b52c">astarte::device::kDevice</a></div><div class="ttdeci">@ kDevice</div><div class="ttdoc">Ownership is retained by the device.</div><div class="ttdef"><b>Definition</b> ownership.hpp:25</div></div>
-<div class="ttc" id="anamespaceastarte_1_1device_html_a68d95a3f9d0aaa8e773338fbf4cecd33"><div class="ttname"><a href="namespaceastarte_1_1device.html#a68d95a3f9d0aaa8e773338fbf4cecd33">astarte::device::ownership_from_str</a></div><div class="ttdeci">auto ownership_from_str(const std::string &amp;ownership) -&gt; astarte_tl::expected&lt; Ownership, Error &gt;</div><div class="ttdoc">Convert a string to an Ownership enum.</div><div class="ttdef"><b>Definition</b> ownership.hpp:37</div></div>
-<div class="ttc" id="anamespaceastarte_html"><div class="ttname"><a href="namespaceastarte.html">astarte</a></div><div class="ttdoc">Global namespace for all Astarte related functionality.</div><div class="ttdef"><b>Definition</b> data.hpp:26</div></div>
-<div class="ttc" id="aownership_8hpp_html_a3d93dc44233244e04a6f5aea6da63f06"><div class="ttname"><a href="ownership_8hpp.html#a3d93dc44233244e04a6f5aea6da63f06">operator&lt;&lt;</a></div><div class="ttdeci">auto operator&lt;&lt;(std::ostream &amp;out, const astarte::device::Ownership ownership) -&gt; std::ostream &amp;</div><div class="ttdoc">Stream insertion operator for Ownership.</div><div class="ttdef"><b>Definition</b> ownership.hpp:95</div></div>
-<div class="ttc" id="astructastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Ownership_01_4_html_a53a223b01c6b0b4842f2ea9ec86794f4"><div class="ttname"><a href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Ownership_01_4.html#a53a223b01c6b0b4842f2ea9ec86794f4">astarte_fmt::formatter&lt; astarte::device::Ownership &gt;::parse</a></div><div class="ttdeci">constexpr auto parse(ParseContext &amp;ctx) const</div><div class="ttdoc">Parse the format string. Default implementation.</div><div class="ttdef"><b>Definition</b> ownership.hpp:62</div></div>
-<div class="ttc" id="astructastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Ownership_01_4_html_aad6a058a274e0ec51ceee484b0336873"><div class="ttname"><a href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Ownership_01_4.html#aad6a058a274e0ec51ceee484b0336873">astarte_fmt::formatter&lt; astarte::device::Ownership &gt;::format</a></div><div class="ttdeci">auto format(const astarte::device::Ownership &amp;ownership, FormatContext &amp;ctx) const</div><div class="ttdoc">Format the astarte::device:: object.</div><div class="ttdef"><b>Definition</b> ownership.hpp:73</div></div>
-<div class="ttc" id="astructastarte__fmt_1_1formatter_html"><div class="ttname"><a href="structastarte__fmt_1_1formatter.html">astarte_fmt::formatter</a></div><div class="ttdoc">Base formatter struct declaration for Doxygen.</div><div class="ttdef"><b>Definition</b> formatter.hpp:39</div></div>
+<div class="ttc" id="anamespaceastarte_1_1device_html_a68d95a3f9d0aaa8e773338fbf4cecd33"><div class="ttname"><a href="namespaceastarte_1_1device.html#a68d95a3f9d0aaa8e773338fbf4cecd33">astarte::device::ownership_from_str</a></div><div class="ttdeci">auto ownership_from_str(const std::string &amp;ownership) -&gt; astarte_tl::expected&lt; Ownership, Error &gt;</div><div class="ttdoc">Converts a string to an Ownership enum.</div><div class="ttdef"><b>Definition</b> ownership.hpp:36</div></div>
+<div class="ttc" id="anamespaceastarte_html"><div class="ttname"><a href="namespaceastarte.html">astarte</a></div><div class="ttdoc">Global namespace for all Astarte related functionality.</div><div class="ttdef"><b>Definition</b> data.hpp:29</div></div>
+<div class="ttc" id="aownership_8hpp_html_a3d93dc44233244e04a6f5aea6da63f06"><div class="ttname"><a href="ownership_8hpp.html#a3d93dc44233244e04a6f5aea6da63f06">operator&lt;&lt;</a></div><div class="ttdeci">auto operator&lt;&lt;(std::ostream &amp;out, const astarte::device::Ownership ownership) -&gt; std::ostream &amp;</div><div class="ttdoc">Stream insertion operator for Ownership.</div><div class="ttdef"><b>Definition</b> ownership.hpp:97</div></div>
+<div class="ttc" id="astructastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Ownership_01_4_html_a53a223b01c6b0b4842f2ea9ec86794f4"><div class="ttname"><a href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Ownership_01_4.html#a53a223b01c6b0b4842f2ea9ec86794f4">astarte_fmt::formatter&lt; astarte::device::Ownership &gt;::parse</a></div><div class="ttdeci">constexpr auto parse(ParseContext &amp;ctx) const</div><div class="ttdoc">Parses the format string. Default implementation.</div><div class="ttdef"><b>Definition</b> ownership.hpp:61</div></div>
+<div class="ttc" id="astructastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Ownership_01_4_html_aad6a058a274e0ec51ceee484b0336873"><div class="ttname"><a href="structastarte__fmt_1_1formatter_3_01astarte_1_1device_1_1Ownership_01_4.html#aad6a058a274e0ec51ceee484b0336873">astarte_fmt::formatter&lt; astarte::device::Ownership &gt;::format</a></div><div class="ttdeci">auto format(const astarte::device::Ownership &amp;ownership, FormatContext &amp;ctx) const</div><div class="ttdoc">Formats the astarte::device::Ownership object.</div><div class="ttdef"><b>Definition</b> ownership.hpp:74</div></div>
+<div class="ttc" id="astructastarte__fmt_1_1formatter_html"><div class="ttname"><a href="structastarte__fmt_1_1formatter.html">astarte_fmt::formatter</a></div><div class="ttdoc">Base formatter struct declaration for Doxygen.</div><div class="ttdef"><b>Definition</b> formatter.hpp:48</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

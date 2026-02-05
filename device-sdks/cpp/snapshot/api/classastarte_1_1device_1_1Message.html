@@ -141,16 +141,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ade8e82ca2819899311b71b1ded61fc6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classastarte_1_1device_1_1Message.html" title="Astarte message class, represents a full message for/from Astarte.">Message</a> class.  <br /></td></tr>
 <tr class="separator:ade8e82ca2819899311b71b1ded61fc6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a283f42e06f90662ac65145db34dcf3ef" id="r_a283f42e06f90662ac65145db34dcf3ef"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a283f42e06f90662ac65145db34dcf3ef">get_interface</a> () const -&gt; const std::string &amp;</td></tr>
-<tr class="memdesc:a283f42e06f90662ac65145db34dcf3ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the interface of the message.  <br /></td></tr>
+<tr class="memdesc:a283f42e06f90662ac65145db34dcf3ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the interface of the message.  <br /></td></tr>
 <tr class="separator:a283f42e06f90662ac65145db34dcf3ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac62fa0682af471b0ffda86a4fa8e6a56" id="r_ac62fa0682af471b0ffda86a4fa8e6a56"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac62fa0682af471b0ffda86a4fa8e6a56">get_path</a> () const -&gt; const std::string &amp;</td></tr>
-<tr class="memdesc:ac62fa0682af471b0ffda86a4fa8e6a56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the path of the message.  <br /></td></tr>
+<tr class="memdesc:ac62fa0682af471b0ffda86a4fa8e6a56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the path of the message.  <br /></td></tr>
 <tr class="separator:ac62fa0682af471b0ffda86a4fa8e6a56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab25862bedeab08ba650377af41c11978" id="r_ab25862bedeab08ba650377af41c11978"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab25862bedeab08ba650377af41c11978">is_datastream</a> () const -&gt; bool</td></tr>
-<tr class="memdesc:ab25862bedeab08ba650377af41c11978"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this message contains a datastream.  <br /></td></tr>
+<tr class="memdesc:ab25862bedeab08ba650377af41c11978"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if this message contains a datastream.  <br /></td></tr>
 <tr class="separator:ab25862bedeab08ba650377af41c11978"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a052c9bf7542d7a6acf7421fbea436057" id="r_a052c9bf7542d7a6acf7421fbea436057"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a052c9bf7542d7a6acf7421fbea436057">is_individual</a> () const -&gt; bool</td></tr>
-<tr class="memdesc:a052c9bf7542d7a6acf7421fbea436057"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this message contains individual data.  <br /></td></tr>
+<tr class="memdesc:a052c9bf7542d7a6acf7421fbea436057"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if this message contains individual data.  <br /></td></tr>
 <tr class="separator:a052c9bf7542d7a6acf7421fbea436057"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a37330fa3a928cd02c3b52bde610f03" id="r_a3a37330fa3a928cd02c3b52bde610f03"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:a3a37330fa3a928cd02c3b52bde610f03"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a3a37330fa3a928cd02c3b52bde610f03">into</a> () const -&gt; const T &amp;</td></tr>
@@ -161,7 +161,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a465759a7dad3d9127cca85a49ca78603"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the content of the message if it's of the correct type.  <br /></td></tr>
 <tr class="separator:a465759a7dad3d9127cca85a49ca78603"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab8e3df0c11410add2327c505bbbb57d" id="r_aab8e3df0c11410add2327c505bbbb57d"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab8e3df0c11410add2327c505bbbb57d">get_raw_data</a> () const -&gt; const std::variant&lt; <a class="el" href="classastarte_1_1device_1_1DatastreamIndividual.html">DatastreamIndividual</a>, <a class="el" href="classastarte_1_1device_1_1DatastreamObject.html">DatastreamObject</a>, <a class="el" href="classastarte_1_1device_1_1PropertyIndividual.html">PropertyIndividual</a> &gt; &amp;</td></tr>
-<tr class="memdesc:aab8e3df0c11410add2327c505bbbb57d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the raw data contained in this class instance.  <br /></td></tr>
+<tr class="memdesc:aab8e3df0c11410add2327c505bbbb57d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the raw data contained in this class instance.  <br /></td></tr>
 <tr class="separator:aab8e3df0c11410add2327c505bbbb57d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5858cd80f6a284b7e0d9a1665394bf6c" id="r_a5858cd80f6a284b7e0d9a1665394bf6c"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5858cd80f6a284b7e0d9a1665394bf6c">operator==</a> (const <a class="el" href="classastarte_1_1device_1_1Message.html">Message</a> &amp;other) const -&gt; bool</td></tr>
 <tr class="memdesc:a5858cd80f6a284b7e0d9a1665394bf6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overloader for the comparison operator ==.  <br /></td></tr>
@@ -172,6 +172,7 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Astarte message class, represents a full message for/from Astarte. </p>
+<p>The <code><a class="el" href="classastarte_1_1device_1_1Message.html" title="Astarte message class, represents a full message for/from Astarte.">Message</a></code> class acts as a unified container for data received from Astarte (via polling). It can hold individual datastreams, aggregated objects, or individual properties. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ade8e82ca2819899311b71b1ded61fc6c" name="ade8e82ca2819899311b71b1ded61fc6c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ade8e82ca2819899311b71b1ded61fc6c">&#9670;&#160;</a></span>Message()</h2>
@@ -208,11 +209,17 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p>Constructor for the <a class="el" href="classastarte_1_1device_1_1Message.html" title="Astarte message class, represents a full message for/from Astarte.">Message</a> class. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type of the data payload. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">interface</td><td>The interface for the message. </td></tr>
-    <tr><td class="paramname">path</td><td>The path for the message. </td></tr>
-    <tr><td class="paramname">data</td><td>The data for the message. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">interface</td><td>The interface for the message. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">path</td><td>The path for the message. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>The data for the message. </td></tr>
   </table>
   </dd>
 </dl>
@@ -243,8 +250,8 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Get the interface of the message. </p>
-<dl class="section return"><dt>Returns</dt><dd>The interface. </dd></dl>
+<p>Gets the interface of the message. </p>
+<dl class="section return"><dt>Returns</dt><dd>A constant reference to the interface name. </dd></dl>
 
 </div>
 </div>
@@ -271,8 +278,8 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Get the path of the message. </p>
-<dl class="section return"><dt>Returns</dt><dd>The path. </dd></dl>
+<p>Gets the path of the message. </p>
+<dl class="section return"><dt>Returns</dt><dd>A constant reference to the path. </dd></dl>
 
 </div>
 </div>
@@ -299,8 +306,8 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Return the raw data contained in this class instance. </p>
-<dl class="section return"><dt>Returns</dt><dd>The raw data contained in this class instance. </dd></dl>
+<p>Returns the raw data contained in this class instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>A constant reference to the internal variant containing the data. </dd></dl>
 
 </div>
 </div>
@@ -330,7 +337,13 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p>Get the content of the message. </p>
-<dl class="section return"><dt>Returns</dt><dd>The value contained in the message. </dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The target type to cast the content to. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A constant reference to the value contained in the message. </dd></dl>
 
 </div>
 </div>
@@ -357,7 +370,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Check if this message contains a datastream. </p>
+<p>Checks if this message contains a datastream. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if the message contains a datastream, false otherwise. </dd></dl>
 
 </div>
@@ -385,7 +398,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Check if this message contains individual data. </p>
+<p>Checks if this message contains individual data. </p>
 <dl class="section return"><dt>Returns</dt><dd>True if the message contains individual data, false otherwise. </dd></dl>
 
 </div>
@@ -416,7 +429,7 @@ template&lt;typename T&gt; </div>
 <p>Overloader for the comparison operator !=. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td>The object to compare to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">other</td><td>The object to compare to. </td></tr>
   </table>
   </dd>
 </dl>
@@ -450,7 +463,7 @@ template&lt;typename T&gt; </div>
 <p>Overloader for the comparison operator ==. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td>The object to compare to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">other</td><td>The object to compare to. </td></tr>
   </table>
   </dd>
 </dl>
@@ -484,7 +497,13 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p>Return the content of the message if it's of the correct type. </p>
-<dl class="section return"><dt>Returns</dt><dd>The value contained in the message or nullopt. </dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The target type to attempt casting to. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::optional containing the value if the type matches, or std::nullopt. </dd></dl>
 
 </div>
 </div>

@@ -138,11 +138,11 @@ $(function(){initNavTree('structastarte__fmt_1_1formatter_3_01astarte_1_1device_
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7411ea814ffbc295966e6aa5bc53df15" id="r_a7411ea814ffbc295966e6aa5bc53df15"><td class="memTemplParams" colspan="2">template&lt;typename ParseContext&gt; </td></tr>
 <tr class="memitem:a7411ea814ffbc295966e6aa5bc53df15"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7411ea814ffbc295966e6aa5bc53df15">parse</a> (ParseContext &amp;ctx) const</td></tr>
-<tr class="memdesc:a7411ea814ffbc295966e6aa5bc53df15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the format string. Default implementation.  <br /></td></tr>
+<tr class="memdesc:a7411ea814ffbc295966e6aa5bc53df15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the format string.  <br /></td></tr>
 <tr class="separator:a7411ea814ffbc295966e6aa5bc53df15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ae7ab78d251f4455d41c24aac0199ea" id="r_a4ae7ab78d251f4455d41c24aac0199ea"><td class="memTemplParams" colspan="2">template&lt;typename FormatContext&gt; </td></tr>
 <tr class="memitem:a4ae7ab78d251f4455d41c24aac0199ea"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a4ae7ab78d251f4455d41c24aac0199ea">format</a> (const <a class="el" href="classastarte_1_1device_1_1ErrorBase.html">astarte::device::ErrorBase</a> &amp;err, FormatContext &amp;ctx) const</td></tr>
-<tr class="memdesc:a4ae7ab78d251f4455d41c24aac0199ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Format the ErrorBase object.  <br /></td></tr>
+<tr class="memdesc:a4ae7ab78d251f4455d41c24aac0199ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the ErrorBase object including any nested errors.  <br /></td></tr>
 <tr class="separator:a4ae7ab78d251f4455d41c24aac0199ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -177,15 +177,15 @@ template&lt;typename FormatContext&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Format the ErrorBase object. </p>
+<p>Formats the ErrorBase object including any nested errors. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">err</td><td>The ErrorBase to format. </td></tr>
-    <tr><td class="paramname">ctx</td><td>The format context. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">err</td><td>The ErrorBase instance to format. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The format context. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>An iterator to the end of the output. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>An iterator to the end of the output context. </dd></dl>
 
 </div>
 </div>
@@ -214,10 +214,10 @@ template&lt;typename ParseContext&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Parse the format string. Default implementation. </p>
+<p>Parses the format string. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ctx</td><td>The parse context. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">ctx</td><td>The parse context. </td></tr>
   </table>
   </dd>
 </dl>

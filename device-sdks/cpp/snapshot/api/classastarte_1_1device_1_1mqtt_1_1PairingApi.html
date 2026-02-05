@@ -138,26 +138,27 @@ $(function(){initNavTree('classastarte_1_1device_1_1mqtt_1_1PairingApi.html','')
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a6dea92d8fdd53362154b6649fa871114" id="r_a6dea92d8fdd53362154b6649fa871114"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6dea92d8fdd53362154b6649fa871114">register_device</a> (std::string_view pairing_token, std::chrono::milliseconds timeout_ms=0ms) const -&gt; astarte_tl::expected&lt; std::string, <a class="el" href="namespaceastarte_1_1device.html#a9675caabed06c1cc0cd827c2d6eeabf9">Error</a> &gt;</td></tr>
-<tr class="memdesc:a6dea92d8fdd53362154b6649fa871114"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a device.  <br /></td></tr>
+<tr class="memdesc:a6dea92d8fdd53362154b6649fa871114"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a device.  <br /></td></tr>
 <tr class="separator:a6dea92d8fdd53362154b6649fa871114"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeaa8ad8fd43385dfbe31ddfaf798b710" id="r_aeaa8ad8fd43385dfbe31ddfaf798b710"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeaa8ad8fd43385dfbe31ddfaf798b710">get_broker_url</a> (std::string_view credential_secret, int timeout_ms=0) const -&gt; astarte_tl::expected&lt; std::string, <a class="el" href="namespaceastarte_1_1device.html#a9675caabed06c1cc0cd827c2d6eeabf9">Error</a> &gt;</td></tr>
-<tr class="memdesc:aeaa8ad8fd43385dfbe31ddfaf798b710"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the URL of the Astarte MQTT broker.  <br /></td></tr>
+<tr class="memdesc:aeaa8ad8fd43385dfbe31ddfaf798b710"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the URL of the Astarte MQTT broker.  <br /></td></tr>
 <tr class="separator:aeaa8ad8fd43385dfbe31ddfaf798b710"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0718d53f20bcc18298c25883107baace" id="r_a0718d53f20bcc18298c25883107baace"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0718d53f20bcc18298c25883107baace">get_device_key_and_certificate</a> (std::string_view credential_secret, int timeout_ms=0) const -&gt; astarte_tl::expected&lt; std::tuple&lt; std::string, std::string &gt;, <a class="el" href="namespaceastarte_1_1device.html#a9675caabed06c1cc0cd827c2d6eeabf9">Error</a> &gt;</td></tr>
-<tr class="memdesc:a0718d53f20bcc18298c25883107baace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the Astarte device certificate and relative private key.  <br /></td></tr>
+<tr class="memdesc:a0718d53f20bcc18298c25883107baace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the Astarte device certificate and relative private key.  <br /></td></tr>
 <tr class="separator:a0718d53f20bcc18298c25883107baace"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6bc2e2cd95c98eba58ac5c43575ecbfb" id="r_a6bc2e2cd95c98eba58ac5c43575ecbfb"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bc2e2cd95c98eba58ac5c43575ecbfb">device_cert_valid</a> (std::string_view certificate, std::string_view credential_secret, int timeout_ms=0) const -&gt; astarte_tl::expected&lt; bool, <a class="el" href="namespaceastarte_1_1device.html#a9675caabed06c1cc0cd827c2d6eeabf9">Error</a> &gt;</td></tr>
-<tr class="memdesc:a6bc2e2cd95c98eba58ac5c43575ecbfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the Astarte device certificate is valid.  <br /></td></tr>
+<tr class="memdesc:a6bc2e2cd95c98eba58ac5c43575ecbfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the Astarte device certificate is valid.  <br /></td></tr>
 <tr class="separator:a6bc2e2cd95c98eba58ac5c43575ecbfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a38b6a1e3ab02d6b4151913763ec00397" id="r_a38b6a1e3ab02d6b4151913763ec00397"><td class="memItemLeft" align="right" valign="top">static auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38b6a1e3ab02d6b4151913763ec00397">create</a> (std::string_view realm, std::string_view device_id, std::string_view astarte_base_url) -&gt; astarte_tl::expected&lt; <a class="el" href="classastarte_1_1device_1_1mqtt_1_1PairingApi.html">PairingApi</a>, <a class="el" href="namespaceastarte_1_1device.html#a9675caabed06c1cc0cd827c2d6eeabf9">Error</a> &gt;</td></tr>
-<tr class="memdesc:a38b6a1e3ab02d6b4151913763ec00397"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an instance of the <a class="el" href="classastarte_1_1device_1_1mqtt_1_1PairingApi.html" title="Class providing the methods to perform the Astarte pairing operations.">PairingApi</a> class.  <br /></td></tr>
+<tr class="memdesc:a38b6a1e3ab02d6b4151913763ec00397"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an instance of the <a class="el" href="classastarte_1_1device_1_1mqtt_1_1PairingApi.html" title="Class providing the methods to perform the Astarte pairing operations.">PairingApi</a> class.  <br /></td></tr>
 <tr class="separator:a38b6a1e3ab02d6b4151913763ec00397"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class providing the methods to perform the Astarte pairing operations. </p>
+<p>This class handles interactions with the Astarte Pairing API, including device registration and fetching MQTT broker credentials or certificates. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a38b6a1e3ab02d6b4151913763ec00397" name="a38b6a1e3ab02d6b4151913763ec00397"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a38b6a1e3ab02d6b4151913763ec00397">&#9670;&#160;</a></span>create()</h2>
@@ -191,16 +192,16 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Create an instance of the <a class="el" href="classastarte_1_1device_1_1mqtt_1_1PairingApi.html" title="Class providing the methods to perform the Astarte pairing operations.">PairingApi</a> class. </p>
+<p>Creates an instance of the <a class="el" href="classastarte_1_1device_1_1mqtt_1_1PairingApi.html" title="Class providing the methods to perform the Astarte pairing operations.">PairingApi</a> class. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">realm</td><td>The Astarte realm name. </td></tr>
-    <tr><td class="paramname">device_id</td><td>The Astarte device id. </td></tr>
-    <tr><td class="paramname">astarte_base_url</td><td>string containing the Astarte pairing API URL. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">realm</td><td>The Astarte realm name. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">device_id</td><td>The Astarte device id. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">astarte_base_url</td><td>string containing the Astarte pairing API URL. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The generate class instance, or an error on failure. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>An expected containing the class instance on success or <a class="el" href="namespaceastarte_1_1device.html#a9675caabed06c1cc0cd827c2d6eeabf9" title="Variant type representing any error from the Astarte device library.">Error</a> on failure. </dd></dl>
 
 </div>
 </div>
@@ -236,16 +237,16 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Check if the Astarte device certificate is valid. </p>
+<p>Checks if the Astarte device certificate is valid. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">certificate</td><td>The Astarte device certificate. </td></tr>
-    <tr><td class="paramname">credential_secret</td><td>The Astarte device credential necessary to authenticate to the broker. </td></tr>
-    <tr><td class="paramname">timeout_ms</td><td>A timeout value to perform the HTTP request. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">certificate</td><td>The Astarte device certificate. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">credential_secret</td><td>The Astarte device credential necessary to authenticate to the broker. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout_ms</td><td>A timeout value to perform the HTTP request. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if the cerficate is valid, false if the certificate is not valid, an error when the validation failed. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>An expected containing the certificate validity on success or <a class="el" href="namespaceastarte_1_1device.html#a9675caabed06c1cc0cd827c2d6eeabf9" title="Variant type representing any error from the Astarte device library.">Error</a> on failure. </dd></dl>
 
 </div>
 </div>
@@ -276,15 +277,15 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Retrieve the URL of the Astarte MQTT broker. </p>
+<p>Retrieves the URL of the Astarte MQTT broker. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">credential_secret</td><td>The Astarte device credential necessary to authenticate to the broker. </td></tr>
-    <tr><td class="paramname">timeout_ms</td><td>A timeout value to perform the HTTP request. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">credential_secret</td><td>The Astarte device credential necessary to authenticate to the broker. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout_ms</td><td>A timeout value to perform the HTTP request. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The broker URL on success, an error otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>An expected containing the broker URL on success or <a class="el" href="namespaceastarte_1_1device.html#a9675caabed06c1cc0cd827c2d6eeabf9" title="Variant type representing any error from the Astarte device library.">Error</a> on failure. </dd></dl>
 
 </div>
 </div>
@@ -315,15 +316,15 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Retrieve the Astarte device certificate and relative private key. </p>
+<p>Retrieves the Astarte device certificate and relative private key. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">credential_secret</td><td>The Astarte device credential necessary to authenticate to the broker. </td></tr>
-    <tr><td class="paramname">timeout_ms</td><td>A timeout value to perform the HTTP request. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">credential_secret</td><td>The Astarte device credential necessary to authenticate to the broker. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout_ms</td><td>A timeout value to perform the HTTP request. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The device key and certificate on success, an error otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>An expected containing the tuple of key and certificate on success or <a class="el" href="namespaceastarte_1_1device.html#a9675caabed06c1cc0cd827c2d6eeabf9" title="Variant type representing any error from the Astarte device library.">Error</a> on failure. </dd></dl>
 
 </div>
 </div>
@@ -354,15 +355,15 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Register a device. </p>
+<p>Registers a device. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pairing_token</td><td>The Astarte pairing token. </td></tr>
-    <tr><td class="paramname">timeout_ms</td><td>A timeout value to perform the HTTP request. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pairing_token</td><td>The Astarte pairing token. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout_ms</td><td>A timeout value to perform the HTTP request. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The credentials secret if successful, otherwise an error. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>An expected containing the credentials secret on success or <a class="el" href="namespaceastarte_1_1device.html#a9675caabed06c1cc0cd827c2d6eeabf9" title="Variant type representing any error from the Astarte device library.">Error</a> on failure. </dd></dl>
 
 </div>
 </div>

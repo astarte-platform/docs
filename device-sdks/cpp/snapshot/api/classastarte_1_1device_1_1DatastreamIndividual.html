@@ -129,7 +129,7 @@ $(function(){initNavTree('classastarte_1_1device_1_1DatastreamIndividual.html','
 </div><!--header-->
 <div class="contents">
 
-<p>Representing the Astarte individual datastream data.  
+<p>Represents the Astarte individual datastream data.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="individual_8hpp_source.html">individual.hpp</a>&gt;</code></p>
@@ -137,10 +137,10 @@ $(function(){initNavTree('classastarte_1_1device_1_1DatastreamIndividual.html','
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a93ee1931b714eb481012ad48362e6d7f" id="r_a93ee1931b714eb481012ad48362e6d7f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93ee1931b714eb481012ad48362e6d7f">DatastreamIndividual</a> (<a class="el" href="classastarte_1_1device_1_1Data.html">Data</a> data)</td></tr>
-<tr class="memdesc:a93ee1931b714eb481012ad48362e6d7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classastarte_1_1device_1_1DatastreamIndividual.html" title="Representing the Astarte individual datastream data.">DatastreamIndividual</a> class.  <br /></td></tr>
+<tr class="memdesc:a93ee1931b714eb481012ad48362e6d7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="classastarte_1_1device_1_1DatastreamIndividual.html" title="Represents the Astarte individual datastream data.">DatastreamIndividual</a> class.  <br /></td></tr>
 <tr class="separator:a93ee1931b714eb481012ad48362e6d7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aadcd17b01bd51c878023b88467a56d2e" id="r_aadcd17b01bd51c878023b88467a56d2e"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aadcd17b01bd51c878023b88467a56d2e">get_value</a> () const -&gt; const <a class="el" href="classastarte_1_1device_1_1Data.html">Data</a> &amp;</td></tr>
-<tr class="memdesc:aadcd17b01bd51c878023b88467a56d2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the value contained within the object.  <br /></td></tr>
+<tr class="memdesc:aadcd17b01bd51c878023b88467a56d2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value contained within the object.  <br /></td></tr>
 <tr class="separator:aadcd17b01bd51c878023b88467a56d2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:affaa71c17d2b76d76cc137fdc4fee627" id="r_affaa71c17d2b76d76cc137fdc4fee627"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#affaa71c17d2b76d76cc137fdc4fee627">operator==</a> (const <a class="el" href="classastarte_1_1device_1_1DatastreamIndividual.html">DatastreamIndividual</a> &amp;other) const -&gt; bool</td></tr>
 <tr class="memdesc:affaa71c17d2b76d76cc137fdc4fee627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overloader for the comparison operator ==.  <br /></td></tr>
@@ -150,7 +150,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a3e9a563d8179aac990c3d0d05c3b4ca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Representing the Astarte individual datastream data. </p>
+<div class="textblock"><p>Represents the Astarte individual datastream data. </p>
+<p>This class acts as a wrapper around the Astarte <code><a class="el" href="classastarte_1_1device_1_1Data.html" title="Represents a single Astarte data value.">Data</a></code> class, specifically intended for use with interfaces using individual datastream aggregation. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a93ee1931b714eb481012ad48362e6d7f" name="a93ee1931b714eb481012ad48362e6d7f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a93ee1931b714eb481012ad48362e6d7f">&#9670;&#160;</a></span>DatastreamIndividual()</h2>
@@ -175,10 +176,10 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Constructor for the <a class="el" href="classastarte_1_1device_1_1DatastreamIndividual.html" title="Representing the Astarte individual datastream data.">DatastreamIndividual</a> class. </p>
+<p>Constructor for the <a class="el" href="classastarte_1_1device_1_1DatastreamIndividual.html" title="Represents the Astarte individual datastream data.">DatastreamIndividual</a> class. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">data</td><td>The wrapped Astarte data type. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>The wrapped Astarte data type. </td></tr>
   </table>
   </dd>
 </dl>
@@ -209,8 +210,8 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get the value contained within the object. </p>
-<dl class="section return"><dt>Returns</dt><dd>A constant reference to the data. </dd></dl>
+<p>Gets the value contained within the object. </p>
+<dl class="section return"><dt>Returns</dt><dd>A constant reference to the underlying data. </dd></dl>
 
 </div>
 </div>
@@ -240,11 +241,11 @@ Public Member Functions</h2></td></tr>
 <p>Overloader for the comparison operator !=. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td>The object to compare to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">other</td><td>The object to compare to. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True when different, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the objects are different, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -274,11 +275,11 @@ Public Member Functions</h2></td></tr>
 <p>Overloader for the comparison operator ==. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">other</td><td>The object to compare to. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">other</td><td>The object to compare to. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True when equal, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the objects are equal, false otherwise. </dd></dl>
 
 </div>
 </div>
