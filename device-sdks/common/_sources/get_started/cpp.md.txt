@@ -198,33 +198,33 @@ A couple of assumptions have been made:
 #include "astarte_device_sdk/msg.hpp"
 #include "astarte_device_sdk/formatter.hpp"
 
-using AstarteDeviceSdk::AstarteData;
-using AstarteDeviceSdk::AstarteDatastreamIndividual;
-using AstarteDeviceSdk::AstarteDatastreamObject;
-using AstarteDeviceSdk::AstarteDeviceGRPC;
-using AstarteDeviceSdk::AstarteMessage;
-using AstarteDeviceSdk::AstartePropertyIndividual;
+using astarte::device::Data;
+using astarte::device::DatastreamIndividual;
+using astarte::device::DatastreamObject;
+using astarte::device::grpc::DeviceGrpc;
+using astarte::device::Message;
+using astarte::device::PropertyIndividual;
 
 using namespace std::chrono_literals;
 
-void reception_handler(std::stop_token token, std::shared_ptr<AstarteDeviceGRPC> device) {
+void reception_handler(std::stop_token token, std::shared_ptr<DeviceGrpc> device) {
   while (!token.stop_requested()) {
     auto incoming = device->poll_incoming(std::chrono::milliseconds(100));
     if (incoming.has_value()) {
-      AstarteMessage msg(incoming.value());
+      Message msg(incoming.value());
       std::cout << "Received message." << std::endl;
       std::cout << "Interface name: {}" << msg.get_interface() << std::endl;
       std::cout << "Path: {}" << msg.get_path() << std::endl;
       if (msg.is_datastream()) {
         if (msg.is_individual()) {
-          const auto &data(msg.into<AstarteDatastreamIndividual>());
+          const auto &data(msg.into<DatastreamIndividual>());
           std::cout << "Value: {}" << data << std::endl;
         } else {
-          const auto &data(msg.into<AstarteDatastreamObject>());
+          const auto &data(msg.into<DatastreamObject>());
           std::cout << "Value: {}" << data << std::endl;
         }
       } else {
-        const auto &data(msg.into<AstartePropertyIndividual>());
+        const auto &data(msg.into<PropertyIndividual>());
           std::cout << "Value: {}" << data << std::endl;
       }
     }
@@ -235,7 +235,7 @@ void reception_handler(std::stop_token token, std::shared_ptr<AstarteDeviceGRPC>
 int main(int argc, char **argv) {
   std::string server_addr = "localhost:50051";
   std::string node_id("aa04dade-9401-4c37-8c6a-d8da15b083ae");
-  std::shared_ptr<AstarteDeviceGRPC> device = std::make_shared<AstarteDeviceGRPC>(server_addr, node_id);
+  std::shared_ptr<DeviceGrpc> device = std::make_shared<DeviceGrpc>(server_addr, node_id);
 
   // Se these paths based on your project structure.
   std::filesystem::path device_individual_interface_file_path =
@@ -290,7 +290,7 @@ int main(int argc, char **argv) {
 
   std::string interface_name("org.astarte-platform.cpp.get-started.Individual");
   std::string path("/double_endpoint");
-  AstarteData data(42.5);
+  Data data(42.5);
   device->send_individual(interface_name, path, data, NULL);
 
   // Disconnect the device and exit
@@ -315,9 +315,9 @@ int main(int argc, char **argv) {
 
   std::string interface_name("org.astarte-platform.cpp.get-started.Aggregated");
   std::string common_path("/group_data");
-  AstarteDatastreamObject data = {
-    {"double_endpoint", AstarteData(43.5)},
-    {"string_endpoint", AstarteData(std::string("Hello from cpp!"))}
+  DatastreamObject data = {
+    {"double_endpoint", Data(43.5)},
+    {"string_endpoint", Data(std::string("Hello from cpp!"))}
   };
   device->send_object(interface_name, common_path, data, NULL);
 
@@ -348,7 +348,7 @@ int main(int argc, char **argv) {
 
   std::string interface_name("org.astarte-platform.cpp.get-started.Property");
   std::string path("/sensor0/string_endpoint");
-  AstarteData data(std::string("some sensor hardware defined info"));
+  Data data(std::string("some sensor hardware defined info"));
   device->set_property(interface_name, path, data);
 
   // Disconnect the device and exit
