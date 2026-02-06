@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['add_5finterface_5ffrom_5ffile_0',['add_interface_from_file',['../classastarte_1_1device_1_1Device.html#a024b9b41adc52997f5602cb195497daf',1,'astarte::device::Device::add_interface_from_file()'],['../classastarte_1_1device_1_1grpc_1_1DeviceGrpc.html#a9addc832dc534102ac9a5412e29cb8c1',1,'astarte::device::grpc::DeviceGrpc::add_interface_from_file()'],['../classastarte_1_1device_1_1mqtt_1_1DeviceMqtt.html#a19091c1d2a0d7b6c85e3e1346609844e',1,'astarte::device::mqtt::DeviceMqtt::add_interface_from_file()']]],
+  ['add_5finterface_5ffrom_5fstr_1',['add_interface_from_str',['../classastarte_1_1device_1_1Device.html#aa56332e1b17e85e1672ab6d8389db197',1,'astarte::device::Device::add_interface_from_str()'],['../classastarte_1_1device_1_1grpc_1_1DeviceGrpc.html#a49ab2da42bc33d389e5ff04fbefc0f06',1,'astarte::device::grpc::DeviceGrpc::add_interface_from_str()'],['../classastarte_1_1device_1_1mqtt_1_1DeviceMqtt.html#abe24b9d18925e9312b4297d805ec646d',1,'astarte::device::mqtt::DeviceMqtt::add_interface_from_str()']]],
+  ['an_20external_20project_2',['Importing the library in an external project',['../index.html#autotoc_md12',1,'']]],
+  ['api_20for_20c_3',['Astarte device API for C++',['../index.html',1,'']]],
+  ['astarte_4',['astarte',['../namespaceastarte.html',1,'']]],
+  ['astarte_20data_5',['Formatting Astarte data',['../index.html#autotoc_md3',1,'']]],
+  ['astarte_20device_20api_20for_20c_6',['Astarte device API for C++',['../index.html',1,'']]],
+  ['astarte_20device_20sdk_20for_20c_7',['Astarte device SDK for C++',['../index.html#autotoc_md0',1,'']]],
+  ['astarte_20message_20hub_20proto_8',['Astarte message hub proto',['../index.html#autotoc_md9',1,'']]],
+  ['astarte_20message_20hub_20versions_9',['Supported Astarte message hub versions',['../index.html#autotoc_md2',1,'']]],
+  ['astarte_3a_3adevice_10',['device',['../namespaceastarte_1_1device.html',1,'astarte']]],
+  ['astarte_3a_3adevice_3a_3agrpc_11',['grpc',['../namespaceastarte_1_1device_1_1grpc.html',1,'astarte::device']]],
+  ['astarte_3a_3adevice_3a_3amqtt_12',['mqtt',['../namespaceastarte_1_1device_1_1mqtt.html',1,'astarte::device']]],
+  ['astarte_3a_3adevice_3a_3autils_13',['utils',['../namespaceastarte_1_1device_1_1utils.html',1,'astarte::device']]],
+  ['astarte_5ffmt_14',['astarte_fmt',['../namespaceastarte__fmt.html',1,'']]],
+  ['astarte_5ftype_5ffrom_5fstr_15',['astarte_type_from_str',['../namespaceastarte_1_1device.html#a3763b209aa31dc38a8b79afd8623fda3',1,'astarte::device']]],
+  ['at_16',['at',['../classastarte_1_1device_1_1DatastreamObject.html#ac92cde2e3f1ba3b9d82259dc41b20776',1,'astarte::device::DatastreamObject::at(const std::string &amp;key) -&gt; Data &amp;'],['../classastarte_1_1device_1_1DatastreamObject.html#af13142288c32caa00f6e3825a92bbe70',1,'astarte::device::DatastreamObject::at(const std::string &amp;key) const -&gt; const Data &amp;']]]
+];
