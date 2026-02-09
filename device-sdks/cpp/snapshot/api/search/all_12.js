@@ -1,9 +1,5 @@
 var searchData=
 [
-  ['the_20library_20in_20an_20external_20project_0',['Importing the library in an external project',['../index.html#autotoc_md12',1,'']]],
-  ['the_20samples_1',['Get started with the samples',['../index.html#autotoc_md11',1,'']]],
-  ['try_5finto_2',['try_into',['../classastarte_1_1device_1_1Data.html#a4ed84c1e4fd2a17d270e3d7eee64f293',1,'astarte::device::Data::try_into()'],['../classastarte_1_1device_1_1Message.html#a465759a7dad3d9127cca85a49ca78603',1,'astarte::device::Message::try_into()']]],
-  ['type_3',['Type',['../namespaceastarte_1_1device.html#a5075d95e28a72c6685710f400063e1f0',1,'astarte::device']]],
-  ['type_4',['type',['../classastarte_1_1device_1_1ErrorBase.html#ae27f750c187159a9892d98ccd92bfde4',1,'astarte::device::ErrorBase']]],
-  ['type_2ehpp_5',['type.hpp',['../type_8hpp.html',1,'']]]
+  ['unset_5fproperty_0',['unset_property',['../classastarte_1_1device_1_1Device.html#a6e7af09952d7ed955a92a1f5ef725851',1,'astarte::device::Device::unset_property()'],['../classastarte_1_1device_1_1grpc_1_1DeviceGrpc.html#a159c3b8e3396c370b53f8f7dbb159a5d',1,'astarte::device::grpc::DeviceGrpc::unset_property()'],['../classastarte_1_1device_1_1mqtt_1_1DeviceMqtt.html#abd00aed1868625f3001958e1615fd3a4',1,'astarte::device::mqtt::DeviceMqtt::unset_property()']]],
+  ['uuiderror_1',['UuidError',['../classastarte_1_1device_1_1mqtt_1_1UuidError.html',1,'astarte::device::mqtt::UuidError'],['../classastarte_1_1device_1_1mqtt_1_1UuidError.html#af31fd2ed19b9f3cf810876de07328769',1,'astarte::device::mqtt::UuidError::UuidError(std::string_view message)'],['../classastarte_1_1device_1_1mqtt_1_1UuidError.html#a3d7f6cece2cf7cb6afd1bbc6e2d95527',1,'astarte::device::mqtt::UuidError::UuidError(std::string_view message, const Error &amp;other)']]]
 ];
