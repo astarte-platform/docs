@@ -52,7 +52,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Astarte device API for C++<span id="projectnumber">&#160;0.8.1</span>
+   <div id="projectname">Astarte device API for C++<span id="projectnumber">&#160;0.9.0</span>
    </div>
    <div id="projectbrief">Astarte device SDK for C++</div>
   </td>
@@ -189,7 +189,7 @@ Integrating into an external project</h2>
 <div class="line">FetchContent_Declare(</div>
 <div class="line">    astarte_device_sdk</div>
 <div class="line">    GIT_REPOSITORY https://github.com/astarte-platform/astarte-device-sdk-cpp.git</div>
-<div class="line">    GIT_TAG v0.8.1</div>
+<div class="line">    GIT_TAG v0.9.0</div>
 <div class="line">)</div>
 <div class="line">FetchContent_MakeAvailable(astarte_device_sdk)</div>
 </div><!-- fragment --><p>Ensure you link the library to your executable: </p><div class="fragment"><div class="line">target_link_libraries(app</div>
@@ -198,7 +198,7 @@ Integrating into an external project</h2>
 Conan integration</h2>
 <p>This library supports the <a href="https://conan.io/">Conan</a> package manager. Although the package is not yet available on the Conan Center Index, you can install it into your local cache by cloning this repository and running: </p><div class="fragment"><div class="line">conan create . --build=missing --settings=compiler.cppstd=20</div>
 </div><!-- fragment --><p> Add the requirement to your project's <code>conanfile</code>: </p><div class="fragment"><div class="line">[requires]</div>
-<div class="line">astarte-device-sdk/0.8.1</div>
+<div class="line">astarte-device-sdk/0.9.0</div>
 </div><!-- fragment --><p> Then, import and link the library in your CMake configuration: </p><div class="fragment"><div class="line">find_package(astarte_device_sdk)</div>
 <div class="line">...</div>
 <div class="line">target_link_libraries(app</div>
