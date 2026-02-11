@@ -133,7 +133,7 @@ set(ASTARTE_GRPC_VERSION "1.69.0" CACHE STRING "Set gRPC version")
 FetchContent_Declare(
     astarte_device_sdk
     GIT_REPOSITORY https://github.com/astarte-platform/astarte-device-sdk-cpp.git
-    GIT_TAG v0.8.1
+    GIT_TAG v0.9.0
 )
 FetchContent_MakeAvailable(astarte_device_sdk)
 
