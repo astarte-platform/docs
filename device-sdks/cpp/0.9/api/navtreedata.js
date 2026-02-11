@@ -26,21 +26,27 @@ var NAVTREE =
 [
   [ "Astarte device API for C++", "index.html", [
     [ "Astarte device SDK for C++", "index.html#autotoc_md0", [
-      [ "Minimum C++ version", "index.html#autotoc_md1", null ],
-      [ "Supported Astarte message hub versions", "index.html#autotoc_md2", null ],
-      [ "Formatting Astarte data", "index.html#autotoc_md3", null ],
-      [ "Optional features", "index.html#autotoc_md4", [
-        [ "Public spdlog dependency", "index.html#autotoc_md5", null ],
-        [ "Public message hub proto dependency", "index.html#autotoc_md6", null ]
+      [ "Requirements", "index.html#autotoc_md1", [
+        [ "Minimum C++ version", "index.html#autotoc_md2", null ],
+        [ "Astarte message hub", "index.html#autotoc_md3", null ]
       ] ],
-      [ "Dependencies", "index.html#autotoc_md7", [
-        [ "gRPC", "index.html#autotoc_md8", null ],
-        [ "Astarte message hub proto", "index.html#autotoc_md9", null ],
-        [ "spdlog", "index.html#autotoc_md10", null ]
+      [ "Dependencies", "index.html#autotoc_md4", [
+        [ "spdlog", "index.html#autotoc_md5", null ],
+        [ "MQTT transport dependencies", "index.html#autotoc_md6", [
+          [ "Paho MQTT C++", "index.html#autotoc_md7", null ]
+        ] ],
+        [ "gRPC transport dependencies", "index.html#autotoc_md8", [
+          [ "gRPC", "index.html#autotoc_md9", null ],
+          [ "Astarte message hub proto", "index.html#autotoc_md10", null ]
+        ] ]
       ] ],
-      [ "Get started with the samples", "index.html#autotoc_md11", null ],
-      [ "Importing the library in an external project", "index.html#autotoc_md12", null ],
-      [ "Conan integration", "index.html#autotoc_md13", null ]
+      [ "Getting started with samples", "index.html#autotoc_md11", null ],
+      [ "Integrating into an external project", "index.html#autotoc_md12", null ],
+      [ "Conan integration", "index.html#autotoc_md13", null ],
+      [ "Extending public interfaces", "index.html#autotoc_md14", [
+        [ "Public spdlog dependency", "index.html#autotoc_md15", null ],
+        [ "Public message hub proto dependency", "index.html#autotoc_md16", null ]
+      ] ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],

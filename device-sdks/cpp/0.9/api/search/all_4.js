@@ -6,5 +6,6 @@ var searchData=
   ['error_3',['Error',['../namespaceastarte_1_1device.html#a9675caabed06c1cc0cd827c2d6eeabf9',1,'astarte::device']]],
   ['errorbase_4',['ErrorBase',['../classastarte_1_1device_1_1ErrorBase.html',1,'astarte::device::ErrorBase'],['../classastarte_1_1device_1_1ErrorBase.html#a524043452644eecc42b5151d5efefee0',1,'astarte::device::ErrorBase::ErrorBase(const ErrorBase &amp;)=default'],['../classastarte_1_1device_1_1ErrorBase.html#afb04f749c368f77b4b002ef20a5fffe7',1,'astarte::device::ErrorBase::ErrorBase(ErrorBase &amp;&amp;)=delete'],['../classastarte_1_1device_1_1ErrorBase.html#ac0cb9af4cc390e6f6759625108e31c80',1,'astarte::device::ErrorBase::ErrorBase(std::string_view type, std::string_view message)'],['../classastarte_1_1device_1_1ErrorBase.html#a9dc5830ab24b23dbff2686b93d61ee52',1,'astarte::device::ErrorBase::ErrorBase(std::string_view type, std::string_view message, const ErrorBase &amp;other)']]],
   ['errors_2ehpp_5',['errors.hpp',['../errors_8hpp.html',1,'(Global Namespace)'],['../mqtt_2errors_8hpp.html',1,'(Global Namespace)']]],
-  ['external_20project_6',['Importing the library in an external project',['../index.html#autotoc_md12',1,'']]]
+  ['extending_20public_20interfaces_6',['Extending public interfaces',['../index.html#autotoc_md14',1,'']]],
+  ['external_20project_7',['Integrating into an external project',['../index.html#autotoc_md12',1,'']]]
 ];

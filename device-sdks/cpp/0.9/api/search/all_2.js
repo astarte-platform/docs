@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['c_0',['C',['../index.html',1,'Astarte device API for C++'],['../index.html#autotoc_md0',1,'Astarte device SDK for C++']]],
-  ['c_20version_1',['Minimum C++ version',['../index.html#autotoc_md1',1,'']]],
+  ['c_0',['C',['../index.html',1,'Astarte device API for C++'],['../index.html#autotoc_md0',1,'Astarte device SDK for C++'],['../index.html#autotoc_md7',1,'Paho MQTT C++']]],
+  ['c_20version_1',['Minimum C++ version',['../index.html#autotoc_md2',1,'']]],
   ['clear_2',['clear',['../classastarte_1_1device_1_1DatastreamObject.html#a5fb5b020ad6cdd962c2784fc9eb732fb',1,'astarte::device::DatastreamObject']]],
   ['conan_20integration_3',['Conan integration',['../index.html#autotoc_md13',1,'']]],
   ['config_4',['Config',['../classastarte_1_1device_1_1mqtt_1_1Config.html',1,'astarte::device::mqtt::Config'],['../classastarte_1_1device_1_1mqtt_1_1Config.html#afaf3ac25e871ee32e840ef1c06fe158f',1,'astarte::device::mqtt::Config::Config(Config &amp;&amp;other) noexcept'],['../classastarte_1_1device_1_1mqtt_1_1Config.html#a2f6da67d50045dc831168c74862560a2',1,'astarte::device::mqtt::Config::Config(const Config &amp;)=delete']]],
