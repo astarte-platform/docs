@@ -197,7 +197,7 @@ West extension commands</h2>
 <h3><a class="anchor" id="autotoc_md13"></a>
 Interface definitions generation</h3>
 <p>The standard format of an Astarte interface is a JSON file as defined in the <a href="https://docs.astarte-platform.org/astarte/latest/030-interface.html">Astarte documentation</a>. However, an Astarte device on Zephyr uses C structures to define Astarte interfaces. Translating an interface from a JSON definition to a C definition for Zephyr can be a repetitive and error-prone process.</p>
-<p>For this reason, an extension command for <code>west</code> has been created to facilitate this procedure. The <code>generate-interfaces</code> extension command accepts as input one or more JSON interface definitions and automatically generates the corresponding C source code. Run <code>west generate-interfaces --help</code> to learn about the generation options.</p>
+<p>For this reason, an extension command for <code>west</code> has been created to facilitate this procedure. The <code>generate-interfaces</code> extension command accepts as input one or more JSON interface definitions and automatically generates the corresponding C source code. Run <code>west astarte-interfaces --help</code> to learn about the generation options.</p>
 <h4><a class="anchor" id="autotoc_md14"></a>
 Build time interface definitions generation</h4>
 <p>It's also possible to automatically generate the interface definition structs. Generated files will be located in the build directory: <code>build/zephyr/include/generated/astarte_generated_interfaces.*</code>.</p>
@@ -210,19 +210,19 @@ Build time interface definitions generation</h4>
 </div><!-- fragment --><p>For a complete example you can take a look at <code>e2e/prj.conf</code> and the <code>interfaces/</code> directory. The generated interfaces are included in <code>e2e/src/runner.c</code>.</p>
 <h3><a class="anchor" id="autotoc_md15"></a>
 Code formatting</h3>
-<p>The code in this module is formatted using <code>clang-format</code>. An extension command for <code>west</code> has been created to facilitate formatting. Run <code>west format --help</code> to learn about the formatting options.</p>
+<p>The code in this module is formatted using <code>clang-format</code>. An extension command for <code>west</code> has been created to facilitate formatting. Run <code>west astarte-format --help</code> to learn about the formatting options.</p>
 <h3><a class="anchor" id="autotoc_md16"></a>
 Static code analysis</h3>
 <p><a href="https://codechecker.readthedocs.io/en/latest/">CodeChecker</a> is the one of the <a href="https://docs.zephyrproject.org/latest/develop/sca/index.html">many</a> natively supported static analysis tools in <code>west</code>. It can be configured to run different static checkers, such as <code>clang-tidy</code> and <code>cppcheck</code>.</p>
 <p>Due to dependency conflicts with the zephyr venv it's suggested to install CodeChecker using pipx. The following command should suffice: </p><div class="fragment"><div class="line">pipx install codechecker</div>
-</div><!-- fragment --><p>An extension command for <code>west</code> has been created to facilitate running static analysis with <code>clang-tidy</code>. Run <code>west static --help</code> to read what this command performs.</p>
+</div><!-- fragment --><p>An extension command for <code>west</code> has been created to facilitate running static analysis with <code>clang-tidy</code>. Run <code>west astarte-static --help</code> to read what this command performs.</p>
 <h3><a class="anchor" id="autotoc_md17"></a>
 Build doxygen documentation</h3>
 <p>The dependencies for generating the doxygen documentation are:</p><ul>
 <li><code>doxygen &lt;= 1.9.6</code></li>
 <li><code>graphviz</code></li>
 </ul>
-<p>An extension command for <code>west</code> has been created to facilitate generating the documentation. Run <code>west docs --help</code> for more information on how to generate the documentation.</p>
+<p>An extension command for <code>west</code> has been created to facilitate generating the documentation. Run <code>west astarte-docs --help</code> for more information on how to generate the documentation.</p>
 <h2><a class="anchor" id="autotoc_md18"></a>
 VS Code integration</h2>
 <p>Here are some quick tips to configure VS Code with a Zephyr workspace. Make sure the following extensions are installed:</p><ul>
