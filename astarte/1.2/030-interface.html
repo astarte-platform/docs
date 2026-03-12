@@ -5,9 +5,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.29.0">
-    <meta name="project" content="Clea Astarte v1.2.0">
+    <meta name="project" content="Clea Astarte v1.2.1">
 
-    <title>Interfaces — Clea Astarte v1.2.0</title>
+    <title>Interfaces — Clea Astarte v1.2.1</title>
     <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
@@ -62,16 +62,16 @@
 
   <div class="sidebar-header">
 
-      <a href="https://docs.astarte-platform.org/astarte/1.0/">
+      <a href="https://docs.astarte-platform.org/astarte/1.2/">
         <img src="assets/logo.png" alt="Clea Astarte" class="sidebar-projectImage">
       </a>
 
     <div class="sidebar-projectDetails">
-      <a href="https://docs.astarte-platform.org/astarte/1.0/" class="sidebar-projectName" translate="no">
+      <a href="https://docs.astarte-platform.org/astarte/1.2/" class="sidebar-projectName" translate="no">
 Clea Astarte
       </a>
       <strong class="sidebar-projectVersion" translate="no">
-        v1.2.0
+        v1.2.1
       </strong>
     </div>
     <ul class="sidebar-listNav">
@@ -97,7 +97,7 @@ Clea Astarte
 </button>
 
 
-    <a href="https://github.com/astarte-platform/astarte/blob/release-1.0/doc/pages/architecture/030-interface.md#L1" title="View Source" class="view-source" rel="help">
+    <a href="https://github.com/astarte-platform/astarte/blob/release-1.2/doc/pages/architecture/030-interface.md#L1" title="View Source" class="view-source" rel="help">
       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
       <span class="sr-only">View Source</span>
     </a>
@@ -132,12 +132,12 @@ major version.</p><h2 id="format" class="section-heading">
 <p>Interfaces are described using a JSON document. Each interface is identified by an unique
 interface name of maximum 128 characters, which must be a <a href="https://en.wikipedia.org/wiki/Reverse_domain_name_notation">Reverse Domain
 Name</a>. As a convention, the interface
-name usually contains its author's URI Reverse Internet Domain Name.</p><p>An example skeleton looks like this:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="9995324628-1">{</span><span class="w">
+name usually contains its author's URI Reverse Internet Domain Name.</p><p>An example skeleton looks like this:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="2107633594-1">{</span><span class="w">
     </span><span class="nt">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;com.test.MyInterfaceName&quot;</span><span class="p">,</span><span class="w">
     </span><span class="nt">&quot;version_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nt">&quot;version_minor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="9995324628-2">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="9995324628-2">]</span><span class="w">
-</span><span class="p" data-group-id="9995324628-1">}</span></code></pre><p>Valid values and variables are listed in the <a href="040-interface_schema.html">Interface Schema</a>.</p><h3 id="name-limitations" class="section-heading">
+    </span><span class="p" data-group-id="2107633594-2">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="2107633594-2">]</span><span class="w">
+</span><span class="p" data-group-id="2107633594-1">}</span></code></pre><p>Valid values and variables are listed in the <a href="040-interface_schema.html">Interface Schema</a>.</p><h3 id="name-limitations" class="section-heading">
   <a href="#name-limitations" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">name-limitations</p>
   </a>
@@ -201,15 +201,15 @@ actor consumes data.</p><h2 id="mappings" class="section-heading">
 controller semantics: each mapping describes an endpoint which is resolved to a path, it is strongly
 typed, and can have additional options. Just like in REST controllers, Endpoints can be parametrized
 to build REST-like collection and trees. Parameters are identified by <code class="inline">%{parameterName}</code>, with each
-endpoint supporting any number of parameters (see <a href="#limitations">Limitations</a>).</p><p>This is how a parametrized mapping looks like:</p><pre><code class="makeup json" translate="no"><span class="w">    </span><span class="p" data-group-id="6402950019-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="6402950019-1">]</span><span class="w">
+endpoint supporting any number of parameters (see <a href="#limitations">Limitations</a>).</p><p>This is how a parametrized mapping looks like:</p><pre><code class="makeup json" translate="no"><span class="w">    </span><span class="p" data-group-id="2328818578-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="2328818578-1">]</span><span class="w">
     </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">[</span><span class="w">
-        </span><span class="p" data-group-id="6402950019-2">{</span><span class="w">
+        </span><span class="p" data-group-id="2328818578-2">{</span><span class="w">
             </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
             </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span><span class="w">
             </span><span class="nt">&quot;reliability&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique&quot;</span><span class="p">,</span><span class="w">
             </span><span class="nt">&quot;retention&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;discard&quot;</span><span class="w">
-        </span><span class="p" data-group-id="6402950019-2">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="6402950019-3">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="6402950019-3">]</span></code></pre><p>In this example, <code class="inline">/0/value</code>, <code class="inline">/1/value</code> or <code class="inline">/test/value</code> all map to a valid endpoint, while
+        </span><span class="p" data-group-id="2328818578-2">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="2328818578-3">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="2328818578-3">]</span></code></pre><p>In this example, <code class="inline">/0/value</code>, <code class="inline">/1/value</code> or <code class="inline">/test/value</code> all map to a valid endpoint, while
 <code class="inline">/te/st/value</code> can't be resolved by any endpoint.</p><h3 id="supported-data-types" class="section-heading">
   <a href="#supported-data-types" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">supported-data-types</p>
@@ -224,7 +224,7 @@ signed 64 bits integer. (<code class="inline">datetime</code> is represented as 
 APIs.)</li><li><code class="inline">doublearray</code>, <code class="inline">integerarray</code>, <code class="inline">booleanarray</code>, <code class="inline">longintegerarray</code>, <code class="inline">stringarray</code>,
 <code class="inline">binaryblobarray</code>, <code class="inline">datetimearray</code>: A list of values, represented as a JSON Array. Arrays can have
 up to 1024 items and each item must respect the limits of its scalar type (<em>i.e.</em> each string in a
-<code class="inline">stringarray</code> must be at most 65535 bytes long, each binary blob in a <code class="inline">binaryblobarray</code> must be
+<code class="inline">stringarray</code> must be at most 65536 bytes long, each binary blob in a <code class="inline">binaryblobarray</code> must be
 shorter than 64 KiB.</li></ul><p>Make sure that the differences between two distinct interface names are not limited to the casing or
 the presence of hyphens. This situation leads to a collision in the interface names which brings to
 an error in the interface installation process.</p><h3 id="limitations" class="section-heading">
@@ -233,44 +233,44 @@ an error in the interface installation process.</p><h3 id="limitations" class="s
   </a>
   Limitations
 </h3>
-<p>A valid interface must resolve a path univocally to a single endpoint. Take the following example:</p><pre><code class="makeup json" translate="no"><span class="w">    </span><span class="p" data-group-id="8138160042-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="8138160042-1">]</span><span class="w">
+<p>A valid interface must resolve a path univocally to a single endpoint. Take the following example:</p><pre><code class="makeup json" translate="no"><span class="w">    </span><span class="p" data-group-id="4036728020-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="4036728020-1">]</span><span class="w">
     </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">[</span><span class="w">
-        </span><span class="p" data-group-id="8138160042-2">{</span><span class="w">
+        </span><span class="p" data-group-id="4036728020-2">{</span><span class="w">
             </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
             </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="8138160042-2">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="8138160042-3">{</span><span class="w">
+        </span><span class="p" data-group-id="4036728020-2">}</span><span class="p">,</span><span class="w">
+        </span><span class="p" data-group-id="4036728020-3">{</span><span class="w">
             </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/myPath/value&quot;</span><span class="p">,</span><span class="w">
             </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="8138160042-3">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="8138160042-4">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="8138160042-4">]</span></code></pre><p>In such a case, the interface isn't valid and is
+        </span><span class="p" data-group-id="4036728020-3">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="4036728020-4">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="4036728020-4">]</span></code></pre><p>In such a case, the interface isn't valid and is
 rejected, due to the fact that path <code class="inline">/myPath/value</code> is ambiguous and could be resolved to two
 different endpoints.</p><p>Any endpoint configuration must not generate paths that are prefix of other paths, for this reason
-the following example is also invalid:</p><pre><code class="makeup json" translate="no"><span class="w">    </span><span class="p" data-group-id="8051691005-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="8051691005-1">]</span><span class="w">
+the following example is also invalid:</p><pre><code class="makeup json" translate="no"><span class="w">    </span><span class="p" data-group-id="6122771147-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="6122771147-1">]</span><span class="w">
     </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">[</span><span class="w">
-        </span><span class="p" data-group-id="8051691005-2">{</span><span class="w">
+        </span><span class="p" data-group-id="6122771147-2">{</span><span class="w">
             </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/some/thing&quot;</span><span class="p">,</span><span class="w">
             </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="8051691005-2">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="8051691005-3">{</span><span class="w">
+        </span><span class="p" data-group-id="6122771147-2">}</span><span class="p">,</span><span class="w">
+        </span><span class="p" data-group-id="6122771147-3">{</span><span class="w">
             </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/some/%{param}/value&quot;</span><span class="p">,</span><span class="w">
             </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="8051691005-3">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="8051691005-4">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="8051691005-4">]</span><span class="w">
+        </span><span class="p" data-group-id="6122771147-3">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="6122771147-4">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="6122771147-4">]</span><span class="w">
 </span></code></pre><p>In case the interface's aggregation is <code class="inline">object</code>, additional restrictions apply. Endpoints in the
 same interface must all have the same depth, and the same number of parameters. If the interface is
 parametrized, every endpoint must have the same parameter name at the same level. This is an example
-of a valid aggregated interface mapping:</p><pre><code class="makeup json" translate="no"><span class="w">    </span><span class="p" data-group-id="3403421535-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="3403421535-1">]</span><span class="w">
+of a valid aggregated interface mapping:</p><pre><code class="makeup json" translate="no"><span class="w">    </span><span class="p" data-group-id="1475119463-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="1475119463-1">]</span><span class="w">
     </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">[</span><span class="w">
-        </span><span class="p" data-group-id="3403421535-2">{</span><span class="w">
+        </span><span class="p" data-group-id="1475119463-2">{</span><span class="w">
             </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/%{itemIndex}/value&quot;</span><span class="p">,</span><span class="w">
             </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="3403421535-2">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="3403421535-3">{</span><span class="w">
+        </span><span class="p" data-group-id="1475119463-2">}</span><span class="p">,</span><span class="w">
+        </span><span class="p" data-group-id="1475119463-3">{</span><span class="w">
             </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/%{itemIndex}/otherValue&quot;</span><span class="p">,</span><span class="w">
             </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w">
-        </span><span class="p" data-group-id="3403421535-3">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="3403421535-4">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="3403421535-4">]</span></code></pre><p>Additional limitations (which stem from the MQTT protocol specification) can be outlined. When using
+        </span><span class="p" data-group-id="1475119463-3">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="1475119463-4">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="1475119463-4">]</span></code></pre><p>Additional limitations (which stem from the MQTT protocol specification) can be outlined. When using
 parametric endpoints, the actual values used in place of parameter placeholders must fulfill the
 following requirements:</p><ul><li>endpoint parameters must be non-empty UTF-8 encoded strings;</li><li>endpoint parameters must not contain the following characters: <code class="inline">+</code> and <code class="inline">#</code>. Those characters are
 treated as wildcards for MQTT topics and therefore must be avoided;</li><li>endpoint parameters must not contain the <code class="inline">/</code> character.</li></ul><h2 id="aggregation" class="section-heading">
@@ -298,27 +298,27 @@ limitations</a>.</p><h3 id="endpoints-and-aggregation" class="section-heading">
 behavior in Astarte 0.10 which is kept for retrocompatibility - however, new interfaces should ensure
 each endpoint in an aggreate has at least depth 2, as support for depth 1 will be removed in a future
 release. This change has been done to be consistent with AppEngine API design, and to ensure that
-path <code class="inline">/</code> is not ambiguous.</p><p>This is the correct way to set up a valid endpoint structure for an aggregate:</p><pre><code class="makeup json" translate="no"><span class="w">    </span><span class="p" data-group-id="6094812661-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="6094812661-1">]</span><span class="w">
+path <code class="inline">/</code> is not ambiguous.</p><p>This is the correct way to set up a valid endpoint structure for an aggregate:</p><pre><code class="makeup json" translate="no"><span class="w">    </span><span class="p" data-group-id="3213940099-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="3213940099-1">]</span><span class="w">
     </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">[</span><span class="w">
-        </span><span class="p" data-group-id="6094812661-2">{</span><span class="w">
+        </span><span class="p" data-group-id="3213940099-2">{</span><span class="w">
             </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/objects/value&quot;</span><span class="p">,</span><span class="w">
             </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="6094812661-2">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="6094812661-3">{</span><span class="w">
+        </span><span class="p" data-group-id="3213940099-2">}</span><span class="p">,</span><span class="w">
+        </span><span class="p" data-group-id="3213940099-3">{</span><span class="w">
             </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/objects/otherValue&quot;</span><span class="p">,</span><span class="w">
             </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w">
-        </span><span class="p" data-group-id="6094812661-3">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="6094812661-4">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="6094812661-4">]</span></code></pre><p>The following structure, instead, is deprecated:</p><pre><code class="makeup json" translate="no"><span class="w">    </span><span class="p" data-group-id="7887408144-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="7887408144-1">]</span><span class="w">
+        </span><span class="p" data-group-id="3213940099-3">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="3213940099-4">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="3213940099-4">]</span></code></pre><p>The following structure, instead, is deprecated:</p><pre><code class="makeup json" translate="no"><span class="w">    </span><span class="p" data-group-id="0039811943-1">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="0039811943-1">]</span><span class="w">
     </span><span class="nt">&quot;mappings&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">[</span><span class="w">
-        </span><span class="p" data-group-id="7887408144-2">{</span><span class="w">
+        </span><span class="p" data-group-id="0039811943-2">{</span><span class="w">
             </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/value&quot;</span><span class="p">,</span><span class="w">
             </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="w">
-        </span><span class="p" data-group-id="7887408144-2">}</span><span class="p">,</span><span class="w">
-        </span><span class="p" data-group-id="7887408144-3">{</span><span class="w">
+        </span><span class="p" data-group-id="0039811943-2">}</span><span class="p">,</span><span class="w">
+        </span><span class="p" data-group-id="0039811943-3">{</span><span class="w">
             </span><span class="nt">&quot;endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/otherValue&quot;</span><span class="p">,</span><span class="w">
             </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="w">
-        </span><span class="p" data-group-id="7887408144-3">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="7887408144-4">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="7887408144-4">]</span></code></pre><h2 id="datastream-specific-features" class="section-heading">
+        </span><span class="p" data-group-id="0039811943-3">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="0039811943-4">[</span><span class="err">.</span><span class="err">.</span><span class="err">.</span><span class="p" data-group-id="0039811943-4">]</span></code></pre><h2 id="datastream-specific-features" class="section-heading">
   <a href="#datastream-specific-features" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">datastream-specific-features</p>
   </a>
