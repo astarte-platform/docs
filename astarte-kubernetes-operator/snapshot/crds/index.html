@@ -25,7 +25,6 @@
   #
 
 Package v2alpha1 contains API Schema definitions for the api v2alpha1 API group
-Package v2alpha1 contains API Schema definitions for the api v2alpha1 API group
 
   Resource Types
   #
@@ -41,71 +40,20 @@ Package v2alpha1 contains API Schema definitions for the api v2alpha1 API group
   #
 
 Astarte is the Schema for the astartes API
-Appears in:
-
-
-  AstarteList
-
-
-  
-      
-          Field
-          Description
-          Default
-          Validation
-      
-  
-  
-      
-          apiVersion string
-          api.astarte-platform.org/v2alpha1
-          
-          
-      
-      
-          kind string
-          Astarte
-          
-          
-      
-      
-          metadata 
-  ObjectMeta
-          Refer to Kubernetes API documentation for fields of metadata.
-          
-          
-      
-      
-          spec 
-  AstarteSpec
-          
-          
-          
-      
-      
-          status 
-  AstarteStatus
-          
-          
-          
-      
-  
-
-
-  AstarteAPISpec
-  #
-
-Appears in:">
+Custom Astarte annotations
+Astarte support a set of custom annotations that can be used to
+toggle custom behaviors that are not directly supported by the CRD schema.
+This is often the case for features that are still experimental,
+or that are not expected to be widely used, and that would therefore
+add unnecessary complexity to the CRD schema.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://docs.astarte-platform.org/astarte-kubernetes-operator/snapshot/crds/">
   <meta property="og:site_name" content="Astarte Kubernetes Operator APIs">
   <meta property="og:title" content="Astarte Kubernetes Operator APIs">
   <meta property="og:description" content="API Reference # Packages # api.astarte-platform.org/v2alpha1 flow.astarte-platform.org/v2alpha1 ingress.astarte-platform.org/v2alpha1 api.astarte-platform.org/v2alpha1 # Package v2alpha1 contains API Schema definitions for the api v2alpha1 API group
-Package v2alpha1 contains API Schema definitions for the api v2alpha1 API group
 Resource Types # Astarte AstarteList Astarte # Astarte is the Schema for the astartes API
-Appears in:
-AstarteList Field Description Default Validation apiVersion string api.astarte-platform.org/v2alpha1 kind string Astarte metadata ObjectMeta Refer to Kubernetes API documentation for fields of metadata. spec AstarteSpec status AstarteStatus AstarteAPISpec # Appears in:">
+Custom Astarte annotations Astarte support a set of custom annotations that can be used to toggle custom behaviors that are not directly supported by the CRD schema. This is often the case for features that are still experimental, or that are not expected to be widely used, and that would therefore add unnecessary complexity to the CRD schema.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="website">
 <title> | Astarte Kubernetes Operator APIs</title>
@@ -272,7 +220,6 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#apiastarte-platformorgv2alpha1">#</a>
 </h2>
 <p>Package v2alpha1 contains API Schema definitions for the api v2alpha1 API group</p>
-<p>Package v2alpha1 contains API Schema definitions for the api v2alpha1 API group</p>
 <h3 id="resource-types">
   Resource Types
   <a class="anchor" href="#resource-types">#</a>
@@ -288,6 +235,17 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#astarte">#</a>
 </h4>
 <p>Astarte is the Schema for the astartes API</p>
+<p><strong>Custom Astarte annotations</strong>
+Astarte support a set of custom annotations that can be used to
+toggle custom behaviors that are not directly supported by the CRD schema.
+This is often the case for features that are still experimental,
+or that are not expected to be widely used, and that would therefore
+add unnecessary complexity to the CRD schema.</p>
+<p>Enable or disable the Astarte Dashboard sidebar</p>
+<ul>
+<li>Annotation: <code>api.astarte-platform.org/hide-dashboard-sidebar</code></li>
+<li>Values: <code>&quot;true&quot;</code> or <code>&quot;false&quot;</code></li>
+</ul>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
