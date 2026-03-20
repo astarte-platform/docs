@@ -3617,6 +3617,19 @@ Worker</p>
   <a class="anchor" href="#astartedefaultingress">#</a>
 </h4>
 <p>AstarteDefaultIngress is the Schema for the astartedefaultingresses API</p>
+<p><strong>Custom ADI annotations</strong></p>
+<p>Custom Content-Security-Policy</p>
+<ul>
+<li>Annotation: <code>ingress.astarte-platform.org/content-security-policy</code></li>
+<li>Values: <code>string</code> (valid Content-Security-Policy header value)</li>
+<li>Description: This annotation allows you to specify a custom Content Security Policy for the Astarte Operator&rsquo;s ingress. If this annotation is set, it wil override the default Content Security Policy defined by the Astarte Operator and any value set in the <code>custom-frame-ancestors</code> annotation.</li>
+</ul>
+<p>Custom frame-ancestors</p>
+<ul>
+<li>Annotation: <code>ingress.astarte-platform.org/frame-ancestors</code></li>
+<li>Values: <code>string</code> (valid frame-ancestors directive value)</li>
+<li>Description: This annotation allows you to specify custom frame ancestors for the Astarte Operator&rsquo;s ingress. If not set, the default value is <code>frame-ancestors 'self'</code>.</li>
+</ul>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
