@@ -2105,6 +2105,62 @@ scheduling beahaviour if not done properly.</p>
       </tr>
   </tbody>
 </table>
+<h4 id="astarterabbitmqbaseconnectionspec">
+  AstarteRabbitMQBaseConnectionSpec
+  <a class="anchor" href="#astarterabbitmqbaseconnectionspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#astarterabbitmqconnectionspec">AstarteRabbitMQConnectionSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#astarterabbitmqspec">AstarteRabbitMQSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+          <th>Default</th>
+          <th>Validation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>host</code> <em>string</em></td>
+          <td></td>
+          <td></td>
+          <td>MinLength: 1 <br />Required: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>port</code> <em>integer</em></td>
+          <td></td>
+          <td></td>
+          <td>Maximum: 65535 <br />Minimum: 1 <br />Required: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>sslConfiguration</code> <em>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#genericsslconfigurationspec">GenericSSLConfigurationSpec</a></em></td>
+          <td></td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>credentialsSecret</code> <em>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#logincredentialssecret">LoginCredentialsSecret</a></em></td>
+          <td>The secret containing Username and Password to login.<br />Either this field or <code>connectionStringSecret</code> must be set.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>connectionStringSecret</code> <em>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#connectionstringsecret">ConnectionStringSecret</a></em></td>
+          <td>The secret containing a connection string to the service.<br />Either this field or <code>credentialsSecret</code> must be set.<br />put as-is in the env. Therefore, setting this field is a no-op.<br />Not using <code>credentialsSecret</code> WILL break your Astarte instance.</td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+  </tbody>
+</table>
 <h4 id="astarterabbitmqconnectionspec">
   AstarteRabbitMQConnectionSpec
   <a class="anchor" href="#astarterabbitmqconnectionspec">#</a>
@@ -2187,7 +2243,14 @@ scheduling beahaviour if not done properly.</p>
       <tr>
           <td><code>connection</code> <em>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#astarterabbitmqconnectionspec">AstarteRabbitMQConnectionSpec</a></em></td>
+          <td>RabbitMQ AMQP connection details</td>
           <td></td>
+          <td>Required: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>managementConnection</code> <em>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#astarterabbitmqbaseconnectionspec">AstarteRabbitMQBaseConnectionSpec</a></em></td>
+          <td>RabbitMQ management APIs connection details</td>
           <td></td>
           <td>Required: {} <br /></td>
       </tr>
@@ -2783,6 +2846,8 @@ deployments) the replica distribution per datacenter. These settings take effect
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#astartecassandraconnectionspec">AstarteCassandraConnectionSpec</a></li>
 <li>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#astarterabbitmqbaseconnectionspec">AstarteRabbitMQBaseConnectionSpec</a></li>
+<li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#astarterabbitmqconnectionspec">AstarteRabbitMQConnectionSpec</a></li>
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#genericconnectionspec">GenericConnectionSpec</a></li>
@@ -2819,6 +2884,8 @@ deployments) the replica distribution per datacenter. These settings take effect
 <ul>
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#astartecassandraconnectionspec">AstarteCassandraConnectionSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#astarterabbitmqbaseconnectionspec">AstarteRabbitMQBaseConnectionSpec</a></li>
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#astarterabbitmqconnectionspec">AstarteRabbitMQConnectionSpec</a></li>
 </ul>
@@ -2863,6 +2930,8 @@ deployments) the replica distribution per datacenter. These settings take effect
 <ul>
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#astartecassandraconnectionspec">AstarteCassandraConnectionSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#astarterabbitmqbaseconnectionspec">AstarteRabbitMQBaseConnectionSpec</a></li>
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#astarterabbitmqconnectionspec">AstarteRabbitMQConnectionSpec</a></li>
 <li>
@@ -2916,6 +2985,8 @@ deployments) the replica distribution per datacenter. These settings take effect
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#astartefdospec">AstarteFDOSpec</a></li>
 <li>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#astarterabbitmqbaseconnectionspec">AstarteRabbitMQBaseConnectionSpec</a></li>
+<li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#astarterabbitmqconnectionspec">AstarteRabbitMQConnectionSpec</a></li>
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#astartevernemqspec">AstarteVerneMQSpec</a></li>
@@ -2952,6 +3023,8 @@ deployments) the replica distribution per datacenter. These settings take effect
 <ul>
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#astartecassandraconnectionspec">AstarteCassandraConnectionSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/snapshot/crds/#astarterabbitmqbaseconnectionspec">AstarteRabbitMQBaseConnectionSpec</a></li>
 <li>
   <a href="/astarte-kubernetes-operator/snapshot/crds/#astarterabbitmqconnectionspec">AstarteRabbitMQConnectionSpec</a></li>
 <li>
