@@ -4,6 +4,10 @@ var versionNodes = [
         url: "https://docs.astarte-platform.org/astarte-kubernetes-operator/snapshot"
     },
     {
+        version: "v26.5 (unreleased)",
+        url: "https://docs.astarte-platform.org/astarte-kubernetes-operator/26.5"
+    },
+    {
         version: "v24.5 (latest stable)",
         url: "https://docs.astarte-platform.org/astarte-kubernetes-operator/24.5"
     },
