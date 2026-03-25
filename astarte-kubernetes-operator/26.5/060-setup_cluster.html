@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-43D5C4CA.js"></script>
+    <script src="dist/sidebar_items-C9A3CF97.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -116,69 +116,42 @@ Clea Astarte Operator
 This gives you an high degree of customization, allowing you to tweak any single parameter in the
 Astarte setup.</p><p>The main Astarte CRD is extensively documented and the available fields can be inspected
 <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/snapshot/crds/index.html">here</a>.</p><p>To create your Astarte resource, just create your Astarte Custom Resource, which will look something
-like this:</p><pre><code class="yaml">apiVersion: api.astarte-platform.org/v1alpha1
+like this:</p><pre><code class="yaml">apiVersion: api.astarte-platform.org/v2alpha1
 kind: Astarte
 metadata:
   name: astarte
   namespace: astarte
 spec:
-  # This is the most minimal set of reasonable configuration to spin up an Astarte
-  # instance with reasonable defaults and enough control over the deployment.
-  version: 1.1.1
+  version: 1.3.0
   api:
-    host: &quot;api.astarte.yourdomain.com&quot; # MANDATORY
-  rabbitmq:
-    resources:
-      requests:
-        cpu: 300m
-        memory: 512M
-      limits:
-        cpu: 1
-        memory: 1000M
-  # this configuration deploys cassandra in cluster. This is not advised for production environments
+    host: api.astarte.yourdomain.com
   cassandra:
-    maxHeapSize: 1024M
-    heapNewSize: 256M
-    storage:
-      size: 30Gi
-    resources:
-      requests:
-        cpu: 1
-        memory: 1024M
-      limits:
-        cpu: 2
-        memory: 2048M
+    connection:
+      nodes:
+        - host: &quot;cassandra.example.com&quot;
+          port: 9042
+      credentialsSecret:
+        name: cassandra-connection-secret
+        usernameKey: username
+        passwordKey: password
   vernemq:
-    host: &quot;broker.astarte.yourdomain.com&quot;
+    deploy: true
+    replicas: 1
+    host: broker.astarte.yourdomain.com
+    port: 1883
     sslListener: true
-    sslListenerCertSecretName: &lt;your-tls-secret&gt;
-    resources:
-      requests:
-        cpu: 200m
-        memory: 1024M
-      limits:
-        cpu: 1000m
-        memory: 2048M
-  cfssl:
-    resources:
-      requests:
-        cpu: 100m
-        memory: 128M
-      limits:
-        cpu: 200m
-        memory: 256M
-    storage:
-      size: 2Gi
-  components:
-    # Global resource allocation. Automatically allocates resources to components weighted in a
-    # reasonable way.
-    resources:
-      requests:
-        cpu: 1200m
-        memory: 3072M
-      limits:
-        cpu: 3000m
-        memory: 6144M</code></pre><p>Starting from Astarte v1.0.1, traffic coming to the broker is TLS terminated ad VerneMQ level. The
+    sslListenerCertSecretName: astarte-tls-cert
+  rabbitmq:
+    connection:
+      host: &quot;rabbitmq.example.com&quot;
+      port: 5672
+      credentialsSecret:
+        name: rabbitmq-connection-secret
+        usernameKey: username
+        passwordKey: password
+    managementConnection:
+      host: &quot;rabbitmq.example.com&quot;
+      port: 5672</code></pre><p>Starting from Astarte v1.0.1, traffic coming to the broker is TLS terminated ad VerneMQ level. The
 two fields controlling this features, namely <code class="inline">sslListener</code> and <code class="inline">sslListenerCertSecretName</code> can be
 found within the <code class="inline">vernemq</code> section of the Astarte CR. In a nutshell, their meaning is:</p><ul><li><code class="inline">sslListener</code> controls whether TLS termination is enabled at VerneMQ level or not,</li><li><code class="inline">sslListenerCertSecretName</code> is the name of TLS secret used for TLS termination (more on how to
 deal with Astarte certificates <a href="050-handling_certificates.html">here</a>). When <code class="inline">sslListener</code> is
