@@ -1,1 +1,0 @@
-navigator.serviceWorker&&navigator.serviceWorker.register("/astarte-kubernetes-operator/refs/tags/24.5.2/crds/sw.js",{scope:"/astarte-kubernetes-operator/refs/tags/24.5.2/crds/"})
