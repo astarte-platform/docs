@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-C9A3CF97.js"></script>
+    <script src="dist/sidebar_items-45BEE345.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -132,7 +132,9 @@ It also includes new fields for more advanced replication strategies.</li><li><s
   </a>
   Keyspace Fields
 </h3>
-<p>The entire <code class="inline">astarteSystemKeyspace</code> object has been moved and enhanced.</p><table><thead><tr><th style="text-align: left;">v1alpha3 Path</th><th style="text-align: left;">v2alpha1 Path</th><th style="text-align: left;">Action Required</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">spec.astarteSystemKeyspace</code></td><td style="text-align: left;"><code class="inline">spec.cassandra.astarteSystemKeyspace</code></td><td style="text-align: left;"><strong>Moved &amp; Enhanced</strong>. Move the object under <code class="inline">spec.cassandra</code>.</td></tr><tr><td style="text-align: left;"><code class="inline">(none)</code></td><td style="text-align: left;"><code class="inline">astarteSystemKeyspace.replicationStrategy</code></td><td style="text-align: left;"><strong>New field</strong>. You can now specify the replication strategy (<code class="inline">&quot;SimpleStrategy&quot;</code> or <code class="inline">&quot;NetworkTopologyStrategy&quot;</code>). Defaults to <code class="inline">&quot;SimpleStrategy&quot;</code>.</td></tr><tr><td style="text-align: left;"><code class="inline">(none)</code></td><td style="text-align: left;"><code class="inline">astarteSystemKeyspace.dataCenterReplication</code></td><td style="text-align: left;"><strong>New field</strong>. Use this to specify per-datacenter replication factors when using <code class="inline">&quot;NetworkTopologyStrategy&quot;</code>. For example: <code class="inline">&quot;dc1:3,dc2:3&quot;</code>.</td></tr></tbody></table><h2 id="rabbitmq" class="section-heading">
+<p>The entire <code class="inline">astarteSystemKeyspace</code> object has been moved and enhanced. 
+<code class="inline">spec.cassandra.astarteSystemKeyspace</code> is now a required field, along with new options for replication strategy and data center replication factors depending on the chosen strategy.
+No default values are provided, once the fields are set, they cannot be later updated without deleting the Astarte instance.</p><table><thead><tr><th style="text-align: left;">v1alpha3 Path</th><th style="text-align: left;">v2alpha1 Path</th><th style="text-align: left;">Action Required</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">spec.astarteSystemKeyspace</code></td><td style="text-align: left;"><code class="inline">spec.cassandra.astarteSystemKeyspace</code></td><td style="text-align: left;"><strong>Moved &amp; Enhanced</strong>. Move the object under <code class="inline">spec.cassandra</code>.</td></tr><tr><td style="text-align: left;"><code class="inline">(none)</code></td><td style="text-align: left;"><code class="inline">astarteSystemKeyspace.replicationStrategy</code></td><td style="text-align: left;"><strong>New field</strong>. You can now specify the replication strategy (<code class="inline">&quot;SimpleStrategy&quot;</code> or <code class="inline">&quot;NetworkTopologyStrategy&quot;</code>).</td></tr><tr><td style="text-align: left;"><code class="inline">(none)</code></td><td style="text-align: left;"><code class="inline">astarteSystemKeyspace.dataCenterReplication</code></td><td style="text-align: left;"><strong>New field</strong>. Use this to specify per-datacenter replication factors when using <code class="inline">&quot;NetworkTopologyStrategy&quot;</code>. For example: <code class="inline">&quot;dc1:3,dc2:3&quot;</code>.</td></tr></tbody></table><h2 id="rabbitmq" class="section-heading">
   <a href="#rabbitmq" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">rabbitmq</p>
   </a>
@@ -202,7 +204,7 @@ Other components like <code class="inline">appengineApi</code> or <code class="i
 <div class="bottom-actions">
   <div class="bottom-actions-item">
 
-      <a href="070-upgrade_245_264.html" class="bottom-actions-button" rel="prev">
+      <a href="070-upgrade_245_265.html" class="bottom-actions-button" rel="prev">
         <span class="subheader">
           ← Previous Page
         </span>

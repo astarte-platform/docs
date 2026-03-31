@@ -981,7 +981,7 @@ add unnecessary complexity to the CRD schema.</p>
   <a href="/astarte-kubernetes-operator/26.5/crds/#astartesystemkeyspacespec">AstarteSystemKeyspaceSpec</a></em></td>
           <td></td>
           <td></td>
-          <td>Optional: {} <br /></td>
+          <td>Required: {} <br /></td>
       </tr>
   </tbody>
 </table>
@@ -2421,6 +2421,8 @@ deployments) the replica distribution per datacenter. These settings take effect
 <li>ReplicationFactor (for SimpleStrategy or for default replication factor with NetworkTopologyStrategy).</li>
 <li>DataCenterReplication (for flexible NetworkTopologyStrategy configurations).</li>
 </ul>
+<p>These fields must be set at the first apply of the CR and cannot be changed later on,
+for this reason no default is provided: the user shall make a conscious choice.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -2438,19 +2440,19 @@ deployments) the replica distribution per datacenter. These settings take effect
   <tbody>
       <tr>
           <td><code>replicationStrategy</code> <em>string</em></td>
-          <td>ReplicationStrategy specifies the Cassandra/ScyllaDB replication strategy for the keyspace.<br />Must be either &ldquo;SimpleStrategy&rdquo; or &ldquo;NetworkTopologyStrategy&rdquo; (for production deployments and/or<br />multi-datacenter deployments).<br />Defaults to &ldquo;SimpleStrategy&rdquo;.</td>
-          <td>SimpleStrategy</td>
-          <td>Enum: [SimpleStrategy NetworkTopologyStrategy] <br /></td>
+          <td>ReplicationStrategy specifies the Cassandra/ScyllaDB replication strategy for the keyspace.<br />Must be either &ldquo;SimpleStrategy&rdquo; or &ldquo;NetworkTopologyStrategy&rdquo; (for production deployments and/or<br />multi-datacenter deployments).</td>
+          <td></td>
+          <td>Enum: [SimpleStrategy NetworkTopologyStrategy] <br />Required: {} <br /></td>
       </tr>
       <tr>
           <td><code>replicationFactor</code> <em>integer</em></td>
-          <td>ReplicationFactor sets the total number of replicas for the keyspace when using SimpleStrategy.<br />This field is ignored if ReplicationStrategy is set to NetworkTopologyStrategy.<br />Must be at least 1. Must be odd. Defaults to 1.</td>
-          <td>1</td>
+          <td>ReplicationFactor sets the total number of replicas for the keyspace when using SimpleStrategy.<br />Must be at least 1. Must be odd.<br />Shall be set if and only if replicationStrategy is SimpleStrategy (checked with Admission Webhooks)<br />This field is ignored if ReplicationStrategy is set to NetworkTopologyStrategy.</td>
+          <td></td>
           <td>Minimum: 1 <br />Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>dataCenterReplication</code> <em>string</em></td>
-          <td>DataCenterReplication specifies custom replication factors per datacenter when using NetworkTopologyStrategy.<br />If set, this string must be a comma-separated list of <DataCenter>:<ReplicationFactor> entries<br />(e.g., &ldquo;dc1:3,dc2:5&rdquo;). <ReplicationFactor> must be odd.<br />This field is ignored if ReplicationStrategy is set to SimpleStrategy.</td>
+          <td>DataCenterReplication specifies custom replication factors per datacenter when using NetworkTopologyStrategy.<br />If set, this string must be a comma-separated list of <DataCenter>:<ReplicationFactor> entries<br />(e.g., &ldquo;dc1:3,dc2:5&rdquo;). <ReplicationFactor> must be odd.<br />Shall be set if and only if replicationStrategy is NetworkTopologyStrategy (checked with Admission Webhooks)<br />This field is ignored if ReplicationStrategy is set to SimpleStrategy.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
