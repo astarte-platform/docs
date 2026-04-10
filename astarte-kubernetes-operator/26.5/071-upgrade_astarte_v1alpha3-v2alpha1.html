@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-45BEE345.js"></script>
+    <script src="dist/sidebar_items-DC796E76.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -153,11 +153,11 @@ The connection details are now more structured and standardized, aligning with h
   </a>
   Connection Fields (<code class="inline">spec.rabbitmq.connection</code>)
 </h3>
-<p>The connection spec has been updated to use a more generic and structured format.</p><table><thead><tr><th style="text-align: left;">v1alpha3 Path</th><th style="text-align: left;">v2alpha1 Path</th><th style="text-align: left;">Action Required</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">connection.username</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>. Credentials must now be provided via a secret.</td></tr><tr><td style="text-align: left;"><code class="inline">connection.password</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>. Credentials must now be provided via a secret.</td></tr><tr><td style="text-align: left;"><code class="inline">connection.secret</code></td><td style="text-align: left;"><code class="inline">connection.credentialsSecret</code></td><td style="text-align: left;"><strong>Renamed</strong>. The <code class="inline">secret</code> field is now called <code class="inline">credentialsSecret</code>.</td></tr></tbody></table><h3 id="managment-connection-fields-spec-rabbitmq-managementconnection" class="section-heading">
-  <a href="#managment-connection-fields-spec-rabbitmq-managementconnection" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">managment-connection-fields-spec-rabbitmq-managementconnection</p>
+<p>The connection spec has been updated to use a more generic and structured format.</p><table><thead><tr><th style="text-align: left;">v1alpha3 Path</th><th style="text-align: left;">v2alpha1 Path</th><th style="text-align: left;">Action Required</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">connection.username</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>. Credentials must now be provided via a secret.</td></tr><tr><td style="text-align: left;"><code class="inline">connection.password</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>. Credentials must now be provided via a secret.</td></tr><tr><td style="text-align: left;"><code class="inline">connection.secret</code></td><td style="text-align: left;"><code class="inline">connection.credentialsSecret</code></td><td style="text-align: left;"><strong>Renamed</strong>. The <code class="inline">secret</code> field is now called <code class="inline">credentialsSecret</code>.</td></tr></tbody></table><h3 id="management-connection-fields-spec-rabbitmq-managementconnection" class="section-heading">
+  <a href="#management-connection-fields-spec-rabbitmq-managementconnection" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">management-connection-fields-spec-rabbitmq-managementconnection</p>
   </a>
-  Managment Connection Fields (<code class="inline">spec.rabbitmq.managementConnection</code>)
+  Management Connection Fields (<code class="inline">spec.rabbitmq.managementConnection</code>)
 </h3>
 <p>The management connection spec has been introduced in <code class="inline">v2alpha1</code> to allow separate connection details for the RabbitMQ management API.</p><h2 id="vernemq" class="section-heading">
   <a href="#vernemq" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>

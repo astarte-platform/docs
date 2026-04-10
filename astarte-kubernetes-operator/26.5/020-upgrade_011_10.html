@@ -12,7 +12,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-45BEE345.js"></script>
+    <script src="dist/sidebar_items-DC796E76.js"></script>
 
       <script src="../common_vars.js"></script>
 
@@ -123,7 +123,7 @@ ready with a working <a href="https://helm.sh/docs/intro/install/">Helm installa
 <p>Currently you have to manually migrate the CA certificate and private key to the new installation.
 This is critical since the devices in your realm have certificates signed with those CA credentials,
 and if the CA certificate changes all devices will have invalid credentials and will have to request
-new credentials.</p><p><code class="inline">tar</code> must be installed onto your machine in order to successfully complete this step.</p><p>Export the following enviroment variables and ensure they matches the name of the corresponding
+new credentials.</p><p><code class="inline">tar</code> must be installed onto your machine in order to successfully complete this step.</p><p>Export the following environment variables and ensure they match the name of the corresponding
 components within your cluster:</p><ul><li><code class="inline">ASTARTE_RELEASE_NAME</code>: the name of the Astarte instance deployed in your cluster,</li><li><code class="inline">ASTARTE_RELEASE_NAMESPACE</code>: the namespace in which your Astarte instance resides.</li></ul><p>For instance, if you followed the standard naming conventions while installing Astarte it should be
 sufficient setting the following values:</p><pre><code class="makeup bash" translate="no"><span class="">export ASTARTE_RELEASE_NAME=astarte
 </span><span class="">export ASTARTE_RELEASE_NAMESPACE=astarte
