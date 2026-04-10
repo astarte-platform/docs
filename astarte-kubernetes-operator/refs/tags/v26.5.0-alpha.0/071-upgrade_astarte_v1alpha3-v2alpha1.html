@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.29.0">
+    <meta name="project" content="Clea Astarte Operator v26.5.0-alpha.0">
+
+    <title>Astarte CR Changes from v1alpha3 to v2alpha1 — Clea Astarte Operator v26.5.0-alpha.0</title>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-45BEE345.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/snapshot/">
+        <img src="assets/logo.png" alt="Clea Astarte Operator" class="sidebar-projectImage">
+      </a>
+
+    <div class="sidebar-projectDetails">
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/snapshot/" class="sidebar-projectName" translate="no">
+Clea Astarte Operator
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
+        v26.5.0-alpha.0
+      </strong>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/master/docs/documentation/pages/upgrade/071-upgrade_astarte_v1alpha3-v2alpha1.md#L1" title="View Source" class="view-source" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span>Astarte CR Changes from v1alpha3 to v2alpha1</span>
+</h1>
+
+<h2 id="scylla" class="section-heading">
+  <a href="#scylla" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">scylla</p>
+  </a>
+  Scylla
+</h2>
+<p>The most significant change is that <strong>the Astarte operator no longer manages the Cassandra cluster deployment</strong>.
+Cassandra is now treated as a fully external service, and the CRD only contains the necessary connection details.</p><p>This results in the following key changes:</p><ul><li><strong>Removal of Deployment Fields</strong>: All fields related to deploying a Cassandra cluster (e.g., <code class="inline">deploy</code>, <code class="inline">replicas</code>, <code class="inline">image</code>, <code class="inline">storage</code>) have been removed from the <code class="inline">cassandra</code> spec. 
+You are now responsible for deploying and managing your Cassandra or ScyllaDB cluster separately.</li><li><strong>Restructured <code class="inline">nodes</code></strong>: The <code class="inline">nodes</code> field, which was a single comma-separated string, is now a structured list of <code class="inline">host</code> and <code class="inline">port</code> objects.</li><li><strong>Relocated <code class="inline">astarteSystemKeyspace</code></strong>: The <code class="inline">astarteSystemKeyspace</code> configuration has been moved from the top level of the <code class="inline">spec</code> into <code class="inline">spec.cassandra</code>.
+It also includes new fields for more advanced replication strategies.</li><li><strong>Standardized Connection Spec</strong>: The <code class="inline">connection</code> spec has been changed, renaming <code class="inline">secret</code> to <code class="inline">credentialsSecret</code> and removing deprecated or unused fields.</li></ul><h3 id="top-level-cassandra-fields-spec-cassandra" class="section-heading">
+  <a href="#top-level-cassandra-fields-spec-cassandra" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">top-level-cassandra-fields-spec-cassandra</p>
+  </a>
+  Top-Level Cassandra Fields (<code class="inline">spec.cassandra</code>)
+</h3>
+<table><thead><tr><th style="text-align: left;">v1alpha3 Path</th><th style="text-align: left;">v2alpha1 Path</th><th style="text-align: left;">Action Required</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">deploy</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed.</strong></td></tr><tr><td style="text-align: left;"><code class="inline">replicas</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>.</td></tr><tr><td style="text-align: left;"><code class="inline">image</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>.</td></tr><tr><td style="text-align: left;"><code class="inline">version</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>.</td></tr><tr><td style="text-align: left;"><code class="inline">storage</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>.</td></tr><tr><td style="text-align: left;"><code class="inline">maxHeapSize</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>.</td></tr><tr><td style="text-align: left;"><code class="inline">heapNewSize</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>.</td></tr><tr><td style="text-align: left;"><code class="inline">resources</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>.</td></tr><tr><td style="text-align: left;"><code class="inline">nodes</code></td><td style="text-align: left;"><code class="inline">connection.nodes</code></td><td style="text-align: left;"><strong>Restructured</strong>. Convert the comma-separated string into a list of objects. For example, <code class="inline">&quot;host1:9042,host2:9042&quot;</code> becomes <code class="inline">[{&quot;host&quot;: &quot;host1&quot;, &quot;port&quot;: 9042}, {&quot;host&quot;: &quot;host2&quot;, &quot;port&quot;: 9042}]</code>.</td></tr><tr><td style="text-align: left;"><code class="inline">connection</code></td><td style="text-align: left;"><code class="inline">connection</code></td><td style="text-align: left;"><strong>Kept</strong>. Sub-fields have changed. See the section below.</td></tr><tr><td style="text-align: left;"><code class="inline">(none)</code></td><td style="text-align: left;"><code class="inline">astarteSystemKeyspace</code></td><td style="text-align: left;"><strong>Moved</strong>. The <code class="inline">astarteSystemKeyspace</code> object is now nested under <code class="inline">cassandra</code>.</td></tr></tbody></table><h3 id="connection-fields-spec-cassandra-connection" class="section-heading">
+  <a href="#connection-fields-spec-cassandra-connection" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">connection-fields-spec-cassandra-connection</p>
+  </a>
+  Connection Fields (<code class="inline">spec.cassandra.connection</code>)
+</h3>
+<table><thead><tr><th style="text-align: left;">v1alpha3 Path</th><th style="text-align: left;">v2alpha1 Path</th><th style="text-align: left;">Action Required</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">connection.autodiscovery</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>. This field is no longer used.</td></tr><tr><td style="text-align: left;"><code class="inline">connection.username</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>. Credentials must now be provided via a secret.</td></tr><tr><td style="text-align: left;"><code class="inline">connection.password</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>. Credentials must now be provided via a secret.</td></tr><tr><td style="text-align: left;"><code class="inline">connection.secret</code></td><td style="text-align: left;"><code class="inline">connection.credentialsSecret</code></td><td style="text-align: left;"><strong>Renamed</strong>. The field <code class="inline">secret</code> is now <code class="inline">credentialsSecret</code>.</td></tr><tr><td style="text-align: left;"><code class="inline">(none)</code></td><td style="text-align: left;"><code class="inline">connection.enableKeepalive</code></td><td style="text-align: left;"><strong>New field</strong>. This is a new optional boolean field that defaults to <code class="inline">true</code>.</td></tr></tbody></table><h3 id="keyspace-fields" class="section-heading">
+  <a href="#keyspace-fields" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">keyspace-fields</p>
+  </a>
+  Keyspace Fields
+</h3>
+<p>The entire <code class="inline">astarteSystemKeyspace</code> object has been moved and enhanced. 
+<code class="inline">spec.cassandra.astarteSystemKeyspace</code> is now a required field, along with new options for replication strategy and data center replication factors depending on the chosen strategy.
+No default values are provided, once the fields are set, they cannot be later updated without deleting the Astarte instance.</p><table><thead><tr><th style="text-align: left;">v1alpha3 Path</th><th style="text-align: left;">v2alpha1 Path</th><th style="text-align: left;">Action Required</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">spec.astarteSystemKeyspace</code></td><td style="text-align: left;"><code class="inline">spec.cassandra.astarteSystemKeyspace</code></td><td style="text-align: left;"><strong>Moved &amp; Enhanced</strong>. Move the object under <code class="inline">spec.cassandra</code>.</td></tr><tr><td style="text-align: left;"><code class="inline">(none)</code></td><td style="text-align: left;"><code class="inline">astarteSystemKeyspace.replicationStrategy</code></td><td style="text-align: left;"><strong>New field</strong>. You can now specify the replication strategy (<code class="inline">&quot;SimpleStrategy&quot;</code> or <code class="inline">&quot;NetworkTopologyStrategy&quot;</code>).</td></tr><tr><td style="text-align: left;"><code class="inline">(none)</code></td><td style="text-align: left;"><code class="inline">astarteSystemKeyspace.dataCenterReplication</code></td><td style="text-align: left;"><strong>New field</strong>. Use this to specify per-datacenter replication factors when using <code class="inline">&quot;NetworkTopologyStrategy&quot;</code>. For example: <code class="inline">&quot;dc1:3,dc2:3&quot;</code>.</td></tr></tbody></table><h2 id="rabbitmq" class="section-heading">
+  <a href="#rabbitmq" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">rabbitmq</p>
+  </a>
+  RabbitMQ
+</h2>
+<p>RabbitMQ is now treated as an external dependency. All fields for deploying a cluster (<code class="inline">deploy</code>, <code class="inline">replicas</code>, <code class="inline">image</code>, <code class="inline">storage</code>, etc.) have been removed.
+The connection details are now more structured and standardized, aligning with how other external services like Cassandra are handled.</p><p>Before proceeding, ensure that you have a running RabbitMQ instance and all the necessary connection details.</p><h3 id="top-level-rabbitmq-fields-spec-rabbitmq" class="section-heading">
+  <a href="#top-level-rabbitmq-fields-spec-rabbitmq" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">top-level-rabbitmq-fields-spec-rabbitmq</p>
+  </a>
+  Top-Level RabbitMQ Fields (<code class="inline">spec.rabbitmq</code>)
+</h3>
+<p>Most fields at this level have been removed because the operator no longer deploys RabbitMQ.</p><table><thead><tr><th style="text-align: left;">v1alpha3 Path</th><th style="text-align: left;">v2alpha1 Path</th><th style="text-align: left;">Action Required</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">deploy</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>. You must now manage your own RabbitMQ deployment.</td></tr><tr><td style="text-align: left;"><code class="inline">replicas</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>.</td></tr><tr><td style="text-align: left;"><code class="inline">image</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>.</td></tr><tr><td style="text-align: left;"><code class="inline">version</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>.</td></tr><tr><td style="text-align: left;"><code class="inline">storage</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>.</td></tr><tr><td style="text-align: left;"><code class="inline">additionalPlugins</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>. Ensure required plugins (like <code class="inline">rabbitmq_management</code>) are enabled in your external instance.</td></tr><tr><td style="text-align: left;"><code class="inline">resources</code>, <code class="inline">antiAffinity</code>, <code class="inline">customAffinity</code>, etc.</td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>. All deployment-related fields are gone.</td></tr><tr><td style="text-align: left;"><code class="inline">connection</code></td><td style="text-align: left;"><code class="inline">spec.rabbitmq.connection</code></td><td style="text-align: left;"><strong>Kept and Restructured</strong>. See the section below for details on its sub-fields.</td></tr></tbody></table><h3 id="connection-fields-spec-rabbitmq-connection" class="section-heading">
+  <a href="#connection-fields-spec-rabbitmq-connection" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">connection-fields-spec-rabbitmq-connection</p>
+  </a>
+  Connection Fields (<code class="inline">spec.rabbitmq.connection</code>)
+</h3>
+<p>The connection spec has been updated to use a more generic and structured format.</p><table><thead><tr><th style="text-align: left;">v1alpha3 Path</th><th style="text-align: left;">v2alpha1 Path</th><th style="text-align: left;">Action Required</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">connection.username</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>. Credentials must now be provided via a secret.</td></tr><tr><td style="text-align: left;"><code class="inline">connection.password</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>. Credentials must now be provided via a secret.</td></tr><tr><td style="text-align: left;"><code class="inline">connection.secret</code></td><td style="text-align: left;"><code class="inline">connection.credentialsSecret</code></td><td style="text-align: left;"><strong>Renamed</strong>. The <code class="inline">secret</code> field is now called <code class="inline">credentialsSecret</code>.</td></tr></tbody></table><h3 id="managment-connection-fields-spec-rabbitmq-managementconnection" class="section-heading">
+  <a href="#managment-connection-fields-spec-rabbitmq-managementconnection" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">managment-connection-fields-spec-rabbitmq-managementconnection</p>
+  </a>
+  Managment Connection Fields (<code class="inline">spec.rabbitmq.managementConnection</code>)
+</h3>
+<p>The management connection spec has been introduced in <code class="inline">v2alpha1</code> to allow separate connection details for the RabbitMQ management API.</p><h2 id="vernemq" class="section-heading">
+  <a href="#vernemq" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">vernemq</p>
+  </a>
+  VerneMQ
+</h2>
+<p>Unlike RabbitMQ and Cassandra, the Astarte operator <strong>still manages the VerneMQ deployment</strong>.
+Most of your existing configuration will be directly transferable. No major changes have been made to the VerneMQ spec.</p><h2 id="cfssl" class="section-heading">
+  <a href="#cfssl" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">cfssl</p>
+  </a>
+  CFSSL
+</h2>
+<table><thead><tr><th style="text-align: left;">v1alpha3 Path</th><th style="text-align: left;">v2alpha1 Path</th><th style="text-align: left;">Action Required</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">csrRootCa</code></td><td style="text-align: left;"><code class="inline">csrRootCa</code></td><td style="text-align: left;"><strong>Kept and Restructured</strong>. See the section below.</td></tr><tr><td style="text-align: left;"><code class="inline">caRootConfig</code></td><td style="text-align: left;"><code class="inline">caRootConfig</code></td><td style="text-align: left;"><strong>Kept and Restructured</strong>. See the section below.</td></tr></tbody></table><h3 id="csr-root-ca-fields-spec-cfssl-csrrootca" class="section-heading">
+  <a href="#csr-root-ca-fields-spec-cfssl-csrrootca" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">csr-root-ca-fields-spec-cfssl-csrrootca</p>
+  </a>
+  CSR Root CA Fields (<code class="inline">spec.cfssl.csrRootCa</code>)
+</h3>
+<p>The structure for defining the root CA's Certificate Signing Request has a minor change.</p><table><thead><tr><th style="text-align: left;">v1alpha3 Path</th><th style="text-align: left;">v2alpha1 Path</th><th style="text-align: left;">Action Required</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">csrRootCa.ca.expiry</code></td><td style="text-align: left;"><code class="inline">csrRootCa.expiry</code></td><td style="text-align: left;"><strong>Moved and Renamed</strong>. The <code class="inline">expiry</code> string is no longer nested under a <code class="inline">ca</code> object. Move it up one level.</td></tr></tbody></table><h3 id="ca-root-config-fields-spec-cfssl-carootconfig" class="section-heading">
+  <a href="#ca-root-config-fields-spec-cfssl-carootconfig" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">ca-root-config-fields-spec-cfssl-carootconfig</p>
+  </a>
+  CA Root Config Fields (<code class="inline">spec.cfssl.caRootConfig</code>)
+</h3>
+<p>The structure for the CA's root configuration has also been slightly simplified.</p><table><thead><tr><th style="text-align: left;">v1alpha3 Path</th><th style="text-align: left;">v2alpha1 Path</th><th style="text-align: left;">Action Required</th><th style="text-align: left;"></th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">caRootConfig.signing.default</code></td><td style="text-align: left;"><code class="inline">caRootConfig.signingDefault</code></td><td style="text-align: left;"><strong>Moved and Renamed</strong>. The object previously at <code class="inline">signing.default</code> is now directly at <code class="inline">signingDefault</code>.</td><td style="text-align: left;"></td></tr></tbody></table><h2 id="other-fields" class="section-heading">
+  <a href="#other-fields" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">other-fields</p>
+  </a>
+  Other fields
+</h2>
+<table><thead><tr><th style="text-align: left;">v1alpha3 Path</th><th style="text-align: left;">v2alpha1 Path</th><th style="text-align: left;">Action Required</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">rbac</code></td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;"><strong>Removed</strong>. This field is no longer used. RBAC is now always managed by the operator.</td></tr><tr><td style="text-align: left;"><code class="inline">astarteSystemKeyspace</code></td><td style="text-align: left;"><code class="inline">spec.cassandra.astarteSystemKeyspace</code></td><td style="text-align: left;"><strong>Moved</strong>. This field is now located under the <code class="inline">cassandra</code> spec.</td></tr></tbody></table><h2 id="components" class="section-heading">
+  <a href="#components" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">components</p>
+  </a>
+  Components
+</h2>
+<p>The structure of the <code class="inline">components</code> spec has been significantly simplified.
+In <code class="inline">v1alpha3</code>, several components (<code class="inline">housekeeping</code>, <code class="inline">realmManagement</code>, <code class="inline">pairing</code>) were split into distinct <code class="inline">api</code> and <code class="inline">backend</code> objects.
+This separation has been removed in <code class="inline">v2alpha1</code>.</p><p>Now, <strong>each component is a single, unified object</strong> that combines the properties of the former <code class="inline">api</code> and <code class="inline">backend</code>.
+You will need to merge the configurations from both sub-objects into the new, flattened structure.</p><table><thead><tr><th style="text-align: left;">v1alpha3 Path</th><th style="text-align: left;">v2alpha1 Path</th><th style="text-align: left;">Action Required</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">components.&lt;name&gt;.api</code></td><td style="text-align: left;"><code class="inline">components.&lt;name&gt;</code></td><td style="text-align: left;"><strong>Merged &amp; Flattened.</strong> The <code class="inline">api</code> object is gone.</td></tr><tr><td style="text-align: left;"><code class="inline">components.&lt;name&gt;.backend</code></td><td style="text-align: left;"><code class="inline">components.&lt;name&gt;</code></td><td style="text-align: left;"><strong>Merged &amp; Flattened.</strong> The <code class="inline">backend</code> object is gone.</td></tr><tr><td style="text-align: left;"><code class="inline">components.&lt;name&gt;.api.&lt;field&gt;</code></td><td style="text-align: left;"><code class="inline">components.&lt;name&gt;.&lt;field&gt;</code></td><td style="text-align: left;"><strong>Moved.</strong> Move all fields from the <code class="inline">api</code> block directly under the component's name.</td></tr><tr><td style="text-align: left;"><code class="inline">components.&lt;name&gt;.backend.&lt;field&gt;</code></td><td style="text-align: left;"><code class="inline">components.&lt;name&gt;.&lt;field&gt;</code></td><td style="text-align: left;"><strong>Moved.</strong> Move all fields from the <code class="inline">backend</code> block directly under the component's name.</td></tr></tbody></table><p>This change applies primarily to <code class="inline">housekeeping</code>, <code class="inline">realmManagement</code>, and <code class="inline">pairing</code>.
+Other components like <code class="inline">appengineApi</code> or <code class="inline">dataUpdaterPlant</code> already had a flatter structure and require minimal or no changes.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="070-upgrade_245_265.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Upgrade v24.5.x-v26.5.x
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="072-upgrade_adi_v1alpha1-v2alpha1.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+ADI (Astarte Default Ingress) CR Changes from v1alpha1 to v2alpha1
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
+        <p>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>

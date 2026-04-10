@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.29.0">
+    <meta name="project" content="Clea Astarte Operator v26.5.0-alpha.0">
+
+    <title>ADI (Astarte Default Ingress) CR Changes from v1alpha1 to v2alpha1 — Clea Astarte Operator v26.5.0-alpha.0</title>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-45BEE345.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/snapshot/">
+        <img src="assets/logo.png" alt="Clea Astarte Operator" class="sidebar-projectImage">
+      </a>
+
+    <div class="sidebar-projectDetails">
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/snapshot/" class="sidebar-projectName" translate="no">
+Clea Astarte Operator
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
+        v26.5.0-alpha.0
+      </strong>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/master/docs/documentation/pages/upgrade/072-upgrade_adi_v1alpha1-v2alpha1.md#L1" title="View Source" class="view-source" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span>ADI (Astarte Default Ingress) CR Changes from v1alpha1 to v2alpha1</span>
+</h1>
+
+<h1>Metrics</h1><p>Starting with ADI v2alpha1, metrics are no longer exposed via the Astarte Default Ingress. If metrics are required to be exposed, a custom ingress must be provided.
+Prometheus ServiceMonitors remain the recommended collection method.</p><h3 id="metrics-fields-spec-api" class="section-heading">
+  <a href="#metrics-fields-spec-api" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">metrics-fields-spec-api</p>
+  </a>
+  Metrics Fields (<code class="inline">spec.api</code>)
+</h3>
+<table><thead><tr><th style="text-align: left;"><strong>Field</strong></th><th style="text-align: left;"><strong>v1alpha1</strong></th><th style="text-align: left;"><strong>v2alpha1</strong></th><th style="text-align: left;"><strong>Description</strong></th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">ServeMetrics</code></td><td style="text-align: left;"><strong>Present</strong> (<code class="inline">*bool</code>)</td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;">The option to serve metrics on a dedicated ingress has been removed.</td></tr><tr><td style="text-align: left;"><code class="inline">ServeMetricsToSubnet</code></td><td style="text-align: left;"><strong>Present</strong> (<code class="inline">string</code>)</td><td style="text-align: left;"><strong>Removed</strong></td><td style="text-align: left;">The option to restrict metrics access to a specific subnet has been removed.</td></tr></tbody></table><h1>Ingress Controller Annotation</h1><p>ADI v2alpha1 is the last version supporting NGINX as Ingress Controller due to <a href="https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/">Ingress NGINX retirement</a>.
+It is highly recommended to migrate to HAProxy Ingress Controller. To allow users to still use NGINX,
+the annotation <code class="inline">ingress.astarte-platform.org/ingress-controller-selector</code> has been introduced in ADI v1alpha1.
+Depending on the value of this annotation, the Operator will create Ingress resources compatible with the selected Ingress Controller.</p><p>By default, the Operator assumes the HAPROXY Ingress Controller is in use, in fact the annotation is set by default to:</p><pre><code class="yaml">ingress.astarte-platform.org/ingress-controller-selector: &quot;haproxy.org&quot;</code></pre><p>Deployments migrating from ADI v1alpha1 to v2alpha1 that are still using NGINX as Ingress Controller must set the annotation to:</p><pre><code class="yaml">ingress.astarte-platform.org/ingress-controller-selector: &quot;nginx.ingress.kubernetes.io&quot;</code></pre>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="071-upgrade_astarte_v1alpha3-v2alpha1.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Astarte CR Changes from v1alpha3 to v2alpha1
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="073-migration_examples.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Astarta CR Migration examples (v1alpha3 to v2alpha1)
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
+        <p>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>
