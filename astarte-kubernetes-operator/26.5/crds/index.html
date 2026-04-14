@@ -3892,7 +3892,7 @@ Worker</p>
       </tr>
       <tr>
           <td><code>ingressClass</code> <em>string</em></td>
-          <td>In clusters with more than one instance of the Ingress-NGINX controller, all<br />instances of the controllers must be aware of which Ingress object they must serve.<br />The ingressClass field of a ingress object is the way to let the controller know about that.<br />Default: &ldquo;nginx&rdquo;.</td>
+          <td>In clusters with more than one ingress controllers, all<br />instances of the controllers must be aware of which Ingress object they must serve.<br />The ingressClass field of a ingress object is the way to let the controller know about that.<br />If empty, admission webhooks set default IngressClass based on Ingress Controller selection<br />defined in the annotation <code>ingress.astarte-platform.org/ingress-controller-selector</code>.<br />If the annotation is not set, HAProxy Ingress Controller is assumed by default.</td>
           <td></td>
           <td></td>
       </tr>
