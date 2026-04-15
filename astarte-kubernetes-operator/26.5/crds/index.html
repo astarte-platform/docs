@@ -1531,7 +1531,7 @@ This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
-  <a href="/astarte-kubernetes-operator/26.5/crds/#astartefeatures">AstarteFeatures</a></li>
+  <a href="/astarte-kubernetes-operator/26.5/crds/#astartespec">AstarteSpec</a></li>
 </ul>
 <table>
   <thead>
@@ -1551,7 +1551,7 @@ This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
       </tr>
       <tr>
           <td><code>rendezvousServer</code> <em>
-  <a href="/astarte-kubernetes-operator/26.5/crds/#hostandport">HostAndPort</a></em></td>
+  <a href="/astarte-kubernetes-operator/26.5/crds/#astarterendezvousserverspec">AstarteRendezvousServerSpec</a></em></td>
           <td></td>
           <td></td>
           <td>Optional: {} <br /></td>
@@ -1593,13 +1593,6 @@ This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
       <tr>
           <td><code>astartePodPriorities</code> <em>
   <a href="/astarte-kubernetes-operator/26.5/crds/#astartepodprioritiesspec">AstartePodPrioritiesSpec</a></em></td>
-          <td></td>
-          <td></td>
-          <td>Optional: {} <br /></td>
-      </tr>
-      <tr>
-          <td><code>fdo</code> <em>
-  <a href="/astarte-kubernetes-operator/26.5/crds/#astartefdospec">AstarteFDOSpec</a></em></td>
           <td></td>
           <td></td>
           <td>Optional: {} <br /></td>
@@ -2226,6 +2219,67 @@ scheduling beahaviour if not done properly.</p>
       </tr>
   </tbody>
 </table>
+<h4 id="astarterendezvousserverconnectionspec">
+  AstarteRendezvousServerConnectionSpec
+  <a class="anchor" href="#astarterendezvousserverconnectionspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/26.5/crds/#astarterendezvousserverspec">AstarteRendezvousServerSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+          <th>Default</th>
+          <th>Validation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>host</code> <em>string</em></td>
+          <td></td>
+          <td></td>
+          <td>MinLength: 1 <br />Required: {} <br /></td>
+      </tr>
+      <tr>
+          <td><code>port</code> <em>integer</em></td>
+          <td></td>
+          <td></td>
+          <td>Maximum: 65535 <br />Minimum: 1 <br />Required: {} <br /></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astarterendezvousserverspec">
+  AstarteRendezvousServerSpec
+  <a class="anchor" href="#astarterendezvousserverspec">#</a>
+</h4>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/26.5/crds/#astartefdospec">AstarteFDOSpec</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+          <th>Default</th>
+          <th>Validation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>connection</code> <em>
+  <a href="/astarte-kubernetes-operator/26.5/crds/#astarterendezvousserverconnectionspec">AstarteRendezvousServerConnectionSpec</a></em></td>
+          <td></td>
+          <td></td>
+          <td>Optional: {} <br /></td>
+      </tr>
+  </tbody>
+</table>
 <h4 id="astartespec">
   AstarteSpec
   <a class="anchor" href="#astartespec">#</a>
@@ -2319,6 +2373,13 @@ scheduling beahaviour if not done properly.</p>
           <td></td>
           <td></td>
           <td></td>
+      </tr>
+      <tr>
+          <td><code>fdo</code> <em>
+  <a href="/astarte-kubernetes-operator/26.5/crds/#astartefdospec">AstarteFDOSpec</a></em></td>
+          <td></td>
+          <td></td>
+          <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>cfssl</code> <em>
@@ -2943,11 +3004,11 @@ for this reason no default is provided: the user shall make a conscious choice.<
 <li>
   <a href="/astarte-kubernetes-operator/26.5/crds/#astartecassandraconnectionspec">AstarteCassandraConnectionSpec</a></li>
 <li>
-  <a href="/astarte-kubernetes-operator/26.5/crds/#astartefdospec">AstarteFDOSpec</a></li>
-<li>
   <a href="/astarte-kubernetes-operator/26.5/crds/#astarterabbitmqbaseconnectionspec">AstarteRabbitMQBaseConnectionSpec</a></li>
 <li>
   <a href="/astarte-kubernetes-operator/26.5/crds/#astarterabbitmqconnectionspec">AstarteRabbitMQConnectionSpec</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/26.5/crds/#astarterendezvousserverconnectionspec">AstarteRendezvousServerConnectionSpec</a></li>
 <li>
   <a href="/astarte-kubernetes-operator/26.5/crds/#astartevernemqspec">AstarteVerneMQSpec</a></li>
 </ul>
