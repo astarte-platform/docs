@@ -1,0 +1,1539 @@
+---
+components:
+  parameters:
+    DeviceID:
+      description: Device ID
+      in: path
+      name: device_id
+      required: true
+      schema:
+        type: string
+    InterfaceMajor:
+      description: Interface major version
+      in: path
+      name: major_version
+      required: true
+      schema:
+        type: integer
+    InterfaceName:
+      description: Interface name
+      in: path
+      name: interface_name
+      required: true
+      schema:
+        type: string
+    Realm:
+      description: Target realm.
+      in: path
+      name: realm_name
+      required: true
+      schema:
+        type: string
+    TriggerDeliveryPolicyName:
+      description: Trigger delivery policy name
+      in: path
+      name: policy_name
+      required: true
+      schema:
+        type: string
+    TriggerName:
+      description: Trigger name
+      in: path
+      name: trigger_name
+      required: true
+      schema:
+        type: string
+  requestBodies:
+    InstallInterface:
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/Interface'
+            required:
+              - data
+            type: object
+      description: A JSON object representing an Astarte Interface.
+      required: true
+    InstallTrigger:
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/TriggerConfig'
+            required:
+              - data
+            type: object
+      required: false
+    InstallTriggerDeliveryPolicy:
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/TriggerDeliveryPolicyConfig'
+            required:
+              - data
+            type: object
+      required: false
+    PutAuthConfig:
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/AuthConfig'
+            required:
+              - data
+            type: object
+      description: AuthConfig object with the new configuration
+      required: true
+    UpdateInterface:
+      content:
+        application/json:
+          example:
+            data:
+              interface_name: org.astarteplatform.Values
+              mappings:
+                - endpoint: /realValue
+                  explicit_timestamp: true
+                  type: double
+                - endpoint: /anotherValue
+                  type: string
+              ownership: device
+              type: datastream
+              version_major: 0
+              version_minor: 2
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/Interface'
+            required:
+              - data
+            type: object
+      description: A JSON object representing the updated Astarte Interface.
+      required: true
+  responses:
+    AuthorizationPathNotMatched:
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/AuthorizationPathNotMatchedError'
+            type: object
+      description: Authorization path not matched.
+    ConfigValidationError:
+      content:
+        application/json:
+          example:
+            errors:
+              jwt_public_key_pem:
+                - is not a valid PEM public key
+          schema:
+            $ref: '#/components/schemas/ValidationError'
+      description: The provided configuration is not valid.
+    Forbidden:
+      content:
+        application/json:
+          example:
+            errors:
+              detail: Forbidden
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/AuthorizationPathNotMatchedError'
+              - $ref: '#/components/schemas/GenericError'
+      description: Authorization failed for the resource. This could also result from unexisting resources.
+    GetAuthConfig:
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/AuthConfig'
+            required:
+              - data
+            type: object
+      description: Success
+    GetDatastreamMaximumStorageRetention:
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/DatastreamMaximumStorageRetention'
+            required:
+              - data
+            type: object
+      description: Success
+    GetDeviceRegistrationLimit:
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/DeviceRegistrationLimit'
+            required:
+              - data
+            type: object
+      description: Success
+    GetInterface:
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/Interface'
+            required:
+              - data
+            type: object
+      description: Success
+    GetInterfaceList:
+      content:
+        application/json:
+          example:
+            data:
+              - com.example.InterfaceFoo
+              - com.example.InterfaceBar
+          schema:
+            properties:
+              data:
+                items:
+                  type: string
+                type: array
+            required:
+              - data
+            type: object
+      description: Success
+    GetInterfaceMajorVersions:
+      content:
+        application/json:
+          example:
+            data:
+              - 1
+              - 2
+              - 10
+          schema:
+            properties:
+              data:
+                items:
+                  type: integer
+                type: array
+            required:
+              - data
+            type: object
+      description: Success
+    GetTrigger:
+      content:
+        application/json:
+          example:
+            data:
+              action:
+                http_post_url: http://example.com/my_post_url
+              name: my_device_connected
+              simple_triggers:
+                - device_id: glO6LullTKmwxebForU-eg
+                  'on': device_connected
+                  type: device_trigger
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/TriggerConfig'
+            type: string
+      description: Success
+    GetTriggerDeliveryPolicy:
+      content:
+        application/json:
+          example:
+            data:
+              error_handlers:
+                - 'on': any_error
+                  strategy: discard
+              maximum_capacity: 100
+              name: my_policy
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/TriggerDeliveryPolicyConfig'
+            type: string
+      description: Success
+    GetTriggerDeliveryPolicyList:
+      content:
+        application/json:
+          example:
+            data:
+              - retry_on_all_errors_policy
+              - simple_policy
+              - discard_403_errors_policy
+          schema:
+            properties:
+              data:
+                items:
+                  type: string
+                type: array
+            required:
+              - data
+            type: object
+      description: Success
+    GetTriggerList:
+      content:
+        application/json:
+          example:
+            data:
+              - new_data_on_test_interface
+              - connected_device
+              - value_above_threshold_alarm
+          schema:
+            properties:
+              data:
+                items:
+                  type: string
+                type: array
+            required:
+              - data
+            type: object
+      description: Success
+    InstallInterface:
+      description: Interface installation successfully started
+      headers:
+        Location:
+          description: URL of the installed interface
+          schema:
+            type: string
+          style: simple
+    InstallTrigger:
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/TriggerConfig'
+            required:
+              - data
+            type: object
+      description: Success
+      headers:
+        Location:
+          description: URL of the installed trigger
+          schema:
+            type: string
+          style: simple
+    InstallTriggerDeliveryPolicy:
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/TriggerDeliveryPolicyConfig'
+            required:
+              - data
+            type: object
+      description: Success
+      headers:
+        Location:
+          description: URL of the installed trigger delivery policy
+          schema:
+            type: string
+          style: simple
+    InterfaceNotFound:
+      content:
+        application/json:
+          example:
+            errors:
+              detail: Interface not found
+          schema:
+            $ref: '#/components/schemas/GenericError'
+      description: Requested interface was not found
+    InterfaceValidationError:
+      content:
+        application/json:
+          example:
+            errors:
+              mappings:
+                type:
+                  - is invalid
+          schema:
+            $ref: '#/components/schemas/ValidationError'
+      description: The provided interface is not valid.
+    InternalServerError:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GenericError'
+      description: Internal Server Error.
+    NotFound:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GenericError'
+      description: Resource not found.
+    TriggerDeliveryPolicyAlreadyInstalledError:
+      content:
+        application/json:
+          example:
+            errors:
+              detail: Policy already exists
+          schema:
+            $ref: '#/components/schemas/GenericError'
+      description: A trigger delivery policy with this name already exists.
+    TriggerDeliveryPolicyCurrentlyUsedError:
+      content:
+        application/json:
+          example:
+            errors:
+              detail: Cannot delete policy as it is being currently used by triggers
+          schema:
+            $ref: '#/components/schemas/GenericError'
+      description: The trigger delivery policy to delete is linked to one or more triggers.
+    TriggerDeliveryPolicyNotFound:
+      content:
+        application/json:
+          example:
+            errors:
+              detail: Trigger policy not found
+          schema:
+            $ref: '#/components/schemas/GenericError'
+      description: Requested trigger delivery policy was not found
+    TriggerDeliveryPolicyValidationError:
+      content:
+        application/json:
+          example:
+            errors:
+              detail: is invalid
+          schema:
+            $ref: '#/components/schemas/ValidationError'
+      description: The provided trigger delivery policy is not valid.
+    TriggerNotFound:
+      content:
+        application/json:
+          example:
+            errors:
+              detail: Trigger not found
+          schema:
+            $ref: '#/components/schemas/GenericError'
+      description: Requested trigger was not found
+    TriggerValidationError:
+      content:
+        application/json:
+          example:
+            errors:
+              simple_triggers:
+                - device_id:
+                    - is not a valid device_id
+          schema:
+            $ref: '#/components/schemas/ValidationError'
+      description: The provided trigger configuration is not valid.
+    Unauthorized:
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/MissingTokenError'
+              - $ref: '#/components/schemas/InvalidTokenError'
+              - $ref: '#/components/schemas/InvalidAuthPathError'
+      description: Token/Realm doesn't exist or operation not allowed.
+    UpdateConflict:
+      content:
+        application/json:
+          example:
+            errors:
+              detail: Interface minor version was not increased
+          schema:
+            $ref: '#/components/schemas/GenericError'
+      description: The updated interface is valid, but there's a conflict with the existing one
+  schemas:
+    AuthConfig:
+      properties:
+        jwt_public_key_pem:
+          example: |
+            -----BEGIN PUBLIC KEY-----
+            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsj7/Ci5Nx+ApLNW7+DyE
+            eTzQ68KEJT/gPW73Kpa2uyvxDwY669z/rP4hMj16wv4Ku3bI6C1ZIqT5SVuF8pDo
+            1Y1SF0GRIeslupm9KV1aFqIu1/srLz18LQHucQYUSa99PStFUJY2V83wneaeAArY
+            4VKDuQYtRZOd2VeD5Cbn602ksLLWCQc9HfL3VUHXTw6DuthnMMJARcVem8RAMScm
+            htGi6YRPFzvHtkb1WQCNGjw5gAmHX5/37ouwbBdnXOa9deiFv+1UIdcCVwMTyP/4
+            f9jgaxW4oQV85enS/OJrrC9jU11agRc4bDv1h4s2t+ETWb4llTVk3HMIHbC3EvKJ
+            VwIDAQAB
+            -----END PUBLIC KEY-----
+          type: string
+      title: AuthConfig
+      type: object
+    AuthorizationPathNotMatchedError:
+      example:
+        errors:
+          detail: Unauthorized access to GET /api/v1/some_path. Please verify your permissions
+      properties:
+        errors:
+          properties:
+            detail:
+              description: Detailed error message including the method and path
+              type: string
+          type: object
+      title: AuthorizationPathNotMatchedError
+      type: object
+    DataSimpleTrigger:
+      description: An object describing a simple trigger reacting to published data.
+      properties:
+        device_id:
+          description: The device id the trigger will be restricted to.
+          type: string
+        group_name:
+          description: The group name the trigger will be restricted to.
+          type: string
+        interface_major:
+          description: |
+            The major version of the target interface. Ignored if interface_name
+            is *.
+          type: integer
+        interface_name:
+          description: The name of the target interface or * to match all interfaces.
+          type: string
+        known_value:
+          description: |
+            Used with value_match_operator to determine whether to activate the
+            trigger or not. The known value is used in the right hand side of
+            the comparison, e.g. if known_value is 0.6 and value_match_operator
+            is >, the trigger will be activated only if the published value is >
+            0.6. The type of this value must be the same of the published value.
+            Ignored if value_match_operator is *.
+        match_path:
+          description: |
+            The target endpoint path for the trigger or /* to match all the
+            endpoints of the target interface.
+          type: string
+        'on':
+          description: The type of data event the trigger will react to
+          enum:
+            - incoming_data
+            - value_change
+            - value_change_applied
+            - path_created
+            - path_removed
+            - value_stored
+          type: string
+        type:
+          description: The type of the simple trigger, must be data_trigger.
+          enum:
+            - data_trigger
+          type: string
+        value_match_operator:
+          description: |
+            A comparison operator used with known_value or * to match
+            everything. See also known_value.
+          enum:
+            - '*'
+            - ==
+            - '!='
+            - '>'
+            - '>='
+            - <
+            - <=
+            - contains
+            - not_contains
+          type: string
+      required:
+        - type
+        - interface_name
+        - match_path
+        - 'on'
+        - value_match_operator
+      title: DataSimpleTrigger
+      type: object
+    DatastreamMaximumStorageRetention:
+      example: 100
+      minimum: 1
+      title: DatastreamMaximumStorageRetention
+      type: integer
+    DeviceRegistrationLimit:
+      example: 100
+      minimum: 0
+      title: DeviceRegistrationLimit
+      type: integer
+    DeviceSimpleTrigger:
+      description: An object describing a simple trigger reacting to device state changes.
+      properties:
+        device_id:
+          description: The device id the trigger will be restricted to.
+          type: string
+        group_name:
+          description: The group name the trigger will be restricted to.
+          type: string
+        'on':
+          description: The type of device event the trigger will react to.
+          enum:
+            - device_connected
+            - device_disconnected
+            - device_empty_cache_received
+            - device_error
+          type: string
+        type:
+          description: The type of the simple trigger, must be device_trigger.
+          enum:
+            - device_trigger
+          type: string
+      required:
+        - type
+        - 'on'
+      title: DeviceSimpleTrigger
+      type: object
+    GenericError:
+      properties:
+        errors:
+          properties:
+            detail:
+              type: string
+          type: object
+      title: GenericError
+      type: object
+    HTTPPostAction:
+      description: |
+        An object describing an HTTP post action that will be executed by the
+        trigger
+      properties:
+        http_post_url:
+          description: The target URL for the POST
+          type: string
+        ignore_ssl_errors:
+          default: false
+          description: If true, ignore SSL errors when performing the HTTP request.
+          type: boolean
+        template:
+          description: If a template_type is specified, this should contain the template to be applied.
+          example: Just received {{value}} from {{device_id}}
+          type: string
+        template_type:
+          description: |
+            The type of template used for the POST request, if any. If not
+            specified, the payload of the POST will be a JSON object
+            representing the event.
+          enum:
+            - mustache
+          type: string
+      required:
+        - http_post_url
+      title: HTTPPostAction
+      type: object
+    Interface:
+      example:
+        interface_name: org.astarteplatform.Values
+        mappings:
+          - endpoint: /realValue
+            explicit_timestamp: true
+            type: double
+        ownership: device
+        type: datastream
+        version_major: 0
+        version_minor: 1
+      properties:
+        aggregation:
+          default: individual
+          description: |
+            Identifies the aggregation of the mappings of the interface.
+            Individual means every mapping changes state or streams data
+            independently, whereas an object aggregation treats the interface as
+            an object, making all the mappings changes interdependent. Choosing
+            the right aggregation might drastically improve performances.
+          enum:
+            - individual
+            - object
+          type: string
+        description:
+          description: An optional description of the interface.
+          type: string
+        doc:
+          description: A string containing documentation that will be injected in the generated client code.
+          type: string
+        interface_name:
+          description: |
+            The name of the interface. This has to be an unique, alphanumeric
+            reverse internet domain name, shorther than 128 characters.
+          maxLength: 128
+          minLength: 1
+          pattern: ^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$
+          type: string
+        mappings:
+          description: |
+            Mappings define the endpoint of the interface, where actual data is
+            stored/streamed. They are defined as relative URLs (e.g. /my/path)
+            and can be parametrized (e.g.: /%{myparam}/path). A valid interface
+            must have no mappings clash, which means that every mapping must
+            resolve to a unique path or collection of paths (including
+            parametrization). Every mapping acquires type, quality and
+            aggregation of the interface.
+          items:
+            $ref: '#/components/schemas/Mapping'
+          maxItems: 1024
+          minItems: 1
+          type: array
+          uniqueItems: true
+        ownership:
+          description: |
+            Identifies the ownership of the interface. Interfaces are meant to
+            be unidirectional, and this property defines who's sending or
+            receiving data. device means the device/gateway is sending data to
+            Astarte, server means the device/gateway is receiving data from
+            Astarte. Bidirectional mode is not supported, you should instantiate
+            another interface for that.
+          enum:
+            - device
+            - server
+          type: string
+        type:
+          description: |
+            Identifies the type of this Interface. Currently two types are
+            supported: datastream and properties. datastream should be used when
+            dealing with streams of non-persistent data, where a single path
+            receives updates and there's no concept of state. properties,
+            instead, are meant to be an actual state and as such they have only
+            a change history, and are retained.
+          enum:
+            - datastream
+            - properties
+          type: string
+        version_major:
+          description: |
+            A Major version qualifier for this interface. Interfaces with the
+            same id and different version_major number are deemed incompatible.
+            It is then acceptable to redefine any property of the interface when
+            changing the major version number.
+          type: integer
+        version_minor:
+          description: |
+            A Minor version qualifier for this interface. Interfaces with the
+            same id and major version number and different version_minor number
+            are deemed compatible between each other. When changing the minor
+            number, it is then only possible to insert further mappings. Any
+            other modification might lead to incompatibilities and undefined
+            behavior.
+          type: integer
+      required:
+        - interface_name
+        - version_minor
+        - version_major
+        - type
+        - ownership
+        - mappings
+      title: Interface
+      type: object
+    InvalidAuthPathError:
+      example:
+        errors:
+          detail: Authorization failed due to an invalid path
+      properties:
+        errors:
+          properties:
+            detail:
+              description: Short error description
+              type: string
+          type: object
+      title: InvalidAuthPathError
+      type: object
+    InvalidTokenError:
+      example:
+        errors:
+          detail: Invalid JWT token
+      properties:
+        errors:
+          properties:
+            detail:
+              description: Short error description
+              type: string
+          type: object
+      title: InvalidTokenError
+      type: object
+    Mapping:
+      description: |
+        Identifies a mapping for an interface. A mapping must consist at least
+        of an endpoint and a type.
+      properties:
+        allow_unset:
+          default: false
+          description: |
+            Used only with properties. Used with producers, it generates a
+            method to unset the property. Used with consumers, it generates code
+            to call an unset method when an empty payload is received.
+          type: boolean
+        description:
+          description: An optional description of the mapping.
+          type: string
+        doc:
+          description: A string containing documentation that will be injected in the generated client code.
+          type: string
+        endpoint:
+          description: |
+            The template of the path. This is a UNIX-like path (e.g. /my/path)
+            and can be parametrized. Parameters are in the %{name} form, and can
+            be used to create interfaces which represent dictionaries of
+            mappings. When the interface aggregation is object, an object is
+            composed by all the mappings for one specific parameter combination.
+            /timestamp is a reserved path for timestamps, so every mapping on a
+            datastream must not have any endpoint that ends with /timestamp.
+          maxLength: 256
+          minLength: 2
+          pattern: ^(/(%{([a-zA-Z][a-zA-Z0-9]*)}|[a-zA-Z][a-zA-Z0-9]*)){1,64}$
+          type: string
+        expiry:
+          default: 0
+          description: |
+            Useful when retention is stored. Defines after how many seconds a
+            specific data entry should be kept before giving up and erasing it
+            from the persistent cache. A value <= 0 means the persistent cache
+            never expires, and is the default.
+          type: integer
+        explicit_timestamp:
+          default: false
+          description: |
+            Allow to set a custom timestamp, otherwise a timestamp is added when
+            the message is received. If true explicit timestamp will also be
+            used for sorting. This feature is only supported on datastreams.
+          type: boolean
+        reliability:
+          default: unreliable
+          description: |
+            Useful only with datastream. Defines whether the sent data should be
+            considered delivered when the transport successfully sends the data
+            (unreliable), when we know that the data has been received at least
+            once (guaranteed) or when we know that the data has been received
+            exactly once (unique). unreliable by default. When using reliable
+            data, consider you might incur in additional resource usage on both
+            the transport and the device's end.
+          enum:
+            - unreliable
+            - guaranteed
+            - unique
+          type: string
+        retention:
+          default: discard
+          description: |
+            Useful only with datastream. Defines whether the sent data should be
+            discarded if the transport is temporarily uncapable of delivering it
+            (discard) or should be kept in a cache in memory (volatile) or on
+            disk (stored), and guaranteed to be delivered in the timeframe
+            defined by the expiry. discard by default.
+          enum:
+            - discard
+            - volatile
+            - stored
+          type: string
+        type:
+          description: Defines the type of the mapping.
+          enum:
+            - double
+            - integer
+            - boolean
+            - longinteger
+            - string
+            - binaryblob
+            - datetime
+            - doublearray
+            - integerarray
+            - booleanarray
+            - longintegerarray
+            - stringarray
+            - binaryblobarray
+            - datetimearray
+          type: string
+      required:
+        - endpoint
+        - type
+      title: Mapping
+      type: object
+    MissingTokenError:
+      example:
+        errors:
+          detail: Missing authorization token
+      properties:
+        errors:
+          properties:
+            detail:
+              description: Short error description
+              type: string
+          type: object
+      title: MissingTokenError
+      type: object
+    TriggerConfig:
+      example:
+        action:
+          http_post_url: http://example.com/my_post_url
+        name: value_above_threshold_alarm
+        simple_triggers:
+          - interface_major: 0
+            interface_name: org.astarteplatform.Values
+            known_value: 0.6
+            match_path: /realValue
+            'on': incoming_data
+            type: data_trigger
+            value_match_operator: '>'
+      properties:
+        action:
+          oneOf:
+            - $ref: '#/components/schemas/HTTPPostAction'
+        name:
+          description: Name of the trigger
+          type: string
+        simple_triggers:
+          description: |
+            Simple triggers that will trigger the action. For now only a single
+            simple trigger is supported.
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/DataSimpleTrigger'
+              - $ref: '#/components/schemas/DeviceSimpleTrigger'
+          maxItems: 1
+          minItems: 1
+          type: array
+      required:
+        - name
+        - action
+        - simple_triggers
+      title: TriggerConfig
+      type: object
+    TriggerDeliveryPolicyConfig:
+      example:
+        error_handlers:
+          - 'on': any_error
+            strategy: discard
+        maximum_capacity: 100
+        name: my_policy
+      properties:
+        error_handlers:
+          description: Handlers for HTTP errors. Specify what action to take upon errors.
+          items:
+            $ref: '#/components/schemas/TriggerDeliveryPolicyErrorHandler'
+          maxItems: 200
+          minItems: 1
+          type: array
+        event_ttl:
+          description: The amount of time (in milliseconds) an event will be retained in the event queue.
+          type: integer
+        maximum_capacity:
+          description: Maximum size of the event queue of the trigger delivery policy.
+          type: integer
+        name:
+          description: Name of the trigger delivery policy.
+          maxLength: 128
+          minLength: 1
+          pattern: ^(?!@).+$
+          type: string
+        retry_times:
+          description: "The amount of times an event will be requeued if delivery fails and the related handler has 'retry' strategy."
+          type: integer
+      required:
+        - name
+        - maximum_capacity
+        - error_handlers
+      title: TriggerDeliveryPolicyConfig
+      type: object
+    TriggerDeliveryPolicyErrorHandler:
+      example:
+        'on': any_error
+        strategy: discard
+      properties:
+        'on':
+          description: |
+            The range of errors the handler refers to. Must be one of: 'any_error',
+            'client_error', 'server_error' or a custom error range (e.g. '[418, 419, 420, 500]').
+        strategy:
+          description: What Astarte must do if an HTTP error occurs when delivering errors the handler refers to.
+          enum:
+            - discard
+            - retry
+          type: string
+      required:
+        - 'on'
+        - strategy
+      title: TriggerDeliveryPolicyErrorHandler
+      type: object
+    ValidationError:
+      properties:
+        errors:
+          type: object
+      required:
+        - errors
+      title: ValidationError
+      type: object
+  securitySchemes:
+    JWT:
+      description: |
+        To access APIs a valid JWT token must be passed in all requests
+        in the `Authorization` header. This token should be signed with
+        the private key associated with the realm the request refers to.
+
+
+        The following syntax must be used in the `Authorization` header :
+        `Bearer xxxxxx.yyyyyyy.zzzzzz`
+      in: header
+      name: Authorization
+      type: apiKey
+info:
+  contact:
+    email: info@ispirata.com
+  description: |
+    Astarte's Realm Management is the main mechanism to configure a Realm.
+    It allows installing and managing Interfaces, Triggers and any configuration
+    of the Realm itself.
+  title: Astarte Realm Management API
+  version: 1.3.0-rc.2
+openapi: 3.0.0
+paths:
+  /{realm_name}/config/auth:
+    get:
+      description: Get a JSON that describes the auth configuration of the realm
+      operationId: getAuthConfig
+      parameters:
+        - $ref: '#/components/parameters/Realm'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetAuthConfig'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      security:
+        - JWT: []
+      summary: Get auth configuration
+      tags:
+        - config
+    put:
+      description: |
+        Installs a auth configuration for the realm. The body must contain the
+        full auth configuration. Validation is performed, and an error is
+        returned if the configuration cannot be installed or validated.
+      operationId: putAuthConfig
+      parameters:
+        - $ref: '#/components/parameters/Realm'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                data:
+                  $ref: '#/components/schemas/AuthConfig'
+              required:
+                - data
+              type: object
+        description: AuthConfig object with the new configuration
+        required: true
+      responses:
+        '204':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/ConfigValidationError'
+      security:
+        - JWT: []
+      summary: Install a new auth configuration for the realm
+      tags:
+        - config
+  /{realm_name}/config/datastream_maximum_storage_retention:
+    get:
+      description: Get the maximum storage retention for datastreams belonging to the realm, in seconds.
+      operationId: getDatastreamMaximumStorageRetention
+      parameters:
+        - $ref: '#/components/parameters/Realm'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetDatastreamMaximumStorageRetention'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      security:
+        - JWT: []
+      summary: Get datastream maximum storage retention
+      tags:
+        - config
+  /{realm_name}/config/device_registration_limit:
+    get:
+      description: Get the maximum number of devices that can be registered in the realm.
+      operationId: getDeviceRegistrationLimit
+      parameters:
+        - $ref: '#/components/parameters/Realm'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetDeviceRegistrationLimit'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      security:
+        - JWT: []
+      summary: Get device registration limit
+      tags:
+        - config
+  /{realm_name}/devices/{device_id}:
+    delete:
+      description: |
+        Deletes an existing device with a given `device_id`.
+        Device deletion happens asynchronously, and receiving a 204 response
+        doesn't guarantee immediate deletion of the device.
+      operationId: deleteDevice
+      parameters:
+        - $ref: '#/components/parameters/Realm'
+        - $ref: '#/components/parameters/DeviceID'
+      responses:
+        '204':
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          description: Internal Server Error.
+      security:
+        - JWT: []
+      summary: Delete device
+      tags:
+        - device
+  /{realm_name}/interfaces:
+    get:
+      description: |
+        Get a list of all installed interfaces. By default a list of interface names
+        is returned. The complete interface definitions list can be optionally retrieved using
+        the `detailed` option.
+      operationId: getInterfaceList
+      parameters:
+        - $ref: '#/components/parameters/Realm'
+        - description: If true, interface definitions are returned instead of just names.
+          in: query
+          name: detailed
+          required: false
+          schema:
+            default: false
+            type: boolean
+      responses:
+        '200':
+          $ref: '#/components/responses/GetInterfaceList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      security:
+        - JWT: []
+      summary: Get interface list
+      tags:
+        - interface
+    post:
+      description: |
+        Install a new interface, or a newer major version for a given interface.
+        Validation is performed, and an error is returned if interface cannot be
+        installed. The installation is performed asynchronously by default. You
+        can perform the call synchronously by setting the async_operation query
+        param to false.
+      operationId: installInterface
+      parameters:
+        - $ref: '#/components/parameters/Realm'
+        - description: Whether the operation should be carried out asynchronously.
+          in: query
+          name: async_operation
+          required: false
+          schema:
+            default: true
+            type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                data:
+                  $ref: '#/components/schemas/Interface'
+              required:
+                - data
+              type: object
+        description: A JSON object representing an Astarte Interface.
+        required: true
+      responses:
+        '201':
+          $ref: '#/components/responses/InstallInterface'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/InterfaceValidationError'
+      security:
+        - JWT: []
+      summary: Install a new interface to the realm
+      tags:
+        - interface
+  /{realm_name}/interfaces/{interface_name}:
+    get:
+      description: An interface might have multiple major versions, list all of them.
+      operationId: getInterfaceMajorVersions
+      parameters:
+        - $ref: '#/components/parameters/Realm'
+        - $ref: '#/components/parameters/InterfaceName'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetInterfaceMajorVersions'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/InterfaceNotFound'
+      security:
+        - JWT: []
+      summary: Get interface major versions
+      tags:
+        - interface
+  /{realm_name}/interfaces/{interface_name}/{major_version}:
+    delete:
+      description: |
+        Delete an interface draft (a draft is an interface with major version
+        0). An interface with a major version different than 0 should be
+        manually deleted. Interface deletion is performed asynchronously by
+        default. You can perform the call synchronously by setting the
+        async_operation query param to false.
+      operationId: deleteInterface
+      parameters:
+        - $ref: '#/components/parameters/Realm'
+        - $ref: '#/components/parameters/InterfaceName'
+        - $ref: '#/components/parameters/InterfaceMajor'
+        - description: Whether the operation should be carried out asynchronously.
+          in: query
+          name: async_operation
+          required: false
+          schema:
+            default: true
+            type: boolean
+      responses:
+        '204':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/InterfaceNotFound'
+      security:
+        - JWT: []
+      summary: Delete a draft interface
+      tags:
+        - interface
+    get:
+      description: |
+        Show a previously installed interface. Previous minor versions for a
+        given major version are not retrieved, only the most recent interface
+        for each interface major is returned.
+      operationId: getInterface
+      parameters:
+        - $ref: '#/components/parameters/Realm'
+        - $ref: '#/components/parameters/InterfaceName'
+        - $ref: '#/components/parameters/InterfaceMajor'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetInterface'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/InterfaceNotFound'
+      security:
+        - JWT: []
+      summary: Get an interface
+      tags:
+        - interface
+    put:
+      description: |
+        Replace an existing interface with a certain major version with a new
+        one (that must have same major version and a higher minor version).
+        Server side validation is performed. Interface upgrade is performed
+        asynchronously by default. You can perform the call synchronously by
+        setting the async_operation query param to false. For more information
+        about what is allowed when updating an interface, see [the
+        doc](https://docs.astarte-platform.org/astarte/1.0/030-interface.html#versioning).
+        This operation cannot be reverted.
+      operationId: updateInterface
+      parameters:
+        - $ref: '#/components/parameters/Realm'
+        - $ref: '#/components/parameters/InterfaceName'
+        - $ref: '#/components/parameters/InterfaceMajor'
+        - description: Whether the operation should be carried out asynchronously.
+          in: query
+          name: async_operation
+          required: false
+          schema:
+            default: true
+            type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                data:
+                  $ref: '#/components/schemas/Interface'
+              required:
+                - data
+              type: object
+        description: A JSON object representing the updated Astarte Interface.
+        required: true
+      responses:
+        '204':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/InterfaceNotFound'
+        '409':
+          $ref: '#/components/responses/UpdateConflict'
+        '422':
+          $ref: '#/components/responses/InterfaceValidationError'
+      security:
+        - JWT: []
+      summary: Updates an existing interface to a new minor release
+      tags:
+        - interface
+  /{realm_name}/policies:
+    get:
+      description: |
+        Get a list of all installed trigger delivery policies. The name for each
+        installed trigger delivery policy is reported.
+      operationId: getTriggerDeliveryPolicyList
+      parameters:
+        - $ref: '#/components/parameters/Realm'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetTriggerDeliveryPolicyList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      security:
+        - JWT: []
+      summary: Get trigger delivery policy list
+      tags:
+        - policy
+    post:
+      description: |
+        Install a new trigger delivery policy using provided configuration.
+        Trigger Delivery Policy validation is performed before installation.
+        If the trigger delivery policy configuration is not valid or a trigger
+        delivery policy with the same name already exists an error is reported.
+      operationId: installTriggerDeliveryPolicy
+      parameters:
+        - $ref: '#/components/parameters/Realm'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                data:
+                  $ref: '#/components/schemas/TriggerDeliveryPolicyConfig'
+              required:
+                - data
+              type: object
+        description: Trigger delivery policy configuration
+        required: true
+      responses:
+        '201':
+          $ref: '#/components/responses/InstallTriggerDeliveryPolicy'
+        '400':
+          description: Bad request
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
+          $ref: '#/components/responses/TriggerDeliveryPolicyAlreadyInstalledError'
+        '422':
+          $ref: '#/components/responses/TriggerDeliveryPolicyValidationError'
+      security:
+        - JWT: []
+      summary: Install a trigger delivery policy configuration
+      tags:
+        - policy
+  /{realm_name}/policies/{policy_name}:
+    delete:
+      description: |
+        Deletes the trigger delivery policy with given `policy_name`.
+        An existing trigger delivery policy can be deleted only if there are no
+        triggers linking to it.
+      operationId: deleteTriggerDeliveryPolicy
+      parameters:
+        - $ref: '#/components/parameters/Realm'
+        - $ref: '#/components/parameters/TriggerDeliveryPolicyName'
+      responses:
+        '204':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/TriggerDeliveryPolicyNotFound'
+        '409':
+          $ref: '#/components/responses/TriggerDeliveryPolicyCurrentlyUsedError'
+        '500':
+          description: Internal Server Error.
+      security:
+        - JWT: []
+      summary: Delete trigger delivery policy
+      tags:
+        - policy
+    get:
+      description: Retrieve installed trigger delivery policy configuration.
+      operationId: getTriggerDeliveryPolicy
+      parameters:
+        - $ref: '#/components/parameters/Realm'
+        - $ref: '#/components/parameters/TriggerDeliveryPolicyName'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetTriggerDeliveryPolicy'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/TriggerDeliveryPolicyNotFound'
+        '500':
+          description: Internal Server Error.
+      security:
+        - JWT: []
+      summary: Get the trigger delivery policy configuration
+      tags:
+        - policy
+  /{realm_name}/triggers:
+    get:
+      description: |
+        Get a list of all installed triggers. The trigger name for each
+        installed trigger is reported.
+      operationId: getTriggerList
+      parameters:
+        - $ref: '#/components/parameters/Realm'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetTriggerList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      security:
+        - JWT: []
+      summary: Get trigger list
+      tags:
+        - trigger
+    post:
+      description: |
+        Install a new trigger using provided configuration. Trigger validation
+        is performed before installation, if trigger configuration is not valid
+        or a trigger with the same name already exists an error is reported. New
+        trigger events might not be immediately processed.
+      operationId: installTrigger
+      parameters:
+        - $ref: '#/components/parameters/Realm'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                data:
+                  $ref: '#/components/schemas/TriggerConfig'
+              required:
+                - data
+              type: object
+        description: Trigger configuration
+        required: true
+      responses:
+        '201':
+          $ref: '#/components/responses/InstallTrigger'
+        '400':
+          description: Bad request
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/TriggerValidationError'
+      security:
+        - JWT: []
+      summary: Install trigger configuration
+      tags:
+        - trigger
+  /{realm_name}/triggers/{trigger_name}:
+    delete:
+      description: |
+        Deletes an existing trigger with a given `trigger_name`. Please note
+        that triggers which have been already queued might still be delivered
+        for a short time even after trigger deletion.
+      operationId: deleteTrigger
+      parameters:
+        - $ref: '#/components/parameters/Realm'
+        - $ref: '#/components/parameters/TriggerName'
+      responses:
+        '204':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/TriggerNotFound'
+        '500':
+          description: Internal Server Error.
+      security:
+        - JWT: []
+      summary: Delete trigger
+      tags:
+        - trigger
+    get:
+      description: Retrieve installed trigger configuration.
+      operationId: getTrigger
+      parameters:
+        - $ref: '#/components/parameters/Realm'
+        - $ref: '#/components/parameters/TriggerName'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetTrigger'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/TriggerNotFound'
+        '500':
+          description: Internal Server Error.
+      security:
+        - JWT: []
+      summary: Get trigger configuration
+      tags:
+        - trigger
+security: []
+servers:
+  - url: '{base_url}/v1'
+    variables:
+      base_url:
+        default: http://localhost:4000
+        description: |
+          The base URL you're serving Astarte from. This should point to the base path from which Realm Management is served.
+          In case you are running a local installation, this is likely `http://localhost:4000`.
+          In case you have a standard Astarte installation, it is most likely `https://<your host>/realmmanagement`.
+tags:
+  - description: Realm Configuration Management. These APIs configure the global behavior of the Realm and how it can be accessed.
+    name: config
+  - description: Interface management. These APIs are used for installing, deleting (if possible) and updating Interfaces in a Realm.
+    externalDocs:
+      description: User documentation
+      url: https://docs.astarte-platform.org/astarte/1.0/030-manage_interfaces.html
+    name: interface
+  - description: Trigger management
+    externalDocs:
+      description: User documentation
+      url: https://docs.astarte-platform.org/astarte/1.0/060-triggers.html
+    name: trigger
