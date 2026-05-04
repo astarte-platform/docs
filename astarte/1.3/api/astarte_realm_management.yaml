@@ -906,10 +906,14 @@ components:
           minItems: 1
           type: array
         event_ttl:
-          description: The amount of time (in milliseconds) an event will be retained in the event queue.
+          description: The amount of time (in seconds) an event will be retained in the event queue.
+          maximum: 86400
+          minimum: 1
           type: integer
         maximum_capacity:
           description: Maximum size of the event queue of the trigger delivery policy.
+          maximum: 1000000
+          minimum: 1
           type: integer
         name:
           description: Name of the trigger delivery policy.
@@ -917,8 +921,15 @@ components:
           minLength: 1
           pattern: ^(?!@).+$
           type: string
+        prefetch_count:
+          description: The maximum number of unacknowledged event messages a consumer can hold.
+          maximum: 300
+          minimum: 1
+          type: integer
         retry_times:
           description: "The amount of times an event will be requeued if delivery fails and the related handler has 'retry' strategy."
+          maximum: 100
+          minimum: 1
           type: integer
       required:
         - name
@@ -978,6 +989,25 @@ info:
   version: 1.3.0-rc.2
 openapi: 3.0.0
 paths:
+  /version:
+    get:
+      description: Return the Realm Management API version. This endpoint is available at {base_url}/version (without /v1).
+      operationId: getVersion
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    example: 1.3.0
+                    type: string
+                type: object
+          description: Success
+      summary: Retrieve API version
+      tags:
+        - version
   /{realm_name}/config/auth:
     get:
       description: Get a JSON that describes the auth configuration of the realm
@@ -1514,6 +1544,33 @@ paths:
       summary: Get trigger configuration
       tags:
         - trigger
+  /{realm_name}/version:
+    get:
+      description: Return the Realm Management API version.
+      operationId: getVersionWithRealm
+      parameters:
+        - description: Name of the realm.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    example: 1.3.0
+                    type: string
+                type: object
+          description: Success
+      security:
+        - JWT: []
+      summary: Retrieve API version
+      tags:
+        - version
 security: []
 servers:
   - url: '{base_url}/v1'
@@ -1537,3 +1594,5 @@ tags:
       description: User documentation
       url: https://docs.astarte-platform.org/astarte/1.0/060-triggers.html
     name: trigger
+  - description: Retrieve version information of the API.
+    name: version
