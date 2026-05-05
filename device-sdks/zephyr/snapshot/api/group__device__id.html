@@ -133,10 +133,10 @@ $(function(){initNavTree('group__device__id.html',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ga8f8597ecf27cba1ce53ba30735d10ed5" id="r_ga8f8597ecf27cba1ce53ba30735d10ed5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga8f8597ecf27cba1ce53ba30735d10ed5">ASTARTE_DEVICE_ID_LEN</a>&#160;&#160;&#160;22</td></tr>
+<tr class="memitem:ga8f8597ecf27cba1ce53ba30735d10ed5" id="r_ga8f8597ecf27cba1ce53ba30735d10ed5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga8f8597ecf27cba1ce53ba30735d10ed5">ASTARTE_DEVICE_ID_LEN</a>&#160;&#160;&#160;(UUID_BASE64URL_LEN - 1)</td></tr>
 <tr class="memdesc:ga8f8597ecf27cba1ce53ba30735d10ed5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of characters in the string version of an Astarte device ID.  <br /></td></tr>
 <tr class="separator:ga8f8597ecf27cba1ce53ba30735d10ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga695f09c147c6f937dc04ec2b16b30b9d" id="r_ga695f09c147c6f937dc04ec2b16b30b9d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga695f09c147c6f937dc04ec2b16b30b9d">ASTARTE_DEVICE_ID_NAMESPACE_SIZE</a>&#160;&#160;&#160;16</td></tr>
+<tr class="memitem:ga695f09c147c6f937dc04ec2b16b30b9d" id="r_ga695f09c147c6f937dc04ec2b16b30b9d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga695f09c147c6f937dc04ec2b16b30b9d">ASTARTE_DEVICE_ID_NAMESPACE_SIZE</a>&#160;&#160;&#160;UUID_SIZE</td></tr>
 <tr class="memdesc:ga695f09c147c6f937dc04ec2b16b30b9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size in bytes for the namespace used to generate a deterministic device IDs.  <br /></td></tr>
 <tr class="separator:ga695f09c147c6f937dc04ec2b16b30b9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -159,7 +159,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ASTARTE_DEVICE_ID_LEN&#160;&#160;&#160;22</td>
+          <td class="memname">#define ASTARTE_DEVICE_ID_LEN&#160;&#160;&#160;(UUID_BASE64URL_LEN - 1)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -176,7 +176,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define ASTARTE_DEVICE_ID_NAMESPACE_SIZE&#160;&#160;&#160;16</td>
+          <td class="memname">#define ASTARTE_DEVICE_ID_NAMESPACE_SIZE&#160;&#160;&#160;UUID_SIZE</td>
         </tr>
       </table>
 </div><div class="memdoc">
