@@ -242,7 +242,7 @@ info:
     This API is usually accessible only to system administrators, and is not meant for the average user of Astarte,
     which should refer to Realm Management API instead.
   title: Astarte Housekeeping API
-  version: 1.3.0-rc.2
+  version: 1.3.0
 openapi: 3.0.0
 paths:
   /realm-defaults/replication:

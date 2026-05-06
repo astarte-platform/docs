@@ -986,7 +986,7 @@ info:
     It allows installing and managing Interfaces, Triggers and any configuration
     of the Realm itself.
   title: Astarte Realm Management API
-  version: 1.3.0-rc.2
+  version: 1.3.0
 openapi: 3.0.0
 paths:
   /version:
@@ -1131,19 +1131,10 @@ paths:
   /{realm_name}/interfaces:
     get:
       description: |
-        Get a list of all installed interfaces. By default a list of interface names
-        is returned. The complete interface definitions list can be optionally retrieved using
-        the `detailed` option.
+        Get a list of all installed interface names.
       operationId: getInterfaceList
       parameters:
         - $ref: '#/components/parameters/Realm'
-        - description: If true, interface definitions are returned instead of just names.
-          in: query
-          name: detailed
-          required: false
-          schema:
-            default: false
-            type: boolean
       responses:
         '200':
           $ref: '#/components/responses/GetInterfaceList'
