@@ -1,7 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"structastarte__interface__t.html#add941a49aeafa76faba4fd52168376e2":[3,0,4,0,5],
-"structastarte__mapping__t.html":[3,0,5,0],
 "structastarte__mapping__t.html#a3abbe5bda6cc7d69093152668d3e3d83":[3,0,5,0,5],
 "structastarte__mapping__t.html#a4bd17be64545131f12f35e95afd57d03":[3,0,5,0,3],
 "structastarte__mapping__t.html#a71ce5d082e9c2ceef80b4a4705689f43":[3,0,5,0,1],
@@ -11,7 +9,5 @@ var NAVTREEINDEX1 =
 "structastarte__object__entry__t.html":[3,0,6,0],
 "structastarte__object__entry__t.html#a5f6fdb6f7f4b7f0d9e4a6596d1402763":[3,0,6,0,0],
 "structastarte__object__entry__t.html#a69cdad6e45ef504fc76950a0e22e257f":[3,0,6,0,1],
-"topics.html":[3],
-"util_8h.html":[5,0,0,0,9],
-"util_8h_source.html":[5,0,0,0,9]
+"topics.html":[3]
 };

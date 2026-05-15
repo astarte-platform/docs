@@ -7,6 +7,5 @@ var group__astarte__device__sdk =
     [ "Interface", "group__interface.html", "group__interface" ],
     [ "Mapping", "group__mapping.html", "group__mapping" ],
     [ "Objects", "group__objects.html", "group__objects" ],
-    [ "Results", "group__results.html", "group__results" ],
-    [ "Utils", "group__utils.html", "group__utils" ]
+    [ "Results", "group__results.html", "group__results" ]
 ];
