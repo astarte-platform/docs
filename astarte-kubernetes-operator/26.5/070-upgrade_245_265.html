@@ -62,12 +62,12 @@
 
   <div class="sidebar-header">
 
-      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/snapshot/">
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/26.5/">
         <img src="assets/logo.png" alt="Clea Astarte Operator" class="sidebar-projectImage">
       </a>
 
     <div class="sidebar-projectDetails">
-      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/snapshot/" class="sidebar-projectName" translate="no">
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/26.5/" class="sidebar-projectName" translate="no">
 Clea Astarte Operator
       </a>
       <strong class="sidebar-projectVersion" translate="no">
@@ -167,7 +167,7 @@ so having a backup is crucial to restore the Astarte instance after the upgrade.
 </h3>
 <p>Delete the existing Astarte and ADI CRs from the cluster.
 This triggers the deletion of all the resources managed by the Operator related to these CRs.</p><pre><code class="makeup bash" translate="no"><span class="">kubectl delete astarte -n &lt;astarte-namespace&gt; &lt;astarte-name&gt;
-</span><span class="">kubectl delete adi -n &lt;astarte-namespace&gt; &lt;adi-name&gt; 
+</span><span class="">kubectl delete adi -n &lt;astarte-namespace&gt; &lt;adi-name&gt;
 </span></code></pre><p>Wait for the deletion process to complete and double check that all Astarte-related resources have been deleted from the cluster before proceeding with the next steps.</p><h3 id="step-2-delete-existing-astarte-operator-with-helm" class="section-heading">
   <a href="#step-2-delete-existing-astarte-operator-with-helm" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
   <p class="sr-only">step-2-delete-existing-astarte-operator-with-helm</p>
@@ -212,10 +212,10 @@ Scylla does not support renaming keyspaces, so, for each Realm, you will need to
 <p>Restore the Astarte devices CA certificate and key as well as the Housekeeping private and public by creating the appropriate secrets in your Astarte namespace.
 When the Astarte Operator will be redeployed, it will detect these secrets and use them instead of generating new ones.</p><pre><code class="makeup bash" translate="no"><span class="">kubectl create secret generic astarte-housekeeping-private-key -n &lt;astarte-namespace&gt; \
 </span><span class="">  --from-file=private-key=./housekeeping_private.pem
-</span><span class="">  
+</span><span class="">
 </span><span class="">kubectl create secret generic astarte-housekeeping-public-key -n &lt;astarte-namespace&gt; \
 </span><span class="">  --from-file=public-key=./housekeeping_public.pem
-</span><span class="">  
+</span><span class="">
 </span><span class="">kubectl create secret tls astarte-devices-ca -n &lt;astarte-namespace&gt; \
 </span><span class="">  --key ./astarte-devices-ca.key \
 </span><span class="">  --cert ./astarte-devices-ca.crt

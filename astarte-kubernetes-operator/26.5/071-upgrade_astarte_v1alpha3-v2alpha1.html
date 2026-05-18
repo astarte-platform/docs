@@ -62,12 +62,12 @@
 
   <div class="sidebar-header">
 
-      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/snapshot/">
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/26.5/">
         <img src="assets/logo.png" alt="Clea Astarte Operator" class="sidebar-projectImage">
       </a>
 
     <div class="sidebar-projectDetails">
-      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/snapshot/" class="sidebar-projectName" translate="no">
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/26.5/" class="sidebar-projectName" translate="no">
 Clea Astarte Operator
       </a>
       <strong class="sidebar-projectVersion" translate="no">
@@ -112,7 +112,7 @@ Clea Astarte Operator
   Scylla
 </h2>
 <p>The most significant change is that <strong>the Astarte operator no longer manages the Cassandra cluster deployment</strong>.
-Cassandra is now treated as a fully external service, and the CRD only contains the necessary connection details.</p><p>This results in the following key changes:</p><ul><li><strong>Removal of Deployment Fields</strong>: All fields related to deploying a Cassandra cluster (e.g., <code class="inline">deploy</code>, <code class="inline">replicas</code>, <code class="inline">image</code>, <code class="inline">storage</code>) have been removed from the <code class="inline">cassandra</code> spec. 
+Cassandra is now treated as a fully external service, and the CRD only contains the necessary connection details.</p><p>This results in the following key changes:</p><ul><li><strong>Removal of Deployment Fields</strong>: All fields related to deploying a Cassandra cluster (e.g., <code class="inline">deploy</code>, <code class="inline">replicas</code>, <code class="inline">image</code>, <code class="inline">storage</code>) have been removed from the <code class="inline">cassandra</code> spec.
 You are now responsible for deploying and managing your Cassandra or ScyllaDB cluster separately.</li><li><strong>Restructured <code class="inline">nodes</code></strong>: The <code class="inline">nodes</code> field, which was a single comma-separated string, is now a structured list of <code class="inline">host</code> and <code class="inline">port</code> objects.</li><li><strong>Relocated <code class="inline">astarteSystemKeyspace</code></strong>: The <code class="inline">astarteSystemKeyspace</code> configuration has been moved from the top level of the <code class="inline">spec</code> into <code class="inline">spec.cassandra</code>.
 It also includes new fields for more advanced replication strategies.</li><li><strong>Standardized Connection Spec</strong>: The <code class="inline">connection</code> spec has been changed, renaming <code class="inline">secret</code> to <code class="inline">credentialsSecret</code> and removing deprecated or unused fields.</li></ul><h3 id="top-level-cassandra-fields-spec-cassandra" class="section-heading">
   <a href="#top-level-cassandra-fields-spec-cassandra" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
@@ -132,7 +132,7 @@ It also includes new fields for more advanced replication strategies.</li><li><s
   </a>
   Keyspace Fields
 </h3>
-<p>The entire <code class="inline">astarteSystemKeyspace</code> object has been moved and enhanced. 
+<p>The entire <code class="inline">astarteSystemKeyspace</code> object has been moved and enhanced.
 <code class="inline">spec.cassandra.astarteSystemKeyspace</code> is now a required field, along with new options for replication strategy and data center replication factors depending on the chosen strategy.
 No default values are provided, once the fields are set, they cannot be later updated without deleting the Astarte instance.</p><table><thead><tr><th style="text-align: left;">v1alpha3 Path</th><th style="text-align: left;">v2alpha1 Path</th><th style="text-align: left;">Action Required</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">spec.astarteSystemKeyspace</code></td><td style="text-align: left;"><code class="inline">spec.cassandra.astarteSystemKeyspace</code></td><td style="text-align: left;"><strong>Moved &amp; Enhanced</strong>. Move the object under <code class="inline">spec.cassandra</code>.</td></tr><tr><td style="text-align: left;"><code class="inline">(none)</code></td><td style="text-align: left;"><code class="inline">astarteSystemKeyspace.replicationStrategy</code></td><td style="text-align: left;"><strong>New field</strong>. You can now specify the replication strategy (<code class="inline">&quot;SimpleStrategy&quot;</code> or <code class="inline">&quot;NetworkTopologyStrategy&quot;</code>).</td></tr><tr><td style="text-align: left;"><code class="inline">(none)</code></td><td style="text-align: left;"><code class="inline">astarteSystemKeyspace.dataCenterReplication</code></td><td style="text-align: left;"><strong>New field</strong>. Use this to specify per-datacenter replication factors when using <code class="inline">&quot;NetworkTopologyStrategy&quot;</code>. For example: <code class="inline">&quot;dc1:3,dc2:3&quot;</code>.</td></tr></tbody></table><h2 id="rabbitmq" class="section-heading">
   <a href="#rabbitmq" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
