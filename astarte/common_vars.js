@@ -1,10 +1,18 @@
 var versionNodes = [
     {
-        version: "v1.3 (unreleased)", // TODO: Remove unreleased when released
+        version: "v1.5 (unreleased)", // TODO: Remove unreleased when released
         url: "https://docs.astarte-platform.org/astarte/snapshot"
     },
     {
-        version: "v1.2 (latest stable)",
+        version: "v1.4 (unreleased)", // TODO: Remove unreleased when released
+        url: "https://docs.astarte-platform.org/astarte/1.4"
+    },
+    {
+        version: "v1.3 (latest stable)",
+        url: "https://docs.astarte-platform.org/astarte/1.3"
+    },
+    {
+        version: "v1.2",
         url: "https://docs.astarte-platform.org/astarte/1.2"
     },
     {
