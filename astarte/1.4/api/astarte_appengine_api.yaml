@@ -1,0 +1,2181 @@
+---
+components:
+  parameters:
+    DeviceId:
+      description: Device id of the target device.
+      in: path
+      name: device_id
+      required: true
+      schema:
+        type: string
+    GroupName:
+      description: The name of the group.
+      in: path
+      name: group_name
+      required: true
+      schema:
+        type: string
+    RealmName:
+      description: The name of the realm the device list will be returned from.
+      in: path
+      name: realm_name
+      required: true
+      schema:
+        type: string
+  requestBodies:
+    AddDeviceToGroup:
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                properties:
+                  device_id:
+                    description: The device id of the device to add
+                    example: 8NWCESshRrmUe9FWhg39qQ
+                    type: string
+                required:
+                  - device_id
+                type: object
+            required:
+              - data
+            type: object
+      required: false
+    CreateGroup:
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/CreateGroupConfig'
+            required:
+              - data
+            type: object
+      required: false
+  responses:
+    AuthorizationPathNotMatched:
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/AuthorizationPathNotMatchedError'
+            type: object
+      description: Authorization path not matched.
+    GetDevicesStats:
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/DevicesStats'
+            type: object
+      description: Devices stats
+    GetGroup:
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/GroupConfig'
+            type: object
+      description: Groups list
+    GroupCreated:
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/CreateGroupConfig'
+            type: object
+      description: Success
+    GroupNotFound:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GroupNotFoundError'
+      description: Group not found
+    GroupOrDeviceNotFound:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GroupOrDeviceNotFoundError'
+      description: Group or device not found
+    IndexGroupDevices:
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                example:
+                  - v8UxxIT9RkyPjIJZt6-Rrw
+                  - fhd0WHcgSjWeVqPGKZv_KA
+                items:
+                  type: string
+                type: array
+            type: object
+      description: Group device list
+    IndexGroups:
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                description: Group name list
+                example:
+                  - first-floor
+                  - second-floor
+                items:
+                  type: string
+                type: array
+            type: object
+      description: Groups list
+    InvalidAddGroup:
+      content:
+        application/json:
+          schema:
+            properties:
+              errors:
+                example:
+                  device_id:
+                    - does not exist
+                properties:
+                  device_id:
+                    items:
+                      type: string
+                    type: array
+                type: object
+            type: object
+      description: Invalid request
+    InvalidGroupConfig:
+      content:
+        application/json:
+          schema:
+            properties:
+              errors:
+                example:
+                  group_name:
+                    - is invalid
+                properties:
+                  devices:
+                    items:
+                      type: string
+                    type: array
+                  group_name:
+                    items:
+                      type: string
+                    type: array
+                type: object
+            type: object
+      description: Invalid group configuration
+    Unauthorized:
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/MissingTokenError'
+              - $ref: '#/components/schemas/InvalidTokenError'
+              - $ref: '#/components/schemas/InvalidAuthPathError'
+              - $ref: '#/components/schemas/UnauthorizedError'
+      description: Token/Realm doesn't exist or operation not allowed.
+  schemas:
+    AuthorizationPathNotMatchedError:
+      example:
+        errors:
+          detail: Unauthorized access to GET /api/v1/some_path. Please verify your permissions
+      properties:
+        errors:
+          properties:
+            detail:
+              description: Detailed error message including the method and path
+              type: string
+          type: object
+      title: AuthorizationPathNotMatchedError
+      type: object
+    CreateGroupConfig:
+      properties:
+        devices:
+          example:
+            - v8UxxIT9RkyPjIJZt6-Rrw
+            - fhd0WHcgSjWeVqPGKZv_KA
+          items:
+            type: string
+          type: array
+        group_name:
+          example: mygroupname
+          type: string
+      required:
+        - group_name
+        - devices
+      type: object
+    DeviceStatus:
+      example:
+        aliases:
+          display_name: my_device_name
+          serial_number: '1234567'
+        attributes:
+          attribute_key: attribute_value
+        connected: false
+        credentials_inhibited: false
+        deletion_in_progress: false
+        first_credentials_request: 2016-08-20T09:44:00.000Z
+        first_registration: 2016-07-08T09:44:00.000Z
+        groups:
+          - test-devices
+          - first-floor
+        id: hm8AjtbN5P2mxo_gfXSfvQ
+        introspection:
+          com.example.ExampleInterface:
+            exchanged_bytes: 200
+            exchanged_msgs: 20
+            major: 2
+            minor: 0
+          com.example.HelloWorldInterface:
+            exchanged_bytes: 42
+            exchanged_msgs: 3
+            major: 1
+            minor: 1
+        last_connection: 2017-09-28T03:45:00.000Z
+        last_credentials_request_ip: 98.51.100.89
+        last_disconnection: 2017-09-29T18:25:00.000Z
+        last_seen_ip: 198.51.100.81
+        previous_interfaces:
+          - exchanged_bytes: 102
+            exchanged_msgs: 5
+            major: 1
+            minor: 1
+            name: com.example.ExampleInterface
+        total_received_bytes: 10240
+        total_received_msgs: 10
+      properties:
+        aliases:
+          description: A set of aliases and their tags. Each alias has an unique tag that identifies its purpose.
+          type: object
+        attributes:
+          description: A set of attributes with their values. Each attribute has a unique key.
+          type: object
+        connected:
+          description: True if the device is connected to the broker.
+          type: boolean
+        credentials_inhibited:
+          description: true if the device has been inhibited (i.e. it can't request new credentials)
+          type: boolean
+        deletion_in_progress:
+          description: True if the device is currently being deleted, false otherwise.
+          type: boolean
+        first_credentials_request:
+          description: First credentials request timestamp.
+          format: date-time
+          type: string
+        first_registration:
+          description: First registration attempt timestamp.
+          format: date-time
+          type: string
+        groups:
+          description: The groups the device belongs to.
+          items:
+            type: string
+          type: array
+        id:
+          description: The device ID.
+          type: string
+        introspection:
+          description: A dictionary of available (installed) interfaces on the device. For each interface version major and minor versions are provided. Interfaces that are listed here might not be available on the server (e.g. not installed).
+          type: object
+        last_connection:
+          description: Last connection to the broker timestamp.
+          format: date-time
+          type: string
+        last_credentials_request_ip:
+          description: Last known device IP address used while obtaining credentials.
+          type: string
+        last_disconnection:
+          description: Last device disconnection timestamp.
+          format: date-time
+          type: string
+        last_seen_ip:
+          description: Last known device IP address.
+          type: string
+        previous_interfaces:
+          description: The list of previously supported interfaces
+          items:
+            description: An object representing an interface that was previously declared in the introspection by the device
+            properties:
+              exchanged_bytes:
+                description: The number of exchanged bytes of this interface. Note that exchanged bytes are the same for all (interface, major) combinations, i.e. com.my.Interface v1.2 will have the same exchanged_bytes of com.my.Interface v1.x for every value of x
+                type: integer
+              exchanged_msgs:
+                description: The number of exchanged messages of this interface. Note that exchanged messages are the same for all (interface, major) combinations, i.e. com.my.Interface v1.2 will have the same exchanged_msgs of com.my.Interface v1.x for every value of x
+                type: integer
+              major:
+                description: The major version of the interface
+                type: integer
+              minor:
+                description: The minor version of the interface
+                type: integer
+              name:
+                description: The name of the interface
+                type: string
+            type: object
+          type: array
+        total_received_bytes:
+          description: Total amount of received payload bytes.
+          type: integer
+        total_received_msgs:
+          description: Total amount of received messages.
+          type: integer
+      title: DeviceStatus
+      type: object
+    DeviceStatusByAlias:
+      example:
+        data:
+          aliases:
+            display_name: my_device_name
+            serial_number: '1234567'
+          attributes:
+            attribute_key: attribute_value
+          connected: false
+          credentials_inhibited: false
+          deletion_in_progress: false
+          first_credentials_request: 2016-08-20T09:44:00.000Z
+          first_registration: 2016-07-08T09:44:00.000Z
+          groups:
+            - test-devices
+            - first-floor
+          id: hm8AjtbN5P2mxo_gfXSfvQ
+          introspection:
+            com.example.ExampleInterface:
+              exchanged_bytes: 200
+              exchanged_msgs: 20
+              major: 2
+              minor: 0
+            com.example.HelloWorldInterface:
+              exchanged_bytes: 42
+              exchanged_msgs: 3
+              major: 1
+              minor: 1
+          last_connection: 2017-09-28T03:45:00.000Z
+          last_credentials_request_ip: 98.51.100.89
+          last_disconnection: 2017-09-29T18:25:00.000Z
+          last_seen_ip: 198.51.100.81
+          previous_interfaces:
+            - exchanged_bytes: 102
+              exchanged_msgs: 5
+              major: 1
+              minor: 1
+              name: com.example.ExampleInterface
+          total_received_bytes: 10240
+          total_received_msgs: 10
+      properties:
+        data:
+          $ref: '#/components/schemas/DeviceStatus'
+      title: DeviceStatusByAlias
+      type: object
+    DevicesStats:
+      properties:
+        connected_devices:
+          description: The number of devices currently connected in the Realm
+          example: 30
+          type: integer
+        total_devices:
+          description: The total number of devices in the Realm
+          example: 203
+          type: integer
+      type: object
+    GroupConfig:
+      properties:
+        group_name:
+          example: mygroupname
+          type: string
+      type: object
+    GroupNotFoundError:
+      example:
+        errors:
+          detail: Group not found
+      properties:
+        errors:
+          properties:
+            detail:
+              description: Short error description
+              example: Group not found
+              type: string
+          type: object
+      title: GroupNotFoundError
+      type: object
+    GroupOrDeviceNotFoundError:
+      example:
+        errors:
+          detail: Device not found
+      properties:
+        errors:
+          properties:
+            detail:
+              description: Short error description
+              example: Device not found
+              type: string
+          type: object
+      title: GroupOrDeviceNotFoundError
+      type: object
+    InvalidAuthPathError:
+      example:
+        errors:
+          detail: Authorization failed due to an invalid path
+      properties:
+        errors:
+          properties:
+            detail:
+              description: Short error description
+              type: string
+          type: object
+      title: InvalidAuthPathError
+      type: object
+    InvalidTokenError:
+      example:
+        errors:
+          detail: Invalid JWT token
+      properties:
+        errors:
+          properties:
+            detail:
+              description: Short error description
+              type: string
+          type: object
+      title: InvalidTokenError
+      type: object
+    MissingTokenError:
+      example:
+        errors:
+          detail: Missing authorization token
+      properties:
+        errors:
+          properties:
+            detail:
+              description: Short error description
+              type: string
+          type: object
+      title: MissingTokenError
+      type: object
+    NotFoundError:
+      example:
+        errors:
+          detail: Device not found
+      properties:
+        errors:
+          properties:
+            detail:
+              description: Short error description
+              type: string
+          type: object
+      title: NotFoundError
+      type: object
+    UnauthorizedError:
+      example:
+        errors:
+          detail: Unauthorized
+      properties:
+        errors:
+          properties:
+            detail:
+              description: Short error description
+              type: string
+          type: object
+      title: UnauthorizedError
+      type: object
+  securitySchemes:
+    JWT:
+      description: |
+        To access APIs a valid JWT token must be passed in all requests
+        in the `Authorization` header. This token should be signed with
+        the private key associated with the realm the request refers to.
+
+
+        The following syntax must be used in the `Authorization` header :
+        `Bearer xxxxxx.yyyyyyy.zzzzzz`
+      in: header
+      name: Authorization
+      type: apiKey
+externalDocs:
+  description: User documentation
+  url: https://docs.astarte-platform.org/astarte/1.0/050-query_device.html
+info:
+  contact:
+    email: info@ispirata.com
+  description: |
+    Astarte's AppEngine API is the main entry point for any operations which have
+    an impact on devices and their data. Most Astarte applications would want to
+    use this API to interact with devices, stream and receive data, and oversee
+    their fleet.
+  title: Astarte App Engine API
+  version: 1.4.0-rc.0
+openapi: 3.0.0
+paths:
+  /version:
+    get:
+      description: Return the AppEngine API version. This endpoint is available at {base_url}/version (without /v1).
+      operationId: getVersion
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    example: 1.3.0
+                    type: string
+                type: object
+          description: Success
+      summary: Retrieve API version
+      tags:
+        - version
+  /{realm_name}/devices:
+    get:
+      description: A paged list of all devices is returned. By default the device ID string is returned for each already registered device. The complete device status can be optionally retrieved rather than device ID string using details option.
+      operationId: getDevicesList
+      parameters:
+        - description: The name of the realm the device list will be returned from.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: 'Opaque devices list page pointer: it basically points to the beginning of a devices page. If not specified the devices list is displayed from the beginning. This format might change in future versions so it should be passed without any further assumption about type, format or its value.'
+          in: query
+          name: from_token
+          required: false
+          schema:
+            type: integer
+        - description: Maximum number of devices that will be returned for each page.
+          in: query
+          name: limit
+          required: false
+          schema:
+            default: 1000
+            minimum: 1
+            type: integer
+        - description: If true detailed device status for all devices is returned rather than the device id. See also DeviceStatus example.
+          in: query
+          name: details
+          required: false
+          schema:
+            default: false
+            type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                example:
+                  data:
+                    - hjnD0GrEP3o9ED1SUuL4QQ
+                    - 8ZxuSGkU7pggwoomJeXo9g
+                    - k-IFKDPoVzIXUcFkF7U80A
+                  links:
+                    next: /v1/example/devices?from_token=-2128516163519372076&limit=3
+                    self: /v1/example/devices?limit=3
+                properties:
+                  data:
+                    items:
+                      type: string
+                    type: array
+                  links:
+                    properties:
+                      next:
+                        description: A relative link to next devices list page.
+                        format: uri
+                        type: string
+                      self:
+                        description: A relative link to this response.
+                        format: uri
+                        type: string
+                    type: object
+                type: object
+          description: Devices list
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+      security:
+        - JWT: []
+      summary: Get devices list
+      tags:
+        - device
+  /{realm_name}/devices-by-alias:
+    get:
+      description: Device listing by alias is not supported. This endpoint is exposed for compatibility and returns an error.
+      operationId: getDevicesListByAlias
+      parameters:
+        - description: The name of the realm the device list would be returned from.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+      responses:
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationPathNotMatchedError'
+          description: Authorization path not matched.
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: Devices listing by alias is not allowed.
+      security:
+        - JWT: []
+      summary: List devices by alias
+      tags:
+        - device
+  /{realm_name}/devices-by-alias/{device_alias}:
+    get:
+      description: A device overview status is returned. Overview includes an array of reported interfaces (introspection), offline/online status, etc...
+      operationId: getDeviceStatusByAlias
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: One of the device aliases
+          in: path
+          name: device_alias
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceStatusByAlias'
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationPathNotMatchedError'
+          description: Authorization path not matched.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Device not found
+      security:
+        - JWT: []
+      summary: Get device general status
+      tags:
+        - device
+    patch:
+      description: Update any of the writeable device properties such as device aliases, device attributes or credentials inhibited.
+      operationId: updateDeviceStatusByAlias (2)
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: One of the device aliases
+          in: path
+          name: device_alias
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/merge-patch+json:
+            schema:
+              type: object
+        description: A JSON Merge Patch containing the property changes which should be applied to the device.
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceStatusByAlias'
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationPathNotMatchedError'
+          description: Authorization path not matched.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Device not found.
+      security:
+        - JWT: []
+      summary: Update a device writeable property
+      tags:
+        - device
+    put:
+      description: Update any of the writeable device properties such as device aliases, device attributes or credentials inhibited.
+      operationId: updateDeviceStatusByAlias
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: One of the device aliases
+          in: path
+          name: device_alias
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/merge-patch+json:
+            schema:
+              type: object
+        description: A JSON Merge Patch containing the property changes which should be applied to the device.
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceStatusByAlias'
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationPathNotMatchedError'
+          description: Authorization path not matched.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Device not found.
+      security:
+        - JWT: []
+      summary: Update a device writeable property
+      tags:
+        - device
+  /{realm_name}/devices-by-alias/{device_alias}/interfaces:
+    get:
+      description: Get a list of interfaces supported by a certain device. Interfaces that are not reported by the device are not reported here. If a device stops to advertise a certain interface, it should be retrieved from a different API, same applies for older versions of a certain interface.
+      operationId: getInterfacesByDeviceAlias
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Device alias
+          in: path
+          name: device_alias
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    example:
+                      - com.test.foo
+                      - com.test.bar
+                    items:
+                      type: string
+                    type: array
+                type: object
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Device not found.
+      security:
+        - JWT: []
+      summary: Get interfaces list by Device alias
+      tags:
+        - device
+  /{realm_name}/devices-by-alias/{device_alias}/interfaces/{interface}:
+    get:
+      description: Get a values snapshot for a given interface on a certain device. This action performed on a data stream interface returns the most recent set of data for each endpoint. More specific APIs should be used for advances data stream actions.
+      operationId: getInterfacePropertiesValuesByDeviceAlias
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Device alias
+          in: path
+          name: device_alias
+          required: true
+          schema:
+            type: string
+        - description: Interface name
+          in: path
+          name: interface
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Interface not found in introspection or device not found.
+      security:
+        - JWT: []
+      summary: Get properties values by Device alias
+      tags:
+        - device
+  /{realm_name}/devices-by-alias/{device_alias}/interfaces/{interface}/{path}:
+    delete:
+      description: Unset a value on a certain path, path is also deleted. Endpoint must support unset.
+      operationId: deletePathValueByDeviceAlias
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Device alias
+          in: path
+          name: device_alias
+          required: true
+          schema:
+            type: string
+        - description: Interface name
+          in: path
+          name: interface
+          required: true
+          schema:
+            type: string
+        - description: Endpoint Path
+          in: path
+          name: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Path not found or interface not found in introspection or device not found.
+      security:
+        - JWT: []
+      summary: Delete path and push an unset value message by Device alias
+      tags:
+        - device
+    get:
+      description: Retrieve a value on a given path. This action on a data production path returns the last entry if no query parameters are specified.
+      operationId: getInterfacePropertyValueByDeviceAlias
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Device alias
+          in: path
+          name: device_alias
+          required: true
+          schema:
+            type: string
+        - description: Interface name
+          in: path
+          name: interface
+          required: true
+          schema:
+            type: string
+        - description: Endpoint Path
+          in: path
+          name: path
+          required: true
+          schema:
+            type: string
+        - description: "Query all values since a certain timestamp (all entries where timestamp >= since). This query parameter applies only on data streams. It must be a ISO 8601 valid timestamp. It can't be used if since is already used. See also 'since_after', to' and 'limit' parameters."
+          in: query
+          name: since
+          required: false
+          schema:
+            type: string
+        - description: "Query all values since after a certain timestamp (all entries where timestamp > since_after). This query parameter applies only on data streams. It must be a ISO 8601 valid timestamp. It can't be used if since is already specified. See also 'since', 'to' and 'limit' parameters."
+          in: query
+          name: since_after
+          required: false
+          schema:
+            type: string
+        - description: "Query all values up to a certain timestamp. If since is not specified first entry date is assumed by default. This query parameter applies only on data streams. It must be a ISO 8601 valid timestamp. See also 'since' and 'limit' parameters."
+          in: query
+          name: to
+          required: false
+          schema:
+            type: string
+        - description: "Limit number of retrieved data production entries to 'limit'. This parameter must be always specified when 'since', 'since-after' and 'to' query parameters are used. If limit is specified without any 'since' and 'to' parameter, last 'limit' values are retrieved. When 'limit' entries are returned, it should be checked if any other entry is left by using since-after the last received timestamp. An error is returned if limit exceeds maximum allowed value. See also 'since' and 'to' parameters."
+          in: query
+          name: limit
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Path not found or interface not found in introspection or device not found.
+        '405':
+          description: Invalid Request
+      security:
+        - JWT: []
+      summary: Get property value by Device alias
+      tags:
+        - device
+    post:
+      description: Update and push a property value to the device on a certain endpoint path. interface should be an individual server owned property interface. It mustn't be used to stream data to a device or to update single properties that are members of an object aggregated interface.
+      operationId: updatePathValueByDeviceAlias (2)
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Device alias
+          in: path
+          name: device_alias
+          required: true
+          schema:
+            type: string
+        - description: Interface name
+          in: path
+          name: interface
+          required: true
+          schema:
+            type: string
+        - description: Endpoint Path
+          in: path
+          name: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Endpoint not found or interface not found in introspection or device not found.
+        '405':
+          description: Invalid object
+        '422':
+          description: Tried to unset a property with `allow_unset` false
+      security:
+        - JWT: []
+      summary: Update and push a value on a path by Device alias
+      tags:
+        - device
+    put:
+      description: Update and push a property value to the device on a certain endpoint path. interface should be an individual server owned property interface. It mustn't be used to stream data to a device or to update single properties that are members of an object aggregated interface.
+      operationId: updatePathValueByDeviceAlias
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Device alias
+          in: path
+          name: device_alias
+          required: true
+          schema:
+            type: string
+        - description: Interface name
+          in: path
+          name: interface
+          required: true
+          schema:
+            type: string
+        - description: Endpoint Path
+          in: path
+          name: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Endpoint not found or interface not found in introspection or device not found.
+        '405':
+          description: Invalid object
+        '422':
+          description: Tried to unset a property with `allow_unset` false
+      security:
+        - JWT: []
+      summary: Update and push a value on a path by Device alias
+      tags:
+        - device
+  /{realm_name}/devices/{device_id}:
+    get:
+      description: A device overview status is returned. Overview includes an array of reported interfaces (introspection), offline/online status, etc...
+      operationId: getDeviceStatus
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Device ID
+          in: path
+          name: device_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/DeviceStatus'
+                type: object
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Device not found
+      security:
+        - JWT: []
+      summary: Get device general status
+      tags:
+        - device
+    patch:
+      description: Update any of the writeable device properties such as device aliases, device attributes or credentials inhibited.
+      operationId: updateDeviceStatus (2)
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Device ID
+          in: path
+          name: device_id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/merge-patch+json:
+            schema:
+              type: object
+        description: A JSON Merge Patch containing the property changes which should be applied to the device.
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/DeviceStatus'
+                type: object
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Device not found.
+      security:
+        - JWT: []
+      summary: Update a device writeable property
+      tags:
+        - device
+    put:
+      description: Update any of the writeable device properties such as device aliases, device attributes or credentials inhibited.
+      operationId: updateDeviceStatus
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Device ID
+          in: path
+          name: device_id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/merge-patch+json:
+            schema:
+              type: object
+        description: A JSON Merge Patch containing the property changes which should be applied to the device.
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/DeviceStatus'
+                type: object
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Device not found.
+      security:
+        - JWT: []
+      summary: Update a device writeable property
+      tags:
+        - device
+  /{realm_name}/devices/{device_id}/interfaces:
+    get:
+      description: Get a list of interfaces supported by a certain device. Interfaces that are not reported by the device are not reported here. If a device stops to advertise a certain interface, it should be retrieved from a different API, same applies for older versions of a certain interface.
+      operationId: getInterfaces
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Device ID
+          in: path
+          name: device_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    example:
+                      - com.test.foo
+                      - com.test.bar
+                    items:
+                      type: string
+                    type: array
+                type: object
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Device not found.
+      security:
+        - JWT: []
+      summary: Get interfaces list
+      tags:
+        - device
+  /{realm_name}/devices/{device_id}/interfaces/{interface}:
+    get:
+      description: Get a values snapshot for a given interface on a certain device. This action performed on a data stream interface returns the most recent set of data for each endpoint. More specific APIs should be used for advances data stream actions.
+      operationId: getInterfacePropertiesValues
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Device ID
+          in: path
+          name: device_id
+          required: true
+          schema:
+            type: string
+        - description: Interface name
+          in: path
+          name: interface
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Interface not found in introspection or device not found.
+      security:
+        - JWT: []
+      summary: Get properties values
+      tags:
+        - device
+  /{realm_name}/devices/{device_id}/interfaces/{interface}/{path}:
+    delete:
+      description: Unset a value on a certain path, path is also deleted. Endpoint must support unset.
+      operationId: deletePathValue
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Device ID
+          in: path
+          name: device_id
+          required: true
+          schema:
+            type: string
+        - description: Interface name
+          in: path
+          name: interface
+          required: true
+          schema:
+            type: string
+        - description: Endpoint Path
+          in: path
+          name: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Path not found or interface not found in introspection or device not found.
+      security:
+        - JWT: []
+      summary: Delete path and push an unset value message
+      tags:
+        - device
+    get:
+      description: Retrieve a value on a given path. This action on a data production path returns the last entry if no query parameters are specified.
+      operationId: getInterfacePropertyValue
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Device ID
+          in: path
+          name: device_id
+          required: true
+          schema:
+            type: string
+        - description: Interface name
+          in: path
+          name: interface
+          required: true
+          schema:
+            type: string
+        - description: Endpoint Path
+          in: path
+          name: path
+          required: true
+          schema:
+            type: string
+        - description: "Query all values since a certain timestamp (all entries where timestamp >= since). This query parameter applies only on data streams. It must be a ISO 8601 valid timestamp. It can't be used if since is already used. See also 'since_after', to' and 'limit' parameters."
+          in: query
+          name: since
+          required: false
+          schema:
+            type: string
+        - description: "Query all values since after a certain timestamp (all entries where timestamp > since_after). This query parameter applies only on data streams. It must be a ISO 8601 valid timestamp. It can't be used if since is already specified. See also 'since', 'to' and 'limit' parameters."
+          in: query
+          name: since_after
+          required: false
+          schema:
+            type: string
+        - description: "Query all values up to a certain timestamp. If since is not specified first entry date is assumed by default. This query parameter applies only on data streams. It must be a ISO 8601 valid timestamp. See also 'since' and 'limit' parameters."
+          in: query
+          name: to
+          required: false
+          schema:
+            type: string
+        - description: "Limit number of retrieved data production entries to 'limit'. This parameter must be always specified when 'since', 'since-after' and 'to' query parameters are used. If limit is specified without any 'since' and 'to' parameter, last 'limit' values are retrieved. When 'limit' entries are returned, it should be checked if any other entry is left by using since-after the last received timestamp.  An error is returned if limit exceeds maximum allowed value. See also 'since' and 'to' parameters."
+          in: query
+          name: limit
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Path not found or interface not found in introspection or device not found.
+        '405':
+          description: Invalid Request
+      security:
+        - JWT: []
+      summary: Get property value
+      tags:
+        - device
+    post:
+      description: Update and push a property value to the device on a certain endpoint path. interface should be an individual server owned property interface. It mustn't be used to stream data to a device or to update single properties that are members of an object aggregated interface.
+      operationId: updatePathValue (2)
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Device ID
+          in: path
+          name: device_id
+          required: true
+          schema:
+            type: string
+        - description: Interface name
+          in: path
+          name: interface
+          required: true
+          schema:
+            type: string
+        - description: Endpoint Path
+          in: path
+          name: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Endpoint not found or interface not found in introspection or device not found.
+        '405':
+          description: Invalid object
+        '422':
+          description: Tried to unset a property with `allow_unset` false
+      security:
+        - JWT: []
+      summary: Update and push a value on a path
+      tags:
+        - device
+    put:
+      description: Update and push a property value to the device on a certain endpoint path. interface should be an individual server owned property interface. It mustn't be used to stream data to a device or to update single properties that are members of an object aggregated interface.
+      operationId: updatePathValue
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Device ID
+          in: path
+          name: device_id
+          required: true
+          schema:
+            type: string
+        - description: Interface name
+          in: path
+          name: interface
+          required: true
+          schema:
+            type: string
+        - description: Endpoint Path
+          in: path
+          name: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Endpoint not found or interface not found in introspection or device not found.
+        '405':
+          description: Invalid object
+        '422':
+          description: Tried to unset a property with `allow_unset` false
+      security:
+        - JWT: []
+      summary: Update and push a value on a path
+      tags:
+        - device
+  /{realm_name}/groups:
+    get:
+      description: Return the list of device groups that exist in the realm.
+      operationId: indexGroups
+      parameters:
+        - $ref: '#/components/parameters/RealmName'
+      responses:
+        '200':
+          $ref: '#/components/responses/IndexGroups'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+      security:
+        - JWT: []
+      summary: Get groups list
+      tags:
+        - groups
+    post:
+      description: Create a new group with a set of devices. Devices must already be registered in the realm.
+      operationId: createGroup
+      parameters:
+        - $ref: '#/components/parameters/RealmName'
+      responses:
+        '201':
+          $ref: '#/components/responses/GroupCreated'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '422':
+          $ref: '#/components/responses/InvalidGroupConfig'
+      security:
+        - JWT: []
+      summary: Create new group
+      tags:
+        - groups
+  /{realm_name}/groups/{group_name}:
+    get:
+      description: Return the configuration of the group. Currently, it just returns the group name, but the call can be used to verify if a group exists.
+      operationId: getGroupConfig
+      parameters:
+        - $ref: '#/components/parameters/RealmName'
+        - $ref: '#/components/parameters/GroupName'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetGroup'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          $ref: '#/components/responses/GroupNotFound'
+      security:
+        - JWT: []
+      summary: Get group config
+      tags:
+        - groups
+  /{realm_name}/groups/{group_name}/devices:
+    get:
+      description: Return the list of devices in a group.
+      operationId: indexGroupDevices
+      parameters:
+        - description: The name of the realm the device list will be returned from.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: The name of the group.
+          in: path
+          name: group_name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/IndexGroupDevices'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          $ref: '#/components/responses/GroupNotFound'
+      security:
+        - JWT: []
+      summary: List devices in a group
+      tags:
+        - groups
+    post:
+      description: Add an existing device to a group.
+      operationId: addDeviceToGroup
+      parameters:
+        - $ref: '#/components/parameters/RealmName'
+        - $ref: '#/components/parameters/GroupName'
+      responses:
+        '201':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          $ref: '#/components/responses/GroupNotFound'
+        '422':
+          $ref: '#/components/responses/InvalidAddGroup'
+      security:
+        - JWT: []
+      summary: Add device to group
+      tags:
+        - groups
+  /{realm_name}/groups/{group_name}/devices/{device_id}:
+    delete:
+      description: Remove device from group
+      operationId: removeDeviceFromGroup
+      parameters:
+        - $ref: '#/components/parameters/RealmName'
+        - $ref: '#/components/parameters/GroupName'
+        - $ref: '#/components/parameters/DeviceId'
+      responses:
+        '204':
+          description: Device removed
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          $ref: '#/components/responses/GroupOrDeviceNotFound'
+      security:
+        - JWT: []
+      summary: Remove device from group
+      tags:
+        - groups
+    get:
+      description: Return the status of a device that belongs to a group.
+      operationId: getGroupDeviceStatus
+      parameters:
+        - description: The name of the realm the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: The name of the group.
+          in: path
+          name: group_name
+          required: true
+          schema:
+            type: string
+        - description: Device ID
+          in: path
+          name: device_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/DeviceStatus'
+                type: object
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          $ref: '#/components/responses/GroupOrDeviceNotFound'
+      security:
+        - JWT: []
+      summary: Get device general status
+      tags:
+        - groups
+    patch:
+      description: Update any of the writeable device properties for a device that belongs to a group.
+      operationId: updateGroupDeviceStatus
+      parameters:
+        - description: The name of the realm the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: The name of the group.
+          in: path
+          name: group_name
+          required: true
+          schema:
+            type: string
+        - description: Device ID
+          in: path
+          name: device_id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/merge-patch+json:
+            schema:
+              type: object
+        description: A JSON Merge Patch containing the property changes which should be applied to the device.
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/DeviceStatus'
+                type: object
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          $ref: '#/components/responses/GroupOrDeviceNotFound'
+      security:
+        - JWT: []
+      summary: Update a device writeable property
+      tags:
+        - groups
+  /{realm_name}/groups/{group_name}/devices/{device_id}/interfaces:
+    get:
+      description: Get a list of interfaces supported by a certain device that belongs to a group. Interfaces that are not reported by the device are not reported here. If a device stops to advertise a certain interface, it should be retrieved from a different API, same applies for older versions of a certain interface.
+      operationId: getGroupDeviceInterfaces
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Group name
+          in: path
+          name: group_name
+          required: true
+          schema:
+            type: string
+        - description: Device ID
+          in: path
+          name: device_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    example:
+                      - com.test.foo
+                      - com.test.bar
+                    items:
+                      type: string
+                    type: array
+                type: object
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Device not found.
+      security:
+        - JWT: []
+      summary: Get interfaces list for device in a group
+      tags:
+        - groups
+  /{realm_name}/groups/{group_name}/devices/{device_id}/interfaces/{interface}:
+    get:
+      description: Get a values snapshot for a given interface on a certain device that belongs to a group. This action performed on a data stream interface returns the most recent set of data for each endpoint. More specific APIs should be used for advanced data stream actions.
+      operationId: getGroupDeviceInterfacePropertiesValues
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Group name
+          in: path
+          name: group_name
+          required: true
+          schema:
+            type: string
+        - description: Device ID
+          in: path
+          name: device_id
+          required: true
+          schema:
+            type: string
+        - description: Interface name
+          in: path
+          name: interface
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Interface not found in introspection or device not found.
+      security:
+        - JWT: []
+      summary: Get properties values for device in a group
+      tags:
+        - groups
+  /{realm_name}/groups/{group_name}/devices/{device_id}/interfaces/{interface}/{path}:
+    delete:
+      description: Unset a value on a certain path, path is also deleted. Endpoint must support unset.
+      operationId: deleteGroupDevicePathValue
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Group name
+          in: path
+          name: group_name
+          required: true
+          schema:
+            type: string
+        - description: Device ID
+          in: path
+          name: device_id
+          required: true
+          schema:
+            type: string
+        - description: Interface name
+          in: path
+          name: interface
+          required: true
+          schema:
+            type: string
+        - description: Endpoint Path
+          in: path
+          name: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Path not found or interface not found in introspection or device not found.
+      security:
+        - JWT: []
+      summary: Delete path and push an unset value message for device in a group
+      tags:
+        - groups
+    get:
+      description: Retrieve a value on a given path for a device that belongs to a group. This action on a data production path returns the last entry if no query parameters are specified.
+      operationId: getGroupDeviceInterfacePropertyValue
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Group name
+          in: path
+          name: group_name
+          required: true
+          schema:
+            type: string
+        - description: Device ID
+          in: path
+          name: device_id
+          required: true
+          schema:
+            type: string
+        - description: Interface name
+          in: path
+          name: interface
+          required: true
+          schema:
+            type: string
+        - description: Endpoint Path
+          in: path
+          name: path
+          required: true
+          schema:
+            type: string
+        - description: "Query all values since a certain timestamp (all entries where timestamp >= since). This query parameter applies only on data streams. It must be a ISO 8601 valid timestamp. It can't be used if since is already used. See also 'since_after', to' and 'limit' parameters."
+          in: query
+          name: since
+          required: false
+          schema:
+            type: string
+        - description: "Query all values since after a certain timestamp (all entries where timestamp > since_after). This query parameter applies only on data streams. It must be a ISO 8601 valid timestamp. It can't be used if since is already specified. See also 'since', 'to' and 'limit' parameters."
+          in: query
+          name: since_after
+          required: false
+          schema:
+            type: string
+        - description: "Query all values up to a certain timestamp. If since is not specified first entry date is assumed by default. This query parameter applies only on data streams. It must be a ISO 8601 valid timestamp. See also 'since' and 'limit' parameters."
+          in: query
+          name: to
+          required: false
+          schema:
+            type: string
+        - description: "Limit number of retrieved data production entries to 'limit'. This parameter must be always specified when 'since', 'since-after' and 'to' query parameters are used. If limit is specified without any 'since' and 'to' parameter, last 'limit' values are retrieved. When 'limit' entries are returned, it should be checked if any other entry is left by using since-after the last received timestamp. An error is returned if limit exceeds maximum allowed value. See also 'since' and 'to' parameters."
+          in: query
+          name: limit
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Path not found or interface not found in introspection or device not found.
+        '405':
+          description: Invalid Request
+      security:
+        - JWT: []
+      summary: Get property value for device in a group
+      tags:
+        - groups
+    post:
+      description: Update and push a property value to the device on a certain endpoint path. interface should be an individual server owned property interface. It mustn't be used to stream data to a device or to update single properties that are members of an object aggregated interface.
+      operationId: updateGroupDevicePathValue (2)
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Group name
+          in: path
+          name: group_name
+          required: true
+          schema:
+            type: string
+        - description: Device ID
+          in: path
+          name: device_id
+          required: true
+          schema:
+            type: string
+        - description: Interface name
+          in: path
+          name: interface
+          required: true
+          schema:
+            type: string
+        - description: Endpoint Path
+          in: path
+          name: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Endpoint not found or interface not found in introspection or device not found.
+        '405':
+          description: Invalid object
+        '422':
+          description: Tried to unset a property with `allow_unset` false
+      security:
+        - JWT: []
+      summary: Update and push a value on a path for device in a group
+      tags:
+        - groups
+    put:
+      description: Update and push a property value to the device on a certain endpoint path. interface should be an individual server owned property interface. It mustn't be used to stream data to a device or to update single properties that are members of an object aggregated interface.
+      operationId: updateGroupDevicePathValue
+      parameters:
+        - description: Name of the realm which the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Group name
+          in: path
+          name: group_name
+          required: true
+          schema:
+            type: string
+        - description: Device ID
+          in: path
+          name: device_id
+          required: true
+          schema:
+            type: string
+        - description: Interface name
+          in: path
+          name: interface
+          required: true
+          schema:
+            type: string
+        - description: Endpoint Path
+          in: path
+          name: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad request
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: Endpoint not found or interface not found in introspection or device not found.
+        '405':
+          description: Invalid object
+        '422':
+          description: Tried to unset a property with `allow_unset` false
+      security:
+        - JWT: []
+      summary: Update and push a value on a path for device in a group
+      tags:
+        - groups
+  /{realm_name}/stats/devices:
+    get:
+      description: Return stats regarding devices in a Realm
+      operationId: getDevicesStats
+      parameters:
+        - $ref: '#/components/parameters/RealmName'
+      responses:
+        '200':
+          $ref: '#/components/responses/GetDevicesStats'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/AuthorizationPathNotMatched'
+      security:
+        - JWT: []
+      summary: Retrieve devices stats
+      tags:
+        - stats
+  /{realm_name}/version:
+    get:
+      description: Return the AppEngine API version.
+      operationId: getVersionWithRealm
+      parameters:
+        - description: Name of the realm.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    example: 1.3.0
+                    type: string
+                type: object
+          description: Success
+      security:
+        - JWT: []
+      summary: Retrieve API version
+      tags:
+        - version
+security: []
+servers:
+  - url: '{base_url}/v1'
+    variables:
+      base_url:
+        default: http://localhost:4002
+        description: |
+          The base URL you're serving Astarte from. This should point to the base path from which AppEngine API is served.
+          In case you are running a local installation, this is likely `http://localhost:4002`.
+          In case you have a standard Astarte installation, it is most likely `https://<your host>/appengine`.
+tags:
+  - description: Device data status retrieval and publish. All operations on a device can be done using both the device id or any of its aliases.
+    name: device
+  - description: Manage groups creation, allowing to create a new group, add or remove devices from it and query devices that belong to it.
+    name: groups
+  - description: Retrieve stats (e.g. total number of devices, connected devices, etc).
+    name: stats
+  - description: Retrieve version information of the API.
+    name: version

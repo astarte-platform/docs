@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.39.3">
+    <meta name="project" content="Clea Astarte v1.4.0-rc.0">
+
+
+    <title>Design Principles — Clea Astarte v1.4.0-rc.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-VYWJUHZE.css" />
+
+    <script defer src="dist/sidebar_items-4FAF029A.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-XBCM4BHM.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://docs.astarte-platform.org/astarte/snapshot/" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="Clea Astarte" />
+        </a>
+
+      <div>
+        <a href="https://docs.astarte-platform.org/astarte/snapshot/" class="sidebar-projectName" translate="no">
+Clea Astarte
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.4.0-rc.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras=""></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-extra" id="main" data-type="extras">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of Clea Astarte</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>Design Principles</h1>
+
+
+      <a href="https://github.com/astarte-platform/astarte/blob/master/doc/pages/architecture/010-design_principles.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+<p>Astarte has a strongly opinionated design aimed at the generic IoT / data-driven use case. As such, and unlike other platforms, it strives to streamline a very simple user workflow for ingesting, distributing and retrieving data, built on a set of concepts and principles.</p><h2 id="declarative-vs-explicit-data-management" class="section-heading"><a href="#declarative-vs-explicit-data-management" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Declarative vs. Explicit Data Management</span></h2><p>Astarte does not allow exchanging raw data - it rather forces the user to describe data <em>before</em> it is sent into the platform.</p><p>Data is described with a mechanism named <a href="030-interface.html">Interfaces, explained in detail in the user guide</a>. Through Interfaces, Astarte creates and maintains a data model autonomously, sparing the user from the complexity of dealing with Databases and Data Management in general.</p><h2 id="internal-api-mechanism" class="section-heading"><a href="#internal-api-mechanism" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Internal API mechanism</span></h2><p>Astarte services generally use native Erlang messages to exchange data, but resort to a Protobuf-based API over AMQP for the device-to-cloud data path in order to increase resiliency and to provide a backpressure mechanism.</p><h2 id="device-id" class="section-heading"><a href="#device-id" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Device ID</span></h2><p>Astarte identifies each device with a 128 bit Device ID which has to be unique within its Realm. As a best practice, it is advised to generate such an ID from hardware unique IDs or using dedicated hardware modules, to make it consistent across device reflashes. It is advised to use a cryptographic hash function (such as sha256) when generating it using a software module. Astarte will use URL encoded base64 (without padding) strings like <code class="inline">V_zv6ThCCtXWveQ8mPjsKg</code> in its representation.</p><p>Although not required, it is strongly advised to use <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">UUIDs</a> as Astarte Device IDs. In fact, Astarte Device ID's specification is 100% compatible with UUIDs Base64 encoded adhering to RFC 7515. In the same fashion, UUIDv5 can be used to generate a deterministic Device ID from any kind of input data.</p><p>Astarte Clients which generate Astarte Device IDs (such as <code class="inline">astartectl</code> or Astarte Dashboard) will always generate a Device ID out of UUIDv4 (random ID) or UUIDv5 (deterministic ID).</p><p>This detail is relevant not only for identifying and querying the device, but also for the <a href="050-pairing_mechanism.html">Pairing mechanism</a>, as a device's credentials are associated to its Device ID.</p><p><em>Note: currently, Astarte accepts Device IDs longer than 128 bit, which are then truncated to 128 bit internally. This behaviour exists for compatibility reasons but it's not supported and will likely change in future releases - hence, refrain from using anything which is not a 128-bit Device ID.</em></p><!-- This needs explicit html tags instead of underscores so that the sup tag is correctly formatted --><p><em>Note: As much as Device IDs should effectively be unique per-realm and this configuration will always be supported, some future optional optimizations might be available on top of the assumption that Device IDs are globally unique to an Astarte installation. Given the Device ID format has a 2<sup>-128</sup> chance of collision, it is safe to assume that as long as best practices for Device ID generation are followed, Device IDs will always be globally unique.</em></p><h2 id="device-interaction" class="section-heading"><a href="#device-interaction" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Device interaction</span></h2><p>Astarte assumes devices are capable of exchanging data over a transport/protocol supporting SSL/TLS (e.g.: MQTT). This is a strong requirement, as Astarte identifies devices through client SSL certificates when it comes to data exchange.</p><p>Each transport implementation must be capable of mapping interfaces and out-of-band messages on top of it. Astarte itself does not care about the implementation detail of the transport itself, as the transport is in charge of converting its input to an AMQP message following Astarte's internal API specification.</p><p>Astarte's official reference and recommended design is MQTT using <a href="http://vernemq.com/">VerneMQ</a> and its Astarte plugin.</p><h3 id="device-sdk-and-code-generation" class="section-heading"><a href="#device-sdk-and-code-generation" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Device SDK and code generation</span></h3><p>Device SDKs can take advantage of the interface design to dynamically generate code for exchanging data with Astarte. This way, developers using Device SDKs are spared from knowing details about the underlying transports and protocols, and can use a data-driven API.</p><p>However, there are some limitations and requirements:</p><ul><li>The SDK requires SSL support - Astarte does not allow exchanging data over unencrypted channels and its design builds on the assumption that everything runs on top of SSL. If your device isn't capable of SSL, you are probably looking for Gateway support in Astarte.</li><li>As much as the SDK can implement virtually any transport protocol, it is required that the SDK supports at least HTTP(s) for Pairing.</li></ul><h2 id="realms-and-multitenancy" class="section-heading"><a href="#realms-and-multitenancy" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Realms and multitenancy</span></h2><p>Astarte is natively multitenant through the concept of Realms. Each Realm is a logical portion of Astarte, and usually represents an organization or, in general, a set of devices physically/logically isolated.</p><p>Realms build upon the concept of keyspaces in Cassandra. Each Realm has its very own keyspace and has no shared data with other Realms. In fact, it is even possible to have a dedicated Cassandra cluster for a single realm in complex installations.</p><h2 id="message-ordering" class="section-heading"><a href="#message-ordering" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Message Ordering</span></h2><p>In Astarte, transports are given the task to deliver messages in a well-known AMQP structure. The ordering of such messages is then preserved on a set of criterias:</p><ul><li>There is no such thing as &quot;in-order&quot; among devices. A message X sent to device A can be processed after a message Y sent to device B even if Y was ingested in the AMQP queue before X. This is intentional and by design.</li><li>All messages to a specific device A are <em>always guaranteed</em> to be processed in the very same order of the transport ingestion.</li><li>Ordering is not dependent on the message timestamp, which can be set by different sources (depending on the interface's definition of timestamp). For example, interface A has explicit timestamping while interface B doesn't. Message X from A has an earlier timestamp than message Y from B, but if message Y has been ingested before X, Y will be processed before X regardless.</li><li>Responsibility of message ordering <em>before</em> entering AMQP is entirely up to the transport, and different transports might have different behaviors when it comes to message ordering. Astarte provides this guarantee right after the transport itself.</li><li>Message ordering concerns only pipelines in the <a href="020-components.html#data-updater-plant-dup">DUP</a>, including but not limited to data ingestion in the Database and Simple Triggers.</li></ul><h2 id="triggers" class="section-heading"><a href="#triggers" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Triggers</span></h2><p>Triggers are rules which are &quot;triggered&quot; whenever one or more conditions are satisfied. Every satisfied condition generates an ordered event for the <a href="020-components.html#trigger-engine">Trigger Engine</a> to be processed. They are one of the core concepts in Astarte and are the preferred way to handle push interactions between Astarte and connected applications.</p><p>More details about triggers can be found in the <a href="060-triggers.html">dedicated section</a>.</p>
+
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="001-intro_architecture.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Introduction
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="020-components.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Components
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+
+        <p>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="Clea Astarte.epub" title="ePub version">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.39.3) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

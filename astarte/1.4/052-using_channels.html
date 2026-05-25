@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.39.3">
+    <meta name="project" content="Clea Astarte v1.4.0-rc.0">
+
+
+    <title>Using Astarte Channels (WebSockets) — Clea Astarte v1.4.0-rc.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-VYWJUHZE.css" />
+
+    <script defer src="dist/sidebar_items-4FAF029A.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-XBCM4BHM.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://docs.astarte-platform.org/astarte/snapshot/" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="Clea Astarte" />
+        </a>
+
+      <div>
+        <a href="https://docs.astarte-platform.org/astarte/snapshot/" class="sidebar-projectName" translate="no">
+Clea Astarte
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.4.0-rc.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras=""></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-extra" id="main" data-type="extras">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of Clea Astarte</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>Using Astarte Channels (WebSockets)</h1>
+
+
+      <a href="https://github.com/astarte-platform/astarte/blob/master/doc/pages/user/052-using_channels.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+<p>Especially when building Frontend applications, it is useful to receive real-time updates about data
+sent from Devices. Astarte leverages <a href="https://hexdocs.pm/phoenix/channels.html">Phoenix Channels</a> to
+provide such a thing over <a href="https://en.wikipedia.org/wiki/WebSocket">WebSockets</a> in AppEngine API.
+WebSockets can be used natively from a Web Browser and follow the same authentication pattern as a
+standard HTTP call.</p><p>The AppEngine API for Astarte Channels is located at the URL:
+<code class="inline">ws://&lt;astarte-base-url&gt;/appengine/v1/socket/websocket</code>.</p><p>Astarte Channels define a semantic on top of Phoenix Channels which allows read-only monitoring of
+<code class="inline">device</code> Interfaces. Authentication and Authorization over Channels happens in the very same way as
+<code class="inline">AppEngine</code>, and the <code class="inline">a_ch</code> claim in the token is respected when joining rooms and installing
+triggers. See <a href="070-auth.html">Authentication and Authorization</a> for more details on Auth semantics
+in Astarte.</p><h2 id="rooms" class="section-heading"><a href="#rooms" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Rooms</span></h2><p>Rooms in Astarte Channels map 1:1 to Topics in Phoenix Channels, and can be joined in the very same
+way. Once a connection is established, the user can join any number of rooms, given he is
+<a href="#authorization">authorized to do so</a>.</p><p>A Room is identified by a topic with the following semantics: <code class="inline">rooms:&lt;realm&gt;:&lt;name&gt;</code>. For example,
+<code class="inline">rooms:test:myroom</code> will join the Room <code class="inline">myroom</code> in the Realm <code class="inline">test</code>.</p><p>A room can be joined by any number of concurrent users. Rooms serve as containers for Transient
+Triggers, which can be installed by any authorized user. Transient Triggers are actual
+<a href="060-triggers.html">Triggers</a>, with the difference that they exist within a Channels Room rather
+than within a Realm - this mostly affects their timespan - and that the <code class="inline">action</code> can't be
+configured - every time a Condition is triggered an event is delivered to users in the Room.</p><h3 id="events" class="section-heading"><a href="#events" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Events</span></h3><p>Everytime a Condition of an installed Trigger is triggered, an event is sent to the Phoenix Channel,
+with a similar payload:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="5669063377-1">{</span><span class="w">
+  </span><span class="nt">&quot;device_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f0VMRgIBAQAAAAAAAAAAAA&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="nt">&quot;event&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5669063377-2">{</span><span class="w">
+    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;device_connected&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;device_ip_address&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.2.3.4&quot;</span><span class="w">
+  </span><span class="p" data-group-id="5669063377-2">}</span><span class="w">
+</span><span class="p" data-group-id="5669063377-1">}</span></code></pre><p><code class="inline">device_id</code> is always present (as long as the trigger matches a device) and identifies the device
+emitting the event. <code class="inline">event</code>, instead, depends on the kind of installed trigger. It always carries a
+<code class="inline">type</code> string, which identifies the content of the object. The complete list of possible
+event payloads can be found <a href="060-triggers.html#simple-event-payloads">here</a>.</p><h3 id="lifecycle" class="section-heading"><a href="#lifecycle" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Lifecycle</span></h3><p>Once a room is created, it remains valid and active with all of its subscriptions. There's little
+overhead in having a large number of rooms, as the only components leeching resources are Transient
+Triggers. As of today, Transient Triggers never expire - it is responsibility of the user to clean
+them up once the room becomes empty, if needed. In future versions, Transient Triggers will likely
+expire after some time, if left in an empty room.</p><h2 id="managing-transient-triggers" class="section-heading"><a href="#managing-transient-triggers" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Managing Transient Triggers</span></h2><p>To install a Transient Trigger, one should issue a <code class="inline">watch</code> event in the Channel, given he is
+authorized to do so. The payload of such an event is identical to a Trigger definition, hence it
+looks like this:</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="5429324634-1">{</span><span class="w">
+  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;datatrigger&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="nt">&quot;device_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f0VMRgIBAQAAAAAAAAAAAA&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="nt">&quot;simple_trigger&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5429324634-2">{</span><span class="w">
+    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data_trigger&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;on&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;incoming_data&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.astarte-platform.genericsensors.Values&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;interface_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;match_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/streamTest/value&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;value_match_operator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&gt;&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;known_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="w">
+  </span><span class="p" data-group-id="5429324634-2">}</span><span class="w">
+</span><span class="p" data-group-id="5429324634-1">}</span></code></pre><p>This installs in the Room a Transient Trigger which will trigger an event everytime a value higher
+than <code class="inline">0.6</code> is sent on the path <code class="inline">/streamTest/value</code> of the <code class="inline">datastream</code> interface
+<code class="inline">org.astarte-platform.genericsensors.Values</code> by the device <code class="inline">f0VMRgIBAQAAAAAAAAAAAA</code>, and will be
+received by every user currently in the room. If a user isn't in the room at the time of the event,
+he will not get it, and there's no way he can retrieve it if he joined at a later time.</p><p>Triggers can be uninstalled by issuing an <code class="inline">unwatch</code> event in the Channel. The payload of the event
+should be the name of the trigger which should be uninstalled.</p><h3 id="group-triggers" class="section-heading"><a href="#group-triggers" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Group Triggers</span></h3><p>Transient triggers can also target an Astarte group instead of a single device. To install a group
+volatile trigger, pass the <code class="inline">group_name</code> key in the JSON payload instead of the <code class="inline">device_id</code> key.</p><p>For example, the trigger below is equivalent to the one in the previous section, but it targets all
+devices that are in the group <code class="inline">mygroup</code>.</p><pre><code class="makeup json" translate="no"><span class="p" data-group-id="6269216732-1">{</span><span class="w">
+  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;groupdevicetrigger&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="nt">&quot;group_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mygroup&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="nt">&quot;simple_trigger&quot;</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6269216732-2">{</span><span class="w">
+    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data_trigger&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;on&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;incoming_data&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;interface_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;org.astarte-platform.genericsensors.Values&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;interface_major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;match_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/streamTest/value&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;value_match_operator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&gt;&quot;</span><span class="p">,</span><span class="w">
+    </span><span class="nt">&quot;known_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="w">
+  </span><span class="p" data-group-id="6269216732-2">}</span><span class="w">
+</span><span class="p" data-group-id="6269216732-1">}</span></code></pre><p>Note that the devices belonging to the group are evaluated when the trigger is installed, <em>i.e.</em> if
+a device is added to the group when the trigger is already installed, the trigger will not target
+the newly added device. The same goes for devices removed from the group, that will still be
+targeted by the trigger until it is removed.</p><h2 id="authorization" class="section-heading"><a href="#authorization" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Authorization</span></h2><p>Just like any other Astarte component, Authorization is encapsulated in a token claim, in particular
+the <code class="inline">a_ch</code> claim. However, the mechanism is rather different compared to a REST API, and uses
+different verbs.</p><h3 id="join" class="section-heading"><a href="#join" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">JOIN</span></h3><p>The <code class="inline">JOIN</code> verb implies that a user can join a room. This only allows him to receive events and to
+interact in a <em>read-only</em> fashion with the room itself. There is no restriction to which events a
+user sees - if he is authorized to enter in a room, he will be capable of seeing all events flowing
+in. More granular permissions can be done simply by creating more rooms in which different triggers
+will be installed.</p><p>The <code class="inline">JOIN</code> verb has the following semantic: <code class="inline">JOIN::&lt;regex&gt;</code>, where regex matches a room name (the
+room name is what follows <code class="inline">rooms:&lt;realm&gt;:</code> - the realm is implicit in the context of the
+authorization token). For example, a user authorized with the <code class="inline">JOIN::test.*</code> claim in the <code class="inline">test</code>
+realm will be able to join, for example, <code class="inline">rooms:test:testthis</code>, <code class="inline">rooms:test:testme</code>,
+<code class="inline">rooms:test:test</code>. The realm is always implicit in the regex, as the token is authenticated in the
+context of a Realm.</p><h3 id="watch" class="section-heading"><a href="#watch" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">WATCH</span></h3><p>The <code class="inline">WATCH</code> verb allows a user to install a Trigger within a room. Its semantics define which kind
+of trigger, and upon which entities the user is allowed to act. Watch semantics are
+<code class="inline">WATCH::&lt;regex&gt;</code>, where <code class="inline">regex</code> is a regular expression which matches a device, path or interface
+(or a mixture of them) in almost very same fashion as the <code class="inline">a_aea</code> claim (which is used in
+AppEngine).</p><p>Given different kind of triggers impact different Astarte entities, the Authorization claim
+implicitly defines which kind of triggers a user will be able to install. For example,
+<code class="inline">f0VMRgIBAQAAAAAAAAAAAA/org.astarte-platform.genericsensors.Values.*</code> will allow installing data
+triggers such as the one shown in the previous example, but won't let the user install device-wide
+triggers (such as connect/disconnect events). A claim such as <code class="inline">f0VMRgIBAQAAAAAAAAAAAA</code> or
+<code class="inline">f0VMRgIBAQAAAAAAAAAAAA.*</code>, instead, will allow device-level triggers to be installed.</p>
+
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="050-query_device.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Querying a Device
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="060-using_triggers.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Using Triggers
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+
+        <p>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="Clea Astarte.epub" title="ePub version">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.39.3) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.39.3">
+    <meta name="project" content="Clea Astarte v1.4.0-rc.0">
+
+
+    <title>Managing Groups — Clea Astarte v1.4.0-rc.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-VYWJUHZE.css" />
+
+    <script defer src="dist/sidebar_items-4FAF029A.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-XBCM4BHM.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://docs.astarte-platform.org/astarte/snapshot/" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="Clea Astarte" />
+        </a>
+
+      <div>
+        <a href="https://docs.astarte-platform.org/astarte/snapshot/" class="sidebar-projectName" translate="no">
+Clea Astarte
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.4.0-rc.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras=""></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-extra" id="main" data-type="extras">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of Clea Astarte</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>Managing Groups</h1>
+
+
+      <a href="https://github.com/astarte-platform/astarte/blob/master/doc/pages/user/065-managing-groups.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+<p>Devices can be divided in groups to provide group-specific access to the APIs.</p><p>The examples below will use <code class="inline">astartectl</code> but you can achieve the same results using AppEngine API.</p><h2 id="reserved-group-prefixes" class="section-heading"><a href="#reserved-group-prefixes" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Reserved group prefixes</span></h2><p>Some prefixes are reserved for internal use. It's not possible to create groups with a name starting
+with the <code class="inline">~</code> and <code class="inline">@</code> characters.</p><h2 id="creating-a-group" class="section-heading"><a href="#creating-a-group" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Creating a group</span></h2><p>You can create a group with astartectl with this command</p><pre><code class="makeup bash" translate="no"><span class="">astartectl appengine groups create mygroup &lt;device_identifier&gt;,&lt;device_identifier&gt;
+</span></code></pre><p><code class="inline">device_identifier</code> can be a Device ID or an Alias, and you can put multiple devices by separating
+them with a comma.</p><p>You can check the group was created by listing groups in your realm</p><pre><code class="makeup bash" translate="no"><span class="">astartectl appengine groups list
+</span></code></pre><h2 id="adding-or-removing-a-device-to-from-a-group" class="section-heading"><a href="#adding-or-removing-a-device-to-from-a-group" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Adding or removing a device to/from a group</span></h2><p>Once you created a group, you can add or remove devices from it.</p><p>To add a device, use:</p><pre><code class="makeup bash" translate="no"><span class="">astartectl appengine groups devices add &lt;device_identifier&gt;
+</span></code></pre><p>To remove a device, use:</p><pre><code class="makeup bash" translate="no"><span class="">astartectl appengine groups devices remove &lt;device_identifier&gt;
+</span></code></pre><p>Keep in mind that a group exists as long as it has at least one device in it, so if you remove the
+last device from a group, the group will cease to exist.</p><p>You can always check which devices are in a group with:</p><pre><code class="makeup bash" translate="no"><span class="">astartectl appengine groups devices list
+</span></code></pre><h2 id="accessing-devices-in-a-group-with-astarte-appengine-api" class="section-heading"><a href="#accessing-devices-in-a-group-with-astarte-appengine-api" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Accessing Devices in a group with Astarte AppEngine API</span></h2><p>Once a device is in a group, you can access to its data on this URL:</p><p><code class="inline">https://&lt;astarte-api&gt;/appengine/v1/groups/&lt;group_name&gt;/devices/&lt;device_id&gt;</code></p><p>The hierarchy is exactly the same that is found under</p><p><code class="inline">https://&lt;astarte-api&gt;/appengine/v1/devices/&lt;device-id&gt;</code></p><p>which is <a href="api/index.html?urls.primaryName=AppEngine API#/">documented here</a>, but this makes it
+possible to emit a JWT that only allows access to devices belonging to a specific group.</p>
+
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="062-using_trigger_delivery_policies.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Using Trigger Delivery Policies
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="070-connect_application.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Connect 3rd party applications
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+
+        <p>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="Clea Astarte.epub" title="ePub version">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.39.3) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

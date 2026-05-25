@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.39.3">
+    <meta name="project" content="Clea Astarte v1.4.0-rc.0">
+
+
+    <title>Monitoring — Clea Astarte v1.4.0-rc.0</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-VYWJUHZE.css" />
+
+    <script defer src="dist/sidebar_items-4FAF029A.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-XBCM4BHM.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://docs.astarte-platform.org/astarte/snapshot/" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="Clea Astarte" />
+        </a>
+
+      <div>
+        <a href="https://docs.astarte-platform.org/astarte/snapshot/" class="sidebar-projectName" translate="no">
+Clea Astarte
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.4.0-rc.0
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras=""></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-extra" id="main" data-type="extras">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of Clea Astarte</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>Monitoring</h1>
+
+
+      <a href="https://github.com/astarte-platform/astarte/blob/master/doc/pages/administrator/090-monitoring.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+<p>Astarte is a complex, distributed system that may pose several challenges when deployed in production. Individual services report health and metrics to ensure production clusters can be properly monitored and proactive actions can be taken in case of faults or unexpected behavior.</p><h2 id="health-checks" class="section-heading"><a href="#health-checks" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Health checks</span></h2><p>Every Astarte service, whether it's an API service or not, exposes an HTTP endpoint <code class="inline">/health</code>, without versioning, on its HTTP port. By default, services use port <code class="inline">4000</code>.
+<code class="inline">/health</code> is meant to be called frequently and reports the individual health state of a service. It will return <code class="inline">200</code> in case the service is healthy, or other errors in case the service is having issues. Among those issues, there might be failure in accessing RabbitMQ/RPC communications or failure in accessing the Database.</p><h3 id="health-checks-and-kubernetes" class="section-heading"><a href="#health-checks-and-kubernetes" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Health checks and Kubernetes</span></h3><p>The aforementioned health checks are integrated in Kubernetes, when using Astarte Operator, as <code class="inline">LivenessProbe</code> and <code class="inline">ReadinessProbe</code>. As such, health monitoring and forced restarts are automatically handled without the need for the administrator to integrate any additional logic.</p><h2 id="service-metrics" class="section-heading"><a href="#service-metrics" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Service metrics</span></h2><p>Just like <code class="inline">/health</code>, every service exposes a <code class="inline">/metrics</code> endpoint. This endpoint exposes a series of metrics in <a href="https://prometheus.io/">Prometheus</a> format, which can be easily integrated and queried from any Prometheus-compatible monitoring solution. Each service, besides exposing stats on its Erlang VM, resource consumption and HTTP stats (where applicable), also exposes a number of service-specific metric, which can be queried to obtain information about Astarte's usage and behavior.</p><h3 id="authentication-and-access-to-metrics" class="section-heading"><a href="#authentication-and-access-to-metrics" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Authentication and access to metrics</span></h3><p><code class="inline">/metrics</code>, being Prometheus-compatible, does not implement any kind of authentication or access control. Ideally, only your scraper should have access to <code class="inline">/metrics</code>, as it can leak sensitive information and should not be exposed to the outer world.</p><p>Astarte Operator, by default, forbids access to <code class="inline">/metrics</code> through its ingress, as it assumes your scraper lives within the Kubernetes cluster or has means to access the cluster on its own. However, this behavior can be overridden through by setting <code class="inline">serveMetrics: true</code> in the <code class="inline">api</code> section. An additional parameter, <code class="inline">serveMetricsToSubnet</code>, can be specified to restrict access to <code class="inline">/metrics</code> only to source IPs in a specific subnet. It is strongly recommended to set this up in case an external scraper needs to have access to <code class="inline">/metrics</code>, to ensure access is restricted.</p>
+
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="070-manage_realms.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Managing Realms
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="095-advanced-operations.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Advanced operations
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+
+        <p>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="Clea Astarte.epub" title="ePub version">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.39.3) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>
