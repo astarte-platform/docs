@@ -4,152 +4,124 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.29.0">
-    <meta name="project" content="Clea Astarte v1.3.0-dev">
+    <meta name="generator" content="ExDoc v0.39.3">
+    <meta name="project" content="Clea Astarte v1.5.0-rc.0">
 
-    <title>Advanced operations — Clea Astarte v1.3.0-dev</title>
-    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
 
-    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
-    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-93E9EEA5.js"></script>
+    <title>Advanced operations — Clea Astarte v1.5.0-rc.0</title>
 
-      <script src="../common_vars.js"></script>
+    <link rel="stylesheet" href="dist/html-elixir-VYWJUHZE.css" />
 
-    <script async src="dist/html-XN2TSG4M.js"></script>
-
+    <script defer src="dist/sidebar_items-4FAF029A.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-XBCM4BHM.js"></script>
 
   </head>
-  <body data-type="extras" class="page-extra">
-    <script>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
 
-      try {
-        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+<div class="body-wrapper">
 
-        if (settings.theme === 'dark' ||
-           ((settings.theme === 'system' || settings.theme == null) &&
-             window.matchMedia('(prefers-color-scheme: dark)').matches)
-           ) {
-          document.body.classList.add('dark')
-        }
-      } catch (error) { }
-    </script>
-
-<div class="main">
-
-<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
   <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
 </button>
 
-<section class="sidebar">
-  <form class="sidebar-search" action="search.html">
-    <button type="submit" class="search-button" aria-label="Submit Search">
-      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
-    </button>
-    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
-      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
-    </button>
-    <label class="search-label">
-      <p class="sr-only">Search</p>
-      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
-    </label>
-  </form>
-
-  <div class="autocomplete">
-    <div class="autocomplete-results">
-    </div>
-  </div>
+<nav id="sidebar" class="sidebar">
 
   <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
 
-      <a href="https://docs.astarte-platform.org/astarte/1.0/">
-        <img src="assets/logo.png" alt="Clea Astarte" class="sidebar-projectImage">
-      </a>
+        <a href="https://docs.astarte-platform.org/astarte/snapshot/" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="Clea Astarte" />
+        </a>
 
-    <div class="sidebar-projectDetails">
-      <a href="https://docs.astarte-platform.org/astarte/1.0/" class="sidebar-projectName" translate="no">
+      <div>
+        <a href="https://docs.astarte-platform.org/astarte/snapshot/" class="sidebar-projectName" translate="no">
 Clea Astarte
-      </a>
-      <strong class="sidebar-projectVersion" translate="no">
-        v1.3.0-dev
-      </strong>
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.5.0-rc.0
+        </div>
+      </div>
     </div>
-    <ul class="sidebar-listNav">
-      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras=""></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-extra" id="main" data-type="extras">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of Clea Astarte</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>Advanced operations</h1>
 
 
-    </ul>
+      <a href="https://github.com/astarte-platform/astarte/blob/master/doc/pages/administrator/095-advanced-operations.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
   </div>
 
-  <div class="gradient"></div>
-  <ul id="full-list" class="sidebar-fullList"></ul>
-</section>
-
-<section class="content">
-  <output role="status" id="toast"></output>
-  <div class="content-outer">
-    <div id="content" class="content-inner">
-
-<h1>
-<button class="settings display-settings">
-  <i class="ri-settings-3-line"></i>
-  <span class="sr-only">Settings</span>
-</button>
-
-
-    <a href="https://github.com/astarte-platform/astarte/blob/release-1.0/doc/pages/administrator/095-advanced-operations.md#L1" title="View Source" class="view-source" rel="help">
-      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-      <span class="sr-only">View Source</span>
-    </a>
-
-  <span>Advanced operations</span>
-</h1>
 
 <p>This section provides guidance on some delicate operations that must be performed manually as they
-could potentially result in data loss or other types of irrecoverable damage.</p><p><em>Always be careful while performing these operations!</em></p><h2 id="manual-deletion-of-interfaces" class="section-heading">
-  <a href="#manual-deletion-of-interfaces" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">manual-deletion-of-interfaces</p>
-  </a>
-  Manual deletion of interfaces
-</h2>
-<p>Right now, Astarte only allows deleting draft interfaces, i.e. interfaces with major version <code class="inline">0</code> and
+could potentially result in data loss or other types of irrecoverable damage.</p><p><em>Always be careful while performing these operations!</em></p><h2 id="manual-deletion-of-interfaces" class="section-heading"><a href="#manual-deletion-of-interfaces" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Manual deletion of interfaces</span></h2><p>Right now, Astarte only allows deleting draft interfaces, i.e. interfaces with major version <code class="inline">0</code> and
 not used by any device.</p><p>If you want to delete an interface that has already published data, you must proceed manually with
 the steps described below. This guide assumes the aim of the operation is deleting the
 <code class="inline">org.astarte-platform.genericsensors.Values</code> interface in the <code class="inline">test</code> realm.</p><p>The guide requires that <a href="https://cassandra.apache.org/doc/latest/tools/cqlsh.html"><code class="inline">cqlsh</code></a> is
-connected to the Cassandra/ScyllaDB instance that your Astarte instance is using.</p><h3 id="switch-to-the-target-keyspace" class="section-heading">
-  <a href="#switch-to-the-target-keyspace" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">switch-to-the-target-keyspace</p>
-  </a>
-  Switch to the target keyspace
-</h3>
-<p>The keyspace has the same name of the realm, in this case it is <code class="inline">test</code>:</p><pre><code class="makeup elixir" translate="no"><span class="n">cqlsh</span><span class="o">&gt;</span><span class="w"> </span><span class="kn">use</span><span class="w"> </span><span class="n">test</span><span class="p">;</span></code></pre><h3 id="find-out-the-interface-id" class="section-heading">
-  <a href="#find-out-the-interface-id" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">find-out-the-interface-id</p>
-  </a>
-  Find out the interface id
-</h3>
-<pre><code class="makeup elixir" translate="no"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">SELECT</span><span class="w"> </span><span class="n">interface_id</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">interfaces</span><span class="w">
+connected to the Cassandra/ScyllaDB instance that your Astarte instance is using.</p><h3 id="switch-to-the-target-keyspace" class="section-heading"><a href="#switch-to-the-target-keyspace" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Switch to the target keyspace</span></h3><p>The keyspace has the same name of the realm, in this case it is <code class="inline">test</code>:</p><pre><code class="makeup elixir" translate="no"><span class="n">cqlsh</span><span class="o">&gt;</span><span class="w"> </span><span class="kn">use</span><span class="w"> </span><span class="n">test</span><span class="p">;</span></code></pre><h3 id="find-out-the-interface-id" class="section-heading"><a href="#find-out-the-interface-id" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Find out the interface id</span></h3><pre><code class="makeup elixir" translate="no"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">SELECT</span><span class="w"> </span><span class="n">interface_id</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">interfaces</span><span class="w">
   </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="sc">&#39;org.astarte-platform.genericsensors.Values&#39;</span><span class="w">
   </span><span class="nc">AND</span><span class="w"> </span><span class="n">major_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span></code></pre><p><code class="inline">cqlsh</code> will reply with the interface id:</p><pre><code class="makeup elixir" translate="no"><span class="w"> </span><span class="n">interface_id</span><span class="w">
 </span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="w">
- </span><span class="n">c238b244</span><span class="o">-</span><span class="n">b90f</span><span class="o">-</span><span class="mi">4</span><span class="n">c6d</span><span class="o">-</span><span class="n">f276</span><span class="o">-</span><span class="mi">25768</span><span class="n">bf6abac</span></code></pre><h3 id="delete-the-interface" class="section-heading">
-  <a href="#delete-the-interface" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">delete-the-interface</p>
-  </a>
-  Delete the interface
-</h3>
-<p><em>WARNING: This is a destructive step that will erase the correlation between the Interface name and
+ </span><span class="n">c238b244</span><span class="o">-</span><span class="n">b90f</span><span class="o">-</span><span class="mi">4</span><span class="n">c6d</span><span class="o">-</span><span class="n">f276</span><span class="o">-</span><span class="mi">25768</span><span class="n">bf6abac</span></code></pre><h3 id="delete-the-interface" class="section-heading"><a href="#delete-the-interface" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Delete the interface</span></h3><p><em>WARNING: This is a destructive step that will erase the correlation between the Interface name and
 internal ID. Before proceeding, ensure you saved the interface ID, or you will end up with dangling
 data. Further steps in this guide will require the interface ID.</em></p><p>To delete the interface,</p><pre><code class="makeup elixir" translate="no"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">DELETE</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">interfaces</span><span class="w">
   </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">name</span><span class="o">=</span><span class="sc">&#39;org.astarte-platform.genericsensors.Values&#39;</span><span class="w">
   </span><span class="nc">AND</span><span class="w"> </span><span class="n">major_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span></code></pre><p><em>Keep in mind that after this step, all existing devices that attempt to publish on this interface
-will be disconnected as soon as they try to do so.</em></p><h3 id="delete-interface-data" class="section-heading">
-  <a href="#delete-interface-data" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">delete-interface-data</p>
-  </a>
-  Delete interface data
-</h3>
-<p>The interface data is stored in a different place depending on the interface type (<code class="inline">datastream</code> or
+will be disconnected as soon as they try to do so.</em></p><h3 id="delete-interface-data" class="section-heading"><a href="#delete-interface-data" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Delete interface data</span></h3><p>The interface data is stored in a different place depending on the interface type (<code class="inline">datastream</code> or
 <code class="inline">properties</code>) and aggregation.</p><ul><li>Individual datastream interfaces store their data in the <code class="inline">individual_datastreams</code> table.</li><li>Individual properties interfaces store their data in the <code class="inline">individual_properties</code> table.</li><li>Object datastream interfaces store their data in a dedicated table which is created starting from
 the interface (e.g. an interface called <code class="inline">com.test.Sensors</code> with major version <code class="inline">1</code> creates a
 <code class="inline">com_test_sensors_v1</code> table in the realm keyspace).</li></ul><p>To delete data from object datastreams, a simple <code class="inline">DROP</code> of the table where the data is stored is
@@ -171,58 +143,22 @@ individual datastream, but the procedure for individual properties is the same, 
   </span><span class="nc">AND</span><span class="w"> </span><span class="n">interface_id</span><span class="o">=</span><span class="n">c238b244</span><span class="o">-</span><span class="n">b90f</span><span class="o">-</span><span class="mi">4</span><span class="n">c6d</span><span class="o">-</span><span class="n">f276</span><span class="o">-</span><span class="mi">25768</span><span class="n">bf6abac</span><span class="w">
   </span><span class="nc">AND</span><span class="w"> </span><span class="n">endpoint_id</span><span class="o">=</span><span class="mi">33751412</span><span class="o">-</span><span class="mi">3</span><span class="n">e77</span><span class="o">-</span><span class="n">ad1f</span><span class="o">-</span><span class="n">ad57</span><span class="o">-</span><span class="mi">280</span><span class="n">cc9fad581</span><span class="w">
   </span><span class="nc">AND</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="sc">&#39;/foo/value&#39;</span><span class="p">;</span><span class="w">
-</span><span class="n">...</span></code></pre><h3 id="devices-by-interface-cleanup" class="section-heading">
-  <a href="#devices-by-interface-cleanup" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">devices-by-interface-cleanup</p>
-  </a>
-  <code class="inline">devices-by-interface</code> cleanup
-</h3>
-<p>If this guide is being used so as to remove a draft interface (i.e. with major version <code class="inline">0</code>) that
+</span><span class="n">...</span></code></pre><h3 id="devices-by-interface-cleanup" class="section-heading"><a href="#devices-by-interface-cleanup" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text"><code class="inline">devices-by-interface</code> cleanup</span></h3><p>If this guide is being used so as to remove a draft interface (i.e. with major version <code class="inline">0</code>) that
 cannot be deleted since it has data on it, an additional step is required for a complete cleanup.</p><p>The information about which devices are using draft interfaces is kept in the <code class="inline">kv_store</code> table. You
 can inspect the groups with:</p><pre><code class="makeup elixir" translate="no"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">SELECT</span><span class="w"> </span><span class="n">group</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">kv_store</span><span class="p">;</span></code></pre><p>The group that has to be deleted may be easily identified by inspecting the returned <code class="inline">group</code>s, since
 it is the one with its name derived from the interface name. For example, if the purpose of the
 operation is removing all data from the <code class="inline">org.astarte-platform.genericevents.DeviceEvents v0.1</code>
 interface, the corresponding <code class="inline">group</code> in <code class="inline">kv_store</code> will be
-<code class="inline">devices-by-interface-org.astarte-platform.genericevents.DeviceEvents-v0</code>.</p><p>As the target group is identified, just remove all its entries with:</p><pre><code class="makeup elixir" translate="no"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">DELETE</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">kv_store</span><span class="w"> </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">group</span><span class="o">=</span><span class="sc">&#39;devices-by-interface-org.astarte-platform.genericevents.DeviceEvents-v0&#39;</span><span class="p">;</span></code></pre><h3 id="conclusions" class="section-heading">
-  <a href="#conclusions" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">conclusions</p>
-  </a>
-  Conclusions
-</h3>
-<p>After performing all the steps above, the interface will be completely removed from Astarte. You can
+<code class="inline">devices-by-interface-org.astarte-platform.genericevents.DeviceEvents-v0</code>.</p><p>As the target group is identified, just remove all its entries with:</p><pre><code class="makeup elixir" translate="no"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">DELETE</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">kv_store</span><span class="w"> </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">group</span><span class="o">=</span><span class="sc">&#39;devices-by-interface-org.astarte-platform.genericevents.DeviceEvents-v0&#39;</span><span class="p">;</span></code></pre><h3 id="conclusions" class="section-heading"><a href="#conclusions" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Conclusions</span></h3><p>After performing all the steps above, the interface will be completely removed from Astarte. You can
 then proceed to install a new interface with the same name and major version without any conflict.</p><p><em>Remember to remove the interface also on the device side, otherwise devices will keep getting
-disconnected if they try to publish on the deleted interface.</em></p><hr class="thin"/><h2 id="manual-deletion-of-a-device" class="section-heading">
-  <a href="#manual-deletion-of-a-device" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">manual-deletion-of-a-device</p>
-  </a>
-  Manual deletion of a device
-</h2>
-<p>Starting from Astarte 1.2, a device can be deleted using Realm Management API (see <a href="user/050-query_device.html#deleting-a-device">here</a>).
+disconnected if they try to publish on the deleted interface.</em></p><hr class="thin"/><h2 id="manual-deletion-of-a-device" class="section-heading"><a href="#manual-deletion-of-a-device" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Manual deletion of a device</span></h2><p>Starting from Astarte 1.2, a device can be deleted using Realm Management API (see <a href="user/050-query_device.html#deleting-a-device">here</a>).
 The following manual procedure remains for historical reasons.</p><p>This section assumes:</p><ul><li>that <code class="inline">cqlsh</code> is connected to the Cassandra/ScyllaDB instance that your Astarte is using;</li><li>that <code class="inline">astartectl</code> is installed on your machine.</li></ul><p><strong><em>Please keep in mind that this is a destructive procedure. Before moving on, ensure you saved your
-device ID or you might end up with dangling data and possibly a damaged Astarte deployment.</em></strong></p><h3 id="retrieve-the-device-uuid" class="section-heading">
-  <a href="#retrieve-the-device-uuid" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">retrieve-the-device-uuid</p>
-  </a>
-  Retrieve the device uuid
-</h3>
-<p>To interact with the device and its data, the device uuid must be retrieved. Assuming that the
+device ID or you might end up with dangling data and possibly a damaged Astarte deployment.</em></strong></p><h3 id="retrieve-the-device-uuid" class="section-heading"><a href="#retrieve-the-device-uuid" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Retrieve the device uuid</span></h3><p>To interact with the device and its data, the device uuid must be retrieved. Assuming that the
 id of the device to be deleted is <code class="inline">k3oPTXaGGGGGGGGGGGGGGG</code>, its uuid can be obtained with the
 following:</p><pre><code class="makeup bash" translate="no"><span class="gp unselectable">$ </span><span class="">astartectl utils device-id to-uuid k3oPTXaGGGGGGGGGGGGGGG
 </span><span class="">937a0f4d-7686-1861-8618-618618618618
 </span></code></pre><p>Please, make sure not to lose the device uuid as it will be employed in all the following steps of
-this section.</p><h3 id="switch-to-the-target-keyspace-1" class="section-heading">
-  <a href="#switch-to-the-target-keyspace-1" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">switch-to-the-target-keyspace-1</p>
-  </a>
-  Switch to the target keyspace
-</h3>
-<p>The keyspace takes its name from the realm, in this case it is <code class="inline">test</code>.</p><pre><code class="makeup elixir" translate="no"><span class="n">cqlsh</span><span class="o">&gt;</span><span class="w"> </span><span class="kn">use</span><span class="w"> </span><span class="n">test</span><span class="p">;</span></code></pre><h3 id="delete-device-data-on-a-specific-interface" class="section-heading">
-  <a href="#delete-device-data-on-a-specific-interface" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">delete-device-data-on-a-specific-interface</p>
-  </a>
-  Delete device data on a specific interface
-</h3>
-<p>Depending on the interface type and aggregation, data published by the device is stored into
+this section.</p><h3 id="switch-to-the-target-keyspace-1" class="section-heading"><a href="#switch-to-the-target-keyspace-1" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Switch to the target keyspace</span></h3><p>The keyspace takes its name from the realm, in this case it is <code class="inline">test</code>.</p><pre><code class="makeup elixir" translate="no"><span class="n">cqlsh</span><span class="o">&gt;</span><span class="w"> </span><span class="kn">use</span><span class="w"> </span><span class="n">test</span><span class="p">;</span></code></pre><h3 id="delete-device-data-on-a-specific-interface" class="section-heading"><a href="#delete-device-data-on-a-specific-interface" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Delete device data on a specific interface</span></h3><p>Depending on the interface type and aggregation, data published by the device is stored into
 different tables:</p><ul><li>data published over an individual datastream interface are available within the
 <code class="inline">individual_datastreams</code> table;</li><li>data published over an individual property interface are available within the
 <code class="inline">individual_properties</code> table;</li><li>data published over an object datastream interfaces are stored in a dedicated table named after
@@ -255,23 +191,11 @@ the upcoming steps must be repeated for each object datastream interface install
  </span><span class="mi">937</span><span class="n">a0f4d</span><span class="o">-</span><span class="mi">7686</span><span class="o">-</span><span class="mi">1861</span><span class="o">-</span><span class="mi">8618</span><span class="o">-</span><span class="mi">618618618618</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">/</span><span class="n">foo</span><span class="w">
  </span><span class="n">...</span></code></pre><p>It is now time to perform the actual data deletion:</p><pre><code class="makeup elixir" translate="no"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">DELETE</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">com_test_sensors_v1</span><span class="w">
   </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">device_id</span><span class="o">=</span><span class="mi">937</span><span class="n">a0f4d</span><span class="o">-</span><span class="mi">7686</span><span class="o">-</span><span class="mi">1861</span><span class="o">-</span><span class="mi">8618</span><span class="o">-</span><span class="mi">618618618618</span><span class="w">
-  </span><span class="nc">AND</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="sc">&#39;/foo&#39;</span><span class="p">;</span></code></pre><h3 id="delete-device-aliases" class="section-heading">
-  <a href="#delete-device-aliases" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">delete-device-aliases</p>
-  </a>
-  Delete device aliases
-</h3>
-<p>If your device has one or more aliases you will find them in the <code class="inline">names</code> table.</p><p>First, you have to find the primary key for the device:</p><pre><code class="makeup elixir" translate="no"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">SELECT</span><span class="w"> </span><span class="n">object_name</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">names</span><span class="w">
+  </span><span class="nc">AND</span><span class="w"> </span><span class="n">path</span><span class="o">=</span><span class="sc">&#39;/foo&#39;</span><span class="p">;</span></code></pre><h3 id="delete-device-aliases" class="section-heading"><a href="#delete-device-aliases" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Delete device aliases</span></h3><p>If your device has one or more aliases you will find them in the <code class="inline">names</code> table.</p><p>First, you have to find the primary key for the device:</p><pre><code class="makeup elixir" translate="no"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">SELECT</span><span class="w"> </span><span class="n">object_name</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">names</span><span class="w">
   </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">object_uuid</span><span class="o">=</span><span class="mi">937</span><span class="n">a0f4d</span><span class="o">-</span><span class="mi">7686</span><span class="o">-</span><span class="mi">1861</span><span class="o">-</span><span class="mi">8618</span><span class="o">-</span><span class="mi">618618618618</span><span class="w"> </span><span class="nc">ALLOW</span><span class="w"> </span><span class="nc">FILTERING</span><span class="p">;</span></code></pre><p>If your device has any aliases, the output will show</p><pre><code class="makeup elixir" translate="no"><span class="w"> </span><span class="n">object_name</span><span class="w">
 </span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="w">
  </span><span class="n">my</span><span class="o">-</span><span class="n">device</span><span class="o">-</span><span class="kn">alias</span><span class="w">
- </span><span class="n">...</span></code></pre><p>Thus, you can delete the alias simply executing:</p><pre><code class="makeup elixir" translate="no"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">DELETE</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">names</span><span class="w"> </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">object_name</span><span class="o">=</span><span class="sc">&#39;my-device-alias&#39;</span><span class="p">;</span></code></pre><h3 id="delete-the-device-from-groups" class="section-heading">
-  <a href="#delete-the-device-from-groups" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">delete-the-device-from-groups</p>
-  </a>
-  Delete the device from groups
-</h3>
-<p>To delete the device from a device group let's find the needed keys:</p><pre><code class="makeup elixir" translate="no"><span class="nc">SELECT</span><span class="w"> </span><span class="n">group_name</span><span class="p">,</span><span class="w"> </span><span class="n">insertion_uuid</span><span class="p">,</span><span class="w"> </span><span class="n">device_id</span><span class="w">
+ </span><span class="n">...</span></code></pre><p>Thus, you can delete the alias simply executing:</p><pre><code class="makeup elixir" translate="no"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">DELETE</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">names</span><span class="w"> </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">object_name</span><span class="o">=</span><span class="sc">&#39;my-device-alias&#39;</span><span class="p">;</span></code></pre><h3 id="delete-the-device-from-groups" class="section-heading"><a href="#delete-the-device-from-groups" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Delete the device from groups</span></h3><p>To delete the device from a device group let's find the needed keys:</p><pre><code class="makeup elixir" translate="no"><span class="nc">SELECT</span><span class="w"> </span><span class="n">group_name</span><span class="p">,</span><span class="w"> </span><span class="n">insertion_uuid</span><span class="p">,</span><span class="w"> </span><span class="n">device_id</span><span class="w">
   </span><span class="nc">FROM</span><span class="w"> </span><span class="n">grouped_devices</span><span class="w">
   </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">device_id</span><span class="o">=</span><span class="mi">937</span><span class="n">a0f4d</span><span class="o">-</span><span class="mi">7686</span><span class="o">-</span><span class="mi">1861</span><span class="o">-</span><span class="mi">8618</span><span class="o">-</span><span class="mi">618618618618</span><span class="w">
   </span><span class="nc">ALLOW</span><span class="w"> </span><span class="nc">FILTERING</span><span class="p">;</span></code></pre><p>If the device is contained in one or more groups, the output will be:</p><pre><code class="makeup elixir" translate="no"><span class="w"> </span><span class="n">group_name</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">insertion_uuid</span><span class="w">                       </span><span class="o">|</span><span class="w"> </span><span class="n">device_id</span><span class="w">
@@ -280,13 +204,7 @@ the upcoming steps must be repeated for each object datastream interface install
    </span><span class="n">...</span></code></pre><p>The actual deletion can be performed with:</p><pre><code class="makeup elixir" translate="no"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">DELETE</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">grouped_devices</span><span class="w">
   </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">group_name</span><span class="o">=</span><span class="sc">&#39;my-group&#39;</span><span class="w">
   </span><span class="nc">AND</span><span class="w"> </span><span class="n">insertion_uuid</span><span class="o">=</span><span class="n">c1a0dade</span><span class="o">-</span><span class="mi">43</span><span class="n">bc</span><span class="o">-</span><span class="mi">11</span><span class="n">ec</span><span class="o">-</span><span class="mi">95</span><span class="n">be</span><span class="o">-</span><span class="mi">41</span><span class="n">f7663270b3</span><span class="w">
-  </span><span class="nc">AND</span><span class="w"> </span><span class="n">device_id</span><span class="o">=</span><span class="mi">937</span><span class="n">a0f4d</span><span class="o">-</span><span class="mi">7686</span><span class="o">-</span><span class="mi">1861</span><span class="o">-</span><span class="mi">8618</span><span class="o">-</span><span class="mi">618618618618</span><span class="p">;</span></code></pre><h3 id="delete-entries-from-kv_store" class="section-heading">
-  <a href="#delete-entries-from-kv_store" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">delete-entries-from-kv_store</p>
-  </a>
-  Delete entries from <code class="inline">kv_store</code>
-</h3>
-<p>If your device is publishing over one or more interfaces with version <code class="inline">v0</code>, you will need to handle
+  </span><span class="nc">AND</span><span class="w"> </span><span class="n">device_id</span><span class="o">=</span><span class="mi">937</span><span class="n">a0f4d</span><span class="o">-</span><span class="mi">7686</span><span class="o">-</span><span class="mi">1861</span><span class="o">-</span><span class="mi">8618</span><span class="o">-</span><span class="mi">618618618618</span><span class="p">;</span></code></pre><h3 id="delete-entries-from-kv_store" class="section-heading"><a href="#delete-entries-from-kv_store" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Delete entries from <code class="inline">kv_store</code></span></h3><p>If your device is publishing over one or more interfaces with version <code class="inline">v0</code>, you will need to handle
 also the <code class="inline">kv_store</code> table.</p><p>Retrieve all the entries that must be handled:</p><pre><code class="makeup elixir" translate="no"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">SELECT</span><span class="w"> </span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">kv_store</span><span class="w"> </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">key</span><span class="o">=</span><span class="sc">&#39;k3oPTXaGGGGGGGGGGGGGGG&#39;</span><span class="w"> </span><span class="nc">ALLOW</span><span class="w"> </span><span class="nc">FILTERING</span><span class="p">;</span></code></pre><p>The output of the query will show something similar to</p><pre><code class="makeup elixir" translate="no"><span class="w"> </span><span class="n">group</span><span class="w">                                                   </span><span class="o">|</span><span class="w"> </span><span class="n">key</span><span class="w">
 </span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">-</span><span class="o">+</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="o">--</span><span class="w">
              </span><span class="n">devices</span><span class="o">-</span><span class="n">by</span><span class="o">-</span><span class="n">interface</span><span class="o">-</span><span class="n">com</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="nc">Sensor</span><span class="o">-</span><span class="n">v0</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">k3oPTXaGGGGGGGGGGGGGGG</span><span class="w">
@@ -298,23 +216,14 @@ table. Please, make sure to remove all the entries referencing your device ID.</
 
 </span><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">DELETE</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">kv_store</span><span class="w">
   </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">group</span><span class="o">=</span><span class="sc">&#39;devices-with-data-on-interface-com.test.Sensor-v0&#39;</span><span class="w">
-  </span><span class="nc">AND</span><span class="w"> </span><span class="n">key</span><span class="o">=</span><span class="sc">&#39;k3oPTXaGGGGGGGGGGGGGGG&#39;</span><span class="p">;</span></code></pre><h3 id="eventually-delete-your-device" class="section-heading">
-  <a href="#eventually-delete-your-device" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">eventually-delete-your-device</p>
-  </a>
-  Eventually delete your device
-</h3>
-<p>Deleting your device from the devices table is as simple as</p><pre><code class="makeup elixir" translate="no"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">DELETE</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">devices</span><span class="w"> </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">device_id</span><span class="o">=</span><span class="mi">937</span><span class="n">a0f4d</span><span class="o">-</span><span class="mi">7686</span><span class="o">-</span><span class="mi">1861</span><span class="o">-</span><span class="mi">8618</span><span class="o">-</span><span class="mi">618618618618</span><span class="p">;</span></code></pre><h3 id="conclusions-1" class="section-heading">
-  <a href="#conclusions-1" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">conclusions-1</p>
-  </a>
-  Conclusions
-</h3>
-<p>If you managed to remove all the device-related entries as described in the previous sections, then
+  </span><span class="nc">AND</span><span class="w"> </span><span class="n">key</span><span class="o">=</span><span class="sc">&#39;k3oPTXaGGGGGGGGGGGGGGG&#39;</span><span class="p">;</span></code></pre><h3 id="eventually-delete-your-device" class="section-heading"><a href="#eventually-delete-your-device" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Eventually delete your device</span></h3><p>Deleting your device from the devices table is as simple as</p><pre><code class="makeup elixir" translate="no"><span class="n">cqlsh</span><span class="ss">:test</span><span class="o">&gt;</span><span class="w"> </span><span class="nc">DELETE</span><span class="w"> </span><span class="nc">FROM</span><span class="w"> </span><span class="n">devices</span><span class="w"> </span><span class="nc">WHERE</span><span class="w"> </span><span class="n">device_id</span><span class="o">=</span><span class="mi">937</span><span class="n">a0f4d</span><span class="o">-</span><span class="mi">7686</span><span class="o">-</span><span class="mi">1861</span><span class="o">-</span><span class="mi">8618</span><span class="o">-</span><span class="mi">618618618618</span><span class="p">;</span></code></pre><h3 id="conclusions-1" class="section-heading"><a href="#conclusions-1" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Conclusions</span></h3><p>If you managed to remove all the device-related entries as described in the previous sections, then
 your device and its data have been properly deleted from Astarte.</p><p>Before trying to reconnect your device you <strong>must</strong> make sure that the SSL certificate and all
 the credentials onboard your device are deleted. This is crucial for ensuring that new data
 published by the device can be properly ingested and processed by Astarte.</p>
-<div class="bottom-actions">
+
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
   <div class="bottom-actions-item">
 
       <a href="090-monitoring.html" class="bottom-actions-button" rel="prev">
@@ -340,21 +249,35 @@ Astarte in 5 minutes
 
   </div>
 </div>
-      <footer class="footer">
+    <footer class="footer">
 
         <p>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="Clea Astarte.epub" title="ePub version">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
           Built using
-          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.39.3) for the
 
             <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
 
         </p>
-      </footer>
-    </div>
-  </div>
-</section>
-</div>
 
+
+    </footer>
+  </div>
+</main>
+</div>
 
   </body>
 </html>

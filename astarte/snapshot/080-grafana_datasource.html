@@ -4,146 +4,126 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.29.0">
-    <meta name="project" content="Clea Astarte v1.3.0-dev">
+    <meta name="generator" content="ExDoc v0.39.3">
+    <meta name="project" content="Clea Astarte v1.5.0-rc.0">
 
-    <title>Astarte Datasource Plugin for Grafana — Clea Astarte v1.3.0-dev</title>
-    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
 
-    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
-    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-93E9EEA5.js"></script>
+    <title>Astarte Datasource Plugin for Grafana — Clea Astarte v1.5.0-rc.0</title>
 
-      <script src="../common_vars.js"></script>
+    <link rel="stylesheet" href="dist/html-elixir-VYWJUHZE.css" />
 
-    <script async src="dist/html-XN2TSG4M.js"></script>
-
+    <script defer src="dist/sidebar_items-4FAF029A.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-XBCM4BHM.js"></script>
 
   </head>
-  <body data-type="extras" class="page-extra">
-    <script>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
 
-      try {
-        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+<div class="body-wrapper">
 
-        if (settings.theme === 'dark' ||
-           ((settings.theme === 'system' || settings.theme == null) &&
-             window.matchMedia('(prefers-color-scheme: dark)').matches)
-           ) {
-          document.body.classList.add('dark')
-        }
-      } catch (error) { }
-    </script>
-
-<div class="main">
-
-<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
   <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
 </button>
 
-<section class="sidebar">
-  <form class="sidebar-search" action="search.html">
-    <button type="submit" class="search-button" aria-label="Submit Search">
-      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
-    </button>
-    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
-      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
-    </button>
-    <label class="search-label">
-      <p class="sr-only">Search</p>
-      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
-    </label>
-  </form>
-
-  <div class="autocomplete">
-    <div class="autocomplete-results">
-    </div>
-  </div>
+<nav id="sidebar" class="sidebar">
 
   <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
 
-      <a href="https://docs.astarte-platform.org/astarte/1.0/">
-        <img src="assets/logo.png" alt="Clea Astarte" class="sidebar-projectImage">
-      </a>
+        <a href="https://docs.astarte-platform.org/astarte/snapshot/" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="Clea Astarte" />
+        </a>
 
-    <div class="sidebar-projectDetails">
-      <a href="https://docs.astarte-platform.org/astarte/1.0/" class="sidebar-projectName" translate="no">
+      <div>
+        <a href="https://docs.astarte-platform.org/astarte/snapshot/" class="sidebar-projectName" translate="no">
 Clea Astarte
-      </a>
-      <strong class="sidebar-projectVersion" translate="no">
-        v1.3.0-dev
-      </strong>
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.5.0-rc.0
+        </div>
+      </div>
     </div>
-    <ul class="sidebar-listNav">
-      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras=""></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-extra" id="main" data-type="extras">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of Clea Astarte</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>Astarte Datasource Plugin for Grafana</h1>
 
 
-    </ul>
+      <a href="https://github.com/astarte-platform/astarte/blob/master/doc/pages/user/080-grafana_datasource.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
   </div>
 
-  <div class="gradient"></div>
-  <ul id="full-list" class="sidebar-fullList"></ul>
-</section>
-
-<section class="content">
-  <output role="status" id="toast"></output>
-  <div class="content-outer">
-    <div id="content" class="content-inner">
-
-<h1>
-<button class="settings display-settings">
-  <i class="ri-settings-3-line"></i>
-  <span class="sr-only">Settings</span>
-</button>
-
-
-    <a href="https://github.com/astarte-platform/astarte/blob/release-1.0/doc/pages/user/080-grafana_datasource.md#L1" title="View Source" class="view-source" rel="help">
-      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-      <span class="sr-only">View Source</span>
-    </a>
-
-  <span>Astarte Datasource Plugin for Grafana</span>
-</h1>
 
 <p>Astarte Datasource Plugin conveys data from Astarte to
 <a href="https://github.com/grafana/grafana">Grafana</a>, the open-source platform for
 monitoring and observability, developed by <a href="https://grafana.com/">Grafana Labs</a>.
 Actual data visualisation is provided by Grafana via its
 <a href="https://grafana.com/grafana/plugins/?type=panel">plugins</a>.</p><p>You can browse the source code of this plugin on its
-<a href="https://github.com/astarte-platform/grafana-astarte-datasource">GitHub repository</a>.</p><p><img src="assets/astarte-grafana-dashboard-overview.png" alt="Sample Grafana dashboard"/></p><h2 id="try-it" class="section-heading">
-  <a href="#try-it" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">try-it</p>
-  </a>
-  Try it!
-</h2>
-<p>When deploying locally using <code class="inline">docker-compose</code> as mentioned in the
-<a href="https://docs.astarte-platform.org/astarte/1.1/010-astarte_in_5_minutes.html#install-astarte">Astarte in 5 mins
-tutorial</a>,
+<a href="https://github.com/astarte-platform/grafana-astarte-datasource">GitHub repository</a>.</p><p><img src="assets/astarte-grafana-dashboard-overview.png" alt="Sample Grafana dashboard"/></p><h2 id="try-it" class="section-heading"><a href="#try-it" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Try it!</span></h2><p>When deploying locally using <code class="inline">docker-compose</code> as mentioned in the
+<a href="https://docs.astarte-platform.org/astarte/1.2/010-astarte_in_5_minutes.html#install-astarte">Astarte in 5 mins tutorial</a>,
 Astarte Datasource Plugin will be automatically installed. You may then access Grafana
 by visiting <a href="http://grafana.astarte.localhost">http://grafana.astarte.localhost</a>.</p><p>When first logging into Grafana, you will be prompted to change default
-credentials user <code class="inline">admin</code>, password: <code class="inline">admin</code>.</p><h2 id="configure-the-datasource" class="section-heading">
-  <a href="#configure-the-datasource" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">configure-the-datasource</p>
-  </a>
-  Configure the datasource
-</h2>
-<p>In order to get data from Astarte, you will need to create a new datasource
-referring to your own Astarte instance.</p><p><img src="assets/astarte-grafana-add-datasource.png" alt="Add a Grafana Datasource"/></p><p>You will need to provide Astarte API URLs, the realm name and Astarte AppEngine token.</p><p><img src="assets/astarte-grafana-datasource-fields.png" alt="Datasource configuration fields"/></p><p>Save the configuration by clicking on Save &amp; Test</p><h2 id="setting-up-a-graph" class="section-heading">
-  <a href="#setting-up-a-graph" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">setting-up-a-graph</p>
-  </a>
-  Setting up a graph
-</h2>
-<p>After successfully configuring your datasources, you will be able to select
-them as a source for your graph as depicted below.</p><p><img src="assets/astarte-grafana-device-query.png" alt="Configure a device query"/></p><p>You will then be able to choose which device and interface data should be retrieved from.</p><h2 id="data-manipulation" class="section-heading">
-  <a href="#data-manipulation" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">data-manipulation</p>
-  </a>
-  Data manipulation
-</h2>
-<p>Grafana offers data-aggregation features, for more information check the official
+credentials user <code class="inline">admin</code>, password: <code class="inline">admin</code>.</p><h2 id="configure-the-datasource" class="section-heading"><a href="#configure-the-datasource" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Configure the datasource</span></h2><p>In order to get data from Astarte, you will need to create a new datasource
+referring to your own Astarte instance.</p><p><img src="assets/astarte-grafana-add-datasource.png" alt="Add a Grafana Datasource"/></p><p>You will need to provide Astarte API URLs, the realm name and Astarte AppEngine token.</p><p><img src="assets/astarte-grafana-datasource-fields.png" alt="Datasource configuration fields"/></p><p>Save the configuration by clicking on Save &amp; Test</p><h2 id="setting-up-a-graph" class="section-heading"><a href="#setting-up-a-graph" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Setting up a graph</span></h2><p>After successfully configuring your datasources, you will be able to select
+them as a source for your graph as depicted below.</p><p><img src="assets/astarte-grafana-device-query.png" alt="Configure a device query"/></p><p>You will then be able to choose which device and interface data should be retrieved from.</p><h2 id="data-manipulation" class="section-heading"><a href="#data-manipulation" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Data manipulation</span></h2><p>Grafana offers data-aggregation features, for more information check the official
 <a href="https://grafana.com/docs/grafana/latest/panels/transformations">Grafana documentation</a></p>
-<div class="bottom-actions">
+
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
   <div class="bottom-actions-item">
 
       <a href="070-connect_application.html" class="bottom-actions-button" rel="prev">
@@ -169,21 +149,35 @@ Troubleshooting
 
   </div>
 </div>
-      <footer class="footer">
+    <footer class="footer">
 
         <p>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="Clea Astarte.epub" title="ePub version">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
           Built using
-          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.39.3) for the
 
             <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
 
         </p>
-      </footer>
-    </div>
-  </div>
-</section>
-</div>
 
+
+    </footer>
+  </div>
+</main>
+</div>
 
   </body>
 </html>

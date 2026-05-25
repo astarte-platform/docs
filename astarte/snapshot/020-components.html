@@ -4,145 +4,114 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.29.0">
-    <meta name="project" content="Clea Astarte v1.3.0-dev">
+    <meta name="generator" content="ExDoc v0.39.3">
+    <meta name="project" content="Clea Astarte v1.5.0-rc.0">
 
-    <title>Components — Clea Astarte v1.3.0-dev</title>
-    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
 
-    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
-    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
-    <script src="dist/sidebar_items-93E9EEA5.js"></script>
+    <title>Components — Clea Astarte v1.5.0-rc.0</title>
 
-      <script src="../common_vars.js"></script>
+    <link rel="stylesheet" href="dist/html-elixir-VYWJUHZE.css" />
 
-    <script async src="dist/html-XN2TSG4M.js"></script>
-
+    <script defer src="dist/sidebar_items-4FAF029A.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-XBCM4BHM.js"></script>
 
   </head>
-  <body data-type="extras" class="page-extra">
-    <script>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
 
-      try {
-        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+<div class="body-wrapper">
 
-        if (settings.theme === 'dark' ||
-           ((settings.theme === 'system' || settings.theme == null) &&
-             window.matchMedia('(prefers-color-scheme: dark)').matches)
-           ) {
-          document.body.classList.add('dark')
-        }
-      } catch (error) { }
-    </script>
-
-<div class="main">
-
-<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
   <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
 </button>
 
-<section class="sidebar">
-  <form class="sidebar-search" action="search.html">
-    <button type="submit" class="search-button" aria-label="Submit Search">
-      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
-    </button>
-    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
-      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
-    </button>
-    <label class="search-label">
-      <p class="sr-only">Search</p>
-      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
-    </label>
-  </form>
-
-  <div class="autocomplete">
-    <div class="autocomplete-results">
-    </div>
-  </div>
+<nav id="sidebar" class="sidebar">
 
   <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
 
-      <a href="https://docs.astarte-platform.org/astarte/1.0/">
-        <img src="assets/logo.png" alt="Clea Astarte" class="sidebar-projectImage">
-      </a>
+        <a href="https://docs.astarte-platform.org/astarte/snapshot/" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="Clea Astarte" />
+        </a>
 
-    <div class="sidebar-projectDetails">
-      <a href="https://docs.astarte-platform.org/astarte/1.0/" class="sidebar-projectName" translate="no">
+      <div>
+        <a href="https://docs.astarte-platform.org/astarte/snapshot/" class="sidebar-projectName" translate="no">
 Clea Astarte
-      </a>
-      <strong class="sidebar-projectVersion" translate="no">
-        v1.3.0-dev
-      </strong>
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.5.0-rc.0
+        </div>
+      </div>
     </div>
-    <ul class="sidebar-listNav">
-      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras=""></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-extra" id="main" data-type="extras">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of Clea Astarte</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>Components</h1>
 
 
-    </ul>
+      <a href="https://github.com/astarte-platform/astarte/blob/master/doc/pages/architecture/020-components.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
   </div>
 
-  <div class="gradient"></div>
-  <ul id="full-list" class="sidebar-fullList"></ul>
-</section>
 
-<section class="content">
-  <output role="status" id="toast"></output>
-  <div class="content-outer">
-    <div id="content" class="content-inner">
+<p>Astarte is a distributed system interacting over AMQP, as explained in <a href="010-design_principles.html">Design Principles</a>. This is an overview of its main internal services.</p><h2 id="pairing" class="section-heading"><a href="#pairing" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Pairing</span></h2><p>Pairing takes care of Device Authentication and Authorization. It interacts with Astarte's CA and orchestrates the way devices connect and interact with Transports. It also handles Device Registration. Agent, Device and Pairing interaction is described in detail <a href="050-pairing_mechanism.html">here</a>.</p><h2 id="data-updater-plant-dup" class="section-heading"><a href="#data-updater-plant-dup" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Data Updater Plant (DUP)</span></h2><p>Data Updater Plant is a replicable, scalable component which takes care of the ingestion pipeline. It gathers data from devices and orchestrates data flow amongst other components. It is, arguably, the most critical component of the system and the most resource hungry - the way DUP is deployed, replicated and configured has a tremendous impact on Astarte's performances, especially when dealing with massive data flows.</p><h2 id="trigger-engine" class="section-heading"><a href="#trigger-engine" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Trigger Engine</span></h2><p>Trigger Engine takes care of processing Triggers. It is a purely computational component which handles every Trigger's pipeline and triggers actions accordingly.</p><h2 id="appengine" class="section-heading"><a href="#appengine" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">AppEngine</span></h2><p>AppEngine is Astarte's main API endpoint for end users. AppEngine exposes a RESTful API to retrieve and send data from/to devices, according to their interfaces. Every direct device interaction can be done from here. It also exposes Channels, a WebSocket-based solution for listening to device events in real-time with Triggers' same mechanism and semantics.</p><h2 id="realm-management" class="section-heading"><a href="#realm-management" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Realm Management</span></h2><p>Realm Management is an <em>administrator-like</em> API for configuring a Realm. It is used for managing Interfaces and Triggers.</p><h2 id="housekeeping" class="section-heading"><a href="#housekeeping" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Housekeeping</span></h2><p>Housekeeping is the equivalent of a <em>superadmin</em> API. It is usually not accessible to the end user but rather to Astarte's administrator who, in most cases, might deny overall outside access. It allows to manage and create Realms, and perform cluster-wide maintenance actions.</p>
 
-<h1>
-<button class="settings display-settings">
-  <i class="ri-settings-3-line"></i>
-  <span class="sr-only">Settings</span>
-</button>
+</div>
 
-
-    <a href="https://github.com/astarte-platform/astarte/blob/release-1.0/doc/pages/architecture/020-components.md#L1" title="View Source" class="view-source" rel="help">
-      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
-      <span class="sr-only">View Source</span>
-    </a>
-
-  <span>Components</span>
-</h1>
-
-<p>Astarte is a distributed system interacting over AMQP, as explained in <a href="010-design_principles.html">Design Principles</a>. This is an overview of its main internal services.</p><h2 id="pairing" class="section-heading">
-  <a href="#pairing" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">pairing</p>
-  </a>
-  Pairing
-</h2>
-<p>Pairing takes care of Device Authentication and Authorization. It interacts with Astarte's CA and orchestrates the way devices connect and interact with Transports. It also handles Device Registration. Agent, Device and Pairing interaction is described in detail <a href="050-pairing_mechanism.html">here</a>.</p><h2 id="data-updater-plant-dup" class="section-heading">
-  <a href="#data-updater-plant-dup" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">data-updater-plant-dup</p>
-  </a>
-  Data Updater Plant (DUP)
-</h2>
-<p>Data Updater Plant is a replicable, scalable component which takes care of the ingestion pipeline. It gathers data from devices and orchestrates data flow amongst other components. It is, arguably, the most critical component of the system and the most resource hungry - the way DUP is deployed, replicated and configured has a tremendous impact on Astarte's performances, especially when dealing with massive data flows.</p><h2 id="trigger-engine" class="section-heading">
-  <a href="#trigger-engine" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">trigger-engine</p>
-  </a>
-  Trigger Engine
-</h2>
-<p>Trigger Engine takes care of processing Triggers. It is a purely computational component which handles every Trigger's pipeline and triggers actions accordingly.</p><h2 id="appengine" class="section-heading">
-  <a href="#appengine" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">appengine</p>
-  </a>
-  AppEngine
-</h2>
-<p>AppEngine is Astarte's main API endpoint for end users. AppEngine exposes a RESTful API to retrieve and send data from/to devices, according to their interfaces. Every direct device interaction can be done from here. It also exposes Channels, a WebSocket-based solution for listening to device events in real-time with Triggers' same mechanism and semantics.</p><h2 id="realm-management" class="section-heading">
-  <a href="#realm-management" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">realm-management</p>
-  </a>
-  Realm Management
-</h2>
-<p>Realm Management is an <em>administrator-like</em> API for configuring a Realm. It is used for managing Interfaces and Triggers.</p><h2 id="housekeeping" class="section-heading">
-  <a href="#housekeeping" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
-  <p class="sr-only">housekeeping</p>
-  </a>
-  Housekeeping
-</h2>
-<p>Housekeeping is the equivalent of a <em>superadmin</em> API. It is usually not accessible to the end user but rather to Astarte's administrator who, in most cases, might deny overall outside access. It allows to manage and create Realms, and perform cluster-wide maintenance actions.</p>
-<div class="bottom-actions">
+<div class="bottom-actions" id="bottom-actions">
   <div class="bottom-actions-item">
 
       <a href="010-design_principles.html" class="bottom-actions-button" rel="prev">
@@ -168,21 +137,35 @@ Interfaces
 
   </div>
 </div>
-      <footer class="footer">
+    <footer class="footer">
 
         <p>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="Clea Astarte.epub" title="ePub version">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
           Built using
-          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.39.3) for the
 
             <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
 
         </p>
-      </footer>
-    </div>
-  </div>
-</section>
-</div>
 
+
+    </footer>
+  </div>
+</main>
+</div>
 
   </body>
 </html>

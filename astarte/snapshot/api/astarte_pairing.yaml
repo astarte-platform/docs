@@ -1,0 +1,1243 @@
+---
+components:
+  responses:
+    AuthorizationPathNotMatched:
+      content:
+        application/json:
+          schema:
+            properties:
+              data:
+                $ref: '#/components/schemas/AuthorizationPathNotMatchedResponse'
+            type: object
+      description: Authorization path not matched.
+    Unauthorized:
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '#/components/schemas/MissingTokenResponse'
+              - $ref: '#/components/schemas/InvalidTokenResponse'
+              - $ref: '#/components/schemas/InvalidAuthPathResponse'
+              - $ref: '#/components/schemas/UnauthorizedResponse'
+      description: Token/Realm doesn't exist or operation not allowed.
+  schemas:
+    AstarteMQTTV1CredentialsRequest:
+      example:
+        csr: |+
+          -----BEGIN CERTIFICATE REQUEST-----
+          MIICnTCCAYUCAQAwWDELMAkGA1UEBhMCSVQxFDASBgNVBAgMC0V4YW1wbGVMYW5k
+          MSEwHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQxEDAOBgNVBAMMB0V4
+          YW1wbGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC6B6eGPsTLsP09
+          FzxFUKY95GaPnBU1niq1tx1vtA+r9BBnnoUn4JwNHtu5YTWMnlIJtfAs43ltLOrS
+          Wyvcedg4e6Bh3nztqyD+4uSpzlSI54zexbztVAzzDvVlEuW0wMRgkqF7ez7OixGF
+          BHdPgWKTxagVrYdqX/UjNm9f/Wnd3eCA9mEVwsARUlxRgLs0KPXPkqEGCxbcLSx3
+          lJR28YE+OTJK7aLSUk3bjLml23SYhWSlmYbNghu3/2P3n4QO4s6+RAw1bMxEO0xr
+          gvZThRcdllw+SQRY03VHzCiAAAYzKR8upy5strSbQfG9D38xHGb+A/Z6oSaJp4tR
+          m+VknzINAgMBAAGgADANBgkqhkiG9w0BAQsFAAOCAQEALvDY6irBZJXuJ+AZ/5rL
+          EEpWXl3f6ohdGkUE9oZFBsNQkCyejQbwYF4ujmxI7CqhZFrX6TA6KkjzDuWwqezt
+          YcyYYBgxF8+HUO/66jseGuJiuPkeDQ5e2Kghit8PPutv9I1OVPaQkbNg6aDvaANT
+          oB9IilYaxWM6en+RdtSg6p5dysfgOM3GbWqIjjZgU1rZsiuTOPRjxzXLc4Vq0v/A
+          MvsV2OFBjcOPfqeTwuegl16reSy9+x79zmSfzapoji90Cc1hBQgqvPYCezEeuj+i
+          hXQ3OSmKiyvSLJekdmgqdjsu7ks49Tm7wSUKC0QxlDh54k5Yo8uDM+4MLvOZOzL3
+          FQ== -----END CERTIFICATE REQUEST-----
+
+      properties:
+        csr:
+          type: string
+      title: AstarteMQTTV1CredentialsRequest
+      type: object
+    AstarteMQTTV1CredentialsResponse:
+      example:
+        client_crt: |+
+          -----BEGIN CERTIFICATE-----
+          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
+          ySj0xif2Z8U7MTfhmZs1cyDA/A== -----END CERTIFICATE-----
+
+      properties:
+        client_crt:
+          type: string
+      title: AstarteMQTTV1CredentialsResponse
+      type: object
+    AstarteMQTTV1VerifyCredentialsRequest:
+      example:
+        client_crt: |+
+          -----BEGIN CERTIFICATE-----
+          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
+          ySj0xif2Z8U7MTfhmZs1cyDA/A== -----END CERTIFICATE-----
+
+      properties:
+        client_crt:
+          type: string
+      title: AstarteMQTTV1VerifyCredentialsRequest
+      type: object
+    AstarteMQTTV1VerifyCredentialsResponse:
+      properties:
+        cause:
+          description: the reason the certificate is invalid
+          type: string
+        details:
+          description: additional details on the verification
+          type: string
+        timestamp:
+          description: the timestamp of the credentials verification
+          type: integer
+        until:
+          description: if the certificate is valid, the timestamp after which it will be invalid
+          type: integer
+        valid:
+          description: true if the credentials are valid, false otherwise
+          type: boolean
+      title: AstarteMQTTV1VerifyCredentialsResponse
+      type: object
+    AuthorizationPathNotMatchedResponse:
+      example:
+        errors:
+          detail: Unauthorized access to GET /api/v1/some_path. Please verify your permissions
+      properties:
+        errors:
+          properties:
+            detail:
+              type: string
+          type: object
+      title: AuthorizationPathNotMatchedResponse
+      type: object
+    DeviceRegistrationRequest:
+      example:
+        data:
+          hw_id: YHjKs3SMTgqq09eD7fzm6w
+          initial_introspection:
+            org.astarte-platform.genericsensors.AvailableSensors:
+              major: 0
+              minor: 1
+            org.astarte-platform.genericsensors.Values:
+              major: 1
+              minor: 0
+      properties:
+        data:
+          properties:
+            hw_id:
+              type: string
+            initial_introspection:
+              additionalProperties:
+                $ref: '#/components/schemas/IntrospectionEntry'
+              description: |
+                An optional object specifying the initial introspection for the device. The keys
+                of the object are the interface names, while the values are objects with the "major"
+                and "minor" properties, specifying the major and minor version of the interface
+                that is going to be supported by the device.
+              type: object
+          required:
+            - hw_id
+          type: object
+      required:
+        - data
+      title: DeviceRegistrationRequest
+      type: object
+    DeviceRegistrationResponse:
+      example:
+        credentials_secret: TTkd5OgB13X/3qU0LXU7OCxyTXz5QHM2NY1IgidtPOs=
+      properties:
+        credentials_secret:
+          type: string
+      title: DeviceRegistrationResponse
+      type: object
+    DeviceServiceInfoRequest:
+      description: |-
+        Sends as many Device to Owner ServiceInfo entries as will conveniently fit into a message, based on protocol
+        and Device constraints. This message is part of a loop with TO2.OwnerServiceInfo.
+      example:
+        - IsMoreServiceInfo
+        - ServiceInfo
+      items:
+        format: binary
+        type: string
+      title: DeviceServiceInfoRequest
+      type: array
+    DeviceServiceInfoStartRequest:
+      description: |-
+        This message signals a state change between the authentication phase of the protocol and the provisioning
+                phase (ServiceInfo) negotiation.
+      example:
+        - ReplacementHMac
+        - maxOwnerServiceInfoSz
+      items:
+        format: binary
+        type: string
+      title: DeviceServiceInfoStartRequest
+      type: array
+    DoneRequest:
+      description: Indicates successful completion of the Transfer of Ownership.
+      example:
+        - NonceTO2ProveDv
+      items:
+        format: binary
+        type: string
+      title: DoneRequest
+      type: array
+    FDOCredReuseErrorResponse:
+      example:
+        correlation_id: 123456789
+        error_code: 102
+      properties:
+        correlation_id:
+          description: Correlation ID for tracing the request.
+          type: integer
+        error_code:
+          description: 'FDO error code: 102 (cred_reuse_error)'
+          example: 102
+          type: integer
+      required:
+        - error_code
+      title: FDOCredReuseErrorResponse
+      type: object
+    FDOInternalServerErrorResponse:
+      example:
+        correlation_id: 123456789
+        error_code: 500
+      properties:
+        correlation_id:
+          description: Correlation ID for tracing the request.
+          type: integer
+        error_code:
+          description: 'FDO error code: 500 (internal_server_error)'
+          example: 500
+          type: integer
+      required:
+        - error_code
+      title: FDOInternalServerErrorResponse
+      type: object
+    FDOInvalidJWTTokenResponse:
+      example:
+        correlation_id: 123456789
+        error_code: 1
+      properties:
+        correlation_id:
+          description: Correlation ID for tracing the request.
+          type: integer
+        error_code:
+          description: 'FDO error code: 1 (invalid_jwt_token)'
+          example: 1
+          type: integer
+      required:
+        - error_code
+      title: FDOInvalidJWTTokenResponse
+      type: object
+    FDOInvalidMessageErrorResponse:
+      example:
+        correlation_id: 123456789
+        error_code: 101
+      properties:
+        correlation_id:
+          description: Correlation ID for tracing the request.
+          type: integer
+        error_code:
+          description: 'FDO error code: 101 (invalid_message_error)'
+          example: 101
+          type: integer
+      required:
+        - error_code
+      title: FDOInvalidMessageErrorResponse
+      type: object
+    FDOMessageBodyErrorResponse:
+      example:
+        correlation_id: 123456789
+        error_code: 100
+      properties:
+        correlation_id:
+          description: Correlation ID for tracing the request.
+          type: integer
+        error_code:
+          description: 'FDO error code: 100 (message_body_error)'
+          example: 100
+          type: integer
+      required:
+        - error_code
+      title: FDOMessageBodyErrorResponse
+      type: object
+    FDOResourceNotFoundResponse:
+      example:
+        correlation_id: 123456789
+        error_code: 6
+      properties:
+        correlation_id:
+          description: Correlation ID for tracing the request.
+          type: integer
+        error_code:
+          description: 'FDO error code: 6 (resource_not_found)'
+          example: 6
+          type: integer
+      required:
+        - error_code
+      title: FDOResourceNotFoundResponse
+      type: object
+    ForbiddenResponse:
+      description: Forbidden response
+      example:
+        errors:
+          detail: Forbidden
+      properties:
+        errors:
+          properties:
+            detail:
+              type: string
+          type: object
+      required:
+        - errors
+      title: ForbiddenResponse
+      type: object
+    GenericErrorResponse:
+      properties:
+        errors:
+          type: object
+      title: GenericErrorResponse
+      type: object
+    GetOVNextEntryRequest:
+      description: |-
+        Acknowledges the previous message and requests the next Ownership Voucher Entry. The integer argument,
+        OVEntryNum, is the number of the entry, where the first entry is zero (0).
+      example:
+        - 1
+      items:
+        format: binary
+        type: string
+      title: GetOVNextEntryRequest
+      type: array
+    HelloDeviceRequest:
+      description: |
+        TO2.HelloDevice CBOR array:
+        [maxDeviceMessageSize, Guid, NonceTO2ProveOV, kexSuiteName, cipherSuiteName, eASigInfo]
+      example:
+        - 1400
+        - 123e4567-e89b-12d3-a456-426614174000
+        - nonce
+        - kex
+        - cipher
+        - sig
+      items:
+        format: binary
+        type: string
+      maxItems: 6
+      minItems: 6
+      title: HelloDeviceRequest
+      type: array
+    InfoResponse:
+      example:
+        protocols:
+          astarte_mqtt_v1:
+            broker_url: ssl://broker.astarte.example.com:8883
+        status: confirmed
+        version: 0.1.0
+      properties:
+        protocols:
+          type: object
+        status:
+          type: string
+        version:
+          type: string
+      title: InfoResponse
+      type: object
+    IntrospectionEntry:
+      properties:
+        major:
+          description: The major version of the interface
+          minimum: 0
+          type: integer
+        minor:
+          description: The minor version of the interface
+          minimum: 0
+          type: integer
+      required:
+        - major
+        - minor
+      title: IntrospectionEntry
+      type: object
+    InvalidAuthPathResponse:
+      example:
+        errors:
+          detail: Authorization failed due to an invalid path
+      properties:
+        errors:
+          properties:
+            detail:
+              type: string
+          type: object
+      title: InvalidAuthPathResponse
+      type: object
+    InvalidTokenResponse:
+      example:
+        errors:
+          detail: Invalid JWT token
+      properties:
+        errors:
+          properties:
+            detail:
+              type: string
+          type: object
+      title: InvalidTokenResponse
+      type: object
+    MissingTokenResponse:
+      example:
+        errors:
+          detail: Missing authorization token
+      properties:
+        errors:
+          properties:
+            detail:
+              type: string
+          type: object
+      title: MissingTokenResponse
+      type: object
+    ProveDeviceRequest:
+      description: |-
+        Proves the provenance of the Device to the new owner, using the entity attestation token based on the challenge
+                              NonceTO2ProveDv sent as TO2.ProveOVHdr.UnprotectedHeaders.CUPHNonce. The signature is verified using the
+                              device certificate chain contained in the Ownership Voucher. If the signature cannot be verified, or fails to verify,
+                              the connection is terminated with an error message.
+      example:
+        - xBKeyExchange
+      items:
+        format: binary
+        type: string
+      title: ProveDeviceRequest
+      type: array
+    UnauthorizedResponse:
+      description: Unauthorized response
+      example:
+        errors:
+          detail: Unauthorized
+      properties:
+        errors:
+          properties:
+            detail:
+              type: string
+          type: object
+      title: UnauthorizedResponse
+      type: object
+  securitySchemes:
+    CredentialsSecret:
+      description: |
+        For accessing the device API a valid Credentials Secret must be passed in all the queries in the 'Authorization' header.
+        The following syntax must be used in the 'Authorization' header : Bearer xxxxxxxxxxxxxxxxxxxxx
+      in: header
+      name: Authorization
+      type: apiKey
+    FDOSessionToken:
+      description: |
+        FDO session token. Must be provided in the Authorization header as a bearer token.
+        The token is validated and decoded to extract the device GUID and nonce.
+        Example: Authorization: Bearer <FDO-session-token>.
+        Token must match the session and nonce for the device in the current realm.
+      in: header
+      name: Authorization
+      type: apiKey
+    JWT:
+      description: |
+        For accessing the agent API a valid JWT token must be passed in all the queries in the 'Authorization' header.
+        The following syntax must be used in the 'Authorization' header : Bearer xxxxxx.yyyyyyy.zzzzzz
+      in: header
+      name: Authorization
+      type: apiKey
+info:
+  contact:
+    email: info@ispirata.com
+  description: Control device registration, authentication and authorization
+  title: Astarte Pairing API
+  version: 1.5.0-dev
+openapi: 3.0.0
+paths:
+  /version:
+    get:
+      description: Return the Pairing API version. This endpoint is available at {base_url}/version (without /v1).
+      operationId: getVersion
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    example: 1.3.0
+                    type: string
+                type: object
+          description: Success
+      summary: Retrieve API version
+      tags:
+        - version
+  /{realm_name}/agent/devices:
+    post:
+      description: |
+        Register a device, obtaining its credentials secret. The registration
+        can be repeated as long as the device didn't request any credentials.
+        An optional initial introspection for the device can be passed in the
+        registration request.
+      operationId: registerDevice
+      parameters:
+        - description: Name of the realm the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceRegistrationRequest'
+        description: Device parameters
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceRegistrationResponse'
+          description: Device registered
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ForbiddenResponse'
+                  - $ref: '#/components/schemas/AuthorizationPathNotMatchedResponse'
+          description: Forbidden or Authorization path not matched
+        '422':
+          content:
+            application/json:
+              example:
+                errors:
+                  hw_id:
+                    - can't be blank
+              schema:
+                $ref: '#/components/schemas/GenericErrorResponse'
+          description: Unprocessable entity
+      security:
+        - JWT: []
+      summary: Register a device
+      tags:
+        - agent
+  /{realm_name}/agent/devices/{device_id}:
+    delete:
+      description: Unregister a device. This makes it possible to register it again, even if it already has requested its credentials. All data belonging to the device will be kept as is.
+      operationId: unregisterDevice
+      parameters:
+        - description: Name of the realm the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: The Device ID of the device that will be unregistered.
+          in: path
+          name: device_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Device unregistered
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ForbiddenResponse'
+                  - $ref: '#/components/schemas/AuthorizationPathNotMatchedResponse'
+          description: Forbidden or Authorization path not matched
+        '404':
+          content:
+            application/json:
+              example:
+                errors:
+                  detail: Device not found
+              schema:
+                $ref: '#/components/schemas/GenericErrorResponse'
+          description: Device not found
+      security:
+        - JWT: []
+      summary: Unregister a device
+      tags:
+        - agent
+  /{realm_name}/devices/{hw_id}:
+    get:
+      operationId: getInfo
+      parameters:
+        - description: Name of the realm the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Hardware id of the device.
+          in: path
+          name: hw_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/InfoResponse'
+                required:
+                  - data
+                type: object
+          description: Info
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ForbiddenResponse'
+                  - $ref: '#/components/schemas/AuthorizationPathNotMatchedResponse'
+          description: Forbidden or Authorization path not matched
+      security:
+        - CredentialsSecret: []
+      summary: Obtain status information for a device
+      tags:
+        - device
+  /{realm_name}/devices/{hw_id}/protocols/{protocol}/credentials:
+    post:
+      operationId: obtainCredentials
+      parameters:
+        - description: Name of the realm the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Hardware id of the device.
+          in: path
+          name: hw_id
+          required: true
+          schema:
+            type: string
+        - description: Credentials protocol identifier.
+          in: path
+          name: protocol
+          required: true
+          schema:
+            enum:
+              - astarte_mqtt_v1
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                data:
+                  $ref: '#/components/schemas/AstarteMQTTV1CredentialsRequest'
+              required:
+                - data
+              type: object
+        description: Credentials request
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/AstarteMQTTV1CredentialsResponse'
+                required:
+                  - data
+                type: object
+          description: Credentials created
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ForbiddenResponse'
+                  - $ref: '#/components/schemas/AuthorizationPathNotMatchedResponse'
+          description: Token/Realm doesn't exist or operation not allowed.
+        '422':
+          content:
+            application/json:
+              example:
+                errors:
+                  purpose:
+                    - can't be blank
+              schema:
+                $ref: '#/components/schemas/GenericErrorResponse'
+          description: Unprocessable entity
+      security:
+        - CredentialsSecret: []
+      summary: Obtain the credentials for Astarte MQTT v1 protocol
+      tags:
+        - device
+  /{realm_name}/devices/{hw_id}/protocols/{protocol}/credentials/verify:
+    post:
+      operationId: verifyCredentials
+      parameters:
+        - description: Name of the realm the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: Hardware id of the device.
+          in: path
+          name: hw_id
+          required: true
+          schema:
+            type: string
+        - description: Credentials protocol identifier.
+          in: path
+          name: protocol
+          required: true
+          schema:
+            enum:
+              - astarte_mqtt_v1
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                data:
+                  $ref: '#/components/schemas/AstarteMQTTV1VerifyCredentialsRequest'
+              required:
+                - data
+              type: object
+        description: Credentials verification request
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                response invalid certificate:
+                  value:
+                    data:
+                      cause: INVALID_ISSUER
+                      valid: false
+                response valid certificate:
+                  value:
+                    data:
+                      until: 2025-03-25 19:25:00.000Z
+                      valid: true
+              schema:
+                properties:
+                  data:
+                    $ref: '#/components/schemas/AstarteMQTTV1VerifyCredentialsResponse'
+                required:
+                  - data
+                type: object
+          description: Credentials verified
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/ForbiddenResponse'
+                  - $ref: '#/components/schemas/AuthorizationPathNotMatchedResponse'
+          description: Token/Realm doesn't exist or operation not allowed.
+        '422':
+          content:
+            application/json:
+              example:
+                errors:
+                  purpose:
+                    - can't be blank
+              schema:
+                $ref: '#/components/schemas/GenericErrorResponse'
+          description: Unprocessable entity
+      security:
+        - CredentialsSecret: []
+      summary: Verify the credentials for Astarte MQTT v1 protocol
+      tags:
+        - device
+  /{realm_name}/fdo/101/msg/60:
+    post:
+      description: Sets up new owner for proof of ownership.
+      operationId: FDOHelloDevice
+      parameters:
+        - description: Name of the realm the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/cbor:
+            schema:
+              $ref: '#/components/schemas/HelloDeviceRequest'
+        description: TO2 Hello Device
+        required: true
+      responses:
+        '200':
+          content:
+            application/cbor:
+              schema:
+                description: 'ProveOVHdr response is a CBOR array with the following items: [OVHeader, NumOvEntries, HMac, NonceTO2ProveOV, eBSigInfo, xAKeyExchange, helloDeviceHash, maxOwnerMessageSize]'
+                example:
+                  - OVHeader
+                  - NumOvEntries
+                  - HMac
+                  - NonceTO2ProveOV
+                  - eBSigInfo
+                  - xAKeyExchange
+                  - helloDeviceHash
+                  - maxOwnerMessageSize
+                items:
+                  format: binary
+                  type: string
+                type: array
+          description: TO2 ProveOVHdr
+        '500':
+          content:
+            application/cbor:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/FDOResourceNotFoundResponse'
+                  - $ref: '#/components/schemas/FDOMessageBodyErrorResponse'
+                  - $ref: '#/components/schemas/FDOInvalidMessageErrorResponse'
+                  - $ref: '#/components/schemas/FDOCredReuseErrorResponse'
+                  - $ref: '#/components/schemas/FDOInternalServerErrorResponse'
+          description: FDO error response
+      summary: FDO TO2 Hello Device
+      tags:
+        - fdo
+  /{realm_name}/fdo/101/msg/62:
+    post:
+      description: Requests the next Ownership Voucher Entry.
+      operationId: FDOGetOVNextEntry
+      parameters:
+        - description: Name of the realm the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/cbor:
+            schema:
+              $ref: '#/components/schemas/GetOVNextEntryRequest'
+        description: TO2 GetOVNextEntry
+        required: true
+      responses:
+        '200':
+          content:
+            application/cbor:
+              schema:
+                description: Transmits the requested Ownership Voucher entry from the Owner Onboarding Service.
+                example:
+                  - OVEntryNum
+                  - OVEntry
+                format: binary
+                type: string
+          description: TO2 OVNextEntry
+        '500':
+          content:
+            application/cbor:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/FDOInvalidJWTTokenResponse'
+                  - $ref: '#/components/schemas/FDOResourceNotFoundResponse'
+                  - $ref: '#/components/schemas/FDOMessageBodyErrorResponse'
+                  - $ref: '#/components/schemas/FDOInvalidMessageErrorResponse'
+                  - $ref: '#/components/schemas/FDOCredReuseErrorResponse'
+                  - $ref: '#/components/schemas/FDOInternalServerErrorResponse'
+          description: FDO error response
+      security:
+        - FDOSessionToken: []
+      summary: FDO TO2 GetOVNextEntry
+      tags:
+        - fdo
+  /{realm_name}/fdo/101/msg/64:
+    post:
+      description: Proves the provenance of the Device to the new owner.
+      operationId: FDOProveDevice
+      parameters:
+        - description: Name of the realm the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/cbor:
+            schema:
+              $ref: '#/components/schemas/ProveDeviceRequest'
+        description: TO2 ProveDeviceRequest
+        required: true
+      responses:
+        '200':
+          content:
+            application/cbor:
+              schema:
+                description: |-
+                  This message prepares for ownership transfer, where the credentials previously used to take over the device are
+                                replaced, based on the new credentials downloaded from the Owner Onboarding Service.
+                example:
+                  - RendezvousInfo
+                  - Guid
+                  - NonceTO2SetupDv
+                  - Owner2Key
+                format: binary
+                type: string
+          description: TO2 Setup Device
+        '500':
+          content:
+            application/cbor:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/FDOInvalidJWTTokenResponse'
+                  - $ref: '#/components/schemas/FDOResourceNotFoundResponse'
+                  - $ref: '#/components/schemas/FDOMessageBodyErrorResponse'
+                  - $ref: '#/components/schemas/FDOInvalidMessageErrorResponse'
+                  - $ref: '#/components/schemas/FDOCredReuseErrorResponse'
+                  - $ref: '#/components/schemas/FDOInternalServerErrorResponse'
+          description: FDO error response
+      security:
+        - FDOSessionToken: []
+      summary: FDO TO2 ProveDevice
+      tags:
+        - fdo
+  /{realm_name}/fdo/101/msg/66:
+    post:
+      description: |-
+        This message signals a state change between the authentication phase of the protocol and the provisioning
+                          phase (ServiceInfo) negotiation.
+      operationId: FDOServiceInfoReady
+      parameters:
+        - description: Name of the realm the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/cbor:
+            schema:
+              $ref: '#/components/schemas/DeviceServiceInfoStartRequest'
+        description: TO2 Service Info Ready
+        required: true
+      responses:
+        '200':
+          content:
+            application/cbor:
+              schema:
+                description: |-
+                  This message responds to TO2.DeviceServiceInfoReady and indicates that the Owner Onboarding Service is
+                                          ready to start ServiceInfo.
+                example:
+                  - maxDeviceServiceInfoSz
+                format: binary
+                type: string
+          description: TO2 OwnerServiceInfoReady
+        '500':
+          content:
+            application/cbor:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/FDOInvalidJWTTokenResponse'
+                  - $ref: '#/components/schemas/FDOResourceNotFoundResponse'
+                  - $ref: '#/components/schemas/FDOMessageBodyErrorResponse'
+                  - $ref: '#/components/schemas/FDOInvalidMessageErrorResponse'
+                  - $ref: '#/components/schemas/FDOCredReuseErrorResponse'
+                  - $ref: '#/components/schemas/FDOInternalServerErrorResponse'
+          description: FDO error response
+      security:
+        - FDOSessionToken: []
+      summary: FDO TO2 Service Info Ready
+      tags:
+        - fdo
+  /{realm_name}/fdo/101/msg/68:
+    post:
+      description: |-
+        Sends as many Device to Owner ServiceInfo entries as will conveniently fit into a message, based on protocol
+                    and Device constraints.
+      operationId: FDOServiceInfoEnd
+      parameters:
+        - description: Name of the realm the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/cbor:
+            schema:
+              $ref: '#/components/schemas/DeviceServiceInfoRequest'
+        description: CBOR Service Info End
+        required: true
+      responses:
+        '200':
+          content:
+            application/cbor:
+              schema:
+                description: |-
+                  Sends as many Owner to Device ServiceInfo entries as will conveniently fit into a message, based on protocol
+                                            and implementation constraints. This message is part of a loop with TO2.DeviceServiceInfo.
+                example:
+                  - IsMoreServiceInfo,
+                  - IsDone
+                  - ServiceInfo
+                format: binary
+                type: string
+          description: TO2 OwnerServiceInfo
+        '500':
+          content:
+            application/cbor:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/FDOInvalidJWTTokenResponse'
+                  - $ref: '#/components/schemas/FDOResourceNotFoundResponse'
+                  - $ref: '#/components/schemas/FDOMessageBodyErrorResponse'
+                  - $ref: '#/components/schemas/FDOInvalidMessageErrorResponse'
+                  - $ref: '#/components/schemas/FDOCredReuseErrorResponse'
+                  - $ref: '#/components/schemas/FDOInternalServerErrorResponse'
+          description: FDO error response
+      security:
+        - FDOSessionToken: []
+      summary: FDO TO2 Service Info
+      tags:
+        - fdo
+  /{realm_name}/fdo/101/msg/70:
+    post:
+      description: Indicates successful completion of the Transfer of Ownership.
+      operationId: FDODone
+      parameters:
+        - description: Name of the realm the device belongs to.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/cbor:
+            schema:
+              $ref: '#/components/schemas/DoneRequest'
+        description: TO2 Done
+        required: true
+      responses:
+        '200':
+          content:
+            application/cbor:
+              schema:
+                description: |-
+                  This message provides an opportunity for a final ACK after the Owner has invoked the System Info block to
+                                            establish agent-to-server communications between the Device and its final Owner.
+                example:
+                  - NonceTO2SetupDv
+                format: binary
+                type: string
+          description: TO2 Done2
+        '500':
+          content:
+            application/cbor:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/FDOInvalidJWTTokenResponse'
+                  - $ref: '#/components/schemas/FDOResourceNotFoundResponse'
+                  - $ref: '#/components/schemas/FDOMessageBodyErrorResponse'
+                  - $ref: '#/components/schemas/FDOInvalidMessageErrorResponse'
+                  - $ref: '#/components/schemas/FDOCredReuseErrorResponse'
+                  - $ref: '#/components/schemas/FDOInternalServerErrorResponse'
+          description: FDO error response
+      security:
+        - FDOSessionToken: []
+      summary: FDO TO2 Done
+      tags:
+        - fdo
+  /{realm_name}/fdo/owner_keys_for_voucher:
+    post: ok
+  /{realm_name}/fdo/ownership_vouchers:
+    get: ok
+    post: ok
+  /{realm_name}/health:
+    get:
+      description: Return the health status of the Pairing API.
+      operationId: getHealth
+      parameters:
+        - description: Name of the realm.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '503':
+          description: Service unavailable
+      summary: Retrieve API health
+      tags:
+        - health
+  /{realm_name}/ownership:
+    post:
+      description: Create an ownership voucher for a device and claim it.
+      operationId: createOwnershipVoucher
+      parameters:
+        - description: Name of the realm.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                data:
+                  properties:
+                    ownership_voucher:
+                      description: The ownership voucher. It should be a base64-encoded string containing the CBOR representation of the ownership voucher.
+                      type: string
+                    private_key:
+                      description: The private key in PEM format corresponding to the public key used in the ownership voucher.
+                      type: string
+                  required:
+                    - ownership_voucher
+                    - private_key
+                  type: object
+              required:
+                - data
+              type: object
+        description: Ownership Voucher Creation Request
+        required: false
+      responses:
+        '200':
+          description: Ownership voucher created successfully
+        '400':
+          description: Invalid request body
+        '401':
+          description: Unauthorized
+        '404':
+          description: Realm not found
+        '500':
+          description: Internal server error
+      security:
+        - JWT: []
+      summary: Create an ownership voucher
+      tags:
+        - fdo
+  /{realm_name}/version:
+    get:
+      description: Return the Pairing API version.
+      operationId: getVersionWithRealm
+      parameters:
+        - description: Name of the realm.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    example: 1.3.0
+                    type: string
+                type: object
+          description: Success
+      security:
+        - JWT: []
+      summary: Retrieve API version
+      tags:
+        - version
+security: []
+servers:
+  - url: '{base_url}/v1'
+    variables:
+      base_url:
+        default: http://localhost:4003
+        description: |
+          The base URL you're serving Astarte from. This should point to the base path from which Pairing API is served.
+          In case you are running a local installation, this is likely `http://localhost:4003`.
+          In case you have a standard Astarte installation, it is most likely `https://<your host>/pairing`.
+tags:
+  - description: Device registration and credentials secret emission
+    externalDocs:
+      description: Find out more
+      url: https://docs.astarte-platform.org/astarte/1.0/050-pairing_mechanism.html
+    name: agent
+  - description: Device credentials emission and info
+    externalDocs:
+      description: Find out more
+      url: https://docs.astarte-platform.org/astarte/1.0/050-pairing_mechanism.html
+    name: device
+  - description: FDO onboarding API
+    name: fdo
