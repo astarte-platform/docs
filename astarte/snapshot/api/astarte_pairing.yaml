@@ -157,6 +157,33 @@ components:
           type: object
       title: AuthorizationPathNotMatchedResponse
       type: object
+    CreateOrUploadOwnerKeyRequest:
+      properties:
+        action:
+          description: Whether to create a new key or upload an existing one.
+          enum:
+            - create
+            - upload
+          type: string
+        key_algorithm:
+          description: The algorithm to use for key creation. Required when action is "create".
+          enum:
+            - ecdsa-p256
+            - ecdsa-p384
+            - rsa-2048
+            - rsa-3072
+          type: string
+        key_data:
+          description: The PEM-encoded private key to upload. Required when action is "upload".
+          type: string
+        key_name:
+          description: The name to assign to the key.
+          type: string
+      required:
+        - action
+        - key_name
+      title: CreateOrUploadOwnerKeyRequest
+      type: object
     DeviceRegistrationRequest:
       example:
         data:
@@ -431,6 +458,33 @@ components:
           type: object
       title: InvalidTokenResponse
       type: object
+    List:
+      properties:
+        data:
+          items:
+            properties:
+              guid:
+                description: The GUID of the device.
+                type: string
+              input_voucher:
+                description: The PEM-encoded input ownership voucher.
+                nullable: true
+                type: string
+              output_guid:
+                description: The replacement GUID, if any.
+                nullable: true
+                type: string
+              output_voucher:
+                description: The PEM-encoded output ownership voucher, if any.
+                nullable: true
+                type: string
+              status:
+                description: The status of the ownership voucher.
+                type: string
+            type: object
+          type: array
+      title: List
+      type: object
     MissingTokenResponse:
       example:
         errors:
@@ -456,6 +510,45 @@ components:
         type: string
       title: ProveDeviceRequest
       type: array
+    RequestBody:
+      properties:
+        data:
+          properties:
+            key_algorithm:
+              description: The algorithm of the owner key.
+              enum:
+                - ecdsa-p256
+                - ecdsa-p384
+                - rsa-2048
+                - rsa-3072
+              type: string
+            key_name:
+              description: The name of the owner key stored in the secrets store to use for this voucher.
+              type: string
+            ownership_voucher:
+              description: The ownership voucher. It should be a base64-encoded string containing the CBOR representation of the ownership voucher.
+              type: string
+            replacement_guid:
+              description: Optional base64-encoded replacement GUID.
+              nullable: true
+              type: string
+            replacement_public_key:
+              description: Optional PEM-encoded replacement public key.
+              nullable: true
+              type: string
+            replacement_rendezvous_info:
+              description: Optional base64-encoded CBOR-encoded replacement rendezvous info.
+              nullable: true
+              type: string
+          required:
+            - ownership_voucher
+            - key_name
+            - key_algorithm
+          type: object
+      required:
+        - data
+      title: RequestBody
+      type: object
     UnauthorizedResponse:
       description: Unauthorized response
       example:
@@ -1118,11 +1211,299 @@ paths:
       summary: FDO TO2 Done
       tags:
         - fdo
+  /{realm_name}/fdo/owner_keys:
+    get:
+      description: Returns all registered owner keys grouped by algorithm.
+      operationId: listOwnerKeys
+      parameters:
+        - description: Name of the realm.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  items:
+                    type: string
+                  type: array
+                description: A map from algorithm name to list of key names.
+                type: object
+          description: Owner keys grouped by algorithm
+        '401':
+          description: Unauthorized
+        '404':
+          description: Realm not found
+        '500':
+          description: Internal server error
+      security:
+        - JWT: []
+      summary: List owner keys
+      tags:
+        - fdo
+    post:
+      description: Creates a new owner key with the given algorithm, or uploads an existing private key.
+      operationId: createOrUploadOwnerKey
+      parameters:
+        - description: Name of the realm.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrUploadOwnerKeyRequest'
+        description: Create or Upload Owner Key Request
+        required: false
+      responses:
+        '200':
+          content:
+            text/plain:
+              schema:
+                description: The PEM-encoded public key when action is "create", or an empty string when action is "upload".
+                type: string
+          description: Owner key created or uploaded successfully
+        '400':
+          description: Invalid request body
+        '401':
+          description: Unauthorized
+        '404':
+          description: Realm not found
+        '422':
+          description: Validation error
+        '500':
+          description: Internal server error
+      security:
+        - JWT: []
+      summary: Create or upload an owner key
+      tags:
+        - fdo
+  /{realm_name}/fdo/owner_keys/{key_algorithm}:
+    get:
+      description: Returns all registered owner keys for the specified algorithm.
+      operationId: getOwnerKeysForAlgorithm
+      parameters:
+        - description: Name of the realm.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: The key algorithm (e.g. es256, es384, rs256, rs384).
+          in: path
+          name: key_algorithm
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    additionalProperties:
+                      items:
+                        type: string
+                      type: array
+                    description: A map from algorithm name to list of key names.
+                    type: object
+                type: object
+          description: Owner keys for the algorithm
+        '401':
+          description: Unauthorized
+        '404':
+          description: Realm not found
+        '422':
+          description: Unknown key algorithm
+        '500':
+          description: Internal server error
+      security:
+        - JWT: []
+      summary: List owner keys for an algorithm
+      tags:
+        - fdo
+  /{realm_name}/fdo/owner_keys/{key_algorithm}/{key_name}:
+    get:
+      description: Returns a specific owner key by algorithm and name.
+      operationId: getOwnerKey
+      parameters:
+        - description: Name of the realm.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+        - description: The key algorithm (e.g. es256, es384, rs256, rs384).
+          in: path
+          name: key_algorithm
+          required: true
+          schema:
+            type: string
+        - description: The name of the key.
+          in: path
+          name: key_name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    properties:
+                      key_name:
+                        description: The name of the key.
+                        type: string
+                      public_key:
+                        description: The PEM-encoded public key.
+                        type: string
+                    type: object
+                type: object
+          description: Owner key details
+        '401':
+          description: Unauthorized
+        '404':
+          description: Key not found
+        '422':
+          description: Unknown key algorithm
+        '500':
+          description: Internal server error
+      security:
+        - JWT: []
+      summary: Get an owner key
+      tags:
+        - fdo
   /{realm_name}/fdo/owner_keys_for_voucher:
-    post: ok
+    post:
+      description: Returns the list of registered owner keys that are compatible with the given ownership voucher.
+      operationId: ownerKeysForVoucher
+      parameters:
+        - description: Name of the realm.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                data:
+                  properties:
+                    ownership_voucher:
+                      description: The base64-encoded ownership voucher to match keys against.
+                      type: string
+                  required:
+                    - ownership_voucher
+                  type: object
+              required:
+                - data
+              type: object
+        description: Owner Keys for Voucher Request
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    additionalProperties:
+                      items:
+                        type: string
+                      type: array
+                    description: A map from key algorithm name to the list of compatible key names.
+                    type: object
+                type: object
+          description: Compatible owner keys
+        '400':
+          description: Invalid request body
+        '401':
+          description: Unauthorized
+        '404':
+          description: Realm not found
+        '422':
+          description: Missing ownership_voucher parameter
+        '500':
+          description: Internal server error
+      security:
+        - JWT: []
+      summary: List owner keys compatible with an ownership voucher
+      tags:
+        - fdo
   /{realm_name}/fdo/ownership_vouchers:
-    get: ok
-    post: ok
+    get:
+      description: Returns the list of all ownership vouchers registered in the realm.
+      operationId: listOwnershipVouchers
+      parameters:
+        - description: Name of the realm.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/List'
+          description: List of ownership vouchers
+        '401':
+          description: Unauthorized
+        '404':
+          description: Realm not found
+        '500':
+          description: Internal server error
+      security:
+        - JWT: []
+      summary: List ownership vouchers
+      tags:
+        - fdo
+    post:
+      description: Register an ownership voucher for a device and claim it.
+      operationId: registerOwnershipVoucher
+      parameters:
+        - description: Name of the realm.
+          in: path
+          name: realm_name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestBody'
+        description: Ownership Voucher Registration Request
+        required: false
+      responses:
+        '200':
+          description: Ownership voucher registered successfully
+        '400':
+          description: Invalid request body
+        '401':
+          description: Unauthorized
+        '404':
+          description: Realm not found
+        '500':
+          description: Internal server error
+      security:
+        - JWT: []
+      summary: Register an ownership voucher
+      tags:
+        - fdo
   /{realm_name}/health:
     get:
       description: Return the health status of the Pairing API.
@@ -1142,55 +1523,6 @@ paths:
       summary: Retrieve API health
       tags:
         - health
-  /{realm_name}/ownership:
-    post:
-      description: Create an ownership voucher for a device and claim it.
-      operationId: createOwnershipVoucher
-      parameters:
-        - description: Name of the realm.
-          in: path
-          name: realm_name
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              properties:
-                data:
-                  properties:
-                    ownership_voucher:
-                      description: The ownership voucher. It should be a base64-encoded string containing the CBOR representation of the ownership voucher.
-                      type: string
-                    private_key:
-                      description: The private key in PEM format corresponding to the public key used in the ownership voucher.
-                      type: string
-                  required:
-                    - ownership_voucher
-                    - private_key
-                  type: object
-              required:
-                - data
-              type: object
-        description: Ownership Voucher Creation Request
-        required: false
-      responses:
-        '200':
-          description: Ownership voucher created successfully
-        '400':
-          description: Invalid request body
-        '401':
-          description: Unauthorized
-        '404':
-          description: Realm not found
-        '500':
-          description: Internal server error
-      security:
-        - JWT: []
-      summary: Create an ownership voucher
-      tags:
-        - fdo
   /{realm_name}/version:
     get:
       description: Return the Pairing API version.
