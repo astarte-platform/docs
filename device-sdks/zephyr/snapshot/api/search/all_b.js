@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['library_0',['Astarte device library',['../group__astarte__device__sdk.html',1,'']]],
-  ['library_20as_20a_20dependency_20in_20an_20application_1',['Using the library as a dependency in an application',['../index.html#autotoc_md2',1,'']]],
-  ['library_20as_20a_20standalone_20application_2',['Using the library as a standalone application',['../index.html#autotoc_md3',1,'']]]
+  ['key_20value_20storage_20architecture_0',['Astarte key-value storage architecture',['../md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html',1,'']]]
 ];

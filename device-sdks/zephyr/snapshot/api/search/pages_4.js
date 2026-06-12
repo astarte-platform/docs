@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mqtt_20client_20architecture_0',['Astarte-MQTT-client-architecture',['../md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sddef73e401b80b2170021b78ad2e458cc.html',1,'']]]
+  ['key_20value_20storage_20architecture_0',['Astarte key-value storage architecture',['../md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html',1,'']]]
 ];

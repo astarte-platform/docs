@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Astarte device API for Zephyr: Astarte-MQTT-client-architecture</title>
+<title>Astarte device API for Zephyr: Astarte MQTT client architecture</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -121,14 +121,13 @@ $(function(){initNavTree('md__2home_2runner_2work_2astarte-device-sdk-zephyr_2as
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Astarte-MQTT-client-architecture</div></div>
+  <div class="headertitle"><div class="title">Astarte MQTT client architecture</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md22"></a>
-Astarte MQTT client architecture</h1>
+<div class="textblock"><p><a class="anchor" id="autotoc_md31"></a></p>
 <p>Astarte MQTT client is a soft wrapper around the MQTT client library from Zephyr. It extends the functionality of the standard MQTT client.</p>
-<h2><a class="anchor" id="autotoc_md23"></a>
-Automatic reconnection</h2>
+<h1><a class="anchor" id="autotoc_md32"></a>
+Automatic reconnection</h1>
 <p>The Astarte MQTT client implements an automatic reconnection policy in cases where connectivity with the MQTT broker is lost. An exponential backoff is used to limit reconnection attempts. The backoff time will start from the user configurable polling timeout and end at the minimum between the user configurable polling timeout and twice the keep alive time for the MQTT connection.</p>
 <div class="fragment"><div class="line">%% This is a mermaid graph. Your can render it using the live editor at: https://mermaid.live</div>
 <div class="line">flowchart TD</div>
@@ -141,8 +140,8 @@ Automatic reconnection</h2>
 <div class="line">    DISCONNECTING --&gt; |Disconnection event| DISCONNECTED</div>
 <div class="line">    CONNECTION_ERROR --&gt; |Connection request / backoff period finished| CONNECTING</div>
 <div class="line">    CONNECTION_ERROR --&gt; |Disconnection request| DISCONNECTED</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md24"></a>
-Subscription retry procedure</h2>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md33"></a>
+Subscription retry procedure</h1>
 <p>The Astarte MQTT client implements a retry mechanism to ensure subscription messages are properly retransmitted.</p>
 <div class="fragment"><div class="line">%% This is a mermaid graph. Your can render it using the live editor at: https://mermaid.live</div>
 <div class="line">flowchart TD</div>
@@ -157,11 +156,11 @@ Subscription retry procedure</h2>
 <div class="line">    W --&gt; |Timeout| R</div>
 <div class="line">    R --&gt; W</div>
 <div class="line">    W --&gt; |Received SUBACK| E</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md25"></a>
-Publish retry procedure</h2>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md34"></a>
+Publish retry procedure</h1>
 <p>The Astarte MQTT client implements a retry mechanism to ensure publish messages with QoS &gt; 0 are properly retransmitted.</p>
-<h3><a class="anchor" id="autotoc_md26"></a>
-QoS 1</h3>
+<h2><a class="anchor" id="autotoc_md35"></a>
+QoS 1</h2>
 <div class="fragment"><div class="line">%% This is a mermaid graph. Your can render it using the live editor at: https://mermaid.live</div>
 <div class="line">flowchart TD</div>
 <div class="line">    subgraph Retain message</div>
@@ -175,8 +174,8 @@ QoS 1</h3>
 <div class="line">    W --&gt; |Timeout| R</div>
 <div class="line">    R --&gt; W</div>
 <div class="line">    W --&gt; |Received PUBACK| E</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md27"></a>
-QoS 2</h3>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md36"></a>
+QoS 2</h2>
 <div class="fragment"><div class="line">%% This is a mermaid graph. Your can render it using the live editor at: https://mermaid.live</div>
 <div class="line">flowchart TD</div>
 <div class="line">    subgraph Retain message</div>
@@ -197,11 +196,11 @@ QoS 2</h3>
 <div class="line">    WPUBCOMP --&gt; |Timeout| RPUBREL</div>
 <div class="line">    RPUBREL --&gt; WPUBCOMP</div>
 <div class="line">    WPUBCOMP --&gt; |Received PUBCOMP| E</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md28"></a>
-Reception of QoS 1 publishes</h2>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md37"></a>
+Reception of QoS 1 publishes</h1>
 <p>Upon the reception of a QoS 1 publish message the Astarte MQTT driver automatically transmit a PUBACK message back to the MQTT broker.</p>
-<h2><a class="anchor" id="autotoc_md29"></a>
-Reception of QoS 2 messages</h2>
+<h1><a class="anchor" id="autotoc_md38"></a>
+Reception of QoS 2 messages</h1>
 <p>QoS 2 publishes require a more complex control flow in the receiver compared to lower QoS levels.</p>
 <div class="fragment"><div class="line">%% This is a mermaid graph. Your can render it using the live editor at: https://mermaid.live</div>
 <div class="line">flowchart TD</div>
