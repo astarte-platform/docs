@@ -3683,6 +3683,10 @@ Worker</p>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartedefaultingress">AstarteDefaultIngress</a></li>
 <li>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartedefaultingresslist">AstarteDefaultIngressList</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/26.7/crds/#astartefdoingress">AstarteFDOIngress</a></li>
+<li>
+  <a href="/astarte-kubernetes-operator/26.7/crds/#astartefdoingresslist">AstarteFDOIngressList</a></li>
 </ul>
 <h4 id="astartedefaultingress">
   AstarteDefaultIngress
@@ -4026,6 +4030,173 @@ Worker</p>
           <td><code>broker</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#servicestatus-v1-core">ServiceStatus</a></em></td>
           <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartefdoingress">
+  AstarteFDOIngress
+  <a class="anchor" href="#astartefdoingress">#</a>
+</h4>
+<p>AstarteFDOIngress is the Schema for the astartefdoingresses API.</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/26.7/crds/#astartefdoingresslist">AstarteFDOIngressList</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+          <th>Default</th>
+          <th>Validation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>apiVersion</code> <em>string</em></td>
+          <td><code>ingress.astarte-platform.org/v2alpha1</code></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>kind</code> <em>string</em></td>
+          <td><code>AstarteFDOIngress</code></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>metadata</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#objectmeta-v1-meta">ObjectMeta</a></em></td>
+          <td>Refer to Kubernetes API documentation for fields of <code>metadata</code>.</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>spec</code> <em>
+  <a href="/astarte-kubernetes-operator/26.7/crds/#astartefdoingressspec">AstarteFDOIngressSpec</a></em></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>status</code> <em>
+  <a href="/astarte-kubernetes-operator/26.7/crds/#astartefdoingressstatus">AstarteFDOIngressStatus</a></em></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartefdoingresslist">
+  AstarteFDOIngressList
+  <a class="anchor" href="#astartefdoingresslist">#</a>
+</h4>
+<p>AstarteFDOIngressList contains a list of AstarteFDOIngress.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+          <th>Default</th>
+          <th>Validation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>apiVersion</code> <em>string</em></td>
+          <td><code>ingress.astarte-platform.org/v2alpha1</code></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>kind</code> <em>string</em></td>
+          <td><code>AstarteFDOIngressList</code></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>metadata</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#listmeta-v1-meta">ListMeta</a></em></td>
+          <td>Refer to Kubernetes API documentation for fields of <code>metadata</code>.</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>items</code> <em>
+  <a href="/astarte-kubernetes-operator/26.7/crds/#astartefdoingress">AstarteFDOIngress</a> array</em></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartefdoingressspec">
+  AstarteFDOIngressSpec
+  <a class="anchor" href="#astartefdoingressspec">#</a>
+</h4>
+<p>AstarteFDOIngressSpec defines the desired state of AstarteFDOIngress.</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/26.7/crds/#astartefdoingress">AstarteFDOIngress</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+          <th>Default</th>
+          <th>Validation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>astarte</code> <em>string</em></td>
+          <td>The name of the Astarte instance for which the FDO Ingress is being created.</td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>ingressClass</code> <em>string</em></td>
+          <td>In clusters with more than one ingress controllers, all<br />instances of the controllers must be aware of which Ingress object they must serve.<br />The ingressClass field of a ingress object is the way to let the controller know about that.<br />If the annotation is not set, HAProxy Ingress Controller is assumed by default.</td>
+          <td>haproxy</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>tlsSecret</code> <em>string</em></td>
+          <td>The secret containing the TLS certificates and keys used to connect to Astarte FDO Ingress. The secret<br />must be present in the namespace in which Astarte resides and it will be used to authenticate<br />requests to Astarte Pairing using FDO.</td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="astartefdoingressstatus">
+  AstarteFDOIngressStatus
+  <a class="anchor" href="#astartefdoingressstatus">#</a>
+</h4>
+<p>AstarteFDOIngressStatus defines the observed state of AstarteFDOIngress.</p>
+<p><em>Appears in:</em></p>
+<ul>
+<li>
+  <a href="/astarte-kubernetes-operator/26.7/crds/#astartefdoingress">AstarteFDOIngress</a></li>
+</ul>
+<table>
+  <thead>
+      <tr>
+          <th>Field</th>
+          <th>Description</th>
+          <th>Default</th>
+          <th>Validation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>loadBalancer</code> <em>
+  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#ingressloadbalancerstatus-v1-networking">IngressLoadBalancerStatus</a></em></td>
+          <td>loadBalancer contains the current status of the load-balancer.</td>
           <td></td>
           <td></td>
       </tr>
