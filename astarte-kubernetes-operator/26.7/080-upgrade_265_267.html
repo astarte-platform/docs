@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.29.0">
+    <meta name="project" content="Clea Astarte Operator v26.7.0">
+
+    <title>Upgrade v26.5.x-v26.7.x — Clea Astarte Operator v26.7.0</title>
+    <link rel="stylesheet" href="dist/html-elixir-2YOS5DIE.css" />
+
+    <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
+    <script src="dist/handlebars.templates-X7YVL3G2.js"></script>
+    <script src="dist/sidebar_items-E4E868CA.js"></script>
+
+      <script src="../common_vars.js"></script>
+
+    <script async src="dist/html-XN2TSG4M.js"></script>
+
+
+  </head>
+  <body data-type="extras" class="page-extra">
+    <script>
+
+      try {
+        var settings = JSON.parse(localStorage.getItem('ex_doc:settings') || '{}');
+
+        if (settings.theme === 'dark' ||
+           ((settings.theme === 'system' || settings.theme == null) &&
+             window.matchMedia('(prefers-color-scheme: dark)').matches)
+           ) {
+          document.body.classList.add('dark')
+        }
+      } catch (error) { }
+    </script>
+
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle" aria-label="toggle sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button" aria-label="Submit Search">
+      <i class="ri-search-2-line" aria-hidden="true" title="Submit search"></i>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button" aria-label="Cancel Search">
+      <i class="ri-close-line ri-lg" aria-hidden="true" title="Cancel search"></i>
+    </button>
+    <label class="search-label">
+      <p class="sr-only">Search</p>
+      <input name="q" type="text" class="search-input" placeholder="Search..." aria-label="Input your search terms" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/26.7/">
+        <img src="assets/logo.png" alt="Clea Astarte Operator" class="sidebar-projectImage">
+      </a>
+
+    <div class="sidebar-projectDetails">
+      <a href="https://docs.astarte-platform.org/astarte-kubernetes-operator/26.7/" class="sidebar-projectName" translate="no">
+Clea Astarte Operator
+      </a>
+      <strong class="sidebar-projectVersion" translate="no">
+        v26.7.0
+      </strong>
+    </div>
+    <ul class="sidebar-listNav">
+      <li><a id="extras-list-link" href="#full-list">Pages</a></li>
+
+
+    </ul>
+  </div>
+
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <output role="status" id="toast"></output>
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+<h1>
+<button class="settings display-settings">
+  <i class="ri-settings-3-line"></i>
+  <span class="sr-only">Settings</span>
+</button>
+
+
+    <a href="https://github.com/astarte-platform/astarte-kubernetes-operator/blob/release-26.7/docs/documentation/pages/upgrade/080-upgrade_265_267.md#L1" title="View Source" class="view-source" rel="help">
+      <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+      <span class="sr-only">View Source</span>
+    </a>
+
+  <span>Upgrade v26.5.x-v26.7.x</span>
+</h1>
+
+<p>This page describes the required steps to upgrade your Astarte cluster from <code class="inline">v26.5.x</code> to <code class="inline">v26.7.x</code>. The Astarte Operator v26.7.x introduces support for Astarte 1.4.0, which includes mandatory FDO and Vault configuration. See the <a href="https://github.com/astarte-platform/astarte/blob/release-1.4/CHANGELOG.md">Astarte CHANGELOG</a> to inspect what's changed in Astarte itself.</p><blockquote><p>[!WARNING]
+To use Astarte <code class="inline">v1.4.x</code>, you must upgrade your Astarte Operator to <code class="inline">v26.7.x</code>.</p></blockquote><ul><li>Starting from Astarte <code class="inline">v1.4.0</code>, FDO (FIDO Device Onboard) is mandatory and can no longer be disabled. If your Astarte CR explicitly sets <code class="inline">spec.fdo.enable: false</code>, you must remove or change it before upgrading.</li><li>Starting from Astarte <code class="inline">v1.4.0</code>, a Vault configuration must be provided through the <code class="inline">spec.vault</code> field in the Astarte CR.</li></ul><h2 id="fdo-mandatory-enforcement" class="section-heading">
+  <a href="#fdo-mandatory-enforcement" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">fdo-mandatory-enforcement</p>
+  </a>
+  FDO mandatory enforcement
+</h2>
+<p>In Astarte 1.3, FDO was an opt-in feature controlled via the <code class="inline">spec.fdo.enable</code> field. Starting from Astarte 1.4.0, FDO is always enabled and cannot be turned off.</p><p>The operator enforces this requirement through multiple layers, ensuring no Astarte 1.4+ instance runs without FDO:</p><ul><li><strong>Defaulting webhook</strong>: when <code class="inline">spec.fdo</code> is not set at all on an Astarte version &gt;= 1.4.0, the mutating webhook automatically sets <code class="inline">spec.fdo.enable: true</code>. If you leave the field unset, the operator handles it for you.</li><li><strong>Validating webhook</strong>: explicitly setting <code class="inline">spec.fdo.enable: false</code> on an Astarte version &gt;= 1.4.0 is rejected at admission time. You will see an error like <em>&quot;FDO must be enabled for Astarte version 1.4.0 and above&quot;</em> when applying the CR.</li></ul><p>The <code class="inline">spec.fdo.enable</code> field is kept for backward compatibility with Astarte 1.3.x, where FDO remains optional. If you are running Astarte 1.4.0 or later, simply ensure the field is either unset or explicitly set to <code class="inline">true</code>.</p><p>Along with FDO, a <code class="inline">spec.fdo.rendezvousServer</code> block is now required. The webhook validates this at admission time and will reject a CR that enables FDO without providing rendezvous server configuration.</p><blockquote><p>[!WARNING]
+The Rendezvous Servers is now an external prerequisites. Its deployment is NOT handled by the Astarte Operator itself.</p></blockquote><h2 id="vault-configuration-requirement" class="section-heading">
+  <a href="#vault-configuration-requirement" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">vault-configuration-requirement</p>
+  </a>
+  Vault configuration requirement
+</h2>
+<p>Starting from Astarte 1.4.0, the <code class="inline">spec.vault</code> field is required in the Astarte CR. The validating webhook rejects any CR with version &gt;= 1.4.0 that does not include a Vault configuration block. Ensure you have a HashiCorp Vault or OpenBao instance running and provide the connection details in your Astarte CR before upgrading to v1.4.x.</p><blockquote><p>[!WARNING]
+An HashiCorp Vault or OpenBao instance is now an external prerequisites. Its deployment is NOT handled by the Astarte Operator itself.</p></blockquote><h2 id="metrics-configuration-support" class="section-heading">
+  <a href="#metrics-configuration-support" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">metrics-configuration-support</p>
+  </a>
+  Metrics configuration support
+</h2>
+<p>Starting from Astarte Operator v26.7.0, the operator can expose Prometheus metrics. Metrics are disabled by default and can be enabled through Helm values:</p><ul><li><code class="inline">metrics.enable</code>: set to <code class="inline">true</code> to enable the metrics endpoint (default <code class="inline">false</code>).</li><li><code class="inline">metrics.port</code>: the port to expose metrics on (default <code class="inline">8443</code>).</li><li><code class="inline">metrics.secure</code>: whether to serve metrics over HTTPS (default <code class="inline">true</code>). Set to <code class="inline">false</code> to use HTTP.</li></ul><p>When metrics are enabled, the operator exposes a <code class="inline">/metrics</code> endpoint on the configured port, ready to be scraped by Prometheus.</p><h2 id="upgrade-astarte-operator" class="section-heading">
+  <a href="#upgrade-astarte-operator" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i>
+  <p class="sr-only">upgrade-astarte-operator</p>
+  </a>
+  Upgrade Astarte Operator
+</h2>
+<p>The Astarte Operator upgrade procedure is handled by Helm.</p><p>The current section assumes that the Operator's chart landing version is <code class="inline">v26.7.x</code>. It is <strong>your responsibility</strong> referencing the proper <code class="inline">v26.7.x</code> chart using the <code class="inline">--version</code> flag when running <code class="inline">helm</code> commands.</p>
+<div class="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="073-migration_examples.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Astarte CR Migration examples (v1alpha3 to v2alpha1)
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="001-intro_crds.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Introduction
+        </span>
+      </a>
+
+  </div>
+</div>
+      <footer class="footer">
+
+        <p>
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.29.0) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+
+
+  </body>
+</html>
