@@ -137,9 +137,6 @@ Data Fields</h2></td></tr>
 <tr class="memitem:a71ce5d082e9c2ceef80b4a4705689f43" id="r_a71ce5d082e9c2ceef80b4a4705689f43"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71ce5d082e9c2ceef80b4a4705689f43">endpoint</a></td></tr>
 <tr class="memdesc:a71ce5d082e9c2ceef80b4a4705689f43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mapping endpoint.  <br /></td></tr>
 <tr class="separator:a71ce5d082e9c2ceef80b4a4705689f43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4bd17be64545131f12f35e95afd57d03" id="r_a4bd17be64545131f12f35e95afd57d03"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4bd17be64545131f12f35e95afd57d03">regex_endpoint</a></td></tr>
-<tr class="memdesc:a4bd17be64545131f12f35e95afd57d03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modified mapping endpoint for regex matching.  <br /></td></tr>
-<tr class="separator:a4bd17be64545131f12f35e95afd57d03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3abbe5bda6cc7d69093152668d3e3d83" id="r_a3abbe5bda6cc7d69093152668d3e3d83"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__mapping.html#ga2f53463f4b47cb95cf94034a4834d957">astarte_mapping_type_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3abbe5bda6cc7d69093152668d3e3d83">type</a></td></tr>
 <tr class="memdesc:a3abbe5bda6cc7d69093152668d3e3d83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mapping type.  <br /></td></tr>
 <tr class="separator:a3abbe5bda6cc7d69093152668d3e3d83"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,6 +146,12 @@ Data Fields</h2></td></tr>
 <tr class="memitem:afba21342b4d4fcd121791d425fbb08d3" id="r_afba21342b4d4fcd121791d425fbb08d3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afba21342b4d4fcd121791d425fbb08d3">explicit_timestamp</a></td></tr>
 <tr class="memdesc:afba21342b4d4fcd121791d425fbb08d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Explicit timestamp flag.  <br /></td></tr>
 <tr class="separator:afba21342b4d4fcd121791d425fbb08d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0548ff5282e29d069759c330deae4f73" id="r_a0548ff5282e29d069759c330deae4f73"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__mapping.html#ga5a6e27544b2ded043b4a2126713f0eee">astarte_mapping_retention_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0548ff5282e29d069759c330deae4f73">retention</a></td></tr>
+<tr class="memdesc:a0548ff5282e29d069759c330deae4f73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mapping retention.  <br /></td></tr>
+<tr class="separator:a0548ff5282e29d069759c330deae4f73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadc90ac635d0039602f9d6de9c216ea3" id="r_aadc90ac635d0039602f9d6de9c216ea3"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aadc90ac635d0039602f9d6de9c216ea3">expiry</a></td></tr>
+<tr class="memdesc:aadc90ac635d0039602f9d6de9c216ea3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mapping expiry limit.  <br /></td></tr>
+<tr class="separator:aadc90ac635d0039602f9d6de9c216ea3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1e746c198e88c67aa6a177c628e2b90" id="r_aa1e746c198e88c67aa6a177c628e2b90"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1e746c198e88c67aa6a177c628e2b90">allow_unset</a></td></tr>
 <tr class="memdesc:aa1e746c198e88c67aa6a177c628e2b90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow unset flag.  <br /></td></tr>
 <tr class="separator:aa1e746c198e88c67aa6a177c628e2b90"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -189,6 +192,22 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
+<a id="aadc90ac635d0039602f9d6de9c216ea3" name="aadc90ac635d0039602f9d6de9c216ea3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadc90ac635d0039602f9d6de9c216ea3">&#9670;&#160;</a></span>expiry</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t astarte_mapping_t::expiry</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Mapping expiry limit. </p>
+
+</div>
+</div>
 <a id="afba21342b4d4fcd121791d425fbb08d3" name="afba21342b4d4fcd121791d425fbb08d3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afba21342b4d4fcd121791d425fbb08d3">&#9670;&#160;</a></span>explicit_timestamp</h2>
 
@@ -205,23 +224,6 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
-<a id="a4bd17be64545131f12f35e95afd57d03" name="a4bd17be64545131f12f35e95afd57d03"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4bd17be64545131f12f35e95afd57d03">&#9670;&#160;</a></span>regex_endpoint</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* astarte_mapping_t::regex_endpoint</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Modified mapping endpoint for regex matching. </p>
-<p>The original mapping endpoint can contain parameters in the form <code>%{([a-zA-Z_][a-zA-Z0-9_]*)}</code>. In this modified endpoint all the parameters have been substituted by the regex pattern: <code>[a-zA-Z_]+[a-zA-Z0-9_]*</code> to ease pattern matching. </p>
-
-</div>
-</div>
 <a id="aa57656d478f2947b01659f7000a73d6f" name="aa57656d478f2947b01659f7000a73d6f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa57656d478f2947b01659f7000a73d6f">&#9670;&#160;</a></span>reliability</h2>
 
@@ -235,6 +237,22 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Mapping reliability. </p>
+
+</div>
+</div>
+<a id="a0548ff5282e29d069759c330deae4f73" name="a0548ff5282e29d069759c330deae4f73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0548ff5282e29d069759c330deae4f73">&#9670;&#160;</a></span>retention</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__mapping.html#ga5a6e27544b2ded043b4a2126713f0eee">astarte_mapping_retention_t</a> astarte_mapping_t::retention</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Mapping retention. </p>
 
 </div>
 </div>

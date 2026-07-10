@@ -6,7 +6,8 @@ var searchData=
   ['entry_20structure_3',['ZMS entry structure',['../md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html#autotoc_md25',1,'']]],
   ['environment_20and_20installing_20python_20dependencies_4',['Exporting zephyr environment and installing python dependencies',['../index.html#autotoc_md6',1,'']]],
   ['esp32_5',['Fetching binary blobs for ESP32',['../index.html#autotoc_md7',1,'']]],
-  ['explicit_5ftimestamp_6',['explicit_timestamp',['../structastarte__mapping__t.html#afba21342b4d4fcd121791d425fbb08d3',1,'astarte_mapping_t']]],
-  ['exporting_20zephyr_20environment_20and_20installing_20python_20dependencies_7',['Exporting zephyr environment and installing python dependencies',['../index.html#autotoc_md6',1,'']]],
-  ['extension_20commands_8',['West extension commands',['../index.html#autotoc_md12',1,'']]]
+  ['expiry_6',['expiry',['../structastarte__mapping__t.html#aadc90ac635d0039602f9d6de9c216ea3',1,'astarte_mapping_t']]],
+  ['explicit_5ftimestamp_7',['explicit_timestamp',['../structastarte__mapping__t.html#afba21342b4d4fcd121791d425fbb08d3',1,'astarte_mapping_t']]],
+  ['exporting_20zephyr_20environment_20and_20installing_20python_20dependencies_8',['Exporting zephyr environment and installing python dependencies',['../index.html#autotoc_md6',1,'']]],
+  ['extension_20commands_9',['West extension commands',['../index.html#autotoc_md12',1,'']]]
 ];

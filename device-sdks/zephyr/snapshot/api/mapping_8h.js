@@ -5,6 +5,11 @@ var mapping_8h =
       [ "ASTARTE_MAPPING_RELIABILITY_GUARANTEED", "group__mapping.html#gga2601202c20a558b165df0ea70141754aa4fc910a2d272feee1b1c27f0bb61b1b6", null ],
       [ "ASTARTE_MAPPING_RELIABILITY_UNIQUE", "group__mapping.html#gga2601202c20a558b165df0ea70141754aac273b5b93e29e6e4ed8e011a135b605c", null ]
     ] ],
+    [ "astarte_mapping_retention_t", "group__mapping.html#ga5a6e27544b2ded043b4a2126713f0eee", [
+      [ "ASTARTE_MAPPING_RETENTION_DISCARD", "group__mapping.html#gga5a6e27544b2ded043b4a2126713f0eeeabc5ef87a7b5b7cbb6817268cc3a3e833", null ],
+      [ "ASTARTE_MAPPING_RETENTION_VOLATILE", "group__mapping.html#gga5a6e27544b2ded043b4a2126713f0eeea58f4eceda39a74fce60d233c296cf031", null ],
+      [ "ASTARTE_MAPPING_RETENTION_STORED", "group__mapping.html#gga5a6e27544b2ded043b4a2126713f0eeea95d485514d05adffc6d609cb8c460640", null ]
+    ] ],
     [ "astarte_mapping_type_t", "group__mapping.html#ga2f53463f4b47cb95cf94034a4834d957", [
       [ "ASTARTE_MAPPING_TYPE_BINARYBLOB", "group__mapping.html#gga2f53463f4b47cb95cf94034a4834d957a97b2abcea374138cc54a02370aa39e3c", null ],
       [ "ASTARTE_MAPPING_TYPE_BOOLEAN", "group__mapping.html#gga2f53463f4b47cb95cf94034a4834d957a7bc966a7a01709b4a6877c672daf0993", null ],
