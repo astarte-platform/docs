@@ -591,7 +591,7 @@ info:
     email: info@ispirata.com
   description: Control device registration, authentication and authorization
   title: Astarte Pairing API
-  version: 1.4.0-rc.1
+  version: 1.4.0-rc.2
 openapi: 3.0.0
 paths:
   /version:
