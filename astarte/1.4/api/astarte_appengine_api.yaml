@@ -506,7 +506,7 @@ info:
     use this API to interact with devices, stream and receive data, and oversee
     their fleet.
   title: Astarte App Engine API
-  version: 1.4.0-rc.0
+  version: 1.4.0-rc.1
 openapi: 3.0.0
 paths:
   /version:

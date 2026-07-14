@@ -986,7 +986,7 @@ info:
     It allows installing and managing Interfaces, Triggers and any configuration
     of the Realm itself.
   title: Astarte Realm Management API
-  version: 1.4.0-rc.0
+  version: 1.4.0-rc.1
 openapi: 3.0.0
 paths:
   /version:
