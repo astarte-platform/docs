@@ -317,7 +317,7 @@ add unnecessary complexity to the CRD schema.</p>
   <tbody>
       <tr>
           <td><code>ssl</code> <em>boolean</em></td>
-          <td></td>
+          <td>Enable or disable SSL for the Astarte API. Default: true.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -333,6 +333,7 @@ add unnecessary complexity to the CRD schema.</p>
   AstarteAppengineAPISpec
   <a class="anchor" href="#astarteappengineapispec">#</a>
 </h4>
+<p>AstarteAppengineAPISpec configures the AppEngine API component.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -350,59 +351,59 @@ add unnecessary complexity to the CRD schema.</p>
   <tbody>
       <tr>
           <td><code>deploy</code> <em>boolean</em></td>
-          <td></td>
+          <td>When true, the component is deployed. When false, the component is removed (if<br />already present) or skipped. All components default to true except Flow, which<br />defaults to false and must be explicitly enabled.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>replicas</code> <em>integer</em></td>
-          <td></td>
+          <td>The number of replicas for this component.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>antiAffinity</code> <em>boolean</em></td>
-          <td></td>
+          <td>When true, pods of this component are spread across nodes using<br />podAntiAffinity.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>customAffinity</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#affinity-v1-core">Affinity</a></em></td>
-          <td></td>
+          <td>Custom affinity rules for this component. When set, overrides the default<br />antiAffinity configuration entirely.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>deploymentStrategy</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
-          <td></td>
+          <td>The deployment strategy for this specific component. Overrides the global<br />spec.deploymentStrategy. Note that DataUpdaterPlant, TriggerEngine, and Flow<br />always use Recreate regardless of this setting.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>version</code> <em>string</em></td>
-          <td></td>
+          <td>The Astarte version (image tag) for this specific component. Overrides the<br />global spec.version. Useful for pinning a component to a different version<br />during upgrades or debugging.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>image</code> <em>string</em></td>
-          <td></td>
+          <td>The full container image reference (registry/name:tag) for this component.<br />When set, overrides both the distributionChannel and version settings for<br />this component.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>imagePullPolicy</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#pullpolicy-v1-core">PullPolicy</a></em></td>
-          <td></td>
+          <td>The image pull policy for this component. Overrides the global<br />spec.imagePullPolicy. Default: inherits from spec.imagePullPolicy.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>imagePullSecrets</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#localobjectreference-v1-core">LocalObjectReference</a> array</em></td>
-          <td></td>
+          <td>Additional image pull secrets for this component&rsquo;s pods. These are appended<br />to the global spec.imagePullSecrets.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -416,7 +417,7 @@ add unnecessary complexity to the CRD schema.</p>
       <tr>
           <td><code>additionalEnv</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#envvar-v1-core">EnvVar</a> array</em></td>
-          <td>Additional environment variables for this Component</td>
+          <td>Additional environment variables for this Component. These are appended after<br />the operator-managed environment variables and can override them.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -429,7 +430,7 @@ add unnecessary complexity to the CRD schema.</p>
       <tr>
           <td><code>autoscaler</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
-          <td>Autoscaling resources for this deployment/statefulset.<br />If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+          <td>Autoscaling resources for this deployment/statefulset.<br />If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.<br />The autoscaling feature must be enabled globally via features.autoscaling.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -462,13 +463,13 @@ add unnecessary complexity to the CRD schema.</p>
       </tr>
       <tr>
           <td><code>disableAuthentication</code> <em>boolean</em></td>
-          <td></td>
+          <td>When true, disables authentication for this API component. This is useful<br />in development or when an external auth proxy is used. Do not disable<br />authentication in production without an external auth mechanism.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>maxResultsLimit</code> <em>integer</em></td>
-          <td></td>
+          <td>The maximum number of results returned by a single AppEngine API query.<br />Must be at least 100. Defaults to 10000.</td>
           <td></td>
           <td>Minimum: 100 <br />Optional: {} <br /></td>
       </tr>
@@ -490,6 +491,7 @@ add unnecessary complexity to the CRD schema.</p>
   AstarteCFSSLCARootConfigSigningCAConstraintSpec
   <a class="anchor" href="#astartecfsslcarootconfigsigningcaconstraintspec">#</a>
 </h4>
+<p>AstarteCFSSLCARootConfigSigningCAConstraintSpec defines constraints on the CA certificate.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -529,6 +531,8 @@ add unnecessary complexity to the CRD schema.</p>
   AstarteCFSSLCARootConfigSigningDefaultSpec
   <a class="anchor" href="#astartecfsslcarootconfigsigningdefaultspec">#</a>
 </h4>
+<p>AstarteCFSSLCARootConfigSigningDefaultSpec defines the default signing parameters
+for the CFSSL CA.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -569,6 +573,7 @@ add unnecessary complexity to the CRD schema.</p>
   AstarteCFSSLCARootConfigSpec
   <a class="anchor" href="#astartecfsslcarootconfigspec">#</a>
 </h4>
+<p>AstarteCFSSLCARootConfigSpec defines the root CA configuration for CFSSL.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -597,6 +602,7 @@ add unnecessary complexity to the CRD schema.</p>
   AstarteCFSSLCSRRootCAKeySpec
   <a class="anchor" href="#astartecfsslcsrrootcakeyspec">#</a>
 </h4>
+<p>AstarteCFSSLCSRRootCAKeySpec defines the key algorithm and size for the CFSSL root CA.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -614,13 +620,13 @@ add unnecessary complexity to the CRD schema.</p>
   <tbody>
       <tr>
           <td><code>algo</code> <em>string</em></td>
-          <td></td>
+          <td>The key algorithm (e.g. &ldquo;rsa&rdquo;, &ldquo;ecdsa&rdquo;).</td>
           <td></td>
           <td></td>
       </tr>
       <tr>
           <td><code>size</code> <em>integer</em></td>
-          <td></td>
+          <td>The key size in bits (e.g. 2048, 4096).</td>
           <td></td>
           <td></td>
       </tr>
@@ -630,6 +636,8 @@ add unnecessary complexity to the CRD schema.</p>
   AstarteCFSSLCSRRootCANamesSpec
   <a class="anchor" href="#astartecfsslcsrrootcanamesspec">#</a>
 </h4>
+<p>AstarteCFSSLCSRRootCANamesSpec defines the distinguished name components
+for the CFSSL root CA certificate.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -681,6 +689,7 @@ add unnecessary complexity to the CRD schema.</p>
   AstarteCFSSLCSRRootCASpec
   <a class="anchor" href="#astartecfsslcsrrootcaspec">#</a>
 </h4>
+<p>AstarteCFSSLCSRRootCASpec defines the certificate signing request for the CFSSL root CA.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -728,6 +737,7 @@ add unnecessary complexity to the CRD schema.</p>
   AstarteCFSSLDBConfigSpec
   <a class="anchor" href="#astartecfssldbconfigspec">#</a>
 </h4>
+<p>AstarteCFSSLDBConfigSpec configures the database backend used by CFSSL.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -745,13 +755,13 @@ add unnecessary complexity to the CRD schema.</p>
   <tbody>
       <tr>
           <td><code>driver</code> <em>string</em></td>
-          <td></td>
+          <td>The database driver (e.g. &ldquo;sqlite3&rdquo;, &ldquo;postgres&rdquo;).</td>
           <td></td>
           <td></td>
       </tr>
       <tr>
           <td><code>dataSource</code> <em>string</em></td>
-          <td></td>
+          <td>The database data source name (connection string).</td>
           <td></td>
           <td></td>
       </tr>
@@ -761,6 +771,9 @@ add unnecessary complexity to the CRD schema.</p>
   AstarteCFSSLSpec
   <a class="anchor" href="#astartecfsslspec">#</a>
 </h4>
+<p>AstarteCFSSLSpec configures CFSSL (Cloudflare&rsquo;s PKI/TLS toolkit), the internal
+certificate authority used by Astarte for mutual TLS between components.
+By default, CFSSL is deployed and managed by the Operator.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -778,39 +791,39 @@ add unnecessary complexity to the CRD schema.</p>
   <tbody>
       <tr>
           <td><code>deploy</code> <em>boolean</em></td>
-          <td></td>
+          <td>When true, deploy CFSSL. When false, an external CFSSL instance must be<br />provided via the url field. Default: true.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>url</code> <em>string</em></td>
-          <td></td>
+          <td>The URL of an external CFSSL instance. Used only when deploy is false.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>caExpiry</code> <em>string</em></td>
-          <td></td>
+          <td>The expiry duration for the CA certificate (e.g. &ldquo;87600h&rdquo;). Only applies<br />when CFSSL is deployed by the Operator.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>caSecret</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#localobjectreference-v1-core">LocalObjectReference</a></em></td>
-          <td></td>
+          <td>A reference to a Kubernetes Secret containing an externally-managed CA<br />certificate. The Secret must be in the same namespace as Astarte.<br />When set, CFSSL uses this CA instead of generating a new one.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>certificateExpiry</code> <em>string</em></td>
-          <td></td>
+          <td>The expiry duration for certificates issued by CFSSL (e.g. &ldquo;8760h&rdquo;).</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>dbConfig</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartecfssldbconfigspec">AstarteCFSSLDBConfigSpec</a></em></td>
-          <td></td>
+          <td>Database configuration for CFSSL&rsquo;s certificate storage.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -823,34 +836,34 @@ add unnecessary complexity to the CRD schema.</p>
       </tr>
       <tr>
           <td><code>version</code> <em>string</em></td>
-          <td></td>
+          <td>The CFSSL container version (image tag) to use. Overrides the global<br />spec.version for CFSSL specifically.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>image</code> <em>string</em></td>
-          <td></td>
+          <td>The full CFSSL container image reference. Overrides the distributionChannel<br />and version for CFSSL.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>storage</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartepersistentstoragespec">AstartePersistentStorageSpec</a></em></td>
-          <td></td>
+          <td>Persistent storage configuration for CFSSL&rsquo;s certificate database.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>csrRootCa</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartecfsslcsrrootcaspec">AstarteCFSSLCSRRootCASpec</a></em></td>
-          <td></td>
+          <td>Certificate signing request configuration for the root CA.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>caRootConfig</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartecfsslcarootconfigspec">AstarteCFSSLCARootConfigSpec</a></em></td>
-          <td></td>
+          <td>Root CA configuration for signing certificates.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -893,6 +906,7 @@ add unnecessary complexity to the CRD schema.</p>
   AstarteCassandraConnectionSpec
   <a class="anchor" href="#astartecassandraconnectionspec">#</a>
 </h4>
+<p>AstarteCassandraConnectionSpec defines the connection to an external Cassandra/ScyllaDB cluster.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -911,7 +925,7 @@ add unnecessary complexity to the CRD schema.</p>
       <tr>
           <td><code>sslConfiguration</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#genericsslconfigurationspec">GenericSSLConfigurationSpec</a></em></td>
-          <td></td>
+          <td>SSL configuration for the connection.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -932,19 +946,19 @@ add unnecessary complexity to the CRD schema.</p>
       <tr>
           <td><code>nodes</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#hostandport">HostAndPort</a> array</em></td>
-          <td></td>
+          <td>The list of Cassandra/ScyllaDB seed nodes. At least one node must be provided.</td>
           <td></td>
           <td></td>
       </tr>
       <tr>
           <td><code>poolSize</code> <em>integer</em></td>
-          <td></td>
+          <td>The size of the connection pool to each Cassandra/ScyllaDB node.<br />Adjust this value if you need to increase or limit the number of concurrent<br />queries per node.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>enableKeepalive</code> <em>boolean</em></td>
-          <td>Enable or disable the keepalive option for the xandra connection.<br />Default: true</td>
+          <td>Enable or disable the keepalive option for the xandra connection.<br />Default: true.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -954,6 +968,7 @@ add unnecessary complexity to the CRD schema.</p>
   AstarteCassandraSpec
   <a class="anchor" href="#astartecassandraspec">#</a>
 </h4>
+<p>AstarteCassandraSpec configures the Cassandra/ScyllaDB backend for Astarte.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -972,14 +987,14 @@ add unnecessary complexity to the CRD schema.</p>
       <tr>
           <td><code>connection</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartecassandraconnectionspec">AstarteCassandraConnectionSpec</a></em></td>
-          <td></td>
+          <td>The Cassandra/ScyllaDB connection configuration. Required.</td>
           <td></td>
           <td>Required: {} <br /></td>
       </tr>
       <tr>
           <td><code>astarteSystemKeyspace</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartesystemkeyspacespec">AstarteSystemKeyspaceSpec</a></em></td>
-          <td></td>
+          <td>The keyspace configuration for Astarte&rsquo;s system keyspace. Required.</td>
           <td></td>
           <td>Required: {} <br /></td>
       </tr>
@@ -1022,6 +1037,7 @@ add unnecessary complexity to the CRD schema.</p>
   AstarteComponentsSpec
   <a class="anchor" href="#astartecomponentsspec">#</a>
 </h4>
+<p>AstarteComponentsSpec configures all Astarte service components.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -1040,63 +1056,63 @@ add unnecessary complexity to the CRD schema.</p>
       <tr>
           <td><code>resources</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#resourcerequirements-v1-core">ResourceRequirements</a></em></td>
-          <td>Compute Resources for this Component.</td>
+          <td>Compute Resources shared across all components. Can be overridden<br />per-component by setting the component&rsquo;s own resources field.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>flow</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartegenericapicomponentspec">AstarteGenericAPIComponentSpec</a></em></td>
-          <td></td>
+          <td>Flow component configuration. Defaults to deploy: false.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>housekeeping</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartegenericapicomponentspec">AstarteGenericAPIComponentSpec</a></em></td>
-          <td></td>
+          <td>Housekeeping component configuration.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>realmManagement</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartegenericapicomponentspec">AstarteGenericAPIComponentSpec</a></em></td>
-          <td></td>
+          <td>RealmManagement component configuration.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>pairing</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartegenericapicomponentspec">AstarteGenericAPIComponentSpec</a></em></td>
-          <td></td>
+          <td>Pairing component configuration.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>dataUpdaterPlant</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartedataupdaterplantspec">AstarteDataUpdaterPlantSpec</a></em></td>
-          <td></td>
+          <td>DataUpdaterPlant component configuration.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>appengineApi</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astarteappengineapispec">AstarteAppengineAPISpec</a></em></td>
-          <td></td>
+          <td>AppengineAPI component configuration.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>triggerEngine</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartetriggerenginespec">AstarteTriggerEngineSpec</a></em></td>
-          <td></td>
+          <td>TriggerEngine component configuration.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>dashboard</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartedashboardspec">AstarteDashboardSpec</a></em></td>
-          <td></td>
+          <td>Dashboard component configuration.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1106,6 +1122,8 @@ add unnecessary complexity to the CRD schema.</p>
   AstarteDashboardConfigAuthSpec
   <a class="anchor" href="#astartedashboardconfigauthspec">#</a>
 </h4>
+<p>AstarteDashboardConfigAuthSpec defines an authentication provider configuration
+for the Astarte Dashboard.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -1125,13 +1143,13 @@ add unnecessary complexity to the CRD schema.</p>
   <tbody>
       <tr>
           <td><code>type</code> <em>string</em></td>
-          <td></td>
+          <td>The authentication type (e.g. &ldquo;token&rdquo;, &ldquo;oauth&rdquo;).</td>
           <td></td>
           <td></td>
       </tr>
       <tr>
           <td><code>oauth_api_url</code> <em>string</em></td>
-          <td></td>
+          <td>The OAuth API URL (only used when type is &ldquo;oauth&rdquo;).</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1141,6 +1159,7 @@ add unnecessary complexity to the CRD schema.</p>
   AstarteDashboardConfigSpec
   <a class="anchor" href="#astartedashboardconfigspec">#</a>
 </h4>
+<p>AstarteDashboardConfigSpec configures the Astarte Dashboard UI settings.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -1158,44 +1177,44 @@ add unnecessary complexity to the CRD schema.</p>
   <tbody>
       <tr>
           <td><code>realmManagementApiUrl</code> <em>string</em></td>
-          <td></td>
+          <td>The URL of the Realm Management API. When set, overrides the default<br />(derived from the Astarte API host).</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>appEngineApiUrl</code> <em>string</em></td>
-          <td></td>
+          <td>The URL of the AppEngine API. When set, overrides the default.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>pairingApiUrl</code> <em>string</em></td>
-          <td></td>
+          <td>The URL of the Pairing API. When set, overrides the default.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>flowApiUrl</code> <em>string</em></td>
-          <td></td>
+          <td>The URL of the Flow API. When set, overrides the default.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>defaultRealm</code> <em>string</em></td>
-          <td></td>
+          <td>The default realm for the Dashboard. On first access, the Dashboard<br />will pre-select this realm.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>defaultAuth</code> <em>string</em></td>
-          <td></td>
+          <td>The default authentication method for the Dashboard. Default: &ldquo;token&rdquo;.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>auth</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartedashboardconfigauthspec">AstarteDashboardConfigAuthSpec</a> array</em></td>
-          <td></td>
+          <td>Authentication provider configurations available in the Dashboard.<br />If not set, defaults to a single &ldquo;token&rdquo; auth provider.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1205,6 +1224,7 @@ add unnecessary complexity to the CRD schema.</p>
   AstarteDashboardSpec
   <a class="anchor" href="#astartedashboardspec">#</a>
 </h4>
+<p>AstarteDashboardSpec configures the Astarte Dashboard component.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -1222,59 +1242,59 @@ add unnecessary complexity to the CRD schema.</p>
   <tbody>
       <tr>
           <td><code>deploy</code> <em>boolean</em></td>
-          <td></td>
+          <td>When true, the component is deployed. When false, the component is removed (if<br />already present) or skipped. All components default to true except Flow, which<br />defaults to false and must be explicitly enabled.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>replicas</code> <em>integer</em></td>
-          <td></td>
+          <td>The number of replicas for this component.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>antiAffinity</code> <em>boolean</em></td>
-          <td></td>
+          <td>When true, pods of this component are spread across nodes using<br />podAntiAffinity.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>customAffinity</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#affinity-v1-core">Affinity</a></em></td>
-          <td></td>
+          <td>Custom affinity rules for this component. When set, overrides the default<br />antiAffinity configuration entirely.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>deploymentStrategy</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
-          <td></td>
+          <td>The deployment strategy for this specific component. Overrides the global<br />spec.deploymentStrategy. Note that DataUpdaterPlant, TriggerEngine, and Flow<br />always use Recreate regardless of this setting.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>version</code> <em>string</em></td>
-          <td></td>
+          <td>The Astarte version (image tag) for this specific component. Overrides the<br />global spec.version. Useful for pinning a component to a different version<br />during upgrades or debugging.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>image</code> <em>string</em></td>
-          <td></td>
+          <td>The full container image reference (registry/name:tag) for this component.<br />When set, overrides both the distributionChannel and version settings for<br />this component.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>imagePullPolicy</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#pullpolicy-v1-core">PullPolicy</a></em></td>
-          <td></td>
+          <td>The image pull policy for this component. Overrides the global<br />spec.imagePullPolicy. Default: inherits from spec.imagePullPolicy.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>imagePullSecrets</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#localobjectreference-v1-core">LocalObjectReference</a> array</em></td>
-          <td></td>
+          <td>Additional image pull secrets for this component&rsquo;s pods. These are appended<br />to the global spec.imagePullSecrets.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1288,7 +1308,7 @@ add unnecessary complexity to the CRD schema.</p>
       <tr>
           <td><code>additionalEnv</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#envvar-v1-core">EnvVar</a> array</em></td>
-          <td>Additional environment variables for this Component</td>
+          <td>Additional environment variables for this Component. These are appended after<br />the operator-managed environment variables and can override them.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1301,7 +1321,7 @@ add unnecessary complexity to the CRD schema.</p>
       <tr>
           <td><code>autoscaler</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
-          <td>Autoscaling resources for this deployment/statefulset.<br />If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+          <td>Autoscaling resources for this deployment/statefulset.<br />If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.<br />The autoscaling feature must be enabled globally via features.autoscaling.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1334,44 +1354,44 @@ add unnecessary complexity to the CRD schema.</p>
       </tr>
       <tr>
           <td><code>realmManagementApiUrl</code> <em>string</em></td>
-          <td></td>
+          <td>The URL of the Realm Management API. When set, overrides the default<br />(derived from the Astarte API host).</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>appEngineApiUrl</code> <em>string</em></td>
-          <td></td>
+          <td>The URL of the AppEngine API. When set, overrides the default.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>pairingApiUrl</code> <em>string</em></td>
-          <td></td>
+          <td>The URL of the Pairing API. When set, overrides the default.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>flowApiUrl</code> <em>string</em></td>
-          <td></td>
+          <td>The URL of the Flow API. When set, overrides the default.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>defaultRealm</code> <em>string</em></td>
-          <td></td>
+          <td>The default realm for the Dashboard. On first access, the Dashboard<br />will pre-select this realm.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>defaultAuth</code> <em>string</em></td>
-          <td></td>
+          <td>The default authentication method for the Dashboard. Default: &ldquo;token&rdquo;.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>auth</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartedashboardconfigauthspec">AstarteDashboardConfigAuthSpec</a> array</em></td>
-          <td></td>
+          <td>Authentication provider configurations available in the Dashboard.<br />If not set, defaults to a single &ldquo;token&rdquo; auth provider.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1381,6 +1401,8 @@ add unnecessary complexity to the CRD schema.</p>
   AstarteDataUpdaterPlantSpec
   <a class="anchor" href="#astartedataupdaterplantspec">#</a>
 </h4>
+<p>AstarteDataUpdaterPlantSpec configures the Data Updater Plant (DUP) component,
+which handles data ingestion from the MQTT broker into the database.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -1398,59 +1420,59 @@ add unnecessary complexity to the CRD schema.</p>
   <tbody>
       <tr>
           <td><code>deploy</code> <em>boolean</em></td>
-          <td></td>
+          <td>When true, the component is deployed. When false, the component is removed (if<br />already present) or skipped. All components default to true except Flow, which<br />defaults to false and must be explicitly enabled.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>replicas</code> <em>integer</em></td>
-          <td></td>
+          <td>The number of replicas for this component.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>antiAffinity</code> <em>boolean</em></td>
-          <td></td>
+          <td>When true, pods of this component are spread across nodes using<br />podAntiAffinity.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>customAffinity</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#affinity-v1-core">Affinity</a></em></td>
-          <td></td>
+          <td>Custom affinity rules for this component. When set, overrides the default<br />antiAffinity configuration entirely.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>deploymentStrategy</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
-          <td></td>
+          <td>The deployment strategy for this specific component. Overrides the global<br />spec.deploymentStrategy. Note that DataUpdaterPlant, TriggerEngine, and Flow<br />always use Recreate regardless of this setting.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>version</code> <em>string</em></td>
-          <td></td>
+          <td>The Astarte version (image tag) for this specific component. Overrides the<br />global spec.version. Useful for pinning a component to a different version<br />during upgrades or debugging.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>image</code> <em>string</em></td>
-          <td></td>
+          <td>The full container image reference (registry/name:tag) for this component.<br />When set, overrides both the distributionChannel and version settings for<br />this component.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>imagePullPolicy</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#pullpolicy-v1-core">PullPolicy</a></em></td>
-          <td></td>
+          <td>The image pull policy for this component. Overrides the global<br />spec.imagePullPolicy. Default: inherits from spec.imagePullPolicy.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>imagePullSecrets</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#localobjectreference-v1-core">LocalObjectReference</a> array</em></td>
-          <td></td>
+          <td>Additional image pull secrets for this component&rsquo;s pods. These are appended<br />to the global spec.imagePullSecrets.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1464,7 +1486,7 @@ add unnecessary complexity to the CRD schema.</p>
       <tr>
           <td><code>additionalEnv</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#envvar-v1-core">EnvVar</a> array</em></td>
-          <td>Additional environment variables for this Component</td>
+          <td>Additional environment variables for this Component. These are appended after<br />the operator-managed environment variables and can override them.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1477,7 +1499,7 @@ add unnecessary complexity to the CRD schema.</p>
       <tr>
           <td><code>autoscaler</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
-          <td>Autoscaling resources for this deployment/statefulset.<br />If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+          <td>Autoscaling resources for this deployment/statefulset.<br />If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.<br />The autoscaling feature must be enabled globally via features.autoscaling.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1510,7 +1532,7 @@ add unnecessary complexity to the CRD schema.</p>
       </tr>
       <tr>
           <td><code>dataQueueCount</code> <em>integer</em></td>
-          <td></td>
+          <td>Controls the number of data queues used by the Data Updater Plant.<br />This corresponds to the AMQP queues from which DUP consumers pull data.<br />Defaults to 128. You should change this only when fine-tuning a<br />custom RabbitMQ setup.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1526,8 +1548,9 @@ add unnecessary complexity to the CRD schema.</p>
   AstarteFDOSpec
   <a class="anchor" href="#astartefdospec">#</a>
 </h4>
-<p>AstarteFDOSpec configures FDO support in Astarte.
-This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
+<p>AstarteFDOSpec configures FDO (FIDO Device Onboarding) support in Astarte.
+Available as an opt-in feature starting from Astarte 1.3. From Astarte 1.4.0
+onwards, FDO is mandatory and cannot be disabled.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -1545,14 +1568,14 @@ This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
   <tbody>
       <tr>
           <td><code>enable</code> <em>boolean</em></td>
-          <td></td>
+          <td>When true, enable FDO support. For Astarte &lt; 1.4.0, this is optional.<br />For Astarte &gt;= 1.4.0, FDO is always enabled and this field cannot be<br />set to false (validating webhook enforces this).</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>rendezvousServer</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astarterendezvousserverspec">AstarteRendezvousServerSpec</a></em></td>
-          <td></td>
+          <td>The FDO Rendezvous Server configuration. Required when FDO is enabled.<br />For Astarte &gt;= 1.4.0, this is always required since FDO cannot be disabled.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1562,7 +1585,8 @@ This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
   AstarteFeatures
   <a class="anchor" href="#astartefeatures">#</a>
 </h4>
-<p>AstarteFeatures enables/disables selectively a set of global features in Astarte</p>
+<p>AstarteFeatures enables/disables selectively a set of global, opt-in features in Astarte.
+All features default to false (disabled) unless explicitly set.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -1580,20 +1604,20 @@ This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
   <tbody>
       <tr>
           <td><code>realmDeletion</code> <em>boolean</em></td>
-          <td></td>
+          <td>Enable realm deletion support. When enabled, realms can be deleted<br />through the Realm Management API.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>autoscaling</code> <em>boolean</em></td>
-          <td></td>
+          <td>Enable horizontal pod autoscaling for Astarte components. When enabled,<br />each component&rsquo;s autoscaler configuration (if set) will be used to<br />dynamically scale replicas based on resource utilization. Requires<br />a metrics server to be installed in the cluster.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>astartePodPriorities</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartepodprioritiesspec">AstartePodPrioritiesSpec</a></em></td>
-          <td></td>
+          <td>Configure pod priority classes for Astarte components. When enabled,<br />the Operator creates three PriorityClasses (high, mid, low) and assigns<br />them to components based on their priorityClass field. Note that enabling<br />this feature might generate some counter-intuitive scheduling behaviour<br />if not done properly.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1603,6 +1627,9 @@ This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
   AstarteGenericAPIComponentSpec
   <a class="anchor" href="#astartegenericapicomponentspec">#</a>
 </h4>
+<p>AstarteGenericAPIComponentSpec extends the base clustered resource with an
+option to disable authentication on the component. Used by all Astarte API
+components (Flow, Housekeeping, RealmManagement, Pairing, AppengineAPI).</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -1622,59 +1649,59 @@ This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
   <tbody>
       <tr>
           <td><code>deploy</code> <em>boolean</em></td>
-          <td></td>
+          <td>When true, the component is deployed. When false, the component is removed (if<br />already present) or skipped. All components default to true except Flow, which<br />defaults to false and must be explicitly enabled.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>replicas</code> <em>integer</em></td>
-          <td></td>
+          <td>The number of replicas for this component.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>antiAffinity</code> <em>boolean</em></td>
-          <td></td>
+          <td>When true, pods of this component are spread across nodes using<br />podAntiAffinity.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>customAffinity</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#affinity-v1-core">Affinity</a></em></td>
-          <td></td>
+          <td>Custom affinity rules for this component. When set, overrides the default<br />antiAffinity configuration entirely.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>deploymentStrategy</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
-          <td></td>
+          <td>The deployment strategy for this specific component. Overrides the global<br />spec.deploymentStrategy. Note that DataUpdaterPlant, TriggerEngine, and Flow<br />always use Recreate regardless of this setting.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>version</code> <em>string</em></td>
-          <td></td>
+          <td>The Astarte version (image tag) for this specific component. Overrides the<br />global spec.version. Useful for pinning a component to a different version<br />during upgrades or debugging.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>image</code> <em>string</em></td>
-          <td></td>
+          <td>The full container image reference (registry/name:tag) for this component.<br />When set, overrides both the distributionChannel and version settings for<br />this component.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>imagePullPolicy</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#pullpolicy-v1-core">PullPolicy</a></em></td>
-          <td></td>
+          <td>The image pull policy for this component. Overrides the global<br />spec.imagePullPolicy. Default: inherits from spec.imagePullPolicy.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>imagePullSecrets</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#localobjectreference-v1-core">LocalObjectReference</a> array</em></td>
-          <td></td>
+          <td>Additional image pull secrets for this component&rsquo;s pods. These are appended<br />to the global spec.imagePullSecrets.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1688,7 +1715,7 @@ This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
       <tr>
           <td><code>additionalEnv</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#envvar-v1-core">EnvVar</a> array</em></td>
-          <td>Additional environment variables for this Component</td>
+          <td>Additional environment variables for this Component. These are appended after<br />the operator-managed environment variables and can override them.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1701,7 +1728,7 @@ This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
       <tr>
           <td><code>autoscaler</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
-          <td>Autoscaling resources for this deployment/statefulset.<br />If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+          <td>Autoscaling resources for this deployment/statefulset.<br />If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.<br />The autoscaling feature must be enabled globally via features.autoscaling.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1734,7 +1761,7 @@ This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
       </tr>
       <tr>
           <td><code>disableAuthentication</code> <em>boolean</em></td>
-          <td></td>
+          <td>When true, disables authentication for this API component. This is useful<br />in development or when an external auth proxy is used. Do not disable<br />authentication in production without an external auth mechanism.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1744,6 +1771,10 @@ This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
   AstarteGenericClusteredResource
   <a class="anchor" href="#astartegenericclusteredresource">#</a>
 </h4>
+<p>AstarteGenericClusteredResource is a base struct shared by all Astarte components
+that are deployed as either a Deployment or StatefulSet. It provides common
+configuration options such as replicas, affinity, probes, resources, and
+autoscaling that apply uniformly across components.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -1771,59 +1802,59 @@ This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
   <tbody>
       <tr>
           <td><code>deploy</code> <em>boolean</em></td>
-          <td></td>
+          <td>When true, the component is deployed. When false, the component is removed (if<br />already present) or skipped. All components default to true except Flow, which<br />defaults to false and must be explicitly enabled.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>replicas</code> <em>integer</em></td>
-          <td></td>
+          <td>The number of replicas for this component.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>antiAffinity</code> <em>boolean</em></td>
-          <td></td>
+          <td>When true, pods of this component are spread across nodes using<br />podAntiAffinity.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>customAffinity</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#affinity-v1-core">Affinity</a></em></td>
-          <td></td>
+          <td>Custom affinity rules for this component. When set, overrides the default<br />antiAffinity configuration entirely.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>deploymentStrategy</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
-          <td></td>
+          <td>The deployment strategy for this specific component. Overrides the global<br />spec.deploymentStrategy. Note that DataUpdaterPlant, TriggerEngine, and Flow<br />always use Recreate regardless of this setting.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>version</code> <em>string</em></td>
-          <td></td>
+          <td>The Astarte version (image tag) for this specific component. Overrides the<br />global spec.version. Useful for pinning a component to a different version<br />during upgrades or debugging.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>image</code> <em>string</em></td>
-          <td></td>
+          <td>The full container image reference (registry/name:tag) for this component.<br />When set, overrides both the distributionChannel and version settings for<br />this component.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>imagePullPolicy</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#pullpolicy-v1-core">PullPolicy</a></em></td>
-          <td></td>
+          <td>The image pull policy for this component. Overrides the global<br />spec.imagePullPolicy. Default: inherits from spec.imagePullPolicy.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>imagePullSecrets</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#localobjectreference-v1-core">LocalObjectReference</a> array</em></td>
-          <td></td>
+          <td>Additional image pull secrets for this component&rsquo;s pods. These are appended<br />to the global spec.imagePullSecrets.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1837,7 +1868,7 @@ This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
       <tr>
           <td><code>additionalEnv</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#envvar-v1-core">EnvVar</a> array</em></td>
-          <td>Additional environment variables for this Component</td>
+          <td>Additional environment variables for this Component. These are appended after<br />the operator-managed environment variables and can override them.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1850,7 +1881,7 @@ This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
       <tr>
           <td><code>autoscaler</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
-          <td>Autoscaling resources for this deployment/statefulset.<br />If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+          <td>Autoscaling resources for this deployment/statefulset.<br />If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.<br />The autoscaling feature must be enabled globally via features.autoscaling.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1887,6 +1918,8 @@ This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
   AstarteGenericClusteredResourceAutoscalerSpec
   <a class="anchor" href="#astartegenericclusteredresourceautoscalerspec">#</a>
 </h4>
+<p>AstarteGenericClusteredResourceAutoscalerSpec configures autoscaling for an
+Astarte component. Currently only horizontal autoscaling is supported.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -1916,7 +1949,7 @@ This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
   <tbody>
       <tr>
           <td><code>horizontal</code> <em>string</em></td>
-          <td>Name of the HorizontalPodAutoscaler for this deployment/statefulset.<br />This will take precedence over the &ldquo;Replicas&rdquo; field of the parent Astarte component.</td>
+          <td>Name of the HorizontalPodAutoscaler for this deployment/statefulset.<br />This will take precedence over the &ldquo;Replicas&rdquo; field of the parent Astarte component.<br />The HPA resource must exist in the same namespace as Astarte and the<br />features.autoscaling flag must be enabled.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -1969,6 +2002,8 @@ This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
   AstartePersistentStorageSpec
   <a class="anchor" href="#astartepersistentstoragespec">#</a>
 </h4>
+<p>AstartePersistentStorageSpec configures persistent storage for Astarte components
+that require it (VerneMQ, CFSSL).</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -1989,20 +2024,20 @@ This feature is EXPERIMENTAL, expect breaking changes in future releases.</p>
       <tr>
           <td><code>size</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#quantity-resource-api">Quantity</a></em></td>
-          <td></td>
+          <td>The size of the persistent volume. When not set, the Operator uses a<br />sensible default size.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>className</code> <em>string</em></td>
-          <td></td>
+          <td>The storage class name for the persistent volume. When not set, the<br />global spec.storageClassName is used as fallback.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>volumeDefinition</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#volume-v1-core">Volume</a></em></td>
-          <td></td>
+          <td>A complete volume definition that replaces the Operator-managed<br />persistent volume claim. Use this to reference an externally-managed<br />volume. When set, size and className are ignored.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -2060,6 +2095,8 @@ scheduling beahaviour if not done properly.</p>
   AstarteRabbitMQBaseConnectionSpec
   <a class="anchor" href="#astarterabbitmqbaseconnectionspec">#</a>
 </h4>
+<p>AstarteRabbitMQBaseConnectionSpec defines the host, port, credentials, and SSL
+settings for connecting to a RabbitMQ endpoint (AMQP or Management API).</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -2079,20 +2116,20 @@ scheduling beahaviour if not done properly.</p>
   <tbody>
       <tr>
           <td><code>host</code> <em>string</em></td>
-          <td></td>
+          <td>The hostname or IP address of the service.</td>
           <td></td>
           <td>MinLength: 1 <br />Required: {} <br /></td>
       </tr>
       <tr>
           <td><code>port</code> <em>integer</em></td>
-          <td></td>
+          <td>The port number the service listens on.</td>
           <td></td>
           <td>Maximum: 65535 <br />Minimum: 1 <br />Required: {} <br /></td>
       </tr>
       <tr>
           <td><code>sslConfiguration</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#genericsslconfigurationspec">GenericSSLConfigurationSpec</a></em></td>
-          <td></td>
+          <td>SSL configuration for the connection.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -2116,6 +2153,8 @@ scheduling beahaviour if not done properly.</p>
   AstarteRabbitMQConnectionSpec
   <a class="anchor" href="#astarterabbitmqconnectionspec">#</a>
 </h4>
+<p>AstarteRabbitMQConnectionSpec extends the base RabbitMQ connection with an
+optional virtual host for the AMQP connection.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -2133,20 +2172,20 @@ scheduling beahaviour if not done properly.</p>
   <tbody>
       <tr>
           <td><code>host</code> <em>string</em></td>
-          <td></td>
+          <td>The hostname or IP address of the service.</td>
           <td></td>
           <td>MinLength: 1 <br />Required: {} <br /></td>
       </tr>
       <tr>
           <td><code>port</code> <em>integer</em></td>
-          <td></td>
+          <td>The port number the service listens on.</td>
           <td></td>
           <td>Maximum: 65535 <br />Minimum: 1 <br />Required: {} <br /></td>
       </tr>
       <tr>
           <td><code>sslConfiguration</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#genericsslconfigurationspec">GenericSSLConfigurationSpec</a></em></td>
-          <td></td>
+          <td>SSL configuration for the connection.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -2166,7 +2205,7 @@ scheduling beahaviour if not done properly.</p>
       </tr>
       <tr>
           <td><code>virtualHost</code> <em>string</em></td>
-          <td></td>
+          <td>The virtual host for the RabbitMQ AMQP connection. Default: &ldquo;/&rdquo;.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -2176,6 +2215,8 @@ scheduling beahaviour if not done properly.</p>
   AstarteRabbitMQSpec
   <a class="anchor" href="#astarterabbitmqspec">#</a>
 </h4>
+<p>AstarteRabbitMQSpec defines the RabbitMQ configuration for Astarte.
+Both the AMQP connection and the Management API connection are required.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -2194,14 +2235,14 @@ scheduling beahaviour if not done properly.</p>
       <tr>
           <td><code>connection</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astarterabbitmqconnectionspec">AstarteRabbitMQConnectionSpec</a></em></td>
-          <td>RabbitMQ AMQP connection details</td>
+          <td>RabbitMQ AMQP connection details. Required.</td>
           <td></td>
           <td>Required: {} <br /></td>
       </tr>
       <tr>
           <td><code>managementConnection</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astarterabbitmqbaseconnectionspec">AstarteRabbitMQBaseConnectionSpec</a></em></td>
-          <td>RabbitMQ management APIs connection details</td>
+          <td>RabbitMQ management APIs connection details. Required.</td>
           <td></td>
           <td>Required: {} <br /></td>
       </tr>
@@ -2223,6 +2264,7 @@ scheduling beahaviour if not done properly.</p>
   AstarteRendezvousServerConnectionSpec
   <a class="anchor" href="#astarterendezvousserverconnectionspec">#</a>
 </h4>
+<p>AstarteRendezvousServerConnectionSpec defines the connection to an FDO Rendezvous Server.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -2240,20 +2282,20 @@ scheduling beahaviour if not done properly.</p>
   <tbody>
       <tr>
           <td><code>host</code> <em>string</em></td>
-          <td></td>
+          <td>The hostname or IP address of the service.</td>
           <td></td>
           <td>MinLength: 1 <br />Required: {} <br /></td>
       </tr>
       <tr>
           <td><code>port</code> <em>integer</em></td>
-          <td></td>
+          <td>The port number the service listens on.</td>
           <td></td>
           <td>Maximum: 65535 <br />Minimum: 1 <br />Required: {} <br /></td>
       </tr>
       <tr>
           <td><code>sslConfiguration</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#genericsslconfigurationspec">GenericSSLConfigurationSpec</a></em></td>
-          <td></td>
+          <td>SSL configuration for the Rendezvous Server connection.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -2263,6 +2305,7 @@ scheduling beahaviour if not done properly.</p>
   AstarteRendezvousServerSpec
   <a class="anchor" href="#astarterendezvousserverspec">#</a>
 </h4>
+<p>AstarteRendezvousServerSpec configures the FDO Rendezvous Server connection.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -2281,7 +2324,7 @@ scheduling beahaviour if not done properly.</p>
       <tr>
           <td><code>connection</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astarterendezvousserverconnectionspec">AstarteRendezvousServerConnectionSpec</a></em></td>
-          <td></td>
+          <td>The Rendezvous Server connection details.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -2309,103 +2352,103 @@ scheduling beahaviour if not done properly.</p>
   <tbody>
       <tr>
           <td><code>version</code> <em>string</em></td>
-          <td>The Astarte Version for this Resource</td>
+          <td>The Astarte version for this Resource. This field is required and must be a valid<br />semver string (e.g. &ldquo;1.3.0&rdquo; or &ldquo;1.4.1&rdquo;). The Operator uses this version<br />to determine which images to pull and what features to enable.</td>
           <td></td>
           <td></td>
       </tr>
       <tr>
           <td><code>features</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartefeatures">AstarteFeatures</a></em></td>
-          <td></td>
+          <td>Features allows enabling or disabling a set of global, opt-in Astarte features.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>imagePullPolicy</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#pullpolicy-v1-core">PullPolicy</a></em></td>
-          <td></td>
+          <td>The default image pull policy for all Astarte services. Can be overridden<br />per-component by setting the component&rsquo;s imagePullPolicy field.<br />Default: &ldquo;IfNotPresent&rdquo;.</td>
           <td>IfNotPresent</td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>imagePullSecrets</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#localobjectreference-v1-core">LocalObjectReference</a> array</em></td>
-          <td></td>
+          <td>Image pull secrets that will be added to all Astarte pods. Each component can<br />add additional secrets through its own imagePullSecrets field.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>distributionChannel</code> <em>string</em></td>
-          <td>The distribution channel for astarte images. This setting can be overridden by explicitly<br />setting the &lsquo;image&rsquo; value for each service. Defaults to &ldquo;astarte&rdquo;.</td>
+          <td>The distribution channel (container registry prefix) for Astarte images.<br />This setting can be overridden by explicitly setting the &lsquo;image&rsquo; value for<br />each service. Defaults to &ldquo;astarte&rdquo;.</td>
           <td>astarte</td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>deploymentStrategy</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
-          <td></td>
+          <td>The global default deployment strategy for Astarte components. Can be overridden<br />per-component by setting the component&rsquo;s deploymentStrategy field. Note that<br />DataUpdaterPlant, TriggerEngine, and Flow always use Recreate regardless<br />of this setting. When left unset, defaults to RollingUpdate.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>storageClassName</code> <em>string</em></td>
-          <td></td>
+          <td>The default storage class name for persistent storage claims. When a component<br />requires a persistent volume and does not specify its own className, this value<br />is used as a fallback.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>api</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astarteapispec">AstarteAPISpec</a></em></td>
-          <td></td>
+          <td>API defines the external API host and SSL configuration for Astarte services.<br />The Host field is required.</td>
           <td></td>
           <td></td>
       </tr>
       <tr>
           <td><code>rabbitmq</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astarterabbitmqspec">AstarteRabbitMQSpec</a></em></td>
-          <td></td>
+          <td>RabbitMQ connection and management configuration for the Astarte message broker.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>cassandra</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartecassandraspec">AstarteCassandraSpec</a></em></td>
-          <td></td>
+          <td>Cassandra/ScyllaDB connection configuration for the Astarte database.<br />The connection and astarteSystemKeyspace fields are required.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>vernemq</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartevernemqspec">AstarteVerneMQSpec</a></em></td>
-          <td></td>
+          <td>VerneMQ broker configuration including networking, storage, and device heartbeat settings.</td>
           <td></td>
           <td></td>
       </tr>
       <tr>
           <td><code>vault</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartevaultspec">AstarteVaultSpec</a></em></td>
-          <td>Vault is used to connect to a OpenBao or HashiCorp Vault instance.<br />Setting this field is supported and mandatory for Astarte version 1.4 and later.<br />The field is ignored for Astarte 1.3</td>
+          <td>Vault is used to connect to a OpenBao or HashiCorp Vault instance.<br />Setting this field is supported and mandatory for Astarte version 1.4 and later.<br />The field is ignored for Astarte 1.3.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>fdo</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartefdospec">AstarteFDOSpec</a></em></td>
-          <td></td>
+          <td>FDO (FIDO Device Onboarding) configuration. Available as an opt-in feature<br />starting from Astarte 1.3. From Astarte 1.4.0 onwards, FDO is mandatory<br />and cannot be disabled.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>cfssl</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartecfsslspec">AstarteCFSSLSpec</a></em></td>
-          <td></td>
+          <td>CFSSL (Cloudflare&rsquo;s PKI/TLS toolkit) configuration. CFSSL is an internal<br />certificate authority used by Astarte for mutual TLS. By default, CFSSL is<br />deployed automatically (deploy=true).</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>components</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartecomponentsspec">AstarteComponentsSpec</a></em></td>
-          <td></td>
+          <td>Components configures the individual Astarte services (Flow, Housekeeping,<br />RealmManagement, Pairing, DataUpdaterPlant, AppengineAPI, TriggerEngine, Dashboard).<br />Each component can override its image, resources, replicas, and other settings.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -2427,7 +2470,10 @@ scheduling beahaviour if not done properly.</p>
   AstarteStatus
   <a class="anchor" href="#astartestatus">#</a>
 </h4>
-<p>AstarteStatus defines the observed state of Astarte</p>
+<p>AstarteStatus defines the observed state of Astarte.
+The Operator updates this subresource as it reconciles the CR, providing
+visibility into the current reconciliation phase, cluster health, and
+connection endpoints.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -2446,38 +2492,38 @@ scheduling beahaviour if not done properly.</p>
       <tr>
           <td><code>phase</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#reconciliationphase">ReconciliationPhase</a></em></td>
-          <td></td>
+          <td>The current reconciliation phase of the Astarte resource.</td>
           <td></td>
           <td></td>
       </tr>
       <tr>
           <td><code>astarteVersion</code> <em>string</em></td>
-          <td></td>
+          <td>The Astarte version currently deployed.</td>
           <td></td>
           <td></td>
       </tr>
       <tr>
           <td><code>operatorVersion</code> <em>string</em></td>
-          <td></td>
+          <td>The version of the Astarte Operator managing this resource.</td>
           <td></td>
           <td></td>
       </tr>
       <tr>
           <td><code>health</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astarteclusterhealth">AstarteClusterHealth</a></em></td>
-          <td></td>
+          <td>The overall health status of the Astarte cluster (red, yellow, or green).</td>
           <td></td>
           <td></td>
       </tr>
       <tr>
           <td><code>baseAPIURL</code> <em>string</em></td>
-          <td></td>
+          <td>The base URL for Astarte API endpoints (derived from spec.api.host and SSL setting).</td>
           <td></td>
           <td></td>
       </tr>
       <tr>
           <td><code>brokerURL</code> <em>string</em></td>
-          <td></td>
+          <td>The broker URL for MQTT connections (derived from spec.vernemq.host and port).</td>
           <td></td>
           <td></td>
       </tr>
@@ -2521,7 +2567,7 @@ for this reason no default is provided: the user shall make a conscious choice.<
       </tr>
       <tr>
           <td><code>replicationFactor</code> <em>integer</em></td>
-          <td>ReplicationFactor sets the total number of replicas for the keyspace when using SimpleStrategy.<br />Must be at least 1. Must be odd.<br />Shall be set if and only if replicationStrategy is SimpleStrategy (checked with Admission Webhooks)<br />This field is ignored if ReplicationStrategy is set to NetworkTopologyStrategy.</td>
+          <td>ReplicationFactor sets the total number of replicas for the keyspace when using SimpleStrategy.<br />Must be at least 1. Must be odd. Defaults to 1.<br />Shall be set if and only if replicationStrategy is SimpleStrategy (checked with Admission Webhooks).<br />This field is ignored if ReplicationStrategy is set to NetworkTopologyStrategy.</td>
           <td></td>
           <td>Minimum: 1 <br />Optional: {} <br /></td>
       </tr>
@@ -2537,6 +2583,8 @@ for this reason no default is provided: the user shall make a conscious choice.<
   AstarteTriggerEngineSpec
   <a class="anchor" href="#astartetriggerenginespec">#</a>
 </h4>
+<p>AstarteTriggerEngineSpec configures the Trigger Engine component, which processes
+Astarte triggers (user-defined rules) and dispatches events.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -2554,59 +2602,59 @@ for this reason no default is provided: the user shall make a conscious choice.<
   <tbody>
       <tr>
           <td><code>deploy</code> <em>boolean</em></td>
-          <td></td>
+          <td>When true, the component is deployed. When false, the component is removed (if<br />already present) or skipped. All components default to true except Flow, which<br />defaults to false and must be explicitly enabled.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>replicas</code> <em>integer</em></td>
-          <td></td>
+          <td>The number of replicas for this component.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>antiAffinity</code> <em>boolean</em></td>
-          <td></td>
+          <td>When true, pods of this component are spread across nodes using<br />podAntiAffinity.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>customAffinity</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#affinity-v1-core">Affinity</a></em></td>
-          <td></td>
+          <td>Custom affinity rules for this component. When set, overrides the default<br />antiAffinity configuration entirely.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>deploymentStrategy</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
-          <td></td>
+          <td>The deployment strategy for this specific component. Overrides the global<br />spec.deploymentStrategy. Note that DataUpdaterPlant, TriggerEngine, and Flow<br />always use Recreate regardless of this setting.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>version</code> <em>string</em></td>
-          <td></td>
+          <td>The Astarte version (image tag) for this specific component. Overrides the<br />global spec.version. Useful for pinning a component to a different version<br />during upgrades or debugging.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>image</code> <em>string</em></td>
-          <td></td>
+          <td>The full container image reference (registry/name:tag) for this component.<br />When set, overrides both the distributionChannel and version settings for<br />this component.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>imagePullPolicy</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#pullpolicy-v1-core">PullPolicy</a></em></td>
-          <td></td>
+          <td>The image pull policy for this component. Overrides the global<br />spec.imagePullPolicy. Default: inherits from spec.imagePullPolicy.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>imagePullSecrets</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#localobjectreference-v1-core">LocalObjectReference</a> array</em></td>
-          <td></td>
+          <td>Additional image pull secrets for this component&rsquo;s pods. These are appended<br />to the global spec.imagePullSecrets.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -2620,7 +2668,7 @@ for this reason no default is provided: the user shall make a conscious choice.<
       <tr>
           <td><code>additionalEnv</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#envvar-v1-core">EnvVar</a> array</em></td>
-          <td>Additional environment variables for this Component</td>
+          <td>Additional environment variables for this Component. These are appended after<br />the operator-managed environment variables and can override them.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -2633,7 +2681,7 @@ for this reason no default is provided: the user shall make a conscious choice.<
       <tr>
           <td><code>autoscaler</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
-          <td>Autoscaling resources for this deployment/statefulset.<br />If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+          <td>Autoscaling resources for this deployment/statefulset.<br />If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.<br />The autoscaling feature must be enabled globally via features.autoscaling.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -2682,6 +2730,7 @@ for this reason no default is provided: the user shall make a conscious choice.<
   AstarteVaultConnectionSpec
   <a class="anchor" href="#astartevaultconnectionspec">#</a>
 </h4>
+<p>AstarteVaultConnectionSpec defines the connection to an OpenBao or HashiCorp Vault instance.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -2699,27 +2748,27 @@ for this reason no default is provided: the user shall make a conscious choice.<
   <tbody>
       <tr>
           <td><code>host</code> <em>string</em></td>
-          <td></td>
+          <td>The hostname or IP address of the service.</td>
           <td></td>
           <td>MinLength: 1 <br />Required: {} <br /></td>
       </tr>
       <tr>
           <td><code>port</code> <em>integer</em></td>
-          <td></td>
+          <td>The port number the service listens on.</td>
           <td></td>
           <td>Maximum: 65535 <br />Minimum: 1 <br />Required: {} <br /></td>
       </tr>
       <tr>
           <td><code>sslConfiguration</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#genericsslconfigurationspec">GenericSSLConfigurationSpec</a></em></td>
-          <td></td>
+          <td>SSL configuration for the Vault connection.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>connectionStringSecret</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#connectionstringsecret">ConnectionStringSecret</a></em></td>
-          <td>The secret containing a token to login.</td>
+          <td>The secret containing a token to login. The Secret must be in the same<br />namespace as the Astarte resource.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -2729,6 +2778,8 @@ for this reason no default is provided: the user shall make a conscious choice.<
   AstarteVaultSpec
   <a class="anchor" href="#astartevaultspec">#</a>
 </h4>
+<p>AstarteVaultSpec configures the OpenBao/HashiCorp Vault integration.
+Required for Astarte &gt;= 1.4.0. Ignored for Astarte 1.3.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -2747,7 +2798,7 @@ for this reason no default is provided: the user shall make a conscious choice.<
       <tr>
           <td><code>connection</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartevaultconnectionspec">AstarteVaultConnectionSpec</a></em></td>
-          <td></td>
+          <td>The Vault connection details.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -2763,6 +2814,7 @@ for this reason no default is provided: the user shall make a conscious choice.<
   AstarteVerneMQSpec
   <a class="anchor" href="#astartevernemqspec">#</a>
 </h4>
+<p>AstarteVerneMQSpec configures the VerneMQ MQTT broker component.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -2780,59 +2832,59 @@ for this reason no default is provided: the user shall make a conscious choice.<
   <tbody>
       <tr>
           <td><code>deploy</code> <em>boolean</em></td>
-          <td></td>
+          <td>When true, the component is deployed. When false, the component is removed (if<br />already present) or skipped. All components default to true except Flow, which<br />defaults to false and must be explicitly enabled.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>replicas</code> <em>integer</em></td>
-          <td></td>
+          <td>The number of replicas for this component.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>antiAffinity</code> <em>boolean</em></td>
-          <td></td>
+          <td>When true, pods of this component are spread across nodes using<br />podAntiAffinity.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>customAffinity</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#affinity-v1-core">Affinity</a></em></td>
-          <td></td>
+          <td>Custom affinity rules for this component. When set, overrides the default<br />antiAffinity configuration entirely.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>deploymentStrategy</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#deploymentstrategy-v1-apps">DeploymentStrategy</a></em></td>
-          <td></td>
+          <td>The deployment strategy for this specific component. Overrides the global<br />spec.deploymentStrategy. Note that DataUpdaterPlant, TriggerEngine, and Flow<br />always use Recreate regardless of this setting.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>version</code> <em>string</em></td>
-          <td></td>
+          <td>The Astarte version (image tag) for this specific component. Overrides the<br />global spec.version. Useful for pinning a component to a different version<br />during upgrades or debugging.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>image</code> <em>string</em></td>
-          <td></td>
+          <td>The full container image reference (registry/name:tag) for this component.<br />When set, overrides both the distributionChannel and version settings for<br />this component.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>imagePullPolicy</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#pullpolicy-v1-core">PullPolicy</a></em></td>
-          <td></td>
+          <td>The image pull policy for this component. Overrides the global<br />spec.imagePullPolicy. Default: inherits from spec.imagePullPolicy.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>imagePullSecrets</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#localobjectreference-v1-core">LocalObjectReference</a> array</em></td>
-          <td></td>
+          <td>Additional image pull secrets for this component&rsquo;s pods. These are appended<br />to the global spec.imagePullSecrets.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -2846,7 +2898,7 @@ for this reason no default is provided: the user shall make a conscious choice.<
       <tr>
           <td><code>additionalEnv</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#envvar-v1-core">EnvVar</a> array</em></td>
-          <td>Additional environment variables for this Component</td>
+          <td>Additional environment variables for this Component. These are appended after<br />the operator-managed environment variables and can override them.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -2859,7 +2911,7 @@ for this reason no default is provided: the user shall make a conscious choice.<
       <tr>
           <td><code>autoscaler</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartegenericclusteredresourceautoscalerspec">AstarteGenericClusteredResourceAutoscalerSpec</a></em></td>
-          <td>Autoscaling resources for this deployment/statefulset.<br />If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.</td>
+          <td>Autoscaling resources for this deployment/statefulset.<br />If autoscaling is enabled, this will take precedence over the &ldquo;Replicas&rdquo; field.<br />The autoscaling feature must be enabled globally via features.autoscaling.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -2892,32 +2944,32 @@ for this reason no default is provided: the user shall make a conscious choice.<
       </tr>
       <tr>
           <td><code>host</code> <em>string</em></td>
-          <td></td>
+          <td>The hostname or IP address of the service.</td>
           <td></td>
           <td>MinLength: 1 <br />Required: {} <br /></td>
       </tr>
       <tr>
           <td><code>port</code> <em>integer</em></td>
-          <td></td>
+          <td>The port number the service listens on.</td>
           <td></td>
           <td>Maximum: 65535 <br />Minimum: 1 <br />Required: {} <br /></td>
       </tr>
       <tr>
           <td><code>caSecret</code> <em>string</em></td>
-          <td></td>
+          <td>The name of a Kubernetes Secret containing the CA certificate for VerneMQ<br />internal TLS communication (for Astarte &gt;= 1.2). The Secret must be in<br />the same namespace as the Astarte resource.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>storage</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#astartepersistentstoragespec">AstartePersistentStorageSpec</a></em></td>
-          <td></td>
+          <td>Persistent storage configuration for VerneMQ. If not set, the default<br />storage size and class (from spec.storageClassName) are used.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>deviceHeartbeatSeconds</code> <em>integer</em></td>
-          <td>Controls the device heartbeat from the broker to Astarte. The heartbeat is sent periodically<br />to prevent Astarte from keeping up stale connections from Devices in case the broker misbehaves<br />and does not send disconnection events. You should usually not tweak this value. Moreover, keep<br />in mind that when a lot of devices are connected simultaneously, having a short heartbeat time<br />might cause performance issues. Defaults to an hour.</td>
+          <td>Controls the device heartbeat from the broker to Astarte. The heartbeat is sent periodically<br />to prevent Astarte from keeping up stale connections from Devices in case the broker misbehaves<br />and does not send disconnection events. You should usually not tweak this value. Moreover, keep<br />in mind that when a lot of devices are connected simultaneously, having a short heartbeat time<br />might cause performance issues. When not set, no heartbeat env var is passed and the VerneMQ<br />container default (1 hour) is used.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -2935,7 +2987,7 @@ for this reason no default is provided: the user shall make a conscious choice.<
       </tr>
       <tr>
           <td><code>mirrorQueue</code> <em>string</em></td>
-          <td></td>
+          <td>Configures the mirror queue for VerneMQ. When set, all MQTT messages are<br />forwarded to the specified queue for audit/logging purposes. Leave empty<br />unless you have a specific mirror queue setup.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -2957,6 +3009,8 @@ for this reason no default is provided: the user shall make a conscious choice.<
   ConnectionStringSecret
   <a class="anchor" href="#connectionstringsecret">#</a>
 </h4>
+<p>ConnectionStringSecret references a Kubernetes Secret containing a connection string
+(e.g. a full URL or DSN) for an external service.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -2982,13 +3036,13 @@ for this reason no default is provided: the user shall make a conscious choice.<
   <tbody>
       <tr>
           <td><code>name</code> <em>string</em></td>
-          <td></td>
+          <td>The name of the Kubernetes Secret.</td>
           <td></td>
           <td>MinLength: 1 <br /></td>
       </tr>
       <tr>
           <td><code>key</code> <em>string</em></td>
-          <td></td>
+          <td>The key within the Secret that holds the connection string.</td>
           <td></td>
           <td>MinLength: 1 <br /></td>
       </tr>
@@ -2998,6 +3052,9 @@ for this reason no default is provided: the user shall make a conscious choice.<
   GenericConnectionSpec
   <a class="anchor" href="#genericconnectionspec">#</a>
 </h4>
+<p>GenericConnectionSpec holds common connection configuration for external services
+(Cassandra, RabbitMQ, Vault). It supports either username/password credentials
+or a raw connection string.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -3020,7 +3077,7 @@ for this reason no default is provided: the user shall make a conscious choice.<
       <tr>
           <td><code>sslConfiguration</code> <em>
   <a href="/astarte-kubernetes-operator/26.7/crds/#genericsslconfigurationspec">GenericSSLConfigurationSpec</a></em></td>
-          <td></td>
+          <td>SSL configuration for the connection.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -3044,6 +3101,7 @@ for this reason no default is provided: the user shall make a conscious choice.<
   GenericSSLConfigurationSpec
   <a class="anchor" href="#genericsslconfigurationspec">#</a>
 </h4>
+<p>GenericSSLConfigurationSpec configures SSL/TLS for connections to external services.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -3071,26 +3129,26 @@ for this reason no default is provided: the user shall make a conscious choice.<
   <tbody>
       <tr>
           <td><code>enable</code> <em>boolean</em></td>
-          <td></td>
+          <td>When true, enable SSL for the connection. Default: false.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>customCASecret</code> <em>
   <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#localobjectreference-v1-core">LocalObjectReference</a></em></td>
-          <td></td>
+          <td>A reference to a Kubernetes Secret containing a custom CA certificate<br />to validate the server&rsquo;s TLS certificate. The Secret must be in the<br />same namespace as the Astarte resource.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>sni</code> <em>boolean</em></td>
-          <td></td>
+          <td>When false, disable SNI (Server Name Indication) for the connection.<br />Default: true (SNI is enabled).</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
       <tr>
           <td><code>customSNI</code> <em>string</em></td>
-          <td></td>
+          <td>A custom SNI hostname to use for the connection. When set, overrides<br />the default hostname-based SNI.</td>
           <td></td>
           <td>Optional: {} <br /></td>
       </tr>
@@ -3100,6 +3158,7 @@ for this reason no default is provided: the user shall make a conscious choice.<
   HostAndPort
   <a class="anchor" href="#hostandport">#</a>
 </h4>
+<p>HostAndPort represents a network endpoint with a hostname and port.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -3127,13 +3186,13 @@ for this reason no default is provided: the user shall make a conscious choice.<
   <tbody>
       <tr>
           <td><code>host</code> <em>string</em></td>
-          <td></td>
+          <td>The hostname or IP address of the service.</td>
           <td></td>
           <td>MinLength: 1 <br />Required: {} <br /></td>
       </tr>
       <tr>
           <td><code>port</code> <em>integer</em></td>
-          <td></td>
+          <td>The port number the service listens on.</td>
           <td></td>
           <td>Maximum: 65535 <br />Minimum: 1 <br />Required: {} <br /></td>
       </tr>
@@ -3143,6 +3202,8 @@ for this reason no default is provided: the user shall make a conscious choice.<
   LoginCredentialsSecret
   <a class="anchor" href="#logincredentialssecret">#</a>
 </h4>
+<p>LoginCredentialsSecret references a Kubernetes Secret containing login credentials
+(username and password) for connecting to an external service.</p>
 <p><em>Appears in:</em></p>
 <ul>
 <li>
@@ -3166,19 +3227,19 @@ for this reason no default is provided: the user shall make a conscious choice.<
   <tbody>
       <tr>
           <td><code>name</code> <em>string</em></td>
-          <td></td>
+          <td>The name of the Kubernetes Secret.</td>
           <td></td>
           <td>MinLength: 1 <br /></td>
       </tr>
       <tr>
           <td><code>usernameKey</code> <em>string</em></td>
-          <td></td>
+          <td>The key within the Secret that holds the username.</td>
           <td></td>
           <td>MinLength: 1 <br /></td>
       </tr>
       <tr>
           <td><code>passwordKey</code> <em>string</em></td>
-          <td></td>
+          <td>The key within the Secret that holds the password.</td>
           <td></td>
           <td>MinLength: 1 <br /></td>
       </tr>
