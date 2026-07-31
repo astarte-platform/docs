@@ -13,12 +13,12 @@ The APIs documentation can be found here:
 
 ```{toctree}
 :maxdepth: 1
-Csharp APIs <api_docs/csharp.md>
-Python APIs <api_docs/python.md>
-Zephyr APIs <api_docs/zephyr.md>
-Cpp APIs <api_docs/cpp.md>
 Esp32 APIs <api_docs/esp32.md>
+Python APIs <api_docs/python.md>
+Csharp APIs <api_docs/csharp.md>
+Zephyr APIs <api_docs/zephyr.md>
 Java APIs <api_docs/java.md>
+Cpp APIs <api_docs/cpp.md>
 Rust APIs <https://docs.rs/astarte-device-sdk/latest/astarte_device_sdk/>
 Go APIs <https://pkg.go.dev/github.com/astarte-platform/astarte-device-sdk-go/>
 ```
