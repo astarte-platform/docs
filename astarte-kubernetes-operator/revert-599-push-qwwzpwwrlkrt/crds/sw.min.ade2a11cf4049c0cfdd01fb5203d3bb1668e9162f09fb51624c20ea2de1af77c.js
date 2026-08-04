@@ -1,0 +1,1 @@
+navigator.serviceWorker&&navigator.serviceWorker.register("/astarte-kubernetes-operator/revert-599-push-qwwzpwwrlkrt/crds/sw.js",{scope:"/astarte-kubernetes-operator/revert-599-push-qwwzpwwrlkrt/crds/"})
