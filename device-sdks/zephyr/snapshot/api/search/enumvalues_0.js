@@ -59,11 +59,14 @@ var searchData=
   ['astarte_5fresult_5fmqtt_5fclient_5falready_5fconnecting_56',['ASTARTE_RESULT_MQTT_CLIENT_ALREADY_CONNECTING',['../group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa0fc8a11b5d20b009d529cababaef953f',1,'result.h']]],
   ['astarte_5fresult_5fmqtt_5fclient_5fnot_5fready_57',['ASTARTE_RESULT_MQTT_CLIENT_NOT_READY',['../group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aadbf94232a3c7aeffe491b4bb0c0f6e1e',1,'result.h']]],
   ['astarte_5fresult_5fmqtt_5ferror_58',['ASTARTE_RESULT_MQTT_ERROR',['../group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa9a519c5c1cfb8849ae9b77a6e796979c',1,'result.h']]],
-  ['astarte_5fresult_5fnot_5ffound_59',['ASTARTE_RESULT_NOT_FOUND',['../group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aadb8c915ac99170320a351559a3423dfc',1,'result.h']]],
-  ['astarte_5fresult_5fok_60',['ASTARTE_RESULT_OK',['../group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa9e405501421f055414d45c4dad6ea0a1',1,'result.h']]],
-  ['astarte_5fresult_5fout_5fof_5fmemory_61',['ASTARTE_RESULT_OUT_OF_MEMORY',['../group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa1b0c6a551e0bc551a9fe490fe8bc773d',1,'result.h']]],
-  ['astarte_5fresult_5fsocket_5ferror_62',['ASTARTE_RESULT_SOCKET_ERROR',['../group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa4cd509181150743ce09df0583146c435',1,'result.h']]],
-  ['astarte_5fresult_5ftimeout_63',['ASTARTE_RESULT_TIMEOUT',['../group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa49d8f2dbc287c2dda1da95d40e9bab06',1,'result.h']]],
-  ['astarte_5fresult_5ftls_5ferror_64',['ASTARTE_RESULT_TLS_ERROR',['../group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa7b6005ef69b6cbca75dc5bf527c0e05f',1,'result.h']]],
-  ['astarte_5fresult_5fzms_5ferror_65',['ASTARTE_RESULT_ZMS_ERROR',['../group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa88ebc7be888d808571e02b3415303fe3',1,'result.h']]]
+  ['astarte_5fresult_5fmutex_5flock_5ferror_59',['ASTARTE_RESULT_MUTEX_LOCK_ERROR',['../group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa2f091d5d58c2ac24ca7c79d58bfff66e',1,'result.h']]],
+  ['astarte_5fresult_5fnot_5ffound_60',['ASTARTE_RESULT_NOT_FOUND',['../group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aadb8c915ac99170320a351559a3423dfc',1,'result.h']]],
+  ['astarte_5fresult_5fok_61',['ASTARTE_RESULT_OK',['../group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa9e405501421f055414d45c4dad6ea0a1',1,'result.h']]],
+  ['astarte_5fresult_5fout_5fof_5fmemory_62',['ASTARTE_RESULT_OUT_OF_MEMORY',['../group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa1b0c6a551e0bc551a9fe490fe8bc773d',1,'result.h']]],
+  ['astarte_5fresult_5fout_5fof_5fspace_63',['ASTARTE_RESULT_OUT_OF_SPACE',['../group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aae694d4d12f3896f0ca1519cd954e1f8a',1,'result.h']]],
+  ['astarte_5fresult_5fsocket_5ferror_64',['ASTARTE_RESULT_SOCKET_ERROR',['../group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa4cd509181150743ce09df0583146c435',1,'result.h']]],
+  ['astarte_5fresult_5fstorage_5fcorrupted_5ferror_65',['ASTARTE_RESULT_STORAGE_CORRUPTED_ERROR',['../group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa08f9fd2cc5d9f1bd1b78e370142df94e',1,'result.h']]],
+  ['astarte_5fresult_5ftimeout_66',['ASTARTE_RESULT_TIMEOUT',['../group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa49d8f2dbc287c2dda1da95d40e9bab06',1,'result.h']]],
+  ['astarte_5fresult_5ftls_5ferror_67',['ASTARTE_RESULT_TLS_ERROR',['../group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa7b6005ef69b6cbca75dc5bf527c0e05f',1,'result.h']]],
+  ['astarte_5fresult_5fzms_5ferror_68',['ASTARTE_RESULT_ZMS_ERROR',['../group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa88ebc7be888d808571e02b3415303fe3',1,'result.h']]]
 ];

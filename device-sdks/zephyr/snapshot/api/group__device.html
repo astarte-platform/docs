@@ -152,6 +152,9 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__device__property__set__event__t.html">astarte_device_property_set_event_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Context for a single property set event.  <a href="structastarte__device__property__set__event__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__device__error__event__t.html">astarte_device_error_event_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Context for a single error event.  <a href="structastarte__device__error__event__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__device__config__t.html">astarte_device_config_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration struct for an Astarte device.  <a href="structastarte__device__config__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,7 +186,7 @@ Typedefs</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga487521ab61f4fbc8d961db13d182594f" id="r_ga487521ab61f4fbc8d961db13d182594f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga487521ab61f4fbc8d961db13d182594f">astarte_device_new</a> (<a class="el" href="structastarte__device__config__t.html">astarte_device_config_t</a> *cfg, <a class="el" href="#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> *device)</td></tr>
-<tr class="memdesc:ga487521ab61f4fbc8d961db13d182594f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate a new instance of an Astarte device.  <br /></td></tr>
+<tr class="memdesc:ga487521ab61f4fbc8d961db13d182594f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the Astarte device.  <br /></td></tr>
 <tr class="separator:ga487521ab61f4fbc8d961db13d182594f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga31b74b5be3f495e22dfe4ff4a5a0bd21" id="r_ga31b74b5be3f495e22dfe4ff4a5a0bd21"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga31b74b5be3f495e22dfe4ff4a5a0bd21">astarte_device_destroy</a> (<a class="el" href="#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device)</td></tr>
 <tr class="memdesc:ga31b74b5be3f495e22dfe4ff4a5a0bd21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the Astarte device instance.  <br /></td></tr>
@@ -200,9 +203,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ga9dcc2121b96a3d2cc570afbf897cb0b3" id="r_ga9dcc2121b96a3d2cc570afbf897cb0b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga9dcc2121b96a3d2cc570afbf897cb0b3">astarte_device_force_disconnect</a> (<a class="el" href="#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device)</td></tr>
 <tr class="memdesc:ga9dcc2121b96a3d2cc570afbf897cb0b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Force a disconnection for the Astarte device instance.  <br /></td></tr>
 <tr class="separator:ga9dcc2121b96a3d2cc570afbf897cb0b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4800793bbb8e4b76b01c21f96eb848e0" id="r_ga4800793bbb8e4b76b01c21f96eb848e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga4800793bbb8e4b76b01c21f96eb848e0">astarte_device_poll</a> (<a class="el" href="#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device)</td></tr>
-<tr class="memdesc:ga4800793bbb8e4b76b01c21f96eb848e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poll data from Astarte.  <br /></td></tr>
-<tr class="separator:ga4800793bbb8e4b76b01c21f96eb848e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9542caba91e741ac8b6fc1376b4c5d9a" id="r_ga9542caba91e741ac8b6fc1376b4c5d9a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga9542caba91e741ac8b6fc1376b4c5d9a">astarte_device_send_individual</a> (<a class="el" href="#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device, const char *interface_name, const char *path, <a class="el" href="structastarte__data__t.html">astarte_data_t</a> data, const int64_t *timestamp)</td></tr>
 <tr class="memdesc:ga9542caba91e741ac8b6fc1376b4c5d9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a value through the device connection.  <br /></td></tr>
 <tr class="separator:ga9542caba91e741ac8b6fc1376b4c5d9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -215,6 +215,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga0f776ef7dd0b15c2088acff5d44127f2" id="r_ga0f776ef7dd0b15c2088acff5d44127f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga0f776ef7dd0b15c2088acff5d44127f2">astarte_device_unset_property</a> (<a class="el" href="#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device, const char *interface_name, const char *path)</td></tr>
 <tr class="memdesc:ga0f776ef7dd0b15c2088acff5d44127f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unset a device property.  <br /></td></tr>
 <tr class="separator:ga0f776ef7dd0b15c2088acff5d44127f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3224abd27fae5fb4cd1e4bbb958fc1f5" id="r_ga3224abd27fae5fb4cd1e4bbb958fc1f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga3224abd27fae5fb4cd1e4bbb958fc1f5">astarte_device_get_error_event</a> (<a class="el" href="#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device, <a class="el" href="structastarte__device__error__event__t.html">astarte_device_error_event_t</a> *event, k_timeout_t timeout)</td></tr>
+<tr class="memdesc:ga3224abd27fae5fb4cd1e4bbb958fc1f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetch the next error event from the Astarte device.  <br /></td></tr>
+<tr class="separator:ga3224abd27fae5fb4cd1e4bbb958fc1f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Functions for device management. </p>
@@ -481,6 +484,43 @@ If the device is connected when calling this function it will be forcefully disc
 
 </div>
 </div>
+<a id="ga3224abd27fae5fb4cd1e4bbb958fc1f5" name="ga3224abd27fae5fb4cd1e4bbb958fc1f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3224abd27fae5fb4cd1e4bbb958fc1f5">&#9670;&#160;</a></span>astarte_device_get_error_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a> astarte_device_get_error_event </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a></td>          <td class="paramname"><span class="paramname"><em>device</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structastarte__device__error__event__t.html">astarte_device_error_event_t</a> *</td>          <td class="paramname"><span class="paramname"><em>event</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">k_timeout_t</td>          <td class="paramname"><span class="paramname"><em>timeout</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fetch the next error event from the Astarte device. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">device</td><td>Handle to the device instance. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">event</td><td>Pointer to the error event struct to populate. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>Zephyr timeout (e.g., K_FOREVER, K_NO_WAIT, or K_MSEC). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ASTARTE_RESULT_OK if an event was received, ASTARTE_RESULT_TIMEOUT if the queue was empty. </dd></dl>
+
+</div>
+</div>
 <a id="ga487521ab61f4fbc8d961db13d182594f" name="ga487521ab61f4fbc8d961db13d182594f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga487521ab61f4fbc8d961db13d182594f">&#9670;&#160;</a></span>astarte_device_new()</h2>
 
@@ -500,39 +540,15 @@ If the device is connected when calling this function it will be forcefully disc
       </table>
 </div><div class="memdoc">
 
-<p>Allocate a new instance of an Astarte device. </p>
-<p>This function has to be called to initialize the device SDK before doing anything else. If an error code is returned the astarte_device_free function must not be called.</p>
-<dl class="section note"><dt>Note</dt><dd>A device can be instantiated and connected to Astarte only if it has been previously registered on Astarte.</dd></dl>
+<p>Initialize the Astarte device. </p>
+<p>This function has to be called to initialize the device SDK before doing anything else. If an error code is returned the astarte_device_destroy function must not be called.</p>
+<dl class="section note"><dt>Note</dt><dd>A device can be initialized and connected to Astarte only if it has been previously registered on Astarte.</dd>
+<dd>
+A single device can be initialized at a time. If the device is already initialized, this function will return an error code.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">cfg</td><td>Configuration struct. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">device</td><td>Device instance initialized. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>ASTARTE_RESULT_OK if successful, otherwise an error code. </dd></dl>
-
-</div>
-</div>
-<a id="ga4800793bbb8e4b76b01c21f96eb848e0" name="ga4800793bbb8e4b76b01c21f96eb848e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga4800793bbb8e4b76b01c21f96eb848e0">&#9670;&#160;</a></span>astarte_device_poll()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a> astarte_device_poll </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a></td>          <td class="paramname"><span class="paramname"><em>device</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Poll data from Astarte. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">device</td><td>Device instance to poll data from Astarte. </td></tr>
   </table>
   </dd>
 </dl>

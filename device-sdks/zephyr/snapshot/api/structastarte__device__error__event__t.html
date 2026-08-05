@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Astarte device API for Zephyr: Data Structure Index</title>
+<title>Astarte device API for Zephyr: astarte_device_error_event_t Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -95,7 +95,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('classes.html',''); initResizable(true); });
+$(function(){initNavTree('structastarte__device__error__event__t.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -121,20 +121,70 @@ $(function(){initNavTree('classes.html',''); initResizable(true); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Data Structure Index</div></div>
+  <div class="summary">
+<a href="#pub-attribs">Data Fields</a>  </div>
+  <div class="headertitle"><div class="title">astarte_device_error_event_t Struct Reference<div class="ingroups"><a class="el" href="group__astarte__device__sdk.html">Astarte device library</a> &raquo; <a class="el" href="group__device.html">Device management</a></div></div></div>
 </div><!--header-->
 <div class="contents">
-<div class="qindex"><a class="qindex" href="#letter_A">A</a></div>
-<div class="classindex">
-<dl class="classindex even">
-<dt class="alphachar"><a id="letter_A" name="letter_A">A</a></dt>
-<dd><a class="el" href="structastarte__data__t.html">astarte_data_t</a></dd><dd><a class="el" href="structastarte__device__config__t.html">astarte_device_config_t</a></dd><dd><a class="el" href="structastarte__device__connection__event__t.html">astarte_device_connection_event_t</a></dd><dd><a class="el" href="structastarte__device__data__event__t.html">astarte_device_data_event_t</a></dd><dd><a class="el" href="structastarte__device__datastream__individual__event__t.html">astarte_device_datastream_individual_event_t</a></dd><dd><a class="el" href="structastarte__device__datastream__object__event__t.html">astarte_device_datastream_object_event_t</a></dd><dd><a class="el" href="structastarte__device__disconnection__event__t.html">astarte_device_disconnection_event_t</a></dd><dd><a class="el" href="structastarte__device__error__event__t.html">astarte_device_error_event_t</a></dd><dd><a class="el" href="structastarte__device__property__set__event__t.html">astarte_device_property_set_event_t</a></dd><dd><a class="el" href="structastarte__interface__t.html">astarte_interface_t</a></dd><dd><a class="el" href="structastarte__mapping__t.html">astarte_mapping_t</a></dd><dd><a class="el" href="structastarte__object__entry__t.html">astarte_object_entry_t</a></dd></dl>
+
+<p>Context for a single error event.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="device_8h_source.html">device.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Data Fields</h2></td></tr>
+<tr class="memitem:ae6162730e56bdf7926460d00f4992d6b" id="r_ae6162730e56bdf7926460d00f4992d6b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6162730e56bdf7926460d00f4992d6b">result</a></td></tr>
+<tr class="memdesc:ae6162730e56bdf7926460d00f4992d6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The error code.  <br /></td></tr>
+<tr class="separator:ae6162730e56bdf7926460d00f4992d6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18efd6e4c7637216c4cb9c2b9cbd4881" id="r_a18efd6e4c7637216c4cb9c2b9cbd4881"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18efd6e4c7637216c4cb9c2b9cbd4881">context</a></td></tr>
+<tr class="memdesc:a18efd6e4c7637216c4cb9c2b9cbd4881"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional string describing where the error occurred.  <br /></td></tr>
+<tr class="separator:a18efd6e4c7637216c4cb9c2b9cbd4881"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Context for a single error event. </p>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a id="a18efd6e4c7637216c4cb9c2b9cbd4881" name="a18efd6e4c7637216c4cb9c2b9cbd4881"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18efd6e4c7637216c4cb9c2b9cbd4881">&#9670;&#160;</a></span>context</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* astarte_device_error_event_t::context</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Optional string describing where the error occurred. </p>
+
 </div>
+</div>
+<a id="ae6162730e56bdf7926460d00f4992d6b" name="ae6162730e56bdf7926460d00f4992d6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6162730e56bdf7926460d00f4992d6b">&#9670;&#160;</a></span>result</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a> astarte_device_error_event_t::result</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The error code. </p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>/home/runner/work/astarte-device-sdk-zephyr/astarte-device-sdk-zephyr/astarte-device-sdk-zephyr/include/astarte_device_sdk/<a class="el" href="device_8h_source.html">device.h</a></li>
+</ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="structastarte__device__error__event__t.html">astarte_device_error_event_t</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

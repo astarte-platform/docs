@@ -1,6 +1,12 @@
 var NAVTREEINDEX1 =
 {
+"structastarte__device__datastream__object__event__t.html#af91c81bcd0378db83fa5b8212fe4b63c":[4,0,2,4,0],
+"structastarte__device__disconnection__event__t.html":[4,0,2,1],
+"structastarte__device__disconnection__event__t.html#a38cbf726838695f28f1d0bbe0f529537":[4,0,2,1,1],
 "structastarte__device__disconnection__event__t.html#afc6c84c3353767621cea1207f800619c":[4,0,2,1,0],
+"structastarte__device__error__event__t.html":[4,0,2,6],
+"structastarte__device__error__event__t.html#a18efd6e4c7637216c4cb9c2b9cbd4881":[4,0,2,6,0],
+"structastarte__device__error__event__t.html#ae6162730e56bdf7926460d00f4992d6b":[4,0,2,6,1],
 "structastarte__device__property__set__event__t.html":[4,0,2,5],
 "structastarte__device__property__set__event__t.html#a0e8a2223a4b6014e4225b1cd6cc44eaf":[4,0,2,5,0],
 "structastarte__device__property__set__event__t.html#a5a65fe6090919b980c3848651b414023":[4,0,2,5,1],

@@ -27,6 +27,10 @@ var group__device =
       [ "base_event", "structastarte__device__property__set__event__t.html#a0e8a2223a4b6014e4225b1cd6cc44eaf", null ],
       [ "data", "structastarte__device__property__set__event__t.html#a5a65fe6090919b980c3848651b414023", null ]
     ] ],
+    [ "astarte_device_error_event_t", "structastarte__device__error__event__t.html", [
+      [ "context", "structastarte__device__error__event__t.html#a18efd6e4c7637216c4cb9c2b9cbd4881", null ],
+      [ "result", "structastarte__device__error__event__t.html#ae6162730e56bdf7926460d00f4992d6b", null ]
+    ] ],
     [ "astarte_device_config_t", "structastarte__device__config__t.html", [
       [ "cbk_user_data", "structastarte__device__config__t.html#a83cf55381bfb7297d61a8d7c87633a8c", null ],
       [ "connection_cbk", "structastarte__device__config__t.html#aebd33d4999acf49a6d5886b77c426342", null ],
@@ -55,8 +59,8 @@ var group__device =
     [ "astarte_device_destroy", "group__device.html#ga31b74b5be3f495e22dfe4ff4a5a0bd21", null ],
     [ "astarte_device_disconnect", "group__device.html#gac0fdf93a511677f8d7f9e970886dff5c", null ],
     [ "astarte_device_force_disconnect", "group__device.html#ga9dcc2121b96a3d2cc570afbf897cb0b3", null ],
+    [ "astarte_device_get_error_event", "group__device.html#ga3224abd27fae5fb4cd1e4bbb958fc1f5", null ],
     [ "astarte_device_new", "group__device.html#ga487521ab61f4fbc8d961db13d182594f", null ],
-    [ "astarte_device_poll", "group__device.html#ga4800793bbb8e4b76b01c21f96eb848e0", null ],
     [ "astarte_device_send_individual", "group__device.html#ga9542caba91e741ac8b6fc1376b4c5d9a", null ],
     [ "astarte_device_send_object", "group__device.html#ga3370d8a040552ec7dc9d6f6b1faee209", null ],
     [ "astarte_device_set_property", "group__device.html#gad1f1910713e710705311aa008d813bb9", null ],

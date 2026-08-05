@@ -35,9 +35,12 @@ var group__results =
       [ "ASTARTE_RESULT_MQTT_CLIENT_ALREADY_CONNECTING", "group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa0fc8a11b5d20b009d529cababaef953f", null ],
       [ "ASTARTE_RESULT_MQTT_CLIENT_NOT_READY", "group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aadbf94232a3c7aeffe491b4bb0c0f6e1e", null ],
       [ "ASTARTE_RESULT_MQTT_ERROR", "group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa9a519c5c1cfb8849ae9b77a6e796979c", null ],
+      [ "ASTARTE_RESULT_MUTEX_LOCK_ERROR", "group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa2f091d5d58c2ac24ca7c79d58bfff66e", null ],
       [ "ASTARTE_RESULT_NOT_FOUND", "group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aadb8c915ac99170320a351559a3423dfc", null ],
       [ "ASTARTE_RESULT_OUT_OF_MEMORY", "group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa1b0c6a551e0bc551a9fe490fe8bc773d", null ],
+      [ "ASTARTE_RESULT_OUT_OF_SPACE", "group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aae694d4d12f3896f0ca1519cd954e1f8a", null ],
       [ "ASTARTE_RESULT_SOCKET_ERROR", "group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa4cd509181150743ce09df0583146c435", null ],
+      [ "ASTARTE_RESULT_STORAGE_CORRUPTED_ERROR", "group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa08f9fd2cc5d9f1bd1b78e370142df94e", null ],
       [ "ASTARTE_RESULT_TIMEOUT", "group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa49d8f2dbc287c2dda1da95d40e9bab06", null ],
       [ "ASTARTE_RESULT_TLS_ERROR", "group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa7b6005ef69b6cbca75dc5bf527c0e05f", null ],
       [ "ASTARTE_RESULT_ZMS_ERROR", "group__results.html#ggaa9ea00ca0ab1c24dd2936c25bf05689aa88ebc7be888d808571e02b3415303fe3", null ]
