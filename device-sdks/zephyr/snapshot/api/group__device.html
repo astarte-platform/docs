@@ -194,6 +194,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga93082fc0d2cd5068ca24c596de837b1f" id="r_ga93082fc0d2cd5068ca24c596de837b1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga93082fc0d2cd5068ca24c596de837b1f">astarte_device_add_interface</a> (<a class="el" href="#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device, const <a class="el" href="structastarte__interface__t.html">astarte_interface_t</a> *interface)</td></tr>
 <tr class="memdesc:ga93082fc0d2cd5068ca24c596de837b1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">add an interface to the device.  <br /></td></tr>
 <tr class="separator:ga93082fc0d2cd5068ca24c596de837b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga67bcd4f8d6d923e529e1208505128277" id="r_ga67bcd4f8d6d923e529e1208505128277"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga67bcd4f8d6d923e529e1208505128277">astarte_device_remove_interface</a> (<a class="el" href="#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device, const <a class="el" href="structastarte__interface__t.html">astarte_interface_t</a> *interface)</td></tr>
+<tr class="memdesc:ga67bcd4f8d6d923e529e1208505128277"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an interface from the device.  <br /></td></tr>
+<tr class="separator:ga67bcd4f8d6d923e529e1208505128277"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6639c512b2ef5365bbdda9d31dfc277e" id="r_ga6639c512b2ef5365bbdda9d31dfc277e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga6639c512b2ef5365bbdda9d31dfc277e">astarte_device_connect</a> (<a class="el" href="#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device)</td></tr>
 <tr class="memdesc:ga6639c512b2ef5365bbdda9d31dfc277e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect a device to Astarte.  <br /></td></tr>
 <tr class="separator:ga6639c512b2ef5365bbdda9d31dfc277e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -356,8 +359,9 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>add an interface to the device. </p>
-<dl class="section warning"><dt>Warning</dt><dd>This function has to be called while the device is in the disconnected state, before a call to <a class="el" href="#ga6639c512b2ef5365bbdda9d31dfc277e" title="Connect a device to Astarte.">astarte_device_connect</a> or after a call to astarte_device_disconnect.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>The user is responsible for making sure the interface struct remains valid for the lifetime of the device. It is recommended to declare interface structs as static constants.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This function works asynchronously. </dd>
+<dd>
+The user is responsible for making sure the interface struct remains valid for the lifetime of the device. It is recommended to declare interface structs as static constants.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">device</td><td>A valid Astarte device handle. </td></tr>
@@ -549,6 +553,40 @@ A single device can be initialized at a time. If the device is already initializ
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">cfg</td><td>Configuration struct. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">device</td><td>Device instance initialized. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ASTARTE_RESULT_OK if successful, otherwise an error code. </dd></dl>
+
+</div>
+</div>
+<a id="ga67bcd4f8d6d923e529e1208505128277" name="ga67bcd4f8d6d923e529e1208505128277"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga67bcd4f8d6d923e529e1208505128277">&#9670;&#160;</a></span>astarte_device_remove_interface()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a> astarte_device_remove_interface </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a></td>          <td class="paramname"><span class="paramname"><em>device</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structastarte__interface__t.html">astarte_interface_t</a> *</td>          <td class="paramname"><span class="paramname"><em>interface</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remove an interface from the device. </p>
+<dl class="section note"><dt>Note</dt><dd>This function works asynchronously. </dd>
+<dd>
+The user is responsible for making sure the interface struct remains valid for the lifetime of the device. It is recommended to declare interface structs as static constants.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">device</td><td>A valid Astarte device handle. </td></tr>
+    <tr><td class="paramname">interface</td><td>The interface to remove from the device. </td></tr>
   </table>
   </dd>
 </dl>

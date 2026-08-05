@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"structastarte__device__datastream__object__event__t.html#adb6e9463cd6c0dda20e0ee65efd44f74":[4,0,2,4,1],
 "structastarte__device__datastream__object__event__t.html#af91c81bcd0378db83fa5b8212fe4b63c":[4,0,2,4,0],
 "structastarte__device__disconnection__event__t.html":[4,0,2,1],
 "structastarte__device__disconnection__event__t.html#a38cbf726838695f28f1d0bbe0f529537":[4,0,2,1,1],

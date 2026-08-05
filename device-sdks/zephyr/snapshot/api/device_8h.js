@@ -14,6 +14,7 @@ var device_8h =
     [ "astarte_device_force_disconnect", "group__device.html#ga9dcc2121b96a3d2cc570afbf897cb0b3", null ],
     [ "astarte_device_get_error_event", "group__device.html#ga3224abd27fae5fb4cd1e4bbb958fc1f5", null ],
     [ "astarte_device_new", "group__device.html#ga487521ab61f4fbc8d961db13d182594f", null ],
+    [ "astarte_device_remove_interface", "group__device.html#ga67bcd4f8d6d923e529e1208505128277", null ],
     [ "astarte_device_send_individual", "group__device.html#ga9542caba91e741ac8b6fc1376b4c5d9a", null ],
     [ "astarte_device_send_object", "group__device.html#ga3370d8a040552ec7dc9d6f6b1faee209", null ],
     [ "astarte_device_set_property", "group__device.html#gad1f1910713e710705311aa008d813bb9", null ],

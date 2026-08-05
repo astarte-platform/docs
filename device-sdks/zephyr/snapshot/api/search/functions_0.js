@@ -38,12 +38,13 @@ var searchData=
   ['astarte_5fdevice_5fid_5fgenerate_5fdeterministic_35',['astarte_device_id_generate_deterministic',['../group__device__id.html#ga7e99c34d237bb2c4d98ab26e3809a153',1,'device_id.h']]],
   ['astarte_5fdevice_5fid_5fgenerate_5frandom_36',['astarte_device_id_generate_random',['../group__device__id.html#ga673faf9449c6a1879d3af881f4a8a494',1,'device_id.h']]],
   ['astarte_5fdevice_5fnew_37',['astarte_device_new',['../group__device.html#ga487521ab61f4fbc8d961db13d182594f',1,'device.h']]],
-  ['astarte_5fdevice_5fsend_5findividual_38',['astarte_device_send_individual',['../group__device.html#ga9542caba91e741ac8b6fc1376b4c5d9a',1,'device.h']]],
-  ['astarte_5fdevice_5fsend_5fobject_39',['astarte_device_send_object',['../group__device.html#ga3370d8a040552ec7dc9d6f6b1faee209',1,'device.h']]],
-  ['astarte_5fdevice_5fset_5fproperty_40',['astarte_device_set_property',['../group__device.html#gad1f1910713e710705311aa008d813bb9',1,'device.h']]],
-  ['astarte_5fdevice_5funset_5fproperty_41',['astarte_device_unset_property',['../group__device.html#ga0f776ef7dd0b15c2088acff5d44127f2',1,'device.h']]],
-  ['astarte_5fobject_5fentry_5fnew_42',['astarte_object_entry_new',['../group__objects.html#gae02ff90dd37b9dc4a00b8f0b3390126d',1,'object.h']]],
-  ['astarte_5fobject_5fentry_5fto_5fpath_5fand_5fdata_43',['astarte_object_entry_to_path_and_data',['../group__objects.html#ga7b34a185026a498d4b3620db79aa18aa',1,'object.h']]],
-  ['astarte_5fpairing_5fregister_5fdevice_44',['astarte_pairing_register_device',['../group__pairing.html#ga908eaed4cca9a8e9027bf143cd217ce7',1,'pairing.h']]],
-  ['astarte_5fresult_5fto_5fname_45',['astarte_result_to_name',['../group__results.html#gad94ddddaa6d1620e27ab4251ec4cda07',1,'result.h']]]
+  ['astarte_5fdevice_5fremove_5finterface_38',['astarte_device_remove_interface',['../group__device.html#ga67bcd4f8d6d923e529e1208505128277',1,'device.h']]],
+  ['astarte_5fdevice_5fsend_5findividual_39',['astarte_device_send_individual',['../group__device.html#ga9542caba91e741ac8b6fc1376b4c5d9a',1,'device.h']]],
+  ['astarte_5fdevice_5fsend_5fobject_40',['astarte_device_send_object',['../group__device.html#ga3370d8a040552ec7dc9d6f6b1faee209',1,'device.h']]],
+  ['astarte_5fdevice_5fset_5fproperty_41',['astarte_device_set_property',['../group__device.html#gad1f1910713e710705311aa008d813bb9',1,'device.h']]],
+  ['astarte_5fdevice_5funset_5fproperty_42',['astarte_device_unset_property',['../group__device.html#ga0f776ef7dd0b15c2088acff5d44127f2',1,'device.h']]],
+  ['astarte_5fobject_5fentry_5fnew_43',['astarte_object_entry_new',['../group__objects.html#gae02ff90dd37b9dc4a00b8f0b3390126d',1,'object.h']]],
+  ['astarte_5fobject_5fentry_5fto_5fpath_5fand_5fdata_44',['astarte_object_entry_to_path_and_data',['../group__objects.html#ga7b34a185026a498d4b3620db79aa18aa',1,'object.h']]],
+  ['astarte_5fpairing_5fregister_5fdevice_45',['astarte_pairing_register_device',['../group__pairing.html#ga908eaed4cca9a8e9027bf143cd217ce7',1,'pairing.h']]],
+  ['astarte_5fresult_5fto_5fname_46',['astarte_result_to_name',['../group__results.html#gad94ddddaa6d1620e27ab4251ec4cda07',1,'result.h']]]
 ];
