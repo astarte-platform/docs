@@ -6,6 +6,7 @@ var group__mapping =
       [ "expiry", "structastarte__mapping__t.html#aadc90ac635d0039602f9d6de9c216ea3", null ],
       [ "explicit_timestamp", "structastarte__mapping__t.html#afba21342b4d4fcd121791d425fbb08d3", null ],
       [ "reliability", "structastarte__mapping__t.html#aa57656d478f2947b01659f7000a73d6f", null ],
+      [ "required", "structastarte__mapping__t.html#a2b4ed0451ca2d3056e109aed4a38f795", null ],
       [ "retention", "structastarte__mapping__t.html#a0548ff5282e29d069759c330deae4f73", null ],
       [ "type", "structastarte__mapping__t.html#a3abbe5bda6cc7d69093152668d3e3d83", null ]
     ] ],
