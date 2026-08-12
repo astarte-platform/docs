@@ -124,6 +124,7 @@ $(function(){initNavTree('device_8h.html',''); initResizable(true); });
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">device.h File Reference</div></div>
 </div><!--header-->
@@ -144,6 +145,9 @@ $(function(){initNavTree('device_8h.html',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__device__error__event__t.html">astarte_device_error_event_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Context for a single error event.  <a href="structastarte__device__error__event__t.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__device__connection__event__t.html">astarte_device_connection_event_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Context for a single connection event.  <a href="structastarte__device__connection__event__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -162,8 +166,8 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__device__property__set__event__t.html">astarte_device_property_set_event_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Context for a single property set event.  <a href="structastarte__device__property__set__event__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__device__error__event__t.html">astarte_device_error_event_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Context for a single error event.  <a href="structastarte__device__error__event__t.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__device__event__t.html">astarte_device_event_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Device event.  <a href="structastarte__device__event__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structastarte__device__config__t.html">astarte_device_config_t</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration struct for an Astarte device.  <a href="structastarte__device__config__t.html#details">More...</a><br /></td></tr>
@@ -174,24 +178,22 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ga8e6066c46bfa43d8aa10dac5bc5d16ea" id="r_ga8e6066c46bfa43d8aa10dac5bc5d16ea"><td class="memItemLeft" align="right" valign="top">typedef struct astarte_device *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__device.html#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a></td></tr>
 <tr class="memdesc:ga8e6066c46bfa43d8aa10dac5bc5d16ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle for an instance of an Astarte device.  <br /></td></tr>
 <tr class="separator:ga8e6066c46bfa43d8aa10dac5bc5d16ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7f535164eba7692280e011e637520867" id="r_ga7f535164eba7692280e011e637520867"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__device.html#ga7f535164eba7692280e011e637520867">astarte_device_connection_cbk_t</a>) (<a class="el" href="structastarte__device__connection__event__t.html">astarte_device_connection_event_t</a> event)</td></tr>
-<tr class="memdesc:ga7f535164eba7692280e011e637520867"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer for connection events.  <br /></td></tr>
-<tr class="separator:ga7f535164eba7692280e011e637520867"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8b81dcc27f46a54320bb69869c4056c3" id="r_ga8b81dcc27f46a54320bb69869c4056c3"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__device.html#ga8b81dcc27f46a54320bb69869c4056c3">astarte_device_disconnection_cbk_t</a>) (<a class="el" href="structastarte__device__disconnection__event__t.html">astarte_device_disconnection_event_t</a> event)</td></tr>
-<tr class="memdesc:ga8b81dcc27f46a54320bb69869c4056c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer for disconnection events.  <br /></td></tr>
-<tr class="separator:ga8b81dcc27f46a54320bb69869c4056c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga08f310eb2f4e1299a975d6177b696002" id="r_ga08f310eb2f4e1299a975d6177b696002"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__device.html#ga08f310eb2f4e1299a975d6177b696002">astarte_device_datastream_individual_cbk_t</a>) (<a class="el" href="structastarte__device__datastream__individual__event__t.html">astarte_device_datastream_individual_event_t</a> event)</td></tr>
-<tr class="memdesc:ga08f310eb2f4e1299a975d6177b696002"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer for datastream individual events.  <br /></td></tr>
-<tr class="separator:ga08f310eb2f4e1299a975d6177b696002"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7a29a5e74116a086f3ce9f89fbd1a137" id="r_ga7a29a5e74116a086f3ce9f89fbd1a137"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__device.html#ga7a29a5e74116a086f3ce9f89fbd1a137">astarte_device_datastream_object_cbk_t</a>) (<a class="el" href="structastarte__device__datastream__object__event__t.html">astarte_device_datastream_object_event_t</a> event)</td></tr>
-<tr class="memdesc:ga7a29a5e74116a086f3ce9f89fbd1a137"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer for datastream object events.  <br /></td></tr>
-<tr class="separator:ga7a29a5e74116a086f3ce9f89fbd1a137"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2ca4f0b9dff2986d320d8b2a4c23ad2c" id="r_ga2ca4f0b9dff2986d320d8b2a4c23ad2c"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__device.html#ga2ca4f0b9dff2986d320d8b2a4c23ad2c">astarte_device_property_set_cbk_t</a>) (<a class="el" href="structastarte__device__property__set__event__t.html">astarte_device_property_set_event_t</a> event)</td></tr>
-<tr class="memdesc:ga2ca4f0b9dff2986d320d8b2a4c23ad2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer for property set events.  <br /></td></tr>
-<tr class="separator:ga2ca4f0b9dff2986d320d8b2a4c23ad2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga11cf7315e62e03138799ee9a129e7ef8" id="r_ga11cf7315e62e03138799ee9a129e7ef8"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__device.html#ga11cf7315e62e03138799ee9a129e7ef8">astarte_device_property_unset_cbk_t</a>) (<a class="el" href="structastarte__device__data__event__t.html">astarte_device_data_event_t</a> event)</td></tr>
-<tr class="memdesc:ga11cf7315e62e03138799ee9a129e7ef8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function pointer for property unset events.  <br /></td></tr>
-<tr class="separator:ga11cf7315e62e03138799ee9a129e7ef8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ga2c0eeb0d51f0d812ee27da0660e4969c" id="r_ga2c0eeb0d51f0d812ee27da0660e4969c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__device.html#ga2c0eeb0d51f0d812ee27da0660e4969c">astarte_device_event_type_t</a> { <br />
+&#160;&#160;<a class="el" href="group__device.html#gga2c0eeb0d51f0d812ee27da0660e4969ca78e1a92b6bd7ebe5ddcd587636b02886">ASTARTE_DEVICE_EVENT_ERROR</a>
+, <a class="el" href="group__device.html#gga2c0eeb0d51f0d812ee27da0660e4969caf2530d28e2190b605f2bcc15632e75a4">ASTARTE_DEVICE_EVENT_CONNECTED</a>
+, <a class="el" href="group__device.html#gga2c0eeb0d51f0d812ee27da0660e4969caa0db6bdd56292792691516ab8d5527bc">ASTARTE_DEVICE_EVENT_DISCONNECTED</a>
+, <a class="el" href="group__device.html#gga2c0eeb0d51f0d812ee27da0660e4969ca6435b3cd49f4fc5261e1a08cdc1ea42e">ASTARTE_DEVICE_EVENT_DATASTREAM_INDIVIDUAL</a>
+, <br />
+&#160;&#160;<a class="el" href="group__device.html#gga2c0eeb0d51f0d812ee27da0660e4969ca172020e117a851ffb05a1b09e8eba49e">ASTARTE_DEVICE_EVENT_DATASTREAM_OBJECT</a>
+, <a class="el" href="group__device.html#gga2c0eeb0d51f0d812ee27da0660e4969ca61d49b64624742c97f07f57539f98968">ASTARTE_DEVICE_EVENT_PROPERTY_SET</a>
+, <a class="el" href="group__device.html#gga2c0eeb0d51f0d812ee27da0660e4969ca4aea03862187aeefd49284d8e8e54a87">ASTARTE_DEVICE_EVENT_PROPERTY_UNSET</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:ga2c0eeb0d51f0d812ee27da0660e4969c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of device event.  <a href="group__device.html#ga2c0eeb0d51f0d812ee27da0660e4969c">More...</a><br /></td></tr>
+<tr class="separator:ga2c0eeb0d51f0d812ee27da0660e4969c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -228,9 +230,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga0f776ef7dd0b15c2088acff5d44127f2" id="r_ga0f776ef7dd0b15c2088acff5d44127f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__device.html#ga0f776ef7dd0b15c2088acff5d44127f2">astarte_device_unset_property</a> (<a class="el" href="group__device.html#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device, const char *interface_name, const char *path)</td></tr>
 <tr class="memdesc:ga0f776ef7dd0b15c2088acff5d44127f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unset a device property.  <br /></td></tr>
 <tr class="separator:ga0f776ef7dd0b15c2088acff5d44127f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3224abd27fae5fb4cd1e4bbb958fc1f5" id="r_ga3224abd27fae5fb4cd1e4bbb958fc1f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__device.html#ga3224abd27fae5fb4cd1e4bbb958fc1f5">astarte_device_get_error_event</a> (<a class="el" href="group__device.html#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device, <a class="el" href="structastarte__device__error__event__t.html">astarte_device_error_event_t</a> *event, k_timeout_t timeout)</td></tr>
-<tr class="memdesc:ga3224abd27fae5fb4cd1e4bbb958fc1f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetch the next error event from the Astarte device.  <br /></td></tr>
-<tr class="separator:ga3224abd27fae5fb4cd1e4bbb958fc1f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae8ba2c5568664e983f3adb76b9e7eec6" id="r_gae8ba2c5568664e983f3adb76b9e7eec6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__results.html#gaa9ea00ca0ab1c24dd2936c25bf05689a">astarte_result_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__device.html#gae8ba2c5568664e983f3adb76b9e7eec6">astarte_device_get_event</a> (<a class="el" href="group__device.html#ga8e6066c46bfa43d8aa10dac5bc5d16ea">astarte_device_handle_t</a> device, <a class="el" href="structastarte__device__event__t.html">astarte_device_event_t</a> *event, k_timeout_t timeout)</td></tr>
+<tr class="memdesc:gae8ba2c5568664e983f3adb76b9e7eec6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetch the next error event from the Astarte device.  <br /></td></tr>
+<tr class="separator:gae8ba2c5568664e983f3adb76b9e7eec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga484d93fec9d654d3b9e6592379acfe54" id="r_ga484d93fec9d654d3b9e6592379acfe54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__device.html#ga484d93fec9d654d3b9e6592379acfe54">astarte_device_event_cleanup</a> (<a class="el" href="structastarte__device__event__t.html">astarte_device_event_t</a> *event)</td></tr>
+<tr class="memdesc:ga484d93fec9d654d3b9e6592379acfe54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cleanup an Astarte device event.  <br /></td></tr>
+<tr class="separator:ga484d93fec9d654d3b9e6592379acfe54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Device management. </p>

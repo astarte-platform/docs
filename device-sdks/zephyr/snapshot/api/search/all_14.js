@@ -8,5 +8,5 @@ var searchData=
   ['the_20workspace_5',['Initializing the workspace',['../index.html#autotoc_md5',1,'']]],
   ['time_20configuration_6',['One time configuration',['../index.html#autotoc_md9',1,'']]],
   ['time_20interface_20definitions_20generation_7',['Build time interface definitions generation',['../index.html#autotoc_md14',1,'']]],
-  ['type_8',['type',['../structastarte__interface__t.html#a7a02b772033a5730651ddc93a42c848c',1,'astarte_interface_t::type'],['../structastarte__mapping__t.html#a3abbe5bda6cc7d69093152668d3e3d83',1,'astarte_mapping_t::type']]]
+  ['type_8',['type',['../structastarte__device__event__t.html#af7833d27ce07d4df1d15ff02fd6cdfbc',1,'astarte_device_event_t::type'],['../structastarte__interface__t.html#a7a02b772033a5730651ddc93a42c848c',1,'astarte_interface_t::type'],['../structastarte__mapping__t.html#a3abbe5bda6cc7d69093152668d3e3d83',1,'astarte_mapping_t::type']]]
 ];
