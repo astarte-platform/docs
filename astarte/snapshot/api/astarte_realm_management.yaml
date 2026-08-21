@@ -761,6 +761,11 @@ components:
         doc:
           description: A string containing documentation that will be injected in the generated client code.
           type: string
+        encrypted:
+          default: false
+          description: |
+            Defines if the endpoint is encrypted or not.
+          type: boolean
         endpoint:
           description: |
             The template of the path. This is a UNIX-like path (e.g. /my/path)
