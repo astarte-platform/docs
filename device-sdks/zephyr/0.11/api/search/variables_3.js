@@ -1,0 +1,6 @@
+var searchData=
+[
+  ['data_0',['data',['../structastarte__data__t.html#a8aff053a34acc60222f273a96be623d3',1,'astarte_data_t::data'],['../structastarte__device__datastream__individual__event__t.html#a2e67853b34094c8b37bd5b8276081cb0',1,'astarte_device_datastream_individual_event_t::data'],['../structastarte__device__property__set__event__t.html#a5a65fe6090919b980c3848651b414023',1,'astarte_device_property_set_event_t::data'],['../structastarte__device__event__t.html#a0b15e0f4fe060d1e0a558a72f2d0531f',1,'astarte_device_event_t::data'],['../structastarte__object__entry__t.html#a5f6fdb6f7f4b7f0d9e4a6596d1402763',1,'astarte_object_entry_t::data']]],
+  ['device_1',['device',['../structastarte__device__connection__event__t.html#a0e95777dc85382885c6d79ec33eaa2eb',1,'astarte_device_connection_event_t::device'],['../structastarte__device__disconnection__event__t.html#afc6c84c3353767621cea1207f800619c',1,'astarte_device_disconnection_event_t::device'],['../structastarte__device__data__event__t.html#a74f613f3a9867f8ca9481dcaa70b0c42',1,'astarte_device_data_event_t::device']]],
+  ['device_5fid_2',['device_id',['../structastarte__device__config__t.html#a8055b3ed754b0090171ab06652aa32a0',1,'astarte_device_config_t']]]
+];
