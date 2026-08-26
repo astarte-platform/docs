@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.39.3">
+    <meta name="project" content="Clea Astarte v1.5.0-dev">
+
+
+    <title>Key Agreement and Encrypted Endpoints — Clea Astarte v1.5.0-dev</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-VYWJUHZE.css" />
+
+    <script defer src="dist/sidebar_items-FC526A2C.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-XBCM4BHM.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+        <a href="https://docs.astarte-platform.org/astarte/snapshot/" class="sidebar-projectImage">
+          <img src="assets/logo.png" alt="Clea Astarte" />
+        </a>
+
+      <div>
+        <a href="https://docs.astarte-platform.org/astarte/snapshot/" class="sidebar-projectName" translate="no">
+Clea Astarte
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.5.0-dev
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras=""></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-extra" id="main" data-type="extras">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of Clea Astarte</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>Key Agreement and Encrypted Endpoints</h1>
+
+
+      <a href="https://github.com/astarte-platform/astarte/blob/master/doc/pages/architecture/082-key_agreement_protocol.md#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+<p>Astarte interfaces can mark individual mappings as <strong>encrypted</strong>. Payloads published on those
+endpoints will not travel in plaintext between a device and Astarte. To achieve this, a device and
+Astarte perform a <strong>Key Agreement</strong> handshake to independently derive a shared symmetric key, which
+is then used to encrypt and decrypt data exchanged on that specific MQTT session.</p><p>This page describes the Key Agreement handshake in detail: the cryptographic primitives involved,
+the CBOR/COSE wire format, the MQTT control messages, and the protocol rules. Key Agreement is an
+extension of the <a href="080-mqtt-v1-protocol.html">Astarte MQTT v1 Protocol</a>, reusing the
+<code class="inline">control/keyAgreement</code> topic introduced there.</p><blockquote><h4 class="note">Implementation status</h4><p>The handshake described on this page (<code class="inline">InitExchange</code>, <code class="inline">ExchangeResp</code>, <code class="inline">SecretHash</code>, <code class="inline">HashOk</code>,
+<code class="inline">ExchangeFailed</code>) is implemented on the Astarte side (<code class="inline">astarte_data_updater_plant</code>). Device-side
+usage of the derived session key (for encrypting/decrypting endpoint payloads) and some
+deployment identifiers may still evolve as the feature stabilizes. Device-side implementations
+are provided by Astarte SDKs.</p></blockquote><h2 id="cryptographic-primitives" class="section-heading"><a href="#cryptographic-primitives" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Cryptographic primitives</span></h2><table><thead><tr><th style="text-align: left;">Purpose</th><th style="text-align: left;">Algorithm</th><th style="text-align: left;">Details</th></tr></thead><tbody><tr><td style="text-align: left;">Key exchange</td><td style="text-align: left;">ECDH over NIST P-256</td><td style="text-align: left;">A fresh, ephemeral key pair is generated by each party for every handshake attempt; static or long-lived ECDH keys are not used.</td></tr><tr><td style="text-align: left;">Key derivation</td><td style="text-align: left;">HKDF-SHA256 (<a href="https://www.rfc-editor.org/rfc/rfc5869">RFC 5869</a>)</td><td style="text-align: left;"><code class="inline">salt</code> is the random 32-byte <code class="inline">HkdfSalt</code> carried by <code class="inline">InitExchange</code>; the ECDH shared secret is used as <code class="inline">IKM</code>; the <code class="inline">info</code> parameter is the fixed, lowercase ASCII string <code class="inline">astarte-kdf</code>. The output is 256 bits of key material.</td></tr><tr><td style="text-align: left;">Payload confidentiality</td><td style="text-align: left;">AES-256-GCM</td><td style="text-align: left;">96-bit (12-byte) nonce, randomly generated for <strong>every</strong> encrypted message (never a counter, never reused); 128-bit (16-byte) authentication tag.</td></tr><tr><td style="text-align: left;">Key verification / reuse checking</td><td style="text-align: left;">SHA-256</td><td style="text-align: left;">Used to compute the <code class="inline">KeyHash</code> carried by <code class="inline">SecretHash</code>, so a peer can prove it still holds a given symmetric key without disclosing it.</td></tr></tbody></table><h2 id="wire-format-cbor-and-cose" class="section-heading"><a href="#wire-format-cbor-and-cose" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Wire format: CBOR and COSE</span></h2><p>All Key Agreement messages are binary-encoded with <a href="https://cbor.io/">CBOR</a>. Elliptic-curve public
+keys embedded in the messages are encoded as CBOR
+<a href="https://www.rfc-editor.org/rfc/rfc9052">COSE_Key</a> maps, themselves wrapped in a CBOR byte string.</p><p>Each suite supported by Key Agreement is identified by a small integer, carried in the <code class="inline">Alg</code> field of
+<code class="inline">InitExchange</code>:</p><table><thead><tr><th style="text-align: left;"><code class="inline">Alg</code></th><th style="text-align: left;">Suite</th></tr></thead><tbody><tr><td style="text-align: left;">0</td><td style="text-align: left;"><code class="inline">ECDH_P256-HKDF_SHA256-AES_256_GCM</code></td></tr></tbody></table><p>Both parties use the <code class="inline">Alg</code> declared by the device in <code class="inline">InitExchange</code> for the rest of that handshake;
+if Astarte does not support the requested suite, it replies with <code class="inline">ExchangeFailed</code>.</p><h2 id="mqtt-topics" class="section-heading"><a href="#mqtt-topics" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">MQTT topics</span></h2><p>Key Agreement reuses the <code class="inline">control</code> topic hierarchy described in
+<a href="080-mqtt-v1-protocol.html#mqtt-topics-overview">Astarte MQTT v1 Protocol</a>, adding a numeric suffix
+that identifies the message type:</p><table><thead><tr><th style="text-align: left;">Topic</th><th style="text-align: left;">Message</th><th style="text-align: left;">Published by</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;/control/keyAgreement/0</code></td><td style="text-align: left;"><code class="inline">InitExchange</code></td><td style="text-align: left;">Device</td></tr><tr><td style="text-align: left;"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;/control/keyAgreement/1</code></td><td style="text-align: left;"><code class="inline">ExchangeResp</code></td><td style="text-align: left;">Astarte</td></tr><tr><td style="text-align: left;"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;/control/keyAgreement/2</code></td><td style="text-align: left;"><code class="inline">SecretHash</code></td><td style="text-align: left;">Device</td></tr><tr><td style="text-align: left;"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;/control/keyAgreement/3</code></td><td style="text-align: left;"><code class="inline">HashOk</code></td><td style="text-align: left;">Astarte</td></tr><tr><td style="text-align: left;"><code class="inline">&lt;realm name&gt;/&lt;device id&gt;/control/keyAgreement/4</code></td><td style="text-align: left;"><code class="inline">ExchangeFailed</code></td><td style="text-align: left;">Astarte</td></tr></tbody></table><p>All Key Agreement messages are published at QoS 2.</p><h2 id="message-formats" class="section-heading"><a href="#message-formats" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Message formats</span></h2><p>Message bodies are CBOR arrays; field order is significant. Schemas are given below in
+<a href="https://www.rfc-editor.org/rfc/rfc8610">CDDL</a>.</p><pre><code class="cddl">key-agreement-suite = 0
+  ; 0 = ECDH_P256-HKDF_SHA256-AES_256_GCM</code></pre><h3 id="initexchange" class="section-heading"><a href="#initexchange" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">InitExchange</span></h3><p>Opens a new handshake, carrying the sender's ephemeral public key. Sent by the device to Astarte to
+start a handshake.</p><pre><code class="cddl">InitExchange = [
+  seq_num: uint,     ; u16, incremented by the sender for each message sent in the session
+  alg: key-agreement-suite,
+  pub_key: bstr,             ; CBOR-encoded COSE_Key, sender's ephemeral EC public key
+  hkdf_salt: bstr,  ; random salt used as HKDF's `salt` input
+]</code></pre><h3 id="exchangeresp" class="section-heading"><a href="#exchangeresp" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">ExchangeResp</span></h3><p>Sent by Astarte in response to an <code class="inline">InitExchange</code>, carrying Astarte's ephemeral public key. Once a
+party has both its own private key and the peer's public key (from <code class="inline">InitExchange</code> and
+<code class="inline">ExchangeResp</code>), it can independently perform ECDH and HKDF to derive the shared AES-256 key.</p><pre><code class="cddl">ExchangeResp = [
+  seq_num: uint,  ; echoes the seq_num of the InitExchange being answered
+  pub_key: bstr           ; CBOR-encoded COSE_Key, Astarte's ephemeral EC public key
+]</code></pre><h3 id="secrethash" class="section-heading"><a href="#secrethash" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">SecretHash</span></h3><p>Lets the device check whether Astarte still holds the same derived key, without performing a full
+handshake. Only the device sends <code class="inline">SecretHash</code>.</p><pre><code class="cddl">SecretHash = [
+  seq_num: uint,
+  key_hash: bstr   ; SHA-256 digest of the shared symmetric key
+]</code></pre><h3 id="hashok" class="section-heading"><a href="#hashok" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">HashOk</span></h3><p>Confirms that the <code class="inline">key_hash</code> received in a <code class="inline">SecretHash</code> matches the locally held key: both sides can
+keep using the current key instead of rotating it. Only Astarte sends <code class="inline">HashOk</code>, in response to a
+device's <code class="inline">SecretHash</code>.</p><pre><code class="cddl">HashOk = [
+  seq_num: uint   ; the seq_num of the SecretHash being confirmed
+]</code></pre><h3 id="exchangefailed" class="section-heading"><a href="#exchangefailed" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">ExchangeFailed</span></h3><p>Signals that the handshake, or a <code class="inline">SecretHash</code> check, could not be completed.</p><pre><code class="cddl">ExchangeFailed = [
+  seq_num: uint,
+  error_code: uint,
+  error_msg: tstr
+]</code></pre><table><thead><tr><th style="text-align: left;"><code class="inline">error_code</code></th><th style="text-align: left;">Meaning</th></tr></thead><tbody><tr><td style="text-align: left;">0</td><td style="text-align: left;">Internal server error</td></tr><tr><td style="text-align: left;">1</td><td style="text-align: left;">Invalid argument (malformed message)</td></tr><tr><td style="text-align: left;">2</td><td style="text-align: left;">Hash mismatch (<code class="inline">SecretHash</code> did not match)</td></tr><tr><td style="text-align: left;">3</td><td style="text-align: left;">Unprocessable entity (e.g. unsupported or mismatched cipher suite)</td></tr></tbody></table><h2 id="protocol-flow" class="section-heading"><a href="#protocol-flow" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Protocol flow</span></h2><h3 id="full-handshake" class="section-heading"><a href="#full-handshake" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Full handshake</span></h3><p>The device initiates a new handshake: <code class="inline">InitExchange</code> is only published by the device,
+and <code class="inline">ExchangeResp</code> is published by Astarte in response.</p><ol><li>The device generates a fresh ephemeral key pair for the chosen suite, a random 32-byte HKDF
+salt, and publishes <code class="inline">InitExchange</code>.</li><li>Astarte generates its own fresh ephemeral key pair for the same suite, publishes
+<code class="inline">ExchangeResp</code>, then derives the shared secret via ECDH (using its private key and the
+device's public key) and HKDF (using the salt from <code class="inline">InitExchange</code>).</li><li>The device derives the same shared secret independently, using its own private key,
+Astarte's public key from <code class="inline">ExchangeResp</code>, and the same salt.</li><li>Both sides now hold the same 256-bit AES key, scoped to the current MQTT session.</li></ol><pre><code class="mermaid">sequenceDiagram
+  participant D as Device
+  participant S as Astarte
+  D-&gt;&gt;S: Publish InitExchange (control/keyAgreement/0)
+  S-&gt;&gt;D: Publish ExchangeResp (control/keyAgreement/1)
+  Note over D,S: Both independently derive the shared key via ECDH + HKDF</code></pre><h3 id="reconfirming-an-existing-key" class="section-heading"><a href="#reconfirming-an-existing-key" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Reconfirming an existing key</span></h3><p>A full handshake generates fresh ephemeral keys and repeats ECDH + HKDF, so it isn't something the
+device wants to redo just to check that a key is still good, for example after it reconnects
+and resumes a session. <strong><code class="inline">SecretHash</code> /
+<code class="inline">HashOk</code> is the mechanism for reconfirming an already-established key without a full re-handshake</strong>:
+the device can send its <code class="inline">SecretHash</code> at any time once a key exists, and Astarte only needs to
+compare a SHA-256 digest against the key it already holds, no new key material is generated, and no
+<code class="inline">InitExchange</code> / <code class="inline">ExchangeResp</code> round trip is needed.</p><pre><code class="mermaid">sequenceDiagram
+  participant D as Device
+  participant S as Astarte
+  Note over D,S: Key already established: no new key material is generated
+  D-&gt;&gt;S: SecretHash (control/keyAgreement/2)
+  alt digest matches
+    S-&gt;&gt;D: HashOk (control/keyAgreement/3)
+  else digest mismatch
+    S-&gt;&gt;D: ExchangeFailed (control/keyAgreement/4)
+  end</code></pre><p>If the digest doesn't match, a full handshake (<code class="inline">InitExchange</code> / <code class="inline">ExchangeResp</code>) must be run again
+before encrypted traffic can resume.</p><h3 id="handshake-state-machine" class="section-heading"><a href="#handshake-state-machine" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Handshake state machine</span></h3><p>Each side of the MQTT session tracks the handshake as a small state machine with four states.
+Every state below corresponds to a milestone in the message flow above:</p><table><thead><tr><th style="text-align: left;">State</th><th style="text-align: left;">Meaning</th></tr></thead><tbody><tr><td style="text-align: left;"><code class="inline">uninitialized</code></td><td style="text-align: left;">No handshake has been attempted yet, or the session was just reset.</td></tr><tr><td style="text-align: left;"><code class="inline">handshake_started</code></td><td style="text-align: left;">An <code class="inline">InitExchange</code> has been exchanged; the shared key has not been derived yet.</td></tr><tr><td style="text-align: left;"><code class="inline">established</code></td><td style="text-align: left;">The shared AES-256 key has been derived and is ready to encrypt/decrypt traffic.</td></tr><tr><td style="text-align: left;"><code class="inline">failed</code></td><td style="text-align: left;">The handshake, or a <code class="inline">SecretHash</code> check, could not be completed.</td></tr></tbody></table><pre><code class="mermaid">stateDiagram-v2
+    [*] --&gt; uninitialized
+
+    uninitialized --&gt; handshake_started: InitExchange
+    handshake_started --&gt; handshake_started: new InitExchange
+    failed --&gt; handshake_started: new InitExchange
+    established --&gt; handshake_started: re-initiated
+
+    handshake_started --&gt; established: secret derived
+    established --&gt; established: SecretHash / HashOk
+
+    handshake_started --&gt; failed: ExchangeFailed
+    established --&gt; failed: ExchangeFailed
+
+    note right of uninitialized
+        reachable from any state
+        on session reset
+    end note</code></pre><p>The self-loop on <code class="inline">established</code> is the <a href="#reconfirming-an-existing-key">reconfirmation exchange</a>
+described above: a <code class="inline">SecretHash</code> / <code class="inline">HashOk</code> round trip lets the session stay in <code class="inline">established</code> and
+keep using the same key, without ever repeating the ECDH + HKDF derivation.</p><p>A session can be reset from any state back to <code class="inline">uninitialized</code> (an MQTT clean session, a device
+reconnect, and so on, see <a href="#key-scoping-and-rotation">Key scoping and rotation</a> below), and a new
+<code class="inline">InitExchange</code> from the device can restart the handshake from any state, which is how a key
+rotation is triggered. If Astarte needs a rotation (for example because it never received a key
+from the device), it signals this with <code class="inline">ExchangeFailed</code> rather than sending <code class="inline">InitExchange</code> itself,
+since only the device publishes <code class="inline">InitExchange</code>.</p><blockquote><h4 class="note">Implementation note</h4><p>In the reference Astarte implementation, an established session moves back to
+<code class="inline">handshake_started</code> only in response to an explicit handshake re-initiation, while <code class="inline">SecretHash</code> / <code class="inline">HashOk</code> is the mechanism for reconfirming an
+already-established key without a full re-handshake.</p></blockquote><h3 id="key-scoping-and-rotation" class="section-heading"><a href="#key-scoping-and-rotation" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Key scoping and rotation</span></h3><p>The derived key is only ever valid for the MQTT session in which it was established. If the session
+resets (for example, the device reconnects, or Astarte forces a clean session), the key will not be
+reused across the new session: a new handshake, or at least a <code class="inline">SecretHash</code> / <code class="inline">HashOk</code> check, must be
+performed before any further encrypted payload is accepted.</p><h2 id="data-path" class="section-heading"><a href="#data-path" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Data path</span></h2><p>Once a shared key is established for the current session:</p><ul><li>The device encrypts outgoing payloads on encrypted endpoints with AES-256-GCM, using the shared
+key and a freshly randomized nonce for every message, and publishes the ciphertext.</li><li>Astarte decrypts the ciphertext with the same shared key, validates the resulting plaintext as it
+would any other payload, and re-encrypts it with Astarte's own internal encryption-at-rest key
+before persisting it. Astarte does not persist data encrypted with a device's session key.</li><li>For server-owned encrypted mappings, the same happens in reverse: Astarte encrypts with the shared
+key, and the device decrypts and hands plaintext to the application.</li></ul><p>Note on payload encryption: For every payload to be sent, the payload gets fully encrypted as a single ciphertext if at least one endpoint in the mapping is declared as encrypted. This means Astarte and devices always encrypt and decrypt the payload as a whole (such as an entire BSON document), rather than handling individual fields separately.</p><p>If no key has ever been established for the current session, Astarte cannot decrypt an incoming
+payload on an encrypted endpoint. This is treated as a recoverable condition: Astarte logs the issue and discards the message rather than crashing or falling back to treating the
+payload as plaintext. The same applies if a payload is received encrypted with a stale key after a
+session reset.</p>
+
+</div>
+
+<div class="bottom-actions" id="bottom-actions">
+  <div class="bottom-actions-item">
+
+      <a href="080-mqtt-v1-protocol.html" class="bottom-actions-button" rel="prev">
+        <span class="subheader">
+          ← Previous Page
+        </span>
+        <span class="title">
+Astarte MQTT v1 Protocol
+        </span>
+      </a>
+
+  </div>
+  <div class="bottom-actions-item">
+
+      <a href="090-database.html" class="bottom-actions-button" rel="next">
+        <span class="subheader">
+          Next Page →
+        </span>
+        <span class="title">
+Astarte Database
+        </span>
+      </a>
+
+  </div>
+</div>
+    <footer class="footer">
+
+        <p>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="Clea Astarte.epub" title="ePub version">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.39.3) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>
