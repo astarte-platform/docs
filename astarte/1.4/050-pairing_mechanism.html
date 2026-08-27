@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="dist/html-elixir-VYWJUHZE.css" />
 
-    <script defer src="dist/sidebar_items-4FAF029A.js"></script>
+    <script defer src="dist/sidebar_items-8AF8EB05.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-XBCM4BHM.js"></script>
 
@@ -166,7 +166,57 @@ and can be safely discarded afterwards. This approach largely simplifies the dep
 leaves every device with a secret which, if retrieved, can allow an entity to register an arbitrary
 Device in the realm.</p><p>If following the <em>On Board Agent</em> approach, it is advised to store the <em>Agent Key</em> in a safe area
 inside the device and delete it after retrieving a <em>Credentials Secret</em> (some OTPs allow this
-configuration).</p><h2 id="transport-responsibility" class="section-heading"><a href="#transport-responsibility" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Transport responsibility</span></h2><p>Once a device obtains its <em>Transport Credentials</em>, it is then capable of connecting to the Transport
+configuration).</p><h2 id="fido-device-onboarding" class="section-heading"><a href="#fido-device-onboarding" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">FIDO Device Onboarding</span></h2><p>Since v1.4.0 devices can retrieve the <em>Credentials Secret</em> through FIDO Device Onboarding
+(<a href="https://fidoalliance.org/device-onboarding-overview/" title="">FDO overview</a>) protocol. The procedures described in FDO specification (<a href="https://fidoalliance.org/specs/FDO/FIDO-Device-Onboard-PS-v1.1-20220419/FIDO-Device-Onboard-PS-v1.1-20220419.pdf" title="">FDO 1.1</a>) allow
+establishing a chain of trust from the device manufacturer to the final owner, who can claim
+ownership of the device through an <em>Owner Onboarding Service</em> (Astarte Pairing service). When
+registering a device via FDO, it will be provisioned with all the data needed for further
+communications with Astarte.</p><p>The main information transfer artifact in FDO procedures is the <em>Ownership Voucher</em>, a structured
+digital document that links the Manufacturer with the Owner through a chain of signed public keys.
+Each signature of a public key authorizes the possessor of the corresponding private key to take
+ownership of the device or pass ownership through another link in the chain: every time the device
+changes hands in the supply chain (e.g. from manufacturer to reseller to final owner),
+the previous owner signs the public key of the new owner and adds it to the voucher, with the last
+public key of the voucher being the <em>Owner Key</em>. The voucher also includes the device public key
+and the GUID assigned to it during initialization, allowing for device identification and authentication.
+The voucher corresponding to a specific device must be uploaded into the Astarte platform to start
+the device registration flow.</p><p>The initial setup of the device is carried out through <em>Device Initialization</em> (DI) procedures at
+the manufacturer's site, pre-loading into the device a set of secrets and the URL of a
+<em>Rendezvous Server</em> (an intermediary node allowing devices to find a suitable owner onboarding platform).
+Astarte expects an external <em>Rendezvous Server</em> to be available and properly configured.
+FDO registration makes it possible to initialize a device without it being aware of its
+destination realm and final owner.</p><h3 id="transfer-ownership-protocols" class="section-heading"><a href="#transfer-ownership-protocols" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Transfer Ownership protocols</span></h3><p><em>Transfer Ownership</em> protocols detail specific subsequent phases enabling the effective onboarding
+of the device onto its reference platform. Astarte implements the TO0 and TO2 protocols.</p><p>TO0 and TO2 communications are carried out only over HTTP/HTTPS transport in the current implementation.
+The URL which the device must use to initiate the TO2 protocol is in the form
+<em>&lt;ASTARTE_REALM&gt;.api.&lt;ASTARTE_BASE_URL&gt;/&lt;FDO_URL&gt;</em>; this is currently necessary to map the device
+session to the correct realm.</p><h4>TO0 Protocol</h4><p>TO0 messaging is started as soon as a new <em>Ownership Voucher</em> is uploaded onto the platform by the
+final user. In this phase Astarte notifies the configured <em>Rendezvous Server</em> that it is the expected
+platform to handle the onboarding of the device corresponding to the GUID contained in the voucher.
+This allows the device to discover its reference onboarding platform.</p><h4>TO2 protocol</h4><p>Through TO2 protocol the device and Astarte directly communicate with each other in order to
+mutually authenticate and establish a secure tunnel through which the device receives its
+credentials secret along with optional additional configurations.</p><p>For mutual authentication to work Astarte needs access to the private key of the final device owner,
+which is pre-loaded onto an external secure vault (see section <a href="#owner-keys-management">Owner Keys management</a>
+for details); this key must correspond to the owner public key contained in the voucher. The
+procedure of extending the voucher with the owner key is out of scope for the Astarte implementation
+of FDO.</p><p>The <em>TO2.SetupDevice</em> message is used to send device configurations to overwrite the pre-existing
+ones, in order to complete the ownership transfer and tie the device to the new owner. These changes
+are applied only after the entire TO2 procedure is completed. If these configurations are not
+explicitly passed by the user, they will be derived from the data contained in the voucher.</p><p>The supported replacement parameters are:</p><ul><li><em>Replacement GUID</em>, a GUID to be assigned to the device</li><li><em>Replacement Rendezvous Info</em>, a set of connection instructions to direct the device to the
+RV server for any future FDO procedures</li><li><em>Replacement Owner Public Key</em>, to claim the current final owner as the trusted entity for any
+future ownership transfers</li></ul><p>The <em>TO2.DeviceServiceInfo</em> message(s) shall be used by the device to send variables and commands
+to Astarte. Notably, this mechanism can be used to determine how the device will be identified
+upon registration. If the device provides its serial number using the <em>devmod:sn</em> field,
+Astarte will use that value to generate the <em>device ID</em>. If this key is omitted, Astarte will
+automatically generate an ID using its standard generator.</p><p>The <em>TO2.OwnerServiceInfo</em> message(s) shall be used to send a list of variables or commands
+from Astarte to the device. In the current implementation the following variables are sent
+to the device:</p><ul><li><em>astarte:active</em>: set to 'true'</li><li><em>astarte:realm</em>: the name of the realm to which the device is registered</li><li><em>astarte:secret</em>: the credentials secret</li><li><em>astarte:baseurl</em>: the Astarte base URL</li><li><em>astarte:deviceid</em>: the encoded device ID</li></ul><h3 id="owner-keys-management" class="section-heading"><a href="#owner-keys-management" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Owner Keys management</span></h3><p>Astarte must be able to sign TO2 messages using the owner private key in order to complete the
+Transfer Ownership protocol.
+A HashiCorp Vault / OpenBao service reachable by Astarte (referred to as &quot;the vault&quot; for the rest of
+the document) is used as a safe storage for owner keys, and messages are signed directly
+by it without keys ever being downloaded (or even known) by Astarte.
+Astarte internally correlates each uploaded voucher with an owner key pre-loaded into the vault.</p><p>In order to import owner keys into the vault, it is possible to</p><ul><li>upload a private key to Astarte, which is then imported ino the vault and immediately forgotten, or</li><li>have the vault generate a keypair and return the related public key, which can then be used
+to extend the Ownership Voucher to account for the final owner</li></ul><p>The vault allows for full separation of resources pertaining to different realms leveraging
+its internal namespace structure.</p><h2 id="transport-responsibility" class="section-heading"><a href="#transport-responsibility" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Transport responsibility</span></h2><p>Once a device obtains its <em>Transport Credentials</em>, it is then capable of connecting to the Transport
 the credentials were forged for. Transports have full responsibility in terms of authenticating the
 client, reporting and relaying its connection state to Astarte via its internal AMQP API. As such,
 it is fundamental that 3rd parties implementing new Transports not only adhere to protocol

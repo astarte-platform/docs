@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="dist/html-elixir-VYWJUHZE.css" />
 
-    <script defer src="dist/sidebar_items-4FAF029A.js"></script>
+    <script defer src="dist/sidebar_items-8AF8EB05.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-XBCM4BHM.js"></script>
 
@@ -154,16 +154,7 @@ dynamically once the Device reaches its final user.</p><p>In this case, this rol
 this case, it's up to the user setting up all mechanisms for delivering the <em>Credentials Secret</em> to
 the Device, which includes securing the communication channel. On the other hand, this allows an
 extremely flexible approach to Registration, which can be implemented through an entirely custom
-logic.</p><h2 id="fido-device-onboard" class="section-heading"><a href="#fido-device-onboard" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">FIDO Device Onboard</span></h2><p>Since v1.4.0, Astarte can also be used as the Owner Onboarding Service for <a href="https://fidoalliance.org/device-onboarding-overview/" title="">FDO 1.1</a>, allowing
-devices to be registered without being aware of their destination realm during device
-initialization. Device Initialization is out of scope for the Astarte implementation of FDO, and
-Astarte expects an external rendezvous server to be available and correctly configured.</p><p>When using FDO, the Device ID is derived from the device's hardware id, and the
-<em>Credentials Secret</em> is sent directly to the device in the Owner Service Info messages.</p><h3 id="key-management" class="section-heading"><a href="#key-management" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Key management</span></h3><p>Astarte must be able to sign messages using the owner private key in order to complete the
-Transfer Ownership protocol.
-Vault/OpenBao is used as a safe storage solution, and messages are signed directly by it without
-keys ever being downloaded (or even known) by Astarte.</p><p>In order to import your keys, you may either upload your private key to astarte, which is imported
-in Vault and immediately forgotten, or have Vault generate a keypair for you, and then you can use
-the new public key to extend the Ownership Voucher yourself.</p><h2 id="credentials-secret-lifecycle" class="section-heading"><a href="#credentials-secret-lifecycle" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Credentials Secret Lifecycle</span></h2><p><em>Credentials Secrets</em> are meant to be immutable - as such, they should be handled with extreme care.
+logic.</p><h2 id="credentials-secret-lifecycle" class="section-heading"><a href="#credentials-secret-lifecycle" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Credentials Secret Lifecycle</span></h2><p><em>Credentials Secrets</em> are meant to be immutable - as such, they should be handled with extreme care.
 <em>Credentials Secrets</em> are used only for interacting with Pairing, hence to obtain Credentials for a
 Transport which, on the other hand, are meant to be volatile.</p><p>A Device can be Registered an arbitrary number of times before its <em>Credentials Secret</em> is used for
 the first time for interacting with Pairing. This is done to ensure the entire Registration process,
