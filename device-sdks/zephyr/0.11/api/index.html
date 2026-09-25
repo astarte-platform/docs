@@ -51,7 +51,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Astarte device API for Zephyr<span id="projectnumber">&#160;0.11.0</span>
+   <div id="projectname">Astarte device API for Zephyr<span id="projectnumber">&#160;0.11.1</span>
    </div>
    <div id="projectbrief">Astarte device SDK for Zephyr RTOS</div>
   </td>
@@ -141,10 +141,7 @@ Using the library as a dependency in an application</h3>
 <div class="line">  # ... other projects ...</div>
 <div class="line">  - name: astarte-device-sdk-zephyr</div>
 <div class="line">    remote: astarte-platform</div>
-<div class="line">    repo-path: astarte-device-sdk-zephyr.git</div>
-<div class="line">    path: astarte-device-sdk-zephyr</div>
-<div class="line">    revision: v0.11.0</div>
-<div class="line">    west-commands: scripts/west-commands.yml</div>
+<div class="line">    revision: v0.11.1</div>
 <div class="line">    import: true</div>
 </div><!-- fragment --><p> Remember to run <code>west update</code> after performing changes to the manifest file.</p>
 <p>In addition, the Astarte device library <code>Kconfig</code> should be added to the <code>Kconfig</code> file of the application. </p><div class="fragment"><div class="line">rsource &quot;../../astarte-device-sdk-zephyr/Kconfig&quot;</div>
@@ -162,7 +159,7 @@ Creating a new workspace, venv and install west</h4>
 </div><!-- fragment --><h4><a class="anchor" id="autotoc_md5"></a>
 Initializing the workspace</h4>
 <p>The west workspace should be then intialized, using the Astarte libary repository as the manifest repository.</p>
-<div class="fragment"><div class="line">west init -m git@github.com:astarte-platform/astarte-device-sdk-zephyr --mr v0.11.0</div>
+<div class="fragment"><div class="line">west init -m git@github.com:astarte-platform/astarte-device-sdk-zephyr --mr v0.11.1</div>
 <div class="line">west update</div>
 </div><!-- fragment --><h4><a class="anchor" id="autotoc_md6"></a>
 Exporting zephyr environment and installing python dependencies</h4>
@@ -170,10 +167,11 @@ Exporting zephyr environment and installing python dependencies</h4>
 <div class="fragment"><div class="line">west zephyr-export</div>
 <div class="line">west packages pip --install</div>
 <div class="line">west packages pip --install -- -r ./astarte-device-sdk-zephyr/scripts/requirements.txt</div>
-</div><!-- fragment --> <h4><a class="anchor" id="autotoc_md7"></a>
-Fetching binary blobs for ESP32</h4>
-<p>If building for an esp32 the binary blobs will need to be downloaded before building the application.</p>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md7"></a>
+Fetching proprietary binary blobs</h4>
+<p>If building for boards requiring proprietary binary blobs an additional fetch step is required.</p>
 <div class="fragment"><div class="line">west blobs fetch hal_espressif</div>
+<div class="line">west blobs fetch hal_nxp</div>
 </div><!-- fragment --><p>Note: this command should be re-run when updating Zephyr to a newer version</p>
 <h4><a class="anchor" id="autotoc_md8"></a>
 Building and running a sample application</h4>
@@ -197,7 +195,7 @@ West extension commands</h2>
 <h3><a class="anchor" id="autotoc_md13"></a>
 Interface definitions generation</h3>
 <p>The standard format of an Astarte interface is a JSON file as defined in the <a href="https://docs.astarte-platform.org/astarte/latest/030-interface.html">Astarte documentation</a>. However, an Astarte device on Zephyr uses C structures to define Astarte interfaces. Translating an interface from a JSON definition to a C definition for Zephyr can be a repetitive and error-prone process.</p>
-<p>For this reason, an extension command for <code>west</code> has been created to facilitate this procedure. The <code>generate-interfaces</code> extension command accepts as input one or more JSON interface definitions and automatically generates the corresponding C source code. Run <code>west astarte-interfaces --help</code> to learn about the generation options.</p>
+<p>For this reason, an extension command for <code>west</code> has been created to facilitate this procedure. The <code>astarte-interfaces</code> extension command accepts as input one or more JSON interface definitions and automatically generates the corresponding C source code. Run <code>west astarte-interfaces --help</code> to learn about the generation options.</p>
 <h4><a class="anchor" id="autotoc_md14"></a>
 Build time interface definitions generation</h4>
 <p>It's also possible to automatically generate the interface definition structs. Generated files will be located in the build directory: <code>build/zephyr/include/generated/astarte_generated_interfaces.*</code>.</p>
@@ -224,29 +222,6 @@ Build doxygen documentation</h3>
 </ul>
 <p>An extension command for <code>west</code> has been created to facilitate generating the documentation. Run <code>west astarte-docs --help</code> for more information on how to generate the documentation.</p>
 <h2><a class="anchor" id="autotoc_md18"></a>
-VS Code integration</h2>
-<p>Here are some quick tips to configure VS Code with a Zephyr workspace. Make sure the following extensions are installed:</p><ul>
-<li>C/C++ Extension Pack</li>
-<li>Python</li>
-</ul>
-<p>Create the file <code>./.vscode/settings.json</code> and fill it with the following content: </p><div class="fragment"><div class="line">{</div>
-<div class="line">    // Hush CMake</div>
-<div class="line">    &quot;cmake.configureOnOpen&quot;: false,</div>
-<div class="line"> </div>
-<div class="line">    // Configure Python so that each new terminal will activate the venv</div>
-<div class="line">    // defaultInterpreterPath is not always be picked up, backup cmd: &#39;Python: select interpreter&#39;</div>
-<div class="line">    &quot;python.defaultInterpreterPath&quot;: &quot;${workspaceFolder}/.venv/bin/python&quot;,</div>
-<div class="line">    &quot;python.terminal.activateEnvironment&quot;: true,</div>
-<div class="line">    &quot;python.terminal.activateEnvInCurrentTerminal&quot;: true,</div>
-<div class="line"> </div>
-<div class="line">    // IntelliSense</div>
-<div class="line">    &quot;C_Cpp.default.compilerPath&quot;: &quot;${userHome}/zephyr-sdk-0.16.8/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc&quot;,</div>
-<div class="line">    &quot;C_Cpp.default.compileCommands&quot;: &quot;${workspaceFolder}/build/compile_commands.json&quot;,</div>
-<div class="line">    &quot;C_Cpp.autoAddFileAssociations&quot;: false,</div>
-<div class="line">    &quot;C_Cpp.debugShortcut&quot;: false</div>
-<div class="line">}</div>
-</div><!-- fragment --><p> The first setting will avoid noisy popups from the CMake extension. The python related settings will ensure that each time the integrated terminal is open, the venv containing <code>west</code> will be automatically activated. The C/C++ settings will configure intellisense. Those setting might be slightly different for your specific Zephyr SDK installation as versions might change. Also, the compile commands path assumes <code>west build</code> gets run from the root of the zephyr workspace.</p>
-<h2><a class="anchor" id="autotoc_md19"></a>
 Architectural documentation</h2>
 <p>Some additional documentation for the library architecture is available.</p><ul>
 <li><a class="el" href="md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sddef73e401b80b2170021b78ad2e458cc.html">Astarte MQTT client</a> is a soft wrapper around the MQTT client library from Zephyr. It extends the functionality of the standard MQTT client.</li>

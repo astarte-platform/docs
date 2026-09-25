@@ -1,6 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"structastarte__device__error__event__t.html#ae6162730e56bdf7926460d00f4992d6b":[4,0,2,0,1],
 "structastarte__device__event__t.html":[4,0,2,7],
 "structastarte__device__event__t.html#a0b15e0f4fe060d1e0a558a72f2d0531f":[4,0,2,7,0],
 "structastarte__device__event__t.html#af7833d27ce07d4df1d15ff02fd6cdfbc":[4,0,2,7,1],

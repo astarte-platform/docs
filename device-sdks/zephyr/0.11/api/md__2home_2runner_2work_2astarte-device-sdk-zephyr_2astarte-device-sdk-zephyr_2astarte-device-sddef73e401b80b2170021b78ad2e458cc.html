@@ -51,7 +51,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Astarte device API for Zephyr<span id="projectnumber">&#160;0.11.0</span>
+   <div id="projectname">Astarte device API for Zephyr<span id="projectnumber">&#160;0.11.1</span>
    </div>
    <div id="projectbrief">Astarte device SDK for Zephyr RTOS</div>
   </td>
@@ -124,9 +124,9 @@ $(function(){initNavTree('md__2home_2runner_2work_2astarte-device-sdk-zephyr_2as
   <div class="headertitle"><div class="title">Astarte MQTT client architecture</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md31"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md30"></a></p>
 <p>Astarte MQTT client is a soft wrapper around the MQTT client library from Zephyr. It extends the functionality of the standard MQTT client.</p>
-<h1><a class="anchor" id="autotoc_md32"></a>
+<h1><a class="anchor" id="autotoc_md31"></a>
 Automatic reconnection</h1>
 <p>The Astarte MQTT client implements an automatic reconnection policy in cases where connectivity with the MQTT broker is lost. An exponential backoff is used to limit reconnection attempts. The backoff time will start from the user configurable polling timeout and end at the minimum between the user configurable polling timeout and twice the keep alive time for the MQTT connection.</p>
 <div class="fragment"><div class="line">%% This is a mermaid graph. Your can render it using the live editor at: https://mermaid.live</div>
@@ -140,7 +140,7 @@ Automatic reconnection</h1>
 <div class="line">    DISCONNECTING --&gt; |Disconnection event| DISCONNECTED</div>
 <div class="line">    CONNECTION_ERROR --&gt; |Connection request / backoff period finished| CONNECTING</div>
 <div class="line">    CONNECTION_ERROR --&gt; |Disconnection request| DISCONNECTED</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md33"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md32"></a>
 Subscription retry procedure</h1>
 <p>The Astarte MQTT client implements a retry mechanism to ensure subscription messages are properly retransmitted.</p>
 <div class="fragment"><div class="line">%% This is a mermaid graph. Your can render it using the live editor at: https://mermaid.live</div>
@@ -156,10 +156,10 @@ Subscription retry procedure</h1>
 <div class="line">    W --&gt; |Timeout| R</div>
 <div class="line">    R --&gt; W</div>
 <div class="line">    W --&gt; |Received SUBACK| E</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md34"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md33"></a>
 Publish retry procedure</h1>
 <p>The Astarte MQTT client implements a retry mechanism to ensure publish messages with QoS &gt; 0 are properly retransmitted.</p>
-<h2><a class="anchor" id="autotoc_md35"></a>
+<h2><a class="anchor" id="autotoc_md34"></a>
 QoS 1</h2>
 <div class="fragment"><div class="line">%% This is a mermaid graph. Your can render it using the live editor at: https://mermaid.live</div>
 <div class="line">flowchart TD</div>
@@ -174,7 +174,7 @@ QoS 1</h2>
 <div class="line">    W --&gt; |Timeout| R</div>
 <div class="line">    R --&gt; W</div>
 <div class="line">    W --&gt; |Received PUBACK| E</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md36"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md35"></a>
 QoS 2</h2>
 <div class="fragment"><div class="line">%% This is a mermaid graph. Your can render it using the live editor at: https://mermaid.live</div>
 <div class="line">flowchart TD</div>
@@ -196,10 +196,10 @@ QoS 2</h2>
 <div class="line">    WPUBCOMP --&gt; |Timeout| RPUBREL</div>
 <div class="line">    RPUBREL --&gt; WPUBCOMP</div>
 <div class="line">    WPUBCOMP --&gt; |Received PUBCOMP| E</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md37"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md36"></a>
 Reception of QoS 1 publishes</h1>
 <p>Upon the reception of a QoS 1 publish message the Astarte MQTT driver automatically transmit a PUBACK message back to the MQTT broker.</p>
-<h1><a class="anchor" id="autotoc_md38"></a>
+<h1><a class="anchor" id="autotoc_md37"></a>
 Reception of QoS 2 messages</h1>
 <p>QoS 2 publishes require a more complex control flow in the receiver compared to lower QoS levels.</p>
 <div class="fragment"><div class="line">%% This is a mermaid graph. Your can render it using the live editor at: https://mermaid.live</div>

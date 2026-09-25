@@ -5,9 +5,9 @@ var searchData=
   ['serial_20monitor_2',['Reading serial monitor',['../index.html#autotoc_md10',1,'']]],
   ['standalone_20application_3',['Using the library as a standalone application',['../index.html#autotoc_md3',1,'']]],
   ['started_4',['Getting started',['../index.html#autotoc_md1',1,'']]],
-  ['state_20machine_5',['Device connectivity state machine',['../md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd62dcd5f0d5ffd154d1c7edffea463ce9.html#autotoc_md21',1,'']]],
+  ['state_20machine_5',['Device connectivity state machine',['../md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd62dcd5f0d5ffd154d1c7edffea463ce9.html#autotoc_md20',1,'']]],
   ['static_20code_20analysis_6',['Static code analysis',['../index.html#autotoc_md16',1,'']]],
   ['storage_20architecture_7',['Astarte key-value storage architecture',['../md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html',1,'']]],
-  ['structure_8',['ZMS entry structure',['../md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html#autotoc_md25',1,'']]],
-  ['subscription_20retry_20procedure_9',['Subscription retry procedure',['../md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sddef73e401b80b2170021b78ad2e458cc.html#autotoc_md33',1,'']]]
+  ['structure_8',['ZMS entry structure',['../md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html#autotoc_md24',1,'']]],
+  ['subscription_20retry_20procedure_9',['Subscription retry procedure',['../md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sddef73e401b80b2170021b78ad2e458cc.html#autotoc_md32',1,'']]]
 ];

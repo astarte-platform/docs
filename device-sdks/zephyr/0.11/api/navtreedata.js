@@ -32,7 +32,7 @@ var NAVTREE =
           [ "Creating a new workspace, venv and install west", "index.html#autotoc_md4", null ],
           [ "Initializing the workspace", "index.html#autotoc_md5", null ],
           [ "Exporting zephyr environment and installing python dependencies", "index.html#autotoc_md6", null ],
-          [ "Fetching binary blobs for ESP32", "index.html#autotoc_md7", null ],
+          [ "Fetching proprietary binary blobs", "index.html#autotoc_md7", null ],
           [ "Building and running a sample application", "index.html#autotoc_md8", null ],
           [ "One time configuration", "index.html#autotoc_md9", null ],
           [ "Reading serial monitor", "index.html#autotoc_md10", null ]
@@ -47,32 +47,31 @@ var NAVTREE =
         [ "Static code analysis", "index.html#autotoc_md16", null ],
         [ "Build doxygen documentation", "index.html#autotoc_md17", null ]
       ] ],
-      [ "VS Code integration", "index.html#autotoc_md18", null ],
-      [ "Architectural documentation", "index.html#autotoc_md19", null ]
+      [ "Architectural documentation", "index.html#autotoc_md18", null ]
     ] ],
     [ "Astarte device architecture", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd62dcd5f0d5ffd154d1c7edffea463ce9.html", [
-      [ "Device connectivity state machine", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd62dcd5f0d5ffd154d1c7edffea463ce9.html#autotoc_md21", null ]
+      [ "Device connectivity state machine", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd62dcd5f0d5ffd154d1c7edffea463ce9.html#autotoc_md20", null ]
     ] ],
     [ "Astarte key-value storage architecture", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html", [
-      [ "ZMS ID mapping and memory layout", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html#autotoc_md23", null ],
-      [ "Hashing and collision resolution", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html#autotoc_md24", null ],
-      [ "ZMS entry structure", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html#autotoc_md25", null ],
-      [ "Global linked list and iteration", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html#autotoc_md26", null ],
-      [ "Data integrity and power-loss resilience", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html#autotoc_md27", [
-        [ "The intent block", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html#autotoc_md28", null ],
-        [ "Initialization and recovery", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html#autotoc_md29", null ],
-        [ "Deletion and memory compaction", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html#autotoc_md30", null ]
+      [ "ZMS ID mapping and memory layout", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html#autotoc_md22", null ],
+      [ "Hashing and collision resolution", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html#autotoc_md23", null ],
+      [ "ZMS entry structure", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html#autotoc_md24", null ],
+      [ "Global linked list and iteration", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html#autotoc_md25", null ],
+      [ "Data integrity and power-loss resilience", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html#autotoc_md26", [
+        [ "The intent block", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html#autotoc_md27", null ],
+        [ "Initialization and recovery", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html#autotoc_md28", null ],
+        [ "Deletion and memory compaction", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sd4abbb5b155c6958b636679cedf525da0.html#autotoc_md29", null ]
       ] ]
     ] ],
     [ "Astarte MQTT client architecture", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sddef73e401b80b2170021b78ad2e458cc.html", [
-      [ "Automatic reconnection", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sddef73e401b80b2170021b78ad2e458cc.html#autotoc_md32", null ],
-      [ "Subscription retry procedure", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sddef73e401b80b2170021b78ad2e458cc.html#autotoc_md33", null ],
-      [ "Publish retry procedure", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sddef73e401b80b2170021b78ad2e458cc.html#autotoc_md34", [
-        [ "QoS 1", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sddef73e401b80b2170021b78ad2e458cc.html#autotoc_md35", null ],
-        [ "QoS 2", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sddef73e401b80b2170021b78ad2e458cc.html#autotoc_md36", null ]
+      [ "Automatic reconnection", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sddef73e401b80b2170021b78ad2e458cc.html#autotoc_md31", null ],
+      [ "Subscription retry procedure", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sddef73e401b80b2170021b78ad2e458cc.html#autotoc_md32", null ],
+      [ "Publish retry procedure", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sddef73e401b80b2170021b78ad2e458cc.html#autotoc_md33", [
+        [ "QoS 1", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sddef73e401b80b2170021b78ad2e458cc.html#autotoc_md34", null ],
+        [ "QoS 2", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sddef73e401b80b2170021b78ad2e458cc.html#autotoc_md35", null ]
       ] ],
-      [ "Reception of QoS 1 publishes", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sddef73e401b80b2170021b78ad2e458cc.html#autotoc_md37", null ],
-      [ "Reception of QoS 2 messages", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sddef73e401b80b2170021b78ad2e458cc.html#autotoc_md38", null ]
+      [ "Reception of QoS 1 publishes", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sddef73e401b80b2170021b78ad2e458cc.html#autotoc_md36", null ],
+      [ "Reception of QoS 2 messages", "md__2home_2runner_2work_2astarte-device-sdk-zephyr_2astarte-device-sdk-zephyr_2astarte-device-sddef73e401b80b2170021b78ad2e458cc.html#autotoc_md37", null ]
     ] ],
     [ "Topics", "topics.html", "topics" ],
     [ "Data Structures", "annotated.html", [
@@ -100,7 +99,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"structastarte__device__error__event__t.html#ae6162730e56bdf7926460d00f4992d6b"
+"structastarte__device__event__t.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

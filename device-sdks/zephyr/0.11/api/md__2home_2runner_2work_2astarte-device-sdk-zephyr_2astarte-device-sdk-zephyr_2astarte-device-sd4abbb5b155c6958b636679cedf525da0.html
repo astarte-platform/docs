@@ -51,7 +51,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Astarte device API for Zephyr<span id="projectnumber">&#160;0.11.0</span>
+   <div id="projectname">Astarte device API for Zephyr<span id="projectnumber">&#160;0.11.1</span>
    </div>
    <div id="projectbrief">Astarte device SDK for Zephyr RTOS</div>
   </td>
@@ -124,9 +124,9 @@ $(function(){initNavTree('md__2home_2runner_2work_2astarte-device-sdk-zephyr_2as
   <div class="headertitle"><div class="title">Astarte key-value storage architecture</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md22"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md21"></a></p>
 <p>This library provides a namespaced, persistent key-value storage solution specifically designed for Zephyr RTOS. It leverages the Zephyr Memory Storage (ZMS) subsystem as its underlying non-volatile backend.</p>
-<h1><a class="anchor" id="autotoc_md23"></a>
+<h1><a class="anchor" id="autotoc_md22"></a>
 ZMS ID mapping and memory layout</h1>
 <p>The library abstracts standard key-value pairs by mapping them to discrete 32-bit ZMS IDs. The ID space is segmented to reserve specific addresses for metadata, system states, and actual user data.</p>
 <table class="markdownTable">
@@ -145,7 +145,7 @@ ZMS ID mapping and memory layout</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>ASTARTE_KEY_VALUE_ENTRY_NULL_ID</code>   </td><td class="markdownTableBodyNone">UINT32_MAX   </td><td class="markdownTableBodyNone">Represents a null/invalid pointer in the linked list.   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md24"></a>
+<h1><a class="anchor" id="autotoc_md23"></a>
 Hashing and collision resolution</h1>
 <p>To locate or allocate ZMS IDs for a given namespace and key, the library utilizes a custom hashing implementation.</p><ul>
 <li>The namespace and key strings are individually hashed using Zephyr's optimized <code>sys_hash32</code> function.</li>
@@ -154,7 +154,7 @@ Hashing and collision resolution</h1>
 <li>Hash collisions are handled natively via linear probing.</li>
 <li>If a collision occurs, the driver linearly increments the ZMS ID until it finds a matching key or an empty slot, wrapping around to the minimum usable ID if the maximum is exceeded.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md25"></a>
+<h1><a class="anchor" id="autotoc_md24"></a>
 ZMS entry structure</h1>
 <p>When a key-value pair is committed to ZMS, it is serialized into a single contiguous block. The entry is divided into a fixed-size header and a dynamically sized data section.</p>
 <table class="markdownTable">
@@ -175,7 +175,7 @@ ZMS entry structure</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">Value data   </td><td class="markdownTableBodyNone">Variable   </td><td class="markdownTableBodyNone">The binary payload for the key-value pair.   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md26"></a>
+<h1><a class="anchor" id="autotoc_md25"></a>
 Global linked list and iteration</h1>
 <p>Because ZMS does not natively provide a way to iterate through keys sorted by a namespace, the library maintains a global doubly-linked list of all stored entries.</p><ul>
 <li>The absolute head_id and tail_id are continuously updated and stored in the specialized <code>ASTARTE_KEY_VALUE_ENTRY_HEAD_AND_TAIL_ID</code> record.</li>
@@ -183,10 +183,10 @@ Global linked list and iteration</h1>
 <li>Iterators are initialized at the head of the list and traverse the structure sequentially.</li>
 <li>During iteration, the driver aggressively checks the namespace of the next node, automatically skipping entries that belong to distinct namespaces without exposing them to the user.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md27"></a>
+<h1><a class="anchor" id="autotoc_md26"></a>
 Data integrity and power-loss resilience</h1>
 <p>A critical architectural feature of this library is its resilience to sudden power losses during multi-step ZMS operations. This is achieved using an Intent Block, acting as a Write-Ahead Log (WAL).</p>
-<h2><a class="anchor" id="autotoc_md28"></a>
+<h2><a class="anchor" id="autotoc_md27"></a>
 The intent block</h2>
 <p>Before the library makes physical mutations to the linked list or hash map, it registers its intention at <code>ASTARTE_KEY_VALUE_ENTRY_INTENT_ID</code>. The intent states include:</p><ul>
 <li><code>ASTARTE_KEY_VALUE_ENTRY_INTENT_NONE</code>: The system is stable; no pending operations.</li>
@@ -195,14 +195,14 @@ The intent block</h2>
 <li><code>ASTARTE_KEY_VALUE_ENTRY_INTENT_DELETING</code>: Tracks unlinking a node from the global list.</li>
 <li><code>ASTARTE_KEY_VALUE_ENTRY_INTENT_SHIFTING</code>: Tracks the hash map repair process following a deletion.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md29"></a>
+<h2><a class="anchor" id="autotoc_md28"></a>
 Initialization and recovery</h2>
 <p>When <code>astarte_key_value_open</code> mounts the ZMS partition, it immediately triggers <code>astarte_key_value_entry_intent_resolve</code>.</p><ul>
 <li>If an INSERTING intent is found, the library identifies orphaned payloads and reverts the dangling <code>next_id</code> of the previous tail node.</li>
 <li>If a DELETING intent is found, the library patches the disconnected <code>prev_id</code> and <code>next_id</code> neighbors before physically deleting the target payload.</li>
 <li>If a SHIFTING intent is found, the library resumes the gap-filling process required to maintain the integrity of linear probing.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md30"></a>
+<h2><a class="anchor" id="autotoc_md29"></a>
 Deletion and memory compaction</h2>
 <p>To ensure the linear probing sequence remains unbroken after an entry is removed, the library executes a "shift back" routine.</p><ul>
 <li>Once an entry is unlinked and deleted, the driver transitions to the SHIFTING intent state.</li>
