@@ -1,0 +1,4 @@
+var class_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_events_1_1_astarte_server_value =
+[
+    [ "AstarteServerValueBuilder", "class_astarte_device_s_d_k_c_sharp_1_1_protocol_1_1_astarte_events_1_1_astarte_server_value_1_1_astarte_server_value_builder.html", null ]
+];
